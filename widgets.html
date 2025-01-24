@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
+ <!-- 
+🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+marcador inicio del documento
+🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,77 +28,114 @@
     <!-- 
 ? ___________________ Paginas _______________________ !important
 -->
+<div class="paginas-cont">
+    <a href="https://senablogbyblanco.blogspot.com/">
+        <div class="pagina" id="pagina1"> Página Principal </div>
+    </a>
+    <a href="https://senablogbyblanco.blogspot.com/p/blog-page_23.html">
+        <div class="pagina" id="pagina2"> Nosostros </div>
+    </a>
+    <a href="https://senablogbyblanco.blogspot.com/p/pagina-principal-nosostros-programas.html">
+        <div class="pagina" id="pagina3"> Programas </div>
+    </a>
+    <a href="http://127.0.0.1:5500/widgets.html#">
+        <div class="pagina" id="pagina4"> Directorio </div>
+    </a>
+</div>
+<style>
+    a {
+        text-decoration: none;
+        width: fit-content;
+        display: flex;
+        align-items: center;
+    }
 
-    <div class="paginas-cont">
-        <a href="https://senablogbyblanco.blogspot.com/">
-            <div class="pagina"id="pagina1"> Página Principal </div>
-        </a>
-        <a href="https://senablogbyblanco.blogspot.com/p/blog-page_23.html">
-            <div class="pagina" id="pagina2"> Nosostros </div>
-        </a>
-        <a href="https://senablogbyblanco.blogspot.com/p/pagina-principal-nosostros-programas.html">
-            <div class="pagina" id="pagina3"> Programas </div>
-        </a>
-        <a href="#">
-            <div class="pagina" id="pagina4"> Directorio </div>
-        </a>
-    </div>
-    <style>
-        a{
-            text-decoration: none ;
+    .paginas-cont {
+        width: fit-content;
+        user-select: none;
+        border-radius: 8px 8px 0px 0px;
+        font-weight: bold;
+        font-size: large;
+        display: flex;
+        overflow: hidden;
+        color: #39A900;
+        margin-bottom: 0px;
+        flex-wrap: wrap; 
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    .pagina {
+        cursor: default;
+        text-align: center;
+        background-color: #ffffff;
+        padding: 10px 25px;
+        transition: all 0.3s;
+        color: #39A900;
+        /* Color del texto inicial */
+    }
+
+    @media (max-width: 595px){
+        a {
+        width: 50%;
+        max-width: 200px;
+        display: flex;
+        align-items: center;
+    }
+        .paginas-cont{
+            width: 100%;
         }
-        .paginas-cont {
-            user-select: none;
-            border-radius: 8px 8px 0px 0px;
-            font-weight: bold;
-            font-size: medium;
-            display: flex;
-            overflow: hidden;
-
-            color: #39A900;
+        .pagina{
+            width: 100%;
         }
+    }
 
-        .pagina {
-            cursor:default;
-            background-color: #ffffff;
-            padding: 10px 25px;
-            transition: all 0.3s;
-            color: #39A900; /* Color del texto inicial */
+    @media (max-width: 385px){
+        a {
+        width: 100%;
+        min-width: min-content;
+    }
+    }
+
+    .pagina:active {
+        color: rgba(255, 255, 255, 0);
+        transform: scale(0.9);
+    }
+
+    .pagina:hover {
+        background-color: #55ff0011;
+        box-shadow: inset 0 3px 0 0px #39A900;
+    }
+
+    .activa {
+        box-shadow: inset 0 3px 0px #39A900;
+    }
+
+    .paginas-cont:hover .activa {
+        box-shadow: none;
+    }
+</style>
+
+
+<script>
+
+    // Obtener la URL actual
+    const urlActual = window.location.href;
+
+    // Seleccionar todas las páginas
+    const paginas = document.querySelectorAll('.pagina');
+
+    // Revisar la URL y añadir la clase 'activa' según corresponda
+    paginas.forEach(pagina => {
+        const href = pagina.parentElement.href;
+
+        if (urlActual === href) {
+            pagina.classList.add('activa'); // Agregar la clase activa si la URL coincide
         }
+    });
 
-        .pagina:hover {
-            background-color: #55ff0011;
-            box-shadow: inset 0 3px 0 0px #39A900;
-            
-        }
-
-        .pagina:active {
-            color: rgba(255, 255, 255, 0);
-            transform: scale(0.9);
-        }
-
-        .pagina.activa {
-
-            box-shadow: inset 0 -3px 0px #39A900;
-        }
-    </style>
-    <script>
-        // Obtener la URL actual
-        const urlActual = window.location.href;
-
-        // Seleccionar todas las páginas
-        const paginas = document.querySelectorAll('.pagina');
-
-        // Revisar la URL y añadir la clase 'activa' según corresponda
-        paginas.forEach(pagina => {
-            const href = pagina.parentElement.href;
-
-            if (urlActual === href) {
-                pagina.classList.add('activa'); // Agregar la clase activa si la URL coincide
-            }
-        });
-    </script>
-
+</script>
     <!-- 
 ? ___________________ Paginas _______________________ 
  -->
