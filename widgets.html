@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
- <!-- 
-🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-marcador inicio del documento
-🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
--->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,119 +24,204 @@ marcador inicio del documento
     <!-- 
 ? ___________________ Paginas _______________________ !important
 -->
-<div class="paginas-cont">
-    <a href="https://senablogbyblanco.blogspot.com/">
-        <div class="pagina" id="pagina1"> Página Principal </div>
-    </a>
-    <a href="https://senablogbyblanco.blogspot.com/p/blog-page_23.html">
-        <div class="pagina" id="pagina2"> Nosostros </div>
-    </a>
-    <a href="https://senablogbyblanco.blogspot.com/p/pagina-principal-nosostros-programas.html">
-        <div class="pagina" id="pagina3"> Programas </div>
-    </a>
-    <a href="http://127.0.0.1:5500/widgets.html#">
-        <div class="pagina" id="pagina4"> Directorio </div>
-    </a>
-</div>
-<style>
-    a {
-        text-decoration: none;
-        width: fit-content;
-        display: flex;
-        align-items: center;
-    }
-
-    .paginas-cont {
-        width: fit-content;
-        user-select: none;
-        border-radius: 8px 8px 0px 0px;
-        font-weight: bold;
-        font-size: large;
-        display: flex;
-        overflow: hidden;
-        color: #39A900;
-        margin-bottom: 0px;
-        flex-wrap: wrap; 
-        align-items: center;
-        justify-content: center;
-    }
-
-
-    .pagina {
-        cursor: default;
-        text-align: center;
-        background-color: #ffffff;
-        padding: 10px 25px;
-        transition: all 0.3s;
-        color: #39A900;
-        /* Color del texto inicial */
-    }
-
-    @media (max-width: 595px){
+    <div class="paginas-cont">
+        <a href="https://senablogbyblanco.blogspot.com/">
+            <div class="pagina" id="pagina1"> Página Principal </div>
+        </a>
+        <a href="https://senablogbyblanco.blogspot.com/p/blog-page_23.html">
+            <div class="pagina" id="pagina2"> Nosostros </div>
+        </a>
+        <a href="https://senablogbyblanco.blogspot.com/p/pagina-principal-nosostros-programas.html">
+            <div class="pagina" id="pagina3"> Programas </div>
+        </a>
+        <a href="http://127.0.0.1:5500/widgets.html#">
+            <div class="pagina" id="pagina4"> Directorio </div>
+        </a>
+    </div>
+    <style>
         a {
-        width: 50%;
-        max-width: 200px;
-        display: flex;
-        align-items: center;
-    }
-        .paginas-cont{
-            width: 100%;
+            text-decoration: none;
+            width: fit-content;
+            display: flex;
+            align-items: center;
         }
-        .pagina{
-            width: 100%;
+
+        .paginas-cont {
+            width: fit-content;
+            user-select: none;
+            border-radius: 8px 8px 0px 0px;
+            font-weight: bold;
+            font-size: large;
+            display: flex;
+            overflow: hidden;
+            color: #39A900;
+            margin-bottom: 0px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
         }
-    }
-
-    @media (max-width: 385px){
-        a {
-        width: 100%;
-        min-width: min-content;
-    }
-    }
-
-    .pagina:active {
-        color: rgba(255, 255, 255, 0);
-        transform: scale(0.9);
-    }
-
-    .pagina:hover {
-        background-color: #55ff0011;
-        box-shadow: inset 0 3px 0 0px #39A900;
-    }
-
-    .activa {
-        box-shadow: inset 0 3px 0px #39A900;
-    }
-
-    .paginas-cont:hover .activa {
-        box-shadow: none;
-    }
-</style>
 
 
-<script>
-
-    // Obtener la URL actual
-    const urlActual = window.location.href;
-
-    // Seleccionar todas las páginas
-    const paginas = document.querySelectorAll('.pagina');
-
-    // Revisar la URL y añadir la clase 'activa' según corresponda
-    paginas.forEach(pagina => {
-        const href = pagina.parentElement.href;
-
-        if (urlActual === href) {
-            pagina.classList.add('activa'); // Agregar la clase activa si la URL coincide
+        .pagina {
+            cursor: default;
+            text-align: center;
+            background-color: #ffffff;
+            padding: 10px 25px;
+            transition: all 0.3s;
+            color: #39A900;
+            /* Color del texto inicial */
         }
-    });
 
-</script>
+        @media (max-width: 620px) {
+            a {
+                width: 50%;
+
+                display: flex;
+                align-items: center;
+            }
+
+            .paginas-cont {
+                width: 100%;
+            }
+
+            .pagina {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 401px) {
+            a {
+                width: 100%;
+                min-width: 200px;
+            }
+
+            
+            .pagina:hover {
+                box-shadow: inset 5px 0 0 0px #39A900, inset -5px 0 0 0px #39A900 !important;
+                
+            }
+
+        .pagina.activa {
+            box-shadow: 
+            inset 5px 0 0 0px #39A900,
+            inset -5px 0 0 0px #39A900 !important;
+            background-color: #55ff0011;
+            
+        }
+        .paginas-cont:hover .activa {
+            box-shadow: none !important;
+            background-color: white ;
+        }
+        .pagina.activa:hover {
+            box-shadow: inset 5px 0 0 0px #39A900, inset -5px 0 0 0px #39A900 !important;
+            background-color: #55ff0011;
+        }
+
+
+        }
+
+        .pagina:active {
+            color: transparent;
+            transform: scale(0.9);
+        }
+
+        .pagina:hover {
+            background-color: #55ff0011;
+            box-shadow: inset 0 3px 0 0px #39A900;
+        }
+
+        .pagina.activa {
+            box-shadow: inset 0 3px 0px #39A900;
+        }
+
+        .paginas-cont:hover .activa {
+            box-shadow: none;
+        }
+
+        .pagina.activa:hover {
+            box-shadow: inset 0 3px 0px #39A900;
+        }
+    </style>
+
+
+    <script>
+
+        // Obtener la URL actual
+        const urlActual = window.location.href;
+
+        // Seleccionar todas las páginas
+        const paginas = document.querySelectorAll('.pagina');
+
+        // Revisar la URL y añadir la clase 'activa' según corresponda
+        paginas.forEach(pagina => {
+            const href = pagina.parentElement.href;
+
+            if (urlActual === href) {
+                pagina.classList.add('activa'); // Agregar la clase activa si la URL coincide
+            }
+        });
+
+    </script>
     <!-- 
 ? ___________________ Paginas _______________________ 
  -->
 
+    <!-- 
+? ___________________ Galería de Imágenes _______________________ !important
+-->
+    <style>
+        .galeria {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
 
+        .galeria .imagen {
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+        }
+
+        .imagen1 {
+
+            width: 200px;
+            height: 200px;
+            background-color: #ff9999;
+            /* Color de fondo */
+        }
+
+        .imagen2 {
+            width: 300px;
+            height: 200px;
+            background-color: #99ccff;
+            /* Color de fondo */
+        }
+
+        .imagen3 {
+            width: 200px;
+            height: 300px;
+            background-color: #99ff99;
+            /* Color de fondo */
+        }
+
+        .imagen4 {
+            width: 400px;
+            height: 200px;
+            background-color: #ffcc99;
+            /* Color de fondo */
+        }
+    </style>
+
+    <div class="galeria">
+        <div class="imagen imagen1"></div>
+        <div class="imagen imagen2"></div>
+        <div class="imagen imagen3"></div>
+        <div class="imagen imagen4"></div>
+    </div>
+    <!-- 
+? ___________________ Fin de Galería de Imágenes _______________________ 
+-->
 
 
 </body>
