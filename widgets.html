@@ -14,38 +14,24 @@
         align-items: center;
         padding: 15px;
         font-family: calibri;
+        gap: 20px;
 
     }
 </style>
 
 <body class="cont">
 
-
     <!-- 
 ? ___________________ Paginas _______________________ !important
 -->
     <div class="paginas-cont">
-        <a href="https://senablogbyblanco.blogspot.com/">
-            <div class="pagina" id="pagina1"> Página Principal </div>
-        </a>
-        <a href="https://senablogbyblanco.blogspot.com/p/blog-page_23.html">
-            <div class="pagina" id="pagina2"> Nosostros </div>
-        </a>
-        <a href="https://senablogbyblanco.blogspot.com/p/pagina-principal-nosostros-programas.html">
-            <div class="pagina" id="pagina3"> Programas </div>
-        </a>
-        <a href="http://127.0.0.1:5500/widgets.html#">
-            <div class="pagina" id="pagina4"> Directorio </div>
-        </a>
+        <a class="pagina" href="https://senablogbyblanco.blogspot.com/"> Página Principal </a>
+        <a class="pagina" href="https://senablogbyblanco.blogspot.com/p/blog-page_23.html"> Nosotros </a>
+        <a class="pagina" href="https://senablogbyblanco.blogspot.com/p/pagina-principal-nosostros-programas.html">
+            Programas </a>
+        <a class="pagina" href="http://127.0.0.1:5501/widgets.html#"> Directorio </a>
     </div>
     <style>
-        a {
-            text-decoration: none;
-            width: fit-content;
-            display: flex;
-            align-items: center;
-        }
-
         .paginas-cont {
             width: fit-content;
             user-select: none;
@@ -61,67 +47,19 @@
             justify-content: center;
         }
 
-
         .pagina {
+            text-decoration: none;
             cursor: default;
+            justify-content: center;
             text-align: center;
             background-color: #ffffff;
             padding: 10px 25px;
-            transition: all 0.3s;
+            transition: all 0.2s;
             color: #39A900;
             /* Color del texto inicial */
         }
 
-        @media (max-width: 620px) {
-            a {
-                width: 50%;
-
-                display: flex;
-                align-items: center;
-            }
-
-            .paginas-cont {
-                width: 100%;
-            }
-
-            .pagina {
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 401px) {
-            a {
-                width: 100%;
-                min-width: 200px;
-            }
-
-            
-            .pagina:hover {
-                box-shadow: inset 5px 0 0 0px #39A900, inset -5px 0 0 0px #39A900 !important;
-                
-            }
-
-        .pagina.activa {
-            box-shadow: 
-            inset 5px 0 0 0px #39A900,
-            inset -5px 0 0 0px #39A900 !important;
-            background-color: #55ff0011;
-            
-        }
-        .paginas-cont:hover .activa {
-            box-shadow: none !important;
-            background-color: white ;
-        }
-        .pagina.activa:hover {
-            box-shadow: inset 5px 0 0 0px #39A900, inset -5px 0 0 0px #39A900 !important;
-            background-color: #55ff0011;
-        }
-
-
-        }
-
         .pagina:active {
-            color: transparent;
             transform: scale(0.9);
         }
 
@@ -141,6 +79,44 @@
         .pagina.activa:hover {
             box-shadow: inset 0 3px 0px #39A900;
         }
+
+        @media (max-width: 620px) {
+
+            .paginas-cont {
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .pagina:hover {
+                box-shadow: inset 5px 0 0 0px #39A900, inset -5px 0 0 0px #39A900;
+            }
+
+            .pagina.activa {
+                box-shadow:
+                    inset 5px 0 0 0px #39A900,
+                    inset -5px 0 0 0px #39A900;
+                background-color: #55ff0011;
+            }
+
+            .paginas-cont:hover .activa {
+                box-shadow: none;
+                background-color: white;
+            }
+
+            .pagina.activa:hover {
+                box-shadow: inset 5px 0 0 0px #39A900, inset -5px 0 0 0px #39A900;
+                background-color: #55ff0011;
+            }
+        }
+
+        @media (max-width: 401px) {
+            .paginas-cont {
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 
 
@@ -148,23 +124,75 @@
 
         // Obtener la URL actual
         const urlActual = window.location.href;
+        console.log(urlActual);
 
         // Seleccionar todas las páginas
         const paginas = document.querySelectorAll('.pagina');
 
         // Revisar la URL y añadir la clase 'activa' según corresponda
         paginas.forEach(pagina => {
-            const href = pagina.parentElement.href;
+            const href = pagina.href; // Acceder al href del elemento a
+            console.log('url del boton', href);
 
             if (urlActual === href) {
+                console.log('Coincide');
                 pagina.classList.add('activa'); // Agregar la clase activa si la URL coincide
             }
         });
-
     </script>
+
     <!-- 
 ? ___________________ Paginas _______________________ 
  -->
+
+            <div class="contenedorbuscador">
+              <tr>
+                <td class='gsc-input inputbuscadorcont'>
+                  <input autocomplete='off' class='gsc-input inputbuscador' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q' size='10' title='search' type='text'/>
+                </td> 
+                <td class='gsc-search-button buttonbuscadorcont'>
+                  <input class='gsc-search-button buttonbuscador material-symbols-outlined' value="" expr:value='data:messages.search' title='search' type='submit'>
+                </td>
+              </tr>      
+<style>
+
+
+    .inputbuscador{
+        flex-grow: 1;
+        height: 30px;
+        margin: 0px;
+        border: #CAC4D0 solid 1px;  
+        border-right: none;
+        border-radius: 4px 0px 0px 4px;
+    }
+    .buttonbuscador{
+        width: 36px;
+        margin: 0px;
+        background-color: white !important;
+        border: grey solid 1px;
+        background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhqD53GLYdNDw7O66cnrvxpSknWkFES9lyKIeVltIibawLizxM8AhlWj9rIAZG8zJhyphenhyphenhWxLcyoAmEILmn6QGugY0Tl4cvsdQWWlIg4SURTNWuqqS0Z7TgFQP66VHY_XdndWDgHzIVLyQF91E8QIjh0qPf-i5rPd5Mglhhk4u8ekbHKksJz8o-Plq48FnY/s80/search%202.png')
+        no-repeat center center;
+        background-size: 80%;
+        border: #CAC4D0 solid 1px;  
+        border-radius: 0px 4px 4px 0px;
+        transition: all 0.1s;
+    }
+    .buttonbuscador:active{
+        transform: scale(0.8) rotate(3deg);
+    }
+    
+
+
+
+.contenedorbuscador {
+    display: flex;
+
+    width: 215px;
+}
+</style>
+
+</div>
+            
 
     <!-- 
 ? ___________________ Galería de Imágenes _______________________ !important
