@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,6 +40,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="card" id="card"></div>
 
@@ -64,30 +66,31 @@
       card.style.transform = 'perspective(1000px)';
     });
 
-    
+
   </script>
 
-<script>
-  const cards = document.querySelectorAll('.post-wrapper');
+  <script>
+    const cards = document.querySelectorAll('.post-wrapper');
 
-  cards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left; // Mouse X position relative to the card
-      const y = e.clientY - rect.top;  // Mouse Y position relative to the card
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left; // Mouse X position relative to the card
+        const y = e.clientY - rect.top;  // Mouse Y position relative to the card
 
-      // Calculate rotation values
-      const rotateX = ((y / rect.height) - 0.5) *- 20; // Tilt based on Y position
-      const rotateY = ((x / rect.width) - 0.5) * 20; // Tilt based on X position
+        // Calculate rotation values
+        const rotateX = ((y / rect.height) - 0.5) * - 20; // Tilt based on Y position
+        const rotateY = ((x / rect.width) - 0.5) * 20; // Tilt based on X position
 
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        // Reset card position on mouse leave
+        card.style.transform = 'perspective(1000px)';
+      });
     });
-
-    card.addEventListener('mouseleave', () => {
-      // Reset card position on mouse leave
-      card.style.transform = 'perspective(1000px)';
-    });
-  });
-</script>
+  </script>
 </body>
+
 </html>

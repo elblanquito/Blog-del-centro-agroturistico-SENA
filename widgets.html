@@ -14,25 +14,24 @@
         align-items: center;
         padding: 15px;
         font-family: calibri;
-        gap: 20px;
+        gap: 100px;
 
     }
 </style>
 
 <body class="cont">
 
-    <!-- 
+<!-- 
 ? ___________________ Paginas _______________________ !important
 -->
-    <div class="paginas-cont">
-        <a class="pagina" href="https://senablogbyblanco.blogspot.com/"> Página Principal </a>
-        <a class="pagina" href="https://senablogbyblanco.blogspot.com/p/blog-page_23.html"> Nosotros </a>
-        <a class="pagina" href="https://senablogbyblanco.blogspot.com/p/pagina-principal-nosostros-programas.html">
-            Programas </a>
-        <a class="pagina" href="http://127.0.0.1:5501/widgets.html#"> Directorio </a>
+    <div class="seccion_header_cont">
+        <a class="seccion_header" href="https://centro-agroturistico-sena.blogspot.com/"> Página Principal </a>
+        <a class="seccion_header" href="https://centro-agroturistico-sena.blogspot.com/p/contactos.html"> Contactos </a>
+        <a class="seccion_header" href="https://centro-agroturistico-sena.blogspot.com/p/blog-page.html"> Programas </a>
+        <a class="seccion_header" href="http://127.0.0.1:5501/widgets.html#"> Directorio </a>
     </div>
     <style>
-        .paginas-cont {
+        .seccion_header_cont {
             width: fit-content;
             user-select: none;
             border-radius: 8px 8px 0px 0px;
@@ -45,154 +44,303 @@
             flex-wrap: wrap;
             align-items: center;
             justify-content: center;
+            position: sticky !important; /* Hace que el elemento sea "pegajoso" */
+            top: 0 !important; /* Se quedará pegado cuando llegue a esta posición */
         }
 
-        .pagina {
-            text-decoration: none;
+        .seccion_header {
+            text-decoration: none !important;
             cursor: default;
             justify-content: center;
             text-align: center;
             background-color: #ffffff;
             padding: 10px 25px;
-            transition: all 0.2s;
-            color: #39A900;
+            transition: all 0.5s;
+            transition: transform 0.2s;
+            color: #39A900 !important;
             /* Color del texto inicial */
         }
 
-        .pagina:active {
-            transform: scale(0.9);
+        .seccion_header:active {
+            transform: scale(0.95);
         }
 
-        .pagina:hover {
+        .seccion_header:hover {
             background-color: #55ff0011;
             box-shadow: inset 0 3px 0 0px #39A900;
         }
 
-        .pagina.activa {
+        .seccion_header.pagina_actual {
             box-shadow: inset 0 3px 0px #39A900;
         }
 
-        .paginas-cont:hover .activa {
+        .seccion_header_cont:hover .pagina_actual {
             box-shadow: none;
         }
 
-        .pagina.activa:hover {
+        .seccion_header.pagina_actual:hover {
             box-shadow: inset 0 3px 0px #39A900;
         }
 
         @media (max-width: 620px) {
 
-            .paginas-cont {
+            .seccion_header_cont {
                 width: 100%;
                 display: grid;
                 grid-template-columns: 1fr 1fr;
             }
 
-            .pagina:hover {
+            .seccion_header:hover {
                 box-shadow: inset 5px 0 0 0px #39A900, inset -5px 0 0 0px #39A900;
             }
 
-            .pagina.activa {
+            .seccion_header.pagina_actual {
                 box-shadow:
                     inset 5px 0 0 0px #39A900,
                     inset -5px 0 0 0px #39A900;
                 background-color: #55ff0011;
             }
 
-            .paginas-cont:hover .activa {
+            .seccion_header_cont:hover .pagina_actual {
                 box-shadow: none;
                 background-color: white;
             }
 
-            .pagina.activa:hover {
+            .seccion_header.pagina_actual:hover {
                 box-shadow: inset 5px 0 0 0px #39A900, inset -5px 0 0 0px #39A900;
                 background-color: #55ff0011;
             }
         }
 
         @media (max-width: 401px) {
-            .paginas-cont {
+            .seccion_header_cont {
                 width: 100%;
                 display: grid;
                 grid-template-columns: 1fr;
             }
         }
     </style>
-
-
     <script>
-
         // Obtener la URL actual
         const urlActual = window.location.href;
         console.log(urlActual);
 
         // Seleccionar todas las páginas
-        const paginas = document.querySelectorAll('.pagina');
+        const seccion_headers = document.querySelectorAll('.seccion_header');
 
-        // Revisar la URL y añadir la clase 'activa' según corresponda
-        paginas.forEach(pagina => {
-            const href = pagina.href; // Acceder al href del elemento a
-            console.log('url del boton', href);
+        // Revisar la URL y añadir la clase 'pagina_actual' según corresponda
+        seccion_headers.forEach(seccion_header => {
+            const href = seccion_header.href; // Acceder al href del elemento a
 
             if (urlActual === href) {
-                console.log('Coincide');
-                pagina.classList.add('activa'); // Agregar la clase activa si la URL coincide
+                seccion_header.classList.add('pagina_actual'); // Agregar la clase pagina_actual si la URL coincide
             }
         });
     </script>
-
-    <!-- 
+<!-- 
 ? ___________________ Paginas _______________________ 
  -->
 
-            <div class="contenedorbuscador">
-              <tr>
-                <td class='gsc-input inputbuscadorcont'>
-                  <input autocomplete='off' class='gsc-input inputbuscador' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q' size='10' title='search' type='text'/>
-                </td> 
-                <td class='gsc-search-button buttonbuscadorcont'>
-                  <input class='gsc-search-button buttonbuscador material-symbols-outlined' value="" expr:value='data:messages.search' title='search' type='submit'>
-                </td>
-              </tr>      
-<style>
-
-
-    .inputbuscador{
-        flex-grow: 1;
-        height: 30px;
-        margin: 0px;
-        border: #CAC4D0 solid 1px;  
-        border-right: none;
-        border-radius: 4px 0px 0px 4px;
-    }
-    .buttonbuscador{
-        width: 36px;
-        margin: 0px;
-        background-color: white !important;
-        border: grey solid 1px;
-        background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhqD53GLYdNDw7O66cnrvxpSknWkFES9lyKIeVltIibawLizxM8AhlWj9rIAZG8zJhyphenhyphenhWxLcyoAmEILmn6QGugY0Tl4cvsdQWWlIg4SURTNWuqqS0Z7TgFQP66VHY_XdndWDgHzIVLyQF91E8QIjh0qPf-i5rPd5Mglhhk4u8ekbHKksJz8o-Plq48FnY/s80/search%202.png')
-        no-repeat center center;
-        background-size: 80%;
-        border: #CAC4D0 solid 1px;  
-        border-radius: 0px 4px 4px 0px;
-        transition: all 0.1s;
-    }
-    .buttonbuscador:active{
-        transform: scale(0.8) rotate(3deg);
-    }
-    
 
 
 
-.contenedorbuscador {
-    display: flex;
 
-    width: 215px;
-}
-</style>
+    <!-- 
+TODO ___________________ Buscador _______________________ 
+ -->
 
-</div>
+    <div class="contenedorbuscador">
+        <td class='gsc-input inputbuscadorcont'>
+        <input autocomplete='off' class='gsc-input inputbuscador'
+            expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q' size='10'
+            title='search' type='text' /></td>
+
+        <td class='gsc-search-button buttonbuscadorcont'>
+            <input class='gsc-search-button buttonbuscador' title='search' type='submit' value='' />
+        </td>
+    </div>
+    <style>
+        .contenedorbuscador {
+            background-color: white;
+            height: 36px;
+            width: 215px;
+            display: grid;
+            grid-template-columns: 1fr 36px;
+            grid-template-rows: 1fr;
+            border: 1px solid #c4c4D0;
+            border-radius: 4px;
+            position: sticky; /* Hace que el elemento sea "pegajoso" */
+            top: 0; /* Se quedará pegado cuando llegue a esta posición */
+        }
+
+        .contenedorbuscador .inputbuscador {
+            background-color: transparent !important;
+            width: 100% !important;
+            height: 36px !important;
+            margin: 0px !important;
+            outline: none !important;
+            border: none !important;
+            border-radius: 4px 0px 0px 4px !important;
+            font-size: 16;
+            padding: 0px 10px !important;
+        }
+
+        .inputbuscador:focus+.contenedorbuscador {
+            background-color: #39A900 !important;
+        }
+
+        .buttonbuscadorcont {
+            width: 100% !important;
+            height: 100% !important;
+            border-radius: 0px 4px 4px 0px !important;
+
+        }
+
+        .contenedorbuscador .buttonbuscador {
+            width: 100% !important;
+            height: 100% !important;
+            margin: 0px !important;
+            background-color: transparent !important;
+            background: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhqD53GLYdNDw7O66cnrvxpSknWkFES9lyKIeVltIibawLizxM8AhlWj9rIAZG8zJhyphenhyphenhWxLcyoAmEILmn6QGugY0Tl4cvsdQWWlIg4SURTNWuqqS0Z7TgFQP66VHY_XdndWDgHzIVLyQF91E8QIjh0qPf-i5rPd5Mglhhk4u8ekbHKksJz8o-Plq48FnY/s80/search%202.png&#39;) no-repeat center center;
+            background-size: 80% !important;
+            outline: none !important;
+            border: none !important;
+            transition: all 0.5s !important;
+
+        }
+
+        .contenedorbuscador .buttonbuscador.lupagirando {
+            animation: lupagirando 2.5s ease;
+        }
+
+        .contenedorbuscador.inputgolpe {
+            animation: inputgolpe 2.5s ease-out;
+        }
+
+        @keyframes lupagirando {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(45deg) translate(0px, -70px);
+            }
+
+            40% {
+                transform: rotate(-90deg) translate(10px, 40px);
+            }
+
+            45% {
+                transform: rotate(-90deg) translate(10px, 40px);
+            }
+
+            80% {
+                transform: rotate(360deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+
+
+
+        }
+
+        @keyframes inputgolpe {
+            0% {
+                transform: rotate(0deg);
+                transform-origin: left;
+            }
+
+            30% {
+                transform: rotate(0deg);
+                transform-origin: left top;
+            }
+
+            35% {
+                transform: rotate(5deg) translate(0px, 0px);
+            }
+
+            45% {
+                transform: rotate(-4deg) translate(0px, 0px);
+            }
+
+            60% {
+                transform: rotate(3deg) translate(0px, 0px);
+            }
+            70% {
+                transform: rotate(-2deg) translate(0px, 0px);
+            }
+            80% {
+                transform: rotate(0deg) translate(0px, 0px);
+            }
+        }
+
+        .post{
+            background-color: #eee9002c;
+            display: flex;
             
+            }
+    </style>
+    <script>
+const form = document.querySelector('.gsc-search-box');
+
+/* form.addEventListener('submit', (e) => {
+    e.preventDefault();
+        setTimeout(() => {
+            form.submit();
+        }, 2000); // Retraso de 2 segundos
+});
+ */
+
+
+        const button = document.querySelector('.buttonbuscador');
+        const input = document.querySelector('.contenedorbuscador');
+        console.log(button);
+
+        button.addEventListener('click', () => {
+            if (button.classList.contains('lupagirando')) {
+                console.log('Ya se está animando');
+                return;
+            }
+            console.log('click');
+            // Añade la clase para iniciar la animación
+            button.classList.add('lupagirando');
+            input.classList.add('inputgolpe');
+
+            // Elimina la clase después de que termine la animación (3s)
+            setTimeout(() => {
+                button.classList.remove('lupagirando');
+                input.classList.remove('inputgolpe');
+            }, 2500);
+        });
+    </script>
+    <!-- 
+TODO ___________________ Buscador _______________________ 
+ -->
+
+
+
+ <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      height: 200vh; /* Para simular mucho contenido */
+    }
+
+
+    .spacer {
+      height: 400px; /* Espaciado para simular contenido */
+    }
+  </style>
+<body>
+    <div class="spacer"></div>
+    <p>Más contenido para hacer scroll...</p>
+  </div>
+</body>
+
+
+
 
     <!-- 
 ? ___________________ Galería de Imágenes _______________________ !important
