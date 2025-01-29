@@ -22,7 +22,7 @@ URL:      www.blogger.com
 
 /* Variable definitions
    ====================
-   <Variable name="keycolor" description="Main Color" type="color" default="#1a222a" value="#ffffff"/>
+   <Variableb name="keycolor" description="Main Color" type="color" default="#1a222a" value="#ffffff"/>
    <Variable name="body.background" description="Body Background" type="background" color="$(body.background.color)" default="#111111 url(//themes.googleusercontent.com/image?id=1OACCYOE0-eoTRTfsBuX1NMN9nz599ufI1Jh0CggPFA_sK80AGkIr8pLtYRpNUKPmwtEa) repeat-x fixed top center" value="#ffffff url(none) no-repeat fixed top center /* Credit: dino4 (http://www.istockphoto.com/portfolio/dino4?platform=blogger) */"/>
 
    <Group description="Page Text" selector="body">
@@ -312,10 +312,14 @@ h2 {
   margin: .5em;
 }
 
-/* Main
------------------------------------------------ */
+/*🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+  Main
+*/
 .main-outer {
+ flex-direction: row;
+  
   background: $(main.background);
+  border: solid 1px rgba(33, 167, 0, 0.47);
 
   -moz-border-radius: $(main.border.radius.top) $(main.border.radius.top) 0 0;
   -webkit-border-top-left-radius: $(main.border.radius.top);
@@ -349,7 +353,7 @@ h2 {
 
 /*
 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-															marcador posts
+-															                          marcador posts
 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 */
 
@@ -370,13 +374,14 @@ h3.post-title {
   color: $(date.header.color);
 }
 /*
-🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 cuerpo de los posts
 */
 
 .post-outer {
   background-color: $(post.background.color);
-  border: solid 1px $(post.border.color);
+  border: solid 1px rgb(226, 0, 0);
+  display: flex;
 
   -moz-border-radius: $(post.border.radius);
   -webkit-border-radius: $(post.border.radius);
@@ -385,18 +390,13 @@ cuerpo de los posts
 
   padding: 15px 20px;
   margin: 0 $(post.margin.sides) 20px;
-height: min-content ;
+  height: min-content ;
+  width: min-content;
 }
 
-.post-body {
-
-  font-size: 110%;
-  position: relative;
-}
 
 .post-header {
   margin: 0 0 1.5em;
-
   color: $(post.footer.text.color);
 }
 
@@ -658,7 +658,7 @@ html .mobile .mobile-date-outer, html .mobile .blog-pager {
 
   <body expr:class='&quot;loading&quot; + data:blog.mobileClass'>
     <b:section class='navbar' id='navbar' maxwidgets='1' name='Navbar' showaddelement='no'>
-      <b:widget id='Navbar1' locked='true' title='NavBar ' type='Navbar'>
+      <b:widget id='Navbar1' locked='true' title='NavBar ' type='Navbar' version='1'>
         <b:includable id='main'>&lt;script type=&quot;text/javascript&quot;&gt;
     function setAttributeOnload(object, attribute, val) {
       if(window.addEventListener) {
@@ -675,7 +675,7 @@ html .mobile .mobile-date-outer, html .mobile .blog-pager {
       gapi.load(&quot;gapi.iframes:gapi.iframes.style.bubble&quot;, function() {
         if (gapi.iframes &amp;&amp; gapi.iframes.getContext) {
           gapi.iframes.getContext().openChild({
-              url: &#39;https://www.blogger.com/navbar/598196929511771696?origin\x3dhttps://www.blogger.com&#39;,
+              url: &#39;https://www.blogger.com/navbar/598196929511771696?origin\x3dhttp://localhost:80&#39;,
               where: document.getElementById(&quot;navbar-iframe-container&quot;),
               id: &quot;navbar-iframe&quot;
           });
@@ -760,7 +760,7 @@ head.appendChild(script);
                   <div class='fauxborder-right header-fauxborder-right'/>
                   <div class='region-inner header-inner'>
                     <b:section class='header' id='header' maxwidgets='1' name='Header' showaddelement='no'>
-                      <b:widget id='Header1' locked='true' title=' Centro agroturistico (Encabezado)' type='Header'>
+                      <b:widget id='Header1' locked='true' title=' Centro agroturistico v3 (Encabezado)' type='Header'>
                         <b:widget-settings>
                           <b:widget-setting name='displayUrl'/>
                           <b:widget-setting name='displayHeight'>0</b:widget-setting>
@@ -864,15 +864,14 @@ head.appendChild(script);
                         <b:widget-setting name='content'><![CDATA[<!-- 
 ? ___________________ Paginas _______________________ !important
 -->
-<div class="paginas-cont">
-<a class="pagina" href="https://senablogbyblanco.blogspot.com/"> Página Principal </a>
-<a class="pagina" href="https://senablogbyblanco.blogspot.com/p/blog-page_23.html"> Nosotros </a>
-<a class="pagina" href="https://senablogbyblanco.blogspot.com/p/pagina-principal-nosostros-programas.html">
-            Programas </a>
-<a class="pagina" href="http://127.0.0.1:5501/widgets.html#"> Directorio </a>
+<div class="seccion_header_cont">
+<a class="seccion_header" href="https://centro-agroturistico-sena.blogspot.com/"> Página Principal </a>
+<a class="seccion_header" href="https://centro-agroturistico-sena.blogspot.com/p/contactos.html"> Contactos </a>
+<a class="seccion_header" href="https://centro-agroturistico-sena.blogspot.com/p/blog-page.html"> Programas </a>
+<a class="seccion_header" href="http://127.0.0.1:5501/widgets.html#"> Directorio </a>
 </div>
 <style>
-        .paginas-cont {
+        .seccion_header_cont {
             width: fit-content;
             user-select: none;
             border-radius: 8px 8px 0px 0px;
@@ -885,102 +884,101 @@ head.appendChild(script);
             flex-wrap: wrap;
             align-items: center;
             justify-content: center;
+            position: sticky !important;
+            top: 0 !important; 
         }
 
-        .pagina {
-            text-decoration: none;
+        .seccion_header {
+            text-decoration: none !important;
             cursor: default;
             justify-content: center;
             text-align: center;
             background-color: #ffffff;
             padding: 10px 25px;
-            transition: all 0.3s;
-            color: #39A900;
+            transition: all 0.2s;
+            color: #39A900 !important;
             /* Color del texto inicial */
         }
 
-        .pagina:active {
-            color: transparent;
-            transform: scale(0.9);
+        .seccion_header:active {
+            transform: scale(0.95);
         }
 
-        .pagina:hover {
+        .seccion_header:hover {
             background-color: #55ff0011;
             box-shadow: inset 0 3px 0 0px #39A900;
         }
 
-        .pagina.activa {
+        .seccion_header.pagina_actual {
             box-shadow: inset 0 3px 0px #39A900;
         }
 
-        .paginas-cont:hover .activa {
+        .seccion_header_cont:hover .pagina_actual {
             box-shadow: none;
         }
 
-        .pagina.activa:hover {
+        .seccion_header.pagina_actual:hover {
             box-shadow: inset 0 3px 0px #39A900;
         }
 
         @media (max-width: 620px) {
 
-            .paginas-cont {
+            .seccion_header_cont {
                 width: 100%;
                 display: grid;
                 grid-template-columns: 1fr 1fr;
             }
 
-            .pagina:hover {
+            .seccion_header:hover {
                 box-shadow: inset 5px 0 0 0px #39A900, inset -5px 0 0 0px #39A900;
             }
 
-            .pagina.activa {
+            .seccion_header.pagina_actual {
                 box-shadow:
                     inset 5px 0 0 0px #39A900,
                     inset -5px 0 0 0px #39A900;
                 background-color: #55ff0011;
             }
 
-            .paginas-cont:hover .activa {
+            .seccion_header_cont:hover .pagina_actual {
                 box-shadow: none;
                 background-color: white;
             }
 
-            .pagina.activa:hover {
+            .seccion_header.pagina_actual:hover {
                 box-shadow: inset 5px 0 0 0px #39A900, inset -5px 0 0 0px #39A900;
                 background-color: #55ff0011;
             }
         }
 
         @media (max-width: 401px) {
-            .paginas-cont {
+            .seccion_header_cont {
                 width: 100%;
                 display: grid;
                 grid-template-columns: 1fr;
             }
         }
     </style>
-
-
 <script>
-
         // Obtener la URL actual
         const urlActual = window.location.href;
         console.log(urlActual);
 
         // Seleccionar todas las páginas
-        const paginas = document.querySelectorAll('.pagina');
+        const seccion_headers = document.querySelectorAll('.seccion_header');
 
-        // Revisar la URL y añadir la clase 'activa' según corresponda
-        paginas.forEach(pagina => {
-            const href = pagina.href; // Acceder al href del elemento a
-            console.log('url del boton', href);
+        // Revisar la URL y añadir la clase 'pagina_actual' según corresponda
+        seccion_headers.forEach(seccion_header => {
+            const href = seccion_header.href; // Acceder al href del elemento a
 
             if (urlActual === href) {
-                console.log('Coincide');
-                pagina.classList.add('activa'); // Agregar la clase activa si la URL coincide
+                seccion_header.classList.add('pagina_actual'); // Agregar la clase pagina_actual si la URL coincide
             }
         });
-    </script>]]></b:widget-setting>
+    </script>
+<!-- 
+? ___________________ Paginas _______________________ 
+ -->]]></b:widget-setting>
                       </b:widget-settings>
                       <b:includable id='main'>
                         <!-- only display title if it's non-empty -->
@@ -1067,6 +1065,7 @@ head.appendChild(script);
                     </div>
 
                     <!-- corrects IE6 width calculation -->
+
                     <div class='columns-inner'>
 
                       <div class='column-center-outer'>
@@ -1605,7 +1604,7 @@ head.appendChild(script);
 
                                   <!-- 
 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-											marcador posts titulos / imgenes
+-                                                            marcador posts titulos / imgenes
 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
 -->
 
@@ -1632,42 +1631,41 @@ head.appendChild(script);
 
                                   <!-- Then use the post body as the schema.org description, for good G+/FB snippeting. -->
 
-                                  <!-- 
+<!--                             
 🟨🟨🟨🟨🟨🟨
 imgenes
 -->
+<div class='post-body entry-content' expr:id='&quot;post-body-&quot; + data:post.id' expr:itemprop='(data:blog.metaDescription ? &quot;&quot; : &quot;description &quot;) + &quot;articleBody&quot;'>
 
-                                  <div class='post-body entry-content' expr:id='&quot;post-body-&quot; + data:post.id' expr:itemprop='(data:blog.metaDescription ? &quot;&quot; : &quot;description &quot;) + &quot;articleBody&quot;'>
-                                    <style>
-            .post{
-            background-color: #eee9002c;
-            display: flex;
-            flex-direction: column;
-            }
-            
-            .post-outer {
+<style>
+
+.post-outer {
+
 }
-        .post-body{
-            margin: 0px !important;
-             display:flex;
-             justify-content: center;
-             background-color: #38a9002c;
-            }
-            
+
+.post{
+outline: 1px solid rgb(187, 184, 0);
+display: flex;
+flex-direction: column;
+}
+
+.post-body{
+display:flex;
+justify-content: center;
+outline: 1px solid rgb(56, 169, 0);
+}
 .separator {
 }
 .separator a {
-
+  padding: 0px !important;
 }
-            
 .separator img {
-
-    width: auto !important;
-    height: auto
-    object-fit: cover;
+width: 350px !important;
+height: 400px !important;
+object-fit: cover;
 }
-                       
-                                    </style>
+
+</style>
 
 
 
@@ -2348,6 +2346,27 @@ imgenes
                   </td>
                 </tr>
                 <style>
+      .BlogSearch {
+      background-color:white;
+      position: sticky !important; 
+      top: 0 !important;
+      z-index: 0;
+      padding: 5px 0px 5px 0px;
+      }
+      
+      .BlogSearch::after {
+      display:none;
+      z-index: 5;
+      content: &quot;&quot;;
+      position: absolute;
+      bottom: -15px;
+      left: 0;
+      width: 100%;
+      height: 15px; /* Altura del difuminado */
+      pointer-events: none; /* Evita que interfiera con clics o eventos */
+      background: linear-gradient(to bottom, rgba(255, 255,255, 1), rgba(255, 255, 255, 0));
+    }
+      
         .contenedorbuscador {
             background-color: white;
             height: 36px;
@@ -2357,7 +2376,6 @@ imgenes
             grid-template-rows: 1fr;
             border: 1px solid #c4c4D0;
             border-radius: 4px;
-
         }
 
         .contenedorbuscador .inputbuscador {
@@ -2397,11 +2415,11 @@ imgenes
         }
 
         .contenedorbuscador .buttonbuscador.lupagirando {
-            animation: lupagirando 3s ease;
+            animation: lupagirando 2.5s ease;
         }
 
         .contenedorbuscador.inputgolpe {
-            animation: inputgolpe 3s ease-out;
+            animation: inputgolpe 2.5s ease-out;
         }
 
         @keyframes lupagirando {
@@ -2421,13 +2439,16 @@ imgenes
                 transform: rotate(-90deg) translate(10px, 40px);
             }
 
-            75% {
-                transform: rotate(270deg);
+            80% {
+                transform: rotate(360deg);
             }
 
             100% {
-                transform: rotate(0deg);
+                transform: rotate(360deg);
             }
+
+
+
         }
 
         @keyframes inputgolpe {
@@ -2449,14 +2470,12 @@ imgenes
                 transform: rotate(-4deg) translate(0px, 0px);
             }
 
-            55% {
+            60% {
                 transform: rotate(3deg) translate(0px, 0px);
             }
-
-            65% {
+            70% {
                 transform: rotate(-2deg) translate(0px, 0px);
             }
-
             80% {
                 transform: rotate(0deg) translate(0px, 0px);
             }
@@ -2466,11 +2485,11 @@ imgenes
                 <script>
                       const form = document.querySelector(&#39;.gsc-search-box&#39;);
 
-form.addEventListener(&#39;submit&#39;, (e) =&gt; {
+                form.addEventListener(&#39;submit&#39;, (e) =&gt; {
     e.preventDefault();
         setTimeout(() =&gt; {
             form.submit();
-        }, 1500); // Retraso de 2 segundos
+        }, 1500); // Retraso de 2.3 segundos
     
 });
 
