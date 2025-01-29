@@ -351,44 +351,81 @@ TODO ___________________ Buscador _______________________
             background-size: cover;
             background-position: center;
             border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            box-shadow: inset 0 0 40px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.1s;
         }
 
+        .galeria .imagen:active{
+            transform: scale(0.95);
+        }
         .imagen1 {
-
-            width: 200px;
+            width: 250px;
             height: 200px;
             background-color: #ff9999;
-            /* Color de fondo */
         }
 
         .imagen2 {
             width: 300px;
             height: 200px;
             background-color: #99ccff;
-            /* Color de fondo */
         }
 
         .imagen3 {
-            width: 200px;
-            height: 300px;
+            width: 150px;
+            height: 200px;
             background-color: #99ff99;
-            /* Color de fondo */
         }
 
         .imagen4 {
             width: 400px;
             height: 200px;
             background-color: #ffcc99;
-            /* Color de fondo */
         }
-    </style>
 
-    <div class="galeria">
-        <div class="imagen imagen1"></div>
-        <div class="imagen imagen2"></div>
-        <div class="imagen imagen3"></div>
-        <div class="imagen imagen4"></div>
-    </div>
+        .imagen5 {
+            width: 200px;
+            height: 200px;
+            background-color: #50E5F9;
+        }
+
+        .imagen6 {
+            width: 350px;
+            height: 200px;
+            background-color: #FDC300;
+        }
+
+        .imagen7 {
+            width: 300px;
+            height: 200px;
+            background-color: #F6F6F6;
+            color: black !important;
+        }
+        </style>
+
+        <div class="galeria">
+            <div class="imagen imagen1" style="background-color: #39A900;" onclick="copyColor('#39A900')">#39A900</div>
+            <div class="imagen imagen2" style="background-color: #007832;" onclick="copyColor('#007832')">#007832</div>
+            <div class="imagen imagen3" style="background-color: #00304D;" onclick="copyColor('#00304D')">#00304D</div>
+            <div class="imagen imagen4" style="background-color: #71277A;" onclick="copyColor('#71277A')">#71277A</div>
+            <div class="imagen imagen5" style="background-color: #50E5F9;" onclick="copyColor('#50E5F9')">#50E5F9</div>
+            <div class="imagen imagen6" style="background-color: #FDC300;" onclick="copyColor('#FDC300')">#FDC300</div>
+            <div class="imagen imagen7" style="background-color: #F6F6F6;" onclick="copyColor('#F6F6F6')">#F6F6F6</div>
+        </div>
+
+        <script>
+            function copyColor(color) {
+                navigator.clipboard.writeText(color).then(() => {
+                    
+                }).catch(err => {
+                    alert(`${color} error al copiar`);
+                });
+            }
+        </script>
     <!-- 
 ? ___________________ Fin de Galería de Imágenes _______________________ 
 -->
