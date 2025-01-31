@@ -33,6 +33,7 @@
     <style>
         .seccion_header_cont {
             width: fit-content;
+            height: 42px;
             user-select: none;
             border-radius: 8px 8px 0px 0px;
             font-weight: bold;
@@ -55,8 +56,7 @@
             text-align: center;
             background-color: #ffffff;
             padding: 10px 25px;
-            transition: all 0.5s;
-            transition: transform 0.2s;
+            transition: all 0.5s, transform 0.1s;
             color: #39A900 !important;
             /* Color del texto inicial */
         }
@@ -66,7 +66,7 @@
         }
 
         .seccion_header:hover {
-            background-color: #55ff0011;
+            background-color: #f2ffe5;
             box-shadow: inset 0 3px 0 0px #39A900;
         }
 
@@ -167,11 +167,13 @@ TODO ___________________ Buscador _______________________
             display: grid;
             grid-template-columns: 1fr 36px;
             grid-template-rows: 1fr;
-            border: 1px solid #c4c4D0;
+            outline: 1px solid #c4c4D0;
             border-radius: 4px;
             position: sticky; /* Hace que el elemento sea "pegajoso" */
             top: 0; /* Se quedará pegado cuando llegue a esta posición */
         }
+
+
 
         .contenedorbuscador .inputbuscador {
             background-color: transparent !important;
@@ -183,10 +185,6 @@ TODO ___________________ Buscador _______________________
             border-radius: 4px 0px 0px 4px !important;
             font-size: 16;
             padding: 0px 10px !important;
-        }
-
-        .inputbuscador:focus+.contenedorbuscador {
-            background-color: #39A900 !important;
         }
 
         .buttonbuscadorcont {
@@ -205,8 +203,11 @@ TODO ___________________ Buscador _______________________
             background-size: 80% !important;
             outline: none !important;
             border: none !important;
-            transition: all 0.5s !important;
+            
+        }
 
+        .contenedorbuscador:focus-within{
+            outline: 2px solid #39A900 !important;
         }
 
         .contenedorbuscador .buttonbuscador.lupagirando {
@@ -277,15 +278,15 @@ TODO ___________________ Buscador _______________________
         }
     </style>
     <script>
-const form = document.querySelector('.gsc-search-box');
+        const form = document.querySelector('.gsc-search-box');
 
-/* form.addEventListener('submit', (e) => {
-    e.preventDefault();
-        setTimeout(() => {
-            form.submit();
-        }, 2000); // Retraso de 2.1 segundos
-});
- */
+        /* form.addEventListener('submit', (e) => {
+            e.preventDefault();
+                setTimeout(() => {
+                    form.submit();
+                }, 2000); // Retraso de 2.1 segundos
+        });
+         */
 
 
         const button = document.querySelector('.buttonbuscador');
@@ -309,18 +310,13 @@ const form = document.querySelector('.gsc-search-box');
             }, 2500);
         });
     </script>
-    <!-- 
+<!-- 
 TODO ___________________ Buscador _______________________ 
  -->
 
 
 
  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      height: 200vh; /* Para simular mucho contenido */
-    }
 
 
     .spacer {
@@ -429,7 +425,62 @@ TODO ___________________ Buscador _______________________
     <!-- 
 ? ___________________ Fin de Galería de Imágenes _______________________ 
 -->
+<div class="targetagrid">
+    <div id="miDiv">
+        Este es un texto que puede ser muy largo y hacer que el div crezca en altura.
+        ¡Ajústame dinámicamente! Este es un texto que puede ser muy largo y hacer que el div crezca en altura.
+        ¡Ajústame dinámicamente!Este es un texto que puede ser muy largo y hacer que el div crezca en altura.
+        ¡Ajústame dinámicamente!Este es un texto que puede ser muy largo y hacer que el div crezca en altura.
+        ¡Ajústame dinámicamente!Este es un texto que puede ser muy largo y hacer que el div crezca en altura.
+        ¡Ajústame dinámicamente!
+    </div>
+</div>
 
+<style>
+    .targetagrid {
+        width: 600px;
+        max-width: 95%;
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Dos columnas */
+        gap: 10px; /* Espacio entre columnas */
+    }
+
+    #miDiv {
+        padding: 10px;
+        border: 1px solid #ccc;
+        word-wrap: break-word; /* Asegura que el texto no se desborde */
+        transition: all 0.3s ease; /* Transición suave */
+    }
+
+    .dos-columnas {
+        grid-column: span 2; /* Ocupa dos columnas */
+    }
+</style>
+
+<script>
+    const miDiv = document.getElementById("miDiv");
+
+    function ajustarColumnas() {
+        if (miDiv.offsetHeight > 200) {
+            miDiv.classList.add("dos-columnas");
+        } else {
+            miDiv.classList.remove("dos-columnas");
+        }
+    }
+
+    // Verificar la altura al cargar la página y cuando cambie el contenido
+    window.addEventListener("load", ajustarColumnas);
+    window.addEventListener("resize", ajustarColumnas);
+
+    // Opcional: Si el contenido del div cambia dinámicamente, usa un MutationObserver
+    const observer = new MutationObserver(ajustarColumnas);
+    observer.observe(miDiv, {
+        childList: true, // Observar cambios en el contenido
+        subtree: true,   // Observar cambios en todos los descendientes
+        characterData: true // Observar cambios en el texto
+    });
+
+</script>
 
 </body>
 
