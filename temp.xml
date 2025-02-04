@@ -309,7 +309,6 @@ a:hover {
 /* Headings
 ----------------------------------------------- */
 h2 {
-  font: $(widget.title.font);
   text-transform: $(widget.title.text.transform);
   color: $(widget.title.text.color);
   margin: .5em 0;

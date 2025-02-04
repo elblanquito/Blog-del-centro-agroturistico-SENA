@@ -167,10 +167,14 @@ TODO ___________________ Buscador _______________________
             display: grid;
             grid-template-columns: 1fr 36px;
             grid-template-rows: 1fr;
-            outline: 1px solid #c4c4D0;
+            box-shadow: 0 0 0px 1px #c4c4D0;
             border-radius: 4px;
             position: sticky; /* Hace que el elemento sea "pegajoso" */
             top: 0; /* Se quedará pegado cuando llegue a esta posición */
+        }
+
+        .contenedorbuscador:focus-within{
+            box-shadow: 0 0 0px 1px #39A900;
         }
 
 
@@ -191,6 +195,7 @@ TODO ___________________ Buscador _______________________
             width: 100% !important;
             height: 100% !important;
             border-radius: 0px 4px 4px 0px !important;
+            
 
         }
 
@@ -204,11 +209,10 @@ TODO ___________________ Buscador _______________________
             outline: none !important;
             border: none !important;
             
+            
         }
 
-        .contenedorbuscador:focus-within{
-            outline: 2px solid #39A900 !important;
-        }
+
 
         .contenedorbuscador .buttonbuscador.lupagirando {
             animation: lupagirando 2.5s ease;
@@ -218,64 +222,24 @@ TODO ___________________ Buscador _______________________
             animation: inputgolpe 2.5s ease-out;
         }
 
-        @keyframes lupagirando {
-            0% {
-                transform: rotate(0deg);
-            }
+                            @keyframes lupagirando {
+                      0% {transform: rotate(0deg);}
+                      25% {transform: rotate(45deg)translate(0px, -70px);}
+                      40% {transform: rotate(-90deg) translate(10px, 40px);}
+                      45% {transform: rotate(-90deg) translate(10px, 40px);}
+                      80% {transform: rotate(360deg);}
+                      100% {transform: rotate(360deg);}
+                    }
 
-            25% {
-                transform: rotate(45deg) translate(0px, -70px);
-            }
-
-            40% {
-                transform: rotate(-90deg) translate(10px, 40px);
-            }
-
-            45% {
-                transform: rotate(-90deg) translate(10px, 40px);
-            }
-
-            80% {
-                transform: rotate(360deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-
-
-
-        }
-
-        @keyframes inputgolpe {
-            0% {
-                transform: rotate(0deg);
-                transform-origin: left;
-            }
-
-            30% {
-                transform: rotate(0deg);
-                transform-origin: left top;
-            }
-
-            35% {
-                transform: rotate(5deg) translate(0px, 0px);
-            }
-
-            45% {
-                transform: rotate(-4deg) translate(0px, 0px);
-            }
-
-            60% {
-                transform: rotate(3deg) translate(0px, 0px);
-            }
-            70% {
-                transform: rotate(-2deg) translate(0px, 0px);
-            }
-            80% {
-                transform: rotate(0deg) translate(0px, 0px);
-            }
-        }
+                    @keyframes inputgolpe {
+                      0% {transform: rotate(0deg); transform-origin: left top;}
+                      30% {transform: rotate(0deg);}
+                      35% {transform: rotate(5deg);}
+                      45% {transform: rotate(-4deg);}
+                      60% {transform: rotate(3deg);}
+                      70% {transform: rotate(-2deg);}
+                      80% {transform: rotate(0deg);}
+                    }
     </style>
     <script>
         const form = document.querySelector('.gsc-search-box');
@@ -354,8 +318,23 @@ TODO ___________________ Buscador _______________________
             font-weight: bold;
             box-shadow: inset 0 0 40px 40px rgba(0, 0, 0, 0.1);
             transition: all 0.1s;
-        }
+            view-timeline-name: aparecer;
+            view-timeline-axis: block;
+            animation-timeline: aparecer 0.5s;
+            animation-name: show ;
 
+        }
+            
+            @keyframes show {
+              0% {
+                opacity: 0;
+                transform: scale(0.25);
+              }
+              100% {
+                opacity: 1;
+                transform: scale(1);
+              }
+            }
         .galeria .imagen:active{
             transform: scale(0.95);
         }
@@ -404,6 +383,7 @@ TODO ___________________ Buscador _______________________
         </style>
 
         <div class="galeria">
+            <div id="progres"></div>
             <div class="imagen imagen1" style="background-color: #39A900;" onclick="copyColor('#39A900')">#39A900</div>
             <div class="imagen imagen2" style="background-color: #007832;" onclick="copyColor('#007832')">#007832</div>
             <div class="imagen imagen3" style="background-color: #00304D;" onclick="copyColor('#00304D')">#00304D</div>
@@ -421,17 +401,19 @@ TODO ___________________ Buscador _______________________
                     alert(`${color} error al copiar`);
                 });
             }
+            console.log(CSS.supports("animation-timeline", "view()"));
+
         </script>
     <!-- 
 ? ___________________ Fin de Galería de Imágenes _______________________ 
 -->
 <div class="targetagrid">
     <div id="miDiv">
-        Este es un texto que puede ser muy largo y hacer que el div crezca en altura.
-        ¡Ajústame dinámicamente! Este es un texto que puede ser muy largo y hacer que el div crezca en altura.
-        ¡Ajústame dinámicamente!Este es un texto que puede ser muy largo y hacer que el div crezca en altura.
-        ¡Ajústame dinámicamente!Este es un texto que puede ser muy largo y hacer que el div crezca en altura.
-        ¡Ajústame dinámicamente!Este es un texto que puede ser muy largo y hacer que el div crezca en altura.
+        Este es un texto que puede ser muy largo y hacer que el div abarque 2 casilas del grid.
+        ¡Ajústame dinámicamente! Este es un texto que puede ser muy largo y hacer que el div abarque 2 casilas del grid.
+        ¡Ajústame dinámicamente!Este es un texto que puede ser muy largo y hacer que el div abarque 2 casilas del grid.
+        ¡Ajústame dinámicamente!Este es un texto que puede ser muy largo y hacer que el div abarque 2 casilas del grid.
+        ¡Ajústame dinámicamente!Este es un texto que puede ser muy largo y hacer que el div abarque 2 casilas del grid.
         ¡Ajústame dinámicamente!
     </div>
 </div>
@@ -481,6 +463,20 @@ TODO ___________________ Buscador _______________________
     });
 
 </script>
+
+
+
+<div class="contenedor">
+    <div>Elemento 1</div>
+    <div>Elemento 2</div>
+    <div>Elemento 3</div>
+</div>
+
+<style>
+    .contenedor div:last-child {
+    display: none; /* Oculta el último elemento */
+}
+</style>
 
 </body>
 
