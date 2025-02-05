@@ -179,7 +179,9 @@ body {
   font-size: 14px;
   font-family: 'Work Sans', arial;
   color: $(body.text.color);
-  background: $(body.background);
+  background: #F5F5F5;
+  
+
 }
 
 html body .region-inner {
@@ -665,10 +667,6 @@ marcador tamaños principales
         </div>
       </div>
       <div class='content-outer'>
-        <div class='content-cap-top cap-top'>
-          <div class='cap-left'/>
-          <div class='cap-right'/>
-        </div>
         <div class='fauxborder-left content-fauxborder-left'>
           <div class='fauxborder-right content-fauxborder-right'/>
           <div class='content-inner'>
@@ -774,137 +772,119 @@ marcador tamaños principales
                     <b:widget id='HTML2' locked='false' title='paginas' type='HTML'>
                       <b:widget-settings>
                         <b:widget-setting name='content'>
-                          <![CDATA[<!-- 
-                            ? ___________________ Paginas _______________________ !important
-                              -->
-                                  <div class="seccion_header_cont">
-                                  <a class="seccion_header" href="https://centro-agroturistico-sena.blogspot.com/"> Página Principal </a>
-                                  <a class="seccion_header" href="https://centro-agroturistico-sena.blogspot.com/p/contactos.html"> Contactos </a>
-                                  <a class="seccion_header" href="https://centro-agroturistico-sena.blogspot.com/p/blog-page.html"> Programas </a>
-                                  <a class="seccion_header" href="https://centro-agroturistico-sena.blogspot.com/p/normatividad.html"> Normatividad </a>
-                                  <a class="seccion_header" href="http://127.0.0.1:5501/widgets.html#"> Directorio </a>
-                                  </div>
-                                  <style>
+                          <!--🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+                              marcador menu principal y rutas
+                              🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨-->
+                          <![CDATA[
+                            <!-- ? ______________ Paginas ______________ -->
+                            <div class="seccion_header_cont">
+                              <a class="seccion_header" href="/"> Página Principal </a>
+                              <a class="seccion_header" href="/p/contactos.html"> Contactos </a>
+                              <a class="seccion_header" href="/p/blog-page.html"> Programas </a>
+                              <a class="seccion_header" href="/p/normatividad.html"> Normatividad </a>
+                              <a class="seccion_header" href="http://127.0.0.1:5501/widgets.html#"> Directorio </a>
+                            </div>
+                            <style>
+                              .tabs-outer {
+                                position: sticky;
+                                top: 0;
+                                z-index: 1;
+                                padding-top: 10px;
+                                background-color: #ffffff;
+                              }
+                              .region-inner {
+                                margin: 0;
+                              } 
+                              .seccion_header_cont {
+                                  width: fit-content;
+                                  max-width: calc(100vw - 200px);
+                                  user-select: none;
+                                  font-weight: bold;
+                                  font-size: large;
+                                  display: flex;
+                                  overflow: hidden;
+                                  color: #39A900;
+                                  margin-bottom: 0px;
+                                  flex-wrap: wrap;
+                                  align-items: center;
+                                  justify-content: center;
+                                  position: sticky;
+                                  top: 0px; 
+                              }
+                              .seccion_header {
+                                  text-decoration: none !important;
+                                  cursor: default;
+                                  justify-content: center;
+                                  text-align: center;
+                                  background-color: #ffffff;
+                                  padding: 10px 25px;
+                                  transition: all 0.2s;
+                                  color: #39A900 !important;
+                                  /* Color del texto inicial */
+                              }
+                              .seccion_header:active {
+                                  transform: scale(0.95);
+                              }
+                              .seccion_header:hover {
+                                  background-color: #f4ffee;
+                                  box-shadow: inset 0 3px 0 0px #39A900;
+                              }
+                              .seccion_header.pagina_actual {
+                                  box-shadow: inset 0 3px 0px #39A900;
+                              }
+                              .seccion_header_cont:hover .pagina_actual {
+                                  box-shadow: none;
+                              }
+                              .seccion_header.pagina_actual:hover {
+                                  box-shadow: inset 0 3px 0px #39A900;
+                              }
+                              @media (max-width: 620px) {
+                                .seccion_header_cont {
+                                    max-width: none;
+                                    width: fit-content;
+                                    display: grid;
+                                    grid-template-columns: 1fr 1fr;
+                                }
+                                .seccion_header:hover {
+                                    box-shadow: inset 5px 0 0 0px #39A900, inset -5px 0 0 0px #39A900;
+                                }
+                                .seccion_header.pagina_actual {
+                                    box-shadow:
+                                        inset 5px 0 0 0px #39A900,
+                                        inset -5px 0 0 0px #39A900;
+                                    background-color: #f4ffee;
+                                }
+                              .seccion_header_cont:hover .pagina_actual {
+                                    box-shadow: none;
+                                    background-color: white;
+                                }
+                                .seccion_header.pagina_actual:hover {
+                                    box-shadow: inset 5px 0 0 0px #39A900, inset -5px 0 0 0px #39A900;
+                                    background-color: #f4ffee;
+                                }
+                              }
+                                      
+                              @media (max-width: 401px) {
+                                  .seccion_header_cont {
+                                      width: 100%;
+                                      display: grid;
+                                      grid-template-columns: 1fr;
+                                  }
+                              }
+                            </style>
+                            <script>
+                              const urlActual = window.location.pathname;
+                              const seccion_headers = document.querySelectorAll('.seccion_header');
 
-
-                                  
-
-                                    .tabs-outer {
-                                      position: sticky;
-                                      top: 0;
-                                      z-index: 1;
-                                      padding-top: 10px;
-                                      background-color: #ffffff;
-                                    }
-                                    .region-inner {
-                                      margin: 0;
-                                    } 
-                                      .seccion_header_cont {
-                                          width: fit-content;
-                                          user-select: none;
-                                          font-weight: bold;
-                                          font-size: large;
-                                          display: flex;
-                                          overflow: hidden;
-                                          color: #39A900;
-                                          margin-bottom: 0px;
-                                          flex-wrap: wrap;
-                                          align-items: center;
-                                          justify-content: center;
-                                          position: sticky;
-                                          top: 0px; 
-                                      }
-
-                                      .seccion_header {
-                                          text-decoration: none !important;
-                                          cursor: default;
-                                          justify-content: center;
-                                          text-align: center;
-                                          background-color: #ffffff;
-                                          padding: 10px 25px;
-                                          transition: all 0.2s;
-                                          color: #39A900 !important;
-                                          /* Color del texto inicial */
-                                      }
-
-                                      .seccion_header:active {
-                                          transform: scale(0.95);
-                                      }
-
-                                      .seccion_header:hover {
-                                          background-color: #f4ffee;
-                                          box-shadow: inset 0 3px 0 0px #39A900;
-                                      }
-
-                                      .seccion_header.pagina_actual {
-                                          box-shadow: inset 0 3px 0px #39A900;
-                                      }
-
-                                      .seccion_header_cont:hover .pagina_actual {
-                                          box-shadow: none;
-                                      }
-
-                                      .seccion_header.pagina_actual:hover {
-                                          box-shadow: inset 0 3px 0px #39A900;
-                                      }
-
-                                      @media (max-width: 620px) {
-
-                                          .seccion_header_cont {
-                                              width: 100%;
-                                              display: grid;
-                                              grid-template-columns: 1fr 1fr;
-                                          }
-
-                                          .seccion_header:hover {
-                                              box-shadow: inset 5px 0 0 0px #39A900, inset -5px 0 0 0px #39A900;
-                                          }
-
-                                          .seccion_header.pagina_actual {
-                                              box-shadow:
-                                                  inset 5px 0 0 0px #39A900,
-                                                  inset -5px 0 0 0px #39A900;
-                                              background-color: #f4ffee;
-                                                          }
-                                              
-                                                          .seccion_header_cont:hover .pagina_actual {
-                                                              box-shadow: none;
-                                                              background-color: white;
-                                                          }
-                                              
-                                                          .seccion_header.pagina_actual:hover {
-                                                              box-shadow: inset 5px 0 0 0px #39A900, inset -5px 0 0 0px #39A900;
-                                                              background-color: #f4ffee;
-                                                          }
-                                                      }
-                                              
-                                                      @media (max-width: 401px) {
-                                                          .seccion_header_cont {
-                                                              width: 100%;
-                                                              display: grid;
-                                                              grid-template-columns: 1fr;
-                                                          }
-                                                      }
-                                                  </style>
-                                              <script>
-                                                      // Obtener la URL actual
-                                                      const urlActual = window.location.href;
-                                              
-                                                      // Seleccionar todas las páginas
-                                                          const seccion_headers = document.querySelectorAll('.seccion_header');
-
-                                                          // Revisar la URL y añadir la clase 'pagina_actual' según corresponda
-                                                                      seccion_headers.forEach(seccion_header => {
-                                                                      const href = seccion_header.href; // Acceder al href del elemento a
-
-                                                                      if (urlActual === href) {
-                                                                              seccion_header.classList.add('pagina_actual'); // Agregar la clase pagina_actual si la URL coincide
-                                                                             }
-                                                              });
-                                                        </script>
-                                                        <!-- 
-                                                      ? ___________________ Paginas _______________________ 
-                          -->]]>
+                                seccion_headers.forEach(seccion_header => {
+                                  const href = new URL(seccion_header.href).pathname;
+                                  if (urlActual === href) {
+                                    seccion_header.classList.add('pagina_actual');
+                                  }
+                                });
+                            </script>
+                            <!-- ? ______________ Paginas ________________ -->
+                          ]]>
                         </b:widget-setting>
                       </b:widget-settings>
                       <b:includable id='main'>
@@ -952,7 +932,7 @@ marcador tamaños principales
                     <b:widget id='Blog1' locked='true' title='Entradas del blog' type='Blog' version='1'>
                       <b:widget-settings>
                         <b:widget-setting name='commentLabel'>comments</b:widget-setting>
-                        <b:widget-setting name='showShareButtons'>true</b:widget-setting>
+                        <b:widget-setting name='showShareButtons'>false</b:widget-setting>
                         <b:widget-setting name='authorLabel'>publicado por</b:widget-setting>
                         <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
                         <b:widget-setting name='timestampLabel'>publicado a las </b:widget-setting>
@@ -989,22 +969,6 @@ marcador tamaños principales
                             🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
                             -->
                             <style>
-                            <!-- * esta clase se agrega con un script  -->
-                              .dos-columnas {
-                                grid-column: span 2;
-                              }
-
-                              .dos-columnas .separator{
-                                width: 40% !important;
-                              }
-
-                              .dos-columnas .post-body{
-                                flex-direction: row;
-                                flex-wrap: wrap;
-                                gap: 10px
-                              }
-
-
                               .blog-posts{
                                 width:100%;
                               }
@@ -1012,41 +976,46 @@ marcador tamaños principales
                               .date-posts {
                                 display: grid;
                                 grid-template-columns: repeat(2, 1fr);
-                                row-gap: 20px;
+                                row-gap: 50px;
                                 column-gap: 20px;
                                 justify-items: center;
                                 align-items: center;
                                 justify-content: center;
-                                margin-bottom: 60px;
+                                margin-bottom: 80px;
                               }
 
                               .blog-posts > .widget {
                                 margin: 0px;
                               }
 
-                                .date-header {
-                                  width: 100%;
-                                  font-size: 15px;
-                                  color: #00304D;
-                                  grid-column: span 2;
-                                }
+                              .date-header {
+                                margin: 0px;
+                                margin-bottom: -20px;
+                                width: 100%;
+                                font-size: 15px;
+                                color: #00304D;
+                                grid-column: span 2;
+                              }
 
 
                                 @media (max-width: 600px) {
                                 .date-posts {
-                                  grid-template-columns: 1fr;
+                                  display: flex;
+                                  flex-direction: column;
                                 }
                                 }
 
                               .post{
                                 display: flex;
-                                justify-content: space-around;
+                                justify-content: space-evenly;
                                 flex-direction: column;
                                 height: 100%;
                                 width: 100%;
                                 align-items: center;
                                 font-size: 14px;
                               }
+
+                              .post >a{display:none;}
                   
                               h3.post-title {
                                 color: #00304D;
@@ -1066,19 +1035,32 @@ marcador tamaños principales
                                 align-items: center;
                                 justify-content: center;
                                 height: min-content;
+                                width: 100%;
                               }
-                              
+
+                              .post-body >br{
+                                display:none;
+                              }
                               
                               .post-body span {
                                 margin: 5px 0px;
                                 grid-area: texto; /* Asignar arriba*/
                               }
-                              .post-body p {
+
+                              .post-body > p,
+                              .post-body > a {
+                                width: 100%;
+                              }
+
+                              
+
+                              .post-body p:empty {
                                 display: none;
                               }
+
                               .separator{
                                 margin: 0px !important;
-                                width: 100%;
+                                width: fit-content;
                               }
                               .separator a{
                                 margin: 0px !important;
@@ -1086,9 +1068,10 @@ marcador tamaños principales
 
                               .separator img {
                                 width: 100%;
-                                height: 400px;
-                                object-fit: cover;
-                                object-position: top;
+                                height: fit-content;
+                                max-height: 500px;
+                                object-fit: contain;
+                                object-position: center;
                                 <!--
                                 ~ animaciones -->
                                 view-timeline-name: --postscroll;
@@ -1103,7 +1086,70 @@ marcador tamaños principales
                                 0% {opacity: 0;scale: 0.25;}
                                 100% {opacity: 1;scale: 1;}
                               }
+
+                              .post-footer{
+                                width: 100%;
+                                display: flex;
+                                justify-content: flex-end;
+                              }
+                              .post-footer-line{
+                                    display: flex;
+                                    flex-direction: row-reverse;
+                              }
+
+                              <!-- * esta clase se agrega con un script  -->
+
+
+                              .dos-columnas {
+                                grid-column: span 2;
+                              }
+
+                              .dos-columnas .separator{
+                                
+                              }
+
+                              .dos-columnas .post-footer{
+                                justify-content: flex-end;
+                              }
+
+                              .dos-columnas .post-body{
+                                flex-direction: row;
+                                flex-wrap: wrap;
+                                gap: 10px
+                              }
+
+                              .dos-columnas
                             </style>
+                            <script type='text/javascript'>
+                              function ajustarColumnas() {
+                                console.log("ejecutado")
+                                const posts = document.querySelectorAll(".post");
+                                console.log(posts)
+                                posts.forEach(post => {
+                                    if (post.offsetHeight > 800) {
+                                      post.classList.add("dos-columnas");
+                                    }
+                                });
+                              }
+window.addEventListener('DOMContentLoaded', function() {
+    var parrafos = document.querySelectorAll('.post-body > p');
+    
+    parrafos.forEach(function(p) {
+        // Usamos texto en Unicode y eliminamos todo tipo de espacios
+        var contenido = p.textContent
+            .replace(/\s+/g, '')       // Elimina espacios, tabs y saltos de línea
+            .replace(/\u00a0/g, '')    // Elimina espacios no rompibles (nbsp;)
+            .replace(/\u200B/g, '');   // Elimina espacios "zero-width" (caracteres invisibles)
+        
+        // Si no queda contenido, eliminamos el párrafo
+        if (!contenido.length) {
+            p.parentNode.removeChild(p); // Método compatible con navegadores antiguos
+        }
+    });
+});
+
+
+                            </script>
                             <b:include data='top' name='status-message'/>
                             <b:loop values='data:posts' var='post'>
                               <b:if cond='data:post.isDateStart and not data:post.isFirstPost'>
@@ -2055,6 +2101,7 @@ marcador tamaños principales
                       }
 
                     .BlogSearch::after {
+                      display:none;
                       z-index: 2;
                       content: &quot;&quot;;
                       position: absolute;
@@ -2498,6 +2545,23 @@ marcador tamaños principales
       </b:widget-settings>
       <b:includable id='main'>
         <style>
+          #BlogArchive1 {
+            position: sticky;
+            top: 100px;
+            mask-image: linear-gradient(
+              to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 60px
+            ); 
+          }
+
+          #BlogArchive1_ArchiveList {
+            padding-bottom: 50px;
+            overflow-y: scroll;
+            height: 60vh;
+            overscroll-behavior: contain
+          }
+          #BlogArchive1_ArchiveList::-webkit-scrollbar {
+            display: none; /* Oculta el scroll en Chrome, Edge y Safari */
+          }
           #BlogArchive1 h2 {
             color: #00304D;
           }
@@ -2506,8 +2570,6 @@ marcador tamaños principales
           }
           #BlogArchive1 a:visited {
             color: #00304D;
-            }
-            #BlogArchive1{
             }
         </style>
               <b:if cond='data:title != &quot;&quot;'>
@@ -2608,16 +2670,6 @@ marcador tamaños principales
   -->
 
   <script type='text/javascript'>
-  console.log("cargando")
-  function ajustarColumnas() {
-      const posts = document.querySelectorAll(".post");
-      posts.forEach(post => {
-        console.log("agregando")
-          if (post.offsetHeight > 600) {
-            post.classList.add("dos-columnas");
-          }
-      });
-    }
   
   ajustarColumnas();
 
