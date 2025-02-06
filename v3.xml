@@ -824,10 +824,11 @@ marcador tamaños principales
                     Marcador Main principal
                   🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨*/
                 .main-outer {
+                  padding: 10px;
 
                   display: grid;
                   grid-template-columns: 1fr 195px;
-
+                  grid-gap: 30px;
                   background: #ffffff;
                   padding: 15px 20px;
                   border-radius: 16px;
