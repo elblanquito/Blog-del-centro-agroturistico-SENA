@@ -180,8 +180,6 @@ body {
   font-family: 'Work Sans', arial;
   color: $(body.text.color);
   background: #F5F5F5;
-  
-
 }
 
 html body .region-inner {
@@ -205,6 +203,17 @@ a:hover {
   color: $(link.hover.color);
 }
 
+.section {
+  margin: 0;
+}
+
+.header-outer {
+  background: $(header.background.color) $(header.background.gradient) repeat-x scroll top left;
+  _background-image: none;
+  color: $(header.text.color);
+}
+
+
 .content-outer {
   background: $(content.background);
 
@@ -223,53 +232,6 @@ a:hover {
 
 .content-inner {
   padding: $(content.padding);
-}
-
-/*
-🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-																		narcador Header
-🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-*/
-
-.header-outer {
-  background: $(header.background.color) $(header.background.gradient) repeat-x scroll top left;
-  _background-image: none;
-
-  color: $(header.text.color);
-
-  -moz-border-radius: $(header.border.radius);
-  -webkit-border-radius: $(header.border.radius);
-  -goog-ms-border-radius: $(header.border.radius);
-  border-radius: $(header.border.radius);
-}
-
-.Header img, .Header #header-inner {
-  -moz-border-radius: $(header.border.radius);
-  -webkit-border-radius: $(header.border.radius);
-  -goog-ms-border-radius: $(header.border.radius);
-  border-radius: $(header.border.radius);
-}
-
-.header-inner .Header .titlewrapper,
-.header-inner .Header .descriptionwrapper {
-  padding-left: $(header.padding);
-  padding-right: $(header.padding);
-} 
-
-.Header h1 {
-  font: $(header.font);
-  font-family: 'Work Sans', arial;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-	margin: 0px 20px
- 
-}
-
-.Header h1 a {
-  color: $(header.text.color);
-}
-
-.Header .description {
-  font-size: 130%;
 }
 
 /* Tabs
@@ -362,7 +324,7 @@ h2 {
 
 /*
 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-cuerpo de los posts
+comentarios de los posts
 */
 
 #blog-pager {
@@ -473,71 +435,6 @@ cuerpo de los posts
 
 .footer-outer .widget h2 {
   color: $(footer.widget.title.text.color);
-}
-
-/* Mobile
------------------------------------------------ */
-html body.mobile {
-  height: auto;
-}
-
-html body.mobile {
-  min-height: 480px;
-  background-size: 100% auto;
-}
-
-.mobile .body-fauxcolumn-outer {
-  background: $(mobile.background.overlay);
-}
-
-html .mobile .mobile-date-outer, html .mobile .blog-pager {
-  border-bottom: none;
-  background: $(main.background);
-  margin-bottom: 10px;
-}
-
-.mobile .date-outer {
-  background: $(main.background);
-}
-
-.mobile .header-outer, .mobile .main-outer,
-.mobile .post-outer, .mobile .footer-outer {
-  -moz-border-radius: 0;
-  -webkit-border-radius: 0;
-  -goog-ms-border-radius: 0;
-  border-radius: 0;
-}
-
-.mobile .content-outer,
-.mobile .main-outer,
-.mobile .post-outer {
-  background: inherit;
-  border: none;
-}
-
-.mobile .content-outer {
-  font-size: 100%;
-}
-
-.mobile-link-button {
-  background-color: $(link.color);
-}
-
-.mobile-link-button a:link, .mobile-link-button a:visited {
-  color: $(post.background.color);
-}
-
-.mobile-index-contents {
-  color: $(body.text.color);
-}
-
-.mobile .tabs-inner .PageList .widget-content {
-  background: $(tabs.selected.background.color) $(tab.selected.background.gradient) repeat scroll bottom;
-  color: $(tabs.selected.text.color);
-}
-
-.mobile .tabs-inner .PageList .widget-content .pagelist-arrow {
-  border-$startSide: 1px solid $(tabs.separator.color);
 }
 ]]>
     </b:skin>
@@ -670,16 +567,40 @@ marcador tamaños principales
         <div class='fauxborder-left content-fauxborder-left'>
           <div class='fauxborder-right content-fauxborder-right'/>
           <div class='content-inner'>
-            <header>
-              <div class='header-outer'>
-                <div class='header-cap-top cap-top'>
-                  <div class='cap-left'/>
-                  <div class='cap-right'/>
-                </div>
-                <div class='fauxborder-left header-fauxborder-left'>
-                  <div class='fauxborder-right header-fauxborder-right'/>
-                  <div class='region-inner header-inner'>
-                    <b:section class='header' id='header' maxwidgets='1' name='Header' showaddelement='no'>
+            <style type='text/css'>
+              <!--
+              🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+               *																marcador Header
+              🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+              -->
+
+              .header-outer {
+                display: none;
+              }
+
+              .header-inner .Header .titlewrapper,
+              .header-inner .Header .descriptionwrapper {
+                padding-left: $(header.padding);
+                padding-right: $(header.padding);
+              } 
+
+              .Header h1 {
+                font: $(header.font);
+                font-family: 'Work Sans', arial;
+                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+              	margin: 0px 20px
+
+              }
+
+              .Header h1 a {
+                color: $(header.text.color);
+              }
+
+              .Header .description {
+                font-size: 130%;
+              }
+            </style>
+                    <b:section class='header header-outer' id='header' maxwidgets='1' name='Header' showaddelement='no'>
                       <b:widget id='Header1' locked='true' title=' Centro agroturistico v3 (Encabezado)' type='Header'>
                         <b:widget-settings>
                           <b:widget-setting name='displayUrl'/>
@@ -703,7 +624,7 @@ marcador tamaños principales
                                   <b:include name='description'/>
                                 </div>
                                 <b:else/>
-                                <div expr:style='&quot;background-image: url(\&quot;&quot; + data:sourceUrl + &quot;\&quot;); &quot;                      + &quot;background-position: &quot;                      + data:backgroundPositionStyleStr + &quot;; &quot;                      + data:widthStyleStr                      + &quot;min-height: &quot; + data:height                      + &quot;_height: &quot; + data:height                      + &quot;background-repeat: no-repeat; &quot;' id='header-inner'>
+                                <div expr:style='&quot;background-image: url(\&quot;&quot; + data:sourceUrl + &quot;\&quot;); &quot;                     + &quot;background-position: &quot;                      + data:backgroundPositionStyleStr + &quot;; &quot;                      + data:widthStyleStr                      + &quot;min-height: &quot; + data:height                      + &quot;_height: &quot; + data:height                      + &quot;background-repeat: no-repeat; &quot;' id='header-inner'>
                                   <div class='titlewrapper' style='background: transparent'>
                                     <h1 class='title' style='background: transparent; border-width: 0px'>
                                       <b:include name='title'/>
@@ -752,14 +673,6 @@ marcador tamaños principales
                         </b:includable>
                       </b:widget>
                     </b:section>
-                  </div>
-                </div>
-                <div class='header-cap-bottom cap-bottom'>
-                  <div class='cap-left'/>
-                  <div class='cap-right'/>
-                </div>
-              </div>
-            </header>
             <div class='tabs-outer'>
               <div class='tabs-cap-top cap-top'>
                 <div class='cap-left'/>
@@ -904,10 +817,6 @@ marcador tamaños principales
                   <b:section class='tabs' id='crosscol-overflow' name='Cross-Column 2' showaddelement='no'/>
                 </div>
               </div>
-              <div class='tabs-cap-bottom cap-bottom'>
-                <div class='cap-left'/>
-                <div class='cap-right'/>
-              </div>
             </div>
             <div class='main-outer'>
               <Style>
@@ -916,12 +825,12 @@ marcador tamaños principales
                   🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨*/
                 .main-outer {
 
-                  display: flex;
+                  display: grid;
+                  grid-template-columns: 1fr 195px;
 
                   background: #ffffff;
                   padding: 15px 20px;
-                  border-radius: 8px;
-                  border: solid 1px #39A900;
+                  border-radius: 16px;
 
                   }
               </Style>
@@ -971,6 +880,7 @@ marcador tamaños principales
                             <style>
                               .blog-posts{
                                 width:100%;
+                                margin: 0;
                               }
 
                               .date-posts {
@@ -1013,6 +923,11 @@ marcador tamaños principales
                                 width: 100%;
                                 align-items: center;
                                 font-size: 14px;
+                                border-radius: 16px;
+                                box-shadow:
+                                0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+                                padding: 20px 20px 20px 20px;
+                                box-sizing: border-box;
                               }
 
                               .post >a{display:none;}
@@ -1131,22 +1046,21 @@ marcador tamaños principales
                                     }
                                 });
                               }
-window.addEventListener('DOMContentLoaded', function() {
-    var parrafos = document.querySelectorAll('.post-body > p');
-    
-    parrafos.forEach(function(p) {
-        // Usamos texto en Unicode y eliminamos todo tipo de espacios
-        var contenido = p.textContent
-            .replace(/\s+/g, '')       // Elimina espacios, tabs y saltos de línea
-            .replace(/\u00a0/g, '')    // Elimina espacios no rompibles (nbsp;)
-            .replace(/\u200B/g, '');   // Elimina espacios "zero-width" (caracteres invisibles)
-        
-        // Si no queda contenido, eliminamos el párrafo
-        if (!contenido.length) {
-            p.parentNode.removeChild(p); // Método compatible con navegadores antiguos
-        }
-    });
-});
+
+                              window.addEventListener('DOMContentLoaded', function() {
+                                var parrafos = document.querySelectorAll('.post-body > p');
+                                parrafos.forEach(function(p) {
+                                    // Usamos texto en Unicode y eliminamos todo tipo de espacios
+                                    var contenido = p.textContent
+                                        .replace(/\s+/g, '')       // Elimina espacios, tabs y saltos de línea
+                                        .replace(/\u00a0/g, '')    // Elimina espacios no rompibles (nbsp;)
+                                        .replace(/\u200B/g, '');   // Elimina espacios "zero-width" (caracteres invisibles)
+                                    // Si no queda contenido, eliminamos el párrafo
+                                    if (!contenido.length) {
+                                        p.parentNode.removeChild(p); // Método compatible con navegadores antiguos
+                                    }
+                                });
+                              });
 
 
                             </script>
@@ -1985,7 +1899,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   <style>
     #sidebar-right-1{
-      width: 250px;
+      width: 100%;
     }
   </style>
   <b:section-contents id='sidebar-right-1'>
@@ -2115,7 +2029,7 @@ window.addEventListener('DOMContentLoaded', function() {
                   
                     .contenedorbuscador {
                         background-color: white;
-                        height: 36px;
+                        height: 30px;
                         width: 100%;
                         display: grid;
                         grid-template-columns: 1fr 36px;
@@ -2127,40 +2041,44 @@ window.addEventListener('DOMContentLoaded', function() {
                     .contenedorbuscador:focus-within{
                         box-shadow: 0 0 0px 1px #39A900;
                     }
+
+                    .contenedorbuscador >.inputbuscadorcont{
+                      height: 100%;
+                    }
             
-                    .contenedorbuscador .inputbuscador {
-                        background-color: transparent !important;
-                        width: 100% !important;
-                        height: 36px !important;
-                        margin: 0px !important;
-                        outline: none !important;
-                        border: none !important;
-                        border-radius: 4px 0px 0px 4px !important;
+                    .inputbuscadorcont >.inputbuscador {
+                        box-sizing: border-box;
+                        background-color: transparent;
+                        width: 100%;
+                        height: 100%;
+                        margin: 0px;
+                        outline: none;
+                        border: none;
+                        border-radius: 4px 0px 0px 4px;
                         font-size: 16;
-                        padding: 0px 10px !important;
+                        padding: 0px 10px;
                     }
             
                     .inputbuscador:focus+.contenedorbuscador {
-                        background-color: #39A900 !important;
+                        background-color: #39A900;
                     }
             
-                    .buttonbuscadorcont {
-                        width: 100% !important;
-                        height: 100% !important;
-                        border-radius: 0px 4px 4px 0px !important;
-            
+                    .contenedorbuscador >.buttonbuscadorcont {
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 0px 4px 4px 0px;
                     }
             
-                    .contenedorbuscador .buttonbuscador {
-                        width: 100% !important;
-                        height: 100% !important;
-                        margin: 0px !important;
-                        background-color: transparent !important;
+                    .buttonbuscadorcont >.buttonbuscador {
+                        width: 100%;
+                        height: 100%;
+                        margin: 0px;
+                        background-color: transparent;
                         background: url(&#39;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhqD53GLYdNDw7O66cnrvxpSknWkFES9lyKIeVltIibawLizxM8AhlWj9rIAZG8zJhyphenhyphenhWxLcyoAmEILmn6QGugY0Tl4cvsdQWWlIg4SURTNWuqqS0Z7TgFQP66VHY_XdndWDgHzIVLyQF91E8QIjh0qPf-i5rPd5Mglhhk4u8ekbHKksJz8o-Plq48FnY/s80/search%202.png&#39;) no-repeat center center;
-                        background-size: 80% !important;
-                        outline: none !important;
-                        border: none !important;
-                        transition: all 0.5s !important;
+                        background-size: 80%;
+                        outline: none;
+                        border: none;
+                        transition: all 0.5s;
             
                     }
             
@@ -2700,5 +2618,13 @@ window.addEventListener('DOMContentLoaded', function() {
         subtree: false
     });
   }
+
+
+  document.addEventListener("DOMContentLoaded", function() {
+    var images = document.querySelectorAll('img:not([loading])');
+    images.forEach(function(img) {
+      img.setAttribute('loading', 'lazy');
+    });
+  });
   </script>
 </html>
