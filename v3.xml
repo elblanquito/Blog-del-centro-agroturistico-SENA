@@ -176,7 +176,7 @@ URL:      www.blogger.com
 
 body {
   font: $(body.font);
-  font-size: 14px;
+  font-size: 16px;
   font-family: 'Work Sans', arial;
   color: $(body.text.color);
   background: #F5F5F5;
@@ -208,6 +208,7 @@ a:hover {
 }
 
 .header-outer {
+  display: none;
   background: $(header.background.color) $(header.background.gradient) repeat-x scroll top left;
   _background-image: none;
   color: $(header.text.color);
@@ -567,25 +568,19 @@ marcador tamaños principales
         <div class='fauxborder-left content-fauxborder-left'>
           <div class='fauxborder-right content-fauxborder-right'/>
           <div class='content-inner'>
-            <style type='text/css'>
+            <style>
               <!--
-              🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-               *																marcador Header
-              🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+              🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+               &											marcador Header
+              🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
               -->
 
-              .header-outer {
-                display: none;
-              }
-
-              .header-inner .Header .titlewrapper,
-              .header-inner .Header .descriptionwrapper {
-                padding-left: $(header.padding);
-                padding-right: $(header.padding);
+              .Header .titlewrapper,
+              .Header .descriptionwrapper {
+                padding: 0px 30px
               } 
 
               .Header h1 {
-                font: $(header.font);
                 font-family: 'Work Sans', arial;
                 text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
               	margin: 0px 20px
@@ -600,79 +595,79 @@ marcador tamaños principales
                 font-size: 130%;
               }
             </style>
-                    <b:section class='header header-outer' id='header' maxwidgets='1' name='Header' showaddelement='no'>
-                      <b:widget id='Header1' locked='true' title=' Centro agroturistico v3 (Encabezado)' type='Header'>
-                        <b:widget-settings>
-                          <b:widget-setting name='displayUrl'/>
-                          <b:widget-setting name='displayHeight'>0</b:widget-setting>
-                          <b:widget-setting name='sectionWidth'>752</b:widget-setting>
-                          <b:widget-setting name='useImage'>false</b:widget-setting>
-                          <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
-                          <b:widget-setting name='imagePlacement'>BEHIND</b:widget-setting>
-                          <b:widget-setting name='displayWidth'>0</b:widget-setting>
-                        </b:widget-settings>
-                        <b:includable id='main'>
-                          <b:if cond='data:useImage'>
-                            <b:if cond='data:imagePlacement == &quot;BEHIND&quot;'>
-                              <b:if cond='data:mobile'>
-                                <div id='header-inner'>
-                                  <div class='titlewrapper' style='background: transparent'>
-                                    <h1 class='title' style='background: transparent; border-width: 0px'>
-                                      <b:include name='title'/>
-                                    </h1>
-                                  </div>
-                                  <b:include name='description'/>
-                                </div>
-                                <b:else/>
-                                <div expr:style='&quot;background-image: url(\&quot;&quot; + data:sourceUrl + &quot;\&quot;); &quot;                     + &quot;background-position: &quot;                      + data:backgroundPositionStyleStr + &quot;; &quot;                      + data:widthStyleStr                      + &quot;min-height: &quot; + data:height                      + &quot;_height: &quot; + data:height                      + &quot;background-repeat: no-repeat; &quot;' id='header-inner'>
-                                  <div class='titlewrapper' style='background: transparent'>
-                                    <h1 class='title' style='background: transparent; border-width: 0px'>
-                                      <b:include name='title'/>
-                                    </h1>
-                                  </div>
-                                  <b:include name='description'/>
-                                </div>
-                              </b:if>
-                              <b:else/>
-                              <!--Show the image only-->
-                              <div id='header-inner'>
-                                <a expr:href='data:blog.homepageUrl' style='display: block'>
-                                  <img expr:alt='data:title' expr:height='data:height' expr:id='data:widget.instanceId + &quot;_headerimg&quot;' expr:src='data:sourceUrl' expr:width='data:width' style='display: block'/>
-                                </a>
-                                <!--Show the description-->
-                                <b:if cond='data:imagePlacement == &quot;BEFORE_DESCRIPTION&quot;'>
-                                  <b:include name='description'/>
-                                </b:if>
-                              </div>
-                            </b:if>
-                            <b:else/>
-                            <!--No header image -->
-                            <div id='header-inner'>
-                              <div class='titlewrapper'>
-                                <h1 class='title'>
-                                  <b:include name='title'/>
-                                </h1>
-                              </div>
-                              <b:include name='description'/>
-                            </div>
-                          </b:if>
-                        </b:includable>
-                        <b:includable id='description'>
-                          <div class='descriptionwrapper'>
-                            <p class='description'>
-                              <span>
-                                <data:description/>
-                              </span>
-                            </p>
+            <b:section class='header header-outer' id='header' maxwidgets='1' name='Header' showaddelement='no'>
+              <b:widget id='Header1' locked='true' title=' Centro agroturistico v3 (Encabezado)' type='Header'>
+                <b:widget-settings>
+                  <b:widget-setting name='displayUrl'/>
+                  <b:widget-setting name='displayHeight'>0</b:widget-setting>
+                  <b:widget-setting name='sectionWidth'>752</b:widget-setting>
+                  <b:widget-setting name='useImage'>false</b:widget-setting>
+                  <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                  <b:widget-setting name='imagePlacement'>BEHIND</b:widget-setting>
+                  <b:widget-setting name='displayWidth'>0</b:widget-setting>
+                </b:widget-settings>
+                <b:includable id='main'>
+                  <b:if cond='data:useImage'>
+                    <b:if cond='data:imagePlacement == &quot;BEHIND&quot;'>
+                      <b:if cond='data:mobile'>
+                        
+                          <div class='titlewrapper' style='background: transparent'>
+                            <h1 class='title' style='background: transparent; border-width: 0px'>
+                              <b:include name='title'/>
+                            </h1>
                           </div>
-                        </b:includable>
-                        <b:includable id='title'>
-                          <b:tag cond='data:blog.url != data:blog.homepageUrl' expr:href='data:blog.homepageUrl' name='a'>
-                            <data:title/>
-                          </b:tag>
-                        </b:includable>
-                      </b:widget>
-                    </b:section>
+                          <b:include name='description'/>
+                        
+                        <b:else/>
+                        <div expr:style='&quot;background-image: url(\&quot;&quot; + data:sourceUrl + &quot;\&quot;); &quot;                     + &quot;background-position: &quot;                      + data:backgroundPositionStyleStr + &quot;; &quot;                      + data:widthStyleStr                      + &quot;min-height: &quot; + data:height                      + &quot;_height: &quot; + data:height                      + &quot;background-repeat: no-repeat; &quot;' id='header-inner'>
+                          <div class='titlewrapper' style='background: transparent'>
+                            <h1 class='title' style='background: transparent; border-width: 0px'>
+                              <b:include name='title'/>
+                            </h1>
+                          </div>
+                          <b:include name='description'/>
+                        </div>
+                      </b:if>
+                      <b:else/>
+                      <!--Show the image only-->
+                      <div id='header-inner'>
+                        <a expr:href='data:blog.homepageUrl' style='display: block'>
+                          <img expr:alt='data:title' expr:height='data:height' expr:id='data:widget.instanceId + &quot;_headerimg&quot;' expr:src='data:sourceUrl' expr:width='data:width' style='display: block'/>
+                        </a>
+                        <!--Show the description-->
+                        <b:if cond='data:imagePlacement == &quot;BEFORE_DESCRIPTION&quot;'>
+                          <b:include name='description'/>
+                        </b:if>
+                      </div>
+                    </b:if>
+                    <b:else/>
+                    <!--No header image -->
+                    <div id='header-inner'>
+                      <div class='titlewrapper'>
+                        <h1 class='title'>
+                          <b:include name='title'/>
+                        </h1>
+                      </div>
+                      <b:include name='description'/>
+                    </div>
+                  </b:if>
+                </b:includable>
+                <b:includable id='description'>
+                  <div class='descriptionwrapper'>
+                    <p class='description'>
+                      <span>
+                        <data:description/>
+                      </span>
+                    </p>
+                  </div>
+                </b:includable>
+                <b:includable id='title'>
+                  <b:tag cond='data:blog.url != data:blog.homepageUrl' expr:href='data:blog.homepageUrl' name='a'>
+                    <data:title/>
+                  </b:tag>
+                </b:includable>
+              </b:widget>
+            </b:section>
             <div class='tabs-outer'>
               <div class='tabs-cap-top cap-top'>
                 <div class='cap-left'/>
@@ -824,15 +819,15 @@ marcador tamaños principales
                     Marcador Main principal
                   🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨*/
                 .main-outer {
-                  padding: 10px;
-
                   display: grid;
                   grid-template-columns: 1fr 195px;
                   grid-gap: 30px;
                   background: #ffffff;
-                  padding: 15px 20px;
+                  padding: 15px 50px;
                   border-radius: 16px;
-
+                  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
+                  0 1px 3px rgba(0, 0, 0, 0.08);
+                  margin: 30px 0px !important;
                   }
               </Style>
               <!-- corrects IE6 width calculation -->
@@ -869,16 +864,18 @@ marcador tamaños principales
                       </b:widget-settings>
                       <b:includable id='main' var='top'>
                         <b:if cond='!data:mobile'>
-                          <!--
-                          * marcador posts html 
-                          -->
                           
                              <!--
-                            🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+                            🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
                                         marcador posts titulos / imgenes / contenedores
-                            🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+                            🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
                             -->
                             <style>
+                              h3{
+                                width: 100%;
+                                font-size: 1.2em;
+                              }
+                              
                               .blog-posts{
                                 width:100%;
                                 margin: 0;
@@ -903,7 +900,7 @@ marcador tamaños principales
                                 margin: 0px;
                                 margin-bottom: -20px;
                                 width: 100%;
-                                font-size: 15px;
+                                font-size: 14px;
                                 color: #00304D;
                                 grid-column: span 2;
                               }
@@ -923,7 +920,6 @@ marcador tamaños principales
                                 height: 100%;
                                 width: 100%;
                                 align-items: center;
-                                font-size: 14px;
                                 border-radius: 16px;
                                 box-shadow:
                                 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
@@ -932,13 +928,12 @@ marcador tamaños principales
                               }
 
                               .post >a{display:none;}
+
                   
                               h3.post-title {
                                 color: #00304D;
                                 margin-bottom: 10px;
                               	text-align: center;
-                                font-size: 20px;
-                                font-weight: bold;
                               }
 
                               .post div{
@@ -968,6 +963,10 @@ marcador tamaños principales
                                 width: 100%;
                               }
 
+                              .post-body > p{
+                                margin:0px;
+                              }
+
                               
 
                               .post-body p:empty {
@@ -977,6 +976,7 @@ marcador tamaños principales
                               .separator{
                                 margin: 0px !important;
                                 width: fit-content;
+                                
                               }
                               .separator a{
                                 margin: 0px !important;
@@ -988,6 +988,7 @@ marcador tamaños principales
                                 max-height: 500px;
                                 object-fit: contain;
                                 object-position: center;
+                                content-visibility: auto;
                                 <!--
                                 ~ animaciones -->
                                 view-timeline-name: --postscroll;
@@ -995,11 +996,10 @@ marcador tamaños principales
                                 animation-timeline: --postscroll;
                                 animation-name: aparecer;
                                 animation-fill-mode: both;
-                                animation-range: entry 0% cover 40%
-                              }
+                                animation-range: entry 0% cover 40%}
 
                               @keyframes aparecer {
-                                0% {opacity: 0;scale: 0.25;}
+                                0% {scale: 0.6;}
                                 100% {opacity: 1;scale: 1;}
                               }
 
@@ -1038,15 +1038,16 @@ marcador tamaños principales
                             </style>
                             <script type='text/javascript'>
                               function ajustarColumnas() {
-                                console.log("ejecutado")
+                                console.log("ajustarColumnas")
                                 const posts = document.querySelectorAll(".post");
-                                console.log(posts)
                                 posts.forEach(post => {
                                     if (post.offsetHeight > 800) {
                                       post.classList.add("dos-columnas");
                                     }
                                 });
                               }
+
+                              
 
                               window.addEventListener('DOMContentLoaded', function() {
                                 var parrafos = document.querySelectorAll('.post-body > p');
@@ -1282,6 +1283,8 @@ marcador tamaños principales
                           <b:if cond='data:feedLinks'>
                               </b:if>
                           <b:else/>
+
+
                           <!--Post feed links -->
                           <div class='post-feeds'>
                             <b:loop values='data:posts' var='post'>
@@ -1343,6 +1346,9 @@ marcador tamaños principales
                             </span>
                           </h2>
                         </b:if>
+
+                        <!-- * marcador posts html  -->
+
                         <div class='post hentry uncustomized-post-template' itemprop='blogPost' itemscope='itemscope' itemtype='http://schema.org/BlogPosting'>
                           <b:if cond='data:post.firstImageUrl'>
                             <meta expr:content='data:post.firstImageUrl' itemprop='image_url'/>
@@ -2124,14 +2130,11 @@ marcador tamaños principales
 
                       const button = document.querySelector('.buttonbuscador');
                       const input = document.querySelector('.contenedorbuscador');
-                      console.log(button);
 
                       button.addEventListener('click', () => {
                           if (button.classList.contains('lupagirando')) {
-                              console.log('Ya se está animando');
                               return;
                           }
-                          console.log('click');
                           // Añade la clase para iniciar la animación
                           button.classList.add('lupagirando');
                           input.classList.add('inputgolpe');
@@ -2589,8 +2592,6 @@ marcador tamaños principales
   -->
 
   <script type='text/javascript'>
-  
-  ajustarColumnas();
 
   <!-- eleva la galeria de imagenes -->
   <!-- asi el buscador no las atrabieza -->
@@ -2600,17 +2601,14 @@ marcador tamaños principales
       document.body.className = document.body.className.replace(&#39;loading&#39;, &#39;&#39;);
     }, 10);
     <!-- eleva la visualizacion de las imgenes -->
-  console.log("ver de arriba");
   let elevacionfinalizada = false;
 
   if (!elevacionfinalizada) {
+    ajustarColumnas();
     const observer = new MutationObserver(() => {
       const lastElement = document.body.lastElementChild;
-      console.log("ultimo elemento 2");
       if (lastElement.classList.value == "CSS_LIGHTBOX") {
             lastElement.style.zIndex = "10";
-            console.log("elevado");
-            console.log(elevacionfinalizada);
             elevacionfinalizada = true;
       }
     });
@@ -2621,11 +2619,6 @@ marcador tamaños principales
   }
 
 
-  document.addEventListener("DOMContentLoaded", function() {
-    var images = document.querySelectorAll('img:not([loading])');
-    images.forEach(function(img) {
-      img.setAttribute('loading', 'lazy');
-    });
-  });
+
   </script>
 </html>
