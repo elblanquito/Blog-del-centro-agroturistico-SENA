@@ -64,8 +64,9 @@ URL:      www.blogger.com
    <Variableb name="keycolor" description="Main Color" type="color" default="#1a222a" value="#ffffff"/>
    <Variable name="body.background" description="Body Background" type="background" color="$(body.background.color)" default="#111111 url(//themes.googleusercontent.com/image?id=1OACCYOE0-eoTRTfsBuX1NMN9nz599ufI1Jh0CggPFA_sK80AGkIr8pLtYRpNUKPmwtEa) repeat-x fixed top center" value="#ffffff url(none) no-repeat fixed top center /* Credit: dino4 (http://www.istockphoto.com/portfolio/dino4?platform=blogger) */"/>
 
+<!-- &amp aqui abajo tienes que poner la funte global que tendra la pagina 👇-->
    <Group description="Page Text" selector="body">
-     <Variable name="body.font" description="Font" type="font" default="normal normal 15px Arial, Tahoma, Helvetica, FreeSans, sans-serif" value="normal normal 14px Arial, Tahoma, Helvetica, FreeSans, sans-serif"/>
+     <Variable name="body.font" description="Font" type="font" default="normal normal 17px calibri, Tahoma, Helvetica, FreeSans, sans-serif" value="normal normal 16px Open Sans"/>
      <Variable name="body.text.color" description="Text Color" type="color" default="#333333" value="#7d7d7d"/>
    </Group>
 
@@ -172,12 +173,8 @@ URL:      www.blogger.com
 
 /* Content
 ----------------------------------------------- */
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300;400;700&display=swap');
-
 body {
   font: $(body.font);
-  font-size: 16px;
-  font-family: 'Work Sans', arial;
   color: $(body.text.color);
   background: #F5F5F5;
 }
@@ -206,6 +203,13 @@ a:hover {
 .section {
   margin: 0;
 }
+
+.widget ul{
+  line-height: unset;
+}
+
+
+
 
 .header-outer {
   display: none;
@@ -311,13 +315,6 @@ a:hover {
 
 /* Headings
 ----------------------------------------------- */
-h2 {
-  font: $(widget.title.font);
-  font-family: 'Work Sans', arial;
-  text-transform: $(widget.title.text.transform);
-  color: $(widget.title.text.color);
-  margin: .5em;
-}
 
 
 
@@ -328,9 +325,6 @@ h2 {
 comentarios de los posts
 */
 
-#blog-pager {
-  font-size: 140%
-}
 
 #comments .comment-author {
   padding-top: 1.5em;
@@ -455,8 +449,12 @@ marcador tamaños principales
 
       .content-outer, .content-fauxcolumn-outer, .region-inner {
         min-width: $(content.width);
-        max-width: $(content.width);
+        max-width: 90%;
         _width: $(content.width);
+      }
+
+      h2{
+        font-size: 1.1em;
       }
 
       .columns {
@@ -591,9 +589,6 @@ marcador tamaños principales
                 color: $(header.text.color);
               }
 
-              .Header .description {
-                font-size: 130%;
-              }
             </style>
             <b:section class='header header-outer' id='header' maxwidgets='1' name='Header' showaddelement='no'>
               <b:widget id='Header1' locked='true' title=' Centro agroturistico v3 (Encabezado)' type='Header'>
@@ -690,7 +685,7 @@ marcador tamaños principales
                               <a class="seccion_header" href="/p/contactos.html"> Contactos </a>
                               <a class="seccion_header" href="/p/blog-page.html"> Programas </a>
                               <a class="seccion_header" href="/p/normatividad.html"> Normatividad </a>
-                              <a class="seccion_header" href="http://127.0.0.1:5501/widgets.html#"> Directorio </a>
+                              <a class="seccion_header" href="p/pagina-de-recursos-globales.html"> resources </a>
                             </div>
                             <style>
                               .tabs-outer {
@@ -708,7 +703,7 @@ marcador tamaños principales
                                   max-width: calc(100vw - 200px);
                                   user-select: none;
                                   font-weight: bold;
-                                  font-size: large;
+                                  font-size: 1.2em;
                                   display: flex;
                                   overflow: hidden;
                                   color: #39A900;
@@ -734,17 +729,18 @@ marcador tamaños principales
                                   transform: scale(0.95);
                               }
                               .seccion_header:hover {
-                                  background-color: #f4ffee;
-                                  box-shadow: inset 0 3px 0 0px #39A900;
+                                  background: linear-gradient(
+                                  0deg, #f4ffee, #f4ffee);
+                                  box-shadow: inset 0 -3px 0 0px #39A900;
                               }
                               .seccion_header.pagina_actual {
-                                  box-shadow: inset 0 3px 0px #39A900;
+                                  box-shadow: inset 0 -3px 0px #39A900;
                               }
                               .seccion_header_cont:hover .pagina_actual {
                                   box-shadow: none;
                               }
                               .seccion_header.pagina_actual:hover {
-                                  box-shadow: inset 0 3px 0px #39A900;
+                                  box-shadow: inset 0 -3px 0px #39A900;
                               }
                               @media (max-width: 620px) {
                                 .seccion_header_cont {
@@ -767,7 +763,8 @@ marcador tamaños principales
                                     background-color: white;
                                 }
                                 .seccion_header.pagina_actual:hover {
-                                    box-shadow: inset 5px 0 0 0px #39A900, inset -5px 0 0 0px #39A900;
+                                    box-shadow: inset 5px 0 0 0px #39A900,
+                                    inset -5px 0 0 0px #39A900;
                                     background-color: #f4ffee;
                                 }
                               }
@@ -882,6 +879,7 @@ marcador tamaños principales
                               }
 
                               .date-posts {
+                                animation: all ease 1s;
                                 display: grid;
                                 grid-template-columns: repeat(2, 1fr);
                                 row-gap: 50px;
@@ -900,7 +898,7 @@ marcador tamaños principales
                                 margin: 0px;
                                 margin-bottom: -20px;
                                 width: 100%;
-                                font-size: 14px;
+                                font-size: 1em;
                                 color: #00304D;
                                 grid-column: span 2;
                               }
@@ -914,11 +912,12 @@ marcador tamaños principales
                                 }
 
                               .post{
+                                interpolate-size: allow-keywords;
+                                transition: all 1s ease;
                                 display: flex;
                                 justify-content: space-evenly;
                                 flex-direction: column;
                                 height: 100%;
-                                width: 100%;
                                 align-items: center;
                                 border-radius: 16px;
                                 box-shadow:
@@ -974,6 +973,7 @@ marcador tamaños principales
                               }
 
                               .separator{
+                                display: flex;
                                 margin: 0px !important;
                                 width: fit-content;
                                 
@@ -1014,20 +1014,17 @@ marcador tamaños principales
                               }
 
                               <!-- * esta clase se agrega con un script  -->
-
-
                               .dos-columnas {
+                                width: fit-content;
                                 grid-column: span 2;
                               }
 
                               .dos-columnas .separator{
-                                
                               }
 
                               .dos-columnas .post-footer{
                                 justify-content: flex-end;
                               }
-
                               .dos-columnas .post-body{
                                 flex-direction: row;
                                 flex-wrap: wrap;
@@ -1046,10 +1043,10 @@ marcador tamaños principales
                                     }
                                 });
                               }
-
                               
 
-                              window.addEventListener('DOMContentLoaded', function() {
+<!--                               window.addEventListener('DOMContentLoaded', function() {
+                                console.log("eliminando parrafos")
                                 var parrafos = document.querySelectorAll('.post-body > p');
                                 parrafos.forEach(function(p) {
                                     // Usamos texto en Unicode y eliminamos todo tipo de espacios
@@ -1062,7 +1059,8 @@ marcador tamaños principales
                                         p.parentNode.removeChild(p); // Método compatible con navegadores antiguos
                                     }
                                 });
-                              });
+                              }); -->
+
 
 
                             </script>
@@ -2003,7 +2001,6 @@ marcador tamaños principales
                     .titlebuscador {
                       display: block;
                       width: 100%;
-                      font-size: 16px;
                       font-weight: bold;
                       text-align: center;
                       color: #39A900;
@@ -2062,7 +2059,6 @@ marcador tamaños principales
                         outline: none;
                         border: none;
                         border-radius: 4px 0px 0px 4px;
-                        font-size: 16;
                         padding: 0px 10px;
                     }
             
@@ -2081,7 +2077,9 @@ marcador tamaños principales
                         height: 100%;
                         margin: 0px;
                         background-color: transparent;
-                        background: url(&#39;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhqD53GLYdNDw7O66cnrvxpSknWkFES9lyKIeVltIibawLizxM8AhlWj9rIAZG8zJhyphenhyphenhWxLcyoAmEILmn6QGugY0Tl4cvsdQWWlIg4SURTNWuqqS0Z7TgFQP66VHY_XdndWDgHzIVLyQF91E8QIjh0qPf-i5rPd5Mglhhk4u8ekbHKksJz8o-Plq48FnY/s80/search%202.png&#39;) no-repeat center center;
+                        background: 
+                        url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhqD53GLYdNDw7O66cnrvxpSknWkFES9lyKIeVltIibawLizxM8AhlWj9rIAZG8zJhyphenhyphenhWxLcyoAmEILmn6QGugY0Tl4cvsdQWWlIg4SURTNWuqqS0Z7TgFQP66VHY_XdndWDgHzIVLyQF91E8QIjh0qPf-i5rPd5Mglhhk4u8ekbHKksJz8o-Plq48FnY/s80/search%202.png)
+                        no-repeat center center;
                         background-size: 80%;
                         outline: none;
                         border: none;
@@ -2201,114 +2199,6 @@ marcador tamaños principales
         </div>
       </b:includable>
     </b:widget>
-    <b:widget id='FeaturedPost1' locked='false' title='' type='FeaturedPost'>
-      <b:widget-settings>
-        <b:widget-setting name='showSnippet'>true</b:widget-setting>
-        <b:widget-setting name='showPostTitle'>true</b:widget-setting>
-        <b:widget-setting name='postId'>0</b:widget-setting>
-        <b:widget-setting name='showFirstImage'>true</b:widget-setting>
-        <b:widget-setting name='useMostRecentPost'>true</b:widget-setting>
-      </b:widget-settings>
-      <b:includable id='main'>
-        <!-- Only display title if it's non-empty -->
-        <b:if cond='data:title != &quot;&quot;'>
-          <h2 class='title'>
-            <data:title/>
-          </h2>
-        </b:if>
-        <b:include name='content'/>
-        <b:include name='quickedit'/>
-      </b:includable>
-      <b:includable id='content'>
-        <div class='post-summary'>
-          <b:if cond='data:showPostTitle and data:postTitle != &quot;&quot;'>
-            <h3>
-              <a expr:href='data:postUrl'>
-                <data:postTitle/>
-              </a>
-            </h3>
-          </b:if>
-          <b:if cond='data:showSnippet and data:postSummary != &quot;&quot;'>
-            <p>
-              <data:postSummary/>
-            </p>
-          </b:if>
-          <b:if cond='data:showFirstImage and data:postFirstImage != &quot;&quot;'>
-            <img class='image' expr:src='data:postFirstImage'/>
-          </b:if>
-        </div>
-        <style type='text/css'>
-          .image {
-            width: 100%;
-          }
-        </style>
-      </b:includable>
-    </b:widget>
-    <b:widget id='PopularPosts1' locked='false' title='' type='PopularPosts'>
-      <b:widget-settings>
-        <b:widget-setting name='numItemsToShow'>3</b:widget-setting>
-        <b:widget-setting name='showThumbnails'>true</b:widget-setting>
-        <b:widget-setting name='showSnippets'>true</b:widget-setting>
-        <b:widget-setting name='timeRange'>LAST_YEAR</b:widget-setting>
-      </b:widget-settings>
-      <b:includable id='main'>
-        <b:if cond='data:title != &quot;&quot;'>
-          <h2>
-            <data:title/>
-          </h2>
-        </b:if>
-        <div class='widget-content popular-posts'>
-          <ul>
-            <b:loop values='data:posts' var='post'>
-              <li>
-                <b:if cond='!data:showThumbnails'>
-                  <b:if cond='!data:showSnippets'>
-                    <!-- (1) No snippet/thumbnail -->
-                    <a expr:href='data:post.href'>
-                      <data:post.title/>
-                    </a>
-                    <b:else/>
-                    <!-- (2) Show only snippets -->
-                    <div class='item-title'>
-                      <a expr:href='data:post.href'>
-                        <data:post.title/>
-                      </a>
-                    </div>
-                    <div class='item-snippet'>
-                      <data:post.snippet/>
-                    </div>
-                  </b:if>
-                  <b:else/>
-                  <!-- (3) Show only thumbnails or (4) Snippets and thumbnails. -->
-                  <div expr:class='data:showSnippets ? &quot;item-content&quot; : &quot;item-thumbnail-only&quot;'>
-                    <b:if cond='data:post.featuredImage.isResizable or data:post.thumbnail'>
-                      <div class='item-thumbnail'>
-                        <a expr:href='data:post.href' target='_blank'>
-                          <b:with value='data:post.featuredImage.isResizable                                  ? resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)                                  : data:post.thumbnail' var='image'>
-                            <img alt='' border='0' expr:src='data:image'/>
-                          </b:with>
-                        </a>
-                      </div>
-                    </b:if>
-                    <div class='item-title'>
-                      <a expr:href='data:post.href'>
-                        <data:post.title/>
-                      </a>
-                    </div>
-                    <b:if cond='data:showSnippets'>
-                      <div class='item-snippet'>
-                        <data:post.snippet/>
-                      </div>
-                    </b:if>
-                  </div>
-                </b:if>
-              </li>
-            </b:loop>
-          </ul>
-          <b:include name='quickedit'/>
-        </div>
-      </b:includable>
-    </b:widget>
     <b:widget id='PageList2' locked='false' title='Páginas' type='PageList' version='2' visible='false'>
       <b:widget-settings>
         <b:widget-setting name='pageListJson'>
@@ -2361,41 +2251,6 @@ marcador tamaños principales
             <b:include name='pageLink'/>
           </b:loop>
         </ul>
-      </b:includable>
-    </b:widget>
-    <b:widget id='Navbar1' locked='false' title='NavBar ' type='Navbar' version='1'>
-      <b:includable id='main'>&lt;script type=&quot;text/javascript&quot;&gt;
-            function setAttributeOnload(object, attribute, val) {
-              if(window.addEventListener) {
-                window.addEventListener(&#39;load&#39;,
-                  function(){ object[attribute] = val; }, false);
-              } else {
-                window.attachEvent(&#39;onload&#39;, function(){ object[attribute] = val; });
-              }
-            }
-          &lt;/script&gt;
-        &lt;div id=&quot;navbar-iframe-container&quot;&gt;&lt;/div&gt;
-        &lt;script type=&quot;text/javascript&quot; src=&quot;https://apis.google.com/js/platform.js&quot;&gt;&lt;/script&gt;
-        &lt;script type=&quot;text/javascript&quot;&gt;
-              gapi.load(&quot;gapi.iframes:gapi.iframes.style.bubble&quot;, function() {
-                if (gapi.iframes &amp;&amp; gapi.iframes.getContext) {
-                  gapi.iframes.getContext().openChild({
-                      url: &#39;https://www.blogger.com/navbar/598196929511771696?origin\x3dhttps://www.blogger.com&#39;,
-                      where: document.getElementById(&quot;navbar-iframe-container&quot;),
-                      id: &quot;navbar-iframe&quot;
-                  });
-                }
-              });
-            &lt;/script&gt;&lt;script type=&quot;text/javascript&quot;&gt;
-        (function() {
-        var script = document.createElement(&#39;script&#39;);
-        script.type = &#39;text/javascript&#39;;
-        script.src = &#39;//pagead2.googlesyndication.com/pagead/js/google_top_exp.js&#39;;
-        var head = document.getElementsByTagName(&#39;head&#39;)[0];
-        if (head) {
-        head.appendChild(script);
-        }})();
-        &lt;/script&gt;
       </b:includable>
     </b:widget>
     <b:widget id='Profile1' locked='false' title='Acerca de mí' type='Profile' version='1'>
@@ -2453,20 +2308,109 @@ marcador tamaños principales
         </div>
       </b:includable>
     </b:widget>
-    <b:widget id='BlogArchive1' locked='false' title='Todas las publicaciones' type='BlogArchive' version='1'>
-      <b:widget-settings>
-        <b:widget-setting name='showStyle'>HIERARCHY</b:widget-setting>
-        <b:widget-setting name='yearPattern'>yyyy</b:widget-setting>
-        <b:widget-setting name='showWeekEnd'>true</b:widget-setting>
-        <b:widget-setting name='monthPattern'>MMMM yyyy</b:widget-setting>
-        <b:widget-setting name='dayPattern'>MMM dd</b:widget-setting>
-        <b:widget-setting name='weekPattern'>MM/dd</b:widget-setting>
-        <b:widget-setting name='chronological'>false</b:widget-setting>
-        <b:widget-setting name='showPosts'>true</b:widget-setting>
-        <b:widget-setting name='frequency'>MONTHLY</b:widget-setting>
-      </b:widget-settings>
-      <b:includable id='main'>
-        <style>
+  <b:widget id='BlogArchive1' locked='false' title='Todas las publicaciones' type='BlogArchive' version='1'>
+    <b:widget-settings>
+      <b:widget-setting name='showStyle'>HIERARCHY</b:widget-setting>
+      <b:widget-setting name='yearPattern'>yyyy</b:widget-setting>
+      <b:widget-setting name='showWeekEnd'>true</b:widget-setting>
+      <b:widget-setting name='monthPattern'>MMMM yyyy</b:widget-setting>
+      <b:widget-setting name='dayPattern'>MMM dd</b:widget-setting>
+      <b:widget-setting name='weekPattern'>MM/dd</b:widget-setting>
+      <b:widget-setting name='chronological'>false</b:widget-setting>
+      <b:widget-setting name='showPosts'>true</b:widget-setting>
+      <b:widget-setting name='frequency'>MONTHLY</b:widget-setting>
+    </b:widget-settings>
+    <b:includable id='main'>
+              <style>
+          .archivedate {
+            text-indent: 0;
+            display: flex;
+            flex-wrap: wrap;
+            column-gap: 5px;
+            align-items: center;
+          }
+
+          .BlogArchive #ArchiveList ul li{
+            padding-left: 0;
+            text-indent: 0;
+          } <!-- nivel 1 -->
+
+          .BlogArchive #ArchiveList ul ul li{
+            padding-left: 10px;
+          } <!-- nivel 2 -->
+
+          .BlogArchive #ArchiveList ul.posts li{
+            padding-left: 0;
+          } <!-- nivel 3 -->
+          
+
+          .toggle{
+            display: block;
+            width: fit-content;
+          }
+
+          .archivedate .post-count{
+            color: #00304d;
+            font-weight: bold;
+            font-size: 0.8em;
+            height: min-content;
+          }
+
+          .zippy{
+            display: block;
+<!--             background: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEicOz46RJwZN7LKpEjXSocSYFN0273kWKYTTeacupYFgvC__-rxNLl4-9nc-uhK1QxuUO7jrJTgS7Qif5_WoZ70-JBkg-MYd28uZDTAIRk2qN7apIWfT0b6CcWNxUfFUy6mmcq7gRqXenEusMCDG-IYkDC1ayiVp8EJ7OS0JabVbfhT2t0ScFhcUaeUeEQ/s96/arrow_right.png)
+            no-repeat center center;
+            background-size: 100%; -->
+
+            width: 20px;
+            height: min-content;
+          }
+          .zippy.toggle-open{
+            display: block;
+<!--             background: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjmAQZCaV1-tEEytjP8HYsfD5qrHFuibpQJ-VHhvo-dm1Dd3O38ByMQhv3MPGh_4gIs8-bvqY42MMf_85mcNpCYOhZqIEQOEcdPmhaXN7T5yMp3rmBA7FBNeJf8sc6w53X8Ta7KlQQ6f6BjYwIYjjskQ5-PIpn9Iz9D0mEY7DS7jaYr6EWo5mYDD0DTYYM/s96/arrow_drop_down.png)
+            no-repeat center center;
+            background-size: 100%; -->
+            width: 20px;
+            height: min-content;
+          }
+
+          #ArchiveList .zippy {
+            line-height: unset;
+          }
+
+          .ArchiveList a {
+            -webkit-tap-highlight-color: transparent;
+          }
+          
+          .ArchiveList a:active {
+            animation: presionar 0.2s ease;
+          }
+          
+          @keyframes presionar {
+            0% {
+              transform: scale(1);
+            }
+            50% {
+              transform: scale(0.8);
+            }
+            100% {
+              transform: scale(1);
+            }
+          }
+
+
+          .BlogArchive li:has(>a:empty) {
+            display: none;
+            }
+
+          #ArchiveList a.toggle,
+          #ArchiveList a.toggle:link{
+            color:rgba(0, 0, 0, 0);
+            color: #00304D;
+            font-size: 0.8em;
+          }
+
+
           #BlogArchive1 {
             position: sticky;
             top: 100px;
@@ -2474,15 +2418,14 @@ marcador tamaños principales
               to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 60px
             ); 
           }
-
           #BlogArchive1_ArchiveList {
             padding-bottom: 50px;
             overflow-y: scroll;
             height: 60vh;
-            overscroll-behavior: contain
+            overscroll-behavior: contain;
           }
           #BlogArchive1_ArchiveList::-webkit-scrollbar {
-            display: none; /* Oculta el scroll en Chrome, Edge y Safari */
+            display: none;
           }
           #BlogArchive1 h2 {
             color: #00304D;
@@ -2493,90 +2436,75 @@ marcador tamaños principales
           #BlogArchive1 a:visited {
             color: #00304D;
             }
+
         </style>
-              <b:if cond='data:title != &quot;&quot;'>
-                <h2>
-                  <data:title/>
-                </h2>
-              </b:if>
-              <div class='widget-content'>
-                <div id='ArchiveList'>
-                  <div expr:id='data:widget.instanceId + &quot;_ArchiveList&quot;'>
-                    <b:include cond='data:style == &quot;HIERARCHY&quot;' data='data' name='interval'/>
-                    <b:include cond='data:style == &quot;FLAT&quot;' data='data' name='flat'/>
-                    <b:include cond='data:style == &quot;MENU&quot;' data='data' name='menu'/>
-                  </div>
-                </div>
-                <b:include name='quickedit'/>
-              </div>
-            </b:includable>
-      <b:includable id='flat' var='data'>
-              <ul class='flat'>
-                <b:loop values='data:data' var='i'>
-                  <li class='archivedate'>
-                    <a expr:href='data:i.url'>
-                      <data:i.name/>
-                    </a> (
-                    <data:i.post-count/>)
-                  </li>
-                </b:loop>
-              </ul>
-            </b:includable>
-      <b:includable id='interval' var='intervalData'>
-              <b:loop values='data:intervalData' var='interval'>
-                <ul class='hierarchy'>
-                  <li expr:class='&quot;archivedate &quot; + data:interval.expclass'>
-                    <b:include cond='data:interval.toggleId' data='interval' name='toggle'/>
-                    <a class='post-count-link' expr:href='data:interval.url'>
-                      <data:interval.name/>
-                    </a>
-                    <span class='post-count' dir='ltr'>(
-                      <data:interval.post-count/>)
-                    </span>
-                    <b:include cond='data:interval.data' data='interval.data' name='interval'/>
-                    <b:include cond='data:interval.posts' data='interval.posts' name='posts'/>
-                  </li>
-                </ul>
-              </b:loop>
-            </b:includable>
-      <b:includable id='menu' var='data'>
-              <select expr:id='data:widget.instanceId + &quot;_ArchiveMenu&quot;'>
-                <option value=''>
-                  <data:title/>
-                </option>
-                <b:loop values='data:data' var='i'>
-                  <option expr:value='data:i.url'>
-                    <data:i.name/> (
-                    <data:i.post-count/>)
-                  </option>
-                </b:loop>
-              </select>
-            </b:includable>
-      <b:includable id='posts' var='posts'>
-              <ul class='posts'>
-                <b:loop values='data:posts' var='post'>
-                  <li>
-                    <a expr:href='data:post.url'>
-                      <data:post.title/>
-                    </a>
-                  </li>
-                </b:loop>
-              </ul>
-            </b:includable>
-      <b:includable id='toggle' var='interval'>
-              <a class='toggle' href='javascript:void(0)'>
-                <span expr:class='&quot;zippy&quot; + (data:interval.expclass == &quot;expanded&quot; ? &quot; toggle-open&quot; : &quot;&quot;)'>
-                  <b:if cond='data:interval.expclass == &quot;expanded&quot;'>
-              &#9660;&#160;
-                    <b:elseif cond='data:blog.languageDirection == &quot;rtl&quot;'/>
-              &#9668;&#160;
-                    <b:else/>
-              &#9658;&#160;
-                  </b:if>
-                </span>
-              </a>
-            </b:includable>
-    </b:widget>
+  <b:if cond='data:title != &quot;&quot;'>
+    <h2><data:title/></h2>
+  </b:if>
+  <div class='widget-content'>
+  <div id='ArchiveList'>
+  <div expr:id='data:widget.instanceId + &quot;_ArchiveList&quot;'>
+    <b:include cond='data:style == &quot;HIERARCHY&quot;' data='data' name='interval'/>
+    <b:include cond='data:style == &quot;FLAT&quot;' data='data' name='flat'/>
+    <b:include cond='data:style == &quot;MENU&quot;' data='data' name='menu'/>
+  </div>
+  </div>
+  <b:include name='quickedit'/>
+  </div>
+</b:includable>
+    <b:includable id='flat' var='data'>
+  <ul class='flat'>
+    <b:loop values='data:data' var='i'>
+      <li class='archivedate'>
+        <a expr:href='data:i.url'><data:i.name/></a> (<data:i.post-count/>)
+      </li>
+    </b:loop>
+  </ul>
+</b:includable>
+    <b:includable id='interval' var='intervalData'>
+  <b:loop values='data:intervalData' var='interval'>
+    <ul class='hierarchy'>
+      <li expr:class='&quot;archivedate &quot; + data:interval.expclass'>
+        <b:include cond='data:interval.toggleId' data='interval' name='toggle'/>
+        <a class='post-count-link' expr:href='data:interval.url'>
+          <data:interval.name/>
+        </a>
+        <span class='post-count' dir='ltr'>(<data:interval.post-count/>)</span>
+        <b:include cond='data:interval.data' data='interval.data' name='interval'/>
+        <b:include cond='data:interval.posts' data='interval.posts' name='posts'/>
+      </li>
+    </ul>
+  </b:loop>
+</b:includable>
+    <b:includable id='menu' var='data'>
+  <select expr:id='data:widget.instanceId + &quot;_ArchiveMenu&quot;'>
+    <option value=''><data:title/></option>
+    <b:loop values='data:data' var='i'>
+      <option expr:value='data:i.url'><data:i.name/> (<data:i.post-count/>)</option>
+    </b:loop>
+  </select>
+</b:includable>
+    <b:includable id='posts' var='posts'>
+  <ul class='posts'>
+    <b:loop values='data:posts' var='post'>
+      <li><a expr:href='data:post.url'><data:post.title/></a></li>
+    </b:loop>
+  </ul>
+</b:includable>
+    <b:includable id='toggle' var='interval'>
+  <a class='toggle' href='javascript:void(0)'>
+    <span expr:class='&quot;zippy&quot; + (data:interval.expclass == &quot;expanded&quot; ? &quot; toggle-open&quot; : &quot;&quot;)'>
+      <b:if cond='data:interval.expclass == &quot;expanded&quot;'>
+        &#9660;&#160;
+      <b:elseif cond='data:blog.languageDirection == &quot;rtl&quot;'/>
+        &#9668;&#160;
+      <b:else/>
+        &#9658;&#160;
+      </b:if>
+    </span>
+  </a>
+</b:includable>
+  </b:widget>
 
 
   </b:section-contents>
