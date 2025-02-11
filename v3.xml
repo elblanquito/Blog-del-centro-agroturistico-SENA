@@ -661,153 +661,128 @@ marcador tamaños principales
                 </b:includable>
               </b:widget>
             </b:section>
-            <div class='tabs-outer'>
-              <div class='tabs-cap-top cap-top'>
-                <div class='cap-left'/>
-                <div class='cap-right'/>
-              </div>
-              <div class='fauxborder-left tabs-fauxborder-left'>
-                <div class='fauxborder-right tabs-fauxborder-right'/>
-                <div class='region-inner tabs-inner'>
-                  <b:section class='tabs' id='crosscol' maxwidgets='1' name='Cross-Column' showaddelement='yes'>
-                    <b:widget id='HTML2' locked='false' title='paginas' type='HTML'>
-                      <b:widget-settings>
-                        <b:widget-setting name='content'>
-                          <!--🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-                              marcador menu principal y rutas
-                              🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨-->
-                          <![CDATA[
-                            <!-- ? ______________ Paginas ______________ -->
-                            <div class="seccion_header_cont">
-                              <a class="seccion_header" href="/"> Página Principal </a>
-                              <a class="seccion_header" href="/p/contactos.html"> Contactos </a>
-                              <a class="seccion_header" href="/p/blog-page.html"> Programas </a>
-                              <a class="seccion_header" href="/p/normatividad.html"> Normatividad </a>
-                              <a class="seccion_header" href="p/pagina-de-recursos-globales.html"> resources </a>
-                            </div>
-                            <style>
-                              .tabs-outer {
-                                position: sticky;
-                                top: 0;
-                                z-index: 1;
-                                padding-top: 10px;
-                                background-color: #ffffff;
-                              }
-                              .region-inner {
-                                margin: 0;
-                              } 
-                              .seccion_header_cont {
-                                  width: fit-content;
-                                  max-width: calc(100vw - 200px);
-                                  user-select: none;
-                                  font-weight: bold;
-                                  font-size: 1.2em;
-                                  display: flex;
-                                  overflow: hidden;
-                                  color: #39A900;
-                                  margin-bottom: 0px;
-                                  flex-wrap: wrap;
-                                  align-items: center;
-                                  justify-content: center;
-                                  position: sticky;
-                                  top: 0px; 
-                              }
-                              .seccion_header {
-                                  text-decoration: none !important;
-                                  cursor: default;
-                                  justify-content: center;
-                                  text-align: center;
-                                  background-color: #ffffff;
-                                  padding: 10px 25px;
-                                  transition: all 0.2s;
-                                  color: #39A900 !important;
-                                  /* Color del texto inicial */
-                              }
-                              .seccion_header:active {
-                                  transform: scale(0.95);
-                              }
-                              .seccion_header:hover {
-                                  background: linear-gradient(
-                                  0deg, #f4ffee, #f4ffee);
-                                  box-shadow: inset 0 -3px 0 0px #39A900;
-                              }
-                              .seccion_header.pagina_actual {
-                                  box-shadow: inset 0 -3px 0px #39A900;
-                              }
-                              .seccion_header_cont:hover .pagina_actual {
-                                  box-shadow: none;
-                              }
-                              .seccion_header.pagina_actual:hover {
-                                  box-shadow: inset 0 -3px 0px #39A900;
-                              }
-                              @media (max-width: 620px) {
-                                .seccion_header_cont {
-                                    max-width: none;
-                                    width: fit-content;
-                                    display: grid;
-                                    grid-template-columns: 1fr 1fr;
-                                }
-                                .seccion_header:hover {
-                                    box-shadow: inset 5px 0 0 0px #39A900, inset -5px 0 0 0px #39A900;
-                                }
-                                .seccion_header.pagina_actual {
-                                    box-shadow:
-                                        inset 5px 0 0 0px #39A900,
-                                        inset -5px 0 0 0px #39A900;
-                                    background-color: #f4ffee;
-                                }
-                              .seccion_header_cont:hover .pagina_actual {
-                                    box-shadow: none;
-                                    background-color: white;
-                                }
-                                .seccion_header.pagina_actual:hover {
-                                    box-shadow: inset 5px 0 0 0px #39A900,
-                                    inset -5px 0 0 0px #39A900;
-                                    background-color: #f4ffee;
-                                }
-                              }
-                                      
-                              @media (max-width: 401px) {
-                                  .seccion_header_cont {
-                                      width: 100%;
-                                      display: grid;
-                                      grid-template-columns: 1fr;
-                                  }
-                              }
-                            </style>
-                            <script>
-                              const urlActual = window.location.pathname;
-                              const seccion_headers = document.querySelectorAll('.seccion_header');
-
-                                seccion_headers.forEach(seccion_header => {
-                                  const href = new URL(seccion_header.href).pathname;
-                                  if (urlActual === href) {
-                                    seccion_header.classList.add('pagina_actual');
-                                  }
-                                });
-                            </script>
-                            <!-- ? ______________ Paginas ________________ -->
-                          ]]>
-                        </b:widget-setting>
-                      </b:widget-settings>
-                      <b:includable id='main'>
-                        <!-- only display title if it's non-empty -->
-                        <b:if cond='data:title != &quot;&quot;'>
-                          <h2 class='title'>
-                            <data:title/>
-                          </h2>
-                        </b:if>
-                        <div class='widget-content'>
-                          <data:content/>
-                        </div>
-                        <b:include name='quickedit'/>
-                      </b:includable>
-                    </b:widget>
-                  </b:section>
-                  <b:section class='tabs' id='crosscol-overflow' name='Cross-Column 2' showaddelement='no'/>
-                </div>
-              </div>
-            </div>
+            <b:section class='tabs' id='crosscol' maxwidgets='1' name='Cross-Column' showaddelement='yes'>
+              <b:widget id='HTML2' locked='false' title='paginas' type='HTML'>
+                <b:widget-settings>
+                  <b:widget-setting name='content'>
+                  <!--🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+                  marcador menu principal y rutas
+                  -->
+                  <![CDATA[ <!--? Paginas y rutas 👇-->
+                  <div class="seccion_header_cont">
+                    <a class="seccion_header" href="/"> Página Principal </a>
+                    <a class="seccion_header" href="/p/contactos.html"> Contactos </a>
+                    <a class="seccion_header" href="/p/blog-page.html"> Programas </a>
+                    <a class="seccion_header" href="/p/normatividad.html"> Normatividad </a>
+                    <a class="seccion_header" href="p/pagina-de-recursos-globales.html"> resources </a>
+                  </div>
+  <style>
+    .seccion_header_cont {
+        box-sizing: border-box;
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        z-index: 2;
+        width: 100%;
+        background-color: #ffffff;
+        user-select: none;
+        font-size: 1.2em;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+    .seccion_header {
+        text-align: center;
+        text-decoration: none !important;
+        color: #39A900 !important;
+        cursor: default;
+        font-weight: bold;
+        background-color: #ffffff;
+        padding: 10px 25px;
+        transition: all 0.2s;
+    }
+    .seccion_header:hover {
+        background: linear-gradient(
+        0deg, #f4ffee,#f4ffee
+        );
+        box-shadow: inset 0 -3px 0 0 #39A900;
+    }
+    .seccion_header:active {
+        transform: scale(0.95);
+    }
+    .seccion_header.pagina_actual {
+        box-shadow: inset 0 -3px 0px #39A900;
+    }
+    .seccion_header_cont:hover .pagina_actual {
+        box-shadow: none;
+    }
+    .seccion_header.pagina_actual:hover {
+        box-shadow: inset 0 -3px 0px #39A900;
+    }
+    @media (max-width: 620px) {
+      .seccion_header_cont {
+          max-width: none;
+          width: fit-content;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+      }
+      .seccion_header:hover {
+          box-shadow: inset 5px 0 0 0px #39A900,
+          inset -5px 0 0 0px #39A900;
+      }
+      .seccion_header.pagina_actual {
+          box-shadow:
+              inset 5px 0 0 0px #39A900,
+              inset -5px 0 0 0px #39A900;
+          background-color: #f4ffee;
+      }
+    .seccion_header_cont:hover .pagina_actual {
+          box-shadow: none;
+          background-color: white;
+      }
+      .seccion_header.pagina_actual:hover {
+          box-shadow: inset 5px 0 0 0px #39A900,
+          inset -5px 0 0 0px #39A900;
+          background-color: #f4ffee;
+      }
+    }
+            
+    @media (max-width: 401px) {
+        .seccion_header_cont {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+    }
+  </style>
+                  <script>
+                    const urlActual = window.location.pathname;
+                    const seccion_headers = document.querySelectorAll('.seccion_header');
+                      seccion_headers.forEach(seccion_header => {
+                        const href = new URL(seccion_header.href).pathname;
+                        if (urlActual === href) {
+                          seccion_header.classList.add('pagina_actual');
+                        }
+                      });
+                  </script>
+                  <!-- ? ______________ Paginas ________________ -->]]>
+                  </b:widget-setting>
+                </b:widget-settings>
+                <b:includable id='main'>
+                  <!-- only display title if it's non-empty -->
+                  <b:if cond='data:title != &quot;&quot;'>
+                    <h2 class='title'>
+                      <data:title/>
+                    </h2>
+                  </b:if>
+                  <div class='widget-content'>
+                    <data:content/>
+                  </div>
+                  <b:include name='quickedit'/>
+                </b:includable>
+              </b:widget>
+            </b:section>
             <div class='main-outer'>
               <Style>
                 /*🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
@@ -822,7 +797,7 @@ marcador tamaños principales
                   border-radius: 16px;
                   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
                   0 1px 3px rgba(0, 0, 0, 0.08);
-                  margin: 30px 0px !important;
+                  margin: 60px 0px !important;
                   }
               </Style>
               <!-- corrects IE6 width calculation -->
@@ -2300,7 +2275,7 @@ marcador tamaños principales
         </div>
       </b:includable>
     </b:widget>
-  <b:widget id='BlogArchive1' locked='false' title='Historial de publicaciones' type='BlogArchive' version='1'>
+  <b:widget id='BlogArchive1' locked='false' title='Historial del blog' type='BlogArchive' version='1'>
     <b:widget-settings>
       <b:widget-setting name='showStyle'>HIERARCHY</b:widget-setting>
       <b:widget-setting name='yearPattern'>yyyy</b:widget-setting>
