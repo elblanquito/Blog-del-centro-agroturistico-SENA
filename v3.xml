@@ -66,7 +66,7 @@ URL:      www.blogger.com
 
 <!-- &amp aqui abajo tienes que poner la funte global que tendra la pagina 👇-->
    <Group description="Page Text" selector="body">
-     <Variable name="body.font" description="Font" type="font" default="normal normal 17px calibri, Tahoma, Helvetica, FreeSans, sans-serif" value="normal normal 16px Open Sans"/>
+     <Variable name="body.font" description="Font" type="font" default="normal normal 17px calibri, Tahoma, Helvetica, FreeSans, sans-serif" value="normal normal 16px PT Sans Caption"/>
      <Variable name="body.text.color" description="Text Color" type="color" default="#333333" value="#7d7d7d"/>
    </Group>
 
@@ -171,45 +171,36 @@ URL:      www.blogger.com
    <Variable name="endSide" description="Side where text ends in blog language" type="automatic" default="right"/>
 */
 
-/* Content
------------------------------------------------ */
+/*
+<!--*cosas medio relevantes 👇-->
+*/
 body {
   font: $(body.font);
   color: $(body.text.color);
   background: #F5F5F5;
 }
-
 html body .region-inner {
   min-width: 0;
   max-width: 100%;
   width: auto;
 }
-
-a:link {
-  text-decoration:none;
-  color: $(link.color);
+a{
+  -webkit-tap-highlight-color: transparent;
 }
-
+a:link {
+  text-decoration:none;color:
+  $(link.color);
+}
 a:visited {
   text-decoration:none;
-  color: $(link.visited.color);
+  color:$(link.visited.color);
 }
-
 a:hover {
   text-decoration:underline;
   color: $(link.hover.color);
 }
-
-.section {
-  margin: 0;
-}
-
-.widget ul{
-  line-height: unset;
-}
-
-
-
+.section {margin: 0;}
+.widget ul{line-height: unset;}
 
 .header-outer {
   display: none;
@@ -217,6 +208,9 @@ a:hover {
   _background-image: none;
   color: $(header.text.color);
 }
+
+
+
 
 
 .content-outer {
@@ -454,8 +448,12 @@ marcador tamaños principales
       }
 
       h2{
-        font-size: 1.1em;
+        font-size: 1.2em;
       }
+      h3{
+      font-size: 1em;
+      }
+
 
       .columns {
         padding-left: $(main.column.left.width);
@@ -868,10 +866,6 @@ marcador tamaños principales
                             🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
                             -->
                             <style>
-                              h3{
-                                width: 100%;
-                                font-size: 1.2em;
-                              }
                               
                               .blog-posts{
                                 width:100%;
@@ -912,8 +906,6 @@ marcador tamaños principales
                                 }
 
                               .post{
-                                interpolate-size: allow-keywords;
-                                transition: all 1s ease;
                                 display: flex;
                                 justify-content: space-evenly;
                                 flex-direction: column;
@@ -929,7 +921,7 @@ marcador tamaños principales
                               .post >a{display:none;}
 
                   
-                              h3.post-title {
+                              h2.post-title {
                                 color: #00304D;
                                 margin-bottom: 10px;
                               	text-align: center;
@@ -1355,7 +1347,7 @@ marcador tamaños principales
                           <meta expr:content='data:post.id' itemprop='postId'/>
                           <a expr:name='data:post.id'/>
                           <b:if cond='data:post.title'>
-                            <h3 class='post-title entry-title' itemprop='name'>
+                            <h2 class='post-title entry-title' itemprop='name'>
                               <b:if cond='data:post.link or (data:post.url and data:blog.url != data:post.url)'>
                                 <a expr:href='data:post.link ? data:post.link : data:post.url'>
                                   <data:post.title/>
@@ -1363,7 +1355,7 @@ marcador tamaños principales
                                 <b:else/>
                                 <data:post.title/>
                               </b:if>
-                            </h3>
+                            </h2>
                           </b:if>
                           <!-- Then use the post body as the schema.org description, for good G+/FB snippeting. -->
                           <div class='post-body entry-content' expr:id='&quot;post-body-&quot; + data:post.id' expr:itemprop='(data:blog.metaDescription ? &quot;&quot; : &quot;description &quot;) + &quot;articleBody&quot;'>
@@ -2078,7 +2070,7 @@ marcador tamaños principales
                         margin: 0px;
                         background-color: transparent;
                         background: 
-                        url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhqD53GLYdNDw7O66cnrvxpSknWkFES9lyKIeVltIibawLizxM8AhlWj9rIAZG8zJhyphenhyphenhWxLcyoAmEILmn6QGugY0Tl4cvsdQWWlIg4SURTNWuqqS0Z7TgFQP66VHY_XdndWDgHzIVLyQF91E8QIjh0qPf-i5rPd5Mglhhk4u8ekbHKksJz8o-Plq48FnY/s80/search%202.png)
+                        url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhk8CTT8voh4dHF8-R0yfpfXpgGNSFi88mdXqPpOFoSKS6Q8GmllCgBmSRpfkEXswQZuseMGQQn5Fp98Qjype6fh7L9phokTzHVlVbiK-3WiCYtst_YkawISqPGHkWFQKvGvnH2xy4z8p7ruH7PMdUFpjiJVR1wZ-KzYnS06PYQ_RADrAzls-cfJNjw8mQ/s80/search%202.png)
                         no-repeat center center;
                         background-size: 80%;
                         outline: none;
@@ -2308,40 +2300,90 @@ marcador tamaños principales
         </div>
       </b:includable>
     </b:widget>
-  <b:widget id='BlogArchive1' locked='false' title='Todas las publicaciones' type='BlogArchive' version='1'>
+  <b:widget id='BlogArchive1' locked='false' title='Historial de publicaciones' type='BlogArchive' version='1'>
     <b:widget-settings>
       <b:widget-setting name='showStyle'>HIERARCHY</b:widget-setting>
       <b:widget-setting name='yearPattern'>yyyy</b:widget-setting>
       <b:widget-setting name='showWeekEnd'>true</b:widget-setting>
-      <b:widget-setting name='monthPattern'>MMMM yyyy</b:widget-setting>
+      <b:widget-setting name='monthPattern'>MMMM</b:widget-setting>
       <b:widget-setting name='dayPattern'>MMM dd</b:widget-setting>
       <b:widget-setting name='weekPattern'>MM/dd</b:widget-setting>
       <b:widget-setting name='chronological'>false</b:widget-setting>
-      <b:widget-setting name='showPosts'>true</b:widget-setting>
+      <b:widget-setting name='showPosts'>false</b:widget-setting>
       <b:widget-setting name='frequency'>MONTHLY</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main'>
-              <style>
+        <style>
+          #BlogArchive1 {
+            position: sticky;
+            top: 100px;
+            <!-- efecto de desbanecido al escrolear 🌫️ -->
+            mask-image: linear-gradient(
+              to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 60px
+            ); 
+          }
+
+          #BlogArchive1 *{
+            transition: opacity 0.6s ease-in-out, height 1s ease;
+            interpolate-size: allow-keywords;
+            color: #00304D;
+          }
+
+          #BlogArchive1_ArchiveList {
+            padding-bottom: 50px;
+            overflow-y: scroll;
+            height: 60vh;
+            overscroll-behavior: contain;
+          }
+          #BlogArchive1_ArchiveList::-webkit-scrollbar {
+            display: none;
+          }
+          <!--? cuando se cierra un elemento -->
+          
+          #ArchiveList .collapsed >ul{
+            display: block;
+            height: 0px;
+            overflow: hidden;
+            opacity: 0;
+          }
+
+          #ArchiveList .expanded >ul{
+            display: block;
+            overflow: hidden;
+            height: fit-content;
+
+            @starting-style {
+              height: 0px;
+              opacity: 0;
+            }
+          }
+          .hierarchy{
+            grid-column: span 3;
+          }
+          
+
+          
+
           .archivedate {
             text-indent: 0;
-            display: flex;
-            flex-wrap: wrap;
-            column-gap: 5px;
+            display: grid;
+            column-gap: 4px;
             align-items: center;
+            grid-template-columns: auto auto 1fr
           }
 
           .BlogArchive #ArchiveList ul li{
             padding-left: 0;
             text-indent: 0;
-          } <!-- nivel 1 -->
+          } <!-- capeta 1 -->
 
           .BlogArchive #ArchiveList ul ul li{
-            padding-left: 10px;
-          } <!-- nivel 2 -->
+            padding-left: 30px;
+          } <!-- capeta 2 -->
 
           .BlogArchive #ArchiveList ul.posts li{
             padding-left: 0;
-          } <!-- nivel 3 -->
+          } <!-- capeta 3 -->
           
 
           .toggle{
@@ -2350,54 +2392,34 @@ marcador tamaños principales
           }
 
           .archivedate .post-count{
+            position: relative;
+            top: -5px;
             color: #00304d;
-            font-weight: bold;
             font-size: 0.8em;
             height: min-content;
           }
 
           .zippy{
             display: block;
-<!--             background: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEicOz46RJwZN7LKpEjXSocSYFN0273kWKYTTeacupYFgvC__-rxNLl4-9nc-uhK1QxuUO7jrJTgS7Qif5_WoZ70-JBkg-MYd28uZDTAIRk2qN7apIWfT0b6CcWNxUfFUy6mmcq7gRqXenEusMCDG-IYkDC1ayiVp8EJ7OS0JabVbfhT2t0ScFhcUaeUeEQ/s96/arrow_right.png)
+            background: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwzm0taNcMkyRXjYWxqZ2mHAaFGb_aP4oLjpiZsRSAvl0_lWQ20WHsIuwMXUVjglVlawPcw5N9cyChgc64_5asJYoO9A9DRPzIovNx4FpbBJ0mh5S8PoUr9My0r7yKWGQQxkIDbtLCfo9TDewBc9bATiMVWPO9MFAfPT8qaQiogeLPmJZ8xp-fVOe6ilU/s96/arrow_right.png)
             no-repeat center center;
-            background-size: 100%; -->
+            background-size: 140%; 
 
             width: 20px;
             height: min-content;
           }
           .zippy.toggle-open{
             display: block;
-<!--             background: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjmAQZCaV1-tEEytjP8HYsfD5qrHFuibpQJ-VHhvo-dm1Dd3O38ByMQhv3MPGh_4gIs8-bvqY42MMf_85mcNpCYOhZqIEQOEcdPmhaXN7T5yMp3rmBA7FBNeJf8sc6w53X8Ta7KlQQ6f6BjYwIYjjskQ5-PIpn9Iz9D0mEY7DS7jaYr6EWo5mYDD0DTYYM/s96/arrow_drop_down.png)
+            background: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhptrDu5oYzBhfVlAMVpG0udZKu1oN4YDt9Xrrnf-ikPfxhGNKwgClvH5ORSCj270_cR-vZW7PNT4iaDsaF6iDR_k-PIQgdAdtSfZCOugShsK2w29iBFDhmXr3-bgWGUlFvjFvL9rNaXU9OWNuL7V9ETSmBR7PV-fuAh7SQSMMC_Dll8Ix7Q-MxBtbcyk8/s96/arrow_drop_down.png)
             no-repeat center center;
-            background-size: 100%; -->
-            width: 20px;
-            height: min-content;
+            background-size: 140%; 
           }
 
           #ArchiveList .zippy {
+            color: rgba(0,0,0,0);
             line-height: unset;
           }
-
-          .ArchiveList a {
-            -webkit-tap-highlight-color: transparent;
-          }
           
-          .ArchiveList a:active {
-            animation: presionar 0.2s ease;
-          }
-          
-          @keyframes presionar {
-            0% {
-              transform: scale(1);
-            }
-            50% {
-              transform: scale(0.8);
-            }
-            100% {
-              transform: scale(1);
-            }
-          }
-
 
           .BlogArchive li:has(>a:empty) {
             display: none;
@@ -2409,37 +2431,13 @@ marcador tamaños principales
             color: #00304D;
             font-size: 0.8em;
           }
-
-
-          #BlogArchive1 {
-            position: sticky;
-            top: 100px;
-            mask-image: linear-gradient(
-              to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 60px
-            ); 
-          }
-          #BlogArchive1_ArchiveList {
-            padding-bottom: 50px;
-            overflow-y: scroll;
-            height: 60vh;
-            overscroll-behavior: contain;
-          }
-          #BlogArchive1_ArchiveList::-webkit-scrollbar {
-            display: none;
-          }
-          #BlogArchive1 h2 {
-            color: #00304D;
-          }
-          #BlogArchive1 a:link {
-            color: #00304D;
-          }
-          #BlogArchive1 a:visited {
-            color: #00304D;
-            }
-
         </style>
+
+        <script>
+        
+        </script>
   <b:if cond='data:title != &quot;&quot;'>
-    <h2><data:title/></h2>
+    <h3><data:title/></h3>
   </b:if>
   <div class='widget-content'>
   <div id='ArchiveList'>
@@ -2462,8 +2460,8 @@ marcador tamaños principales
   </ul>
 </b:includable>
     <b:includable id='interval' var='intervalData'>
-  <b:loop values='data:intervalData' var='interval'>
     <ul class='hierarchy'>
+  <b:loop values='data:intervalData' var='interval'>
       <li expr:class='&quot;archivedate &quot; + data:interval.expclass'>
         <b:include cond='data:interval.toggleId' data='interval' name='toggle'/>
         <a class='post-count-link' expr:href='data:interval.url'>
@@ -2473,25 +2471,27 @@ marcador tamaños principales
         <b:include cond='data:interval.data' data='interval.data' name='interval'/>
         <b:include cond='data:interval.posts' data='interval.posts' name='posts'/>
       </li>
-    </ul>
   </b:loop>
+  </ul>
 </b:includable>
     <b:includable id='menu' var='data'>
   <select expr:id='data:widget.instanceId + &quot;_ArchiveMenu&quot;'>
     <option value=''><data:title/></option>
     <b:loop values='data:data' var='i'>
-      <option expr:value='data:i.url'><data:i.name/> (<data:i.post-count/>)</option>
+      <option expr:value='data:i.url'><data:i.name/>(<data:i.post-count/>)</option>
     </b:loop>
   </select>
 </b:includable>
-    <b:includable id='posts' var='posts'>
+<b:includable id='posts' var='posts'>
   <ul class='posts'>
     <b:loop values='data:posts' var='post'>
-      <li><a expr:href='data:post.url'><data:post.title/></a></li>
+      <li><a expr:href='data:post.url'>
+        <data:post.title/>
+      </a></li>
     </b:loop>
   </ul>
 </b:includable>
-    <b:includable id='toggle' var='interval'>
+<b:includable id='toggle' var='interval'>
   <a class='toggle' href='javascript:void(0)'>
     <span expr:class='&quot;zippy&quot; + (data:interval.expclass == &quot;expanded&quot; ? &quot; toggle-open&quot; : &quot;&quot;)'>
       <b:if cond='data:interval.expclass == &quot;expanded&quot;'>
@@ -2519,7 +2519,7 @@ marcador tamaños principales
       🔽🔽🔽🔽🔽🔽🔽🔽🔽🔽🔽🔽🔽🔽🔽🔽
   -->
 
-  <script type='text/javascript'>
+  <scri type='text/javascript'>
 
   <!-- eleva la galeria de imagenes -->
   <!-- asi el buscador no las atrabieza -->
@@ -2548,5 +2548,5 @@ marcador tamaños principales
 
 
 
-  </script>
+  </scri>
 </html>
