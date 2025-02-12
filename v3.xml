@@ -179,6 +179,7 @@ body {
   color: $(body.text.color);
   background: #F5F5F5;
 }
+
 html body .region-inner {
   min-width: 0;
   max-width: 100%;
@@ -208,6 +209,14 @@ a:hover {
   _background-image: none;
   color: $(header.text.color);
 }
+
+<!--* estilos post populares -->
+.item-thumbnail {width: 100%;}
+.PopularPosts img{width:100%;}
+
+.post-content{width: 100%;}
+.post-content img{ width: 100%;}
+
 
 
 
@@ -438,14 +447,16 @@ marcador tamaños principales
       <b:variable default='310px' name='main.column.right.width' type='length' value='260px'/>
       <![CDATA[
       body {
-        min-width: $(content.width);
+        width: 100%;
       }
 
       .content-outer, .content-fauxcolumn-outer, .region-inner {
-        min-width: $(content.width);
-        max-width: 90%;
+        width: 100%;
+        max-width: $(content.width);
         _width: $(content.width);
       }
+
+      
 
       h2{
         font-size: 1.2em;
@@ -561,8 +572,7 @@ marcador tamaños principales
         </div>
       </div>
       <div class='content-outer'>
-        <div class='fauxborder-left content-fauxborder-left'>
-          <div class='fauxborder-right content-fauxborder-right'/>
+      
           <div class='content-inner'>
             <style>
               <!--
@@ -661,128 +671,174 @@ marcador tamaños principales
                 </b:includable>
               </b:widget>
             </b:section>
-            <b:section class='tabs' id='crosscol' maxwidgets='1' name='Cross-Column' showaddelement='yes'>
-              <b:widget id='HTML2' locked='false' title='paginas' type='HTML'>
-                <b:widget-settings>
-                  <b:widget-setting name='content'>
-                  <!--🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-                  marcador menu principal y rutas
-                  -->
-                  <![CDATA[ <!--? Paginas y rutas 👇-->
-                  <div class="seccion_header_cont">
-                    <a class="seccion_header" href="/"> Página Principal </a>
-                    <a class="seccion_header" href="/p/contactos.html"> Contactos </a>
-                    <a class="seccion_header" href="/p/blog-page.html"> Programas </a>
-                    <a class="seccion_header" href="/p/normatividad.html"> Normatividad </a>
-                    <a class="seccion_header" href="p/pagina-de-recursos-globales.html"> resources </a>
-                  </div>
-  <style>
-    .seccion_header_cont {
-        box-sizing: border-box;
-        position: fixed;
-        left: 0px;
-        top: 0px;
-        z-index: 2;
-        width: 100%;
-        background-color: #ffffff;
-        user-select: none;
-        font-size: 1.2em;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-    }
-    .seccion_header {
-        text-align: center;
-        text-decoration: none !important;
-        color: #39A900 !important;
-        cursor: default;
-        font-weight: bold;
-        background-color: #ffffff;
-        padding: 10px 25px;
-        transition: all 0.2s;
-    }
-    .seccion_header:hover {
-        background: linear-gradient(
-        0deg, #f4ffee,#f4ffee
-        );
-        box-shadow: inset 0 -3px 0 0 #39A900;
-    }
-    .seccion_header:active {
-        transform: scale(0.95);
-    }
-    .seccion_header.pagina_actual {
-        box-shadow: inset 0 -3px 0px #39A900;
-    }
-    .seccion_header_cont:hover .pagina_actual {
-        box-shadow: none;
-    }
-    .seccion_header.pagina_actual:hover {
-        box-shadow: inset 0 -3px 0px #39A900;
-    }
-    @media (max-width: 620px) {
-      .seccion_header_cont {
-          max-width: none;
-          width: fit-content;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-      }
-      .seccion_header:hover {
-          box-shadow: inset 5px 0 0 0px #39A900,
-          inset -5px 0 0 0px #39A900;
-      }
-      .seccion_header.pagina_actual {
-          box-shadow:
-              inset 5px 0 0 0px #39A900,
-              inset -5px 0 0 0px #39A900;
-          background-color: #f4ffee;
-      }
-    .seccion_header_cont:hover .pagina_actual {
-          box-shadow: none;
-          background-color: white;
-      }
-      .seccion_header.pagina_actual:hover {
-          box-shadow: inset 5px 0 0 0px #39A900,
-          inset -5px 0 0 0px #39A900;
-          background-color: #f4ffee;
-      }
-    }
+
+
+
+            <!--
+            ?_________________________________________________________
+            ?____________🔽 marcador Paginas y rutas 🔽______________
+            -->
             
-    @media (max-width: 401px) {
-        .seccion_header_cont {
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr;
-        }
-    }
-  </style>
-                  <script>
-                    const urlActual = window.location.pathname;
-                    const seccion_headers = document.querySelectorAll('.seccion_header');
-                      seccion_headers.forEach(seccion_header => {
-                        const href = new URL(seccion_header.href).pathname;
-                        if (urlActual === href) {
-                          seccion_header.classList.add('pagina_actual');
-                        }
-                      });
-                  </script>
-                  <!-- ? ______________ Paginas ________________ -->]]>
+            <b:section class='tabs' id='crosscol' maxwidgets='1' name='Cross-Column' showaddelement='yes'>
+              <b:widget id='PageList3' locked='false' title='Menu principal 🏷️ (no agregar el link completo, solo el final)' type='PageList'>
+                <b:widget-settings>
+                  <b:widget-setting name='pageListJson'>
+                    <![CDATA[{
+                      "link0":{
+                        "href":"/",
+                        "position":0,
+                        "title":"Página Principal"
+                      },
+                      "link1":{
+                        "href":"/p/contactos.html",
+                        "position":1,
+                        "title":"Contactos"
+                      },
+                      "link2":{
+                        "href":"/p/normatividad.html",
+                        "position":2,
+                        "title":"Normatividad"
+                      },
+                      "link3":{
+                        "href":"/p/blog-page.html",
+                        "position":3,
+                        "title":"Programas"
+                      },
+                      "link4":{
+                        "href":"/p/pagina-de-recursos-globales.html",
+                        "position":4,
+                        "title":"resourses"
+                      }
+                    }]]>
                   </b:widget-setting>
+                  <b:widget-setting name='homeTitle'>Página Principal</b:widget-setting>
                 </b:widget-settings>
                 <b:includable id='main'>
-                  <!-- only display title if it's non-empty -->
-                  <b:if cond='data:title != &quot;&quot;'>
-                    <h2 class='title'>
-                      <data:title/>
-                    </h2>
-                  </b:if>
+                <style>
+                  .seccion_header_cont {
+                    box-sizing: border-box;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: fixed;
+                    left: 0px;
+                    top: 0px;
+                    z-index: 2;
+                    width: 100%;
+                    background-color: #ffffff;
+                    user-select: none;
+                    font-size: 1.2em;
+                    padding: 0px 20px;
+                    overflow-x: auto;
+                  }
+
+                  /* Barra de desplazamiento */
+                  .tareas-contenedor::-webkit-scrollbar{
+                    width: 8px;
+                    background-color: #2546b8;
+                    border-radius: 20px;
+                  }
+                  .tareas-contenedor::-webkit-scrollbar:window-inactive {
+                    display: none;
+                  }
+                  .tareas-contenedor::-webkit-scrollbar-thumb  {
+                    background-color: #09C;
+                    border-radius: 6px;
+                  }
+
+
+                  .seccion_header {
+                    min-width: fit-content;
+                    text-align: center;
+                    text-decoration: none !important;
+                    color: #39A900 !important;
+                    cursor: default;
+                    font-weight: bold;
+                    background-color: #ffffff;
+                    padding: 10px 25px;
+                    transition: all 0.2s;
+                  }
+                  .seccion_header:hover {
+                    background: linear-gradient(
+                    0deg, #f4ffee,#f4ffee
+                    );
+                    box-shadow: inset 0 -3px 0 0 #39A900;
+                  }
+                  .seccion_header:active {
+                      transform: scale(0.95);
+                  }
+                  .seccion_header.pagina_actual {
+                    box-shadow: inset 0 -3px 0px #39A900;
+                  }
+                  .seccion_header_cont:hover .pagina_actual {
+                    box-shadow: none;
+                  }
+                  .seccion_header.pagina_actual:hover {
+                    box-shadow: inset 0 -3px 0px #39A900;
+                  }
+                  @media (max-width: 620px) {
+                    .seccion_header_cont {
+                      max-width: none;
+                      width: fit-content;
+                      display: grid;
+                      grid-template-columns: 1fr 1fr;
+                    }
+                    .seccion_header:hover {
+                        box-shadow: inset 5px 0 0 0px #39A900,
+                        inset -5px 0 0 0px #39A900;
+                    }
+                    .seccion_header.pagina_actual {
+                        box-shadow:
+                            inset 5px 0 0 0px #39A900,
+                            inset -5px 0 0 0px #39A900;
+                        background-color: #f4ffee;
+                    }
+                  .seccion_header_cont:hover .pagina_actual {
+                        box-shadow: none;
+                        background-color: white;
+                    }
+                    .seccion_header.pagina_actual:hover {
+                        box-shadow: inset 5px 0 0 0px #39A900,
+                        inset -5px 0 0 0px #39A900;
+                        background-color: #f4ffee;
+                    }
+                  }
+
+                  @media (max-width: 401px) {
+                      .seccion_header_cont {
+                          width: 100%;
+                          display: grid;
+                          grid-template-columns: 1fr;
+                      }
+                  }
+                </style>
+                <script>
+                  const urlActual = window.location.pathname;
+                  const seccion_headers = document.querySelectorAll('.seccion_header');
+                    seccion_headers.forEach(seccion_header => {
+                      const href = new URL(seccion_header.href).pathname;
+                      if (urlActual === href) {
+                        seccion_header.classList.add('pagina_actual');
+                      }
+                    });
+                </script>   
                   <div class='widget-content'>
-                    <data:content/>
+                      <div class="seccion_header_cont">
+                        <b:loop values='data:links' var='link'>
+                          <a class="seccion_header" expr:href='data:link.href'>
+                            <data:link.title/>
+                          </a>
+                        </b:loop>
+                      </div>
+                    <b:include name='quickedit'/>
                   </div>
-                  <b:include name='quickedit'/>
                 </b:includable>
               </b:widget>
             </b:section>
+
+
+
+
             <div class='main-outer'>
               <Style>
                 /*🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
@@ -799,10 +855,7 @@ marcador tamaños principales
                   0 1px 3px rgba(0, 0, 0, 0.08);
                   margin: 60px 0px !important;
                   }
-              </Style>
-              <!-- corrects IE6 width calculation -->
-              
-                
+              </Style> 
                   <b:section class='blog-posts hfeed' id='main' name='Main' showaddelement='no'>
                     <b:widget id='Blog1' locked='true' title='Entradas del blog' type='Blog' version='1'>
                       <b:widget-settings>
@@ -849,14 +902,19 @@ marcador tamaños principales
 
                               .date-posts {
                                 animation: all ease 1s;
-                                display: grid;
-                                grid-template-columns: repeat(2, 1fr);
+                                display: flex;
+                                flex-wrap: wrap;
                                 row-gap: 50px;
                                 column-gap: 20px;
                                 justify-items: center;
                                 align-items: center;
                                 justify-content: center;
                                 margin-bottom: 80px;
+                              }
+                              @media (max-width: 1350px) {
+                                .date-posts{
+                                  grid-template-columns: 1fr;
+                                }
                               }
 
                               .blog-posts > .widget {
@@ -885,6 +943,7 @@ marcador tamaños principales
                                 justify-content: space-evenly;
                                 flex-direction: column;
                                 height: 100%;
+                                width: 410px;
                                 align-items: center;
                                 border-radius: 16px;
                                 box-shadow:
@@ -982,7 +1041,7 @@ marcador tamaños principales
 
                               <!-- * esta clase se agrega con un script  -->
                               .dos-columnas {
-                                width: fit-content;
+                                width: 100%;
                                 grid-column: span 2;
                               }
 
@@ -1012,7 +1071,7 @@ marcador tamaños principales
                               }
                               
 
-<!--                               window.addEventListener('DOMContentLoaded', function() {
+            <!--                               window.addEventListener('DOMContentLoaded', function() {
                                 console.log("eliminando parrafos")
                                 var parrafos = document.querySelectorAll('.post-body > p');
                                 parrafos.forEach(function(p) {
@@ -1313,6 +1372,9 @@ marcador tamaños principales
                         </b:if>
 
                         <!-- * marcador posts html  -->
+                        <!-- The value of attribute "onclick" associated with
+                        an element type "button" must not contain the '<'
+                        character. -->
 
                         <div class='post hentry uncustomized-post-template' itemprop='blogPost' itemscope='itemscope' itemtype='http://schema.org/BlogPosting'>
                           <b:if cond='data:post.firstImageUrl'>
@@ -1321,17 +1383,28 @@ marcador tamaños principales
                           <meta expr:content='data:blog.blogId' itemprop='blogId'/>
                           <meta expr:content='data:post.id' itemprop='postId'/>
                           <a expr:name='data:post.id'/>
-                          <b:if cond='data:post.title'>
+                            <b:if cond='data:post.title'>
+
+                              <!-- &amp primera vez que uso "expr" ¡es incrible y facil de usar! ❤️✨-->
+                              <!-- 
+                                aqui la uso para optener la variable "data:post.link"
+                                this = me da todo el elemento entero <button></button> 
+                                .getAttribute("linkPublicacion") = mi da lo que guarde "expr:linkPublicacion"
+                              -->
+                              <button class="compartirPost" expr:linkPublicacion="data:post.title" onclick='copiarTexto(this.getAttribute("linkPublicacion"))'>
+                                Copiar link
+                              </button>
+
                             <h2 class='post-title entry-title' itemprop='name'>
                               <b:if cond='data:post.link or (data:post.url and data:blog.url != data:post.url)'>
-                                <a expr:href='data:post.link ? data:post.link : data:post.url'>
-                                  <data:post.title/>
-                                </a>
-                                <b:else/>
+                              <a expr:href='data:post.link ? data:post.link : data:post.url'>
                                 <data:post.title/>
+                              </a>
+                              <b:else/>
+                              <data:post.title/>
                               </b:if>
                             </h2>
-                          </b:if>
+                            </b:if>
                           <!-- Then use the post body as the schema.org description, for good G+/FB snippeting. -->
                           <div class='post-body entry-content' expr:id='&quot;post-body-&quot; + data:post.id' expr:itemprop='(data:blog.metaDescription ? &quot;&quot; : &quot;description &quot;) + &quot;articleBody&quot;'>
                             <data:post.body/>
@@ -1823,7 +1896,7 @@ marcador tamaños principales
             </footer>
             <!-- content -->
           </div>
-        </div>
+        
         <div class='content-cap-bottom cap-bottom'>
           <div class='cap-left'/>
           <div class='cap-right'/>
@@ -2292,6 +2365,8 @@ marcador tamaños principales
           #BlogArchive1 {
             position: sticky;
             top: 100px;
+            background-color: #ffffff;
+            z-index: 2;
             <!-- efecto de desbanecido al escrolear 🌫️ -->
             mask-image: linear-gradient(
               to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 60px
@@ -2307,14 +2382,14 @@ marcador tamaños principales
           #BlogArchive1_ArchiveList {
             padding-bottom: 50px;
             overflow-y: scroll;
-            height: 60vh;
+            max-height: 60vh;
             overscroll-behavior: contain;
           }
           #BlogArchive1_ArchiveList::-webkit-scrollbar {
             display: none;
           }
-          <!--? cuando se cierra un elemento -->
-          
+
+          <!--? cuando se cierra o abre un elemento 👇 -->
           #ArchiveList .collapsed >ul{
             display: block;
             height: 0px;
@@ -2494,34 +2569,46 @@ marcador tamaños principales
       🔽🔽🔽🔽🔽🔽🔽🔽🔽🔽🔽🔽🔽🔽🔽🔽
   -->
 
-  <scri type='text/javascript'>
+  <script type='text/javascript'>
+
+
+  <!-- Elimina la clase 'loading' después de 10ms -->
+  window.setTimeout(function () {
+    document.body.className = document.body.className.replace('loading', '');
+  }, 10);
+
+  <!--? Función para copiar texto al portapapeles -->
+  async function copiarTexto(texto) {
+    try {
+      await navigator.clipboard.writeText(texto);
+      alert("Texto copiado: " + texto);
+    } catch (error) {
+      console.error("Error al copiar el texto: ", error);
+      alert("No se pudo copiar el texto. Inténtalo de nuevo.");
+    }
+  }
 
   <!-- eleva la galeria de imagenes -->
-  <!-- asi el buscador no las atrabieza -->
-  <!-- con su "z-index" su perior 👈 -->
+  <!-- asi el menu no las atrabieza -->
+  <!-- con su "z-index" superior 👇 -->
 
-  window.setTimeout(function() {
-      document.body.className = document.body.className.replace(&#39;loading&#39;, &#39;&#39;);
-    }, 10);
-    <!-- eleva la visualizacion de las imgenes -->
   let elevacionfinalizada = false;
-
   if (!elevacionfinalizada) {
     ajustarColumnas();
     const observer = new MutationObserver(() => {
+      console.log("Mutation")
       const lastElement = document.body.lastElementChild;
-      if (lastElement.classList.value == "CSS_LIGHTBOX") {
-            lastElement.style.zIndex = "10";
-            elevacionfinalizada = true;
+      if (lastElement ? lastElement.classList.contains("CSS_LIGHTBOX") : false) {
+        lastElement.style.zIndex = "10";
+        elevacionfinalizada = true;
+        observer.disconnect(); // Detiene el observer después de hacer el cambio
       }
     });
-        observer.observe(document.body, {
-        childList: true,
-        subtree: false
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: false
     });
   }
-
-
-
-  </scri>
+  </script>
 </html>
