@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-
-
 <!-- 
 ¡Hola! esta es una modificacion creada apartir del tema:
 "Tema > pinture windows > shade"
@@ -45,7 +43,18 @@ ya es muy diferente al original
   xmlns:data='http://www.google.com/2005/gml/data'
   xmlns:expr='http://www.google.com/2005/gml/expr'>
   <head>
-    <meta expr:content='data:blog.isMobile         ? &quot;width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0&quot;         : &quot;width=1100&quot;' name='viewport'/>
+
+<meta expr:content='&quot;
+width=device-width,
+initial-scale=0.8,
+user-scalable=yes&quot;'
+name='viewport'/>
+
+<!-- <meta 
+  name='viewport' 
+  expr:content='&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot;'
+> -->
+
     <b:include data='blog' name='all-head-content'/>
     <title>
       <data:blog.pageTitle/>
@@ -64,7 +73,7 @@ URL:      www.blogger.com
    <Variableb name="keycolor" description="Main Color" type="color" default="#1a222a" value="#ffffff"/>
    <Variable name="body.background" description="Body Background" type="background" color="$(body.background.color)" default="#111111 url(//themes.googleusercontent.com/image?id=1OACCYOE0-eoTRTfsBuX1NMN9nz599ufI1Jh0CggPFA_sK80AGkIr8pLtYRpNUKPmwtEa) repeat-x fixed top center" value="#ffffff url(none) no-repeat fixed top center /* Credit: dino4 (http://www.istockphoto.com/portfolio/dino4?platform=blogger) */"/>
 
-<!-- &amp aqui abajo tienes que poner la funte global que tendra la pagina 👇-->
+<!-- &amp; aqui abajo tienes que poner la funte global que tendra la pagina 👇-->
    <Group description="Page Text" selector="body">
      <Variable name="body.font" description="Font" type="font" default="normal normal 17px calibri, Tahoma, Helvetica, FreeSans, sans-serif" value="normal normal 16px PT Sans Caption"/>
      <Variable name="body.text.color" description="Text Color" type="color" default="#333333" value="#7d7d7d"/>
@@ -184,6 +193,7 @@ html body .region-inner {
   min-width: 0;
   max-width: 100%;
   width: auto;
+
 }
 a{
   -webkit-tap-highlight-color: transparent;
@@ -221,7 +231,6 @@ a:hover {
 
 
 
-
 .content-outer {
   background: $(content.background);
 
@@ -242,134 +251,6 @@ a:hover {
   padding: $(content.padding);
 }
 
-/* Tabs
------------------------------------------------ */
-.tabs-inner {
-  margin: .5em $(tabs.margin.sides) $(tabs.margin.bottom);
-  padding: 0;
-}
-
-.tabs-inner .section {
-  margin: 0;
-}
-
-.tabs-inner .widget ul {
-  padding: 0;
-
-  background: $(tabs.background.color) $(tabs.background.gradient) repeat scroll bottom;
-
-  -moz-border-radius: $(tabs.border.radius);
-  -webkit-border-radius: $(tabs.border.radius);
-  -goog-ms-border-radius: $(tabs.border.radius);
-  border-radius: $(tabs.border.radius);
-}
-
-.tabs-inner .widget li {
-  border: none;
-}
-
-.tabs-inner .widget li a {
-  display: inline-block;
-
-  padding: .5em 1em;
-  margin-$endSide: $(tabs.spacing);
-
-  color: $(tabs.text.color);
-  font: $(tabs.font);
-  font-family: 'Work Sans', arial;
-
-  -moz-border-radius: $(tab.border.radius) $(tab.border.radius) 0 0;
-  -webkit-border-top-left-radius: $(tab.border.radius);
-  -webkit-border-top-right-radius: $(tab.border.radius);
-  -goog-ms-border-radius: $(tab.border.radius) $(tab.border.radius) 0 0;
-  border-radius: $(tab.border.radius) $(tab.border.radius) 0 0;
-
-  background: $(tab.background);
-
-  border-$endSide: 1px solid $(tabs.separator.color);
-}
-
-.tabs-inner .widget li:first-child a {
-  padding-$startSide: 1.25em;
-
-  -moz-border-radius-top$startSide: $(tab.first.border.radius);
-  -moz-border-radius-bottom$startSide: $(tabs.border.radius);
-  -webkit-border-top-$startSide-radius: $(tab.first.border.radius);
-  -webkit-border-bottom-$startSide-radius: $(tabs.border.radius);
-  -goog-ms-border-top-$startSide-radius: $(tab.first.border.radius);
-  -goog-ms-border-bottom-$startSide-radius: $(tabs.border.radius);
-  border-top-$startSide-radius: $(tab.first.border.radius);
-  border-bottom-$startSide-radius: $(tabs.border.radius);
-}
-
-.tabs-inner .widget li.selected a,
-.tabs-inner .widget li a:hover {
-  position: relative;
-  z-index: 1;
-
-  background: $(tabs.selected.background.color) $(tab.selected.background.gradient) repeat scroll bottom;
-  color: $(tabs.selected.text.color);
-
-  -moz-box-shadow: 0 0 $(region.shadow.spread) rgba(0, 0, 0, .15);
-  -webkit-box-shadow: 0 0 $(region.shadow.spread) rgba(0, 0, 0, .15);
-  -goog-ms-box-shadow: 0 0 $(region.shadow.spread) rgba(0, 0, 0, .15);
-  box-shadow: 0 0 $(region.shadow.spread) rgba(0, 0, 0, .15);
-}
-
-/* Headings
------------------------------------------------ */
-
-
-
-
-
-/*
-🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-comentarios de los posts
-*/
-
-
-#comments .comment-author {
-  padding-top: 1.5em;
-
-  border-top: dashed 1px #ccc;
-  border-top: dashed 1px rgba(128, 128, 128, .5);
-
-  background-position: 0 1.5em;
-}
-
-#comments .comment-author:first-child {
-  padding-top: 0;
-
-  border-top: none;
-}
-
-.avatar-image-container {
-  margin: .2em 0 0;
-}
-.comments h4 {
-  margin: 1em 0 0;
-  font: $(post.title.font);
-  font-family: 'Work Sans', arial;
-}
-
-/* Comments
------------------------------------------------ */
-
-
-.comments .comments-content .icon.blog-author {
-  background-repeat: no-repeat;
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEgAACxIB0t1+/AAAAAd0SU1FB9sLFwMeCjjhcOMAAAD+SURBVDjLtZSvTgNBEIe/WRRnm3U8RC1neQdsm1zSBIU9VVF1FkUguQQsD9ITmD7ECZIJSE4OZo9stoVjC/zc7ky+zH9hXwVwDpTAWWLrgS3QAe8AZgaAJI5zYAmc8r0G4AHYHQKVwII8PZrZFsBFkeRCABYiMh9BRUhnSkPTNCtVXYXURi1FpBDgArj8QU1eVXUzfnjv7yP7kwu1mYrkWlU33vs1QNu2qU8pwN0UpKoqokjWwCztrMuBhEhmh8bD5UDqur75asbcX0BGUB9/HAMB+r32hznJgXy2v0sGLBcyAJ1EK3LFcbo1s91JeLwAbwGYu7TP/3ZGfnXYPgAVNngtqatUNgAAAABJRU5ErkJggg==);
-}
-
-.comments .comments-content .loadmore a {
-  border-top: 1px solid $(link.hover.color);
-  border-bottom: 1px solid $(link.hover.color);
-}
-
-.comments .continue {
-  border-top: 2px solid $(link.hover.color);
-}
 
 /* Widgets
 ----------------------------------------------- */
@@ -436,12 +317,12 @@ comentarios de los posts
 }
 ]]>
     </b:skin>
-    <!--
-🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-marcador tamaños principales
-🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
- -->
-    <b:template-skin>
+      <!--
+                            ^ ===============================
+                            ^ 🟨 marcador Paginas y rutas 🟨
+                            ^ ===============================
+      -->
+      <b:template-skin>
       <b:variable default='960px' name='content.width' type='length' value='1200px'/>
       <b:variable default='0' name='main.column.left.width' type='length' value='0px'/>
       <b:variable default='310px' name='main.column.right.width' type='length' value='260px'/>
@@ -453,7 +334,6 @@ marcador tamaños principales
       .content-outer, .content-fauxcolumn-outer, .region-inner {
         width: 100%;
         max-width: $(content.width);
-        _width: $(content.width);
       }
 
       
@@ -536,50 +416,16 @@ marcador tamaños principales
         </b:if>
       </div>
     </b:if>
-    <div class='body-fauxcolumns'>
-      <div class='fauxcolumn-outer body-fauxcolumn-outer'>
-        <div class='cap-top'>
-          <div class='cap-left'/>
-          <div class='cap-right'/>
-        </div>
-        <div class='fauxborder-left'>
-          <div class='fauxborder-right'/>
-          <div class='fauxcolumn-inner'>
-          </div>
-        </div>
-        <div class='cap-bottom'>
-          <div class='cap-left'/>
-          <div class='cap-right'/>
-        </div>
-      </div>
-    </div>
     <div class='content'>
-      <div class='content-fauxcolumns'>
-        <div class='fauxcolumn-outer content-fauxcolumn-outer'>
-          <div class='cap-top'>
-            <div class='cap-left'/>
-            <div class='cap-right'/>
-          </div>
-          <div class='fauxborder-left'>
-            <div class='fauxborder-right'/>
-            <div class='fauxcolumn-inner'>
-            </div>
-          </div>
-          <div class='cap-bottom'>
-            <div class='cap-left'/>
-            <div class='cap-right'/>
-          </div>
-        </div>
-      </div>
       <div class='content-outer'>
-      
           <div class='content-inner'>
             <style>
               <!--
-              🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-               &											marcador Header
-              🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+              & ===============================
+              & 🍎      marcador Header     🍎
+              & ===============================
               -->
+              
 
               .Header .titlewrapper,
               .Header .descriptionwrapper {
@@ -673,12 +519,11 @@ marcador tamaños principales
             </b:section>
 
 
-
             <!--
-            ?_________________________________________________________
-            ?____________🔽 marcador Paginas y rutas 🔽______________
+            ? ===============================
+            ? 🔽 marcador Paginas y rutas 🔽
+            ? ===============================
             -->
-            
             <b:section class='tabs' id='crosscol' maxwidgets='1' name='Cross-Column' showaddelement='yes'>
               <b:widget id='PageList3' locked='false' title='Menu principal 🏷️ (no agregar el link completo, solo el final)' type='PageList'>
                 <b:widget-settings>
@@ -714,114 +559,127 @@ marcador tamaños principales
                   <b:widget-setting name='homeTitle'>Página Principal</b:widget-setting>
                 </b:widget-settings>
                 <b:includable id='main'>
-                <style>
-                  .seccion_header_cont {
-                    box-sizing: border-box;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    position: fixed;
-                    left: 0px;
-                    top: 0px;
-                    z-index: 2;
-                    width: 100%;
-                    background-color: #ffffff;
-                    user-select: none;
-                    font-size: 1.2em;
-                    padding: 0px 20px;
-                    overflow-x: auto;
-                  }
 
-                  /* Barra de desplazamiento */
-                  .tareas-contenedor::-webkit-scrollbar{
-                    width: 8px;
-                    background-color: #2546b8;
-                    border-radius: 20px;
-                  }
-                  .tareas-contenedor::-webkit-scrollbar:window-inactive {
-                    display: none;
-                  }
-                  .tareas-contenedor::-webkit-scrollbar-thumb  {
-                    background-color: #09C;
-                    border-radius: 6px;
-                  }
-
-
-                  .seccion_header {
-                    min-width: fit-content;
-                    text-align: center;
-                    text-decoration: none !important;
-                    color: #39A900 !important;
-                    cursor: default;
-                    font-weight: bold;
-                    background-color: #ffffff;
-                    padding: 10px 25px;
-                    transition: all 0.2s;
-                  }
-                  .seccion_header:hover {
-                    background: linear-gradient(
-                    0deg, #f4ffee,#f4ffee
-                    );
-                    box-shadow: inset 0 -3px 0 0 #39A900;
-                  }
-                  .seccion_header:active {
-                      transform: scale(0.95);
-                  }
-                  .seccion_header.pagina_actual {
-                    box-shadow: inset 0 -3px 0px #39A900;
-                  }
-                  .seccion_header_cont:hover .pagina_actual {
-                    box-shadow: none;
-                  }
-                  .seccion_header.pagina_actual:hover {
-                    box-shadow: inset 0 -3px 0px #39A900;
-                  }
-                  @media (max-width: 620px) {
+                  <style>
                     .seccion_header_cont {
-                      max-width: none;
-                      width: fit-content;
-                      display: grid;
-                      grid-template-columns: 1fr 1fr;
+                      box-sizing: border-box;
+                      display: flex;
+                      align-items: center;
+
+                      position: fixed;
+                      left: 0px;
+                      top: 0px;
+                      z-index: 2;
+                      width: 100%;
+                      background-color: #ffffff;
+                      user-select: none;
+                      font-size: 1.2em;
+                      padding: 0px 20px;
+                      overflow-x: auto;
+                    }
+
+                    <!-- ~ Barra de scroll 👇 ~ -->
+                    .seccion_header_cont::-webkit-scrollbar {
+                      width: 5px;
+                      height: 5px;
+                    }
+
+                    .seccion_header_cont::-webkit-scrollbar{
+                      width: 2px;
+                      background:rgba(241, 241, 241, 0); /* Color de fondo de la pista */
+                      border-radius: 10px;
+                    }
+                    .seccion_header_cont::-webkit-scrollbar-thumb  {
+                      background: rgba(85, 85, 100, 0.18);
+                      border-radius: 10px;
+                      transition: background 0.3s;
+                    }
+
+
+                    .seccion_header_cont::-webkit-scrollbar-thumb:hover {
+                      background:rgba(85, 85, 100, 0.24)
+                    }
+
+
+                    .seccion_header {
+                      min-width: fit-content;
+                      text-align: center;
+                      text-decoration: none !important;
+                      color: #39A900 !important;
+                      cursor: default;
+                      font-weight: bold;
+                      background-color: #ffffff;
+                      padding: 10px 25px;
+                      transition: all 0.2s;
                     }
                     .seccion_header:hover {
-                        box-shadow: inset 5px 0 0 0px #39A900,
-                        inset -5px 0 0 0px #39A900;
+                      background: linear-gradient(
+                      0deg, #f4ffee,#f4ffee
+                      );
+                      box-shadow: inset 0 -3px 0 0 #39A900;
+                    }
+                    .seccion_header:active {
+                        transform: scale(0.95);
                     }
                     .seccion_header.pagina_actual {
-                        box-shadow:
-                            inset 5px 0 0 0px #39A900,
-                            inset -5px 0 0 0px #39A900;
-                        background-color: #f4ffee;
+                      box-shadow: inset 0 -3px 0px #39A900;
                     }
-                  .seccion_header_cont:hover .pagina_actual {
-                        box-shadow: none;
-                        background-color: white;
+                    .seccion_header_cont:hover .pagina_actual {
+                      box-shadow: none;
                     }
                     .seccion_header.pagina_actual:hover {
-                        box-shadow: inset 5px 0 0 0px #39A900,
-                        inset -5px 0 0 0px #39A900;
-                        background-color: #f4ffee;
+                      box-shadow: inset 0 -3px 0px #39A900;
                     }
-                  }
 
-                  @media (max-width: 401px) {
+
+                    <!-- ~ Pantallas de 620px ~ -->
+                    @media (max-width: 620px) {
                       .seccion_header_cont {
-                          width: 100%;
-                          display: grid;
-                          grid-template-columns: 1fr;
+                        max-width: none;
+                        <!-- display: grid; -->
+                        grid-template-columns: 1fr 1fr;
                       }
-                  }
-                </style>
-                <script>
-                  const urlActual = window.location.pathname;
-                  const seccion_headers = document.querySelectorAll('.seccion_header');
-                    seccion_headers.forEach(seccion_header => {
-                      const href = new URL(seccion_header.href).pathname;
-                      if (urlActual === href) {
-                        seccion_header.classList.add('pagina_actual');
+                      .seccion_header:hover {
+                          box-shadow: inset 5px 0 0 0px #39A900,
+                          inset -5px 0 0 0px #39A900;
                       }
-                    });
-                </script>   
+                      .seccion_header.pagina_actual {
+                          box-shadow:
+                              inset 5px 0 0 0px #39A900,
+                              inset -5px 0 0 0px #39A900;
+                          background-color: #f4ffee;
+                      }
+                    .seccion_header_cont:hover .pagina_actual {
+                          box-shadow: none;
+                          background-color: white;
+                      }
+                      .seccion_header.pagina_actual:hover {
+                          box-shadow: inset 5px 0 0 0px #39A900,
+                          inset -5px 0 0 0px #39A900;
+                          background-color: #f4ffee;
+                      }
+                    }
+
+                    <!-- ~ Pantallas de 401px ~ -->
+                    @media (max-width: 401px) {
+                        .seccion_header_cont {
+                            width: 100%;
+                            grid-template-columns: 1fr;
+                            justify-items: center;
+                        }
+                    }
+                  </style>
+                  <script>
+                    const urlActual = window.location.pathname;
+                    const seccion_headers = document.querySelectorAll('.seccion_header');
+                      seccion_headers.forEach(seccion_header => {
+                        const href = new URL(seccion_header.href).pathname;
+                        if (urlActual === href) {
+                          seccion_header.classList.add('pagina_actual');
+                        }
+                      });
+                  </script> 
+
                   <div class='widget-content'>
                       <div class="seccion_header_cont">
                         <b:loop values='data:links' var='link'>
@@ -841,9 +699,11 @@ marcador tamaños principales
 
             <div class='main-outer'>
               <Style>
-                /*🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-                    Marcador Main principal
-                  🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨*/
+                <!--
+                TODO ===============================
+                TODO 🪵 marcador Main principal  🪵
+                TODO ===============================
+                -->
                 .main-outer {
                   display: grid;
                   grid-template-columns: 1fr 195px;
@@ -887,11 +747,10 @@ marcador tamaños principales
                       </b:widget-settings>
                       <b:includable id='main' var='top'>
                         <b:if cond='!data:mobile'>
-                          
-                             <!--
-                            🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-                                        marcador posts titulos / imgenes / contenedores
-                            🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+                            <!--
+                            & ===============================
+                            & 🍎      marcador posts     🍎
+                            & ===============================
                             -->
                             <style>
                               
@@ -907,7 +766,7 @@ marcador tamaños principales
                                 row-gap: 50px;
                                 column-gap: 20px;
                                 justify-items: center;
-                                align-items: center;
+                                align-items: stretch;
                                 justify-content: center;
                                 margin-bottom: 80px;
                               }
@@ -942,7 +801,7 @@ marcador tamaños principales
                                 display: flex;
                                 justify-content: space-evenly;
                                 flex-direction: column;
-                                height: 100%;
+                                height: auto;
                                 width: 410px;
                                 align-items: center;
                                 border-radius: 16px;
@@ -992,25 +851,9 @@ marcador tamaños principales
                                 margin:0px;
                               }
 
-                              
-
-                              .post-body p:empty {
-                                display: none;
-                              }
-
-                              .separator{
-                                display: flex;
-                                margin: 0px !important;
-                                width: fit-content;
-                                
-                              }
-                              .separator a{
-                                margin: 0px !important;
-                              }
-
-                              .separator img {
+                              .post img {
+                                aspect-ratio: 4/5;
                                 width: 100%;
-                                height: fit-content;
                                 max-height: 500px;
                                 object-fit: contain;
                                 object-position: center;
@@ -1022,7 +865,8 @@ marcador tamaños principales
                                 animation-timeline: --postscroll;
                                 animation-name: aparecer;
                                 animation-fill-mode: both;
-                                animation-range: entry 0% cover 40%}
+                                animation-range: entry 0% cover 40%;
+                                }
 
                               @keyframes aparecer {
                                 0% {scale: 0.6;}
@@ -1037,6 +881,22 @@ marcador tamaños principales
                               .post-footer-line{
                                     display: flex;
                                     flex-direction: row-reverse;
+                              }
+
+                              
+
+                              .post-body p:empty {
+                                display: none;
+                              }
+
+                              .separator{
+                                display: flex;
+                                margin: 0px !important;
+                                width: fit-content;
+                                
+                              }
+                              .separator a{
+                                margin: 0px !important;
                               }
 
                               <!-- * esta clase se agrega con un script  -->
@@ -1371,7 +1231,11 @@ marcador tamaños principales
                           </h2>
                         </b:if>
 
-                        <!-- * marcador posts html  -->
+                        <!--
+                        * ===============================
+                        * 🍏   marcador posts html    🍏
+                        * ===============================
+                        -->
                         <!-- The value of attribute "onclick" associated with
                         an element type "button" must not contain the '<'
                         character. -->
@@ -1385,7 +1249,7 @@ marcador tamaños principales
                           <a expr:name='data:post.id'/>
                             <b:if cond='data:post.title'>
 
-                              <!-- &amp primera vez que uso "expr" ¡es incrible y facil de usar! ❤️✨-->
+                              <!-- &amp; primera vez que uso "expr" ¡es incrible y facil de usar! ❤️✨-->
                               <!-- 
                                 aqui la uso para optener la variable "data:post.link"
                                 this = me da todo el elemento entero <button></button> 
@@ -1937,9 +1801,10 @@ marcador tamaños principales
       </macro:if>
     </macro:if>
   </macro:includable>
-  <!-- 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-    ~                         Marcador, menu izquierdo 
-      🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+  <!--
+  ~ ===============================
+  ~ 🍇  marcador menu izquierdo 🍇
+  ~ ===============================
   -->
 
   <style>
@@ -2021,11 +1886,13 @@ marcador tamaños principales
             <form class='gsc-search-box' expr:action='data:blog.searchUrl'>
               <b:attr cond='not data:view.isPreview' name='target' value='_top'/>
               <table cellpadding='0' cellspacing='0' class='gsc-search-box'>
-                <!-- 
-                    🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-                                  									marcador buscador
-                    🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
-                    -->
+
+                <!--
+                ~ ===============================
+                ~ 🔍    marcador buscador     🔍
+                ~ ===============================
+                -->
+                
                 <tbody>
                   <tr>
                     <tr class='contenedorbuscador'>
@@ -2408,18 +2275,26 @@ marcador tamaños principales
             }
           }
           .hierarchy{
-            grid-column: span 3;
+            grid-column: span 2;
           }
           
-
-          
-
           .archivedate {
             text-indent: 0;
             display: grid;
             column-gap: 4px;
             align-items: center;
-            grid-template-columns: auto auto 1fr
+            grid-template-columns: auto auto 1fr;
+          }
+
+
+
+          .archivedate > .informacion {
+            grid-column: span 2;
+            display: flex;
+          }
+
+          .archivedate a{
+            width: fit-content ;
           }
 
           .BlogArchive #ArchiveList ul li{
@@ -2496,8 +2371,9 @@ marcador tamaños principales
     <b:include cond='data:style == &quot;FLAT&quot;' data='data' name='flat'/>
     <b:include cond='data:style == &quot;MENU&quot;' data='data' name='menu'/>
   </div>
+
   </div>
-  <b:include name='quickedit'/>
+    <b:include name='quickedit'/>
   </div>
 </b:includable>
     <b:includable id='flat' var='data'>
@@ -2509,21 +2385,27 @@ marcador tamaños principales
     </b:loop>
   </ul>
 </b:includable>
-    <b:includable id='interval' var='intervalData'>
-    <ul class='hierarchy'>
-  <b:loop values='data:intervalData' var='interval'>
+
+
+<b:includable id='interval' var='intervalData'>
+  <ul class='hierarchy'>
+    <b:loop values='data:intervalData' var='interval'>
       <li expr:class='&quot;archivedate &quot; + data:interval.expclass'>
         <b:include cond='data:interval.toggleId' data='interval' name='toggle'/>
-        <a class='post-count-link' expr:href='data:interval.url'>
-          <data:interval.name/>
-        </a>
-        <span class='post-count' dir='ltr'>(<data:interval.post-count/>)</span>
+        <div class="informacion">
+          <a class='post-count-link' expr:href='data:interval.url'>
+            <data:interval.name/>
+          </a>
+          <span class='post-count' dir='ltr'>(<data:interval.post-count/>)</span>
+        </div>
         <b:include cond='data:interval.data' data='interval.data' name='interval'/>
         <b:include cond='data:interval.posts' data='interval.posts' name='posts'/>
       </li>
-  </b:loop>
+    </b:loop>
   </ul>
 </b:includable>
+
+
     <b:includable id='menu' var='data'>
   <select expr:id='data:widget.instanceId + &quot;_ArchiveMenu&quot;'>
     <option value=''><data:title/></option>
@@ -2587,6 +2469,7 @@ marcador tamaños principales
       alert("No se pudo copiar el texto. Inténtalo de nuevo.");
     }
   }
+ 
 
   <!-- eleva la galeria de imagenes -->
   <!-- asi el menu no las atrabieza -->
