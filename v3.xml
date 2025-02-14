@@ -318,9 +318,9 @@ a:hover {
 ]]>
     </b:skin>
       <!--
-                            ^ ===============================
-                            ^ 🟨 marcador Paginas y rutas 🟨
-                            ^ ===============================
+      ? ===============================
+      ? 🔽    marcador Tamaños      🔽
+      ? ===============================
       -->
       <b:template-skin>
       <b:variable default='960px' name='content.width' type='length' value='1200px'/>
@@ -422,7 +422,7 @@ a:hover {
             <style>
               <!--
               & ===============================
-              & 🍎      marcador Header     🍎
+              & 🎀      marcador Header     🎀
               & ===============================
               -->
               
@@ -433,10 +433,8 @@ a:hover {
               } 
 
               .Header h1 {
-                font-family: 'Work Sans', arial;
                 text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
               	margin: 0px 20px
-
               }
 
               .Header h1 a {
@@ -519,10 +517,11 @@ a:hover {
             </b:section>
 
 
+            
             <!--
-            ? ===============================
-            ? 🔽 marcador Paginas y rutas 🔽
-            ? ===============================
+            ^ ===============================
+            ^ 🏷️ marcador Paginas y rutas 🏷️
+            ^ ===============================
             -->
             <b:section class='tabs' id='crosscol' maxwidgets='1' name='Cross-Column' showaddelement='yes'>
               <b:widget id='PageList3' locked='false' title='Menu principal 🏷️ (no agregar el link completo, solo el final)' type='PageList'>
@@ -694,16 +693,14 @@ a:hover {
               </b:widget>
             </b:section>
 
-
-
+            <!--
+            TODO ===============================
+            TODO 🪵 marcador Main principal  🪵
+            TODO ===============================
+            -->
 
             <div class='main-outer'>
               <Style>
-                <!--
-                TODO ===============================
-                TODO 🪵 marcador Main principal  🪵
-                TODO ===============================
-                -->
                 .main-outer {
                   display: grid;
                   grid-template-columns: 1fr 195px;
@@ -719,7 +716,7 @@ a:hover {
                   <b:section class='blog-posts hfeed' id='main' name='Main' showaddelement='no'>
                     <b:widget id='Blog1' locked='true' title='Entradas del blog' type='Blog' version='1'>
                       <b:widget-settings>
-                        <b:widget-setting name='commentLabel'>comments</b:widget-setting>
+                        <b:widget-setting name='commentLabel'> CM</b:widget-setting>
                         <b:widget-setting name='showShareButtons'>false</b:widget-setting>
                         <b:widget-setting name='authorLabel'>publicado por</b:widget-setting>
                         <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
@@ -733,7 +730,7 @@ a:hover {
                         <b:widget-setting name='style.bordercolor'>#ffffff</b:widget-setting>
                         <b:widget-setting name='showDateHeader'>true</b:widget-setting>
                         <b:widget-setting name='style.textcolor'>#ffffff</b:widget-setting>
-                        <b:widget-setting name='showCommentLink'>false</b:widget-setting>
+                        <b:widget-setting name='showCommentLink'>true</b:widget-setting>
                         <b:widget-setting name='style.urlcolor'>#ffffff</b:widget-setting>
                         <b:widget-setting name='postLocationLabel'>Ubicacion:</b:widget-setting>
                         <b:widget-setting name='showAuthor'>false</b:widget-setting>
@@ -802,7 +799,9 @@ a:hover {
                                 justify-content: space-evenly;
                                 flex-direction: column;
                                 height: auto;
-                                width: 410px;
+                                width: 100%;
+                                max-width: 420px; 
+                                min-width: 270;
                                 align-items: center;
                                 border-radius: 16px;
                                 box-shadow:
@@ -854,6 +853,7 @@ a:hover {
                               .post img {
                                 aspect-ratio: 4/5;
                                 width: 100%;
+                                height: auto;
                                 max-height: 500px;
                                 object-fit: contain;
                                 object-position: center;
@@ -883,8 +883,6 @@ a:hover {
                                     flex-direction: row-reverse;
                               }
 
-                              
-
                               .post-body p:empty {
                                 display: none;
                               }
@@ -902,12 +900,9 @@ a:hover {
                               <!-- * esta clase se agrega con un script  -->
                               .dos-columnas {
                                 width: 100%;
+                                max-width: 100%;
                                 grid-column: span 2;
                               }
-
-                              .dos-columnas .separator{
-                              }
-
                               .dos-columnas .post-footer{
                                 justify-content: flex-end;
                               }
@@ -916,8 +911,6 @@ a:hover {
                                 flex-wrap: wrap;
                                 gap: 10px
                               }
-
-                              .dos-columnas
                             </style>
                             <script type='text/javascript'>
                               function ajustarColumnas() {
@@ -984,67 +977,13 @@ a:hover {
                           <b:include name='mobile-main'/>
                         </b:if>
                       </b:includable>
-                      <b:includable id='backlinkDeleteIcon' var='backlink'/>
-                      <b:includable id='backlinks' var='post'/>
-                      <b:includable id='comment-form' var='post'>
-                        <div class='comment-form'>
-                          <a name='comment-form'/>
-                          <b:if cond='data:mobile'>
-                            <h4 id='comment-post-message'>
-                              <a expr:id='data:widget.instanceId + &quot;_comment-editor-toggle-link&quot;' href='javascript:void(0)'>
-                                <data:postCommentMsg/>
-                              </a>
-                            </h4>
-                            <p>
-                              <data:blogCommentMessage/>
-                            </p>
-                            <data:blogTeamBlogMessage/>
-                            <a expr:href='data:post.commentFormIframeSrc' id='comment-editor-src'/>
-                            <iframe allowtransparency='true' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight' frameborder='0' id='comment-editor' name='comment-editor' src='' style='display: none' width='100%'/>
-                            <b:else/>
-                            <h4 id='comment-post-message'>
-                              <data:postCommentMsg/>
-                            </h4>
-                            <p>
-                              <data:blogCommentMessage/>
-                            </p>
-                            <data:blogTeamBlogMessage/>
-                            <a expr:href='data:post.commentFormIframeSrc' id='comment-editor-src'/>
-                            <iframe allowtransparency='true' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
-                          </b:if>
-                          <data:post.cmtfpIframe/>
-                          <script type='text/javascript'>
-                            BLOG_CMT_createIframe(&#39;
-                            <data:post.appRpcRelayPath/>
-                          &#39;);
-                          </script>
-                        </div>
-                      </b:includable>
-                      <b:includable id='commentDeleteIcon' var='comment'>
-                        <span expr:class='&quot;item-control &quot; + data:comment.adminClass'>
-                          <b:if cond='data:showCmtPopup'>
-                            <div class='goog-toggle-button'>
-                              <div class='goog-inline-block comment-action-icon'/>
-                                    </div>
-                            <b:else/>
-                            <a class='comment-delete' expr:href='data:comment.deleteUrl' expr:title='data:top.deleteCommentMsg'>
-                              <img src='https://resources.blogblog.com/img/icon_delete13.gif'/>
-                            </a>
-                          </b:if>
-                        </span>
-                      </b:includable>
-                      <b:includable id='comment_count_picker' var='post'>
-                        <a class='comment-link' expr:href='data:post.addCommentUrl' expr:onclick='data:post.addCommentOnclick'>
-                          <data:post.commentLabelFull/>:
-                        </a>
-                      </b:includable>
-                      <b:includable id='comment_picker' var='post'>
-                        <b:if cond='data:post.showThreadedComments'>
-                          <b:include data='post' name='threaded_comments'/>
-                          <b:else/>
-                          <b:include data='post' name='comments'/>
-                        </b:if>
-                      </b:includable>
+
+                      <!--
+                      ^ ===============================
+                      ^ ✏️   marcador Comentarios   ✏️
+                      ^ ===============================
+                      -->
+                      
                       <b:includable id='comments' var='post'>
                         <div class='comments' id='comments'>
                           <a name='comments'/>
@@ -1153,6 +1092,7 @@ a:hover {
                               </b:if>
                             </p>
                           </b:if>
+
                           <b:if cond='data:showCmtPopup'>
                             <div id='comment-popup'>
                               <iframe allowtransparency='true' frameborder='0' id='comment-actions' name='comment-actions' scrolling='no'>
@@ -1161,6 +1101,9 @@ a:hover {
                           </b:if>
                         </div>
                       </b:includable>
+
+
+
                       <b:includable id='feedLinks'>
                         <b:if cond='data:blog.pageType != &quot;item&quot;'>
                           <!-- Blog feed links -->
@@ -1888,9 +1831,9 @@ a:hover {
               <table cellpadding='0' cellspacing='0' class='gsc-search-box'>
 
                 <!--
-                ~ ===============================
-                ~ 🔍    marcador buscador     🔍
-                ~ ===============================
+                ? ===============================
+                ? 🔍    marcador buscador     🔍
+                ? ===============================
                 -->
                 
                 <tbody>
@@ -2314,6 +2257,9 @@ a:hover {
           .toggle{
             display: block;
             width: fit-content;
+            background-color:rgba(0, 47, 77, 0);
+            color: #ffffff;
+            height: 100%;
           }
 
           .archivedate .post-count{
@@ -2328,7 +2274,7 @@ a:hover {
             display: block;
             background: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwzm0taNcMkyRXjYWxqZ2mHAaFGb_aP4oLjpiZsRSAvl0_lWQ20WHsIuwMXUVjglVlawPcw5N9cyChgc64_5asJYoO9A9DRPzIovNx4FpbBJ0mh5S8PoUr9My0r7yKWGQQxkIDbtLCfo9TDewBc9bATiMVWPO9MFAfPT8qaQiogeLPmJZ8xp-fVOe6ilU/s96/arrow_right.png)
             no-repeat center center;
-            background-size: 140%; 
+            background-size: 160%; 
 
             width: 20px;
             height: min-content;
@@ -2337,7 +2283,7 @@ a:hover {
             display: block;
             background: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhptrDu5oYzBhfVlAMVpG0udZKu1oN4YDt9Xrrnf-ikPfxhGNKwgClvH5ORSCj270_cR-vZW7PNT4iaDsaF6iDR_k-PIQgdAdtSfZCOugShsK2w29iBFDhmXr3-bgWGUlFvjFvL9rNaXU9OWNuL7V9ETSmBR7PV-fuAh7SQSMMC_Dll8Ix7Q-MxBtbcyk8/s96/arrow_drop_down.png)
             no-repeat center center;
-            background-size: 140%; 
+            background-size: 160%; 
           }
 
           #ArchiveList .zippy {
