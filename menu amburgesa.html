@@ -6,88 +6,81 @@
     <title>Menú Deslizable</title>
 </head>
 <body>
-    <div class="menuLateral" id="menuLateral">
-        <ul>
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Servicios</a></li>
-            <li><a href="#">Contacto</a></li>
-        </ul>
-    </div>
-    <div class="content">
-        <h1>Desliza para abrir el menú</h1>
-        <p>Prueba deslizando desde el borde izquierdo para abrir el menú.</p>
+
+    <h1>Desliza para abrir el menú</h1>
+    <p>Prueba deslizando desde el borde izquierdo para abrir el menú.</p>
+    <button onClick="( menuDesplegado?
+        menu.classList.add('ocultarMenu'):
+        menu.classList.remove('ocultarMenu')
+    )">
+    menu </button>
+
+    <div id="menuLateral" class="ocultarMenu">
+        <div class="menuOpcion">Inicio</div>
+        <div class="menuOpcion">Servicios</div>
+        <div class="menuOpcion">Contacto</div>
     </div>
 </body>
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        overflow-x: hidden;
-    }
-    .menuLateral {
+    body { margin: 20px; font-family: calibri; }
+    button { padding: 10px; }
+
+    #menuLateral {
         position: fixed;
-        box-sizing: border-box;
         top: 0;
-        right: -250px;
-        width: 250px;
+        right: 0;
+        width:90%;
+        max-width: 300px;
         height: 100vh;
         background: #333;
         color: white;
         padding: 20px;
-        transition: right 0.5s ease-in-out;
+
+        box-sizing: border-box;
+        transition: transform 0.5s ease-in-out;
     }
-    .menuAbierto{
-        right: 0;
+    .menuOpcion {
+        padding: 15px 0;
     }
-
-
-    .menuLateral ul {list-style: none;padding: 0;}
-    .menuLateral ul li {padding: 15px 0;}
-    .menuLateral ul li a {color: white;text-decoration: none;}
-    .content {padding: 20px;}
-
+    .ocultarMenu{
+        transform: translate(100%, 0px);
+    }
 </style>
 
 <script>
-    let menu = document.getElementById("menuLateral");
-    let lugarInicialX;
-    let lugarInicialY;
-    let distanciaX;
-
+    const menu = document.getElementById("menuLateral");
+    let lugarInicialX, lugarInicialY, distanciaX, menuDesplegado;
 
     document.addEventListener("pointerdown", (event) => {
         lugarInicialX = event.clientX;
         lugarInicialY = event.clientY;
         distanciaX =  window.innerWidth - lugarInicialX;
+        menuDesplegado = !menu.classList.contains('ocultarMenu');
 
-        console.log("distanciaX:", distanciaX );
-
-        // =======================================
-        //<!--* cerrar al hacer click afuera -->  se resta el ancho del menu al ancho de la pantalla 👇
-        if (menu.classList.contains('menuAbierto')  && distanciaX > menu.offsetWidth) {
-            menu.classList.remove('menuAbierto');
+        //<!--^ cerrar al tocar fuera del menu 🔒 --> 
+        if (menuDesplegado  && distanciaX > menu.offsetWidth) {
+            menu.classList.add('ocultarMenu');
         }
     });
 
+    document.addEventListener("touchmove", (event) => {
+        // ignorar cuando esta lejos del borde ❌
+        if (distanciaX > 60 && !menuDesplegado) return
+        console.log(distanciaX)
 
-    document.addEventListener("touchmove", (e) => {
-        // ignorar cuando hay mucho desplasamiento horizontal
-        if (Math.abs(e.touches[0].clientY - lugarInicialY) > 25) return;
+        let recoridoY = event.touches[0].clientY - lugarInicialY
+        let recoridoX = event.touches[0].clientX - lugarInicialX;
 
-
-        let moveX = e.touches[0].clientX;
-        let recorido = moveX - lugarInicialX;
-        console.log("diferencia: " + recorido);
-
-        // =========================
-        //<!-- ~ logica al cerrar --> 
-        if (menu.classList.contains('menuAbierto') && recorido > 40) {
-            menu.classList.remove('menuAbierto');
+        // ignorar si hay mucho Recorrido en "Y" ❌
+        if (recoridoY > 25) return;
+      
+        //<!-- ^ logica al abrir 🔓--> 
+        if(recoridoX < -30 ){
+            menu.classList.remove('ocultarMenu');
         }
-        // =========================
-        //<!-- ~ logica al abrir --> 
-        if(distanciaX < 50 && recorido < -30 ){
-            menu.classList.add('menuAbierto');
+        //<!-- ^ logica al cerrar 🔒--> 
+        if (recoridoX > 30) {
+            menu.classList.add('ocultarMenu');
         }
     });
 </script>

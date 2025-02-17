@@ -44,16 +44,16 @@ ya es muy diferente al original
   xmlns:expr='http://www.google.com/2005/gml/expr'>
   <head>
 
-<meta expr:content='&quot;
-width=device-width,
-initial-scale=0.8,
-user-scalable=yes&quot;'
-name='viewport'/>
+  <meta expr:content='&quot;
+  width=device-width,
+  initial-scale=0.8,
+  user-scalable=yes&quot;'
+  name='viewport'/>
 
-<!-- <meta 
-  name='viewport' 
-  expr:content='&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot;'
-> -->
+  <!-- <meta 
+    name='viewport' 
+    expr:content='&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot;'
+  > -->
 
     <b:include data='blog' name='all-head-content'/>
     <title>
@@ -62,18 +62,18 @@ name='viewport'/>
     <b:skin>
       <![CDATA[/*-----------------------------------------------
 
-Blogger Template Style
-Name:     Picture Window
-Designer: Blogger
-URL:      www.blogger.com
------------------------------------------------ */
+  Blogger Template Style
+  Name:     Picture Window
+  Designer: Blogger
+  URL:      www.blogger.com
+  ----------------------------------------------- */
 
-/* Variable definitions
-   ====================
+  /* Variable definitions
+     ====================
    <Variableb name="keycolor" description="Main Color" type="color" default="#1a222a" value="#ffffff"/>
    <Variable name="body.background" description="Body Background" type="background" color="$(body.background.color)" default="#111111 url(//themes.googleusercontent.com/image?id=1OACCYOE0-eoTRTfsBuX1NMN9nz599ufI1Jh0CggPFA_sK80AGkIr8pLtYRpNUKPmwtEa) repeat-x fixed top center" value="#ffffff url(none) no-repeat fixed top center /* Credit: dino4 (http://www.istockphoto.com/portfolio/dino4?platform=blogger) */"/>
 
-<!-- &amp; aqui abajo tienes que poner la funte global que tendra la pagina 👇-->
+  <!-- &amp; aqui abajo tienes que poner la funte global que tendra la pagina 👇-->
    <Group description="Page Text" selector="body">
      <Variable name="body.font" description="Font" type="font" default="normal normal 17px calibri, Tahoma, Helvetica, FreeSans, sans-serif" value="normal normal 16px PT Sans Caption"/>
      <Variable name="body.text.color" description="Text Color" type="color" default="#333333" value="#7d7d7d"/>
@@ -2158,230 +2158,240 @@ a:hover {
         </div>
       </b:includable>
     </b:widget>
-  <b:widget id='BlogArchive1' locked='false' title='Historial del blog' type='BlogArchive' version='1'>
-    <b:widget-settings>
-      <b:widget-setting name='showStyle'>HIERARCHY</b:widget-setting>
-      <b:widget-setting name='yearPattern'>yyyy</b:widget-setting>
-      <b:widget-setting name='showWeekEnd'>true</b:widget-setting>
-      <b:widget-setting name='monthPattern'>MMMM</b:widget-setting>
-      <b:widget-setting name='dayPattern'>MMM dd</b:widget-setting>
-      <b:widget-setting name='weekPattern'>MM/dd</b:widget-setting>
-      <b:widget-setting name='chronological'>false</b:widget-setting>
-      <b:widget-setting name='showPosts'>false</b:widget-setting>
-      <b:widget-setting name='frequency'>MONTHLY</b:widget-setting>
-    </b:widget-settings>
+    <b:widget id='BlogArchive1' locked='false' title='Historial del blog' type='BlogArchive' version='1'>
+      <b:widget-settings>
+        <b:widget-setting name='showStyle'>HIERARCHY</b:widget-setting>
+        <b:widget-setting name='yearPattern'>yyyy</b:widget-setting>
+        <b:widget-setting name='showWeekEnd'>true</b:widget-setting>
+        <b:widget-setting name='monthPattern'>MMMM</b:widget-setting>
+        <b:widget-setting name='dayPattern'>MMM dd</b:widget-setting>
+        <b:widget-setting name='weekPattern'>MM/dd</b:widget-setting>
+        <b:widget-setting name='chronological'>false</b:widget-setting>
+        <b:widget-setting name='showPosts'>false</b:widget-setting>
+        <b:widget-setting name='frequency'>MONTHLY</b:widget-setting>
+      </b:widget-settings>
     <b:includable id='main'>
-        <style>
-          #BlogArchive1 {
-            position: sticky;
-            top: 100px;
-            background-color: #ffffff;
-            z-index: 2;
-            <!-- efecto de desbanecido al escrolear 🌫️ -->
-            mask-image: linear-gradient(
-              to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 60px
-            ); 
-          }
-
-          #BlogArchive1 *{
-            transition: opacity 0.6s ease-in-out, height 1s ease;
-            interpolate-size: allow-keywords;
-            color: #00304D;
-          }
-
-          #BlogArchive1_ArchiveList {
-            padding-bottom: 50px;
-            overflow-y: scroll;
-            max-height: 60vh;
-            overscroll-behavior: contain;
-          }
-          #BlogArchive1_ArchiveList::-webkit-scrollbar {
-            display: none;
-          }
-
-          <!--? cuando se cierra o abre un elemento 👇 -->
-          #ArchiveList .collapsed >ul{
-            display: block;
+      <style>
+        #BlogArchive1 {
+          position: sticky;
+          top: 100px;
+          background-color: #ffffff;
+          z-index: 2;
+          <!-- efecto de desbanecido al escrolear 🌫️ -->
+          mask-image: linear-gradient(
+            to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 60px
+          ); 
+        }
+        #BlogArchive1 *{
+          transition: opacity 0.6s ease-in-out, height 1s ease;
+          interpolate-size: allow-keywords;
+          color: #00304D;
+        }
+        #BlogArchive1_ArchiveList {
+          padding-bottom: 50px;
+          overflow-y: scroll;
+          max-height: 60vh;
+          overscroll-behavior: contain;
+        }
+        #BlogArchive1_ArchiveList::-webkit-scrollbar {
+          display: none;
+        }
+        <!--? cuando se cierra o abre un elemento 👇 -->
+        #ArchiveList .collapsed >ul{
+          display: block;
+          height: 0px;
+          overflow: hidden;
+          opacity: 0;
+        }
+        #ArchiveList .expanded >ul{
+          display: block;
+          overflow: hidden;
+          height: fit-content;
+          @starting-style {
             height: 0px;
-            overflow: hidden;
             opacity: 0;
           }
+        }
+        .hierarchy{
+          grid-column: span 2;
+        }
+        .archivedate {
+          text-indent: 0;
+          display: grid;
+          column-gap: 4px;
+          align-items: center;
+          grid-template-columns: auto auto 1fr;
+        }
+        .archivedate > .informacion {
+          grid-column: span 2;
+          display: flex;
+        }
+        .archivedate a{
+          width: fit-content ;
+        }
+        .BlogArchive #ArchiveList ul li{
+          padding-left: 0;
+          text-indent: 0;
+        } <!-- capeta 1 -->
+        .BlogArchive #ArchiveList ul ul li{
+          padding-left: 30px;
+        } <!-- capeta 2 -->
+        .BlogArchive #ArchiveList ul.posts li{
+          padding-left: 0;
+        } <!-- capeta 3 -->
+        .toggle{
+          display: block;
+          width: fit-content;
+          background-color:rgba(0, 47, 77, 0);
+          color: #ffffff;
+          height: 100%;
+        }
+        .archivedate .post-count{
+          position: relative;
+          top: -5px;
+          color: #00304d;
+          font-size: 0.8em;
+          height: min-content;
+        }
+        .zippy{
+          display: block;
+          background: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwzm0taNcMkyRXjYWxqZ2mHAaFGb_aP4oLjpiZsRSAvl0_lWQ20WHsIuwMXUVjglVlawPcw5N9cyChgc64_5asJYoO9A9DRPzIovNx4FpbBJ0mh5S8PoUr9My0r7yKWGQQxkIDbtLCfo9TDewBc9bATiMVWPO9MFAfPT8qaQiogeLPmJZ8xp-fVOe6ilU/s96/arrow_right.png)
+          no-repeat center center;
+          background-size: 160%; 
+          width: 20px;
+          height: min-content;
+        }
+        .zippy.toggle-open{
+          display: block;
+          background: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhptrDu5oYzBhfVlAMVpG0udZKu1oN4YDt9Xrrnf-ikPfxhGNKwgClvH5ORSCj270_cR-vZW7PNT4iaDsaF6iDR_k-PIQgdAdtSfZCOugShsK2w29iBFDhmXr3-bgWGUlFvjFvL9rNaXU9OWNuL7V9ETSmBR7PV-fuAh7SQSMMC_Dll8Ix7Q-MxBtbcyk8/s96/arrow_drop_down.png)
+          no-repeat center center;
+          background-size: 160%; 
+        }
+        #ArchiveList .zippy {
+          color: rgba(0,0,0,0);
+          line-height: unset;
+        }
+        .BlogArchive li:has(>a:empty) {
+          display: none;
+          }
+        #ArchiveList a.toggle,
+        #ArchiveList a.toggle:link{
+          color:rgba(0, 0, 0, 0);
+          color: #00304D;
+          font-size: 0.8em;
+        }
+      </style>
 
-          #ArchiveList .expanded >ul{
-            display: block;
-            overflow: hidden;
-            height: fit-content;
+      <script>
+        const menu = document.getElementById("sidebar-right-1");
+        let lugarInicialX, lugarInicialY, distanciaX, menuDesplegado;
 
-            @starting-style {
-              height: 0px;
-              opacity: 0;
+        document.addEventListener("pointerdown", (event) => {
+            lugarInicialX = event.clientX;
+            lugarInicialY = event.clientY;
+            distanciaX =  window.innerWidth - lugarInicialX;
+            menuDesplegado = !menu.classList.contains('ocultarMenu');
+
+            //<!--^ cerrar al tocar fuera del menu 🔒--> 
+            if (menuDesplegado  &amp;&amp; distanciaX > menu.offsetWidth) {
+                menu.classList.add('ocultarMenu');
             }
-          }
-          .hierarchy{
-            grid-column: span 2;
-          }
-          
-          .archivedate {
-            text-indent: 0;
-            display: grid;
-            column-gap: 4px;
-            align-items: center;
-            grid-template-columns: auto auto 1fr;
-          }
+        });
 
+        document.addEventListener("touchmove", (event) => {
+            // ignorar cuando esta lejos del borde ❌
+            if (distanciaX > 60 &amp;&amp; !menuDesplegado) return
+            console.log(distanciaX)
 
+            let recoridoY = event.touches[0].clientY - lugarInicialY
+            let recoridoX = event.touches[0].clientX - lugarInicialX;
 
-          .archivedate > .informacion {
-            grid-column: span 2;
-            display: flex;
-          }
+            // ignorar si hay mucho Recorrido en "Y" ❌
+            if (recoridoY > 25) return;
 
-          .archivedate a{
-            width: fit-content ;
-          }
-
-          .BlogArchive #ArchiveList ul li{
-            padding-left: 0;
-            text-indent: 0;
-          } <!-- capeta 1 -->
-
-          .BlogArchive #ArchiveList ul ul li{
-            padding-left: 30px;
-          } <!-- capeta 2 -->
-
-          .BlogArchive #ArchiveList ul.posts li{
-            padding-left: 0;
-          } <!-- capeta 3 -->
-          
-
-          .toggle{
-            display: block;
-            width: fit-content;
-            background-color:rgba(0, 47, 77, 0);
-            color: #ffffff;
-            height: 100%;
-          }
-
-          .archivedate .post-count{
-            position: relative;
-            top: -5px;
-            color: #00304d;
-            font-size: 0.8em;
-            height: min-content;
-          }
-
-          .zippy{
-            display: block;
-            background: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwzm0taNcMkyRXjYWxqZ2mHAaFGb_aP4oLjpiZsRSAvl0_lWQ20WHsIuwMXUVjglVlawPcw5N9cyChgc64_5asJYoO9A9DRPzIovNx4FpbBJ0mh5S8PoUr9My0r7yKWGQQxkIDbtLCfo9TDewBc9bATiMVWPO9MFAfPT8qaQiogeLPmJZ8xp-fVOe6ilU/s96/arrow_right.png)
-            no-repeat center center;
-            background-size: 160%; 
-
-            width: 20px;
-            height: min-content;
-          }
-          .zippy.toggle-open{
-            display: block;
-            background: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhptrDu5oYzBhfVlAMVpG0udZKu1oN4YDt9Xrrnf-ikPfxhGNKwgClvH5ORSCj270_cR-vZW7PNT4iaDsaF6iDR_k-PIQgdAdtSfZCOugShsK2w29iBFDhmXr3-bgWGUlFvjFvL9rNaXU9OWNuL7V9ETSmBR7PV-fuAh7SQSMMC_Dll8Ix7Q-MxBtbcyk8/s96/arrow_drop_down.png)
-            no-repeat center center;
-            background-size: 160%; 
-          }
-
-          #ArchiveList .zippy {
-            color: rgba(0,0,0,0);
-            line-height: unset;
-          }
-          
-
-          .BlogArchive li:has(>a:empty) {
-            display: none;
+<!--             //- ^ logica al abrir 🔓
+            if(recoridoX < -30 ){
+                menu.classList.remove('ocultarMenu');
             }
-
-          #ArchiveList a.toggle,
-          #ArchiveList a.toggle:link{
-            color:rgba(0, 0, 0, 0);
-            color: #00304D;
-            font-size: 0.8em;
-          }
-        </style>
-
-        <script>
-        
-        </script>
-  <b:if cond='data:title != &quot;&quot;'>
-    <h3><data:title/></h3>
-  </b:if>
-  <div class='widget-content'>
-  <div id='ArchiveList'>
-  <div expr:id='data:widget.instanceId + &quot;_ArchiveList&quot;'>
-    <b:include cond='data:style == &quot;HIERARCHY&quot;' data='data' name='interval'/>
-    <b:include cond='data:style == &quot;FLAT&quot;' data='data' name='flat'/>
-    <b:include cond='data:style == &quot;MENU&quot;' data='data' name='menu'/>
-  </div>
-
-  </div>
-    <b:include name='quickedit'/>
-  </div>
-</b:includable>
-    <b:includable id='flat' var='data'>
-  <ul class='flat'>
-    <b:loop values='data:data' var='i'>
-      <li class='archivedate'>
-        <a expr:href='data:i.url'><data:i.name/></a> (<data:i.post-count/>)
-      </li>
-    </b:loop>
-  </ul>
-</b:includable>
-
-
-<b:includable id='interval' var='intervalData'>
-  <ul class='hierarchy'>
-    <b:loop values='data:intervalData' var='interval'>
-      <li expr:class='&quot;archivedate &quot; + data:interval.expclass'>
-        <b:include cond='data:interval.toggleId' data='interval' name='toggle'/>
-        <div class="informacion">
-          <a class='post-count-link' expr:href='data:interval.url'>
-            <data:interval.name/>
-          </a>
-          <span class='post-count' dir='ltr'>(<data:interval.post-count/>)</span>
-        </div>
-        <b:include cond='data:interval.data' data='interval.data' name='interval'/>
-        <b:include cond='data:interval.posts' data='interval.posts' name='posts'/>
-      </li>
-    </b:loop>
-  </ul>
-</b:includable>
-
-
-    <b:includable id='menu' var='data'>
-  <select expr:id='data:widget.instanceId + &quot;_ArchiveMenu&quot;'>
-    <option value=''><data:title/></option>
-    <b:loop values='data:data' var='i'>
-      <option expr:value='data:i.url'><data:i.name/>(<data:i.post-count/>)</option>
-    </b:loop>
-  </select>
-</b:includable>
-<b:includable id='posts' var='posts'>
-  <ul class='posts'>
-    <b:loop values='data:posts' var='post'>
-      <li><a expr:href='data:post.url'>
-        <data:post.title/>
-      </a></li>
-    </b:loop>
-  </ul>
-</b:includable>
-<b:includable id='toggle' var='interval'>
-  <a class='toggle' href='javascript:void(0)'>
-    <span expr:class='&quot;zippy&quot; + (data:interval.expclass == &quot;expanded&quot; ? &quot; toggle-open&quot; : &quot;&quot;)'>
-      <b:if cond='data:interval.expclass == &quot;expanded&quot;'>
-        &#9660;&#160;
-      <b:elseif cond='data:blog.languageDirection == &quot;rtl&quot;'/>
-        &#9668;&#160;
-      <b:else/>
-        &#9658;&#160;
+            // ^ logica al cerrar 🔒
+            if (recoridoX > 30) {
+                menu.classList.add('ocultarMenu');
+            } -->
+        });
+      </script>
+      
+      <b:if cond='data:title != &quot;&quot;'>
+        <h3><data:title/></h3>
       </b:if>
-    </span>
-  </a>
-</b:includable>
+      <div class='widget-content'>
+        <div id='ArchiveList'>
+          <div expr:id='data:widget.instanceId + &quot;_ArchiveList&quot;'>
+            <b:include cond='data:style == &quot;HIERARCHY&quot;' data='data' name='interval'/>
+            <b:include cond='data:style == &quot;FLAT&quot;' data='data' name='flat'/>
+            <b:include cond='data:style == &quot;MENU&quot;' data='data' name='menu'/>
+          </div>
+        </div>
+        <b:include name='quickedit'/>
+      </div>
+    </b:includable>
+        <b:includable id='flat' var='data'>
+      <ul class='flat'>
+        <b:loop values='data:data' var='i'>
+          <li class='archivedate'>
+            <a expr:href='data:i.url'><data:i.name/></a> (<data:i.post-count/>)
+          </li>
+        </b:loop>
+      </ul>
+    </b:includable>
+
+
+    <b:includable id='interval' var='intervalData'>
+      <ul class='hierarchy'>
+        <b:loop values='data:intervalData' var='interval'>
+          <li expr:class='&quot;archivedate &quot; + data:interval.expclass'>
+            <b:include cond='data:interval.toggleId' data='interval' name='toggle'/>
+            <div class="informacion">
+              <a class='post-count-link' expr:href='data:interval.url'>
+                <data:interval.name/>
+              </a>
+              <span class='post-count' dir='ltr'>(<data:interval.post-count/>)</span>
+            </div>
+            <b:include cond='data:interval.data' data='interval.data' name='interval'/>
+            <b:include cond='data:interval.posts' data='interval.posts' name='posts'/>
+          </li>
+        </b:loop>
+      </ul>
+    </b:includable>
+    <b:includable id='menu' var='data'>
+      <select expr:id='data:widget.instanceId + &quot;_ArchiveMenu&quot;'>
+        <option value=''><data:title/></option>
+        <b:loop values='data:data' var='i'>
+          <option expr:value='data:i.url'><data:i.name/>(<data:i.post-count/>)</option>
+        </b:loop>
+      </select>
+    </b:includable>
+    <b:includable id='posts' var='posts'>
+      <ul class='posts'>
+        <b:loop values='data:posts' var='post'>
+          <li><a expr:href='data:post.url'>
+            <data:post.title/>
+          </a></li>
+        </b:loop>
+      </ul>
+    </b:includable>
+    <b:includable id='toggle' var='interval'>
+      <a class='toggle' href='javascript:void(0)'>
+        <span expr:class='&quot;zippy&quot; + (data:interval.expclass == &quot;expanded&quot; ? &quot; toggle-open&quot; : &quot;&quot;)'>
+          <b:if cond='data:interval.expclass == &quot;expanded&quot;'>
+            &#9660;&#160;
+          <b:elseif cond='data:blog.languageDirection == &quot;rtl&quot;'/>
+            &#9668;&#160;
+          <b:else/>
+            &#9658;&#160;
+          </b:if>
+        </span>
+      </a>
+    </b:includable>
   </b:widget>
 
 
