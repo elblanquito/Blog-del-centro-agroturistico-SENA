@@ -23,9 +23,8 @@ busca "marcador" para ver las partes principales
 (cuidado, si hay algon error de sintaxis podria no subirse los cambios)
 
 * consejos para sobrevivir
-- cuidado con los mentarios, mas de una vez hisieron
-que dejara de funcionar scrips como el de elevacion
-que esta abajo del todo ☠️
+- cuidado con los mentarios que pones, mas de una vez
+hisieron que dejara de funcionar scrips ☠️
 
 - sube cambios constantemente, o sete pasa algun error
 que te hara usar un buen rato el crt + z
@@ -33,6 +32,28 @@ que te hara usar un buen rato el crt + z
 - si borras algo que no debias busca el tema original
 descarga su codigo, aun que a este punto el codigo
 ya es muy diferente al original 
+
+- "<![CDATA[]]>" es importante aunque este comentado, hace
+que xml lo ignore y asi por usar "&" o "<" pero para que el
+navegador no se enoje por noner cosa raras en el js hay
+que comentarlo (el "js" que se pone al principo es para
+que la extencion "highligth string" decore el texto)
+
+  <script>
+    //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
+    //js 👈 comando decorativo "Highlight String Code"
+
+    //!js
+    //]]>
+  </script>
+
+  <style>
+    /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+    /*css 👈 comando decorativo "Highlight String Code */
+    
+    /*!css*/
+    /*]]>*/
+  </style>
 -->
 
 
@@ -42,12 +63,12 @@ ya es muy diferente al original
   xmlns:b='http://www.google.com/2005/gml/b'
   xmlns:data='http://www.google.com/2005/gml/data'
   xmlns:expr='http://www.google.com/2005/gml/expr'>
-  <head>
 
+  <head>
   <meta expr:content='&quot;
   width=device-width,
-  initial-scale=0.8,
-  user-scalable=yes&quot;'
+  initial-scale=1.0,
+  user-scalable=no&quot;'
   name='viewport'/>
 
   <!-- <meta 
@@ -60,262 +81,262 @@ ya es muy diferente al original
       <data:blog.pageTitle/>
     </title>
     <b:skin>
-      <![CDATA[/*-----------------------------------------------
+      <![CDATA[
+      /*-----------------------------------------------
+      Blogger Template Style
+      Name:     Picture Window
+      Designer: Blogger
+      URL:      www.blogger.com
+      ----------------------------------------------- */
 
-  Blogger Template Style
-  Name:     Picture Window
-  Designer: Blogger
-  URL:      www.blogger.com
-  ----------------------------------------------- */
+      /* Variable definitions
+         ====================
+       <Variableb name="keycolor" description="Main Color" type="color" default="#1a222a" value="#ffffff"/>
+       <Variable name="body.background" description="Body Background" type="background" color="$(body.background.color)" default="#111111 url(//themes.googleusercontent.com/image?id=1OACCYOE0-eoTRTfsBuX1NMN9nz599ufI1Jh0CggPFA_sK80AGkIr8pLtYRpNUKPmwtEa) repeat-x fixed top center" value="#ffffff url(none) no-repeat fixed top center /* Credit: dino4 (http://www.istockphoto.com/portfolio/dino4?platform=blogger) */"/>
 
-  /* Variable definitions
-     ====================
-   <Variableb name="keycolor" description="Main Color" type="color" default="#1a222a" value="#ffffff"/>
-   <Variable name="body.background" description="Body Background" type="background" color="$(body.background.color)" default="#111111 url(//themes.googleusercontent.com/image?id=1OACCYOE0-eoTRTfsBuX1NMN9nz599ufI1Jh0CggPFA_sK80AGkIr8pLtYRpNUKPmwtEa) repeat-x fixed top center" value="#ffffff url(none) no-repeat fixed top center /* Credit: dino4 (http://www.istockphoto.com/portfolio/dino4?platform=blogger) */"/>
+      <!-- &amp; aqui abajo tienes que poner la funte global que tendra la pagina 👇-->
+       <Group description="Page Text" selector="body">
+         <Variable name="body.font" description="Font" type="font" default="normal normal 17px calibri, Tahoma, Helvetica, FreeSans, sans-serif" value="normal normal 16px PT Sans Caption"/>
+         <Variable name="body.text.color" description="Text Color" type="color" default="#333333" value="#7d7d7d"/>
+       </Group>
 
-  <!-- &amp; aqui abajo tienes que poner la funte global que tendra la pagina 👇-->
-   <Group description="Page Text" selector="body">
-     <Variable name="body.font" description="Font" type="font" default="normal normal 17px calibri, Tahoma, Helvetica, FreeSans, sans-serif" value="normal normal 16px PT Sans Caption"/>
-     <Variable name="body.text.color" description="Text Color" type="color" default="#333333" value="#7d7d7d"/>
-   </Group>
+       <Group description="Backgrounds" selector=".body-fauxcolumns-outer">
+         <Variable name="body.background.color" description="Outer Background" type="color" default="#296695" value="#ffffff"/>
+         <Variable name="header.background.color" description="Header Background" type="color" default="transparent" value="#39a900"/>
+         <Variable name="post.background.color" description="Post Background" type="color" default="#ffffff" value="transparent"/>
+       </Group>
 
-   <Group description="Backgrounds" selector=".body-fauxcolumns-outer">
-     <Variable name="body.background.color" description="Outer Background" type="color" default="#296695" value="#ffffff"/>
-     <Variable name="header.background.color" description="Header Background" type="color" default="transparent" value="#39a900"/>
-     <Variable name="post.background.color" description="Post Background" type="color" default="#ffffff" value="transparent"/>
-   </Group>
+       <Group description="Links" selector=".main-outer">
+         <Variable name="link.color" description="Link Color" type="color" default="#336699" value="#39a900"/>
+         <Variable name="link.visited.color" description="Visited Color" type="color" default="#6699cc" value="#39a900"/>
+         <Variable name="link.hover.color" description="Hover Color" type="color" default="#33aaff" value="#007832"/>
+       </Group>
 
-   <Group description="Links" selector=".main-outer">
-     <Variable name="link.color" description="Link Color" type="color" default="#336699" value="#39a900"/>
-     <Variable name="link.visited.color" description="Visited Color" type="color" default="#6699cc" value="#39a900"/>
-     <Variable name="link.hover.color" description="Hover Color" type="color" default="#33aaff" value="#007832"/>
-   </Group>
+       <Group description="Blog Title" selector=".header h1">
+         <Variable name="header.font" description="Title Font" type="font" default="normal normal 36px Arial, Tahoma, Helvetica, FreeSans, sans-serif" value="normal normal 36px Calibri"/>
+         <Variable name="header.text.color" description="Text Color" type="color" default="#ffffff" value="#ffffff"/>
+       </Group>
 
-   <Group description="Blog Title" selector=".header h1">
-     <Variable name="header.font" description="Title Font" type="font" default="normal normal 36px Arial, Tahoma, Helvetica, FreeSans, sans-serif" value="normal normal 36px Calibri"/>
-     <Variable name="header.text.color" description="Text Color" type="color" default="#ffffff" value="#ffffff"/>
-   </Group>
+       <Group description="Tabs Text" selector=".tabs-inner .widget li a">
+         <Variable name="tabs.font" description="Font" type="font" default="normal normal 15px Arial, Tahoma, Helvetica, FreeSans, sans-serif" value="normal normal 15px Arial, Tahoma, Helvetica, FreeSans, sans-serif"/>
+         <Variable name="tabs.text.color" description="Text Color" type="color" default="#ffffff" value="#ffffff"/>
+         <Variable name="tabs.selected.text.color" description="Selected Color" type="color" default="$(link.color)" value="#c75656"/>
+       </Group>
 
-   <Group description="Tabs Text" selector=".tabs-inner .widget li a">
-     <Variable name="tabs.font" description="Font" type="font" default="normal normal 15px Arial, Tahoma, Helvetica, FreeSans, sans-serif" value="normal normal 15px Arial, Tahoma, Helvetica, FreeSans, sans-serif"/>
-     <Variable name="tabs.text.color" description="Text Color" type="color" default="#ffffff" value="#ffffff"/>
-     <Variable name="tabs.selected.text.color" description="Selected Color" type="color" default="$(link.color)" value="#c75656"/>
-   </Group>
+       <Group description="Tabs Background" selector=".tabs-outer .PageList">
+         <Variable name="tabs.background.color" description="Background Color" type="color" default="transparent" value="rgba(122,122,122,0)"/>
+         <Variable name="tabs.selected.background.color" description="Selected Color" type="color" default="transparent" value="rgba(122,122,122,0)"/>
+         <Variable name="tabs.separator.color" description="Separator Color" type="color" default="transparent" value="rgba(122,122,122,0)"/>
+       </Group>
 
-   <Group description="Tabs Background" selector=".tabs-outer .PageList">
-     <Variable name="tabs.background.color" description="Background Color" type="color" default="transparent" value="rgba(122,122,122,0)"/>
-     <Variable name="tabs.selected.background.color" description="Selected Color" type="color" default="transparent" value="rgba(122,122,122,0)"/>
-     <Variable name="tabs.separator.color" description="Separator Color" type="color" default="transparent" value="rgba(122,122,122,0)"/>
-   </Group>
+       <Group description="Post Title" selector="h3.post-title, .comments h4">
+         <Variable name="post.title.font" description="Title Font" type="font" default="normal normal 18px Arial, Tahoma, Helvetica, FreeSans, sans-serif" value="normal normal 18px Arial, Tahoma, Helvetica, FreeSans, sans-serif"/>
+       </Group>
 
-   <Group description="Post Title" selector="h3.post-title, .comments h4">
-     <Variable name="post.title.font" description="Title Font" type="font" default="normal normal 18px Arial, Tahoma, Helvetica, FreeSans, sans-serif" value="normal normal 18px Arial, Tahoma, Helvetica, FreeSans, sans-serif"/>
-   </Group>
+       <Group description="Date Header" selector=".date-header">
+         <Variable name="date.header.color" description="Text Color" type="color" default="$(body.text.color)" value="#7d7d7d"/>
+       </Group>
 
-   <Group description="Date Header" selector=".date-header">
-     <Variable name="date.header.color" description="Text Color" type="color" default="$(body.text.color)" value="#7d7d7d"/>
-   </Group>
+       <Group description="Post" selector=".post">
+         <Variable name="post.footer.text.color" description="Footer Text Color" type="color" default="#999999" value="#afafaf"/>
+         <Variable name="post.border.color" description="Border Color" type="color" default="#dddddd" value="#e9e9e9"/>
+       </Group>
 
-   <Group description="Post" selector=".post">
-     <Variable name="post.footer.text.color" description="Footer Text Color" type="color" default="#999999" value="#afafaf"/>
-     <Variable name="post.border.color" description="Border Color" type="color" default="#dddddd" value="#e9e9e9"/>
-   </Group>
+       <Group description="Gadgets" selector="h2">
+         <Variable name="widget.title.font" description="Title Font" type="font" default="bold normal 13px Arial, Tahoma, Helvetica, FreeSans, sans-serif" value="bold normal 13px Arial, Tahoma, Helvetica, FreeSans, sans-serif"/>
+         <Variable name="widget.title.text.color" description="Title Color" type="color" default="#888888" value="#a3a3a3"/>
+       </Group>
 
-   <Group description="Gadgets" selector="h2">
-     <Variable name="widget.title.font" description="Title Font" type="font" default="bold normal 13px Arial, Tahoma, Helvetica, FreeSans, sans-serif" value="bold normal 13px Arial, Tahoma, Helvetica, FreeSans, sans-serif"/>
-     <Variable name="widget.title.text.color" description="Title Color" type="color" default="#888888" value="#a3a3a3"/>
-   </Group>
+       <Group description="Footer" selector=".footer-outer">
+         <Variable name="footer.text.color" description="Text Color" type="color" default="#cccccc" value="#dadada"/>
+         <Variable name="footer.widget.title.text.color" description="Gadget Title Color" type="color" default="#aaaaaa" value="#bdbdbd"/>
+       </Group>
 
-   <Group description="Footer" selector=".footer-outer">
-     <Variable name="footer.text.color" description="Text Color" type="color" default="#cccccc" value="#dadada"/>
-     <Variable name="footer.widget.title.text.color" description="Gadget Title Color" type="color" default="#aaaaaa" value="#bdbdbd"/>
-   </Group>
+       <Group description="Footer Links" selector=".footer-outer">
+         <Variable name="footer.link.color" description="Link Color" type="color" default="#99ccee" value="#f2b2b9"/>
+         <Variable name="footer.link.visited.color" description="Visited Color" type="color" default="#77aaee" value="#f29c96"/>
+         <Variable name="footer.link.hover.color" description="Hover Color" type="color" default="#33aaff" value="#ff606d"/>
+       </Group>
 
-   <Group description="Footer Links" selector=".footer-outer">
-     <Variable name="footer.link.color" description="Link Color" type="color" default="#99ccee" value="#f2b2b9"/>
-     <Variable name="footer.link.visited.color" description="Visited Color" type="color" default="#77aaee" value="#f29c96"/>
-     <Variable name="footer.link.hover.color" description="Hover Color" type="color" default="#33aaff" value="#ff606d"/>
-   </Group>
+       <Variable name="content.margin" description="Content Margin Top" type="length" default="20px" min="0" max="100px" value="20px"/>
+       <Variable name="content.padding" description="Content Padding" type="length" default="0" min="0" max="100px" value="0"/>
+       <Variable name="content.background" description="Content Background" type="background" default="transparent none repeat scroll top left" value="transparent none repeat scroll top left"/>
+       <Variable name="content.border.radius" description="Content Border Radius" type="length" default="0" min="0" max="100px" value="0"/>
+       <Variable name="content.shadow.spread" description="Content Shadow Spread" type="length" default="0" min="0" max="100px" value="0"/>
 
-   <Variable name="content.margin" description="Content Margin Top" type="length" default="20px" min="0" max="100px" value="20px"/>
-   <Variable name="content.padding" description="Content Padding" type="length" default="0" min="0" max="100px" value="0"/>
-   <Variable name="content.background" description="Content Background" type="background" default="transparent none repeat scroll top left" value="transparent none repeat scroll top left"/>
-   <Variable name="content.border.radius" description="Content Border Radius" type="length" default="0" min="0" max="100px" value="0"/>
-   <Variable name="content.shadow.spread" description="Content Shadow Spread" type="length" default="0" min="0" max="100px" value="0"/>
+       <Variable name="header.padding" description="Header Padding" type="length" default="0" min="0" max="100px" value="0"/>
+       <Variable name="header.background.gradient" description="Header Gradient" type="url" default="none" value="none"/>
+       <Variable name="header.border.radius" description="Header Border Radius" type="length" default="0" min="0" max="100px" value="0"/>
 
-   <Variable name="header.padding" description="Header Padding" type="length" default="0" min="0" max="100px" value="0"/>
-   <Variable name="header.background.gradient" description="Header Gradient" type="url" default="none" value="none"/>
-   <Variable name="header.border.radius" description="Header Border Radius" type="length" default="0" min="0" max="100px" value="0"/>
+       <Variable name="main.border.radius.top" description="Main Border Radius" type="length" default="20px" min="0" max="100px" value="20px"/>
+       <Variable name="footer.border.radius.top" description="Footer Border Radius Top" type="length" default="0" min="0" max="100px" value="0"/>
+       <Variable name="footer.border.radius.bottom" description="Footer Border Radius Bottom" type="length" default="20px" min="0" max="100px" value="20px"/>
+       <Variable name="region.shadow.spread" description="Main and Footer Shadow Spread" type="length" default="3px" min="0" max="100px" value="3px"/>
+       <Variable name="region.shadow.offset" description="Main and Footer Shadow Offset" type="length" default="1px" min="-50px" max="50px" value="1px"/>
 
-   <Variable name="main.border.radius.top" description="Main Border Radius" type="length" default="20px" min="0" max="100px" value="20px"/>
-   <Variable name="footer.border.radius.top" description="Footer Border Radius Top" type="length" default="0" min="0" max="100px" value="0"/>
-   <Variable name="footer.border.radius.bottom" description="Footer Border Radius Bottom" type="length" default="20px" min="0" max="100px" value="20px"/>
-   <Variable name="region.shadow.spread" description="Main and Footer Shadow Spread" type="length" default="3px" min="0" max="100px" value="3px"/>
-   <Variable name="region.shadow.offset" description="Main and Footer Shadow Offset" type="length" default="1px" min="-50px" max="50px" value="1px"/>
+       <Variable name="tabs.background.gradient" description="Tab Background Gradient" type="url" default="none" value="none"/>
+       <Variable name="tab.selected.background.gradient" description="Selected Tab Background" type="url" default="url(https://resources.blogblog.com/blogblog/data/1kt/transparent/white80.png)" value="url(https://resources.blogblog.com/blogblog/data/1kt/transparent/white80.png)"/>
+       <Variable name="tab.background" description="Tab Background" type="background" default="transparent url(https://resources.blogblog.com/blogblog/data/1kt/transparent/black50.png) repeat scroll top left" value="transparent url(https://resources.blogblog.com/blogblog/data/1kt/transparent/black50.png) repeat scroll top left"/>
 
-   <Variable name="tabs.background.gradient" description="Tab Background Gradient" type="url" default="none" value="none"/>
-   <Variable name="tab.selected.background.gradient" description="Selected Tab Background" type="url" default="url(https://resources.blogblog.com/blogblog/data/1kt/transparent/white80.png)" value="url(https://resources.blogblog.com/blogblog/data/1kt/transparent/white80.png)"/>
-   <Variable name="tab.background" description="Tab Background" type="background" default="transparent url(https://resources.blogblog.com/blogblog/data/1kt/transparent/black50.png) repeat scroll top left" value="transparent url(https://resources.blogblog.com/blogblog/data/1kt/transparent/black50.png) repeat scroll top left"/>
+       <Variable name="tab.border.radius" description="Tab Border Radius" type="length" default="10px" min="0" max="100px" value="10px"/>
+       <Variable name="tab.first.border.radius" description="First Tab Border Radius" type="length" default="10px" min="0" max="100px" value="10px"/>
+       <Variable name="tabs.border.radius" description="Tabs Border Radius" type="length" default="0" min="0" max="100px" value="0"/>
 
-   <Variable name="tab.border.radius" description="Tab Border Radius" type="length" default="10px" min="0" max="100px" value="10px"/>
-   <Variable name="tab.first.border.radius" description="First Tab Border Radius" type="length" default="10px" min="0" max="100px" value="10px"/>
-   <Variable name="tabs.border.radius" description="Tabs Border Radius" type="length" default="0" min="0" max="100px" value="0"/>
+       <Variable name="tabs.spacing" description="Tab Spacing" type="length" default=".25em" min="0" max="10em" value=".25em"/>
+       <Variable name="tabs.margin.bottom" description="Tab Margin Bottom" type="length" default="0" min="0" max="100px" value="0"/>
+       <Variable name="tabs.margin.sides" description="Tab Margin Sides" type="length" default="20px" min="0" max="100px" value="20px"/>
 
-   <Variable name="tabs.spacing" description="Tab Spacing" type="length" default=".25em" min="0" max="10em" value=".25em"/>
-   <Variable name="tabs.margin.bottom" description="Tab Margin Bottom" type="length" default="0" min="0" max="100px" value="0"/>
-   <Variable name="tabs.margin.sides" description="Tab Margin Sides" type="length" default="20px" min="0" max="100px" value="20px"/>
+       <Variable name="main.background" description="Main Background" type="background" default="transparent url(https://resources.blogblog.com/blogblog/data/1kt/transparent/white80.png) repeat scroll top left" value="transparent url(https://resources.blogblog.com/blogblog/data/1kt/transparent/white80.png) repeat scroll top left"/>
+       <Variable name="main.padding.sides" description="Main Padding Sides" type="length" default="20px" min="0" max="100px" value="20px"/>
 
-   <Variable name="main.background" description="Main Background" type="background" default="transparent url(https://resources.blogblog.com/blogblog/data/1kt/transparent/white80.png) repeat scroll top left" value="transparent url(https://resources.blogblog.com/blogblog/data/1kt/transparent/white80.png) repeat scroll top left"/>
-   <Variable name="main.padding.sides" description="Main Padding Sides" type="length" default="20px" min="0" max="100px" value="20px"/>
+       <Variable name="footer.background" description="Footer Background" type="background" default="transparent url(https://resources.blogblog.com/blogblog/data/1kt/transparent/black50.png) repeat scroll top left" value="transparent url(https://resources.blogblog.com/blogblog/data/1kt/transparent/black50.png) repeat scroll top left"/>
 
-   <Variable name="footer.background" description="Footer Background" type="background" default="transparent url(https://resources.blogblog.com/blogblog/data/1kt/transparent/black50.png) repeat scroll top left" value="transparent url(https://resources.blogblog.com/blogblog/data/1kt/transparent/black50.png) repeat scroll top left"/>
+       <Variable name="post.margin.sides" description="Post Margin Sides" type="length" default="-20px" min="-50px" max="50px" value="-20px"/>
+       <Variable name="post.border.radius" description="Post Border Radius" type="length" default="5px" min="0" max="100px" value="5px"/>
+       <Variable name="widget.title.text.transform" description="Widget Title Text Transform" type="string" default="uppercase" value="uppercase"/>
 
-   <Variable name="post.margin.sides" description="Post Margin Sides" type="length" default="-20px" min="-50px" max="50px" value="-20px"/>
-   <Variable name="post.border.radius" description="Post Border Radius" type="length" default="5px" min="0" max="100px" value="5px"/>
-   <Variable name="widget.title.text.transform" description="Widget Title Text Transform" type="string" default="uppercase" value="uppercase"/>
+       <Variable name="mobile.background.overlay" description="Mobile Background Overlay" type="string" default="transparent none repeat scroll top left" value="transparent none repeat scroll top left"/>
 
-   <Variable name="mobile.background.overlay" description="Mobile Background Overlay" type="string" default="transparent none repeat scroll top left" value="transparent none repeat scroll top left"/>
+       <Variable name="startSide" description="Side where text starts in blog language" type="automatic" default="left"/>
+       <Variable name="endSide" description="Side where text ends in blog language" type="automatic" default="right"/>
+    */
 
-   <Variable name="startSide" description="Side where text starts in blog language" type="automatic" default="left"/>
-   <Variable name="endSide" description="Side where text ends in blog language" type="automatic" default="right"/>
-*/
+    /*
+    <!--*cosas medio relevantes 👇-->
+    */
+    body {
+      font: $(body.font);
+      color: $(body.text.color);
+      background: #F5F5F5;
+    }
 
-/*
-<!--*cosas medio relevantes 👇-->
-*/
-body {
-  font: $(body.font);
-  color: $(body.text.color);
-  background: #F5F5F5;
-}
+    html body .region-inner {
+      min-width: 0;
+      max-width: 100%;
+      width: auto;
 
-html body .region-inner {
-  min-width: 0;
-  max-width: 100%;
-  width: auto;
+    }
+    a{
+      -webkit-tap-highlight-color: transparent;
+    }
+    a:link {
+      text-decoration:none;color:
+      $(link.color);
+    }
+    a:visited {
+      text-decoration:none;
+      color:$(link.visited.color);
+    }
+    a:hover {
+      text-decoration:underline;
+      color: $(link.hover.color);
+    }
+    .section {margin: 0;}
+    .widget ul{line-height: unset;}
 
-}
-a{
-  -webkit-tap-highlight-color: transparent;
-}
-a:link {
-  text-decoration:none;color:
-  $(link.color);
-}
-a:visited {
-  text-decoration:none;
-  color:$(link.visited.color);
-}
-a:hover {
-  text-decoration:underline;
-  color: $(link.hover.color);
-}
-.section {margin: 0;}
-.widget ul{line-height: unset;}
+    .header-outer {
+      display: none;
+      background: $(header.background.color) $(header.background.gradient) repeat-x scroll top left;
+      _background-image: none;
+      color: $(header.text.color);
+    }
 
-.header-outer {
-  display: none;
-  background: $(header.background.color) $(header.background.gradient) repeat-x scroll top left;
-  _background-image: none;
-  color: $(header.text.color);
-}
+    <!--* estilos post populares -->
+    .item-thumbnail {width: 100%;}
+    .PopularPosts img{width:100%;}
 
-<!--* estilos post populares -->
-.item-thumbnail {width: 100%;}
-.PopularPosts img{width:100%;}
-
-.post-content{width: 100%;}
-.post-content img{ width: 100%;}
-
-
+    .post-content{width: 100%;}
+    .post-content img{ width: 100%;}
 
 
 
-.content-outer {
-  background: $(content.background);
-
-  -moz-border-radius: $(content.border.radius);
-  -webkit-border-radius: $(content.border.radius);
-  -goog-ms-border-radius: $(content.border.radius);
-  border-radius: $(content.border.radius);
-
-  -moz-box-shadow: 0 0 $(content.shadow.spread) rgba(0, 0, 0, .15);
-  -webkit-box-shadow: 0 0 $(content.shadow.spread) rgba(0, 0, 0, .15);
-  -goog-ms-box-shadow: 0 0 $(content.shadow.spread) rgba(0, 0, 0, .15);
-  box-shadow: 0 0 $(content.shadow.spread) rgba(0, 0, 0, .15);
-
-  margin: $(content.margin) auto;
-}
-
-.content-inner {
-  padding: $(content.padding);
-}
 
 
-/* Widgets
------------------------------------------------ */
-.widget ul, .widget #ArchiveList ul.flat {
-  padding: 0;
-  list-style: none;
-}
+    .content-outer {
+      background: $(content.background);
 
-.widget ul li, .widget #ArchiveList ul.flat li {
-  border-top: dashed 1px #ccc;
-  border-top: dashed 1px rgba(128, 128, 128, .5);
-}
+      -moz-border-radius: $(content.border.radius);
+      -webkit-border-radius: $(content.border.radius);
+      -goog-ms-border-radius: $(content.border.radius);
+      border-radius: $(content.border.radius);
 
-.widget ul li:first-child, .widget #ArchiveList ul.flat li:first-child {
-  border-top: none;
-}
+      -moz-box-shadow: 0 0 $(content.shadow.spread) rgba(0, 0, 0, .15);
+      -webkit-box-shadow: 0 0 $(content.shadow.spread) rgba(0, 0, 0, .15);
+      -goog-ms-box-shadow: 0 0 $(content.shadow.spread) rgba(0, 0, 0, .15);
+      box-shadow: 0 0 $(content.shadow.spread) rgba(0, 0, 0, .15);
 
-.widget .post-body ul {
-  list-style: disc;
-}
+      margin: $(content.margin) auto;
+    }
 
-.widget .post-body ul li {
-  border: none;
-}
+    .content-inner {
+      padding: $(content.padding);
+    }
 
-/* Footer
------------------------------------------------ */
-.footer-outer {
-  color:$(footer.text.color);
-  background: $(footer.background);
 
-  -moz-border-radius: $(footer.border.radius.top) $(footer.border.radius.top) $(footer.border.radius.bottom) $(footer.border.radius.bottom);
-  -webkit-border-top-left-radius: $(footer.border.radius.top);
-  -webkit-border-top-right-radius: $(footer.border.radius.top);
-  -webkit-border-bottom-left-radius: $(footer.border.radius.bottom);
-  -webkit-border-bottom-right-radius: $(footer.border.radius.bottom);
-  -goog-ms-border-radius: $(footer.border.radius.top) $(footer.border.radius.top) $(footer.border.radius.bottom) $(footer.border.radius.bottom);
-  border-radius: $(footer.border.radius.top) $(footer.border.radius.top) $(footer.border.radius.bottom) $(footer.border.radius.bottom);
+    /* Widgets
+    ----------------------------------------------- */
+    .widget ul, .widget #ArchiveList ul.flat {
+      padding: 0;
+      list-style: none;
+    }
 
-  -moz-box-shadow: 0 $(region.shadow.offset) $(region.shadow.spread) rgba(0, 0, 0, .15);
-  -webkit-box-shadow: 0 $(region.shadow.offset) $(region.shadow.spread) rgba(0, 0, 0, .15);
-  -goog-ms-box-shadow: 0 $(region.shadow.offset) $(region.shadow.spread) rgba(0, 0, 0, .15);
-  box-shadow: 0 $(region.shadow.offset) $(region.shadow.spread) rgba(0, 0, 0, .15);
-}
+    .widget ul li, .widget #ArchiveList ul.flat li {
+      border-top: dashed 1px #ccc;
+      border-top: dashed 1px rgba(128, 128, 128, .5);
+    }
 
-.footer-inner {
-  padding: 10px $(main.padding.sides) 20px;
-}
+    .widget ul li:first-child, .widget #ArchiveList ul.flat li:first-child {
+      border-top: none;
+    }
 
-.footer-outer a {
-  color: $(footer.link.color);
-}
+    .widget .post-body ul {
+      list-style: disc;
+    }
 
-.footer-outer a:visited {
-  color: $(footer.link.visited.color);
-}
+    .widget .post-body ul li {
+      border: none;
+    }
 
-.footer-outer a:hover {
-  color: $(footer.link.hover.color);
-}
+    /* Footer
+    ----------------------------------------------- */
+    .footer-outer {
+      color:$(footer.text.color);
+      background: $(footer.background);
 
-.footer-outer .widget h2 {
-  color: $(footer.widget.title.text.color);
-}
-]]>
+      -moz-border-radius: $(footer.border.radius.top) $(footer.border.radius.top) $(footer.border.radius.bottom) $(footer.border.radius.bottom);
+      -webkit-border-top-left-radius: $(footer.border.radius.top);
+      -webkit-border-top-right-radius: $(footer.border.radius.top);
+      -webkit-border-bottom-left-radius: $(footer.border.radius.bottom);
+      -webkit-border-bottom-right-radius: $(footer.border.radius.bottom);
+      -goog-ms-border-radius: $(footer.border.radius.top) $(footer.border.radius.top) $(footer.border.radius.bottom) $(footer.border.radius.bottom);
+      border-radius: $(footer.border.radius.top) $(footer.border.radius.top) $(footer.border.radius.bottom) $(footer.border.radius.bottom);
+
+      -moz-box-shadow: 0 $(region.shadow.offset) $(region.shadow.spread) rgba(0, 0, 0, .15);
+      -webkit-box-shadow: 0 $(region.shadow.offset) $(region.shadow.spread) rgba(0, 0, 0, .15);
+      -goog-ms-box-shadow: 0 $(region.shadow.offset) $(region.shadow.spread) rgba(0, 0, 0, .15);
+      box-shadow: 0 $(region.shadow.offset) $(region.shadow.spread) rgba(0, 0, 0, .15);
+    }
+
+    .footer-inner {
+      padding: 10px $(main.padding.sides) 20px;
+    }
+
+    .footer-outer a {
+      color: $(footer.link.color);
+    }
+
+    .footer-outer a:visited {
+      color: $(footer.link.visited.color);
+    }
+
+    .footer-outer a:hover {
+      color: $(footer.link.hover.color);
+    }
+
+    .footer-outer .widget h2 {
+      color: $(footer.widget.title.text.color);
+    }
+    ]]>
     </b:skin>
       <!--
       ? ===============================
@@ -416,17 +437,17 @@ a:hover {
         </b:if>
       </div>
     </b:if>
+    <!--
+    & ===============================
+    & 🎀      marcador Header     🎀
+    & ===============================
+    -->
     <div class='content'>
       <div class='content-outer'>
           <div class='content-inner'>
             <style>
-              <!--
-              & ===============================
-              & 🎀      marcador Header     🎀
-              & ===============================
-              -->
-              
-
+              /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+              /*css 👈 comando decorativo "Highlight String Code */
               .Header .titlewrapper,
               .Header .descriptionwrapper {
                 padding: 0px 30px
@@ -440,7 +461,9 @@ a:hover {
               .Header h1 a {
                 color: $(header.text.color);
               }
-
+              
+              /*!css*/
+              /*]]>*/
             </style>
             <b:section class='header header-outer' id='header' maxwidgets='1' name='Header' showaddelement='no'>
               <b:widget id='Header1' locked='true' title=' Centro agroturistico v3 (Encabezado)' type='Header'>
@@ -560,7 +583,10 @@ a:hover {
                 <b:includable id='main'>
 
                   <style>
-                    .seccion_header_cont {
+                    /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+                    /*css 👈 comando decorativo "Highlight String Code */
+
+                    #seccion_header_cont {
                       box-sizing: border-box;
                       display: flex;
                       align-items: center;
@@ -577,27 +603,28 @@ a:hover {
                       overflow-x: auto;
                     }
 
-                    <!-- ~ Barra de scroll 👇 ~ -->
-                    .seccion_header_cont::-webkit-scrollbar {
+                    /*
+                    <!-- ^  Barra de scroll 👇 ^ --> */
+                    #seccion_header_cont::-webkit-scrollbar {
                       width: 5px;
                       height: 5px;
+                      transition: all 0.3s;
                     }
 
-                    .seccion_header_cont::-webkit-scrollbar{
+
+                    #seccion_header_cont::-webkit-scrollbar{
                       width: 2px;
                       background:rgba(241, 241, 241, 0); /* Color de fondo de la pista */
-                      border-radius: 10px;
+                      border-radius: 0px;
                     }
-                    .seccion_header_cont::-webkit-scrollbar-thumb  {
+                    #seccion_header_cont::-webkit-scrollbar-thumb  {
                       background: rgba(85, 85, 100, 0.18);
                       border-radius: 10px;
-                      transition: background 0.3s;
                     }
-
-
-                    .seccion_header_cont::-webkit-scrollbar-thumb:hover {
-                      background:rgba(85, 85, 100, 0.24)
+                    #seccion_header_cont::-webkit-scrollbar-thumb:hover {
+                      background:rgba(85, 85, 100, 0.24);
                     }
+                    
 
 
                     .seccion_header {
@@ -631,7 +658,7 @@ a:hover {
                     }
 
 
-                    <!-- ~ Pantallas de 620px ~ -->
+                    /* Pantallas de 620px */
                     @media (max-width: 620px) {
                       .seccion_header_cont {
                         max-width: none;
@@ -659,7 +686,7 @@ a:hover {
                       }
                     }
 
-                    <!-- ~ Pantallas de 401px ~ -->
+                    /* Pantallas de 401px */
                     @media (max-width: 401px) {
                         .seccion_header_cont {
                             width: 100%;
@@ -667,20 +694,32 @@ a:hover {
                             justify-items: center;
                         }
                     }
+                    /*!css*/
+                    /*]]>*/
                   </style>
+
                   <script>
-                    const urlActual = window.location.pathname;
-                    const seccion_headers = document.querySelectorAll('.seccion_header');
+                    //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
+                    //js 👈 comando decorativo "Highlight String Code"
+                    function asignarPaginaActual() {
+                      const urlActual = window.location.pathname;
+
+                      const contenedor = document.getElementById('seccion_header_cont');
+                      const seccion_headers = contenedor.querySelectorAll('.seccion_header');
+
                       seccion_headers.forEach(seccion_header => {
                         const href = new URL(seccion_header.href).pathname;
                         if (urlActual === href) {
-                          seccion_header.classList.add('pagina_actual');
+                          seccion_header .classList.add('pagina_actual');
                         }
-                      });
+                      })
+                    }
+                    //!js
+                    //]]>
                   </script> 
 
                   <div class='widget-content'>
-                      <div class="seccion_header_cont">
+                      <div id="seccion_header_cont">
                         <b:loop values='data:links' var='link'>
                           <a class="seccion_header" expr:href='data:link.href'>
                             <data:link.title/>
@@ -700,19 +739,25 @@ a:hover {
             -->
 
             <div class='main-outer'>
-              <Style>
+              <style>
+                /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+                /*css 👈 comando decorativo "Highlight String Code */
+  
                 .main-outer {
-                  display: grid;
-                  grid-template-columns: 1fr 195px;
-                  grid-gap: 30px;
-                  background: #ffffff;
-                  padding: 15px 50px;
-                  border-radius: 16px;
-                  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
-                  0 1px 3px rgba(0, 0, 0, 0.08);
-                  margin: 60px 0px !important;
-                  }
-              </Style> 
+                    display: grid;
+                    grid-template-columns: 1fr 195px;
+                    grid-gap: 30px;
+                    background: #ffffff;
+                    padding: 15px 50px;
+                    border-radius: 16px;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
+                    0 1px 3px rgba(0, 0, 0, 0.08);
+                    margin: 60px 0px !important;
+                    }
+  
+                /*!css*/
+                /*]]>*/
+              </style>
                   <b:section class='blog-posts hfeed' id='main' name='Main' showaddelement='no'>
                     <b:widget id='Blog1' locked='true' title='Entradas del blog' type='Blog' version='1'>
                       <b:widget-settings>
@@ -749,8 +794,11 @@ a:hover {
                             & 🍎      marcador posts     🍎
                             & ===============================
                             -->
+
                             <style>
-                              
+                              /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+                              /*css 👈 comando decorativo "Highlight String Code */
+                            
                               .blog-posts{
                                 width:100%;
                                 margin: 0;
@@ -858,8 +906,8 @@ a:hover {
                                 object-fit: contain;
                                 object-position: center;
                                 content-visibility: auto;
-                                <!--
-                                ~ animaciones -->
+
+                                /* animaciones */
                                 view-timeline-name: --postscroll;
                                 view-timeline-axis: block;
                                 animation-timeline: --postscroll;
@@ -897,7 +945,7 @@ a:hover {
                                 margin: 0px !important;
                               }
 
-                              <!-- * esta clase se agrega con un script  -->
+                              /* esta clase se agrega con un script  */
                               .dos-columnas {
                                 width: 100%;
                                 max-width: 100%;
@@ -911,38 +959,27 @@ a:hover {
                                 flex-wrap: wrap;
                                 gap: 10px
                               }
+                              /*!css*/
+                              /*]]>*/
                             </style>
-                            <script type='text/javascript'>
+
+                            <script>
+                              //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
+                              //js 👈 comando decorativo "Highlight String Code"
                               function ajustarColumnas() {
                                 console.log("ajustarColumnas")
-                                const posts = document.querySelectorAll(".post");
-                                posts.forEach(post => {
-                                    if (post.offsetHeight > 800) {
+                                const contenedor = document.getElementById('Blog1');
+                                const posts = contenedor.getElementsByClassName("post");
+                                for (let post of posts) {
+                                  if (post.offsetHeight > 800) {
                                       post.classList.add("dos-columnas");
-                                    }
-                                });
+                                  }
+                                }
                               }
-                              
-
-            <!--                               window.addEventListener('DOMContentLoaded', function() {
-                                console.log("eliminando parrafos")
-                                var parrafos = document.querySelectorAll('.post-body > p');
-                                parrafos.forEach(function(p) {
-                                    // Usamos texto en Unicode y eliminamos todo tipo de espacios
-                                    var contenido = p.textContent
-                                        .replace(/\s+/g, '')       // Elimina espacios, tabs y saltos de línea
-                                        .replace(/\u00a0/g, '')    // Elimina espacios no rompibles (nbsp;)
-                                        .replace(/\u200B/g, '');   // Elimina espacios "zero-width" (caracteres invisibles)
-                                    // Si no queda contenido, eliminamos el párrafo
-                                    if (!contenido.length) {
-                                        p.parentNode.removeChild(p); // Método compatible con navegadores antiguos
-                                    }
-                                });
-                              }); -->
-
-
-
+                              //!js
+                              //]]>
                             </script>
+
                             <b:include data='top' name='status-message'/>
                             <b:loop values='data:posts' var='post'>
                               <b:if cond='data:post.isDateStart and not data:post.isFirstPost'>
@@ -1376,24 +1413,29 @@ a:hover {
                             <div class='mensajedebusqueda'>
                               <data:navMessage/>
                             </div>
-                            <style>
-                                    .mensajedebusqueda{
-                                      display: flex;
-                                      align-items: center;
-                                      gap: 5px;
-                                      flex-wrap: wrap;
-                                      justify-content: center;
-                                      padding: 5px;
-                                      margin-bottom:10px;
-                                      text-align: center;
-                                    }
-                                    .mensajedebusqueda b{
-                                      font-weight: bolder;
-                                    }
-                                    .mensajedebusqueda a{
-                                      margin: 0px 5px;
-                                    }
-                                    </style>
+
+                              <style>
+                                /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+                                /*css 👈 comando decorativo "Highlight String Code */
+                                  .mensajedebusqueda{
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 5px;
+                                    flex-wrap: wrap;
+                                    justify-content: center;
+                                    padding: 5px;
+                                    margin-bottom:10px;
+                                    text-align: center;
+                                  }
+                                  .mensajedebusqueda b{
+                                    font-weight: bolder;
+                                  }
+                                  .mensajedebusqueda a{
+                                    margin: 0px 5px;
+                                  }
+                                /*!css*/
+                                /*]]>*/
+                              </style>
                           </div>
                         </b:if>
                       </b:includable>
@@ -1426,19 +1468,14 @@ a:hover {
                       <b:includable id='threaded_comment_js' var='post'>
                         <script async='async' expr:src='data:post.commentSrc' type='text/javascript'/>
                         <script type='text/javascript'>
-                              (function() {
-                              var items =
-                          <data:post.commentJso/>
-                              ;
-                                var msgs =
-                          <data:post.commentMsgs/>
-                                  ;
-                              var config =
-                          <data:post.commentConfig/>
-                                ;
+                          (function() {
+                            var items =<data:post.commentJso/>;
+                            var msgs =<data:post.commentMsgs/>;
+                            var config = <data:post.commentConfig/>;
 
-                           //
-                          <![CDATA[
+                           //<![CDATA[
+                           //js
+
                           
                                 var cursor = null;
                                 if (items && items.length > 0) {
@@ -1613,6 +1650,7 @@ a:hover {
                                   window.goog.comments.loadQueue.push(render);
                                 }
                               })();
+                          //!js
                           // ]]>
                         </script>
                       </b:includable>
@@ -1751,11 +1789,82 @@ a:hover {
   -->
 
   <style>
+    /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+    /*css 👈 comando decorativo "Highlight String Code */
+
     #sidebar-right-1{
       width: 100%;
+      background-color: #ffffff
     }
+
+    @media (max-width: 735px) {
+      #sidebar-right-1{
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 3;
+      height: 100vh;
+      width: 90%;
+      max-width: 250px;
+      padding: 5px 20px;
+      box-shadow: -4px 0px 8px 0 rgba(0, 0, 0, 0.2);
+      border-left: 5px solid #39A900;
+
+      box-sizing: border-box;
+      transition: transform 0.5s ease-in-out;
+      }
+
+      .ocultarMenu {
+        transform: translate(100%, 0px);
+      }
+    }
+    /*!css*/
+    /*]]>*/
   </style>
-  <b:section-contents id='sidebar-right-1'>
+  <script>
+    //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
+    //js 👈 comando decorativo "Highlight String Code"
+    const menu = document.getElementById("sidebar-right-1");
+    let lugarInicialX, lugarInicialY, distanciaX, menuDesplegado;
+
+    document.addEventListener("pointerdown", (event) => {
+        lugarInicialX = event.clientX;
+        lugarInicialY = event.clientY;
+        distanciaX = window.innerWidth - lugarInicialX;
+        menuDesplegado = !menu.classList.contains('ocultarMenu');
+
+        //<!--^ cerrar al tocar fuera del menu 🔒 --> 
+        if (menuDesplegado && distanciaX > menu.offsetWidth) {
+            menu.classList.add('ocultarMenu');
+        }
+    });
+
+    document.addEventListener("touchmove", (event) => {
+        // ignorar cuando esta lejos del borde ❌
+        if (distanciaX > 80 && !menuDesplegado) return
+        console.log(distanciaX)
+
+        let recoridoY = event.touches[0].clientY - lugarInicialY
+        let recoridoX = event.touches[0].clientX - lugarInicialX;
+
+        // ignorar si hay mucho Recorrido en "Y" ❌
+        if (recoridoY > 25) return;
+
+        //<!-- ^ logica al abrir 🔓--> 
+        if (recoridoX < -30) {
+            menu.classList.remove('ocultarMenu');
+        }
+        //<!-- ^ logica al cerrar 🔒--> 
+        if (recoridoX > 30) {
+            menu.classList.add('ocultarMenu');
+        }
+    });
+    //!js
+    //]]>
+  </script>
+
+
+  <b:section-contents id='sidebar-right-1' class='ocultarMenu'>
     <b:widget id='Label1' locked='false' title='Etiquetas' type='Label'>
       <b:widget-settings>
         <b:widget-setting name='sorting'>ALPHA</b:widget-setting>
@@ -1847,137 +1956,132 @@ a:hover {
                       </td>
                     </tr>
                     <style>
+                      /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+                      /*css 👈 comando decorativo "Highlight String Code */
+                      .titlebuscador {
+                        display: block;
+                        width: 100%;
+                        font-weight: bold;
+                        text-align: center;
+                        color: #39A900;
+                      }
+                      .BlogSearch {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                        margin: 10px 0px;
+                        width: 100%;
+                        background-color:white;
+                        position: sticky; 
+                        top: 0 ;
+                        z-index: 1;
+                        padding: 10px 0px 5px 0px;
+                        }
 
-                    .titlebuscador {
-                      display: block;
-                      width: 100%;
-                      font-weight: bold;
-                      text-align: center;
-                      color: #39A900;
-                    }
-                    .BlogSearch {
-                      display: flex;
-                      flex-direction: column;
-                      gap: 10px;
-                      margin: 10px 0px;
-                      width: 100%;
-                      background-color:white;
-                      position: sticky; 
-                      top: 0 ;
-                      z-index: 1;
-                      padding: 10px 0px 5px 0px;
+                      .BlogSearch::after {
+                        display:none;
+                        z-index: 2;
+                        content: &quot;&quot;;
+                        position: absolute;
+                        bottom: -5px;
+                        left: 0;
+                        width: 100%;
+                        height: 5px; /* Altura del difuminado */
+                        pointer-events: none; /* Evita que interfiera con clics o eventos */
+                        background: linear-gradient(to bottom, rgba(255, 255,255, 1), rgba(255, 255, 255, 0));
                       }
 
-                    .BlogSearch::after {
-                      display:none;
-                      z-index: 2;
-                      content: &quot;&quot;;
-                      position: absolute;
-                      bottom: -5px;
-                      left: 0;
-                      width: 100%;
-                      height: 5px; /* Altura del difuminado */
-                      pointer-events: none; /* Evita que interfiera con clics o eventos */
-                      background: linear-gradient(to bottom, rgba(255, 255,255, 1), rgba(255, 255, 255, 0));
-                    }
-                  
-                    .contenedorbuscador {
-                        background-color: white;
-                        height: 30px;
-                        width: 100%;
-                        display: grid;
-                        grid-template-columns: 1fr 36px;
-                        grid-template-rows: 1fr;
-                        box-shadow: 0 0 0px 1px #c4c4D0;
-                        border-radius: 4px;
-                        }
-            
-                    .contenedorbuscador:focus-within{
-                        box-shadow: 0 0 0px 1px #39A900;
-                    }
+                      .contenedorbuscador {
+                          background-color: white;
+                          height: 30px;
+                          width: 100%;
+                          display: grid;
+                          grid-template-columns: 1fr 36px;
+                          grid-template-rows: 1fr;
+                          box-shadow: 0 0 0px 1px #c4c4D0;
+                          border-radius: 4px;
+                          }
 
-                    .contenedorbuscador >.inputbuscadorcont{
-                      height: 100%;
-                    }
-            
-                    .inputbuscadorcont >.inputbuscador {
-                        box-sizing: border-box;
-                        background-color: transparent;
-                        width: 100%;
-                        height: 100%;
-                        margin: 0px;
-                        outline: none;
-                        border: none;
-                        border-radius: 4px 0px 0px 4px;
-                        padding: 0px 10px;
-                    }
-            
-                    .inputbuscador:focus+.contenedorbuscador {
-                        background-color: #39A900;
-                    }
-            
-                    .contenedorbuscador >.buttonbuscadorcont {
-                        width: 100%;
-                        height: 100%;
-                        border-radius: 0px 4px 4px 0px;
-                    }
-            
-                    .buttonbuscadorcont >.buttonbuscador {
-                        width: 100%;
-                        height: 100%;
-                        margin: 0px;
-                        background-color: transparent;
-                        background: 
-                        url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhk8CTT8voh4dHF8-R0yfpfXpgGNSFi88mdXqPpOFoSKS6Q8GmllCgBmSRpfkEXswQZuseMGQQn5Fp98Qjype6fh7L9phokTzHVlVbiK-3WiCYtst_YkawISqPGHkWFQKvGvnH2xy4z8p7ruH7PMdUFpjiJVR1wZ-KzYnS06PYQ_RADrAzls-cfJNjw8mQ/s80/search%202.png)
-                        no-repeat center center;
-                        background-size: 80%;
-                        outline: none;
-                        border: none;
-                        transition: all 0.5s;
-            
-                    }
-            
-                    .contenedorbuscador .buttonbuscador.lupagirando {
-                        animation: lupagirando 2.5s ease;
-                    }
-            
-                    .contenedorbuscador.inputgolpe {
-                        animation: inputgolpe 2.5s ease-out;
-                    }
-            
-                    @keyframes lupagirando {
-                      0% {transform: rotate(0deg);}
-                      25% {transform: rotate(45deg)translate(0px, -70px);}
-                      40% {transform: rotate(-90deg) translate(10px, 40px);}
-                      45% {transform: rotate(-90deg) translate(10px, 40px);}
-                      80% {transform: rotate(360deg);}
-                      100% {transform: rotate(360deg);}
-                    }
+                      .contenedorbuscador:focus-within{
+                          box-shadow: 0 0 0px 1px #39A900;
+                      }
 
-                    @keyframes inputgolpe {
-                      0% {transform: rotate(0deg); transform-origin: left top;}
-                      30% {transform: rotate(0deg);}
-                      35% {transform: rotate(5deg);}
-                      45% {transform: rotate(-4deg);}
-                      60% {transform: rotate(3deg);}
-                      70% {transform: rotate(-2deg);}
-                      80% {transform: rotate(0deg);}
-                    }
+                      .contenedorbuscador >.inputbuscadorcont{
+                        height: 100%;
+                      }
+
+                      .inputbuscadorcont >.inputbuscador {
+                          box-sizing: border-box;
+                          background-color: transparent;
+                          width: 100%;
+                          height: 100%;
+                          margin: 0px;
+                          outline: none;
+                          border: none;
+                          border-radius: 4px 0px 0px 4px;
+                          padding: 0px 10px;
+                      }
+
+                      .inputbuscador:focus+.contenedorbuscador {
+                          background-color: #39A900;
+                      }
+
+                      .contenedorbuscador >.buttonbuscadorcont {
+                          width: 100%;
+                          height: 100%;
+                          border-radius: 0px 4px 4px 0px;
+                      }
+
+                      .buttonbuscadorcont >.buttonbuscador {
+                          width: 100%;
+                          height: 100%;
+                          margin: 0px;
+                          background-color: transparent;
+                          background: 
+                          url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhk8CTT8voh4dHF8-R0yfpfXpgGNSFi88mdXqPpOFoSKS6Q8GmllCgBmSRpfkEXswQZuseMGQQn5Fp98Qjype6fh7L9phokTzHVlVbiK-3WiCYtst_YkawISqPGHkWFQKvGvnH2xy4z8p7ruH7PMdUFpjiJVR1wZ-KzYnS06PYQ_RADrAzls-cfJNjw8mQ/s80/search%202.png)
+                          no-repeat center center;
+                          background-size: 80%;
+                          outline: none;
+                          border: none;
+                          transition: all 0.5s;
+
+                      }
+
+                      .contenedorbuscador .buttonbuscador.lupagirando {
+                          animation: lupagirando 2.5s ease;
+                      }
+
+                      .contenedorbuscador.inputgolpe {
+                          animation: inputgolpe 2.5s ease-out;
+                      }
+
+                      @keyframes lupagirando {
+                        0% {transform: rotate(0deg);}
+                        25% {transform: rotate(45deg)translate(0px, -70px);}
+                        40% {transform: rotate(-90deg) translate(10px, 40px);}
+                        45% {transform: rotate(-90deg) translate(10px, 40px);}
+                        80% {transform: rotate(360deg);}
+                        100% {transform: rotate(360deg);}
+                      }
+
+                      @keyframes inputgolpe {
+                        0% {transform: rotate(0deg); transform-origin: left top;}
+                        30% {transform: rotate(0deg);}
+                        35% {transform: rotate(5deg);}
+                        45% {transform: rotate(-4deg);}
+                        60% {transform: rotate(3deg);}
+                        70% {transform: rotate(-2deg);}
+                        80% {transform: rotate(0deg);}
+                      }
+                      /*!css*/
+                      /*]]>*/
                     </style>
                     <script>
-                      const form = document.querySelector('.gsc-search-box');
-
-                      form.addEventListener('submit', (e) => {
-                          e.preventDefault();
-                              setTimeout(() => {
-                                  form.submit();
-                              }, 2000); // Retraso de 2.1 segundos
-                      });
-
-
-
-                      const button = document.querySelector('.buttonbuscador');
-                      const input = document.querySelector('.contenedorbuscador');
+                      //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
+                      //js 👈 comando decorativo "Highlight String Code"
+                      const contenedor = document.getElementById("BlogSearch1_form");
+                      const button = contenedor.querySelector('.buttonbuscador');
+                      const input = contenedor.querySelector('.contenedorbuscador');
 
                       button.addEventListener('click', () => {
                           if (button.classList.contains('lupagirando')) {
@@ -1993,7 +2097,19 @@ a:hover {
                               input.classList.remove('inputgolpe');
                           }, 2500);
                       });
+
+                      const form = contenedor.querySelector('.gsc-search-box');
+                      form.addEventListener('submit', (e) => {
+                          e.preventDefault();
+                              setTimeout(() => {
+                                  form.submit();
+                              }, 2000); // Retraso de 2.1 segundos
+                      });
+                    
+                      //!js
+                      //]]>
                     </script>
+
                   </tr>
                 </tbody>
               </table>
@@ -2170,8 +2286,10 @@ a:hover {
         <b:widget-setting name='showPosts'>false</b:widget-setting>
         <b:widget-setting name='frequency'>MONTHLY</b:widget-setting>
       </b:widget-settings>
-    <b:includable id='main'>
+    <b:includable id='main'> 
       <style>
+        /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+        /*css 👈 comando decorativo "Highlight String Code */
         #BlogArchive1 {
           position: sticky;
           top: 100px;
@@ -2180,7 +2298,7 @@ a:hover {
           <!-- efecto de desbanecido al escrolear 🌫️ -->
           mask-image: linear-gradient(
             to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 60px
-          ); 
+          );
         }
         #BlogArchive1 *{
           transition: opacity 0.6s ease-in-out, height 1s ease;
@@ -2280,46 +2398,9 @@ a:hover {
           color: #00304D;
           font-size: 0.8em;
         }
+        /*!css*/
+        /*]]>*/
       </style>
-
-      <script>
-        const menu = document.getElementById("sidebar-right-1");
-        let lugarInicialX, lugarInicialY, distanciaX, menuDesplegado;
-
-        document.addEventListener("pointerdown", (event) => {
-            lugarInicialX = event.clientX;
-            lugarInicialY = event.clientY;
-            distanciaX =  window.innerWidth - lugarInicialX;
-            menuDesplegado = !menu.classList.contains('ocultarMenu');
-
-            //<!--^ cerrar al tocar fuera del menu 🔒--> 
-            if (menuDesplegado  &amp;&amp; distanciaX > menu.offsetWidth) {
-                menu.classList.add('ocultarMenu');
-            }
-        });
-
-        document.addEventListener("touchmove", (event) => {
-            // ignorar cuando esta lejos del borde ❌
-            if (distanciaX > 60 &amp;&amp; !menuDesplegado) return
-            console.log(distanciaX)
-
-            let recoridoY = event.touches[0].clientY - lugarInicialY
-            let recoridoX = event.touches[0].clientX - lugarInicialX;
-
-            // ignorar si hay mucho Recorrido en "Y" ❌
-            if (recoridoY > 25) return;
-
-<!--             //- ^ logica al abrir 🔓
-            if(recoridoX < -30 ){
-                menu.classList.remove('ocultarMenu');
-            }
-            // ^ logica al cerrar 🔒
-            if (recoridoX > 30) {
-                menu.classList.add('ocultarMenu');
-            } -->
-        });
-      </script>
-      
       <b:if cond='data:title != &quot;&quot;'>
         <h3><data:title/></h3>
       </b:if>
@@ -2407,47 +2488,55 @@ a:hover {
       🔽🔽🔽🔽🔽🔽🔽🔽🔽🔽🔽🔽🔽🔽🔽🔽
   -->
 
-  <script type='text/javascript'>
+  <script>
+    //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
+    //js 👈 comando decorativo "Highlight String Code"
 
+    <!--* Elimina la clase 'loading' después de 10ms -->
+    window.setTimeout(function () {
+      document.body.className = document.body.className.replace('loading', '');
+    }, 10);
 
-  <!-- Elimina la clase 'loading' después de 10ms -->
-  window.setTimeout(function () {
-    document.body.className = document.body.className.replace('loading', '');
-  }, 10);
-
-  <!--? Función para copiar texto al portapapeles -->
-  async function copiarTexto(texto) {
-    try {
-      await navigator.clipboard.writeText(texto);
-      alert("Texto copiado: " + texto);
-    } catch (error) {
-      console.error("Error al copiar el texto: ", error);
-      alert("No se pudo copiar el texto. Inténtalo de nuevo.");
-    }
-  }
- 
-
-  <!-- eleva la galeria de imagenes -->
-  <!-- asi el menu no las atrabieza -->
-  <!-- con su "z-index" superior 👇 -->
-
-  let elevacionfinalizada = false;
-  if (!elevacionfinalizada) {
-    ajustarColumnas();
-    const observer = new MutationObserver(() => {
-      console.log("Mutation")
-      const lastElement = document.body.lastElementChild;
-      if (lastElement ? lastElement.classList.contains("CSS_LIGHTBOX") : false) {
-        lastElement.style.zIndex = "10";
-        elevacionfinalizada = true;
-        observer.disconnect(); // Detiene el observer después de hacer el cambio
+    // Función para copiar texto al portapapeles
+    async function copiarTexto(texto) {
+      try {
+        await navigator.clipboard.writeText(texto);
+        alert("Texto copiado: " + texto);
+      } catch (error) {
+        console.error("Error al copiar el texto: ", error);
+        alert("No se pudo copiar el texto. Inténtalo de nuevo.");
       }
-    });
+    }
+  
+    // eleva la galeria de imagenes
+    // asi el menu no las atrabieza
+    // con su "z-index" superior 👇
 
-    observer.observe(document.body, {
-      childList: true,
-      subtree: false
+    let elevacionfinalizada = false;
+    if (!elevacionfinalizada) {
+      ajustarColumnas();
+      const observer = new MutationObserver(() => {
+        console.log("Mutation")
+        const lastElement = document.body.lastElementChild;
+        if (lastElement ? lastElement.classList.contains("CSS_LIGHTBOX") : false) {
+          lastElement.style.zIndex = "10";
+          elevacionfinalizada = true;
+          observer.disconnect(); // Detiene el observer después de hacer el cambio
+        }
+      });
+
+      observer.observe(document.body, {
+        childList: true,
+        subtree: false
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      asignarPaginaActual()
+      ajustarColumnas()
     });
-  }
+    
+    //!js
+    //]]>
   </script>
 </html>
