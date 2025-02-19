@@ -82,17 +82,19 @@ que la extencion "highligth string" decore el texto)
     </title>
     <b:skin>
       <![CDATA[
-      /*-----------------------------------------------
-      Blogger Template Style
-      Name:     Picture Window
-      Designer: Blogger
-      URL:      www.blogger.com
-      ----------------------------------------------- */
 
-      /* Variable definitions
+        /*-----------------------------------------------
+        Blogger Template Style
+        Name:     Picture Window
+        Designer: Blogger
+        URL:      www.blogger.com
+        ----------------------------------------------- */
+        /* Variable definitions
          ====================
-       <Variableb name="keycolor" description="Main Color" type="color" default="#1a222a" value="#ffffff"/>
-       <Variable name="body.background" description="Body Background" type="background" color="$(body.background.color)" default="#111111 url(//themes.googleusercontent.com/image?id=1OACCYOE0-eoTRTfsBuX1NMN9nz599ufI1Jh0CggPFA_sK80AGkIr8pLtYRpNUKPmwtEa) repeat-x fixed top center" value="#ffffff url(none) no-repeat fixed top center /* Credit: dino4 (http://www.istockphoto.com/portfolio/dino4?platform=blogger) */"/>
+
+      //js
+      <Variableb name="keycolor" description="Main Color" type="color" default="#1a222a" value="#ffffff"/>
+      <Variable name="body.background" description="Body Background" type="background" color="$(body.background.color)" default="#111111 url(//themes.googleusercontent.com/image?id=1OACCYOE0-eoTRTfsBuX1NMN9nz599ufI1Jh0CggPFA_sK80AGkIr8pLtYRpNUKPmwtEa) repeat-x fixed top center" value="#ffffff url(none) no-repeat fixed top center /* Credit: dino4 (http://www.istockphoto.com/portfolio/dino4?platform=blogger) */"/> 
 
       <!-- &amp; aqui abajo tienes que poner la funte global que tendra la pagina 👇-->
        <Group description="Page Text" selector="body">
@@ -199,145 +201,146 @@ que la extencion "highligth string" decore el texto)
 
        <Variable name="startSide" description="Side where text starts in blog language" type="automatic" default="left"/>
        <Variable name="endSide" description="Side where text ends in blog language" type="automatic" default="right"/>
-    */
+       //!js
+       */
+    
 
-    /*
-    <!--*cosas medio relevantes 👇-->
-    */
-    body {
-      font: $(body.font);
-      color: $(body.text.color);
-      background: #F5F5F5;
-    }
+       
 
-    html body .region-inner {
-      min-width: 0;
-      max-width: 100%;
-      width: auto;
+        /*css 👈 comando decorativo "Highlight String Code */
+        /*
+        <!--*cosas medio relevantes 👇-->
+        */
+        body {
+          font: $(body.font);
+          color: $(body.text.color);
+          background: #F5F5F5;
+        }
 
-    }
-    a{
-      -webkit-tap-highlight-color: transparent;
-    }
-    a:link {
-      text-decoration:none;color:
-      $(link.color);
-    }
-    a:visited {
-      text-decoration:none;
-      color:$(link.visited.color);
-    }
-    a:hover {
-      text-decoration:underline;
-      color: $(link.hover.color);
-    }
-    .section {margin: 0;}
-    .widget ul{line-height: unset;}
+        html body .region-inner {
+          min-width: 0;
+          max-width: 100%;
+          width: auto;
+        }
+        a{
+          -webkit-tap-highlight-color: transparent;
+        }
+        a:link {
+          text-decoration:none;color:
+          $(link.color);
+        }
+        a:visited {
+          text-decoration:none;
+          color:$(link.visited.color);
+        }
+        a:hover {
+          text-decoration:underline;
+          color: $(link.hover.color);
+        }
+        .section {margin: 0;}
+        .widget ul{line-height: unset;}
 
-    .header-outer {
-      display: none;
-      background: $(header.background.color) $(header.background.gradient) repeat-x scroll top left;
-      _background-image: none;
-      color: $(header.text.color);
-    }
+        .header-outer {
+          display: none;
+          background: $(header.background.color) $(header.background.gradient) repeat-x scroll top left;
+          _background-image: none;
+          color: $(header.text.color);
+        }
 
-    <!--* estilos post populares -->
-    .item-thumbnail {width: 100%;}
-    .PopularPosts img{width:100%;}
-
-    .post-content{width: 100%;}
-    .post-content img{ width: 100%;}
-
-
-
-
-
-    .content-outer {
-      background: $(content.background);
-
-      -moz-border-radius: $(content.border.radius);
-      -webkit-border-radius: $(content.border.radius);
-      -goog-ms-border-radius: $(content.border.radius);
-      border-radius: $(content.border.radius);
-
-      -moz-box-shadow: 0 0 $(content.shadow.spread) rgba(0, 0, 0, .15);
-      -webkit-box-shadow: 0 0 $(content.shadow.spread) rgba(0, 0, 0, .15);
-      -goog-ms-box-shadow: 0 0 $(content.shadow.spread) rgba(0, 0, 0, .15);
-      box-shadow: 0 0 $(content.shadow.spread) rgba(0, 0, 0, .15);
-
-      margin: $(content.margin) auto;
-    }
-
-    .content-inner {
-      padding: $(content.padding);
-    }
+        <!--* estilos post populares -->
+        .item-thumbnail {width: 100%;}
+        .PopularPosts img{width:100%;}
+        .post-content{width: 100%;}
+        .post-content img{ width: 100%;}
 
 
-    /* Widgets
-    ----------------------------------------------- */
-    .widget ul, .widget #ArchiveList ul.flat {
-      padding: 0;
-      list-style: none;
-    }
+        .content-outer {
+          background: $(content.background);
 
-    .widget ul li, .widget #ArchiveList ul.flat li {
-      border-top: dashed 1px #ccc;
-      border-top: dashed 1px rgba(128, 128, 128, .5);
-    }
+          -moz-border-radius: $(content.border.radius);
+          -webkit-border-radius: $(content.border.radius);
+          -goog-ms-border-radius: $(content.border.radius);
+          border-radius: $(content.border.radius);
 
-    .widget ul li:first-child, .widget #ArchiveList ul.flat li:first-child {
-      border-top: none;
-    }
+          -moz-box-shadow: 0 0 $(content.shadow.spread) rgba(0, 0, 0, .15);
+          -webkit-box-shadow: 0 0 $(content.shadow.spread) rgba(0, 0, 0, .15);
+          -goog-ms-box-shadow: 0 0 $(content.shadow.spread) rgba(0, 0, 0, .15);
+          box-shadow: 0 0 $(content.shadow.spread) rgba(0, 0, 0, .15);
 
-    .widget .post-body ul {
-      list-style: disc;
-    }
+          margin: $(content.margin) auto;
+        }
 
-    .widget .post-body ul li {
-      border: none;
-    }
+        .content-inner {
+          padding: $(content.padding);
+        }
 
-    /* Footer
-    ----------------------------------------------- */
-    .footer-outer {
-      color:$(footer.text.color);
-      background: $(footer.background);
 
-      -moz-border-radius: $(footer.border.radius.top) $(footer.border.radius.top) $(footer.border.radius.bottom) $(footer.border.radius.bottom);
-      -webkit-border-top-left-radius: $(footer.border.radius.top);
-      -webkit-border-top-right-radius: $(footer.border.radius.top);
-      -webkit-border-bottom-left-radius: $(footer.border.radius.bottom);
-      -webkit-border-bottom-right-radius: $(footer.border.radius.bottom);
-      -goog-ms-border-radius: $(footer.border.radius.top) $(footer.border.radius.top) $(footer.border.radius.bottom) $(footer.border.radius.bottom);
-      border-radius: $(footer.border.radius.top) $(footer.border.radius.top) $(footer.border.radius.bottom) $(footer.border.radius.bottom);
+        /* Widgets
+        ----------------------------------------------- */
+        .widget ul, .widget #ArchiveList ul.flat {
+          padding: 0;
+          list-style: none;
+        }
 
-      -moz-box-shadow: 0 $(region.shadow.offset) $(region.shadow.spread) rgba(0, 0, 0, .15);
-      -webkit-box-shadow: 0 $(region.shadow.offset) $(region.shadow.spread) rgba(0, 0, 0, .15);
-      -goog-ms-box-shadow: 0 $(region.shadow.offset) $(region.shadow.spread) rgba(0, 0, 0, .15);
-      box-shadow: 0 $(region.shadow.offset) $(region.shadow.spread) rgba(0, 0, 0, .15);
-    }
+        .widget ul li, .widget #ArchiveList ul.flat li {
+          border-top: dashed 1px #ccc;
+          border-top: dashed 1px rgba(128, 128, 128, .5);
+        }
 
-    .footer-inner {
-      padding: 10px $(main.padding.sides) 20px;
-    }
+        .widget ul li:first-child, .widget #ArchiveList ul.flat li:first-child {
+          border-top: none;
+        }
 
-    .footer-outer a {
-      color: $(footer.link.color);
-    }
+        .widget .post-body ul {
+          list-style: disc;
+        }
 
-    .footer-outer a:visited {
-      color: $(footer.link.visited.color);
-    }
+        .widget .post-body ul li {
+          border: none;
+        }
 
-    .footer-outer a:hover {
-      color: $(footer.link.hover.color);
-    }
+        /* Footer
+        ----------------------------------------------- */
+        .footer-outer {
+          color:$(footer.text.color);
+          background: $(footer.background);
 
-    .footer-outer .widget h2 {
-      color: $(footer.widget.title.text.color);
-    }
-    ]]>
-    </b:skin>
+          -moz-border-radius: $(footer.border.radius.top) $(footer.border.radius.top) $(footer.border.radius.bottom) $(footer.border.radius.bottom);
+          -webkit-border-top-left-radius: $(footer.border.radius.top);
+          -webkit-border-top-right-radius: $(footer.border.radius.top);
+          -webkit-border-bottom-left-radius: $(footer.border.radius.bottom);
+          -webkit-border-bottom-right-radius: $(footer.border.radius.bottom);
+          -goog-ms-border-radius: $(footer.border.radius.top) $(footer.border.radius.top) $(footer.border.radius.bottom) $(footer.border.radius.bottom);
+          border-radius: $(footer.border.radius.top) $(footer.border.radius.top) $(footer.border.radius.bottom) $(footer.border.radius.bottom);
+
+          -moz-box-shadow: 0 $(region.shadow.offset) $(region.shadow.spread) rgba(0, 0, 0, .15);
+          -webkit-box-shadow: 0 $(region.shadow.offset) $(region.shadow.spread) rgba(0, 0, 0, .15);
+          -goog-ms-box-shadow: 0 $(region.shadow.offset) $(region.shadow.spread) rgba(0, 0, 0, .15);
+          box-shadow: 0 $(region.shadow.offset) $(region.shadow.spread) rgba(0, 0, 0, .15);
+        }
+
+        .footer-inner {
+          padding: 10px $(main.padding.sides) 20px;
+        }
+
+        .footer-outer a {
+          color: $(footer.link.color);
+        }
+
+        .footer-outer a:visited {
+          color: $(footer.link.visited.color);
+        }
+
+        .footer-outer a:hover {
+          color: $(footer.link.hover.color);
+        }
+
+        .footer-outer .widget h2 {
+          color: $(footer.widget.title.text.color);
+        }
+      /*!css*/
+      ]]>
+      </b:skin>
       <!--
       ? ===============================
       ? 🔽    marcador Tamaños      🔽
@@ -348,6 +351,7 @@ que la extencion "highligth string" decore el texto)
       <b:variable default='0' name='main.column.left.width' type='length' value='0px'/>
       <b:variable default='310px' name='main.column.right.width' type='length' value='260px'/>
       <![CDATA[
+      /*css 👈 comando decorativo "Highlight String Code */
       body {
         width: 100%;
       }
@@ -357,15 +361,12 @@ que la extencion "highligth string" decore el texto)
         max-width: $(content.width);
       }
 
-      
-
       h2{
         font-size: 1.2em;
       }
       h3{
       font-size: 1em;
       }
-
 
       .columns {
         padding-left: $(main.column.left.width);
@@ -421,6 +422,7 @@ que la extencion "highligth string" decore el texto)
       body#layout div.add_widget a {
         margin-left: 32px;
       }
+      /*!css 👈*/
       ]]>
     </b:template-skin>
     <b:if cond='data:skin.vars.body_background.image.isResizable'>
@@ -587,6 +589,7 @@ que la extencion "highligth string" decore el texto)
                     /*css 👈 comando decorativo "Highlight String Code */
 
                     #seccion_header_cont {
+                      box-shadow: 0px 1px 4px #0000001f;
                       box-sizing: border-box;
                       display: flex;
                       align-items: center;
@@ -598,32 +601,11 @@ que la extencion "highligth string" decore el texto)
                       width: 100%;
                       background-color: #ffffff;
                       user-select: none;
-                      font-size: 1.2em;
                       padding: 0px 20px;
                       overflow-x: auto;
                     }
 
-                    /*
-                    <!-- ^  Barra de scroll 👇 ^ --> */
-                    #seccion_header_cont::-webkit-scrollbar {
-                      width: 5px;
-                      height: 5px;
-                      transition: all 0.3s;
-                    }
-
-
-                    #seccion_header_cont::-webkit-scrollbar{
-                      width: 2px;
-                      background:rgba(241, 241, 241, 0); /* Color de fondo de la pista */
-                      border-radius: 0px;
-                    }
-                    #seccion_header_cont::-webkit-scrollbar-thumb  {
-                      background: rgba(85, 85, 100, 0.18);
-                      border-radius: 10px;
-                    }
-                    #seccion_header_cont::-webkit-scrollbar-thumb:hover {
-                      background:rgba(85, 85, 100, 0.24);
-                    }
+                    
                     
 
 
@@ -635,7 +617,8 @@ que la extencion "highligth string" decore el texto)
                       cursor: default;
                       font-weight: bold;
                       background-color: #ffffff;
-                      padding: 10px 25px;
+                      padding: 10px 20px;
+                      font-size: 1.1em;
                       transition: all 0.2s;
                     }
                     .seccion_header:hover {
@@ -745,15 +728,14 @@ que la extencion "highligth string" decore el texto)
   
                 .main-outer {
                     display: grid;
-                    grid-template-columns: 1fr 195px;
-                    grid-gap: 30px;
+                    grid-template-columns: 1fr auto;
                     background: #ffffff;
-                    padding: 15px 50px;
+                    padding: 15px 10px;
                     border-radius: 16px;
                     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
                     0 1px 3px rgba(0, 0, 0, 0.08);
-                    margin: 60px 0px !important;
                     }
+
   
                 /*!css*/
                 /*]]>*/
@@ -800,8 +782,17 @@ que la extencion "highligth string" decore el texto)
                               /*css 👈 comando decorativo "Highlight String Code */
                             
                               .blog-posts{
+                                box-sizing: border-box;
+                                padding: 20px 20px;
                                 width:100%;
                                 margin: 0;
+                              }
+
+                              @media (max-width: 735px) {
+                                .blog-posts {
+                                  padding: 20px 12px;
+
+                                }
                               }
 
                               .date-posts {
@@ -814,33 +805,34 @@ que la extencion "highligth string" decore el texto)
                                 align-items: stretch;
                                 justify-content: center;
                                 margin-bottom: 80px;
-                              }
-                              @media (max-width: 1350px) {
-                                .date-posts{
-                                  grid-template-columns: 1fr;
-                                }
+
+                                /*mejorar el scroll de scrollFecha()*/
+                                scroll-margin-top: 60px; 
                               }
 
                               .blog-posts > .widget {
                                 margin: 0px;
                               }
 
-                              .date-header {
-                                margin: 0px;
-                                margin-bottom: -20px;
+                              .date-header-cont{
+                                user-select: none;
                                 width: 100%;
-                                font-size: 1em;
-                                color: #00304D;
-                                grid-column: span 2;
+                                position: sticky;
+                                top: 60px;
+                                margin-bottom: -20px;
+                                z-index: 1;
                               }
 
-
-                                @media (max-width: 600px) {
-                                .date-posts {
-                                  display: flex;
-                                  flex-direction: column;
-                                }
-                                }
+                              .date-header {
+                                font-weight: normal;
+                                width: fit-content;
+                                padding: 4px 15px;
+                                background-color: #00304D;
+                                font-size: .9em;
+                                color: #ffffff;
+                                border-radius: 8px;
+                                box-shadow: -1px 2px 5px #00000033;
+                              }
 
                               .post{
                                 display: flex;
@@ -860,6 +852,18 @@ que la extencion "highligth string" decore el texto)
 
                               .post >a{display:none;}
 
+                              .compartirPost{
+                                background-color: #ffffff;
+                                padding: 3px;
+                                display: flex;
+                                align-items: center;
+                              }
+
+                              .compartir-link{
+                                height:30px;
+                                width:30px;
+                                fill: #39A900;
+                              }
                   
                               h2.post-title {
                                 color: #00304D;
@@ -966,6 +970,7 @@ que la extencion "highligth string" decore el texto)
                             <script>
                               //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
                               //js 👈 comando decorativo "Highlight String Code"
+                              
                               function ajustarColumnas() {
                                 console.log("ajustarColumnas")
                                 const contenedor = document.getElementById('Blog1');
@@ -975,6 +980,13 @@ que la extencion "highligth string" decore el texto)
                                       post.classList.add("dos-columnas");
                                   }
                                 }
+                              }
+
+                              // al precionar la fecha scrole asi arriba
+                              function scrollFecha(element) {
+                                element.parentElement.parentElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                console.log(element.parentElement.parentElement)
+                                
                               }
                               //!js
                               //]]>
@@ -1204,11 +1216,13 @@ que la extencion "highligth string" decore el texto)
                       </b:includable>
                       <b:includable id='post' var='post'>
                         <b:if cond='data:post.dateHeader'>
-                          <h2 class='date-header'>
-                            <span>
-                              <data:post.dateHeader/>
-                            </span>
-                          </h2>
+                          <div class='date-header-cont'>
+                            <h2 class='date-header' onclick='scrollFecha(this)'>
+                              <span>
+                                <data:post.dateHeader/>
+                              </span>
+                            </h2>
+                          </div>
                         </b:if>
 
                         <!--
@@ -1229,16 +1243,12 @@ que la extencion "highligth string" decore el texto)
                           <a expr:name='data:post.id'/>
                             <b:if cond='data:post.title'>
 
-                              <!-- &amp; primera vez que uso "expr" ¡es incrible y facil de usar! ❤️✨-->
+                              <!-- &amp; primera vez que uso "expr" ¡es incrible y facil de usar! ✨-->
                               <!-- 
                                 aqui la uso para optener la variable "data:post.link"
                                 this = me da todo el elemento entero <button></button> 
-                                .getAttribute("linkPublicacion") = mi da lo que guarde "expr:linkPublicacion"
+                                .getAttribute("linkPublicacion") = me da lo que guarde en "expr:linkPublicacion"
                               -->
-                              <button class="compartirPost" expr:linkPublicacion="data:post.title" onclick='copiarTexto(this.getAttribute("linkPublicacion"))'>
-                                Copiar link
-                              </button>
-
                             <h2 class='post-title entry-title' itemprop='name'>
                               <b:if cond='data:post.link or (data:post.url and data:blog.url != data:post.url)'>
                               <a expr:href='data:post.link ? data:post.link : data:post.url'>
@@ -1298,49 +1308,24 @@ que la extencion "highligth string" decore el texto)
                                   </b:if>
                                 </b:if>
                               </span>
-                              <span class='post-comment-link'>
-                                <b:include cond='data:blog.pageType not in {&quot;item&quot;,&quot;static_page&quot;}                          and data:post.allowComments' data='post' name='comment_count_picker'/>
+                              <span class='post-comment-link' onMousedown='console.log(this)'>
+                              holaquetal
+                                <b:include 
+                                cond='data:blog.pageType not in {&quot;item&quot;,&quot;static_page&quot;}
+                                and data:post.allowComments' data='post' name='comment_count_picker' />
                               </span>
-                              <span class='post-icons'>
-                                <!-- email post links -->
-                                <b:if cond='data:post.emailPostUrl'>
-                                  <span class='item-action'>
-                                    <a expr:href='data:post.emailPostUrl' expr:title='data:top.emailPostMsg'>
-                                      <img alt='' class='icon-action' height='13' src='https://resources.blogblog.com/img/icon18_email.gif' width='18'/>
-                                    </a>
-                                  </span>
-                                </b:if>
-                                <!-- quickedit pencil -->
-                                <b:include data='post' name='postQuickEdit'/>
-                              </span>
-                              <!-- share buttons -->
-                              <div class='post-share-buttons goog-inline-block'>
-                                <b:include cond='data:post.sharePostUrl' data='post' name='shareButtons'/>
+
+                              <!-- boton de compartir -->
+                              <div class="compartirPost" expr:linkPublicacion="data:post.url" onclick='copiarTexto(this.getAttribute("linkPublicacion"))'
+                              title="Copiar el link de la publicacion">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="compartir-link" viewBox="0 -960 960 960">
+                                  <path d="M440-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h160v80H280q-50 0-85 35t-35 85q0 50 35
+                                  85t85 35h160v80ZM320-440v-80h320v80H320Zm200 160v-80h160q50 0 85-35t35-85q0-50-35-85t-85-35H520v-80h160q83
+                                  0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H520Z"/>
+                                </svg>
                               </div>
                             </div>
-                            <div class='post-footer-line post-footer-line-2'>
-                              <span class='post-labels'>
-                                <b:if cond='data:top.showPostLabels and data:post.labels'>
-                                  <data:postLabelsLabel/>
-                                  <b:loop values='data:post.labels' var='label'>
-                                    <a expr:href='data:label.url' rel='tag'>
-                                      <data:label.name/>
-                                    </a>
-                                    <b:if cond='not data:label.isLast'>,</b:if>
-                                  </b:loop>
-                                </b:if>
-                              </span>
-                            </div>
-                            <div class='post-footer-line post-footer-line-3'>
-                              <span class='post-location'>
-                                <b:if cond='data:top.showLocation and data:post.location'>
-                                  <data:postLocationLabel/>
-                                  <a expr:href='data:post.location.mapsUrl' target='_blank'>
-                                    <data:post.location.name/>
-                                  </a>
-                                </b:if>
-                              </span>
-                            </div>
+                            
                             <b:if cond='data:post.authorAboutMe'>
                               <div class='author-profile' itemprop='author' itemscope='itemscope' itemtype='http://schema.org/Person'>
                                 <b:if cond='data:post.authorPhoto.url'>
@@ -1793,8 +1778,33 @@ que la extencion "highligth string" decore el texto)
     /*css 👈 comando decorativo "Highlight String Code */
 
     #sidebar-right-1{
-      width: 100%;
-      background-color: #ffffff
+      width: 195px;
+      height: calc(100vh - 46px);
+      padding: 5px 40px;
+      background-color: #ffffff;
+      overflow-y: scroll;
+      position: sticky;
+      top: 60px;
+    }
+
+
+
+    /*
+    <!-- ^  Barra de scroll 👇 ^ --> */
+    #sidebar-right-1::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    #sidebar-right-1::-webkit-scrollbar{
+      background:rgba(241, 241, 241, 0); /* Color de fondo de la pista */
+      border-radius: 0px;
+    }
+    #sidebar-right-1::-webkit-scrollbar-thumb  {
+      background: rgba(85, 85, 100, 0.18);
+      border-radius: 10px;
+    }
+    #sidebar-right-1::-webkit-scrollbar-thumb:hover {
+      background:rgba(85, 85, 100, 0.24);
     }
 
     @media (max-width: 735px) {
@@ -1806,11 +1816,9 @@ que la extencion "highligth string" decore el texto)
       height: 100vh;
       width: 90%;
       max-width: 250px;
-      padding: 5px 20px;
+      box-sizing: border-box;
       box-shadow: -4px 0px 8px 0 rgba(0, 0, 0, 0.2);
       border-left: 5px solid #39A900;
-
-      box-sizing: border-box;
       transition: transform 0.5s ease-in-out;
       }
 
@@ -1826,6 +1834,7 @@ que la extencion "highligth string" decore el texto)
     //js 👈 comando decorativo "Highlight String Code"
     const menu = document.getElementById("sidebar-right-1");
     let lugarInicialX, lugarInicialY, distanciaX, menuDesplegado;
+    menu.classList.add('ocultarMenu');
 
     document.addEventListener("pointerdown", (event) => {
         lugarInicialX = event.clientX;
@@ -1841,14 +1850,14 @@ que la extencion "highligth string" decore el texto)
 
     document.addEventListener("touchmove", (event) => {
         // ignorar cuando esta lejos del borde ❌
-        if (distanciaX > 80 && !menuDesplegado) return
+        if (distanciaX > 90 && !menuDesplegado) return
         console.log(distanciaX)
 
         let recoridoY = event.touches[0].clientY - lugarInicialY
         let recoridoX = event.touches[0].clientX - lugarInicialX;
 
         // ignorar si hay mucho Recorrido en "Y" ❌
-        if (recoridoY > 25) return;
+        if (recoridoY > 35) return;
 
         //<!-- ^ logica al abrir 🔓--> 
         if (recoridoX < -30) {
@@ -1862,8 +1871,11 @@ que la extencion "highligth string" decore el texto)
     //!js
     //]]>
   </script>
-
-
+  <!--
+  ^ ===============================
+  ^ 🏷️ marcador Paginas y rutas 2 🏷️
+  ^ ===============================
+  -->
   <b:section-contents id='sidebar-right-1' class='ocultarMenu'>
     <b:widget id='Label1' locked='false' title='Etiquetas' type='Label'>
       <b:widget-settings>
@@ -1972,9 +1984,6 @@ que la extencion "highligth string" decore el texto)
                         margin: 10px 0px;
                         width: 100%;
                         background-color:white;
-                        position: sticky; 
-                        top: 0 ;
-                        z-index: 1;
                         padding: 10px 0px 5px 0px;
                         }
 
@@ -2122,7 +2131,33 @@ que la extencion "highligth string" decore el texto)
     <b:widget id='PageList1' locked='false' title='' type='PageList'>
       <b:widget-settings>
         <b:widget-setting name='pageListJson'>
-          <![CDATA[{"6283691586484165547":{"href":"https://temp3124.blogspot.com/p/blog-page.html","position":1,"title":"Nosostros"},"link1":{"href":"","position":2,"title":"Programas"},"link0":{"href":"http://senablogbyblanco.blogspot.com/","position":0,"title":"Página Principal"},"link3":{"href":"","position":4,"title":"Normatividad"},"link2":{"href":"","position":3,"title":"Directorio"}}]]>
+          <![CDATA[{
+          "link0":{
+                        "href":"/",
+                        "position":0,
+                        "title":"Página Principal"
+                      },
+                      "link1":{
+                        "href":"/p/contactos.html",
+                        "position":1,
+                        "title":"Contactos"
+                      },
+                      "link2":{
+                        "href":"/p/normatividad.html",
+                        "position":2,
+                        "title":"Normatividad"
+                      },
+                      "link3":{
+                        "href":"/p/blog-page.html",
+                        "position":3,
+                        "title":"Programas"
+                      },
+                      "link4":{
+                        "href":"/p/pagina-de-recursos-globales.html",
+                        "position":4,
+                        "title":"resourses"
+                      }
+                      }]]>
         </b:widget-setting>
         <b:widget-setting name='homeTitle'>Página Principal</b:widget-setting>
       </b:widget-settings>
@@ -2274,6 +2309,12 @@ que la extencion "highligth string" decore el texto)
         </div>
       </b:includable>
     </b:widget>
+
+    <!--
+    ? ===============================
+    ? 💾  marcador BlogArchive1    💾
+    ? ===============================
+    -->
     <b:widget id='BlogArchive1' locked='false' title='Historial del blog' type='BlogArchive' version='1'>
       <b:widget-settings>
         <b:widget-setting name='showStyle'>HIERARCHY</b:widget-setting>
@@ -2291,35 +2332,28 @@ que la extencion "highligth string" decore el texto)
         /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
         /*css 👈 comando decorativo "Highlight String Code */
         #BlogArchive1 {
-          position: sticky;
-          top: 100px;
           background-color: #ffffff;
-          z-index: 2;
-          <!-- efecto de desbanecido al escrolear 🌫️ -->
-          mask-image: linear-gradient(
-            to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 60px
-          );
+          
         }
         #BlogArchive1 *{
           transition: opacity 0.6s ease-in-out, height 1s ease;
+          color: #00304D; 
           interpolate-size: allow-keywords;
-          color: #00304D;
         }
         #BlogArchive1_ArchiveList {
           padding-bottom: 50px;
-          overflow-y: scroll;
-          max-height: 60vh;
-          overscroll-behavior: contain;
         }
-        #BlogArchive1_ArchiveList::-webkit-scrollbar {
-          display: none;
-        }
-        <!--? cuando se cierra o abre un elemento 👇 -->
-        #ArchiveList .collapsed >ul{
+
+        /* cuando se cierra o abre un elemento 👇 */
+        #ArchiveList .collapsed ul{
           display: block;
           height: 0px;
           overflow: hidden;
           opacity: 0;
+          @starting-style {
+            height: fit-content;
+            opacity: 1;
+          };
         }
         #ArchiveList .expanded >ul{
           display: block;

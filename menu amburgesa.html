@@ -75,14 +75,14 @@
 
     document.addEventListener("touchmove", (event) => {
         // ignorar cuando esta lejos del borde ❌
-        if (distanciaX > 80 && !menuDesplegado) return
+        if (distanciaX > 90 && !menuDesplegado) return
         console.log(distanciaX)
 
         let recoridoY = event.touches[0].clientY - lugarInicialY
         let recoridoX = event.touches[0].clientX - lugarInicialX;
 
         // ignorar si hay mucho Recorrido en "Y" ❌
-        if (recoridoY > 25) return;
+        if (recoridoY > 35) return;
 
         //<!-- ^ logica al abrir 🔓--> 
         if (recoridoX < -30) {
