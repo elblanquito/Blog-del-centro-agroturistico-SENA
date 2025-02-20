@@ -237,7 +237,7 @@ que la extencion "highligth string" decore el texto)
           text-decoration:underline;
           color: $(link.hover.color);
         }
-        .section {margin: 0;}
+        .section, .widget {margin: 0;}
         .widget ul{line-height: unset;}
 
         .header-outer {
@@ -730,7 +730,7 @@ que la extencion "highligth string" decore el texto)
                     display: grid;
                     grid-template-columns: 1fr auto;
                     background: #ffffff;
-                    padding: 15px 10px;
+                    padding: 35px 10px;
                     border-radius: 16px;
                     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
                     0 1px 3px rgba(0, 0, 0, 0.08);
@@ -806,9 +806,11 @@ que la extencion "highligth string" decore el texto)
                                 justify-content: center;
                                 margin-bottom: 80px;
 
-                                /*mejorar el scroll de scrollFecha()*/
+                                /*mejora la funcion scrollFecha()*/
                                 scroll-margin-top: 60px; 
                               }
+
+                              
 
                               .blog-posts > .widget {
                                 margin: 0px;
@@ -821,6 +823,13 @@ que la extencion "highligth string" decore el texto)
                                 top: 60px;
                                 margin-bottom: -20px;
                                 z-index: 1;
+                              }
+
+                              @media (max-width: 735px) {
+                                .date-header-cont{
+                                  display: flex;
+                                  justify-content: center;
+                                }
                               }
 
                               .date-header {
@@ -985,9 +994,93 @@ que la extencion "highligth string" decore el texto)
                               // al precionar la fecha scrole asi arriba
                               function scrollFecha(element) {
                                 element.parentElement.parentElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                                console.log(element.parentElement.parentElement)
-                                
                               }
+                              //!js
+                              //]]>
+                            </script>
+                            
+                            <div id="main-header">
+                              <div id="texto-animado-cont">
+                                <div id="texto-animado1" class="texto-animado">Blog del centro agroturistico</div>
+                                <div id="texto-animado2" class="texto-animado">Bienvenido a nuestra pagina wep ✨</div>
+                                <div id="texto-animado3" class="texto-animado">¡busca lo que nesecites!</div>
+                              </div>
+                            </div>
+
+                            <style>
+                              /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+                              /*css 👈 comando decorativo "Highlight String Code */
+
+                              #main-header{
+                                  padding-bottom: 30px;
+                                  display: flex;
+                                  justify-content: center;
+                                }
+
+                              #texto-animado-cont {
+                                overflow: hidden;
+                                interpolate-size: allow-keywords;
+                                width: min-content;
+                                animation: escribiryborrar 7s infinite,
+                                blinkCursor 1s infinite steps(1);
+                                border-right: 1px solid #7d7d7d; /* Cursor */
+                              }
+
+                              .texto-animado {
+                                width: fit-content;
+                                white-space: nowrap;
+                                margin-right: 2px; /* separacion del cursor */
+                                display: none;
+                              }
+
+                              .visible {
+                                display: block
+                              }
+
+                              @keyframes escribiryborrar {
+                                0%,10% { width: 0px }
+                                30%, 70% { width: min-content }
+                                90%, 100% { width: 0px }
+                              }
+
+                              @keyframes blinkCursor {
+                                50% {border-right-color: transparent;}
+                              }
+
+                              /* animacion v2 de borrado
+                              @keyframes escribiryborrar {
+                                0% { width: 0px }
+                                15%, 85% { width: min-content }
+                                100% { width: 0px }
+                              }*/
+                              /*!css*/
+                              /*]]>*/
+                            </style>
+
+                            <script>
+                              //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
+                              //js 👈 comando decorativo "Highlight String Code"
+                              
+                              function textoAnimado() {
+                                const contenedor = document.getElementById("texto-animado-cont");
+                                const textos = contenedor.getElementsByClassName("texto-animado");
+                                let textoCount = 0;
+
+                                textos[textoCount].classList.add("visible"); // Mostrar primer texto
+
+                                contenedor.addEventListener("animationiteration", (event) => {
+                                  if (event.animationName !== "escribiryborrar") return;
+
+                                  textos[textoCount].classList.remove("visible"); // Ocultar texto actual
+
+                                  textoCount++ // Avanzar contador
+                                  if (textoCount == textos.length) textoCount = 0 // reset
+
+                                  textos[textoCount].classList.add("visible");// Mostrar nuevo texto
+                                });
+                              };
+
+                              textoAnimado()
                               //!js
                               //]]>
                             </script>
@@ -1778,13 +1871,21 @@ que la extencion "highligth string" decore el texto)
     /*css 👈 comando decorativo "Highlight String Code */
 
     #sidebar-right-1{
+      flex-direction: column;
+      display: flex;
+      gap: 15px;
+
       width: 195px;
       height: calc(100vh - 46px);
-      padding: 5px 40px;
+      padding: 10px 40px;
       background-color: #ffffff;
       overflow-y: scroll;
       position: sticky;
       top: 60px;
+    }
+
+    #sidebar-right-1 > .widget{
+      min-height: fit-content;
     }
 
 
@@ -1871,93 +1972,22 @@ que la extencion "highligth string" decore el texto)
     //!js
     //]]>
   </script>
-  <!--
-  ^ ===============================
-  ^ 🏷️ marcador Paginas y rutas 2 🏷️
-  ^ ===============================
-  -->
-  <b:section-contents id='sidebar-right-1' class='ocultarMenu'>
-    <b:widget id='Label1' locked='false' title='Etiquetas' type='Label'>
-      <b:widget-settings>
-        <b:widget-setting name='sorting'>ALPHA</b:widget-setting>
-        <b:widget-setting name='display'>LIST</b:widget-setting>
-        <b:widget-setting name='selectedLabelsList'/>
-        <b:widget-setting name='showType'>ALL</b:widget-setting>
-        <b:widget-setting name='showFreqNumbers'>false</b:widget-setting>
-      </b:widget-settings>
-      <b:includable id='main'>
-        <b:if cond='data:title != &quot;&quot;'>
-          <h2>
-            <data:title/>
-          </h2>
-        </b:if>
-        <div expr:class='&quot;widget-content &quot; + data:display + &quot;-label-widget-content&quot;'>
-          <b:if cond='data:display == &quot;list&quot;'>
-            <ul>
-              <b:loop values='data:labels' var='label'>
-                <li>
-                  <b:if cond='data:blog.url == data:label.url'>
-                    <span expr:dir='data:blog.languageDirection'>
-                      <data:label.name/>
-                    </span>
-                    <b:else/>
-                    <a expr:dir='data:blog.languageDirection' expr:href='data:label.url'>
-                      <data:label.name/>
-                    </a>
-                  </b:if>
-                  <b:if cond='data:showFreqNumbers'>
-                    <span dir='ltr'>(
-                      <data:label.count/>)
-                    </span>
-                  </b:if>
-                </li>
-              </b:loop>
-            </ul>
-            <b:else/>
-            <b:loop values='data:labels' var='label'>
-              <span expr:class='&quot;label-size label-size-&quot; + data:label.cssSize'>
-                <b:if cond='data:blog.url == data:label.url'>
-                  <span expr:dir='data:blog.languageDirection'>
-                    <data:label.name/>
-                  </span>
-                  <b:else/>
-                  <a expr:dir='data:blog.languageDirection' expr:href='data:label.url'>
-                    <data:label.name/>
-                  </a>
-                </b:if>
-                <b:if cond='data:showFreqNumbers'>
-                  <span class='label-count' dir='ltr'>(
-                    <data:label.count/>)
-                  </span>
-                </b:if>
-              </span>
-            </b:loop>
-          </b:if>
-          <b:include name='quickedit'/>
-        </div>
-      </b:includable>
-    </b:widget>
+
+  <b:section-contents id='sidebar-right-1'>
+    <!--
+    ? ===============================
+    ? 🔍    marcador buscador     🔍
+    ? ===============================
+    -->
     <b:widget id='BlogSearch1' locked='false' title='Buscar publicacion' type='BlogSearch' version='1'>
       <b:includable id='main'>
-        <!-- only display title if it's non-empty -->
         <b:if cond='data:title != &quot;&quot;'>
           <span class='titlebuscador'>
             <data:title/>
           </span>
         </b:if>
-        <div class='widget-content'>
-          <div expr:id='data:widget.instanceId + &quot;_form&quot;'>
             <form class='gsc-search-box' expr:action='data:blog.searchUrl'>
-              <b:attr cond='not data:view.isPreview' name='target' value='_top'/>
               <table cellpadding='0' cellspacing='0' class='gsc-search-box'>
-
-                <!--
-                ? ===============================
-                ? 🔍    marcador buscador     🔍
-                ? ===============================
-                -->
-                
-                <tbody>
                   <tr>
                     <tr class='contenedorbuscador'>
                       <td class='gsc-input inputbuscadorcont'>
@@ -1971,6 +2001,7 @@ que la extencion "highligth string" decore el texto)
                       /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
                       /*css 👈 comando decorativo "Highlight String Code */
                       .titlebuscador {
+                        padding-bottom: 10px;
                         display: block;
                         width: 100%;
                         font-weight: bold;
@@ -1980,11 +2011,9 @@ que la extencion "highligth string" decore el texto)
                       .BlogSearch {
                         display: flex;
                         flex-direction: column;
-                        gap: 10px;
-                        margin: 10px 0px;
+                        margin: 0px 0px;
                         width: 100%;
                         background-color:white;
-                        padding: 10px 0px 5px 0px;
                         }
 
                       .BlogSearch::after {
@@ -2088,7 +2117,7 @@ que la extencion "highligth string" decore el texto)
                     <script>
                       //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
                       //js 👈 comando decorativo "Highlight String Code"
-                      const contenedor = document.getElementById("BlogSearch1_form");
+                      const contenedor = document.getElementById("BlogSearch1");
                       const button = contenedor.querySelector('.buttonbuscador');
                       const input = contenedor.querySelector('.contenedorbuscador');
 
@@ -2120,16 +2149,30 @@ que la extencion "highligth string" decore el texto)
                     </script>
 
                   </tr>
-                </tbody>
+                
               </table>
             </form>
-          </div>
-        </div>
         <b:include name='quickedit'/>
       </b:includable>
     </b:widget>
+
+    <!--
+    ^ ===============================
+    ^ 🏷️ marcador Paginas y rutas 2 🏷️
+    ^ ===============================
+    -->
+
     <b:widget id='PageList1' locked='false' title='' type='PageList'>
       <b:widget-settings>
+        <style>
+          /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+          /*css 👈 comando decorativo "Highlight String Code */
+           #PageList1{
+            margin: 5px 0;
+           }
+          /*!css*/
+          /*]]>*/
+        </style>
         <b:widget-setting name='pageListJson'>
           <![CDATA[{
           "link0":{
@@ -2200,60 +2243,58 @@ que la extencion "highligth string" decore el texto)
         </div>
       </b:includable>
     </b:widget>
-    <b:widget id='PageList2' locked='false' title='Páginas' type='PageList' version='2' visible='false'>
+    <b:widget id='PageList2' locked='false' title='redes sociales (solo cambiar los url)' version='2'>
       <b:widget-settings>
+        <style>
+          /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+          /*css 👈 comando decorativo "Highlight String Code */
+           #PageList2{
+            margin: 5px 0;
+           }
+          /*!css*/
+          /*]]>*/
+        </style>
         <b:widget-setting name='pageListJson'>
-          <![CDATA[{"home":{"href":"http://senablogbyblanco.blogspot.com/","position":0,"title":"Página Principal"}}]]>
+          <![CDATA[{
+          "link0":{
+            "href":"https://www.facebook.com/SENAColombiaOficial/",
+            "position":0,
+            "title":"facebook"
+          },
+          "link1":{
+            "href":"https://x.com/senacomunica?lang=es",
+            "position":1,
+            "title":"X"
+          },
+          "link2":{
+            "href":"https://www.youtube.com/user/SENATV",
+            "position":2,
+            "title":"Youtube"
+          },
+          "link3":{
+            "href":"https://www.instagram.com/senacomunica/",
+            "position":3,
+            "title":"Instagram"
+          }
+          }]]>
         </b:widget-setting>
-        <b:widget-setting name='homeTitle'>Página Principal</b:widget-setting>
       </b:widget-settings>
       <b:includable id='main'>
-        <b:include name='widget-title'/>
-        <b:include name='content'/>
-      </b:includable>
-      <b:includable id='content'>
-        <div class='widget-content'>
-          <b:include cond='data:widget.sectionId == &quot;page_list_top&quot;' name='overflowablePageList'/>
-          <b:include cond='data:widget.sectionId != &quot;page_list_top&quot;' name='pageList'/>
-        </div>
-      </b:includable>
-      <b:includable id='overflowButton'>
-        <b:include name='verticalMoreIcon'/>
-      </b:includable>
-      <b:includable id='overflowablePageList'>
-        <div class='overflowable-container'>
-          <div class='overflowable-contents'>
-            <div class='container'>
-              <b:with value='true' var='overflow'>
-                <b:with value='&quot;tabs&quot;' var='pageListClass'>
-                  <b:include name='pageList'/>
-                </b:with>
-              </b:with>
-            </div>
-          </div>
-          <div class='overflow-button hidden'>
-            <b:include name='overflowButton'/>
-          </div>
-        </div>
-      </b:includable>
-      <b:includable id='pageLink'>
-        <li>
-          <b:class cond='data:overflow' name='overflowable-item'/>
-          <b:class cond='data:link.isCurrentPage' name='selected'/>
-          <a expr:href='data:link.href'>
-            <data:link.title/>
-          </a>
-        </li>
-      </b:includable>
-      <b:includable id='pageList'>
         <ul>
-          <b:class cond='data:pageListClass' expr:name='data:pageListClass'/>
           <b:loop values='data:links' var='link'>
-            <b:include name='pageLink'/>
+            <li>
+              <b:class cond='data:link.isCurrentPage' name='selected'/>
+              <a expr:href='data:link.href'>
+                <data:link.title/>
+              </a>
+            </li>
           </b:loop>
         </ul>
       </b:includable>
     </b:widget>
+
+    
+
     <b:widget id='Profile1' locked='false' title='Acerca de mí' type='Profile' version='1'>
       <b:widget-settings>
         <b:widget-setting name='showaboutme'>true</b:widget-setting>
@@ -2514,8 +2555,6 @@ que la extencion "highligth string" decore el texto)
   <b:section-contents id='footer-1'/>
   <b:section-contents id='footer-2-1'/>
   <b:section-contents id='footer-2-2'/>
-
-
 
   <!-- 
       ?       Scripts inyectados              ?
