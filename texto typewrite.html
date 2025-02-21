@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main-header">
+        <div id="texto-animado-cont">
+          <div id="texto-animado1" class="texto-animado">Blog del centro agroturistico</div>
+          <div id="texto-animado2" class="texto-animado">Bienvenido a nuestra pagina wep ✨</div>
+          <div id="texto-animado3" class="texto-animado">¡busca lo que nesecites!</div>
+        </div>
+      </div>
+</body>
+<style>
+    /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+    /*css 👈 comando decorativo "Highlight String Code */
+
+    #main-header{
+        padding-bottom: 30px;
+        display: flex;
+        justify-content: center;
+      }
+
+    #texto-animado-cont {
+      overflow: hidden;
+      interpolate-size: allow-keywords;
+      width: min-content;
+      animation: escribiryborrar 7s infinite,
+      blinkCursor 1s infinite steps(1);
+      border-right: 1px solid #7d7d7d; /* Cursor */
+    }
+
+    .texto-animado {
+      width: fit-content;
+      white-space: nowrap;
+      margin-right: 2px; /* separacion del cursor */
+      display: none;
+    }
+
+    .visible {
+      display: block
+    }
+
+    @keyframes escribiryborrar {
+      0%,10% { width: 0px }
+      30%, 70% { width: min-content }
+      90%, 100% { width: 0px }
+    }
+
+    @keyframes blinkCursor {
+      50% {border-right-color: transparent;}
+    }
+
+    /* animacion v2 de borrado
+    @keyframes escribiryborrar {
+      0% { width: 0px }
+      15%, 85% { width: min-content }
+      100% { width: 0px }
+    }*/
+    /*!css*/
+    /*]]>*/
+  </style>
+  
+  <script>
+    //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
+    //js 👈 comando decorativo "Highlight String Code"
+    
+    function textoAnimado() {
+      const contenedor = document.getElementById("texto-animado-cont");
+      const textos = contenedor.getElementsByClassName("texto-animado");
+      let textoCount = 0;
+
+      textos[textoCount].classList.add("visible"); // Mostrar primer texto
+
+      contenedor.addEventListener("animationiteration", (event) => {
+        if (event.animationName !== "escribiryborrar") return;
+
+        textos[textoCount].classList.remove("visible"); // Ocultar texto actual
+
+        textoCount++ // Avanzar contador
+        if (textoCount == textos.length) textoCount = 0 // reset
+
+        textos[textoCount].classList.add("visible");// Mostrar nuevo texto
+      });
+    };
+    textoAnimado()
+    //!js
+    //]]>
+  </script>
+</html>
