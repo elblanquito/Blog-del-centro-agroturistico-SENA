@@ -58,7 +58,7 @@ que la extencion "highligth string" decore el texto)
 
 
 <!DOCTYPE html>
-<html b:version='2' class='v2' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale'
+<html b:css='' b:js='' b:version='2' class='v2' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale'
   xmlns='http://www.w3.org/1999/xhtml'
   xmlns:b='http://www.google.com/2005/gml/b'
   xmlns:data='http://www.google.com/2005/gml/data'
@@ -209,7 +209,15 @@ que la extencion "highligth string" decore el texto)
         /*
         <!--*cosas medio relevantes 👇-->
         */
+        .destacado {
+          user-select:none;
+          z-index: 10 !important;
+          height: 100vh;
+          -webkit-tap-highlight-color: transparent;
+        }
+
         body {
+          -webkit-tap-highlight-color: transparent;
           font: $(body.font);
           color: $(body.text.color);
           background: #F5F5F5;
@@ -232,10 +240,13 @@ que la extencion "highligth string" decore el texto)
           color:$(link.visited.color);
         }
         a:hover {
-          text-decoration:underline;
+          text-decoration: none;
           color: $(link.hover.color);
         }
-        .section, .widget {margin: 0;}
+        .section, .widget {margin: 0; line-height: 1.4}
+        .widget ul li, .widget #ArchiveList ul.flat li {
+          padding: .25em 0;
+        }
         .widget ul{line-height: unset;}
 
         .header-outer {
@@ -296,8 +307,6 @@ que la extencion "highligth string" decore el texto)
                               box-shadow: -1px 2px 5px #00000033;
                             }
                             .post{
-                              interpolate-size: allow-keywords;
-                              transition: all 0.5 ease;
                               display: flex;
                               justify-content: space-evenly;
                               flex-direction: column;
@@ -361,13 +370,13 @@ que la extencion "highligth string" decore el texto)
                             .post img, .post iframe, .tiktok-embed {
                               overflow-y: auto;
                               border-radius: 10px;
-                              aspect-ratio: 4/5;
                               width: 100%;
                               max-height: 500px;
                               min-width: 0 !important;
                               max-width: none !important;
                               margin-bottom: 10px;
-                              object-fit: contain;
+                              /*object-fit: contain;*/
+                              object-fit: cover;
                               object-position: center;
                               content-visibility: auto;
                               /* animaciones */
@@ -417,6 +426,14 @@ que la extencion "highligth string" decore el texto)
                               flex-wrap: wrap;
                               gap: 10px
                             }
+                            .download-btn {
+  display: inline-block;
+  margin: 5px 0;
+  padding: 5px 10px;
+  text-decoration: none;
+  border-radius: 3px;
+}
+
 
 
         .content-outer {
@@ -1328,19 +1345,16 @@ que la extencion "highligth string" decore el texto)
                               </b:if>
                             </h2>
                             </b:if>
+                            <!--marcador post body-->
                           <!-- Then use the post body as the schema.org description, for good G+/FB snippeting. -->
-                          <div class='post-body entry-content' expr:id='&quot;post-body-&quot; + data:post.id' expr:itemprop='(data:blog.metaDescription ? &quot;&quot; : &quot;description &quot;) + &quot;articleBody&quot;'>
+                          <div expr:informacion='data:post.body'
+                          onclick="transformarObjetos(this.getAttribute('informacion'))"
+                          class='post-body entry-content'
+                          expr:id='"post-body-" + data:post.id'
+                          expr:itemprop='(data:blog.metaDescription ? &quot;&quot; : &quot;description &quot;) + &quot;articleBody&quot;'>
                             <data:post.body/>
-                            <!-- clear for photos floats -->
                           </div>
-                          <b:if cond='data:post.hasJumpLink'>
-                            <!-- 🟨🟨🟨 imagen y etc -->
-                            <div class='jump-link'>
-                              <a expr:href='data:post.url + &quot;#more&quot;' expr:title='data:post.title'>
-                                <data:post.jumpText/>
-                              </a>
-                            </div>
-                          </b:if>
+
                           <div class='post-footer'>
                             <div class='post-footer-line post-footer-line-1'>
                               <span class='post-author vcard'>
@@ -1519,9 +1533,9 @@ que la extencion "highligth string" decore el texto)
                           </b:if>
                           <data:post.cmtfpIframe/>
                           <script type='text/javascript'>
-                                    BLOG_CMT_createIframe(&#39;
+                            BLOG_CMT_createIframe(&#39;
                             <data:post.appRpcRelayPath/>
-                                    &#39;);
+                            &#39;);
                           </script>
                         </div>
                       </b:includable>
@@ -1893,9 +1907,9 @@ que la extencion "highligth string" decore el texto)
       position: fixed;
       top: 0;
       right: 0;
-      z-index: 3;
+      z-index: 11;
       height: 100vh;
-      width: 90%;
+      width: 100%;
       max-width: 250px;
       box-sizing: border-box;
       box-shadow: -4px 0px 8px 0 rgba(0, 0, 0, 0.2);
@@ -2299,7 +2313,7 @@ que la extencion "highligth string" decore el texto)
           Redes oficiales
         </h2>
         <div class="redes-sociales-cont">
-          <b:loop values='data:links' var='link'>
+          <b:loop values='data:links' var='link' >
               <b:class cond='data:link.isCurrentPage' name='selected'/>
               <a expr:href='data:link.href' class="red-social-link" expr:title="data:link.href">
                 <div expr:class='(data:link.title + " red-social")'>
@@ -2406,6 +2420,8 @@ que la extencion "highligth string" decore el texto)
           
         }
         #BlogArchive1 *{
+          text-indent: 0;
+          border:none;
           transition: opacity 0.6s ease-in-out, height 1s ease;
           color: #00304D; 
           interpolate-size: allow-keywords;
@@ -2451,8 +2467,8 @@ que la extencion "highligth string" decore el texto)
         .archivedate a{
           width: fit-content ;
         }
-        .BlogArchive #ArchiveList ul li{
-          padding-left: 0;
+        #BlogArchive1_ArchiveList .archivedate ul li{
+          padding-left: 30px;
           text-indent: 0;
         } <!-- capeta 1 -->
         .BlogArchive #ArchiveList ul ul li{
@@ -2592,16 +2608,11 @@ que la extencion "highligth string" decore el texto)
                             
                             
   function ajustarColumnas() {
-  // Salir si el ancho de la ventana es menor a 900px
   if (window.innerWidth < 900) return;
-  columnasAjustadas = true
+  columnasAjustadas = true // para que no vuelva a ejecutarse
 
-  // Obtener el contenedor y verificar que existe
   const contenedor = document.getElementById('Blog1');
-
-
-  // Seleccionar los posts usando querySelectorAll
-  const posts = document.querySelectorAll('#Blog1 .post');
+  const posts = contenedor.querySelectorAll('.post');
 
 
   // Crear observador para detectar cambios de tamaño
@@ -2645,17 +2656,15 @@ que la extencion "highligth string" decore el texto)
 
                             let columnasAjustadas = false;
 
-                            // Reejecutar la función cuando la ventana cambie de tamaño (con debounce para optimizar)
                             const handleResize = () => {
-  console.log(columnasAjustadas);
-  if (columnasAjustadas) {
-    window.removeEventListener('resize', handleResize);
-    return;
-  }
-  ajustarColumnas();
-};
+                            if (columnasAjustadas) {
+                              window.removeEventListener('resize', handleResize);
+                              return;
+                            }
+                            ajustarColumnas();
+                          };
 
-window.addEventListener('resize', handleResize);
+                          window.addEventListener('resize', handleResize);
                             // al precionar la fecha scrole asi arriba
                             function scrollFecha(element) {
                               element.parentElement.parentElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -2672,6 +2681,14 @@ window.addEventListener('resize', handleResize);
   <script>
     //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
     //js 👈 comando decorativo "Highlight String Code"
+
+
+function transformarObjetos(data) {
+    let parser = new DOMParser();
+    let doc = parser.parseFromString(data, "text/html"); // Convierte el string en HTML
+
+    console.log(doc.body); // Muestra el HTML organizado en la consola
+}
 
     <!--* Elimina la clase 'loading' después de 10ms -->
     window.setTimeout(function () {
@@ -2695,13 +2712,11 @@ window.addEventListener('resize', handleResize);
 
     let elevacionfinalizada = false;
     if (!elevacionfinalizada) {
-      ajustarColumnas();
       const observer = new MutationObserver(() => {
         const lastElement = document.body.lastElementChild;
         if (lastElement ? lastElement.classList.contains("CSS_LIGHTBOX") : false) {
-          lastElement.style.zIndex = "10";
+          lastElement.classList.add("destacado");
           elevacionfinalizada = true;
-          observer.disconnect(); // Detiene el observer después de hacer el cambio
         }
       });
 
@@ -2712,10 +2727,68 @@ window.addEventListener('resize', handleResize);
     }
 
 
+    function agregarBotonesDescarga() {
+  // Selecciona todos los contenedores de posts
+  const posts = document.querySelectorAll('.post-body');
+  
+  posts.forEach(post => {
+    // Para cada post, selecciona todas las imágenes
+    const images = post.querySelectorAll('img');
+    
+    images.forEach(img => {
+      const downloadBtn = document.createElement("a");
+      downloadBtn.href = img.src;
+      downloadBtn.download = "imagen";
+      downloadBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg"
+      height="24px" width="24px" fill="#39a900" viewBox="0 -960 960 960" >
+      <path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200
+      200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0
+      33-23.5 56.5T720-160H240Z"/></svg>`;
+      downloadBtn.className = "download-btn";
+      img.insertAdjacentElement('afterend', downloadBtn);
+     
+      downloadBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        descargarImagen(img.src); //función de descarga
+      });
+
+    });
+  });
+}
+
+
+
+async function descargarImagen(imageURL){
+        const proxyUrl = 'https://corsproxy.io/?';
+
+        const url = new URL(imageURL);
+        let fileName = decodeURIComponent(   // extraer nombre de la url
+            url.pathname.split('/').pop()  
+        ) || 'imagen';  // si no hay nombre
+
+        try {
+            const response = await fetch(proxyUrl + encodeURIComponent(imageURL));
+            const blob = await response.blob();
+            
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = fileName;
+            link.click();
+            URL.revokeObjectURL(link.href);
+        } catch (error) {
+            console.error('Error:', error);
+            alert('no se pudo descargar la imagen: ' + error);
+        }
+}
+
+
+
     // apenas cargue la estructura de la pagina
     document.addEventListener("DOMContentLoaded", () => {
       asignarPaginaActual()
       ajustarColumnas()
+      agregarBotonesDescarga();
+      descargas()
     });
 
     // al terminar de cargar los recursos
