@@ -6,7 +6,7 @@
 no habia tenido contacto alguno con codigos "xml"
 hise lo que pude y elimine y reise cosas para
 que pareciera mas amigable 😓 oprime ctr + f y
-busca "marcador" para ver las partes principales
+busca "marker" para ver las partes principales
 
 * extenciones de visual estudio recomendadas:
 - XML Format (lo mas importante XD)
@@ -262,177 +262,256 @@ que la extencion "highligth string" decore el texto)
         .post-content{width: 100%;}
         .post-content img{ width: 100%;}
 
+        /*
+        ======================
+        🍏marker posts [CSS]
+        ======================
+        */
+
+        .date-posts {
+          animation: all ease 1s;
+          display: flex;
+          align-items: stretch;
+          flex-wrap: wrap;
+          row-gap: 50px;
+          column-gap: 20px;
+          justify-items: center;
+          justify-content: center;
+          margin-bottom: 80px;
+          /*mejora la funcion scrollFecha()*/
+          scroll-margin-top: 60px; 
+        }
+        
+        .blog-posts > .widget {
+          margin: 0px;
+        }
+        .date-header-cont{
+          user-select: none;
+          width: 100%;
+          position: sticky;
+          top: 60px;
+          margin-bottom: -20px;
+          z-index: 1;
+        }
+        @media (max-width: 735px) {
+          .date-header-cont{
+            display: flex;
+            justify-content: center;
+          }
+        }
+        .date-header {
+          font-weight: normal;
+          width: fit-content;
+          padding: 4px 15px;
+          background-color: #00304D;
+          font-size: .9em;
+          color: #ffffff;
+          border-radius: 8px;
+          box-shadow: -1px 2px 5px #00000033;
+        }
+        .post{
+          display: flex;
+          justify-content: space-evenly;
+          flex-direction: column;
+          height: auto;
+          width: 100%;
+          max-width: 420px; 
+          min-width: 270px;
+          align-items: center;
+          border-radius: 16px;
+          box-shadow:
+          0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+          padding: 20px 20px 20px 20px;
+          box-sizing: border-box;
+        }
+        .post >a{display:none;}
+        .post div{color:#00304D;}
+        .compartirPost{
+          background-color: #ffffff;
+          padding: 3px;
+          display: flex;
+          align-items: center;
+        }
+        .compartir-link{
+          height:30px;
+          width:30px;
+          fill: #39A900;
+        }
+        h2.post-title {
+          color: #00304D;
+          margin-bottom: 10px;
+        	text-align: center;
+        }
+        
+        
+        .post-body{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: min-content;
+          width: 100%;
+          margin-bottom:10px;
+        }
+        .post-body >br{
+          display:none;
+        }
+        
+        .post-body span {
+          margin: 5px 0px;
+          grid-area: texto; /* Asignar arriba*/
+        }
+
+        .post-body > p,
+        .post-body > a {
+          margin: 0;
+          width: 100%;
+        }
+        .post-body > p{
+          margin:0px;
+        }
+
+        .download-btn {
+          z-index: 1;
+          left: 0%;
+          bottom: 0;
+          position: absolute;
+          height: 30px;
+          display: block;
+          padding: 0px 10px;
+          border-radius: 4px;
+          background-color: #ffffff;
+          outline: 2px solid #39a900;
+          transition: transform 0.2s ease;
+        }
+
+        .download-btn:active {
+          transform: scale(0.8)
+        }
+        .download-btn svg{
+          width: 100%;
+          height: 100%;
+        }
+        
+        .post img, .post iframe, .tiktok-embed {
+          overflow-y: auto;
+          border-radius: 10px;
+          width: 100%;
+          max-height: 500px;
+          min-width: 0 !important;
+          max-width: none !important;
+          /*object-fit: contain;*/
+          object-fit: cover;
+          object-position: center;
+          content-visibility: auto;
+          /* animaciones */
+          view-timeline-name: --postscroll;
+          view-timeline-axis: block;
+          animation-timeline: --postscroll;
+          animation-name: aparecer;
+          animation-fill-mode: both;
+          animation-range: entry 0% cover 40%;
+          }
+        @keyframes aparecer {
+          0% {scale: 0.6;}
+          100% {opacity: 1;scale: 1;}
+        }
+        .post-footer{
+          width: 100%;
+          display: flex;
+          justify-content: flex-end;
+        }
+        .post-footer-line{
+              display: flex;
+              flex-direction: row-reverse;
+        }
+        .post-body p:empty {
+          display: none;
+        }
+        .separator{
+          display: flex;
+          margin: 0px !important;
+          width: fit-content;
+          
+        }
+        .separator > a{
+          position: relative;
+          margin: 0px !important;
+          padding: 0px !important;
+        }
+        /* esta clase se agrega con un script  */
+        .dos-columnas {
+          width: 100%;
+          max-width: 100%;
+          grid-column: span 2;
+        }
+        .dos-columnas .post-footer{
+          justify-content: flex-end;
+        }
+        .dos-columnas .post-body{
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 10px
+        }
 
 
+        /*
+        *========================
+        🍇marker menu left [CSS]
+        *========================
+        */
 
-                            .date-posts {
-                              animation: all ease 1s;
-                              display: flex;
-                              align-items: stretch;
-                              flex-wrap: wrap;
-                              row-gap: 50px;
-                              column-gap: 20px;
-                              justify-items: center;
-                              justify-content: center;
-                              margin-bottom: 80px;
-                              /*mejora la funcion scrollFecha()*/
-                              scroll-margin-top: 60px; 
-                            }
-                            
-                            .blog-posts > .widget {
-                              margin: 0px;
-                            }
-                            .date-header-cont{
-                              user-select: none;
-                              width: 100%;
-                              position: sticky;
-                              top: 60px;
-                              margin-bottom: -20px;
-                              z-index: 1;
-                            }
-                            @media (max-width: 735px) {
-                              .date-header-cont{
-                                display: flex;
-                                justify-content: center;
-                              }
-                            }
-                            .date-header {
-                              font-weight: normal;
-                              width: fit-content;
-                              padding: 4px 15px;
-                              background-color: #00304D;
-                              font-size: .9em;
-                              color: #ffffff;
-                              border-radius: 8px;
-                              box-shadow: -1px 2px 5px #00000033;
-                            }
-                            .post{
-                              display: flex;
-                              justify-content: space-evenly;
-                              flex-direction: column;
-                              height: auto;
-                              width: 100%;
-                              max-width: 420px; 
-                              min-width: 270px;
-                              align-items: center;
-                              border-radius: 16px;
-                              box-shadow:
-                              0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
-                              padding: 20px 20px 20px 20px;
-                              box-sizing: border-box;
-                            }
-                            .post >a{display:none;}
-                            .post div{color:#00304D;}
-                            .compartirPost{
-                              background-color: #ffffff;
-                              padding: 3px;
-                              display: flex;
-                              align-items: center;
-                            }
-                            .compartir-link{
-                              height:30px;
-                              width:30px;
-                              fill: #39A900;
-                            }
-                
-                            h2.post-title {
-                              color: #00304D;
-                              margin-bottom: 10px;
-                            	text-align: center;
-                            }
-                            
-                            
-                            .post-body{
-                              display: flex;
-                              flex-direction: column;
-                              align-items: center;
-                              justify-content: center;
-                              height: min-content;
-                              width: 100%;
-                            }
-                            .post-body >br{
-                              display:none;
-                            }
-                            
-                            .post-body span {
-                              margin: 5px 0px;
-                              grid-area: texto; /* Asignar arriba*/
-                            }
-                            .post-body > p,
-                            .post-body > a {
-                              margin: 0;
-                              width: 100%;
-                            }
-                            .post-body > p{
-                              margin:0px;
-                            }
-                            
-                            .post img, .post iframe, .tiktok-embed {
-                              overflow-y: auto;
-                              border-radius: 10px;
-                              width: 100%;
-                              max-height: 500px;
-                              min-width: 0 !important;
-                              max-width: none !important;
-                              margin-bottom: 10px;
-                              /*object-fit: contain;*/
-                              object-fit: cover;
-                              object-position: center;
-                              content-visibility: auto;
-                              /* animaciones */
-                              view-timeline-name: --postscroll;
-                              view-timeline-axis: block;
-                              animation-timeline: --postscroll;
-                              animation-name: aparecer;
-                              animation-fill-mode: both;
-                              animation-range: entry 0% cover 40%;
-                              }
-                            @keyframes aparecer {
-                              0% {scale: 0.6;}
-                              100% {opacity: 1;scale: 1;}
-                            }
-                            .post-footer{
-                              width: 100%;
-                              display: flex;
-                              justify-content: flex-end;
-                            }
-                            .post-footer-line{
-                                  display: flex;
-                                  flex-direction: row-reverse;
-                            }
-                            .post-body p:empty {
-                              display: none;
-                            }
-                            .separator{
-                              display: flex;
-                              margin: 0px !important;
-                              width: fit-content;
-                              
-                            }
-                            .separator a{
-                              margin: 0px !important;
-                            }
-                            /* esta clase se agrega con un script  */
-                            .dos-columnas {
-                              width: 100%;
-                              max-width: 100%;
-                              grid-column: span 2;
-                            }
-                            .dos-columnas .post-footer{
-                              justify-content: flex-end;
-                            }
-                            .dos-columnas .post-body{
-                              flex-direction: row;
-                              flex-wrap: wrap;
-                              gap: 10px
-                            }
-                            .download-btn {
-  display: inline-block;
-  margin: 5px 0;
-  padding: 5px 10px;
-  text-decoration: none;
-  border-radius: 3px;
-}
+          #sidebar-right-1{
+            flex-direction: column;
+            display: flex;
+            gap: 15px;
+            width: 195px;
+            height: calc(100vh - 46px);
+            padding: 10px 40px;
+            background-color: #ffffff;
+            overflow-y: scroll;
+            position: sticky;
+            top: 60px;
+          }
+          #sidebar-right-1 > .widget{min-height: fit-content;}
+          #sidebar-right-1 h2 { color: #00304D}
+          /*
+          <!-- ^  Barra de scroll 👇 ^ --> */
+          #sidebar-right-1::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+          }
+          #sidebar-right-1::-webkit-scrollbar{
+            background:rgba(241, 241, 241, 0); /* Color de fondo de la pista */
+            border-radius: 0px;
+          }
+          #sidebar-right-1::-webkit-scrollbar-thumb  {
+            background: rgba(85, 85, 100, 0.18);
+            border-radius: 10px;
+          }
+          #sidebar-right-1::-webkit-scrollbar-thumb:hover {
+            background:rgba(85, 85, 100, 0.24);
+          }
+          @media (max-width: 735px) {
+            #sidebar-right-1{
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 11;
+            height: 100vh;
+            width: 100%;
+            max-width: 250px;
+            box-sizing: border-box;
+            box-shadow: -4px 0px 8px 0 rgba(0, 0, 0, 0.2);
+            border-left: 5px solid #39A900;
+            transition: transform 0.5s ease-in-out;
+            }
+            .ocultarMenu {
+              transform: translate(100%, 0px);
+            }
+          }
+        
+        
 
 
 
@@ -524,9 +603,9 @@ que la extencion "highligth string" decore el texto)
       ]]>
       </b:skin>
       <!--
-      ? ===============================
-      ? 🔽    marcador Tamaños      🔽
-      ? ===============================
+      ?==================
+      📏marker Tamaños
+      ?==================
       -->
       <b:template-skin>
       <b:variable default='960px' name='content.width' type='length' value='1200px'/>
@@ -607,6 +686,7 @@ que la extencion "highligth string" decore el texto)
       /*!css 👈*/
       ]]>
     </b:template-skin>
+    
     <b:if cond='data:skin.vars.body_background.image.isResizable'>
       <b:include cond='not data:view.isPreview' data='{image: data:skin.vars.body_background.image,selector: &quot;body&quot;}' name='responsiveImageStyle'/>
     </b:if>
@@ -622,10 +702,96 @@ que la extencion "highligth string" decore el texto)
       </div>
     </b:if>
     <!--
-    & ===============================
-    & 🎀      marcador Header     🎀
-    & ===============================
+    ^======================
+    🔔marker Notificacion
+    ^======================
     -->
+    <div id="notificacion" class="notificacion noti-visible">
+      <h2>Notificacion</h2>
+      <p id="notificacion-texto">Descripción de la tarjeta</p>
+    </div>
+  <style>
+    /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+    /*css 👈 comando decorativo "Highlight String Code */
+    .notificacion{
+      z-index: 11;
+      position:fixed;
+      top: -100%;
+      left: 50%;
+      opacity: 0;
+      transform: translate(-50%, 0) scale(0.8);
+      box-sizing: border-box;
+      width: max-content;
+      max-width: 100%;
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2);
+      padding: 10px 30px;
+      transition: all 0.8s ease-in-out, opacity 0.3s ease-in-out;
+      border: 1px solid #ccc;
+      border-left-width: 8px;
+    }
+
+    .noti-visible{
+      top: 10px;
+      opacity: 1;
+      transform: translate(-50%, 0) scale(1);
+    }
+
+    .positiva{
+      border-left: 8px solid #39a900;
+      color: #00304D;
+    }
+    .positiva h2{
+      color: #39a900;
+    }
+
+
+    /*!css*/
+    /*]]>*/
+  </style>
+    <script>
+    //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
+    //js 👈 comando decorativo "Highlight String Code"
+
+    let timeoutNotification;
+    let notificacionVisible = false;
+
+    function mostrarNotificacion(txt, type = 'info') {
+      console.log("empezo notificacion")
+      if (!['info', 'negativa', 'positiva'].includes(type)) {
+          type = 'info'; // valor por defecto
+      }
+      let notificacion = document.getElementById("notificacion");
+      let texto = document.getElementById("notificacion-texto");
+      let time = 0 // esperar para mostrar
+      
+      // Si hay una notificación visible
+      if (notificacionVisible) {
+        time = 200
+        notificacion.classList.remove('noti-visible');
+        clearTimeout(timeoutNotification); // Detener el temporizador anterior
+      }
+
+      // Pequeño retraso para reiniciar la animación
+      setTimeout(() => {
+        console.log("time: " + time)
+          notificacionVisible = true
+          texto.innerText = txt; // Cambiar el texto
+           notificacion.classList.remove('noti-visible', 'info', 'negativa', 'positiva'); // Eliminar clases anteriores
+          notificacion.classList.add('noti-visible', type);
+
+          // Configurar el temporizador para ocultar la notificación
+          timeoutNotification = setTimeout(() => {
+              notificacion.classList.remove('noti-visible');
+              notificacionVisible = false;
+          }, 3000);
+      }, time); // Pequeño retraso para que la animación se reinicie correctamente
+    }
+    //!js
+    //]]>
+  </script>
+
     <div class='content'>
       <div class='content-outer'>
           <div class='content-inner'>
@@ -649,6 +815,11 @@ que la extencion "highligth string" decore el texto)
               /*!css*/
               /*]]>*/
             </style>
+            <!--
+            &=================
+            🎀marker Header
+            &=================
+            -->
             <b:section class='header header-outer' id='header' maxwidgets='1' name='Header' showaddelement='no'>
               <b:widget id='Header1' locked='true' title=' Centro agroturistico v3 (Encabezado)' type='Header'>
                 <b:widget-settings>
@@ -664,7 +835,6 @@ que la extencion "highligth string" decore el texto)
                   <b:if cond='data:useImage'>
                     <b:if cond='data:imagePlacement == &quot;BEHIND&quot;'>
                       <b:if cond='data:mobile'>
-                        
                           <div class='titlewrapper' style='background: transparent'>
                             <h1 class='title' style='background: transparent; border-width: 0px'>
                               <b:include name='title'/>
@@ -726,9 +896,9 @@ que la extencion "highligth string" decore el texto)
 
             
             <!--
-            ^ ===============================
-            ^ 🏷️ marcador Paginas y rutas 🏷️
-            ^ ===============================
+            ^================
+            🏷️marker rutas
+            ^================
             -->
             <b:section class='tabs' id='crosscol' maxwidgets='1' name='Cross-Column' showaddelement='yes'>
               <b:widget id='PageList3' locked='false' title='Menu principal 🏷️ (no agregar el link completo, solo el final)' type='PageList'>
@@ -898,9 +1068,9 @@ que la extencion "highligth string" decore el texto)
             </b:section>
 
             <!--
-            TODO ===============================
-            TODO 🪵 marcador Main principal  🪵
-            TODO ===============================
+            *=========================
+            🪵marker Main principal
+            *=========================
             -->
 
             <div class='main-outer'>
@@ -979,7 +1149,7 @@ que la extencion "highligth string" decore el texto)
                                 white-space: nowrap;
                               }
 
-                              .visible {
+                              .txt-visible {
                                 margin-right: 4px;
                                 overflow: visible;
                                 width: fit-content;
@@ -1016,17 +1186,17 @@ que la extencion "highligth string" decore el texto)
                                 let textoCount = 0;
                                 contenedor.style.animation = "escribiryborrar 7s infinite, blinkCursor 1s infinite steps(1)";
 
-                                textos[textoCount].classList.add("visible"); // Mostrar primer texto
+                                textos[textoCount].classList.add("txt-visible"); // Mostrar primer texto
 
                                 contenedor.addEventListener("animationiteration", (event) => {
                                   if (event.animationName !== "escribiryborrar") return;
 
-                                  textos[textoCount].classList.remove("visible"); // Ocultar texto actual
+                                  textos[textoCount].classList.remove("txt-visible"); // Ocultar texto actual
 
                                   textoCount++ // Avanzar contador
                                   if (textoCount == textos.length) textoCount = 0 // reset
 
-                                  textos[textoCount].classList.add("visible");// Mostrar nuevo texto
+                                  textos[textoCount].classList.add("txt-visible");// Mostrar nuevo texto
                                 });
                               };
                               //!js
@@ -1049,6 +1219,10 @@ que la extencion "highligth string" decore el texto)
                         /*!css*/
                       /*]]>*/
                     </style>
+
+
+
+
 
                     <b:widget id='Blog1' locked='true' title='Entradas del blog' type='Blog' version='1'>
                       <b:widget-settings>
@@ -1118,9 +1292,9 @@ que la extencion "highligth string" decore el texto)
                       </b:includable>
 
                       <!--
-                      ^ ===============================
-                      ^ ✏️   marcador Comentarios   ✏️
-                      ^ ===============================
+                      ^======================
+                      ✏️marker Comentarios
+                      ^======================
                       -->
                       
                       <b:includable id='comments' var='post'>
@@ -1318,9 +1492,9 @@ que la extencion "highligth string" decore el texto)
                         </b:if>
 
                         <!--
-                        * ===============================
-                        * 🍏   marcador posts html    🍏
-                        * ===============================
+                        *======================
+                        🍏marker posts [HTML]
+                        *======================
                         -->
                         <!-- The value of attribute "onclick" associated with
                         an element type "button" must not contain the '<'
@@ -1345,12 +1519,10 @@ que la extencion "highligth string" decore el texto)
                               </b:if>
                             </h2>
                             </b:if>
-                            <!--marcador post body-->
+                          <!--marker post body-->
+
                           <!-- Then use the post body as the schema.org description, for good G+/FB snippeting. -->
-                          <div expr:informacion='data:post.body'
-                          onclick="transformarObjetos(this.getAttribute('informacion'))"
-                          class='post-body entry-content'
-                          expr:id='"post-body-" + data:post.id'
+                          <div class='post-body entry-content' expr:id='"post-body-" + data:post.id'
                           expr:itemprop='(data:blog.metaDescription ? &quot;&quot; : &quot;description &quot;) + &quot;articleBody&quot;'>
                             <data:post.body/>
                           </div>
@@ -1855,75 +2027,11 @@ que la extencion "highligth string" decore el texto)
       </macro:if>
     </macro:if>
   </macro:includable>
-  <!--
-  ~ ===============================
-  ~ 🍇  marcador menu izquierdo 🍇
-  ~ ===============================
+  <!-- 
+  *========================
+  🍇marker menu left [CSS]
+  *========================
   -->
-
-  <style>
-    /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
-    /*css 👈 comando decorativo "Highlight String Code */
-
-    #sidebar-right-1{
-      flex-direction: column;
-      display: flex;
-      gap: 15px;
-
-      width: 195px;
-      height: calc(100vh - 46px);
-      padding: 10px 40px;
-      background-color: #ffffff;
-      overflow-y: scroll;
-      position: sticky;
-      top: 60px;
-    }
-
-    #sidebar-right-1 > .widget{min-height: fit-content;}
-    #sidebar-right-1 h2 { color: #00304D}
-
-
-
-    /*
-    <!-- ^  Barra de scroll 👇 ^ --> */
-    #sidebar-right-1::-webkit-scrollbar {
-      width: 5px;
-      height: 5px;
-    }
-    #sidebar-right-1::-webkit-scrollbar{
-      background:rgba(241, 241, 241, 0); /* Color de fondo de la pista */
-      border-radius: 0px;
-    }
-    #sidebar-right-1::-webkit-scrollbar-thumb  {
-      background: rgba(85, 85, 100, 0.18);
-      border-radius: 10px;
-    }
-    #sidebar-right-1::-webkit-scrollbar-thumb:hover {
-      background:rgba(85, 85, 100, 0.24);
-    }
-
-    @media (max-width: 735px) {
-      #sidebar-right-1{
-      position: fixed;
-      top: 0;
-      right: 0;
-      z-index: 11;
-      height: 100vh;
-      width: 100%;
-      max-width: 250px;
-      box-sizing: border-box;
-      box-shadow: -4px 0px 8px 0 rgba(0, 0, 0, 0.2);
-      border-left: 5px solid #39A900;
-      transition: transform 0.5s ease-in-out;
-      }
-
-      .ocultarMenu {
-        transform: translate(100%, 0px);
-      }
-    }
-    /*!css*/
-    /*]]>*/
-  </style>
   <script>
     //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
     //js 👈 comando decorativo "Highlight String Code"
@@ -1939,7 +2047,7 @@ que la extencion "highligth string" decore el texto)
 
         //<!--^ cerrar al tocar fuera del menu 🔒 --> 
         if (menuDesplegado && distanciaX > menu.offsetWidth) {
-            menu.classList.add('ocultarMenu');
+          menu.classList.add('ocultarMenu');
         }
     });
 
@@ -1969,9 +2077,9 @@ que la extencion "highligth string" decore el texto)
 
   <b:section-contents id='sidebar-right-1'>
     <!--
-    ? ===============================
-    ? 🔍    marcador buscador     🔍
-    ? ===============================
+    ?===================
+    🔍marker buscador
+    ?===================
     -->
     <b:widget id='BlogSearch1' locked='false' title='Buscar publicacion' type='BlogSearch' version='1'>
       <b:includable id='main'>
@@ -2151,9 +2259,9 @@ que la extencion "highligth string" decore el texto)
     </b:widget>
 
     <!--
-    ^ ===============================
-    ^ 🏷️ marcador Paginas y rutas 2 🏷️
-    ^ ===============================
+    ^=================
+    🏷️marker rutas 2
+    ^=================
     -->
 
     <b:widget id='PageList1' locked='false' title='' type='PageList'>
@@ -2212,9 +2320,9 @@ que la extencion "highligth string" decore el texto)
     </b:widget>
 
     <!--
-    ^ ===============================
-    ^ 🏷️ marcador Redes sociales  🏷️
-    ^ ===============================
+    ^========================
+    📈marker Redes sociales
+    ^========================
     -->
     <b:widget id='PageList2' locked='false' title='redes sociales (solo cambiar los url)' version='2'>
       <b:widget-settings>
@@ -2395,9 +2503,9 @@ que la extencion "highligth string" decore el texto)
     </b:widget>
 
     <!--
-    ? ===============================
-    ? 💾  marcador BlogArchive1    💾
-    ? ===============================
+    ?======================
+    💾marker BlogArchive1
+    ?======================
     -->
     <b:widget id='BlogArchive1' locked='false' title='Historial del blog' type='BlogArchive' version='1'>
       <b:widget-settings>
@@ -2673,10 +2781,11 @@ que la extencion "highligth string" decore el texto)
                             //]]>
                           </script>
 
-  <!-- 
-      ? marcador  Scripts inyectados ?
-      🔽🔽🔽🔽🔽🔽🔽🔽🔽🔽🔽🔽🔽
-  -->
+    <!--
+    ?============================
+    🔽marker Scripts inyectados
+    ?============================
+    -->
 
   <script>
     //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
@@ -2727,8 +2836,7 @@ function transformarObjetos(data) {
     }
 
 
-    function agregarBotonesDescarga() {
-  // Selecciona todos los contenedores de posts
+  function agregarBotonesDescarga() {
   const posts = document.querySelectorAll('.post-body');
   
   posts.forEach(post => {
@@ -2736,6 +2844,7 @@ function transformarObjetos(data) {
     const images = post.querySelectorAll('img');
     
     images.forEach(img => {
+      if (!img.nextElementSibling || !img.nextElementSibling.classList.contains('download-btn')) {
       const downloadBtn = document.createElement("a");
       downloadBtn.href = img.src;
       downloadBtn.download = "imagen";
@@ -2746,40 +2855,39 @@ function transformarObjetos(data) {
       33-23.5 56.5T720-160H240Z"/></svg>`;
       downloadBtn.className = "download-btn";
       img.insertAdjacentElement('afterend', downloadBtn);
-     
       downloadBtn.addEventListener('click', function(e) {
         e.preventDefault();
         descargarImagen(img.src); //función de descarga
       });
-
+      }
     });
   });
 }
 
 
 
-async function descargarImagen(imageURL){
-        const proxyUrl = 'https://corsproxy.io/?';
-
-        const url = new URL(imageURL);
-        let fileName = decodeURIComponent(   // extraer nombre de la url
-            url.pathname.split('/').pop()  
-        ) || 'imagen';  // si no hay nombre
-
-        try {
-            const response = await fetch(proxyUrl + encodeURIComponent(imageURL));
-            const blob = await response.blob();
-            
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = fileName;
-            link.click();
-            URL.revokeObjectURL(link.href);
-        } catch (error) {
-            console.error('Error:', error);
-            alert('no se pudo descargar la imagen: ' + error);
-        }
-}
+    async function descargarImagen(imageURL){
+      mostrarNotificacion('preparando descarga','info')
+      const proxyUrl = 'https://corsproxy.io/?';
+      const url = new URL(imageURL);
+      let fileName = decodeURIComponent(   // extraer nombre de la url
+          url.pathname.split('/').pop()  
+      ) || 'imagen';  // si no hay nombre
+      try {
+          const response = await fetch(proxyUrl + encodeURIComponent(imageURL));
+          const blob = await response.blob();
+          
+          const link = document.createElement('a');
+          link.href = URL.createObjectURL(blob);
+          link.download = fileName;
+          link.click();
+          URL.revokeObjectURL(link.href);
+          mostrarNotificacion('descarga exitosa 😊','positiva')
+      } catch (error) {
+          console.error('Error:', error);
+          mostrarNotificacion('descarga fallida','negativa')
+      }
+    }
 
 
 
@@ -2788,7 +2896,6 @@ async function descargarImagen(imageURL){
       asignarPaginaActual()
       ajustarColumnas()
       agregarBotonesDescarga();
-      descargas()
     });
 
     // al terminar de cargar los recursos
