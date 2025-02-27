@@ -372,7 +372,6 @@ que la extencion "highligth string" decore el texto)
         }
 
         .download-btn {
-          z-index: 1;
           left: 0%;
           bottom: 0;
           position: absolute;
@@ -441,7 +440,7 @@ que la extencion "highligth string" decore el texto)
         }
         /* esta clase se agrega con un script  */
         .dos-columnas {
-          width: 100%;
+          width: fit-content;
           max-width: 100%;
           grid-column: span 2;
         }
@@ -452,6 +451,9 @@ que la extencion "highligth string" decore el texto)
           flex-direction: row;
           flex-wrap: wrap;
           gap: 10px
+        }
+        .dos-columnas .post-body .separator{
+          gap: 5px
         }
 
 
@@ -465,9 +467,9 @@ que la extencion "highligth string" decore el texto)
             flex-direction: column;
             display: flex;
             gap: 15px;
-            width: 195px;
+            width: 270px;
             height: calc(100vh - 46px);
-            padding: 10px 40px;
+            padding: 10px 20px;
             background-color: #ffffff;
             overflow-y: scroll;
             position: sticky;
@@ -492,7 +494,7 @@ que la extencion "highligth string" decore el texto)
           #sidebar-right-1::-webkit-scrollbar-thumb:hover {
             background:rgba(85, 85, 100, 0.24);
           }
-          @media (max-width: 735px) {
+          @media (max-width: 800px) {
             #sidebar-right-1{
             position: fixed;
             top: 0;
@@ -500,7 +502,7 @@ que la extencion "highligth string" decore el texto)
             z-index: 11;
             height: 100vh;
             width: 100%;
-            max-width: 250px;
+            max-width: 80%;
             box-sizing: border-box;
             box-shadow: -4px 0px 8px 0 rgba(0, 0, 0, 0.2);
             border-left: 5px solid #39A900;
@@ -608,7 +610,7 @@ que la extencion "highligth string" decore el texto)
       ?==================
       -->
       <b:template-skin>
-      <b:variable default='960px' name='content.width' type='length' value='1200px'/>
+      <b:variable default='960px' name='content.width' type='length' value='1400px'/>
       <b:variable default='0' name='main.column.left.width' type='length' value='0px'/>
       <b:variable default='310px' name='main.column.right.width' type='length' value='260px'/>
       <![CDATA[
@@ -706,8 +708,8 @@ que la extencion "highligth string" decore el texto)
     🔔marker Notificacion
     ^======================
     -->
-    <div id="notificacion" class="notificacion noti-visible">
-      <h2>Notificacion</h2>
+    <div id="notificacion" class="notificacion">
+      <h2 id="notificacion-titulo">Notificacion</h2>
       <p id="notificacion-texto">Descripción de la tarjeta</p>
     </div>
   <style>
@@ -738,12 +740,19 @@ que la extencion "highligth string" decore el texto)
       transform: translate(-50%, 0) scale(1);
     }
 
-    .positiva{
+    .noti-positiva{
       border-left: 8px solid #39a900;
-      color: #00304D;
     }
-    .positiva h2{
+    .noti-positiva h2{
       color: #39a900;
+    }
+
+    .noti-negativa{
+      border-left: 8px solid #c10015;
+    }
+
+    .noti-negativa h2{
+      color: #c10015;
     }
 
 
@@ -757,19 +766,20 @@ que la extencion "highligth string" decore el texto)
     let timeoutNotification;
     let notificacionVisible = false;
 
-    function mostrarNotificacion(txt, type = 'info') {
+    function mostrarNotificacion(titleInput = 'Notificación', txtInput = 'error', type = 'info') {
       console.log("empezo notificacion")
       if (!['info', 'negativa', 'positiva'].includes(type)) {
           type = 'info'; // valor por defecto
       }
       let notificacion = document.getElementById("notificacion");
+      let titulo = document.getElementById("notificacion-titulo");
       let texto = document.getElementById("notificacion-texto");
       let time = 0 // esperar para mostrar
       
       // Si hay una notificación visible
       if (notificacionVisible) {
         time = 200
-        notificacion.classList.remove('noti-visible');
+        notificacion.classList.remove('noti-visible', 'noti-info', 'noti-negativa', 'noti-positiva'); // Eliminar clases anteriores
         clearTimeout(timeoutNotification); // Detener el temporizador anterior
       }
 
@@ -777,9 +787,10 @@ que la extencion "highligth string" decore el texto)
       setTimeout(() => {
         console.log("time: " + time)
           notificacionVisible = true
-          texto.innerText = txt; // Cambiar el texto
-           notificacion.classList.remove('noti-visible', 'info', 'negativa', 'positiva'); // Eliminar clases anteriores
-          notificacion.classList.add('noti-visible', type);
+          titulo.innerText = titleInput; // Cambiar el titulo
+          texto.innerText = txtInput; // Cambiar el texto
+          notificacion.classList.remove('noti-visible', 'noti-info', 'noti-negativa', 'noti-positiva'); // Eliminar clases anteriores
+          notificacion.classList.add('noti-visible', ('noti-'+type));
 
           // Configurar el temporizador para ocultar la notificación
           timeoutNotification = setTimeout(() => {
@@ -1090,7 +1101,7 @@ que la extencion "highligth string" decore el texto)
                 .blog-posts{
                   max-width: 100vw;
                   box-sizing: border-box;
-                  padding: 20px 20px;
+                  padding: 20px 40px;
                   width:100%;
                   margin: 0;
                 }
@@ -1566,7 +1577,7 @@ que la extencion "highligth string" decore el texto)
                               <span class='post-comment-link' onMousedown='console.log(this)'>
                               holaquetal
                                 <b:include 
-                                cond='data:blog.pageType not in {&quot;item&quot;,&quot;static_page&quot;}
+                                cond='data:blog.pageType not in {"item","static_page"}
                                 and data:post.allowComments' data='post' name='comment_count_picker' />
                               </span>
 
@@ -2029,7 +2040,7 @@ que la extencion "highligth string" decore el texto)
   </macro:includable>
   <!-- 
   *========================
-  🍇marker menu left [CSS]
+  🍇marker menu left [HTML]
   *========================
   -->
   <script>
@@ -2259,6 +2270,64 @@ que la extencion "highligth string" decore el texto)
     </b:widget>
 
     <!--
+    *========================
+    📈marker estadisticas
+    *========================
+    -->
+    <b:widget id='Stats1' locked='false' title='Visitas del blog' type='Stats'>
+      <b:widget-settings>
+        <b:widget-setting name='showGraphicalCounter'>false</b:widget-setting>
+        <b:widget-setting name='showAnimatedCounter'>true</b:widget-setting>
+        <b:widget-setting name='showSparkline'>false</b:widget-setting>
+        <b:widget-setting name='sparklineStyle'>WHITE_TRANSPARENT</b:widget-setting>
+        <b:widget-setting name='timeRange'>ALL_TIME</b:widget-setting>
+      </b:widget-settings>
+      <b:includable id='main'>
+        <style>
+          /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+          /*css 👈 comando decorativo "Highlight String Code */
+          #Stats1_sparklinespan{
+            background-color:#00304D
+          }
+
+          .Stats .counter-wrapper{
+            color: #00304D;
+            display: inline-block;
+            font-size: 24px;
+            font-weight: bold;
+            height: 30px;
+            margin-right: 0px;
+            
+          }
+
+          .Stats svg {
+            animation: statsMovimiento 2s ease-in-out infinite;
+            height: 30px;
+            width: 30px;
+            fill: #00304D;
+          }
+          /*!css*/
+          /*]]>*/
+        </style>
+        <b:if cond='data:title != &quot;&quot;'><h2><data:title/></h2></b:if>
+        <div class='widget-content'>
+          <!-- Content is going to be visible when data will be fetched from server. -->
+          <div expr:id='data:widget.instanceId + &quot;_content&quot;' style='display: none;'>
+            <!-- Counter and image will be injected later via AJAX call. -->
+            <b:if cond='data:showSparkline'>
+              <script src='https://www.gstatic.com/charts/loader.js' type='text/javascript'/>
+              <span expr:id='data:widget.instanceId + &quot;_sparklinespan&quot;' style='display:inline-block; width:75px; height:30px'/>
+            </b:if>
+            <span expr:class='"counter-wrapper " + (data:showGraphicalCounter ? "graph-counter-wrapper" : "text-counter-wrapper")' expr:id='data:widget.instanceId + "_totalCount"'>
+            </span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" ><path d="M192-192v-288h144v288H192Zm216 0v-576h144v576H408Zm216 0v-384h144v384H624Z"/></svg>
+            <b:include name='quickedit'/>
+          </div>
+        </div>
+      </b:includable>
+    </b:widget>
+
+    <!--
     ^=================
     🏷️marker rutas 2
     ^=================
@@ -2320,9 +2389,9 @@ que la extencion "highligth string" decore el texto)
     </b:widget>
 
     <!--
-    ^========================
-    📈marker Redes sociales
-    ^========================
+    ========================
+    📢marker Redes sociales
+    ========================
     -->
     <b:widget id='PageList2' locked='false' title='redes sociales (solo cambiar los url)' version='2'>
       <b:widget-settings>
@@ -2499,6 +2568,41 @@ que la extencion "highligth string" decore el texto)
           </b:if>
           <b:include name='quickedit'/>
         </div>
+      </b:includable>
+    </b:widget>
+
+              
+    <!--
+    ?======================
+    ✖️marker posts de X
+    ?======================
+    -->
+    <b:widget id='HTML1' locked='false' title='post en X' type='HTML'>
+      <b:widget-settings>
+        <b:widget-setting name='content'><![CDATA[
+        <a class="twitter-timeline" data-height="500" data-theme="light" href="https://twitter.com/SENAComunica?ref_src=twsrc%5Etfw">
+        Tweets by SENAComunica
+        </a>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8">
+        </script>
+        ]]></b:widget-setting>
+      </b:widget-settings>
+      <b:includable id='main'>
+        <style>
+          /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+          /*css 👈 comando decorativo "Highlight String Code */
+           <!-- ^  Barra de scroll 👇 ^ --> */
+          /*!css*/
+          /*]]>*/
+        </style>
+        <!-- only display title if it's non-empty -->
+        <b:if cond='data:title != &quot;&quot;'>
+          <h2 class='title'><data:title/></h2>
+        </b:if>
+        <div class='widget-content'>
+          <data:content/>
+        </div>
+        <b:include name='quickedit'/>
       </b:includable>
     </b:widget>
 
@@ -2867,25 +2971,24 @@ function transformarObjetos(data) {
 
 
     async function descargarImagen(imageURL){
-      mostrarNotificacion('preparando descarga','info')
+      mostrarNotificacion('descarga','preparando descarga','info')
       const proxyUrl = 'https://corsproxy.io/?';
       const url = new URL(imageURL);
       let fileName = decodeURIComponent(   // extraer nombre de la url
           url.pathname.split('/').pop()  
       ) || 'imagen';  // si no hay nombre
       try {
-          const response = await fetch(proxyUrl + encodeURIComponent(imageURL));
+          const response = await fetch(proxyUrl + decodeURIComponent(imageURL));
           const blob = await response.blob();
-          
           const link = document.createElement('a');
           link.href = URL.createObjectURL(blob);
           link.download = fileName;
           link.click();
           URL.revokeObjectURL(link.href);
-          mostrarNotificacion('descarga exitosa 😊','positiva')
+          mostrarNotificacion('descarga','descarga exitosa 😊','positiva')
       } catch (error) {
           console.error('Error:', error);
-          mostrarNotificacion('descarga fallida','negativa')
+          mostrarNotificacion('descarga','descarga fallida','negativa')
       }
     }
 
