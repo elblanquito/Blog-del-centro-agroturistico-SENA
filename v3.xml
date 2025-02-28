@@ -468,7 +468,7 @@ que la extencion "highligth string" decore el texto)
             display: flex;
             gap: 15px;
             width: 270px;
-            height: calc(100vh - 46px);
+            height: calc(100vh - 80px);
             padding: 10px 20px;
             background-color: #ffffff;
             overflow-y: scroll;
@@ -1116,105 +1116,230 @@ que la extencion "highligth string" decore el texto)
                 /*!css*/
                 /*]]>*/
               </style>
-                  <b:section class='blog-posts hfeed' id='main' name='Main' showaddelement='no'>
-                  <!-- frases del texto animado -->
-                    <b:widget id='TextList1' locked='false' title='frases del texto animado' type='TextList'>
-                      <b:widget-settings>
-                        <b:widget-setting name='shownum'>5</b:widget-setting>
-                        <b:widget-setting name='sorting'>NONE</b:widget-setting>
-                        <b:widget-setting name='item-0'> Blog del centro agroturistico </b:widget-setting>
-                        <b:widget-setting name='item-1'> Bienvenido a nuestra pagina web ✨ </b:widget-setting>
-                        <b:widget-setting name='item-2'> ¡te mantenemos al dia! 📰 </b:widget-setting>
-                        <b:widget-setting name='item-3'> ¿listo para entrar al mundo laboral? 🚀 </b:widget-setting>
-                        <b:widget-setting name='item-4'> todo lo que nesecitas saber esta aqui 😊 </b:widget-setting>
-                      </b:widget-settings>
-                      <b:includable id='main'>
-                       <div id="texto-animado-cont">
-                          <b:loop values='data:items' var='item'>
-                            <div class="texto-animado"> <data:item/>  </div>
-                          </b:loop>
-                       </div>
-                            <style>
-                              /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
-                              /*css 👈 comando decorativo "Highlight String Code */
-
-                              #TextList1{
-                                  padding-bottom: 30px;
-                                  display: flex;
-                                  justify-content: center;
-                                }
-
-                              #texto-animado-cont {
+                <b:section class='blog-posts hfeed' id='main' name='Main' showaddelement='no'>
+                  <!--
+                  *======================
+                  ✏️marker Texto animado
+                  *======================
+                  -->
+                  <b:widget id='TextList1' locked='false' title='frases del texto animado' type='TextList'>
+                    <b:widget-settings>
+                      <b:widget-setting name='shownum'>5</b:widget-setting>
+                      <b:widget-setting name='sorting'>NONE</b:widget-setting>
+                      <b:widget-setting name='item-0'> Blog del centro agroturistico </b:widget-setting>
+                      <b:widget-setting name='item-1'> Bienvenido a nuestra pagina web ✨ </b:widget-setting>
+                      <b:widget-setting name='item-2'> ¡te mantenemos al dia! 📰 </b:widget-setting>
+                      <b:widget-setting name='item-3'> ¿listo para entrar al mundo laboral? 🚀 </b:widget-setting>
+                      <b:widget-setting name='item-4'> todo lo que nesecitas saber esta aqui 😊 </b:widget-setting>
+                    </b:widget-settings>
+                    <b:includable id='main'>
+                     <div id="texto-animado-cont">
+                        <b:loop values='data:items' var='item'>
+                          <div class="texto-animado"> <data:item/>  </div>
+                        </b:loop>
+                     </div>
+                          <style>
+                            /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+                            /*css 👈 comando decorativo "Highlight String Code */
+                            #TextList1{
+                                padding-bottom: 30px;
                                 display: flex;
-                                overflow: hidden;
-                                interpolate-size: allow-keywords;
-                                width: min-content;
-                                animation: blinkCursor 1s infinite steps(1);
-                                border-right: 1px solid #7d7d7d; /* Cursor */
+                                justify-content: center;
                               }
-
-                              .texto-animado {
-                                overflow: hidden;
-                                width: 0;
-                                max-width: 100%;
-                                white-space: nowrap;
+                            #texto-animado-cont {
+                              display: flex;
+                              overflow: hidden;
+                              interpolate-size: allow-keywords;
+                              width: min-content;
+                              animation: blinkCursor 1s infinite steps(1);
+                              border-right: 1px solid #7d7d7d; /* Cursor */
+                            }
+                            .texto-animado {
+                              overflow: hidden;
+                              width: 0;
+                              max-width: 100%;
+                              white-space: nowrap;
+                            }
+                            .txt-visible {
+                              margin-right: 4px;
+                              overflow: visible;
+                              width: fit-content;
+                            }
+                            @keyframes escribiryborrar {
+                              0%,10% { width: 0px }
+                              30%, 70% { width: min-content;}
+                              90%, 100% { width: 0px }
+                            }
+                            @keyframes blinkCursor {
+                              50% {border-right-color: transparent;}
+                            }
+                            /* animacion v2 de borrado
+                            @keyframes escribiryborrar {
+                              0% { width: 0px }
+                              15%, 85% { width: min-content }
+                              100% { width: 0px }
+                            }*/
+                            /*!css*/
+                            /*]]>*/
+                          </style>
+                          <script>
+                            //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
+                            //js 👈 comando decorativo "Highlight String Code"
+                            
+                            
+                            function textoAnimado() {
+                              const contenedor = document.getElementById("texto-animado-cont");
+                              const textos = contenedor.getElementsByClassName("texto-animado");
+                              let textoCount = 0;
+                              contenedor.style.animation = "escribiryborrar 7s infinite, blinkCursor 1s infinite steps(1)";
+                              textos[textoCount].classList.add("txt-visible"); // Mostrar primer texto
+                              contenedor.addEventListener("animationiteration", (event) => {
+                                if (event.animationName !== "escribiryborrar") return;
+                                textos[textoCount].classList.remove("txt-visible"); // Ocultar texto actual
+                                textoCount++ // Avanzar contador
+                                if (textoCount == textos.length) textoCount = 0 // reset
+                                textos[textoCount].classList.add("txt-visible");// Mostrar nuevo texto
+                              });
+                            };
+                            //!js
+                            //]]>
+                          </script>
+                    </b:includable>                      
+                  </b:widget>
+                  <!--
+                  *======================
+                  🖼️marker Main Imagenes
+                  *======================
+                  -->
+                  <b:widget id='LinkList1' locked='false' title='Carrucel de imagenes' type='LinkList'>
+                    <b:widget-settings>
+                      <b:widget-setting name='shownum'>3</b:widget-setting>
+                      <b:widget-setting name='sorting'>NONE</b:widget-setting>
+                      <b:widget-setting name='text-0'>imagen 1</b:widget-setting>
+                      <b:widget-setting name='link-0'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjR8jj6J2UQR_hExUpaE7A6FZUFnHtzToZUzUWfPVAoPCROQM_Z6tx4NYGNecwBoL3WmEBQ342wr1zIUrA4LiRXLV7aTTF9ht1D5Xf3PxbX2OViU1XTpz6FBhABwshfXhn8q0hvjHyC5ThgPNgjgWWJ0ApiBP4Pvqpaa_z8QEzw3mKQoOBh90L52Hcsdng/s2233/I%20CONVOCATORIA%20MEDIOS%20TECNOLOGICOS%202025_Banener_blog.jpg</b:widget-setting>
+                      <b:widget-setting name='text-1'>imagen 2</b:widget-setting>
+                      <b:widget-setting name='link-1'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgwCVqCbPNW8o6lnnfXdNz3bxMLHLeOxVfRRtB99_Qa-k1Clgsn3qhqgqvyp34B9j4TT2VWpwX9-FsuBJfHYNNQTyO4n-YpXNXoYs7jgB0Hhuy1UqUJDv8rnsTKY5VU05yqq72zybl4R8XVIJ2TTODRoKNQjPgaStBMHyJqNJdxXCRLxt6wIOeq_HUxYk8/s2233/Monitorias_Banner.jpg</b:widget-setting>
+                      <b:widget-setting name='text-2'> imagen 3</b:widget-setting>
+                      <b:widget-setting name='link-2'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgUWSroBGrCs5QqFbluNzpR417FRySDT-Z-dC1ZxwLfOJsmGdFIX-g-oJYcGGqQpAi1Diu2SDxFVa6SkCjlHbbVWCCUtGDTD8RTEphl8S7CzHTyfslhiQRUSUPU89C9PRapX78l5WfwCJEOO9BX4touJ5NBD6SEgBHbUNBFqA_p8W4PYRmtMdLHLVXK3r0/s1072/bannerOferta%20(4).jpg</b:widget-setting>
+                    </b:widget-settings>
+                    <b:includable id='main'>
+                      <div class='widget-content'>
+                        <div id="carusel-cont">
+                          <b:loop values='data:links' var='link'>
+                            <div class="carusel-link" expr:href="data:link.target" target="_blank">
+                              <img expr:src='data:link.target' expr:alt="data:link.name" />
+                            </div>
+                          </b:loop>
+                          <div class="carusel-link" expr:href="data:links[0].target" target="_blank">
+                              <img expr:src='data:links[0].target' expr:alt="data:links[0].name" />
+                          </div>
+                        </div>
+                      </div>
+                      <style>
+                        /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+                        /*css 👈 comando decorativo "Highlight String Code */
+                          #LinkList1{
+                            margin-bottom:20px;
+                          }
+                          #carusel-cont {
+                            height: auto;
+                            width: 100%;
+                            overflow-x: auto;
+                            scroll-snap-type: x mandatory;
+                            display: grid;
+                            grid-auto-flow: column;
+                            grid-auto-columns: 100%;
+                          }
+                          .carusel-link{
+                            border-radius: 8px;
+                            width: 100%;
+                            height: auto;
+                            scroll-snap-align:center;
+                          }
+                          .carusel-link img{
+                            border-radius: 8px;
+                            width: 100%;
+                            height: auto;
+                          }
+                          #carusel-cont::-webkit-scrollbar {
+                            width: 5px;
+                            height: 5px;
+                          }
+                          #carusel-cont::-webkit-scrollbar{
+                            background:rgba(241, 241, 241, 0); /* Color de fondo de la pista */
+                            border-radius: 0px;
+                          }
+                          #carusel-cont::-webkit-scrollbar-thumb  {
+                            background: rgba(85, 85, 100, 0.18);
+                            border-radius: 10px;
+                          }
+                          #carusel-cont::-webkit-scrollbar-thumb:hover {
+                            background:rgba(85, 85, 100, 0.24);
+                          }
+                        /*!css*/
+                        /*]]>*/
+                      </style>
+                      <script>
+                        //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
+                        //js 👈 comando decorativo "Highlight String Code"
+                        document.addEventListener("DOMContentLoaded", function () {
+                          const carousel = document.getElementById("carusel-cont");
+                          let index = 0;
+                          const items = document.querySelectorAll(".carusel-link");
+                          let isPaused = false;
+                          // Detectar hover para pausar el movimiento
+                          // Detectar hover para pausar el movimiento (PC)
+                          carousel.addEventListener("mouseenter", () => {
+                            isPaused = true;
+                          });
+                          carousel.addEventListener("mouseleave", () => {
+                            isPaused = false;
+                          });
+                          // Detectar toque en móviles para pausar el movimiento
+                          carousel.addEventListener("touchstart", () => {
+                            isPaused = true;
+                          });
+                          document.addEventListener("visibilitychange", () => {
+                            isPaused = document.hidden;
+                          });
+                          function actualizarIndex() {
+                            let scrollLeft = carousel.scrollLeft;
+                            let closestIndex = 0;
+                            let minDiff = Math.abs(scrollLeft - items[0].offsetLeft);
+                            items.forEach((item, i) => {
+                              let diff = Math.abs(scrollLeft - item.offsetLeft);
+                              if (diff < minDiff) {
+                                minDiff = diff;
+                                closestIndex = i;
                               }
-
-                              .txt-visible {
-                                margin-right: 4px;
-                                overflow: visible;
-                                width: fit-content;
-                              }
-
-                              @keyframes escribiryborrar {
-                                0%,10% { width: 0px }
-                                30%, 70% { width: min-content;}
-                                90%, 100% { width: 0px }
-                              }
-
-                              @keyframes blinkCursor {
-                                50% {border-right-color: transparent;}
-                              }
-
-                              /* animacion v2 de borrado
-                              @keyframes escribiryborrar {
-                                0% { width: 0px }
-                                15%, 85% { width: min-content }
-                                100% { width: 0px }
-                              }*/
-                              /*!css*/
-                              /*]]>*/
-                            </style>
-
-                            <script>
-                              //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
-                              //js 👈 comando decorativo "Highlight String Code"
-                              
-                              
-                              function textoAnimado() {
-                                const contenedor = document.getElementById("texto-animado-cont");
-                                const textos = contenedor.getElementsByClassName("texto-animado");
-                                let textoCount = 0;
-                                contenedor.style.animation = "escribiryborrar 7s infinite, blinkCursor 1s infinite steps(1)";
-
-                                textos[textoCount].classList.add("txt-visible"); // Mostrar primer texto
-
-                                contenedor.addEventListener("animationiteration", (event) => {
-                                  if (event.animationName !== "escribiryborrar") return;
-
-                                  textos[textoCount].classList.remove("txt-visible"); // Ocultar texto actual
-
-                                  textoCount++ // Avanzar contador
-                                  if (textoCount == textos.length) textoCount = 0 // reset
-
-                                  textos[textoCount].classList.add("txt-visible");// Mostrar nuevo texto
-                                });
-                              };
-                              //!js
-                              //]]>
-                            </script>
-                      </b:includable>                      
-                    </b:widget>
+                            });
+                            index = closestIndex;
+                          }
+                          function moverCarousel() {
+                            if (isPaused) return; // Detener el movimiento si está en hover
+                            actualizarIndex();
+                            index++ // avanzar
+                            if (index >= items.length) { 
+                              index = 0; // resetear
+                              carousel.scrollTo({ // vuelve al inicio
+                                left: items[index].offsetLeft,
+                              });
+                              index++ // sumar para moverse al index 2
+                            }  
+                            carousel.scrollTo({ //
+                              left: items[index].offsetLeft,
+                              behavior: "smooth"
+                            });
+                          }
+                          setInterval(moverCarousel, 5000); // Mueve cada 5 segundos
+                        });
+                        //!js
+                        //]]>
+                      </script>
+                    </b:includable>
+                  </b:widget>
+                    
+                    
 
                     <div id="main-header">
 
@@ -1962,7 +2087,7 @@ que la extencion "highligth string" decore el texto)
                 <div class='footer-cap-top cap-top'>
                   <div class='cap-left'/>
                   <div class='cap-right'/>
-            </div>
+              </div>
                 <div class='fauxborder-left footer-fauxborder-left'>
                   <div class='fauxborder-right footer-fauxborder-right'/>
                   <div class='region-inner footer-inner'>
