@@ -300,15 +300,17 @@ que la extencion "highligth string" decore el texto)
           }
         }
         .date-header {
-          font-weight: normal;
-          width: fit-content;
-          padding: 4px 15px;
-          background-color: #00304D;
-          font-size: .9em;
-          color: #ffffff;
-          border-radius: 8px;
-          box-shadow: -1px 2px 5px #00000033;
-        }
+              font-weight: normal;
+    width: fit-content;
+    padding: 4px 15px;
+    background-color: #ffffff;
+    font-size: .9em;
+    color: #00304D;
+    border-radius: 8px;
+    box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, .1);
+    outline: 1px solid #e2e8f0;
+    font-weight: bold;
+    }
         .post{
           display: flex;
           justify-content: space-evenly;
@@ -319,10 +321,11 @@ que la extencion "highligth string" decore el texto)
           min-width: 270px;
           align-items: center;
           border-radius: 16px;
-          box-shadow:
-          0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
           padding: 20px 20px 20px 20px;
           box-sizing: border-box;
+          box-shadow: 0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);
+          outline: 1px solid #e2e8f0;
+          background-color: white;
         }
         .post >a{display:none;}
         .post div{color:#00304D;}
@@ -365,7 +368,6 @@ que la extencion "highligth string" decore el texto)
         .post-body > p,
         .post-body > a {
           margin: 0;
-          width: 100%;
         }
         .post-body > p{
           margin:0px;
@@ -397,8 +399,8 @@ que la extencion "highligth string" decore el texto)
           border-radius: 10px;
           width: 100%;
           max-height: 500px;
-          min-width: 0 !important;
-          max-width: none !important;
+          min-width: 0 ;
+          max-width: none ;
           /*object-fit: contain;*/
           object-fit: cover;
           object-position: center;
@@ -468,12 +470,11 @@ que la extencion "highligth string" decore el texto)
             display: flex;
             gap: 15px;
             width: 270px;
-            height: calc(100vh - 80px);
+            height: 100%;
             padding: 10px 20px;
             background-color: #ffffff;
             overflow-y: scroll;
-            position: sticky;
-            top: 60px;
+            
           }
           #sidebar-right-1 > .widget{min-height: fit-content;}
           #sidebar-right-1 h2 { color: #00304D}
@@ -958,9 +959,9 @@ que la extencion "highligth string" decore el texto)
                       display: flex;
                       align-items: center;
 
-                      position: fixed;
+                      position: absolute;
                       left: 0px;
-                      top: 0px;
+                      top: -20px;
                       z-index: 2;
                       width: 100%;
                       background-color: #ffffff;
@@ -1117,95 +1118,7 @@ que la extencion "highligth string" decore el texto)
                 /*]]>*/
               </style>
                 <b:section class='blog-posts hfeed' id='main' name='Main' showaddelement='no'>
-                  <!--
-                  *======================
-                  ✏️marker Texto animado
-                  *======================
-                  -->
-                  <b:widget id='TextList1' locked='false' title='frases del texto animado' type='TextList'>
-                    <b:widget-settings>
-                      <b:widget-setting name='shownum'>5</b:widget-setting>
-                      <b:widget-setting name='sorting'>NONE</b:widget-setting>
-                      <b:widget-setting name='item-0'> Blog del centro agroturistico </b:widget-setting>
-                      <b:widget-setting name='item-1'> Bienvenido a nuestra pagina web ✨ </b:widget-setting>
-                      <b:widget-setting name='item-2'> ¡te mantenemos al dia! 📰 </b:widget-setting>
-                      <b:widget-setting name='item-3'> ¿listo para entrar al mundo laboral? 🚀 </b:widget-setting>
-                      <b:widget-setting name='item-4'> todo lo que nesecitas saber esta aqui 😊 </b:widget-setting>
-                    </b:widget-settings>
-                    <b:includable id='main'>
-                     <div id="texto-animado-cont">
-                        <b:loop values='data:items' var='item'>
-                          <div class="texto-animado"> <data:item/>  </div>
-                        </b:loop>
-                     </div>
-                          <style>
-                            /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
-                            /*css 👈 comando decorativo "Highlight String Code */
-                            #TextList1{
-                                padding-bottom: 30px;
-                                display: flex;
-                                justify-content: center;
-                              }
-                            #texto-animado-cont {
-                              display: flex;
-                              overflow: hidden;
-                              interpolate-size: allow-keywords;
-                              width: min-content;
-                              animation: blinkCursor 1s infinite steps(1);
-                              border-right: 1px solid #7d7d7d; /* Cursor */
-                            }
-                            .texto-animado {
-                              overflow: hidden;
-                              width: 0;
-                              max-width: 100%;
-                              white-space: nowrap;
-                            }
-                            .txt-visible {
-                              margin-right: 4px;
-                              overflow: visible;
-                              width: fit-content;
-                            }
-                            @keyframes escribiryborrar {
-                              0%,10% { width: 0px }
-                              30%, 70% { width: min-content;}
-                              90%, 100% { width: 0px }
-                            }
-                            @keyframes blinkCursor {
-                              50% {border-right-color: transparent;}
-                            }
-                            /* animacion v2 de borrado
-                            @keyframes escribiryborrar {
-                              0% { width: 0px }
-                              15%, 85% { width: min-content }
-                              100% { width: 0px }
-                            }*/
-                            /*!css*/
-                            /*]]>*/
-                          </style>
-                          <script>
-                            //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
-                            //js 👈 comando decorativo "Highlight String Code"
-                            
-                            
-                            function textoAnimado() {
-                              const contenedor = document.getElementById("texto-animado-cont");
-                              const textos = contenedor.getElementsByClassName("texto-animado");
-                              let textoCount = 0;
-                              contenedor.style.animation = "escribiryborrar 7s infinite, blinkCursor 1s infinite steps(1)";
-                              textos[textoCount].classList.add("txt-visible"); // Mostrar primer texto
-                              contenedor.addEventListener("animationiteration", (event) => {
-                                if (event.animationName !== "escribiryborrar") return;
-                                textos[textoCount].classList.remove("txt-visible"); // Ocultar texto actual
-                                textoCount++ // Avanzar contador
-                                if (textoCount == textos.length) textoCount = 0 // reset
-                                textos[textoCount].classList.add("txt-visible");// Mostrar nuevo texto
-                              });
-                            };
-                            //!js
-                            //]]>
-                          </script>
-                    </b:includable>                      
-                  </b:widget>
+                  
                   <!--
                   *======================
                   🖼️marker Main Imagenes
@@ -1225,6 +1138,13 @@ que la extencion "highligth string" decore el texto)
                     <b:includable id='main'>
                       <div class='widget-content'>
                         <div id="carusel-cont">
+                          <button class="carusel-btn carusel-btn-left" onclick="moverCarusel('atras')">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#ffffff"><path d="m432-480 156 156q11 11 11 28t-11 28q-11 11-28 11t-28-11L348-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 28-11t28 11q11 11 11 28t-11 28L432-480Z"/></svg>
+                          </button>
+                          <button class="carusel-btn carusel-btn-right" onclick="moverCarusel('adelante')">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#ffffff"><path d="M504-480 348-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L404-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Z"/></svg>
+                          </button>
+
                           <b:loop values='data:links' var='link'>
                             <div class="carusel-link" expr:href="data:link.target" target="_blank">
                               <img expr:src='data:link.target' expr:alt="data:link.name" />
@@ -1241,8 +1161,13 @@ que la extencion "highligth string" decore el texto)
                           #LinkList1{
                             margin-bottom:20px;
                           }
+                          #imagenes-deslisables{
+                            position: relative;
+                            width: 60%;;
+                          }
                           #carusel-cont {
                             height: auto;
+                            border-radius: 8px;
                             width: 100%;
                             overflow-x: auto;
                             scroll-snap-type: x mandatory;
@@ -1252,23 +1177,22 @@ que la extencion "highligth string" decore el texto)
                           }
                           .carusel-link{
                             border-radius: 8px;
-                            width: 100%;
+                            width: auto;
                             height: auto;
                             scroll-snap-align:center;
                           }
                           .carusel-link img{
                             border-radius: 8px;
                             width: 100%;
+                            min-height: 150px;
                             height: auto;
                           }
                           #carusel-cont::-webkit-scrollbar {
+                            
                             width: 5px;
                             height: 5px;
                           }
-                          #carusel-cont::-webkit-scrollbar{
-                            background:rgba(241, 241, 241, 0); /* Color de fondo de la pista */
-                            border-radius: 0px;
-                          }
+                        
                           #carusel-cont::-webkit-scrollbar-thumb  {
                             background: rgba(85, 85, 100, 0.18);
                             border-radius: 10px;
@@ -1276,63 +1200,118 @@ que la extencion "highligth string" decore el texto)
                           #carusel-cont::-webkit-scrollbar-thumb:hover {
                             background:rgba(85, 85, 100, 0.24);
                           }
+                        
+                          .carusel-btn{
+                            border-radius: 8px;
+                            background: #00000060;
+                            position: absolute;
+                            top: 50%;
+                            transform: translate(0,-50%);
+                            border: none;
+                            display: flex;
+                            align-items: center;
+                            padding: 8px 0px;
+                            transition: transform 0.2s ease;
+                          }
+                        
+                          .carusel-btn:hover{
+                            background: #00000080;
+                          }
+                          .carusel-btn:active{
+                            transform: translate(0,-50%) scale(0.8);
+                          }
+                        
+                          .carusel-btn svg{
+                            width: 38px;
+                            height: auto;
+                            fill: #ffffff;
+                          }
+                        
+                          .carusel-btn-left{
+                            left: 10px;
+                          }
+                          .carusel-btn-right{
+                            right: 10px;
+                          }
                         /*!css*/
                         /*]]>*/
                       </style>
                       <script>
                         //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
                         //js 👈 comando decorativo "Highlight String Code"
-                        document.addEventListener("DOMContentLoaded", function () {
                           const carousel = document.getElementById("carusel-cont");
-                          let index = 0;
-                          const items = document.querySelectorAll(".carusel-link");
-                          let isPaused = false;
-                          // Detectar hover para pausar el movimiento
-                          // Detectar hover para pausar el movimiento (PC)
-                          carousel.addEventListener("mouseenter", () => {
-                            isPaused = true;
-                          });
-                          carousel.addEventListener("mouseleave", () => {
-                            isPaused = false;
-                          });
-                          // Detectar toque en móviles para pausar el movimiento
-                          carousel.addEventListener("touchstart", () => {
-                            isPaused = true;
-                          });
-                          document.addEventListener("visibilitychange", () => {
-                            isPaused = document.hidden;
-                          });
-                          function actualizarIndex() {
-                            let scrollLeft = carousel.scrollLeft;
-                            let closestIndex = 0;
-                            let minDiff = Math.abs(scrollLeft - items[0].offsetLeft);
-                            items.forEach((item, i) => {
-                              let diff = Math.abs(scrollLeft - item.offsetLeft);
-                              if (diff < minDiff) {
-                                minDiff = diff;
-                                closestIndex = i;
-                              }
-                            });
-                            index = closestIndex;
-                          }
-                          function moverCarousel() {
-                            if (isPaused) return; // Detener el movimiento si está en hover
-                            actualizarIndex();
-                            index++ // avanzar
-                            if (index >= items.length) { 
-                              index = 0; // resetear
-                              carousel.scrollTo({ // vuelve al inicio
-                                left: items[index].offsetLeft,
-                              });
-                              index++ // sumar para moverse al index 2
-                            }  
-                            carousel.scrollTo({ //
-                              left: items[index].offsetLeft,
-                              behavior: "smooth"
-                            });
-                          }
-                          setInterval(moverCarousel, 5000); // Mueve cada 5 segundos
-                        });
+  const items = document.querySelectorAll(".carusel-link");
+  let index = 0;
+  let isPaused = false;
+
+
+  function actualizarIndexCarusel() {
+    let scrollLeft = carousel.scrollLeft;
+    let closestIndex = 0;
+    let minDiff = Math.abs(scrollLeft - items[0].offsetLeft);
+      
+    items.forEach((item, i) => {
+      let diff = Math.abs(scrollLeft - item.offsetLeft);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closestIndex = i;
+      }
+    });
+    index = closestIndex;
+  }
+
+  function moverCarusel(dirreccion = 'adelante'){
+    actualizarIndexCarusel(); // actualizar posicion encaso de scrolling
+    if(dirreccion === "atras"){ 
+      index-- // retroceder
+      if (index < 0) {
+          index = items.length - 1; // resetear al final
+          carousel.scrollTo({ // vuelve al inicio
+            left: items[index].offsetLeft,
+          });
+          index--
+      }
+      carousel.scrollTo({ //
+          left: items[index].offsetLeft,
+          behavior: "smooth"
+      });
+    } else {
+      index++ // avanzar
+      if (index >= items.length) { 
+          index = 0; // resetear
+          carousel.scrollTo({ // vuelve al inicio
+            left: items[index].offsetLeft,
+          });
+          index++ // sumar para moverse al index 2
+      }  
+      carousel.scrollTo({ //
+          left: items[index].offsetLeft,
+          behavior: "smooth"
+      });
+    }
+  }
+
+  function autoScrollCarusel() {
+    if (isPaused) return; // Detener el movimiento si está en hover
+    moverCarusel()
+  }
+  setInterval(autoScrollCarusel, 5000); // Mueve cada 5 segundos
+    
+
+
+  document.addEventListener("DOMContentLoaded", function () {
+    // Detectar hover para pausar el movimiento
+    // Detectar hover para pausar el movimiento (PC)
+    carousel.addEventListener("mouseenter", () => isPaused = true);
+    carousel.addEventListener("mouseleave", () => isPaused = false);
+
+    // Detectar toque en móviles para pausar el movimiento
+    carousel.addEventListener("touchstart", () => isPaused = true);
+    document.addEventListener("visibilitychange", () => {
+      isPaused = document.hidden;
+    });
+    
+  });
                         //!js
                         //]]>
                       </script>
@@ -1429,7 +1408,7 @@ que la extencion "highligth string" decore el texto)
 
                       <!--
                       ^======================
-                      ✏️marker Comentarios
+                      💬marker Comentarios
                       ^======================
                       -->
                       
@@ -1655,7 +1634,7 @@ que la extencion "highligth string" decore el texto)
                               </b:if>
                             </h2>
                             </b:if>
-                          <!--marker post body-->
+                          <!-- post body-->
 
                           <!-- Then use the post body as the schema.org description, for good G+/FB snippeting. -->
                           <div class='post-body entry-content' expr:id='"post-body-" + data:post.id'
@@ -2395,6 +2374,96 @@ que la extencion "highligth string" decore el texto)
     </b:widget>
 
     <!--
+                  *======================
+                  ✏️marker Texto animado
+                  *======================
+                  -->
+                  <b:widget id='TextList1' locked='false' title='frases del texto animado' type='TextList'>
+                    <b:widget-settings>
+                      <b:widget-setting name='shownum'>5</b:widget-setting>
+                      <b:widget-setting name='sorting'>NONE</b:widget-setting>
+                      <b:widget-setting name='item-0'> Blog del centro agroturistico </b:widget-setting>
+                      <b:widget-setting name='item-1'> Nuestra pagina web ✨ </b:widget-setting>
+                      <b:widget-setting name='item-2'> ¡te mantenemos al dia! 📰 </b:widget-setting>
+                      <b:widget-setting name='item-3'> entra al mundo laboral 🚀 </b:widget-setting>
+                      <b:widget-setting name='item-4'> lo que nesecitas saber</b:widget-setting>
+                    </b:widget-settings>
+                    <b:includable id='main'>
+                     <div id="texto-animado-cont">
+                        <b:loop values='data:items' var='item'>
+                          <div class="texto-animado"> <data:item/>  </div>
+                        </b:loop>
+                     </div>
+                          <style>
+                            /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+                            /*css 👈 comando decorativo "Highlight String Code */
+                            #TextList1{
+                                padding-bottom: 10px;
+                                display: flex;
+                                justify-content: center;
+                              }
+                            #texto-animado-cont {
+                              display: flex;
+                              overflow: hidden;
+                              interpolate-size: allow-keywords;
+                              width: min-content;
+                              animation: blinkCursor 1s infinite steps(1);
+                              border-right: 1px solid #7d7d7d; /* Cursor */
+                            }
+                            .texto-animado {
+                              overflow: hidden;
+                              width: 0;
+                              max-width: 100%;
+                              white-space: nowrap;
+                            }
+                            .txt-visible {
+                              margin-right: 4px;
+                              overflow: visible;
+                              width: fit-content;
+                            }
+                            @keyframes escribiryborrar {
+                              0%,10% { width: 0px }
+                              30%, 70% { width: min-content;}
+                              90%, 100% { width: 0px }
+                            }
+                            @keyframes blinkCursor {
+                              50% {border-right-color: transparent;}
+                            }
+                            /* animacion v2 de borrado
+                            @keyframes escribiryborrar {
+                              0% { width: 0px }
+                              15%, 85% { width: min-content }
+                              100% { width: 0px }
+                            }*/
+                            /*!css*/
+                            /*]]>*/
+                          </style>
+                          <script>
+                            //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
+                            //js 👈 comando decorativo "Highlight String Code"
+                            
+                            
+                            function textoAnimado() {
+                              const contenedor = document.getElementById("texto-animado-cont");
+                              const textos = contenedor.getElementsByClassName("texto-animado");
+                              let textoCount = 0;
+                              contenedor.style.animation = "escribiryborrar 7s infinite, blinkCursor 1s infinite steps(1)";
+                              textos[textoCount].classList.add("txt-visible"); // Mostrar primer texto
+                              contenedor.addEventListener("animationiteration", (event) => {
+                                if (event.animationName !== "escribiryborrar") return;
+                                textos[textoCount].classList.remove("txt-visible"); // Ocultar texto actual
+                                textoCount++ // Avanzar contador
+                                if (textoCount == textos.length) textoCount = 0 // reset
+                                textos[textoCount].classList.add("txt-visible");// Mostrar nuevo texto
+                              });
+                            };
+                            //!js
+                            //]]>
+                          </script>
+                    </b:includable>                      
+                  </b:widget>
+
+    <!--
     *========================
     📈marker estadisticas
     *========================
@@ -2696,41 +2765,6 @@ que la extencion "highligth string" decore el texto)
       </b:includable>
     </b:widget>
 
-              
-    <!--
-    ?======================
-    ✖️marker posts de X
-    ?======================
-    -->
-    <b:widget id='HTML1' locked='false' title='post en X' type='HTML'>
-      <b:widget-settings>
-        <b:widget-setting name='content'><![CDATA[
-        <a class="twitter-timeline" data-height="500" data-theme="light" href="https://twitter.com/SENAComunica?ref_src=twsrc%5Etfw">
-        Tweets by SENAComunica
-        </a>
-        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8">
-        </script>
-        ]]></b:widget-setting>
-      </b:widget-settings>
-      <b:includable id='main'>
-        <style>
-          /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
-          /*css 👈 comando decorativo "Highlight String Code */
-           <!-- ^  Barra de scroll 👇 ^ --> */
-          /*!css*/
-          /*]]>*/
-        </style>
-        <!-- only display title if it's non-empty -->
-        <b:if cond='data:title != &quot;&quot;'>
-          <h2 class='title'><data:title/></h2>
-        </b:if>
-        <div class='widget-content'>
-          <data:content/>
-        </div>
-        <b:include name='quickedit'/>
-      </b:includable>
-    </b:widget>
-
     <!--
     ?======================
     💾marker BlogArchive1
@@ -2748,192 +2782,225 @@ que la extencion "highligth string" decore el texto)
         <b:widget-setting name='showPosts'>false</b:widget-setting>
         <b:widget-setting name='frequency'>MONTHLY</b:widget-setting>
       </b:widget-settings>
-    <b:includable id='main'> 
-      <style>
-        /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
-        /*css 👈 comando decorativo "Highlight String Code */
-        #BlogArchive1 {
-          background-color: #ffffff;
-          
-        }
-        #BlogArchive1 *{
-          text-indent: 0;
-          border:none;
-          transition: opacity 0.6s ease-in-out, height 1s ease;
-          color: #00304D; 
-          interpolate-size: allow-keywords;
-        }
-        #BlogArchive1_ArchiveList {
-          padding-bottom: 50px;
-        }
+      <b:includable id='main'> 
+        <style>
+          /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+          /*css 👈 comando decorativo "Highlight String Code */
+          #BlogArchive1 {
+            background-color: #ffffff;
 
-        /* cuando se cierra o abre un elemento 👇 */
-        #ArchiveList .collapsed ul{
-          display: block;
-          height: 0px;
-          overflow: hidden;
-          opacity: 0;
-          @starting-style {
-            height: fit-content;
-            opacity: 1;
-          };
-        }
-        #ArchiveList .expanded >ul{
-          display: block;
-          overflow: hidden;
-          height: fit-content;
-          @starting-style {
+          }
+          #BlogArchive1 *{
+            text-indent: 0;
+            border:none;
+            transition: opacity 0.6s ease-in-out, height 1s ease;
+            color: #00304D; 
+            interpolate-size: allow-keywords;
+          }
+          #BlogArchive1_ArchiveList {
+            padding-bottom: 50px;
+          }
+
+          /* cuando se cierra o abre un elemento 👇 */
+          #ArchiveList .collapsed ul{
+            display: block;
             height: 0px;
+            overflow: hidden;
             opacity: 0;
+            @starting-style {
+              height: fit-content;
+              opacity: 1;
+            };
           }
-        }
-        .hierarchy{
-          grid-column: span 2;
-        }
-        .archivedate {
-          text-indent: 0;
-          display: grid;
-          column-gap: 4px;
-          align-items: center;
-          grid-template-columns: auto auto 1fr;
-        }
-        .archivedate > .informacion {
-          grid-column: span 2;
-          display: flex;
-        }
-        .archivedate a{
-          width: fit-content ;
-        }
-        #BlogArchive1_ArchiveList .archivedate ul li{
-          padding-left: 30px;
-          text-indent: 0;
-        } <!-- capeta 1 -->
-        .BlogArchive #ArchiveList ul ul li{
-          padding-left: 30px;
-        } <!-- capeta 2 -->
-        .BlogArchive #ArchiveList ul.posts li{
-          padding-left: 0;
-        } <!-- capeta 3 -->
-        .toggle{
-          display: block;
-          width: fit-content;
-          background-color:rgba(0, 47, 77, 0);
-          color: #ffffff;
-          height: 100%;
-        }
-        .archivedate .post-count{
-          position: relative;
-          top: -5px;
-          color: #00304d;
-          font-size: 0.8em;
-          height: min-content;
-        }
-        .zippy{
-          display: block;
-          background: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwzm0taNcMkyRXjYWxqZ2mHAaFGb_aP4oLjpiZsRSAvl0_lWQ20WHsIuwMXUVjglVlawPcw5N9cyChgc64_5asJYoO9A9DRPzIovNx4FpbBJ0mh5S8PoUr9My0r7yKWGQQxkIDbtLCfo9TDewBc9bATiMVWPO9MFAfPT8qaQiogeLPmJZ8xp-fVOe6ilU/s96/arrow_right.png)
-          no-repeat center center;
-          background-size: 160%; 
-          width: 20px;
-          height: min-content;
-        }
-        .zippy.toggle-open{
-          display: block;
-          background: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhptrDu5oYzBhfVlAMVpG0udZKu1oN4YDt9Xrrnf-ikPfxhGNKwgClvH5ORSCj270_cR-vZW7PNT4iaDsaF6iDR_k-PIQgdAdtSfZCOugShsK2w29iBFDhmXr3-bgWGUlFvjFvL9rNaXU9OWNuL7V9ETSmBR7PV-fuAh7SQSMMC_Dll8Ix7Q-MxBtbcyk8/s96/arrow_drop_down.png)
-          no-repeat center center;
-          background-size: 160%; 
-        }
-        #ArchiveList .zippy {
-          color: rgba(0,0,0,0);
-          line-height: unset;
-        }
-        .BlogArchive li:has(>a:empty) {
-          display: none;
+          #ArchiveList .expanded >ul{
+            display: block;
+            overflow: hidden;
+            height: fit-content;
+            @starting-style {
+              height: 0px;
+              opacity: 0;
+            }
           }
-        #ArchiveList a.toggle,
-        #ArchiveList a.toggle:link{
-          color:rgba(0, 0, 0, 0);
-          color: #00304D;
-          font-size: 0.8em;
-        }
-        /*!css*/
-        /*]]>*/
-      </style>
-      <b:if cond='data:title != &quot;&quot;'>
-        <h3><data:title/></h3>
-      </b:if>
-      <div class='widget-content'>
-        <div id='ArchiveList'>
-          <div expr:id='data:widget.instanceId + &quot;_ArchiveList&quot;'>
-            <b:include cond='data:style == &quot;HIERARCHY&quot;' data='data' name='interval'/>
-            <b:include cond='data:style == &quot;FLAT&quot;' data='data' name='flat'/>
-            <b:include cond='data:style == &quot;MENU&quot;' data='data' name='menu'/>
+          .hierarchy{
+            grid-column: span 2;
+          }
+          .archivedate {
+            text-indent: 0;
+            display: grid;
+            column-gap: 4px;
+            align-items: center;
+            grid-template-columns: auto auto 1fr;
+          }
+          .archivedate > .informacion {
+            grid-column: span 2;
+            display: flex;
+          }
+          .archivedate a{
+            width: fit-content ;
+          }
+          #BlogArchive1_ArchiveList .archivedate ul li{
+            padding-left: 30px;
+            text-indent: 0;
+          } <!-- capeta 1 -->
+          .BlogArchive #ArchiveList ul ul li{
+            padding-left: 30px;
+          } <!-- capeta 2 -->
+          .BlogArchive #ArchiveList ul.posts li{
+            padding-left: 0;
+          } <!-- capeta 3 -->
+          .toggle{
+            display: block;
+            width: fit-content;
+            background-color:rgba(0, 47, 77, 0);
+            color: #ffffff;
+            height: 100%;
+          }
+          .archivedate .post-count{
+            position: relative;
+            top: -5px;
+            color: #00304d;
+            font-size: 0.8em;
+            height: min-content;
+          }
+          .zippy{
+            display: block;
+            background: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwzm0taNcMkyRXjYWxqZ2mHAaFGb_aP4oLjpiZsRSAvl0_lWQ20WHsIuwMXUVjglVlawPcw5N9cyChgc64_5asJYoO9A9DRPzIovNx4FpbBJ0mh5S8PoUr9My0r7yKWGQQxkIDbtLCfo9TDewBc9bATiMVWPO9MFAfPT8qaQiogeLPmJZ8xp-fVOe6ilU/s96/arrow_right.png)
+            no-repeat center center;
+            background-size: 160%; 
+            width: 20px;
+            height: min-content;
+          }
+          .zippy.toggle-open{
+            display: block;
+            background: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhptrDu5oYzBhfVlAMVpG0udZKu1oN4YDt9Xrrnf-ikPfxhGNKwgClvH5ORSCj270_cR-vZW7PNT4iaDsaF6iDR_k-PIQgdAdtSfZCOugShsK2w29iBFDhmXr3-bgWGUlFvjFvL9rNaXU9OWNuL7V9ETSmBR7PV-fuAh7SQSMMC_Dll8Ix7Q-MxBtbcyk8/s96/arrow_drop_down.png)
+            no-repeat center center;
+            background-size: 160%; 
+          }
+          #ArchiveList .zippy {
+            color: rgba(0,0,0,0);
+            line-height: unset;
+          }
+          .BlogArchive li:has(>a:empty) {
+            display: none;
+            }
+          #ArchiveList a.toggle,
+          #ArchiveList a.toggle:link{
+            color:rgba(0, 0, 0, 0);
+            color: #00304D;
+            font-size: 0.8em;
+          }
+          /*!css*/
+          /*]]>*/
+        </style>
+        <b:if cond='data:title != &quot;&quot;'>
+          <h3><data:title/></h3>
+        </b:if>
+        <div class='widget-content'>
+          <div id='ArchiveList'>
+            <div expr:id='data:widget.instanceId + &quot;_ArchiveList&quot;'>
+              <b:include cond='data:style == &quot;HIERARCHY&quot;' data='data' name='interval'/>
+              <b:include cond='data:style == &quot;FLAT&quot;' data='data' name='flat'/>
+              <b:include cond='data:style == &quot;MENU&quot;' data='data' name='menu'/>
+            </div>
           </div>
+          <b:include name='quickedit'/>
+        </div>
+      </b:includable>
+      <b:includable id='flat' var='data'>
+        <ul class='flat'>
+          <b:loop values='data:data' var='i'>
+            <li class='archivedate'>
+              <a expr:href='data:i.url'><data:i.name/></a> (<data:i.post-count/>)
+            </li>
+          </b:loop>
+        </ul>
+      </b:includable>
+
+
+      <b:includable id='interval' var='intervalData'>
+        <ul class='hierarchy'>
+          <b:loop values='data:intervalData' var='interval'>
+            <li expr:class='&quot;archivedate &quot; + data:interval.expclass'>
+              <b:include cond='data:interval.toggleId' data='interval' name='toggle'/>
+              <div class="informacion">
+                <a class='post-count-link' expr:href='data:interval.url'>
+                  <data:interval.name/>
+                </a>
+                <span class='post-count' dir='ltr'>(<data:interval.post-count/>)</span>
+              </div>
+              <b:include cond='data:interval.data' data='interval.data' name='interval'/>
+              <b:include cond='data:interval.posts' data='interval.posts' name='posts'/>
+            </li>
+          </b:loop>
+        </ul>
+      </b:includable>
+      <b:includable id='menu' var='data'>
+        <select expr:id='data:widget.instanceId + &quot;_ArchiveMenu&quot;'>
+          <option value=''><data:title/></option>
+          <b:loop values='data:data' var='i'>
+            <option expr:value='data:i.url'><data:i.name/>(<data:i.post-count/>)</option>
+          </b:loop>
+        </select>
+      </b:includable>
+      <b:includable id='posts' var='posts'>
+        <ul class='posts'>
+          <b:loop values='data:posts' var='post'>
+            <li><a expr:href='data:post.url'>
+              <data:post.title/>
+            </a></li>
+          </b:loop>
+        </ul>
+      </b:includable>
+      <b:includable id='toggle' var='interval'>
+        <a class='toggle' href='javascript:void(0)'>
+          <span expr:class='&quot;zippy&quot; + (data:interval.expclass == &quot;expanded&quot; ? &quot; toggle-open&quot; : &quot;&quot;)'>
+            <b:if cond='data:interval.expclass == &quot;expanded&quot;'>
+              &#9660;&#160;
+            <b:elseif cond='data:blog.languageDirection == &quot;rtl&quot;'/>
+              &#9668;&#160;
+            <b:else/>
+              &#9658;&#160;
+            </b:if>
+          </span>
+        </a>
+      </b:includable>
+    </b:widget>
+    <!--
+    ?======================
+    ✖️marker posts de X
+    ?======================
+    -->
+    <b:widget id='HTML1' locked='false' title='post en X' type='HTML'>
+      <b:widget-settings>
+        <b:widget-setting name='content'><![CDATA[ <!-- html -->
+          <a class="twitter-timeline" data-theme="light" 
+            data-chrome="nofooter noborders"
+            data-tweet-limit="3"
+            href="https://twitter.com/SENAComunica?ref_src=twsrc%5Etfw">
+            Tweets by SENAComunica
+          </a> 
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          
+          <!-- !html -->
+          ]]>
+        </b:widget-setting>
+      </b:widget-settings>
+      <b:includable id='main'>
+        <style>
+          /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+          /*css 👈 comando decorativo "Highlight String Code */
+          
+          /*!css*/
+          /*]]>*/
+        </style>
+        <div class='widget-content'>
+          <data:content/>
         </div>
         <b:include name='quickedit'/>
-      </div>
-    </b:includable>
-        <b:includable id='flat' var='data'>
-      <ul class='flat'>
-        <b:loop values='data:data' var='i'>
-          <li class='archivedate'>
-            <a expr:href='data:i.url'><data:i.name/></a> (<data:i.post-count/>)
-          </li>
-        </b:loop>
-      </ul>
-    </b:includable>
-
-
-    <b:includable id='interval' var='intervalData'>
-      <ul class='hierarchy'>
-        <b:loop values='data:intervalData' var='interval'>
-          <li expr:class='&quot;archivedate &quot; + data:interval.expclass'>
-            <b:include cond='data:interval.toggleId' data='interval' name='toggle'/>
-            <div class="informacion">
-              <a class='post-count-link' expr:href='data:interval.url'>
-                <data:interval.name/>
-              </a>
-              <span class='post-count' dir='ltr'>(<data:interval.post-count/>)</span>
-            </div>
-            <b:include cond='data:interval.data' data='interval.data' name='interval'/>
-            <b:include cond='data:interval.posts' data='interval.posts' name='posts'/>
-          </li>
-        </b:loop>
-      </ul>
-    </b:includable>
-    <b:includable id='menu' var='data'>
-      <select expr:id='data:widget.instanceId + &quot;_ArchiveMenu&quot;'>
-        <option value=''><data:title/></option>
-        <b:loop values='data:data' var='i'>
-          <option expr:value='data:i.url'><data:i.name/>(<data:i.post-count/>)</option>
-        </b:loop>
-      </select>
-    </b:includable>
-    <b:includable id='posts' var='posts'>
-      <ul class='posts'>
-        <b:loop values='data:posts' var='post'>
-          <li><a expr:href='data:post.url'>
-            <data:post.title/>
-          </a></li>
-        </b:loop>
-      </ul>
-    </b:includable>
-    <b:includable id='toggle' var='interval'>
-      <a class='toggle' href='javascript:void(0)'>
-        <span expr:class='&quot;zippy&quot; + (data:interval.expclass == &quot;expanded&quot; ? &quot; toggle-open&quot; : &quot;&quot;)'>
-          <b:if cond='data:interval.expclass == &quot;expanded&quot;'>
-            &#9660;&#160;
-          <b:elseif cond='data:blog.languageDirection == &quot;rtl&quot;'/>
-            &#9668;&#160;
-          <b:else/>
-            &#9658;&#160;
-          </b:if>
-        </span>
-      </a>
-    </b:includable>
-  </b:widget>
-
-
+      </b:includable>
+    </b:widget>
   </b:section-contents>
+
   <b:section-contents id='footer-1'/>
   <b:section-contents id='footer-2-1'/>
   <b:section-contents id='footer-2-2'/>

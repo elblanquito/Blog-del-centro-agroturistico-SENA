@@ -386,7 +386,7 @@ TODO ___________________ Buscador _______________________
             align-items: center;
             color: white;
             font-weight: bold;
-            box-shadow: inset 0 0 40px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);
             transition: all 0.1s;
             view-timeline-name: aparecer;
             view-timeline-axis: block;
@@ -461,10 +461,13 @@ TODO ___________________ Buscador _______________________
             <div class="imagen imagen5" style="background-color: #50E5F9;" onclick="copyColor('#50E5F9')">#50E5F9</div>
             <div class="imagen imagen6" style="background-color: #FDC300;" onclick="copyColor('#FDC300')">#FDC300</div>
             <div class="imagen imagen7" style="background-color: #F6F6F6;" onclick="copyColor('#F6F6F6')">#F6F6F6</div>
+            <div class="imagen imagen7" style="background-color: #e2e8f0;" onclick="copyColor('#e2e8f0')">Borde</div>
+            <div class="imagen imagen7" style="background-color: #f1f5f9;" onclick="copyColor('#f1f5f9')">Hover</div>
         </div>
 
         <script>
             function copyColor(color) {
+                mostrarNotificacion('Texto copiado',color,'positiva')
                 navigator.clipboard.writeText(color).then(() => {
                     
                 }).catch(err => {
@@ -613,8 +616,145 @@ background: #666;
 color: #fff;
 }
 </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--
+    ^======================
+    🔔marker Notificacion
+    ^======================
+    -->
+    <div id="notificacion" class="notificacion">
+        <h2 id="notificacion-titulo">Notificacion</h2>
+        <p id="notificacion-texto">Descripción de la tarjeta</p>
+      </div>
+    <style>
+      /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+      /*css 👈 comando decorativo "Highlight String Code */
+      .notificacion{
+        z-index: 11;
+        position:fixed;
+        top: -100%;
+        left: 50%;
+        opacity: 0;
+        transform: translate(-50%, 0) scale(0.8);
+        box-sizing: border-box;
+        width: max-content;
+        max-width: 100%;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2);
+        padding: 10px 30px;
+        transition: all 0.8s ease-in-out, opacity 0.3s ease-in-out;
+        border: 1px solid #ccc;
+        border-left-width: 8px;
+      }
+  
+      .noti-visible{
+        top: 10px;
+        opacity: 1;
+        transform: translate(-50%, 0) scale(1);
+      }
+  
+      .noti-positiva{
+        border-left: 8px solid #39a900;
+      }
+      .noti-positiva h2{
+        color: #39a900;
+      }
+  
+      .noti-negativa{
+        border-left: 8px solid #c10015;
+      }
+  
+      .noti-negativa h2{
+        color: #c10015;
+      }
+  
+  
+      /*!css*/
+      /*]]>*/
+    </style>
+    <script>
+      //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
+      //js 👈 comando decorativo "Highlight String Code"
+  
+      let timeoutNotification;
+      let notificacionVisible = false;
+  
+      function mostrarNotificacion(titleInput = 'Notificación', txtInput = 'error', type = 'info') {
+        console.log("empezo notificacion")
+        if (!['info', 'negativa', 'positiva'].includes(type)) {
+            type = 'info'; // valor por defecto
+        }
+        let notificacion = document.getElementById("notificacion");
+        let titulo = document.getElementById("notificacion-titulo");
+        let texto = document.getElementById("notificacion-texto");
+        let time = 0 // esperar para mostrar
+        
+        // Si hay una notificación visible
+        if (notificacionVisible) {
+          time = 200
+          notificacion.classList.remove('noti-visible', 'noti-info', 'noti-negativa', 'noti-positiva'); // Eliminar clases anteriores
+          clearTimeout(timeoutNotification); // Detener el temporizador anterior
+        }
+  
+        // Pequeño retraso para reiniciar la animación
+        setTimeout(() => {
+          console.log("time: " + time)
+            notificacionVisible = true
+            titulo.innerText = titleInput; // Cambiar el titulo
+            texto.innerText = txtInput; // Cambiar el texto
+            notificacion.classList.remove('noti-visible', 'noti-info', 'noti-negativa', 'noti-positiva'); // Eliminar clases anteriores
+            notificacion.classList.add('noti-visible', ('noti-'+type));
+  
+            // Configurar el temporizador para ocultar la notificación
+            timeoutNotification = setTimeout(() => {
+                notificacion.classList.remove('noti-visible');
+                notificacionVisible = false;
+            }, 3000);
+        }, time); // Pequeño retraso para que la animación se reinicie correctamente
+      }
+      //!js
+      //]]>
+    </script>
     
 </body>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
