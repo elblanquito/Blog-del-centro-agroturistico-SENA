@@ -300,17 +300,17 @@ que la extencion "highligth string" decore el texto)
           }
         }
         .date-header {
-              font-weight: normal;
-    width: fit-content;
-    padding: 4px 15px;
-    background-color: #ffffff;
-    font-size: .9em;
-    color: #00304D;
-    border-radius: 8px;
-    box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, .1);
-    outline: 1px solid #e2e8f0;
-    font-weight: bold;
-    }
+          font-weight: normal;
+          width: fit-content;
+          padding: 4px 15px;
+          background-color: #ffffff;
+          font-size: .9em;
+          color: #00304D;
+          border-radius: 8px;
+          box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, .1);
+          outline: 1px solid #e2e8f0;
+          font-weight: bold;
+        }
         .post{
           display: flex;
           justify-content: space-evenly;
@@ -328,18 +328,9 @@ que la extencion "highligth string" decore el texto)
           background-color: white;
         }
         .post >a{display:none;}
-        .post div{color:#00304D;}
-        .compartirPost{
-          background-color: #ffffff;
-          padding: 3px;
-          display: flex;
-          align-items: center;
-        }
-        .compartir-link{
-          height:30px;
-          width:30px;
-          fill: #39A900;
-        }
+        .post div{color: #00304D;}
+
+        
         h2.post-title {
           color: #00304D;
           margin-bottom: 10px;
@@ -417,15 +408,6 @@ que la extencion "highligth string" decore el texto)
           0% {scale: 0.6;}
           100% {opacity: 1;scale: 1;}
         }
-        .post-footer{
-          width: 100%;
-          display: flex;
-          justify-content: flex-end;
-        }
-        .post-footer-line{
-              display: flex;
-              flex-direction: row-reverse;
-        }
         .post-body p:empty {
           display: none;
         }
@@ -440,23 +422,71 @@ que la extencion "highligth string" decore el texto)
           margin: 0px !important;
           padding: 0px !important;
         }
+
+
+        .post-footer, .post-footer-line{
+          width: 100%;
+          
+        }
+        .post-footer-line-1{
+          display: flex;
+        }
+        .post-etiquetas-cont{
+          display: flex;
+          column-gap: 10px;
+          flex-wrap: wrap;
+
+        }
+        .post-etiqueta{
+          margin-bottom: 6px;
+          font-size: .8em;
+          border-radius: 4px;
+          padding: 0px 10px;
+          color: #b0bec5 !important;
+          outline: 2px solid #e2e8f0;
+          transition: all 0.2s ease;
+        }
+        .post-etiqueta:hover{
+          background-color: #f1f5f9;
+        }
+        .post-footer-line-2{
+          display: flex;
+        }
+        .compartirPost{
+          padding: 3px;
+          display: flex;
+          align-items: center;
+        }
+        .compartirPost svg{
+          color: #39A900;
+        }
+        .commentario-link{
+          gap: 4px;
+          display: flex;
+          align-items: center;
+        }
+        .post-fecha{
+          text-decoration: none;
+        }
+
+
         /* esta clase se agrega con un script  */
         .dos-columnas {
           width: fit-content;
           max-width: 100%;
           grid-column: span 2;
         }
-        .dos-columnas .post-footer{
-          justify-content: flex-end;
-        }
         .dos-columnas .post-body{
           flex-direction: row;
           flex-wrap: wrap;
           gap: 10px
         }
+
         .dos-columnas .post-body .separator{
           gap: 5px
         }
+
+
 
 
         /*
@@ -797,7 +827,7 @@ que la extencion "highligth string" decore el texto)
           timeoutNotification = setTimeout(() => {
               notificacion.classList.remove('noti-visible');
               notificacionVisible = false;
-          }, 3000);
+          }, 4000);
       }, time); // Pequeño retraso para que la animación se reinicie correctamente
     }
     //!js
@@ -1412,13 +1442,13 @@ que la extencion "highligth string" decore el texto)
                       ^======================
                       -->
                       
+                      
                       <b:includable id='comments' var='post'>
                         <div class='comments' id='comments'>
                           <a name='comments'/>
                           <b:if cond='data:post.allowComments'>
                             <h4>
-                              <data:post.commentLabelFull/>
-                                    :
+                              <data:post.commentLabelFull/>:
                             </h4>
                             <b:if cond='data:post.commentPagingRequired'>
                               <span class='paging-control-container'>
@@ -1531,41 +1561,34 @@ que la extencion "highligth string" decore el texto)
                       </b:includable>
 
 
-
+                      <!-- 
+                        📑 mark Post page
+                      -->
                       <b:includable id='feedLinks'>
                         <b:if cond='data:blog.pageType != &quot;item&quot;'>
                           <!-- Blog feed links -->
-                          <b:if cond='data:feedLinks'>
-                              </b:if>
-                          <b:else/>
-
-
-                          <!--Post feed links -->
+                        <b:else/>
                           <div class='post-feeds'>
-
-
                             <b:loop values='data:posts' var='post'>
-                              <b:include cond='data:post.allowComments and data:post.feedLinks' data='post.feedLinks' name='feedLinksBody'/>
+                              <b:if cond='data:post.allowComments and data:post.feedLinks' >
+                                  <div class='feed-links'>
+                                    <data:feedLinksMsg/>
+                                    <b:loop values='data:links' var='f'>
+                                      <a class='feed-link' expr:href='data:f.url' expr:type='data:f.mimeType' target='_blank'>
+                                        <data:f.name/>(<data:f.feedType/>)
+                                      </a>
+                                    </b:loop>
+                                  </div>
+                              </b:if>
                             </b:loop>
                           </div>
                         </b:if>
                       </b:includable>
-                      <b:includable id='feedLinksBody' var='links'>
-                        <div class='feed-links'>
-                          <data:feedLinksMsg/>
-                          <b:loop values='data:links' var='f'>
-                            <a class='feed-link' expr:href='data:f.url' expr:type='data:f.mimeType' target='_blank'>
-                              <data:f.name/>
-                           (
-                              <data:f.feedType/>
-                            )
-                            </a>
-                          </b:loop>
-                        </div>
-                      </b:includable>
+                      
                       <b:includable id='iframe_comments' var='post'>
                         <!-- G+ comments, no longer available. The includable is retained for backwards-compatibility. -->
                       </b:includable>
+
                       <b:includable id='nextprev'>
                         <div class='blog-pager' id='blog-pager'>
                           <b:if cond='data:newerPageUrl'>
@@ -1634,7 +1657,7 @@ que la extencion "highligth string" decore el texto)
                               </b:if>
                             </h2>
                             </b:if>
-                          <!-- post body-->
+                          <!--* post body-->
 
                           <!-- Then use the post body as the schema.org description, for good G+/FB snippeting. -->
                           <div class='post-body entry-content' expr:id='"post-body-" + data:post.id'
@@ -1643,49 +1666,19 @@ que la extencion "highligth string" decore el texto)
                           </div>
 
                           <div class='post-footer'>
+                          
                             <div class='post-footer-line post-footer-line-1'>
-                              <span class='post-author vcard'>
-                                <b:if cond='data:top.showAuthor'>
-                                  <data:top.authorLabel/>
-                                  <b:if cond='data:post.authorProfileUrl'>
-                                    <span class='fn' itemprop='author' itemscope='itemscope' itemtype='http://schema.org/Person'>
-                                      <meta expr:content='data:post.authorProfileUrl' itemprop='url'/>
-                                      <a class='g-profile' expr:href='data:post.authorProfileUrl' rel='author' title='author profile'>
-                                        <span itemprop='name'>
-                                          <data:post.author/>
-                                        </span>
-                                      </a>
-                                    </span>
-                                    <b:else/>
-                                    <span class='fn' itemprop='author' itemscope='itemscope' itemtype='http://schema.org/Person'>
-                                      <span itemprop='name'>
-                                        <data:post.author/>
-                                      </span>
-                                    </span>
-                                  </b:if>
-                                </b:if>
-                              </span>
-                              <span class='post-timestamp'>
-                                <b:if cond='data:top.showTimestamp'>
-                                  <data:top.timestampLabel/>
-                                  <b:if cond='data:post.url'>
-                                    <meta expr:content='data:post.url.canonical' itemprop='url'/>
-                                    <a class='timestamp-link' expr:href='data:post.url' rel='bookmark' title='permanent link'>
-                                      <abbr class='published' expr:title='data:post.timestampISO8601' itemprop='datePublished'>
-                                        <data:post.timestamp/>
-                                      </abbr>
-                                    </a>
-                                  </b:if>
-                                </b:if>
-                              </span>
-                              <span class='post-comment-link' onMousedown='console.log(this)'>
-                              holaquetal
-                                <b:include 
-                                cond='data:blog.pageType not in {"item","static_page"}
-                                and data:post.allowComments' data='post' name='comment_count_picker' />
-                              </span>
+                              <div class='post-etiquetas-cont'>
+                                <b:loop values='data:post.labels' var='label'>
+                                  <a class='post-etiqueta' expr:href='data:label.url' expr:title='"ver todos los post que tengan la etiqueta " + data:label.name'>
+                                    <data:label.name/>
+                                  </a>
+                                </b:loop>
+                              </div>
+                            </div>
 
-                              <!-- &amp; primera vez que uso "expr" ¡es incrible y facil de usar! ✨-->
+                            <div class='post-footer-line post-footer-line-2'>
+                              <!--* primera vez que uso "expr" ✨ -->
                               <!-- 
                                 aqui la uso para optener la variable "data:post.link"
                                 this = me da todo el elemento entero <button></button> 
@@ -1693,33 +1686,40 @@ que la extencion "highligth string" decore el texto)
                               👇👇👇-->
                               <!-- boton de compartir -->
                               <div class="compartirPost" expr:linkPublicacion="data:post.url" onclick='copiarTexto(this.getAttribute("linkPublicacion"))'
-                              title="Copiar el link de la publicacion">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="compartir-link" viewBox="0 -960 960 960">
-                                  <path d="M440-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h160v80H280q-50 0-85 35t-35 85q0 50 35
-                                  85t85 35h160v80ZM320-440v-80h320v80H320Zm200 160v-80h160q50 0 85-35t35-85q0-50-35-85t-85-35H520v-80h160q83
-                                  0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H520Z"/>
+                                title="Copiar el link de la publicacion">
+                                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor" 
+                                  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-share"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                  <path d="M6 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M18 6m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                                  <path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M8.7 10.7l6.6 -3.4" /><path d="M8.7 13.3l6.6 3.4" />
                                 </svg>
                               </div>
-                            </div>
-                            
-                            <b:if cond='data:post.authorAboutMe'>
-                              <div class='author-profile' itemprop='author' itemscope='itemscope' itemtype='http://schema.org/Person'>
-                                <b:if cond='data:post.authorPhoto.url'>
-                                  <img expr:src='data:post.authorPhoto.url' itemprop='image' width='50px'/>
+                              <!--* compartir 👇 -->
+                              <b:if cond='data:blog.pageType not in {"item","static_page"} and data:post.allowComments'>
+                                <a class='commentario-link' expr:href='data:post.addCommentUrl' expr:onclick='data:post.addCommentOnclick'>
+                                  <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="currentColor" >
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M18 3a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-4.724l-4.762 2.857a1 1 0 0 1 -1.508 -.743l-.006 -.114v-2h-1a4 4 0 0 1 -3.995 -3.8l-.005 -.2v-8a4 4 0 0 1 4 -4zm-4 9h-6a1 1 0 0 0 0 2h6a1 1 0 0 0 0 -2m2 -4h-8a1 1 0 1 0 0 2h8a1 1 0 0 0 0 -2" />
+                                  </svg>
+                                  <data:post.numComments/>
+                                </a>
+                              </b:if>
+                              <!--* fecha de publicacion👇 -->
+                              <span class='post-fecha' itemprop="datePublished">
+                                <b:if cond='data:top.showTimestamp'>
+                                  <data:top.timestampLabel/>
+                                  <b:if cond='data:post.url'>
+                                    <a class='timestamp-link' expr:href='data:post.url'
+                                      expr:title='data:post.timestampISO8601' rel='bookmark' >
+                                      <data:post.timestamp/>
+                                    </a>
+                                  </b:if>
                                 </b:if>
-                                <div>
-                                  <a class='g-profile' expr:href='data:post.authorProfileUrl' itemprop='url' rel='author' title='author profile'>
-                                    <span itemprop='name'>
-                                      <data:post.author/>
-                                    </span>
-                                  </a>
-                                </div>
-                                <span itemprop='description'>
-                                  <data:post.authorAboutMe/>
-                                </span>
-                              </div>
-                            </b:if>
+                              </span>
+                            </div>
                           </div>
+
+
+
                         </div>
                       </b:includable>
                       <b:includable id='postQuickEdit' var='post'>
@@ -1826,6 +1826,9 @@ que la extencion "highligth string" decore el texto)
                           </script>
                         </div>
                       </b:includable>
+                      <!-- 
+                      ✒️marker Comentarios [JS] 
+                      -->
                       <b:includable id='threaded_comment_js' var='post'>
                         <script async='async' expr:src='data:post.commentSrc' type='text/javascript'/>
                         <script type='text/javascript'>
@@ -3087,7 +3090,6 @@ que la extencion "highligth string" decore el texto)
     //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
     //js 👈 comando decorativo "Highlight String Code"
 
-
 function transformarObjetos(data) {
     let parser = new DOMParser();
     let doc = parser.parseFromString(data, "text/html"); // Convierte el string en HTML
@@ -3104,10 +3106,10 @@ function transformarObjetos(data) {
     async function copiarTexto(texto) {
       try {
         await navigator.clipboard.writeText(texto);
-        alert("Texto copiado: " + texto);
+        mostrarNotificacion("Texto copiado", "texto guardado en tu portapapeles", "positiva")
       } catch (error) {
         console.error("Error al copiar el texto: ", error);
-        alert("No se pudo copiar el texto. Inténtalo de nuevo.");
+        mostrarNotificacion("Error al copiar el texto: ", error, "negativa")
       }
     }
   
