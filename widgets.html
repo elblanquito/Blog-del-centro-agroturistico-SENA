@@ -10,7 +10,7 @@
     @import url('https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
     .cont {
         padding: 0px;
-        margin: 0px;
+        margin: 50px 0px;
         background-color: rgba(241, 241, 241, 0.733);
         display: flex;
         flex-direction: column;
@@ -24,86 +24,6 @@
 <body class="cont">
 
 
-
-<!-- Nuestro botón. En el ejemplo uso Font-awesome para mostrar un icono de barras -->
-<button class="botonMenu">
-    <svg xmlns="http://www.w3.org/2000/svg" height="24px"
-    viewBox="0 -960 960 960" width="24px" fill="#00304D">
-    <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
-</button>
-<!-- Los links -->
-<nav class="principal">
-    <ul>
-        <li><a href="#">
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px"
-            viewBox="0 -960 960 960" width="24px" fill="#ffff">
-            <path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z"/></svg>
-        </a></li>
-        <li><a href="#">Lorem.</a></li>
-        <li><a href="#">Soluta!</a></li>
-        <li><a href="#">Reprehenderit.</a></li>
-        <li><a href="#">Nulla!</a></li>
-        <li><a href="#">Ipsum.</a></li>
-    </ul>
-</nav>
-
-
-<style>
-
-/* Boton de menu */
-.botonMenu {
-    z-index: 3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    position: fixed;
-    top: 0;
-    right: 0;
-    background-color: #a3ebee;
-    border: 0;
-    color: white;
-    cursor: pointer;
-}
-/* Se le quita el borde azul cuando se pulsa en Chrome */
-.botonMenu:focus {
-    outline: none;
-}
-/* Cuando es pulsado, se quita el translate que lo ocultaba */
-.botonMenu:focus + .principal {
-    transform: translateX(0rem);
-}
-/* Se posiciona y se oculta con translate */
-nav.principal {
-    z-index: 4;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 15rem;
-    background-color: #7A6A53;
-    transform: translateX(15rem);
-    transition: 1s all;
-}
-/* Estilos sencillos para decorar los links */
-nav.principal ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-nav.principal a {
-    display: block;
-    color: #D5DED9;
-    padding: 1rem;
-    transition: .5s all;
-}
-nav.principal li:hover {
-    text-decoration: none;
-    background-color: #948C75;
-}
-
-</style>
 
 
 <!-- 
@@ -350,21 +270,6 @@ TODO ___________________ Buscador _______________________
 
 
 
- <style>
-
-
-    .spacer {
-      height: 400px; /* Espaciado para simular contenido */
-    }
-  </style>
-<body>
-    <div class="spacer"></div>
-    <p>Más contenido para hacer scroll...</p>
-  </div>
-</body>
-
-
-
 
     <!-- 
 ? ___________________ Galería de Imágenes _______________________ !important
@@ -539,85 +444,6 @@ TODO ___________________ Buscador _______________________
 
 </script>
 
-
-
-<div class="contenedor">
-    <div>Elemento 1</div>
-    <div>Elemento 2</div>
-    <div>Elemento 3</div>
-</div>
-
-<style>
-    .contenedor div:last-child {
-    display: none; /* Oculta el último elemento */
-}
-</style>
-
-<ul class="menuDesplegable">
-    <li><a href="#">OPCIÓN 1</a>
-      <ul>
-        <li><a href="URL11">Opción 1.1</a></li>
-        <li><a href="URL12">Opción 1.2</a></li>
-      </ul>
-    </li>
-    <li><a href="#">OPCIÓN 2</a>
-      <ul>
-        <li><a href="URL21">Opción 2.1</a></li>
-        <li><a href="URL22">Opción 2.2</a></li>
-        <li><a href="URL23">Opción 2.3</a></li>
-      </ul>
-    </li>
-    <li><a href="#">OPCIÓN 3</a>
-      <ul>
-        <li><a href="URL31">Opción 3.1</a></li>
-        <li><a href="URL32">Opción 3.2</a></li>
-      </ul>
-    </li>
-  </ul>
-
-<style>
-
-.menuDesplegable {
-margin: 10px auto;
-padding: 0;
-list-style: none;
-width: 100%;
-font-size: 18px;
-}
-
-.menuDesplegable li a {
-display: block;
-padding: 10px 20px;
-background: #333;
-color: #eee;
-text-decoration: none;
-}
-.menuDesplegable li ul {
-max-height: 0;
-margin: 0;
-padding: 0;
-list-style: none;
-overflow: hidden;
-transition: .5s all ease;
-}
-.menuDesplegable li li a {
-padding: 10px 10px 10px 40px;
-background: #999;
-color: #000;
-font-size: 16px;
-border: 0;
-border-bottom: 1px solid #ccc;
-box-sizing: border-box;
-}
-.menuDesplegable li:hover ul {
-max-height: 300px;
-transition: 1s all ease;
-}
-.menuDesplegable li a:hover {
-background: #666;
-color: #fff;
-}
-</style>
 
 
 

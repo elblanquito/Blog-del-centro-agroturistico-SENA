@@ -271,7 +271,7 @@ que la extencion "highligth string" decore el texto)
         .date-posts {
           animation: all ease 1s;
           display: flex;
-          align-items: stretch;
+          align-items: center;
           flex-wrap: wrap;
           row-gap: 50px;
           column-gap: 20px;
@@ -311,17 +311,18 @@ que la extencion "highligth string" decore el texto)
           outline: 1px solid #e2e8f0;
           font-weight: bold;
         }
+        .posts-cont{
+
+        }
         .post{
-          display: flex;
-          justify-content: space-evenly;
           flex-direction: column;
+          display: flex;
           height: auto;
           width: 100%;
           max-width: 420px; 
           min-width: 270px;
-          align-items: center;
           border-radius: 16px;
-          padding: 20px 20px 20px 20px;
+          padding: 20px 20px 15px 20px;
           box-sizing: border-box;
           box-shadow: 0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);
           outline: 1px solid #e2e8f0;
@@ -330,7 +331,13 @@ que la extencion "highligth string" decore el texto)
         .post >a{display:none;}
         .post div{color: #00304D;}
 
-        
+        .post-body-cont{
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          justify-content: space-around;
+        }
+
         h2.post-title {
           color: #00304D;
           margin-bottom: 10px;
@@ -345,7 +352,6 @@ que la extencion "highligth string" decore el texto)
           justify-content: center;
           height: min-content;
           width: 100%;
-          margin-bottom:10px;
         }
         .post-body >br{
           display:none;
@@ -374,6 +380,7 @@ que la extencion "highligth string" decore el texto)
           border-radius: 4px;
           background-color: #ffffff;
           outline: 2px solid #39a900;
+          border: none;
           transition: transform 0.2s ease;
         }
 
@@ -386,6 +393,7 @@ que la extencion "highligth string" decore el texto)
         }
         
         .post img, .post iframe, .tiktok-embed {
+          display: block;
           overflow-y: auto;
           border-radius: 10px;
           width: 100%;
@@ -423,10 +431,14 @@ que la extencion "highligth string" decore el texto)
           padding: 0px !important;
         }
 
-
+        .post-footer{
+          margin-top: 15px;
+        }
         .post-footer, .post-footer-line{
           width: 100%;
-          
+        }
+        .post-footer-line > *{
+          margin: 0px;
         }
         .post-footer-line-1{
           display: flex;
@@ -438,7 +450,7 @@ que la extencion "highligth string" decore el texto)
 
         }
         .post-etiqueta{
-          margin-bottom: 6px;
+          margin-bottom: 10px;
           font-size: .8em;
           border-radius: 4px;
           padding: 0px 10px;
@@ -450,10 +462,11 @@ que la extencion "highligth string" decore el texto)
           background-color: #f1f5f9;
         }
         .post-footer-line-2{
+          gap: 15px;
+          justify-content: flex-end;
           display: flex;
         }
         .compartirPost{
-          padding: 3px;
           display: flex;
           align-items: center;
         }
@@ -461,12 +474,22 @@ que la extencion "highligth string" decore el texto)
           color: #39A900;
         }
         .commentario-link{
-          gap: 4px;
           display: flex;
           align-items: center;
         }
         .post-fecha{
+          margin-left: auto;
           text-decoration: none;
+        }
+        
+
+        @media (max-width: 400px){
+          .post-fecha{
+            margin-left: 0px;
+          }
+          .post-fecha-txt{
+            display: none;
+          }
         }
 
 
@@ -1270,86 +1293,83 @@ que la extencion "highligth string" decore el texto)
                         //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
                         //js 👈 comando decorativo "Highlight String Code"
                           const carousel = document.getElementById("carusel-cont");
-  const items = document.querySelectorAll(".carusel-link");
-  let index = 0;
-  let isPaused = false;
+                        const items = document.querySelectorAll(".carusel-link");
+                        let index = 0;
+                        let isPaused = false;
 
 
-  function actualizarIndexCarusel() {
-    let scrollLeft = carousel.scrollLeft;
-    let closestIndex = 0;
-    let minDiff = Math.abs(scrollLeft - items[0].offsetLeft);
-      
-    items.forEach((item, i) => {
-      let diff = Math.abs(scrollLeft - item.offsetLeft);
-      if (diff < minDiff) {
-        minDiff = diff;
-        closestIndex = i;
-      }
-    });
-    index = closestIndex;
-  }
+                        function actualizarIndexCarusel() {
+                          let scrollLeft = carousel.scrollLeft;
+                          let closestIndex = 0;
+                          let minDiff = Math.abs(scrollLeft - items[0].offsetLeft);
 
-  function moverCarusel(dirreccion = 'adelante'){
-    actualizarIndexCarusel(); // actualizar posicion encaso de scrolling
-    if(dirreccion === "atras"){ 
-      index-- // retroceder
-      if (index < 0) {
-          index = items.length - 1; // resetear al final
-          carousel.scrollTo({ // vuelve al inicio
-            left: items[index].offsetLeft,
-          });
-          index--
-      }
-      carousel.scrollTo({ //
-          left: items[index].offsetLeft,
-          behavior: "smooth"
-      });
-    } else {
-      index++ // avanzar
-      if (index >= items.length) { 
-          index = 0; // resetear
-          carousel.scrollTo({ // vuelve al inicio
-            left: items[index].offsetLeft,
-          });
-          index++ // sumar para moverse al index 2
-      }  
-      carousel.scrollTo({ //
-          left: items[index].offsetLeft,
-          behavior: "smooth"
-      });
-    }
-  }
+                          items.forEach((item, i) => {
+                            let diff = Math.abs(scrollLeft - item.offsetLeft);
+                            if (diff < minDiff) {
+                              minDiff = diff;
+                              closestIndex = i;
+                            }
+                          });
+                          index = closestIndex;
+                        }
 
-  function autoScrollCarusel() {
-    if (isPaused) return; // Detener el movimiento si está en hover
-    moverCarusel()
-  }
-  setInterval(autoScrollCarusel, 5000); // Mueve cada 5 segundos
-    
+                        function moverCarusel(dirreccion = 'adelante'){
+                          actualizarIndexCarusel(); // actualizar posicion encaso de scrolling
+                          if(dirreccion === "atras"){ 
+                            index-- // retroceder
+                            if (index < 0) {
+                                index = items.length - 1; // resetear al final
+                                carousel.scrollTo({ // vuelve al inicio
+                                  left: items[index].offsetLeft,
+                                });
+                                index--
+                            }
+                            carousel.scrollTo({ //
+                                left: items[index].offsetLeft,
+                                behavior: "smooth"
+                            });
+                          } else {
+                            index++ // avanzar
+                            if (index >= items.length) { 
+                                index = 0; // resetear
+                                carousel.scrollTo({ // vuelve al inicio
+                                  left: items[index].offsetLeft,
+                                });
+                                index++ // sumar para moverse al index 2
+                            }  
+                            carousel.scrollTo({ //
+                                left: items[index].offsetLeft,
+                                behavior: "smooth"
+                            });
+                          }
+                        }
+
+                        function autoScrollCarusel() {
+                          if (isPaused) return; // Detener el movimiento si está en hover
+                          moverCarusel()
+                        }
+                        setInterval(autoScrollCarusel, 5000); // Mueve cada 5 segundos
 
 
-  document.addEventListener("DOMContentLoaded", function () {
-    // Detectar hover para pausar el movimiento
-    // Detectar hover para pausar el movimiento (PC)
-    carousel.addEventListener("mouseenter", () => isPaused = true);
-    carousel.addEventListener("mouseleave", () => isPaused = false);
 
-    // Detectar toque en móviles para pausar el movimiento
-    carousel.addEventListener("touchstart", () => isPaused = true);
-    document.addEventListener("visibilitychange", () => {
-      isPaused = document.hidden;
-    });
-    
-  });
+                        document.addEventListener("DOMContentLoaded", function () {
+                          // Detectar hover para pausar el movimiento
+                          // Detectar hover para pausar el movimiento (PC)
+                          carousel.addEventListener("mouseenter", () => isPaused = true);
+                          carousel.addEventListener("mouseleave", () => isPaused = false);
+
+                          // Detectar toque en móviles para pausar el movimiento
+                          carousel.addEventListener("touchstart", () => isPaused = true);
+                          document.addEventListener("visibilitychange", () => {
+                            isPaused = document.hidden;
+                          });
+
+                        });
                         //!js
                         //]]>
                       </script>
                     </b:includable>
                   </b:widget>
-                    
-                    
-
                     <div id="main-header">
 
                     </div>
@@ -1399,21 +1419,22 @@ que la extencion "highligth string" decore el texto)
                       </b:widget-settings>
                       <b:includable id='main' var='top'>
                         <b:if cond='!data:mobile'>
-                            
-
                             <b:include data='top' name='status-message'/>
                             <b:loop values='data:posts' var='post'>
                               <b:if cond='data:post.isDateStart and not data:post.isFirstPost'>
-                                        &lt;/div&gt;&lt;/div&gt;
-                                      </b:if>
+                                &lt;/div&gt;&lt;/div&gt;
+                              </b:if>
+
                               <b:if cond='data:post.isDateStart'>
-                                        &lt;div class=&quot;date-outer&quot;&gt;
-                                      </b:if>
+                                &lt;div class=&quot;date-outer&quot;&gt;
+                              </b:if>
+
                               <b:if cond='data:post.dateHeader'>
                               </b:if>
+
                               <b:if cond='data:post.isDateStart'>
-                                            &lt;div class=&quot;date-posts&quot;&gt;
-                                      </b:if>
+                                &lt;div class=&quot;date-posts&quot;&gt;
+                              </b:if>
                               <b:include data='post' name='post'/>
                               <b:include cond='data:blog.pageType in {&quot;static_page&quot;,&quot;item&quot;}' data='post' name='comment_picker'/>
                               <!-- Ad -->
@@ -1424,8 +1445,8 @@ que la extencion "highligth string" decore el texto)
                               </b:if>
                             </b:loop>
                             <b:if cond='data:numPosts != 0'>
-                                &lt;/div&gt;&lt;/div&gt;
-                                    </b:if>
+                              &lt;/div&gt;&lt;/div&gt;
+                            </b:if>
                           
                           <!-- navigation -->
                           <b:include name='nextprev'/>
@@ -1634,9 +1655,7 @@ que la extencion "highligth string" decore el texto)
                         🍏marker posts [HTML]
                         *======================
                         -->
-                        <!-- The value of attribute "onclick" associated with
-                        an element type "button" must not contain the '<'
-                        character. -->
+                        <!-- no usar '<' dentro de un button -->
                         
 
                         <div class='post hentry uncustomized-post-template' itemprop='blogPost' itemscope='itemscope' itemtype='http://schema.org/BlogPosting'>
@@ -1646,27 +1665,25 @@ que la extencion "highligth string" decore el texto)
                           <meta expr:content='data:blog.blogId' itemprop='blogId'/>
                           <meta expr:content='data:post.id' itemprop='postId'/>
                           <a expr:name='data:post.id'/>
+                          <div class='post-body-cont'>
                             <b:if cond='data:post.title'>
-                            <h2 class='post-title entry-title' itemprop='name'>
-                              <b:if cond='data:post.link or (data:post.url and data:blog.url != data:post.url)'>
-                              <a expr:href='data:post.link ? data:post.link : data:post.url'>
-                                <data:post.title/>
-                              </a>
-                              <b:else/>
-                              <data:post.title/>
-                              </b:if>
-                            </h2>
+                              <h2 class='post-title entry-title' itemprop='name'>
+                                <a expr:href='data:post.link ? data:post.link : data:post.url'>
+                                  <data:post.title/>
+                                </a>
+                              </h2>
                             </b:if>
-                          <!--* post body-->
-
-                          <!-- Then use the post body as the schema.org description, for good G+/FB snippeting. -->
-                          <div class='post-body entry-content' expr:id='"post-body-" + data:post.id'
-                          expr:itemprop='(data:blog.metaDescription ? &quot;&quot; : &quot;description &quot;) + &quot;articleBody&quot;'>
-                            <data:post.body/>
+                              <!--* post body-->
+                              <!-- Then use the post body as the schema.org description, for good G+/FB snippeting. -->
+                            <div class='post-body entry-content' expr:id='"post-body-" + data:post.id'
+                              expr:itemprop='(data:blog.metaDescription ? &quot;&quot; : &quot;description &quot;) + &quot;articleBody&quot;'>
+                              <data:post.body/>
+                              
+                            </div>
                           </div>
 
                           <div class='post-footer'>
-                          
+                              <!--* etiquetas 👇 -->
                             <div class='post-footer-line post-footer-line-1'>
                               <div class='post-etiquetas-cont'>
                                 <b:loop values='data:post.labels' var='label'>
@@ -1678,22 +1695,7 @@ que la extencion "highligth string" decore el texto)
                             </div>
 
                             <div class='post-footer-line post-footer-line-2'>
-                              <!--* primera vez que uso "expr" ✨ -->
-                              <!-- 
-                                aqui la uso para optener la variable "data:post.link"
-                                this = me da todo el elemento entero <button></button> 
-                                .getAttribute("linkPublicacion") = me da lo que guarde en "expr:linkPublicacion"
-                              👇👇👇-->
-                              <!-- boton de compartir -->
-                              <div class="compartirPost" expr:linkPublicacion="data:post.url" onclick='copiarTexto(this.getAttribute("linkPublicacion"))'
-                                title="Copiar el link de la publicacion">
-                                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor" 
-                                  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-share"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                  <path d="M6 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M18 6m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-                                  <path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M8.7 10.7l6.6 -3.4" /><path d="M8.7 13.3l6.6 3.4" />
-                                </svg>
-                              </div>
-                              <!--* compartir 👇 -->
+                                <!--* compartir 👇 -->
                               <b:if cond='data:blog.pageType not in {"item","static_page"} and data:post.allowComments'>
                                 <a class='commentario-link' expr:href='data:post.addCommentUrl' expr:onclick='data:post.addCommentOnclick'>
                                   <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="currentColor" >
@@ -1703,10 +1705,28 @@ que la extencion "highligth string" decore el texto)
                                   <data:post.numComments/>
                                 </a>
                               </b:if>
-                              <!--* fecha de publicacion👇 -->
+                                
+                                <!-- primera vez que uso "expr" 🚀
+                                aqui la uso para optener la variable "data:post.link"
+                                this = me da todo el elemento entero <button></button> 
+                                .getAttribute("linkPublicacion") = me da lo que guarde en "expr:linkPublicacion"
+                                -->
+                                <!--* boton de compartir 👇 -->
+                              <div class="compartirPost" expr:linkPublicacion="data:post.url" onclick='copiarTexto(this.getAttribute("linkPublicacion"))'
+                                title="Copiar el link de la publicacion">
+                                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor" 
+                                  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-share"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                  <path d="M6 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M18 6m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                                  <path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M8.7 10.7l6.6 -3.4" /><path d="M8.7 13.3l6.6 3.4" />
+                                </svg>
+                              </div>
+                              
+                                <!--* fecha de publicacion👇 -->
                               <span class='post-fecha' itemprop="datePublished">
                                 <b:if cond='data:top.showTimestamp'>
-                                  <data:top.timestampLabel/>
+                                  <span class='post-fecha-txt'>
+                                    <data:top.timestampLabel/>
+                                  </span>
                                   <b:if cond='data:post.url'>
                                     <a class='timestamp-link' expr:href='data:post.url'
                                       expr:title='data:post.timestampISO8601' rel='bookmark' >
@@ -1717,9 +1737,6 @@ que la extencion "highligth string" decore el texto)
                               </span>
                             </div>
                           </div>
-
-
-
                         </div>
                       </b:includable>
                       <b:includable id='postQuickEdit' var='post'>
@@ -3009,76 +3026,52 @@ que la extencion "highligth string" decore el texto)
   <b:section-contents id='footer-2-2'/>
 
 
-                          <script>
-                            //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
-                            //js 👈 comando decorativo "Highlight String Code"
+  <script>
+    //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
+    //js 👈 comando decorativo "Highlight String Code"
                             
                             
-  function ajustarColumnas() {
-  if (window.innerWidth < 900) return;
-  columnasAjustadas = true // para que no vuelva a ejecutarse
+    function ajustarColumnas() {
+      if (window.innerWidth < 900) return;
+      columnasAjustadas = true // para que no vuelva a ejecutarse
 
-  const contenedor = document.getElementById('Blog1');
-  const posts = contenedor.querySelectorAll('.post');
+      const contenedor = document.getElementById('Blog1');
+      const posts = contenedor.querySelectorAll('.post');
 
 
-  // Crear observador para detectar cambios de tamaño
-  const resizeObserver = new ResizeObserver(entries => {
-    entries.forEach(entry => {
-      // Si la altura supera 800px, aplicar la clase y dejar de observar ese elemento
-      if (entry.contentRect.height > 800) {
-        entry.target.classList.add("dos-columnas");
-        resizeObserver.unobserve(entry.target);
+      // Crear observador para detectar cambios de tamaño
+      const resizeObserver = new ResizeObserver(entries => {
+        entries.forEach(entry => {
+          // Si la altura supera 800px, aplicar la clase y dejar de observar ese elemento
+          if (entry.contentRect.height > 800) {
+            if (window.innerWidth < 900) return;
+            entry.target.classList.add("dos-columnas");
+            resizeObserver.unobserve(entry.target);
+          }
+        });
+      });
+
+      // Observar cada post
+      posts.forEach(post => {
+        resizeObserver.observe(post);
+      });
+    }
+    let columnasAjustadas = false;
+    const handleResize = () => {
+      if (columnasAjustadas) {
+        window.removeEventListener('resize', handleResize);
+        return;
       }
-    });
-  });
-
-  // Observar cada post
-  posts.forEach(post => {
-    resizeObserver.observe(post);
-  });
-}
-                            
-/*
-                            // Función modificada ajustarColumnas()
-                            function ajustarColumnas() {
-                              if (window.innerWidth < 900) return
-                              columnasAjustadas = true
-
-                              const contenedor = document.getElementById('Blog1');
-                              const posts = contenedor.getElementsByClassName("post");
-                              console.log("en la funcion")
-
-                                // Crear observador de cambios de tamaño
-                                const resizeObserver = new ResizeObserver(entries => {
-                                  for (let i = 0; i < entries.length; i++) {
-                                    const entry = entries[i];
-                                    console.log(entry.contentRect.height)
-                                    if (entry.contentRect.height > 800) {
-                                      entry.target.classList.add("dos-columnas");
-                                    }
-                                  }
-                                });
-                            }*/
-
-                            let columnasAjustadas = false;
-
-                            const handleResize = () => {
-                            if (columnasAjustadas) {
-                              window.removeEventListener('resize', handleResize);
-                              return;
-                            }
-                            ajustarColumnas();
-                          };
-
-                          window.addEventListener('resize', handleResize);
-                            // al precionar la fecha scrole asi arriba
-                            function scrollFecha(element) {
-                              element.parentElement.parentElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            }
-                            //!js
-                            //]]>
-                          </script>
+      ajustarColumnas();
+    };
+    window.addEventListener('resize', handleResize);
+    // al precionar la fecha scrole asi arriba
+    function scrollFecha(element) {
+      element.parentElement.parentElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    //!js
+    //]]>
+  </script>
 
     <!--
     ?============================
@@ -3096,6 +3089,12 @@ function transformarObjetos(data) {
 
     console.log(doc.body); // Muestra el HTML organizado en la consola
 }
+    function quitarEspacios(){
+      let posts = document.getElementsByClassName('post-body');
+        for (let i = 0; i < posts.length; i++) {
+            posts[i].innerHTML = posts[i].innerHTML.replace(/&nbsp;/g, " ");
+        }
+    }
 
     <!--* Elimina la clase 'loading' después de 10ms -->
     window.setTimeout(function () {
@@ -3135,30 +3134,30 @@ function transformarObjetos(data) {
 
 
   function agregarBotonesDescarga() {
-  const posts = document.querySelectorAll('.post-body');
-  
-  posts.forEach(post => {
-    // Para cada post, selecciona todas las imágenes
-    const images = post.querySelectorAll('img');
+    const posts = document.querySelectorAll('.post-body');
     
-    images.forEach(img => {
-      if (!img.nextElementSibling || !img.nextElementSibling.classList.contains('download-btn')) {
-      const downloadBtn = document.createElement("a");
-      downloadBtn.href = img.src;
-      downloadBtn.download = "imagen";
-      downloadBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg"
-      height="24px" width="24px" fill="#39a900" viewBox="0 -960 960 960" >
-      <path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200
-      200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0
-      33-23.5 56.5T720-160H240Z"/></svg>`;
-      downloadBtn.className = "download-btn";
-      img.insertAdjacentElement('afterend', downloadBtn);
-      downloadBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        descargarImagen(img.src); //función de descarga
+    posts.forEach(post => {
+      // Para cada post, selecciona todas las imágenes
+      const images = post.querySelectorAll('img');
+      images.forEach(img => {
+        if (!img.nextElementSibling || !img.nextElementSibling.classList.contains('download-btn')) {
+          img.insertAdjacentHTML('afterend', `
+          <!-- html -->
+            <button class="download-btn" 
+              onclick="
+                event.preventDefault(); 
+                event.stopPropagation(); 
+                descargarImagen('${img.src}')
+              "
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" height="24px" width="24px" fill="#39a900" viewBox="0 -960 960 960">
+                <path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/>
+              </svg>
+            </button>
+          <!-- !html -->
+          `);
+        }
       });
-      }
-    });
   });
 }
 
@@ -3172,17 +3171,25 @@ function transformarObjetos(data) {
           url.pathname.split('/').pop()  
       ) || 'imagen';  // si no hay nombre
       try {
-          const response = await fetch(proxyUrl + decodeURIComponent(imageURL));
-          const blob = await response.blob();
-          const link = document.createElement('a');
-          link.href = URL.createObjectURL(blob);
-          link.download = fileName;
-          link.click();
-          URL.revokeObjectURL(link.href);
-          mostrarNotificacion('descarga','descarga exitosa 😊','positiva')
+        // Usar proxy CORS para evitar problemas de política de same-origin
+        const response = await fetch(proxyUrl + encodeURIComponent(imageURL));
+        if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        // Limpieza después de 100ms para asegurar la descarga
+        setTimeout(() => {
+          window.URL.revokeObjectURL(url);
+          document.body.removeChild(link);
+        }, 100);
+        mostrarNotificacion('descarga','descarga exitosa 😊','positiva')
       } catch (error) {
-          console.error('Error:', error);
-          mostrarNotificacion('descarga','descarga fallida','negativa')
+        console.error('Error:', error);
+        mostrarNotificacion('descarga fallida',error.message,'negativa')
       }
     }
 
@@ -3198,7 +3205,7 @@ function transformarObjetos(data) {
     // al terminar de cargar los recursos
     window.addEventListener("load", () => {
       textoAnimado()
-      
+      quitarEspacios()
     });
 
 
