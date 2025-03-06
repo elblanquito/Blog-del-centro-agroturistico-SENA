@@ -289,7 +289,7 @@ que la extencion "highligth string" decore el texto)
           user-select: none;
           width: 100%;
           position: sticky;
-          top: 60px;
+          top: 15px;
           margin-bottom: -20px;
           z-index: 1;
         }
@@ -312,8 +312,8 @@ que la extencion "highligth string" decore el texto)
           font-weight: bold;
         }
         .posts-cont{
-
         }
+
         .post{
           flex-direction: column;
           display: flex;
@@ -357,26 +357,31 @@ que la extencion "highligth string" decore el texto)
           display:none;
         }
         
-        .post-body span {
+        .post-body span , .post-body h4{
           margin: 5px 0px;
-          grid-area: texto; /* Asignar arriba*/
         }
 
-        .post-body > p,
-        .post-body > a {
+        .post-body p,
+        .post-body a {
+          position: relative;
           margin: 0;
+          display: inline-flex;
+
         }
+
         .post-body > p{
           margin:0px;
         }
 
         .download-btn {
+          z-index: 1;
           left: 0%;
           bottom: 0;
           position: absolute;
-          height: 30px;
+          height: 36px;
+          width: max-content;
           display: block;
-          padding: 0px 10px;
+          padding: 5px;
           border-radius: 4px;
           background-color: #ffffff;
           outline: 2px solid #39a900;
@@ -466,6 +471,10 @@ que la extencion "highligth string" decore el texto)
           justify-content: flex-end;
           display: flex;
         }
+        .post-footer-line-2 svg{
+          width: 26px;
+          height: auto;
+        }
         .compartirPost{
           display: flex;
           align-items: center;
@@ -474,6 +483,7 @@ que la extencion "highligth string" decore el texto)
           color: #39A900;
         }
         .commentario-link{
+          gap: 4px;
           display: flex;
           align-items: center;
         }
@@ -481,8 +491,6 @@ que la extencion "highligth string" decore el texto)
           margin-left: auto;
           text-decoration: none;
         }
-        
-
         @media (max-width: 400px){
           .post-fecha{
             margin-left: 0px;
@@ -1190,11 +1198,11 @@ que la extencion "highligth string" decore el texto)
                     </b:widget-settings>
                     <b:includable id='main'>
                       <div class='widget-content'>
-                        <div id="carusel-cont">
-                          <button class="carusel-btn carusel-btn-left" onclick="moverCarusel('atras')">
+                        <div id="carusel-cont" class='carusel-cont'>
+                          <button class="carusel-btn carusel-btn-left" onclick="moverCarusel('atras',this.parentElement)">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#ffffff"><path d="m432-480 156 156q11 11 11 28t-11 28q-11 11-28 11t-28-11L348-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 28-11t28 11q11 11 11 28t-11 28L432-480Z"/></svg>
                           </button>
-                          <button class="carusel-btn carusel-btn-right" onclick="moverCarusel('adelante')">
+                          <button class="carusel-btn carusel-btn-right" onclick="moverCarusel('adelante',this.parentElement)">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#ffffff"><path d="M504-480 348-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L404-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Z"/></svg>
                           </button>
 
@@ -1214,11 +1222,11 @@ que la extencion "highligth string" decore el texto)
                           #LinkList1{
                             margin-bottom:20px;
                           }
-                          #imagenes-deslisables{
+                          .imagenes-deslisables{
                             position: relative;
-                            width: 60%;;
+                            width: 100%;
                           }
-                          #carusel-cont {
+                          .carusel-cont {
                             height: auto;
                             border-radius: 8px;
                             width: 100%;
@@ -1229,6 +1237,7 @@ que la extencion "highligth string" decore el texto)
                             grid-auto-columns: 100%;
                           }
                           .carusel-link{
+                            position: relative;
                             border-radius: 8px;
                             width: auto;
                             height: auto;
@@ -1240,21 +1249,21 @@ que la extencion "highligth string" decore el texto)
                             min-height: 150px;
                             height: auto;
                           }
-                          #carusel-cont::-webkit-scrollbar {
-                            
+                          .carusel-cont::-webkit-scrollbar {
                             width: 5px;
                             height: 5px;
                           }
                         
-                          #carusel-cont::-webkit-scrollbar-thumb  {
+                          .carusel-cont::-webkit-scrollbar-thumb  {
                             background: rgba(85, 85, 100, 0.18);
                             border-radius: 10px;
                           }
-                          #carusel-cont::-webkit-scrollbar-thumb:hover {
+                          .carusel-cont::-webkit-scrollbar-thumb:hover {
                             background:rgba(85, 85, 100, 0.24);
                           }
                         
                           .carusel-btn{
+                            z-index: 1;
                             border-radius: 8px;
                             background: #00000060;
                             position: absolute;
@@ -1292,14 +1301,15 @@ que la extencion "highligth string" decore el texto)
                       <script>
                         //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
                         //js 👈 comando decorativo "Highlight String Code"
-                          const carousel = document.getElementById("carusel-cont");
-                        const items = document.querySelectorAll(".carusel-link");
+                        
                         let index = 0;
                         let isPaused = false;
+                        carusel = document.getElementById("carusel-cont")
 
 
-                        function actualizarIndexCarusel() {
-                          let scrollLeft = carousel.scrollLeft;
+                        function actualizarIndexCarusel(contenedor = carusel) {
+                          let items = contenedor.querySelectorAll(".carusel-link");
+                          let scrollLeft = contenedor.scrollLeft;
                           let closestIndex = 0;
                           let minDiff = Math.abs(scrollLeft - items[0].offsetLeft);
 
@@ -1313,18 +1323,19 @@ que la extencion "highligth string" decore el texto)
                           index = closestIndex;
                         }
 
-                        function moverCarusel(dirreccion = 'adelante'){
-                          actualizarIndexCarusel(); // actualizar posicion encaso de scrolling
+                        function moverCarusel(dirreccion = 'adelante', contenedor = carusel){
+                          let items = contenedor.querySelectorAll(".carusel-link");
+                          actualizarIndexCarusel(contenedor); // actualizar posicion encaso de scrolling
                           if(dirreccion === "atras"){ 
                             index-- // retroceder
                             if (index < 0) {
                                 index = items.length - 1; // resetear al final
-                                carousel.scrollTo({ // vuelve al inicio
+                                contenedor.scrollTo({ // vuelve al inicio
                                   left: items[index].offsetLeft,
                                 });
                                 index--
                             }
-                            carousel.scrollTo({ //
+                            contenedor.scrollTo({ //
                                 left: items[index].offsetLeft,
                                 behavior: "smooth"
                             });
@@ -1332,12 +1343,12 @@ que la extencion "highligth string" decore el texto)
                             index++ // avanzar
                             if (index >= items.length) { 
                                 index = 0; // resetear
-                                carousel.scrollTo({ // vuelve al inicio
+                                contenedor.scrollTo({ // vuelve al inicio
                                   left: items[index].offsetLeft,
                                 });
                                 index++ // sumar para moverse al index 2
                             }  
-                            carousel.scrollTo({ //
+                            contenedor.scrollTo({ //
                                 left: items[index].offsetLeft,
                                 behavior: "smooth"
                             });
@@ -1348,18 +1359,18 @@ que la extencion "highligth string" decore el texto)
                           if (isPaused) return; // Detener el movimiento si está en hover
                           moverCarusel()
                         }
-                        setInterval(autoScrollCarusel, 5000); // Mueve cada 5 segundos
+                        
 
 
 
                         document.addEventListener("DOMContentLoaded", function () {
                           // Detectar hover para pausar el movimiento
                           // Detectar hover para pausar el movimiento (PC)
-                          carousel.addEventListener("mouseenter", () => isPaused = true);
-                          carousel.addEventListener("mouseleave", () => isPaused = false);
+                          carusel.addEventListener("mouseenter", () => isPaused = true);
+                          carusel.addEventListener("mouseleave", () => isPaused = false);
 
                           // Detectar toque en móviles para pausar el movimiento
-                          carousel.addEventListener("touchstart", () => isPaused = true);
+                          carusel.addEventListener("touchstart", () => isPaused = true);
                           document.addEventListener("visibilitychange", () => {
                             isPaused = document.hidden;
                           });
@@ -1698,7 +1709,7 @@ que la extencion "highligth string" decore el texto)
                                 <!--* compartir 👇 -->
                               <b:if cond='data:blog.pageType not in {"item","static_page"} and data:post.allowComments'>
                                 <a class='commentario-link' expr:href='data:post.addCommentUrl' expr:onclick='data:post.addCommentOnclick'>
-                                  <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="currentColor" >
+                                  <svg  xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"  fill="currentColor" >
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                     <path d="M18 3a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-4.724l-4.762 2.857a1 1 0 0 1 -1.508 -.743l-.006 -.114v-2h-1a4 4 0 0 1 -3.995 -3.8l-.005 -.2v-8a4 4 0 0 1 4 -4zm-4 9h-6a1 1 0 0 0 0 2h6a1 1 0 0 0 0 -2m2 -4h-8a1 1 0 1 0 0 2h8a1 1 0 0 0 0 -2" />
                                   </svg>
@@ -1714,7 +1725,7 @@ que la extencion "highligth string" decore el texto)
                                 <!--* boton de compartir 👇 -->
                               <div class="compartirPost" expr:linkPublicacion="data:post.url" onclick='copiarTexto(this.getAttribute("linkPublicacion"))'
                                 title="Copiar el link de la publicacion">
-                                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor" 
+                                <svg  xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor" 
                                   stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-share"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                   <path d="M6 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M18 6m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
                                   <path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M8.7 10.7l6.6 -3.4" /><path d="M8.7 13.3l6.6 3.4" />
@@ -2418,7 +2429,6 @@ que la extencion "highligth string" decore el texto)
                             /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
                             /*css 👈 comando decorativo "Highlight String Code */
                             #TextList1{
-                                padding-bottom: 10px;
                                 display: flex;
                                 justify-content: center;
                               }
@@ -2500,6 +2510,9 @@ que la extencion "highligth string" decore el texto)
         <style>
           /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
           /*css 👈 comando decorativo "Highlight String Code */
+          #Stats1{
+            
+          }
           #Stats1_sparklinespan{
             background-color:#00304D
           }
@@ -2511,7 +2524,6 @@ que la extencion "highligth string" decore el texto)
             font-weight: bold;
             height: 30px;
             margin-right: 0px;
-            
           }
 
           .Stats svg {
@@ -2520,6 +2532,7 @@ que la extencion "highligth string" decore el texto)
             width: 30px;
             fill: #00304D;
           }
+
           /*!css*/
           /*]]>*/
         </style>
@@ -2640,12 +2653,17 @@ que la extencion "highligth string" decore el texto)
           /*css 👈 comando decorativo "Highlight String Code */
            #PageList2{
             margin: 5px 0;
+            flex-direction: column;
+            display: flex;
+            align-items: center;
            }
            .redes-titulo{
+            width: 100%;
             margin-bottom: 20px;
-
            }
            .redes-sociales-cont{
+            width: 100%;
+            max-width: 250px;
             min-width: fit-content;
             display: flex;
             justify-content: space-around;
@@ -3000,7 +3018,6 @@ que la extencion "highligth string" decore el texto)
             Tweets by SENAComunica
           </a> 
           <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-          
           <!-- !html -->
           ]]>
         </b:widget-setting>
@@ -3028,9 +3045,7 @@ que la extencion "highligth string" decore el texto)
 
   <script>
     //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
-    //js 👈 comando decorativo "Highlight String Code"
-                            
-                            
+    //js 👈 comando decorativo "Highlight String Code"                    
     function ajustarColumnas() {
       if (window.innerWidth < 900) return;
       columnasAjustadas = true // para que no vuelva a ejecutarse
@@ -3083,12 +3098,12 @@ que la extencion "highligth string" decore el texto)
     //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
     //js 👈 comando decorativo "Highlight String Code"
 
-function transformarObjetos(data) {
-    let parser = new DOMParser();
-    let doc = parser.parseFromString(data, "text/html"); // Convierte el string en HTML
+    function transformarObjetos(data) {
+      let parser = new DOMParser();
+      let doc = parser.parseFromString(data, "text/html"); // Convierte el string en HTML
+      console.log(doc.body); // Muestra el HTML organizado en la consola
+    }
 
-    console.log(doc.body); // Muestra el HTML organizado en la consola
-}
     function quitarEspacios(){
       let posts = document.getElementsByClassName('post-body');
         for (let i = 0; i < posts.length; i++) {
@@ -3134,32 +3149,22 @@ function transformarObjetos(data) {
 
 
   function agregarBotonesDescarga() {
-    const posts = document.querySelectorAll('.post-body');
-    
-    posts.forEach(post => {
       // Para cada post, selecciona todas las imágenes
-      const images = post.querySelectorAll('img');
+      const images = document.querySelectorAll('.post-body img')
       images.forEach(img => {
         if (!img.nextElementSibling || !img.nextElementSibling.classList.contains('download-btn')) {
-          img.insertAdjacentHTML('afterend', `
-          <!-- html -->
-            <button class="download-btn" 
-              onclick="
-                event.preventDefault(); 
-                event.stopPropagation(); 
-                descargarImagen('${img.src}')
-              "
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" height="24px" width="24px" fill="#39a900" viewBox="0 -960 960 960">
-                <path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/>
-              </svg>
+          img.insertAdjacentHTML('beforebegin', `
+            <button class="download-btn" onclick="
+              event.preventDefault(); 
+              event.stopPropagation();
+              descargarImagen('${img.src}')
+            ">
+              <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="#39a900"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-photo-down"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 8h.01" /><path d="M12.5 21h-6.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v6.5" /><path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l4 4" /><path d="M14 14l1 -1c.653 -.629 1.413 -.815 2.13 -.559" /><path d="M19 16v6" /><path d="M22 19l-3 3l-3 -3" /></svg>
             </button>
-          <!-- !html -->
           `);
         }
-      });
-  });
-}
+    });
+  }
 
 
 
@@ -3199,13 +3204,16 @@ function transformarObjetos(data) {
     document.addEventListener("DOMContentLoaded", () => {
       asignarPaginaActual()
       ajustarColumnas()
-      agregarBotonesDescarga();
+      
+      
     });
 
     // al terminar de cargar los recursos
     window.addEventListener("load", () => {
       textoAnimado()
       quitarEspacios()
+      agregarBotonesDescarga();
+      setInterval(autoScrollCarusel, 5000); // Mueve cada 5 segundos
     });
 
 
