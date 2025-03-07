@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!-- 
-¡Hola! esta es una modificacion creada apartir del tema:
-"Tema > pinture windows > shade"
+> .[!NOTE].
+>¡Hola! esta es una modificacion creada apartir del tema:
+>"Tema > pinture windows > shade"
 
 no habia tenido contacto alguno con codigos "xml"
 hise lo que pude y elimine y reise cosas para
@@ -271,7 +272,7 @@ que la extencion "highligth string" decore el texto)
         .date-posts {
           animation: all ease 1s;
           display: flex;
-          align-items: center;
+          align-items: stretch;
           flex-wrap: wrap;
           row-gap: 50px;
           column-gap: 20px;
@@ -353,7 +354,7 @@ que la extencion "highligth string" decore el texto)
           height: min-content;
           width: 100%;
         }
-        .post-body >br{
+        .post-body br{
           display:none;
         }
         
@@ -366,8 +367,8 @@ que la extencion "highligth string" decore el texto)
           position: relative;
           margin: 0;
           display: inline-flex;
-
         }
+        .post-body >div{width: 100%;}
 
         .post-body > p{
           margin:0px;
@@ -426,9 +427,9 @@ que la extencion "highligth string" decore el texto)
         }
         .separator{
           display: flex;
-          margin: 0px !important;
+          justify-content: center;
+          margin: 0px;
           width: fit-content;
-          
         }
         .separator > a{
           position: relative;
@@ -512,10 +513,23 @@ que la extencion "highligth string" decore el texto)
           flex-wrap: wrap;
           gap: 10px
         }
-
         .dos-columnas .post-body .separator{
-          gap: 5px
+          width: auto;
+          gap: 5px;
         }
+        .dos-columnas img{
+          height: auto;
+          width: 220px;
+        }
+        .dos-columnas .imagen-mediana{
+          width: 250px;
+        }
+
+        .dos-columnas .imagen-grande{
+          width: 100%;
+        }
+
+        
 
 
 
@@ -690,7 +704,7 @@ que la extencion "highligth string" decore el texto)
         font-size: 1.2em;
       }
       h3{
-      font-size: 1em;
+        font-size: 1em;
       }
 
       .columns {
@@ -1153,7 +1167,7 @@ que la extencion "highligth string" decore el texto)
   
                 .main-outer {
                     display: grid;
-                    grid-template-columns: 1fr auto;
+                    grid-template-columns: minmax(0, 1fr) auto;
                     background: #ffffff;
                     padding: 35px 10px;
                     border-radius: 16px;
@@ -1197,6 +1211,7 @@ que la extencion "highligth string" decore el texto)
                       <b:widget-setting name='link-2'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgUWSroBGrCs5QqFbluNzpR417FRySDT-Z-dC1ZxwLfOJsmGdFIX-g-oJYcGGqQpAi1Diu2SDxFVa6SkCjlHbbVWCCUtGDTD8RTEphl8S7CzHTyfslhiQRUSUPU89C9PRapX78l5WfwCJEOO9BX4touJ5NBD6SEgBHbUNBFqA_p8W4PYRmtMdLHLVXK3r0/s1072/bannerOferta%20(4).jpg</b:widget-setting>
                     </b:widget-settings>
                     <b:includable id='main'>
+                    <b:if cond='data:blog.pageType not in {"item","static_page"} and data:post.allowComments'>
                       <div class='widget-content'>
                         <div id="carusel-cont" class='carusel-cont'>
                           <button class="carusel-btn carusel-btn-left" onclick="moverCarusel('atras',this.parentElement)">
@@ -1379,7 +1394,10 @@ que la extencion "highligth string" decore el texto)
                         //!js
                         //]]>
                       </script>
+                    
+                    </b:if>
                     </b:includable>
+                    
                   </b:widget>
                     <div id="main-header">
 
@@ -1706,7 +1724,7 @@ que la extencion "highligth string" decore el texto)
                             </div>
 
                             <div class='post-footer-line post-footer-line-2'>
-                                <!--* compartir 👇 -->
+                                <!--* boton para cometar 👇 -->
                               <b:if cond='data:blog.pageType not in {"item","static_page"} and data:post.allowComments'>
                                 <a class='commentario-link' expr:href='data:post.addCommentUrl' expr:onclick='data:post.addCommentOnclick'>
                                   <svg  xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"  fill="currentColor" >
@@ -3062,6 +3080,17 @@ que la extencion "highligth string" decore el texto)
             if (window.innerWidth < 900) return;
             entry.target.classList.add("dos-columnas");
             resizeObserver.unobserve(entry.target);
+            const imagenes = entry.target.getElementsByTagName("img"); // Obtiene todas las imágenes dentro
+            console.log("Número de imágenes:", imagenes.length);
+            if(imagenes.length <= 2) {
+              for (var i = 0; i < imagenes.length; i++) {
+                imagenes[i].classList.add("imagen-grande");
+              }
+            } else if ((imagenes.length % 4) <= 2 ){
+              for (var i = 0; i < imagenes.length; i++) {
+                imagenes[i].classList.add("imagen-mediana");
+              }
+            }
           }
         });
       });
