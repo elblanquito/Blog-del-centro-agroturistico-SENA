@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+    .cont {
+        padding: 0px;
+        margin: 50px 0px;
+        background-color: rgba(241, 241, 241, 0.733);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: 'PT Sans Caption';
+        font-size: 16px;
+        gap: 100px;
+    }
+</style>
+
+<body class="cont">
+
+
+
+
+<!-- 
+? ___________________ Paginas _______________________ !important
+-->
+<div class="seccion_header_cont">
+    <a class="seccion_header" href="/"> Página Principal </a>
+    <a class="seccion_header" href="/p/contactos.html"> Contactos </a>
+    <a class="seccion_header" href="/p/blog-page.html"> Programas </a>
+    <a class="seccion_header" href="/p/normatividad.html"> Normatividad </a>
+    <a class="seccion_header" href="p/pagina-de-recursos-globales.html"> resources </a>
+  </div>
+  <style>
+    .seccion_header_cont {
+        box-sizing: border-box;
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        z-index: 2;
+        width: 100%;
+        background-color: #ffffff;
+        user-select: none;
+        font-size: 1.2em;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+    .seccion_header {
+        text-align: center;
+        text-decoration: none !important;
+        color: #39A900 !important;
+        cursor: default;
+        font-weight: bold;
+        background-color: #ffffff;
+        padding: 10px 25px;
+        transition: all 0.2s;
+    }
+    .seccion_header:hover {
+        background: linear-gradient(
+        0deg, #f4ffee,#f4ffee
+        );
+        box-shadow: inset 0 -3px 0 0 #39A900;
+    }
+    .seccion_header:active {
+        transform: scale(0.95);
+    }
+    .seccion_header.pagina_actual {
+        box-shadow: inset 0 -3px 0px #39A900;
+    }
+    .seccion_header_cont:hover .pagina_actual {
+        box-shadow: none;
+    }
+    .seccion_header.pagina_actual:hover {
+        box-shadow: inset 0 -3px 0px #39A900;
+    }
+    @media (max-width: 620px) {
+      .seccion_header_cont {
+          max-width: none;
+          width: fit-content;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+      }
+      .seccion_header:hover {
+          box-shadow: inset 5px 0 0 0px #39A900,
+          inset -5px 0 0 0px #39A900;
+      }
+      .seccion_header.pagina_actual {
+          box-shadow:
+              inset 5px 0 0 0px #39A900,
+              inset -5px 0 0 0px #39A900;
+          background-color: #f4ffee;
+      }
+    .seccion_header_cont:hover .pagina_actual {
+          box-shadow: none;
+          background-color: white;
+      }
+      .seccion_header.pagina_actual:hover {
+          box-shadow: inset 5px 0 0 0px #39A900,
+          inset -5px 0 0 0px #39A900;
+          background-color: #f4ffee;
+      }
+    }
+            
+    @media (max-width: 401px) {
+        .seccion_header_cont {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+    }
+  </style>
+  <script>
+    const urlActual = window.location.pathname;
+    const seccion_headers = document.querySelectorAll('.seccion_header');
+      seccion_headers.forEach(seccion_header => {
+        const href = new URL(seccion_header.href).pathname;
+        if (urlActual === href) {
+          seccion_header.classList.add('pagina_actual');
+        }
+      });
+  </script>
+<!-- 
+? ___________________ Paginas _______________________ 
+ -->
+
+
+
+
+
+    <!-- 
+TODO ___________________ Buscador _______________________ 
+ -->
+
+    <div class="contenedorbuscador">
+        <td class='gsc-input inputbuscadorcont'>
+        <input autocomplete='off' class='gsc-input inputbuscador'
+            expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q' size='10'
+            title='search' type='text' /></td>
+
+        <td class='gsc-search-button buttonbuscadorcont'>
+            <input class='gsc-search-button buttonbuscador' title='search' type='submit' value='' />
+        </td>
+    </div>
+    <style>
+        .contenedorbuscador {
+            background-color: white;
+            height: 36px;
+            width: 215px;
+            display: grid;
+            grid-template-columns: 1fr 36px;
+            grid-template-rows: 1fr;
+            box-shadow: 0 0 0px 1px #c4c4D0;
+            border-radius: 4px;
+            position: sticky;
+            margin-top: 300px;
+            top: 60px;
+        }
+
+        .contenedorbuscador:focus-within{
+            box-shadow: 0 0 0px 1px #39A900;
+        }
+
+
+
+        .contenedorbuscador .inputbuscador {
+            background-color: transparent !important;
+            width: 100% !important;
+            height: 36px !important;
+            margin: 0px !important;
+            outline: none !important;
+            border: none !important;
+            border-radius: 4px 0px 0px 4px !important;
+            font-size: 16;
+            padding: 0px 10px !important;
+        }
+
+        .buttonbuscadorcont {
+            width: 100% !important;
+            height: 100% !important;
+            border-radius: 0px 4px 4px 0px !important;
+            
+
+        }
+
+        .contenedorbuscador .buttonbuscador {
+            width: 100% !important;
+            height: 100% !important;
+            margin: 0px !important;
+            background-color: transparent !important;
+            background: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhqD53GLYdNDw7O66cnrvxpSknWkFES9lyKIeVltIibawLizxM8AhlWj9rIAZG8zJhyphenhyphenhWxLcyoAmEILmn6QGugY0Tl4cvsdQWWlIg4SURTNWuqqS0Z7TgFQP66VHY_XdndWDgHzIVLyQF91E8QIjh0qPf-i5rPd5Mglhhk4u8ekbHKksJz8o-Plq48FnY/s80/search%202.png&#39;) no-repeat center center;
+            background-size: 80% !important;
+            outline: none !important;
+            border: none !important;
+            
+            
+        }
+
+
+
+        .contenedorbuscador .buttonbuscador.lupagirando {
+            animation: lupagirando 2.5s ease;
+        }
+
+        .contenedorbuscador.inputgolpe {
+            animation: inputgolpe 2.5s ease-out;
+        }
+
+                            @keyframes lupagirando {
+                      0% {transform: rotate(0deg);}
+                      25% {transform: rotate(45deg)translate(0px, -70px);}
+                      40% {transform: rotate(-90deg) translate(10px, 40px);}
+                      45% {transform: rotate(-90deg) translate(10px, 40px);}
+                      80% {transform: rotate(360deg);}
+                      100% {transform: rotate(360deg);}
+                    }
+
+                    @keyframes inputgolpe {
+                      0% {transform: rotate(0deg); transform-origin: left top;}
+                      30% {transform: rotate(0deg);}
+                      35% {transform: rotate(5deg);}
+                      45% {transform: rotate(-4deg);}
+                      60% {transform: rotate(3deg);}
+                      70% {transform: rotate(-2deg);}
+                      80% {transform: rotate(0deg);}
+                    }
+    </style>
+    <script>
+        const form = document.querySelector('.gsc-search-box');
+
+        /* form.addEventListener('submit', (e) => {
+            e.preventDefault();
+                setTimeout(() => {
+                    form.submit();
+                }, 2000); // Retraso de 2.1 segundos
+        });
+         */
+
+
+        const button = document.querySelector('.buttonbuscador');
+        const input = document.querySelector('.contenedorbuscador');
+        console.log(button);
+
+        button.addEventListener('click', () => {
+            if (button.classList.contains('lupagirando')) {
+                console.log('Ya se está animando');
+                return;
+            }
+            console.log('click');
+            // Añade la clase para iniciar la animación
+            button.classList.add('lupagirando');
+            input.classList.add('inputgolpe');
+
+            // Elimina la clase después de que termine la animación (3s)
+            setTimeout(() => {
+                button.classList.remove('lupagirando');
+                input.classList.remove('inputgolpe');
+            }, 2500);
+        });
+    </script>
+<!-- 
+TODO ___________________ Buscador _______________________ 
+ -->
+
+
+
+
+    <!-- 
+? ___________________ Galería de Imágenes _______________________ !important
+-->
+    <style>
+        .galeria {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .galeria .imagen {
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);
+            transition: all 0.1s;
+            view-timeline-name: aparecer;
+            view-timeline-axis: block;
+            animation-timeline: aparecer 0.5s;
+            animation-name: show ;
+
+        }
+            
+            @keyframes show {
+              0% {
+                opacity: 0;
+                transform: scale(0.25);
+              }
+              100% {
+                opacity: 1;
+                transform: scale(1);
+              }
+            }
+        .galeria .imagen:active{
+            transform: scale(0.95);
+        }
+        .imagen1 {
+            width: 250px;
+            height: 200px;
+            background-color: #ff9999;
+        }
+
+        .imagen2 {
+            width: 300px;
+            height: 200px;
+            background-color: #99ccff;
+        }
+
+        .imagen3 {
+            width: 150px;
+            height: 200px;
+            background-color: #99ff99;
+        }
+
+        .imagen4 {
+            width: 400px;
+            height: 200px;
+            background-color: #ffcc99;
+        }
+
+        .imagen5 {
+            width: 200px;
+            height: 200px;
+            background-color: #50E5F9;
+        }
+
+        .imagen6 {
+            width: 350px;
+            height: 200px;
+            background-color: #FDC300;
+        }
+
+        .imagen7 {
+            width: 300px;
+            height: 200px;
+            background-color: #F6F6F6;
+            color: black !important;
+        }
+        </style>
+
+        <div class="galeria">
+            <div id="progres"></div>
+            <div class="imagen imagen1" style="background-color: #39A900;" onclick="copyColor('#39A900')">#39A900</div>
+            <div class="imagen imagen2" style="background-color: #007832;" onclick="copyColor('#007832')">#007832</div>
+            <div class="imagen imagen3" style="background-color: #00304D;" onclick="copyColor('#00304D')">#00304D</div>
+            <div class="imagen imagen4" style="background-color: #71277A;" onclick="copyColor('#71277A')">#71277A</div>
+            <div class="imagen imagen5" style="background-color: #50E5F9;" onclick="copyColor('#50E5F9')">#50E5F9</div>
+            <div class="imagen imagen6" style="background-color: #FDC300;" onclick="copyColor('#FDC300')">#FDC300</div>
+            <div class="imagen imagen7" style="background-color: #F6F6F6;" onclick="copyColor('#F6F6F6')">#F6F6F6</div>
+            <div class="imagen imagen7" style="background-color: #e2e8f0;" onclick="copyColor('#e2e8f0')">Borde</div>
+            <div class="imagen imagen7" style="background-color: #b0bec5;" onclick="copyColor('#b0bec5')">Borde2</div>
+            <div class="imagen imagen7" style="background-color: #f1f5f9;" onclick="copyColor('#f1f5f9')">Hover</div>
+            <div class="imagen imagen7" style="background-color: #78909c;" onclick="copyColor('#78909c')">texto</div>
+        </div>
+
+        <script>
+            function copyColor(color) {
+                mostrarNotificacion('Texto copiado',color,'positiva')
+                navigator.clipboard.writeText(color).then(() => {
+                    
+                }).catch(err => {
+                    alert(`${color} error al copiar`);
+                });
+            }
+            console.log(CSS.supports("animation-timeline", "view()"));
+
+        </script>
+    <!-- 
+? ___________________ Fin de Galería de Imágenes _______________________ 
+-->
+<div class="targetagrid">
+    <div id="miDiv">
+        Este es un texto que puede ser muy largo y hacer que el div abarque 2 casilas del grid.
+        ¡Ajústame dinámicamente! Este es un texto que puede ser muy largo y hacer que el div abarque 2 casilas del grid.
+        ¡Ajústame dinámicamente!Este es un texto que puede ser muy largo y hacer que el div abarque 2 casilas del grid.
+        ¡Ajústame dinámicamente!Este es un texto que puede ser muy largo y hacer que el div abarque 2 casilas del grid.
+        ¡Ajústame dinámicamente!Este es un texto que puede ser muy largo y hacer que el div abarque 2 casilas del grid.
+        ¡Ajústame dinámicamente!
+    </div>
+</div>
+
+<style>
+    .targetagrid {
+        width: 600px;
+        max-width: 95%;
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Dos columnas */
+        gap: 10px; /* Espacio entre columnas */
+    }
+
+    #miDiv {
+        padding: 10px;
+        border: 1px solid #ccc;
+        word-wrap: break-word; /* Asegura que el texto no se desborde */
+        transition: all 0.3s ease; /* Transición suave */
+    }
+
+    .dos-columnas {
+        grid-column: span 2; /* Ocupa dos columnas */
+    }
+</style>
+
+<script>
+    const miDiv = document.getElementById("miDiv");
+
+    function ajustarColumnas() {
+        if (miDiv.offsetHeight > 200) {
+            miDiv.classList.add("dos-columnas");
+        } else {
+            miDiv.classList.remove("dos-columnas");
+        }
+    }
+
+    // Verificar la altura al cargar la página y cuando cambie el contenido
+    window.addEventListener("load", ajustarColumnas);
+    window.addEventListener("resize", ajustarColumnas);
+
+    // Opcional: Si el contenido del div cambia dinámicamente, usa un MutationObserver
+    const observer = new MutationObserver(ajustarColumnas);
+    observer.observe(miDiv, {
+        childList: true, // Observar cambios en el contenido
+        subtree: true,   // Observar cambios en todos los descendientes
+        characterData: true // Observar cambios en el texto
+    });
+
+</script>
+
+
+
+
+    <!--
+    ^======================
+    🔔 Notificacion
+    ^======================
+    -->
+    <div id="notificacion" class="notificacion">
+        <h2 id="notificacion-titulo">Notificacion</h2>
+        <p id="notificacion-texto">Descripción de la tarjeta</p>
+      </div>
+    <style>
+      /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+      /*css 👈 comando decorativo "Highlight String Code */
+      .notificacion{
+        z-index: 11;
+        position:fixed;
+        top: -100%;
+        left: 50%;
+        opacity: 0;
+        transform: translate(-50%, 0) scale(0.8);
+        box-sizing: border-box;
+        width: max-content;
+        max-width: 100%;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2);
+        padding: 10px 30px;
+        transition: all 0.8s ease-in-out, opacity 0.3s ease-in-out;
+        border: 1px solid #ccc;
+        border-left-width: 8px;
+      }
+  
+      .noti-visible{
+        top: 10px;
+        opacity: 1;
+        transform: translate(-50%, 0) scale(1);
+      }
+  
+      .noti-positiva{
+        border-left: 8px solid #39a900;
+      }
+      .noti-positiva h2{
+        color: #39a900;
+      }
+  
+      .noti-negativa{
+        border-left: 8px solid #c10015;
+      }
+  
+      .noti-negativa h2{
+        color: #c10015;
+      }
+  
+  
+      /*!css*/
+      /*]]>*/
+    </style>
+    <script>
+      //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
+      //js 👈 comando decorativo "Highlight String Code"
+  
+      let timeoutNotification;
+      let notificacionVisible = false;
+  
+      function mostrarNotificacion(titleInput = 'Notificación', txtInput = 'error', type = 'info') {
+        console.log("empezo notificacion")
+        if (!['info', 'negativa', 'positiva'].includes(type)) {
+            type = 'info'; // valor por defecto
+        }
+        let notificacion = document.getElementById("notificacion");
+        let titulo = document.getElementById("notificacion-titulo");
+        let texto = document.getElementById("notificacion-texto");
+        let time = 0 // esperar para mostrar
+        
+        // Si hay una notificación visible
+        if (notificacionVisible) {
+          time = 200
+          notificacion.classList.remove('noti-visible', 'noti-info', 'noti-negativa', 'noti-positiva'); // Eliminar clases anteriores
+          clearTimeout(timeoutNotification); // Detener el temporizador anterior
+        }
+  
+        // Pequeño retraso para reiniciar la animación
+        setTimeout(() => {
+          console.log("time: " + time)
+            notificacionVisible = true
+            titulo.innerText = titleInput; // Cambiar el titulo
+            texto.innerText = txtInput; // Cambiar el texto
+            notificacion.classList.remove('noti-visible', 'noti-info', 'noti-negativa', 'noti-positiva'); // Eliminar clases anteriores
+            notificacion.classList.add('noti-visible', ('noti-'+type));
+  
+            // Configurar el temporizador para ocultar la notificación
+            timeoutNotification = setTimeout(() => {
+                notificacion.classList.remove('noti-visible');
+                notificacionVisible = false;
+            }, 3000);
+        }, time); // Pequeño retraso para que la animación se reinicie correctamente
+      }
+      //!js
+      //]]>
+    </script>
+    
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

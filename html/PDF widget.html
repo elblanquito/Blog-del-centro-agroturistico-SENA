@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visor de PDF</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+</head>
+
+<body>
+    
+    <div class="pdf-cont">
+        <div class="pdf-load" id="pdf-load"></div>
+        <canvas id="pdf-canvas"></canvas>
+        <button class="carusel-btn carusel-btn-left" onclick="moverPdf('atras'); console.log('hola')">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#ffffff">
+                <path
+                    d="m432-480 156 156q11 11 11 28t-11 28q-11 11-28 11t-28-11L348-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 28-11t28 11q11 11 11 28t-11 28L432-480Z" />
+            </svg>
+        </button>
+        <button class="carusel-btn carusel-btn-right" onclick="moverPdf('adelante')">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#ffffff">
+                <path
+                    d="M504-480 348-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L404-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Z" />
+            </svg>
+        </button>
+        <span id="pdf-page" class="pdf-page">Página 1</span>
+    </div>
+
+    <style>
+        .pdf-cont {
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+        }
+
+
+        .pdf-cont > canvas {
+            width: 100%;
+        }
+
+        /* Estilos para el spinner */
+        .pdf-load {
+            z-index: 1;
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            border: 5px solid rgba(0, 0, 0, 0.1);
+            border-top: 5px solid #00000062;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .pdf-page{
+            box-sizing: border-box;
+            position:absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translate(-50%, 0);
+            padding: 5px 15px;
+            background-color: #00000030;
+            border-radius: 8px;
+            font-family: calibri;
+            
+
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+
+        .carusel-btn {
+            border-radius: 8px;
+            background: #00000060;
+            position: absolute;
+            top: 50%;
+            transform: translate(0, -50%);
+            border: none;
+            display: flex;
+            align-items: center;
+            padding: 8px 0px;
+            transition: transform 0.2s ease;
+        }
+
+        .carusel-btn:hover {
+            background: #00000080;
+        }
+
+        .carusel-btn:active {
+            transform: translate(0, -50%) scale(0.8);
+        }
+
+        .carusel-btn svg {
+            width: 38px;
+            height: auto;
+            fill: #ffffff;
+        }
+
+        .carusel-btn-left {
+            left: 10px;
+        }
+
+        .carusel-btn-right {
+            right: 10px;
+        }
+    </style>
+
+<script>
+    var url = 'https://elblanquito.github.io/Blog-del-centro-agroturistico-SENA/Acuerdo%20009%20del%202024-%20Reglamento%20del%20aprendiz%20.pdf';
+    var pdfDoc = null;
+    var pageNum = 1;
+    var scale = 1.5;
+    var canvas = document.getElementById('pdf-canvas');
+    var context = canvas.getContext('2d');
+    var loadpdf = document.getElementById('pdf-load');
+    var renderTask = null;
+
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+
+    function renderPage(num) {
+        loadpdf.style.display = "block"; // Mostrar carga
+
+        pdfDoc.getPage(num).then(page => {
+            var viewport = page.getViewport({ scale });
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            var renderContext = {
+                canvasContext: context,
+                viewport: viewport
+            };
+
+            // Si hay una renderización en curso, la cancelamos antes de iniciar una nueva
+            if (renderTask) {
+                renderTask.cancel(); // Limpiar la tarea activa
+            }
+
+            renderTask = page.render(renderContext);
+
+            renderTask.promise.then(() => {
+                loadpdf.style.display = "none"; // Ocultar carga
+            }).catch(error => {
+                if (error.name !== "RenderingCancelledException") {
+                    console.error("Error renderizando el PDF:", error);
+                }
+            });
+
+            document.getElementById('pdf-page').textContent = `Página ${num} de ${pdfDoc.numPages}`;
+        });
+    }
+
+    pdfjsLib.getDocument(url).promise.then(pdf => {
+        pdfDoc = pdf;
+        renderPage(pageNum);
+    }).catch(error => {
+        console.error("Error cargando el PDF:", error);
+    });
+
+    function moverPdf(direccion = 'adelante') {
+        if (direccion !== 'atras' && pageNum < pdfDoc.numPages) {
+            pageNum++;
+            renderPage(pageNum);
+        } else if (direccion === 'atras' && pageNum > 1) {
+            pageNum--;
+            renderPage(pageNum);
+        }
+    }
+</script>
+</body>
+
+</html>

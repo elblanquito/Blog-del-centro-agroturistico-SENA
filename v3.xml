@@ -1211,8 +1211,8 @@ que la extencion "highligth string" decore el texto)
                       <b:widget-setting name='link-2'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgUWSroBGrCs5QqFbluNzpR417FRySDT-Z-dC1ZxwLfOJsmGdFIX-g-oJYcGGqQpAi1Diu2SDxFVa6SkCjlHbbVWCCUtGDTD8RTEphl8S7CzHTyfslhiQRUSUPU89C9PRapX78l5WfwCJEOO9BX4touJ5NBD6SEgBHbUNBFqA_p8W4PYRmtMdLHLVXK3r0/s1072/bannerOferta%20(4).jpg</b:widget-setting>
                     </b:widget-settings>
                     <b:includable id='main'>
-                    <b:if cond='data:blog.pageType not in {"item","static_page"} and data:post.allowComments'>
-                      <div class='widget-content'>
+                    <b:if cond='data:blog.pageType not in {"item","static_page"}'>
+                      <div class='widget-content' expr:pagina='data:blog.pageType' onclick='console.log(this)'>
                         <div id="carusel-cont" class='carusel-cont'>
                           <button class="carusel-btn carusel-btn-left" onclick="moverCarusel('atras',this.parentElement)">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#ffffff"><path d="m432-480 156 156q11 11 11 28t-11 28q-11 11-28 11t-28-11L348-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 28-11t28 11q11 11 11 28t-11 28L432-480Z"/></svg>
@@ -1231,17 +1231,19 @@ que la extencion "highligth string" decore el texto)
                           </div>
                         </div>
                       </div>
+                    </b:if>
                       <style>
                         /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
                         /*css 👈 comando decorativo "Highlight String Code */
                           #LinkList1{
-                            margin-bottom:20px;
+                            
                           }
                           .imagenes-deslisables{
                             position: relative;
                             width: 100%;
                           }
                           .carusel-cont {
+                            margin-bottom:20px;
                             height: auto;
                             border-radius: 8px;
                             width: 100%;
@@ -1395,7 +1397,7 @@ que la extencion "highligth string" decore el texto)
                         //]]>
                       </script>
                     
-                    </b:if>
+                    
                     </b:includable>
                     
                   </b:widget>
@@ -2698,10 +2700,11 @@ que la extencion "highligth string" decore el texto)
             */
            }
            .red-social{
-            transition: all 0.2s ease;
+            display: flex;
+            transition: all 0.3s ease-out;
            }
            .red-social-link:hover .red-social{
-            transform: translate(0, -7px);
+            transform: translate(0, -5px);
            }
            .red-social-link:active{
             transform: scale(.9)
@@ -2712,27 +2715,36 @@ que la extencion "highligth string" decore el texto)
             height: 100%;
            }
 
-             @keyframes bounce {
+             @keyframes rebote {
               0% { transform: translateY(0); }
-              5% { transform: translateY(-10px); }
-              10% { transform: translateY(0); }
-              60% { transform: translateY(0); }
+              7% { transform: translateY(-10px); }
+              15% { transform: translateY(0); }
+              100% { transform: translateY(0); }
             }
             
-           #sidebar-right-1:hover .red-social-link .facebook > svg{
-            animation: bounce 5s ease-in-out infinite;animation-delay: 0s;
-           }
-           #sidebar-right-1:hover .red-social-link .x > svg{
-            animation: bounce 5s ease-in-out infinite;animation-delay: 0.2s;
-           }
+           #sidebar-right-1 .red-social-link svg {
+              animation: rebote 5s ease-in-out infinite;
+            }
 
-           #sidebar-right-1:hover .red-social-link .youtube > svg{
-            animation: bounce 5s ease-in-out infinite;animation-delay: 0.4s;
-           }
+            #sidebar-right-1:hover .red-social-link svg{
+              
+            }
 
-           #sidebar-right-1:hover .red-social-link .instagram > svg{
-            animation: bounce 5s ease-in-out infinite;animation-delay: 0.6s;
-           }
+            #sidebar-right-1 .red-social-link .facebook > svg {
+              animation-delay: 1s;
+            }
+
+            #sidebar-right-1 .red-social-link .x > svg {
+              animation-delay: 2s;
+            }
+
+            #sidebar-right-1 .red-social-link .youtube > svg {
+              animation-delay: 2.5s;
+            }
+
+            #sidebar-right-1 .red-social-link .instagram > svg {
+              animation-delay: 1.5s;
+            }
           /*!css*/
           /*]]>*/
         </style>
