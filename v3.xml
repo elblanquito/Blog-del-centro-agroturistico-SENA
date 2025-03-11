@@ -64,6 +64,8 @@ que la extencion "highligth string" decore el texto)
   xmlns:b='http://www.google.com/2005/gml/b'
   xmlns:data='http://www.google.com/2005/gml/data'
   xmlns:expr='http://www.google.com/2005/gml/expr'>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
 
   <head>
   <meta expr:content='&quot;
@@ -397,6 +399,32 @@ que la extencion "highligth string" decore el texto)
           width: 100%;
           height: 100%;
         }
+
+        .f-button{
+          border-radius: 8px;
+          background: #00000060;
+          padding: 8px 0px;
+          margin: 5px;
+          transition: transform 0.2s ease;
+        }
+        .f-button:hover:not([disabled]) {
+          background: #00000080;
+        }
+        .is-horizontal .fancybox__nav .f-button.is-prev:active,
+        .is-horizontal .fancybox__nav .f-button.is-next:active {
+          transform: translateY(-50%) scale(0.8);
+        }
+
+        .fancybox__nav .f-button svg{
+          filter: none;
+        }
+
+        .fancybox__nav .f-button.is-next{
+          
+        }
+        .fancybox__nav .f-button.is-prev{
+
+        }
         
         .post img, .post iframe, .tiktok-embed {
           display: block;
@@ -588,6 +616,32 @@ que la extencion "highligth string" decore el texto)
               transform: translate(100%, 0px);
             }
           }
+          #sidebar-right-1 .widget-content{
+            overflow: hidden;
+            position: relative;
+          }
+
+          .iframe-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            cursor: -webkit-grab;
+
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+          }
+          .iframe-overlay div{
+            padding: 80px 10px 10px 10px;
+            width: 100%;
+            text-align: center;
+            color: white;
+            background: linear-gradient(0deg, #000000, transparent);
+          }
+
+
         
         
 
@@ -2226,14 +2280,14 @@ que la extencion "highligth string" decore el texto)
         let recoridoX = event.touches[0].clientX - lugarInicialX;
 
         // ignorar si hay mucho Recorrido en "Y" ❌
-        if (recoridoY > 35) return;
+        if (recoridoY > 25 || recoridoY < -25) return;
 
         //<!-- ^ logica al abrir 🔓--> 
-        if (recoridoX < -30) {
+        if (recoridoX < -20) {
             menu.classList.remove('ocultarMenu');
         }
         //<!-- ^ logica al cerrar 🔒--> 
-        if (recoridoX > 30) {
+        if (recoridoX > 20) {
             menu.classList.add('ocultarMenu');
         }
     });
@@ -2775,6 +2829,51 @@ que la extencion "highligth string" decore el texto)
       </b:includable>
     </b:widget>
 
+    <!--
+    ?======================
+    🌎marker google maps
+    ?======================
+    -->
+
+    <b:widget id='HTML2' locked='false' title='google maps' type='HTML'>
+      <b:widget-settings>
+        <b:widget-setting name='content'>
+          <![CDATA[
+            <div class="iframe-overlay" id="overlay" onclick='this.style.display = "none"'>
+              <div>click para interactuar</div>
+            </div>
+            <iframe class="google-map-1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps/embed?pb=!4v1741711504016!6m8!1m7!1srLxAAhfqv4vYVQIb3vfXlw!2m2!1d6.559094798534264!2d-73.14024736068028!3f256.4635354724295!4f-0.3148343083782663!5f0.7820865974627469">
+            </iframe>
+          ]]>
+        </b:widget-setting>
+      </b:widget-settings>
+      <b:includable id='main'>
+        <div class='widget-content' id='widget-content-HTML2'>
+          <data:content/>
+        </div>
+        
+          <style>
+            /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+            /*css 👈 comando decorativo "Highlight String Code */
+              #widget-content-HTML2{
+                border-radius: 8px;
+                display:flex;
+              }
+              
+              .google-map-1{
+                border-radius: 8px;
+                width: 100%;
+                height: 400px;
+                border: none;
+              }
+            /*!css*/
+            /*]]>*/
+          </style>
+        <b:include name='quickedit'/>
+      </b:includable>
+    </b:widget>
+
     
 
     <b:widget id='Profile1' locked='false' title='Acerca de mí' type='Profile' version='1'>
@@ -2866,7 +2965,7 @@ que la extencion "highligth string" decore el texto)
             interpolate-size: allow-keywords;
           }
           #BlogArchive1_ArchiveList {
-            padding-bottom: 50px;
+            padding-bottom: 0px;
           }
 
           /* cuando se cierra o abre un elemento 👇 */
@@ -3040,7 +3139,9 @@ que la extencion "highligth string" decore el texto)
     -->
     <b:widget id='HTML1' locked='false' title='post en X' type='HTML'>
       <b:widget-settings>
-        <b:widget-setting name='content'><![CDATA[ <!-- html -->
+        <b:widget-setting name='content'><![CDATA[
+            <div class="iframe-overlay" id="overlay" onclick='this.style.display = "none"'>
+            </div>
           <a class="twitter-timeline" data-theme="light" 
             data-chrome="nofooter noborders"
             data-tweet-limit="3"
@@ -3048,18 +3149,10 @@ que la extencion "highligth string" decore el texto)
             Tweets by SENAComunica
           </a> 
           <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-          <!-- !html -->
           ]]>
         </b:widget-setting>
       </b:widget-settings>
       <b:includable id='main'>
-        <style>
-          /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
-          /*css 👈 comando decorativo "Highlight String Code */
-          
-          /*!css*/
-          /*]]>*/
-        </style>
         <div class='widget-content'>
           <data:content/>
         </div>
@@ -3232,7 +3325,7 @@ que la extencion "highligth string" decore el texto)
           window.URL.revokeObjectURL(url);
           document.body.removeChild(link);
         }, 100);
-        mostrarNotificacion('descarga','descarga exitosa 😊','positiva')
+        mostrarNotificacion('descarga lista!','espere un momento.. ','positiva')
       } catch (error) {
         console.error('Error:', error);
         mostrarNotificacion('descarga fallida',error.message,'negativa')
@@ -3245,9 +3338,32 @@ que la extencion "highligth string" decore el texto)
     document.addEventListener("DOMContentLoaded", () => {
       asignarPaginaActual()
       ajustarColumnas()
-      
-      
     });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".post").forEach((post, index) => {
+        post.querySelectorAll("img").forEach(img => {
+            img.parentElement.setAttribute("data-fancybox", "post-group-" + index);
+        });
+    });
+    Fancybox.bind("[data-fancybox]", {
+      compact: false, //desactiva la vercion movil
+      animated: false, // Desactiva animaciones
+      showClass: "fancybox-fadeIn", // Animación más simple
+      hideClass: "fancybox-fadeOut",
+
+      panOnlyZoomed: false, // Permite hacer zoom incluso sin hacer clic
+      on: {
+            close: () => {
+                // prevenir errores con lectores de pantalla
+                if (document.activeElement) {
+                  document.activeElement.blur();
+                }
+
+            }
+        }
+    });
+  });
 
     // al terminar de cargar los recursos
     window.addEventListener("load", () => {
@@ -3256,9 +3372,6 @@ que la extencion "highligth string" decore el texto)
       agregarBotonesDescarga();
       setInterval(autoScrollCarusel, 5000); // Mueve cada 5 segundos
     });
-
-
-
     
     //!js
     //]]>
