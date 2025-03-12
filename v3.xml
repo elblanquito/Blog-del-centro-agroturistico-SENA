@@ -1,60 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!-- 
-> .[!NOTE].
->¡Hola! esta es una modificacion creada apartir del tema:
->"Tema > pinture windows > shade"
-
-no habia tenido contacto alguno con codigos "xml"
-hise lo que pude y elimine y reise cosas para
-que pareciera mas amigable 😓 oprime ctr + f y
-busca "marker" para ver las partes principales
-
-* extenciones de visual estudio recomendadas:
-- XML Format (lo mas importante XD)
-- Auto Complete Tag (util)
-- Colorful Comments (visualizar mas facil los comentarios)
-- GitHub Copilot (para sugerencias al programar en strings)
-
-* manera en la que subo los cambios ah bloguer
-1. vas a "temas"
-2. despliegas las opciones de "personalizar"
-3. le das a reestablecer
-4. cargas el archivo que estas editando
-5. al actualizar tu blog ya estaran los cambios
-(cuidado, si hay algon error de sintaxis podria no subirse los cambios)
-
-* consejos para sobrevivir
-- cuidado con los mentarios que pones, mas de una vez
-hisieron que dejara de funcionar scrips ☠️
-
-- sube cambios constantemente, o sete pasa algun error
-que te hara usar un buen rato el crt + z
-
-- si borras algo que no debias busca el tema original
-descarga su codigo, aun que a este punto el codigo
-ya es muy diferente al original 
-
-- "<![CDATA[]]>" es importante aunque este comentado, hace
-que xml lo ignore y asi por usar "&" o "<" pero para que el
-navegador no se enoje por noner cosa raras en el js hay
-que comentarlo (el "js" que se pone al principo es para
-que la extencion "highligth string" decore el texto)
-
-  <script>
-    //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
-    //js 👈 comando decorativo "Highlight String Code"
-
-    //!js
-    //]]>
-  </script>
-
-  <style>
-    /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
-    /*css 👈 comando decorativo "Highlight String Code */
-    
-    /*!css*/
-    /*]]>*/
-  </style>
+Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SENA/tree/main"
 -->
 
 
@@ -575,6 +521,7 @@ que la extencion "highligth string" decore el texto)
             width: 270px;
             height: 100%;
             padding: 10px 20px;
+            padding-bottom: 100px;
             background-color: #ffffff;
             overflow-y: scroll;
             
@@ -634,16 +581,12 @@ que la extencion "highligth string" decore el texto)
             justify-content: center;
           }
           .iframe-overlay div{
-            padding: 80px 10px 10px 10px;
+            padding: 10px;
             width: 100%;
             text-align: center;
             color: white;
-            background: linear-gradient(0deg, #000000, transparent);
+            background-color: #000000c2;
           }
-
-
-        
-        
 
 
 
@@ -1430,6 +1373,9 @@ que la extencion "highligth string" decore el texto)
                           if (isPaused) return; // Detener el movimiento si está en hover
                           moverCarusel()
                         }
+                          window.addEventListener("load", () => {
+                            setInterval(autoScrollCarusel, 5000); // Mueve cada 5 segundos
+                          });
                         
 
 
@@ -2839,10 +2785,10 @@ que la extencion "highligth string" decore el texto)
       <b:widget-settings>
         <b:widget-setting name='content'>
           <![CDATA[
-            <div class="iframe-overlay" id="overlay" onclick='this.style.display = "none"'>
+            <div class="iframe-overlay" id="map-overlay" onclick='iframeOverlay(this)'>
               <div>click para interactuar</div>
             </div>
-            <iframe class="google-map-1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            <iframe class="google-map-1" id="google-map-1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
               src="https://www.google.com/maps/embed?pb=!4v1741711504016!6m8!1m7!1srLxAAhfqv4vYVQIb3vfXlw!2m2!1d6.559094798534264!2d-73.14024736068028!3f256.4635354724295!4f-0.3148343083782663!5f0.7820865974627469">
             </iframe>
           ]]>
@@ -2870,6 +2816,30 @@ que la extencion "highligth string" decore el texto)
             /*!css*/
             /*]]>*/
           </style>
+          <script>  
+            //<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante!  
+            //js 👈 Comando decorativo "Highlight String Code"
+
+            function iframeOverlay(element){
+              if (element.style.display != 'none') {
+                element.style.display = 'none'
+
+                document.addEventListener("pointerdown", function handleClick(event) {
+                  console.log('click', element.parentElement.classList);
+                  if (!element.parentElement.contains(event.target)) { // click fuera del contenedor
+                    element.style.display = "flex";
+                    document.removeEventListener("click", handleClick);
+                  }
+                });
+              }
+            }
+
+            //!js  
+            //]]>  
+          </script>
+
+
+    
         <b:include name='quickedit'/>
       </b:includable>
     </b:widget>
@@ -3140,15 +3110,16 @@ que la extencion "highligth string" decore el texto)
     <b:widget id='HTML1' locked='false' title='post en X' type='HTML'>
       <b:widget-settings>
         <b:widget-setting name='content'><![CDATA[
-            <div class="iframe-overlay" id="overlay" onclick='this.style.display = "none"'>
+          <div class="postsx-cont">
+            <div class="iframe-overlay" id="map-overlay" onclick='iframeOverlay(this)'>
+              <div>click para interactuar</div>
             </div>
-          <a class="twitter-timeline" data-theme="light" 
-            data-chrome="nofooter noborders"
-            data-tweet-limit="3"
-            href="https://twitter.com/SENAComunica?ref_src=twsrc%5Etfw">
-            Tweets by SENAComunica
-          </a> 
-          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                <a class="twitter-timeline" data-chrome="nofooter noborders"
+        data-dnt="true" data-theme="light"
+        href="https://twitter.com/SENAComunica">
+        Tweets SENAComunica
+    </a>
+          </div>
           ]]>
         </b:widget-setting>
       </b:widget-settings>
@@ -3156,7 +3127,47 @@ que la extencion "highligth string" decore el texto)
         <div class='widget-content'>
           <data:content/>
         </div>
-        <b:include name='quickedit'/>
+        <style>  
+          /*<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante! */  
+          /*css 👈 Comando decorativo "Highlight String Code" */
+          .postsx-cont {
+            height: 500px;
+            overflow-y: auto;
+          }
+          .postsx{
+          }
+          .twitter-timeline{
+            width: 100%;
+            align-items: flex-start;
+            justify-content: center;
+          }
+          /*!css*/  
+          /*]]>*/  
+        </style>  
+        <script>  
+          //<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante!  
+          //js 👈 Comando decorativo "Highlight String Code"
+
+          window.twttr = (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0],
+              t = window.twttr || {};
+            if (d.getElementById(id)) return t;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+
+            t._e = [];
+            t.ready = function(f) {
+              t._e.push(f);
+            };
+
+            return t;
+          }(document, "script", "twitter-wjs"));
+
+          //!js  
+          //]]>  
+        </script>
       </b:includable>
     </b:widget>
   </b:section-contents>
@@ -3186,7 +3197,6 @@ que la extencion "highligth string" decore el texto)
             entry.target.classList.add("dos-columnas");
             resizeObserver.unobserve(entry.target);
             const imagenes = entry.target.getElementsByTagName("img"); // Obtiene todas las imágenes dentro
-            console.log("Número de imágenes:", imagenes.length);
             if(imagenes.length <= 2) {
               for (var i = 0; i < imagenes.length; i++) {
                 imagenes[i].classList.add("imagen-grande");
@@ -3370,7 +3380,6 @@ que la extencion "highligth string" decore el texto)
       textoAnimado()
       quitarEspacios()
       agregarBotonesDescarga();
-      setInterval(autoScrollCarusel, 5000); // Mueve cada 5 segundos
     });
     
     //!js
