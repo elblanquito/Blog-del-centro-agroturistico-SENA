@@ -1,7 +1,7 @@
 > [!NOTE]  
 > ## Plantilla de Blogger Modificada  
 > ¡Hola! Esta es una modificación de una plantilla de Blogger, puedes encontrar la versión original aquí:
-> - entrar a [Blogger](https://www.blogger.com/) entrar a un blog y luego `/tema/pinture windows/shade`  
+> - Ingresa a [Blogger](https://www.blogger.com/), selecciona un blog y luego ve a`/tema/pinture windows/shade`  
 >  
 > No tenía experiencia previa con código "XML". modifique la mayoría
 > de los elementos para hacerlos más fáciles de entender y simplificar
@@ -19,7 +19,7 @@
 > - **Colorful Comments** (para visualizar mejor los comentarios)  
 > - **Highlight String** (para facilitar la lectura de código `CSS/JS`)  
 >  
-> ### Configuraciones:  
+> ### Configuraciones  
 > - **Auto renombrar etiquetas:**  
 >   Ve a `File > Preferences > Settings` o presiona (Ctrl + ,),  
 >   luego busca **Linked Editing** en la barra de búsqueda y actívalo  
@@ -36,7 +36,7 @@
 > 5. Al actualizar tu blog, los cambios estarán aplicados 
 
 > [!IMPORTANT]  
-> ## Recordar:  
+> ## Tener en cuenta  
 > - Ten cuidado con los comentarios que agregas, más de una vez  
 >   han causado que los scripts dejen de funcionar ☠️  
 > - Sube cambios constantemente o podrías perder algo importante,  
@@ -45,25 +45,30 @@
 >   Aunque a este punto, el código ya es muy diferente al original
 >  
 > ## ¿Qué es `<![CDATA[]]>`?  
-> Es importante aunque esté comentado, ya que evita que XML interprete
-> símbolos como `&` o `<>` esta comentado Para que el navegador
-> no genere errores al leer el código.  
+> se utiliza para insertar contenido en XML sin que sea interpretado como
+> código. símbolos como `&` o `>` no se podrian incluir dentro de `<script>` sin
+> `CDATA`, adicionalmente `<![CDATA[` y `]]>` deben estar comentados para que el
+> navegador no los incluya como parte del codigo
 >
-> aqui es util la extensión `Highlight String` para no ver mejor el codigo 
+> aqui es util la extensión `Highlight String` para ver mejor el codigo 
 >  
-> ```xml
+> ```html
 > <script>  
 >   //<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante!  
->   //js 👈 Comando decorativo "Highlight String Code"  
+>   //js 👈 Comando decorativo "Highlight String Code"
+>
+>   console.log("aqui puedes poner tu codigo");
 >  
 >   //!js  
 >   //]]>  
 > </script>
 > ``` 
-> ```xml 
+> ```html 
 > <style>  
 >   /*<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante! */  
->   /*css 👈 Comando decorativo "Highlight String Code" */  
+>   /*css 👈 Comando decorativo "Highlight String Code" */
+>
+>   .pon-tus-estilos-aqui { background: #f4f4f4; }
 >     
 >   /*!css*/  
 >   /*]]>*/  
