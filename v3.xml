@@ -17,13 +17,8 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
   <meta expr:content='&quot;
   width=device-width,
   initial-scale=1.0,
-  user-scalable=no&quot;'
+  user-scalable=yes&quot;'
   name='viewport'/>
-
-  <!-- <meta 
-    name='viewport' 
-    expr:content='&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot;'
-  > -->
 
     <b:include data='blog' name='all-head-content'/>
     <title>
@@ -211,385 +206,6 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
         .post-content{width: 100%;}
         .post-content img{ width: 100%;}
 
-        /*
-        ======================
-        🍏marker posts [CSS]
-        ======================
-        */
-
-        .date-posts {
-          animation: all ease 1s;
-          display: flex;
-          align-items: stretch;
-          flex-wrap: wrap;
-          row-gap: 50px;
-          column-gap: 20px;
-          justify-items: center;
-          justify-content: center;
-          margin-bottom: 80px;
-          /*mejora la funcion scrollFecha()*/
-          scroll-margin-top: 60px; 
-        }
-        
-        .blog-posts > .widget {
-          margin: 0px;
-        }
-        .date-header-cont{
-          user-select: none;
-          width: 100%;
-          position: sticky;
-          top: 15px;
-          margin-bottom: -20px;
-          z-index: 1;
-        }
-        @media (max-width: 735px) {
-          .date-header-cont{
-            display: flex;
-            justify-content: center;
-          }
-        }
-        .date-header {
-          font-weight: normal;
-          width: fit-content;
-          padding: 4px 15px;
-          background-color: #ffffff;
-          font-size: .9em;
-          color: #00304D;
-          border-radius: 8px;
-          box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, .1);
-          outline: 1px solid #e2e8f0;
-          font-weight: bold;
-        }
-        .posts-cont{
-        }
-
-        .post{
-          flex-direction: column;
-          display: flex;
-          height: auto;
-          width: 100%;
-          max-width: 420px; 
-          min-width: 270px;
-          border-radius: 16px;
-          padding: 20px 20px 15px 20px;
-          box-sizing: border-box;
-          box-shadow: 0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);
-          outline: 1px solid #e2e8f0;
-          background-color: white;
-        }
-        .post >a{display:none;}
-        .post div{color: #00304D;}
-
-        .post-body-cont{
-          display: flex;
-          flex-direction: column;
-          height: 100%;
-          justify-content: space-around;
-        }
-
-        h2.post-title {
-          color: #00304D;
-          margin-bottom: 10px;
-        	text-align: center;
-        }
-        
-        
-        .post-body{
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          height: min-content;
-          width: 100%;
-        }
-        .post-body br{
-          display:none;
-        }
-        
-        .post-body span , .post-body h4{
-          margin: 5px 0px;
-        }
-
-        .post-body p,
-        .post-body a {
-          position: relative;
-          margin: 0;
-          display: inline-flex;
-        }
-        .post-body >div{width: 100%;}
-
-        .post-body > p{
-          margin:0px;
-        }
-
-        .download-btn {
-          z-index: 1;
-          left: 0%;
-          bottom: 0;
-          position: absolute;
-          height: 36px;
-          width: max-content;
-          display: block;
-          padding: 5px;
-          border-radius: 4px;
-          background-color: #ffffff;
-          outline: 2px solid #39a900;
-          border: none;
-          transition: transform 0.2s ease;
-        }
-
-        .download-btn:active {
-          transform: scale(0.8)
-        }
-        .download-btn svg{
-          width: 100%;
-          height: 100%;
-        }
-
-        .f-button{
-          border-radius: 8px;
-          background: #00000060;
-          padding: 8px 0px;
-          margin: 5px;
-          transition: transform 0.2s ease;
-        }
-        .f-button:hover:not([disabled]) {
-          background: #00000080;
-        }
-        .is-horizontal .fancybox__nav .f-button.is-prev:active,
-        .is-horizontal .fancybox__nav .f-button.is-next:active {
-          transform: translateY(-50%) scale(0.8);
-        }
-
-        .fancybox__nav .f-button svg{
-          filter: none;
-        }
-
-        .fancybox__nav .f-button.is-next{
-          
-        }
-        .fancybox__nav .f-button.is-prev{
-
-        }
-        
-        .post img, .post iframe, .tiktok-embed {
-          display: block;
-          overflow-y: auto;
-          border-radius: 10px;
-          width: 100%;
-          max-height: 500px;
-          min-width: 0 ;
-          max-width: none ;
-          /*object-fit: contain;*/
-          object-fit: cover;
-          object-position: center;
-          content-visibility: auto;
-          /* animaciones */
-          view-timeline-name: --postscroll;
-          view-timeline-axis: block;
-          animation-timeline: --postscroll;
-          animation-name: aparecer;
-          animation-fill-mode: both;
-          animation-range: entry 0% cover 40%;
-          }
-        @keyframes aparecer {
-          0% {scale: 0.6;}
-          100% {opacity: 1;scale: 1;}
-        }
-        .post-body p:empty {
-          display: none;
-        }
-        .separator{
-          display: flex;
-          justify-content: center;
-          margin: 0px;
-          width: fit-content;
-        }
-        .separator > a{
-          position: relative;
-          margin: 0px !important;
-          padding: 0px !important;
-        }
-
-        .post-footer{
-          margin-top: 15px;
-        }
-        .post-footer, .post-footer-line{
-          width: 100%;
-        }
-        .post-footer-line > *{
-          margin: 0px;
-        }
-        .post-footer-line-1{
-          display: flex;
-        }
-        .post-etiquetas-cont{
-          display: flex;
-          column-gap: 10px;
-          flex-wrap: wrap;
-
-        }
-        .post-etiqueta{
-          margin-bottom: 10px;
-          font-size: .8em;
-          border-radius: 4px;
-          padding: 0px 10px;
-          color: #b0bec5 !important;
-          outline: 2px solid #e2e8f0;
-          transition: all 0.2s ease;
-        }
-        .post-etiqueta:hover{
-          background-color: #f1f5f9;
-        }
-        .post-footer-line-2{
-          gap: 15px;
-          justify-content: flex-end;
-          display: flex;
-        }
-        .post-footer-line-2 svg{
-          width: 26px;
-          height: auto;
-        }
-        .compartirPost{
-          display: flex;
-          align-items: center;
-        }
-        .compartirPost svg{
-          color: #39A900;
-        }
-        .commentario-link{
-          gap: 4px;
-          display: flex;
-          align-items: center;
-        }
-        .post-fecha{
-          margin-left: auto;
-          text-decoration: none;
-        }
-        @media (max-width: 400px){
-          .post-fecha{
-            margin-left: 0px;
-          }
-          .post-fecha-txt{
-            display: none;
-          }
-        }
-
-
-        /* esta clase se agrega con un script  */
-        .dos-columnas {
-          width: fit-content;
-          max-width: 100%;
-          grid-column: span 2;
-        }
-        .dos-columnas .post-body{
-          flex-direction: row;
-          flex-wrap: wrap;
-          gap: 10px
-        }
-        .dos-columnas .post-body .separator{
-          width: auto;
-          gap: 5px;
-        }
-        .dos-columnas img{
-          height: auto;
-          width: 220px;
-        }
-        .dos-columnas .imagen-mediana{
-          width: 250px;
-        }
-
-        .dos-columnas .imagen-grande{
-          width: 100%;
-        }
-
-        
-
-
-
-
-        /*
-        *========================
-        🍇marker menu left [CSS]
-        *========================
-        */
-
-          #sidebar-right-1{
-            flex-direction: column;
-            display: flex;
-            gap: 15px;
-            width: 270px;
-            height: 100%;
-            padding: 10px 20px;
-            padding-bottom: 100px;
-            background-color: #ffffff;
-            overflow-y: scroll;
-            
-          }
-          #sidebar-right-1 > .widget{min-height: fit-content;}
-          #sidebar-right-1 h2 { color: #00304D}
-          /*
-          <!-- ^  Barra de scroll 👇 ^ --> */
-          #sidebar-right-1::-webkit-scrollbar {
-            width: 5px;
-            height: 5px;
-          }
-          #sidebar-right-1::-webkit-scrollbar{
-            background:rgba(241, 241, 241, 0); /* Color de fondo de la pista */
-            border-radius: 0px;
-          }
-          #sidebar-right-1::-webkit-scrollbar-thumb  {
-            background: rgba(85, 85, 100, 0.18);
-            border-radius: 10px;
-          }
-          #sidebar-right-1::-webkit-scrollbar-thumb:hover {
-            background:rgba(85, 85, 100, 0.24);
-          }
-          @media (max-width: 800px) {
-            #sidebar-right-1{
-            position: fixed;
-            top: 0;
-            right: 0;
-            z-index: 11;
-            height: 100vh;
-            width: 100%;
-            max-width: 80%;
-            box-sizing: border-box;
-            box-shadow: -4px 0px 8px 0 rgba(0, 0, 0, 0.2);
-            border-left: 5px solid #39A900;
-            transition: transform 0.5s ease-in-out;
-            }
-            .ocultarMenu {
-              transform: translate(100%, 0px);
-            }
-          }
-          #sidebar-right-1 .widget-content{
-            overflow: hidden;
-            position: relative;
-          }
-
-          .iframe-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            cursor: -webkit-grab;
-
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-          }
-          .iframe-overlay div{
-            padding: 10px;
-            width: 100%;
-            text-align: center;
-            color: white;
-            background-color: #000000c2;
-          }
-
-
-
         .content-outer {
           background: $(content.background);
 
@@ -673,6 +289,26 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
 
         .footer-outer .widget h2 {
           color: $(footer.widget.title.text.color);
+        }
+
+        /* personalizacion de la biblioteca fancybox
+        ----------------------------------------------- */
+        .f-button{
+          border-radius: 8px;
+          background: #00000060;
+          padding: 8px 0px;
+          margin: 5px;
+          transition: transform 0.2s ease;
+        }
+        .f-button:hover:not([disabled]) {
+          background: #00000080;
+        }
+        .is-horizontal .fancybox__nav .f-button.is-prev:active,
+        .is-horizontal .fancybox__nav .f-button.is-next:active {
+          transform: translateY(-50%) scale(0.8);
+        }
+        .fancybox__nav .f-button svg{
+          filter: none;
         }
       /*!css*/
       ]]>
@@ -901,10 +537,15 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
             </style>
             <!--
             &=================
-            🎀marker Header
+            🎀marker Header 
             &=================
             -->
-            <b:section class='header header-outer' id='header' maxwidgets='1' name='Header' showaddelement='no'>
+            <b:section-contents id='pureba-1-1'/>
+            <b:section-contents id='pureba-1-2'/>
+            <b:section-contents id='prueba-2'>
+            </b:section-contents>
+
+            <b:section class='header header-outer' id='header' maxwidgets='20' name='Header' showaddelement='no'>
               <b:widget id='Header1' locked='true' title=' Centro agroturistico v3 (Encabezado)' type='Header'>
                 <b:widget-settings>
                   <b:widget-setting name='displayUrl'/>
@@ -976,16 +617,16 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                 </b:includable>
               </b:widget>
             </b:section>
-
-
             
             <!--
             ^================
             🏷️marker rutas
             ^================
             -->
-            <b:section class='tabs' id='crosscol' maxwidgets='1' name='Cross-Column' showaddelement='yes'>
-              <b:widget id='PageList3' locked='false' title='Menu principal 🏷️ (no agregar el link completo, solo el final)' type='PageList'>
+            <b:if cond='true'>
+            <b:section class='tabs' id='crosscol' maxwidgets='20' name='Cross-Column' showaddelement='yes'>
+              <b:widget id='PageList3' locked='false'
+              title='Menu principal 🏷️ (no agregar el link completo, solo el final)' type='PageList'>
                 <b:widget-settings>
 
                   <b:widget-setting name='pageListJson'>
@@ -1150,10 +791,11 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                 </b:includable>
               </b:widget>
             </b:section>
+            </b:if>
 
             <!--
             *=========================
-            🪵marker Main principal
+            🪵marker Main ..................................
             *=========================
             -->
 
@@ -1189,14 +831,14 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                 /*!css*/
                 /*]]>*/
               </style>
-                <b:section class='blog-posts hfeed' id='main' name='Main' showaddelement='no'>
+                <b:section class='blog-posts hfeed' id='main' name='Main' maxwidgets='20' showaddelement='yes'>
                   
                   <!--
                   *======================
                   🖼️marker Main Imagenes
                   *======================
                   -->
-                  <b:widget id='LinkList1' locked='false' title='Carrucel de imagenes' type='LinkList'>
+                  <b:widget id='LinkList1' locked='false' title='Carrucel de imagenes' visible='true' type='LinkList'>
                     <b:widget-settings>
                       <b:widget-setting name='shownum'>3</b:widget-setting>
                       <b:widget-setting name='sorting'>NONE</b:widget-setting>
@@ -1404,23 +1046,396 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                     <div id="main-header">
 
                     </div>
-                    <style>
-                      /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
-                        /*css 👈 comando decorativo "Highlight String Code */
-                        #main-header{
-                            padding-bottom: 30px;
-                            display: flex;
-                            justify-content: center;
-                          }
-                        /*!css*/
-                      /*]]>*/
-                    </style>
+                    
 
 
 
-
-
+                    <!--
+                    *======================
+                    🍏marker Blog / Posts
+                    *======================
+                    -->
                     <b:widget id='Blog1' locked='true' title='Entradas del blog' type='Blog' version='1'>
+                      <b:includable id='style-posts-blog' var='top32'>
+                        <!--
+                        *======================
+                        🍏marker [CSS]
+                        *======================
+                        -->
+                        <style>
+                          /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+                          /*css 👈 comando decorativo "Highlight String Code */
+                            #main-header{
+                              padding-bottom: 30px;
+                              display: flex;
+                              justify-content: center;
+                            }
+                            .date-outer {
+                                scroll-margin-top: 60px;
+                            }
+                            .date-posts {
+                              animation: all ease 1s;
+                              display: flex;
+                              align-items: stretch;
+                              flex-wrap: wrap;
+                              row-gap: 50px;
+                              column-gap: 20px;
+                              justify-items: center;
+                              justify-content: center;
+                              margin-bottom: 80px;
+
+                            }
+
+                            .blog-posts > .widget {
+                              margin: 0px;
+                            }
+                            .date-header-cont{
+                              user-select: none;
+                              width: 100%;
+                              position: sticky;
+                              top: 15px;
+                              margin-bottom: 25px;
+                              z-index: 2;
+                            }
+                            @media (max-width: 735px) {
+                              .date-header-cont{
+                                display: flex;
+                                justify-content: center;
+                              }
+                            }
+                            .date-header {
+                              font-weight: normal;
+                              width: fit-content;
+                              padding: 4px 15px;
+                              background-color: #ffffff;
+                              font-size: .9em;
+                              color: #00304D;
+                              border-radius: 8px;
+                              box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, .1);
+                              outline: 1px solid #e2e8f0;
+                              font-weight: bold;
+                            }
+                            .posts-cont{
+                            }
+
+                            .post{
+                              flex-direction: column;
+                              display: flex;
+                              height: auto;
+                              width: 100%;
+                              max-width: 420px; 
+                              min-width: 270px;
+                              border-radius: 16px;
+                              padding: 20px 20px 15px 20px;
+                              box-sizing: border-box;
+                              box-shadow: 0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);
+                              outline: 1px solid #e2e8f0;
+                              background-color: white;
+                            }
+                            .post >a{display:none;}
+                            .post div{color: #00304D;}
+
+                            .post-body-cont{
+                              display: flex;
+                              flex-direction: column;
+                              height: 100%;
+                              justify-content: space-around;
+                            }
+
+                            h2.post-title {
+                              color: #00304D;
+                              margin-bottom: 10px;
+                            	text-align: center;
+                            }
+
+
+                            .post-body{
+                              display: flex;
+                              flex-direction: column;
+                              align-items: center;
+                              justify-content: center;
+                              height: min-content;
+                              width: 100%;
+                            }
+                            .post-body br{
+                              display:none;
+                            }
+
+                            .post-body span , .post-body h4{
+                              margin: 5px 0px;
+                            }
+
+                            .post-body p,
+                            .post-body a {
+                              position: relative;
+                              margin: 0;
+                              display: inline-flex;
+                            }
+                            .post-body >div{width: 100%;}
+
+                            .post-body > p{
+                              margin:0px;
+                            }
+
+                            .download-btn {
+                              z-index: 1;
+                              left: 0%;
+                              bottom: 0;
+                              position: absolute;
+                              height: 36px;
+                              width: max-content;
+                              display: block;
+                              padding: 5px;
+                              border-radius: 4px;
+                              background-color: #ffffff;
+                              outline: 2px solid #39a900;
+                              border: none;
+                              transition: transform 0.2s ease;
+                            }
+
+                            .download-btn:active {
+                              transform: scale(0.8)
+                            }
+                            .download-btn svg{
+                              width: 100%;
+                              height: 100%;
+                            }
+                            .post img, .post iframe, .tiktok-embed {
+                              display: block;
+                              overflow-y: auto;
+                              border-radius: 10px;
+                              width: 100%;
+                              max-height: 500px;
+                              min-width: 0 ;
+                              max-width: none ;
+                              /*object-fit: contain;*/
+                              object-fit: cover;
+                              object-position: center;
+                              content-visibility: auto;
+                              /* animaciones */
+                              view-timeline-name: --postscroll;
+                              view-timeline-axis: block;
+                              animation-timeline: --postscroll;
+                              animation-name: aparecer;
+                              animation-fill-mode: both;
+                              animation-range: entry 0% cover 40%;
+                              }
+                            @keyframes aparecer {
+                              0% {scale: 0.6;}
+                              100% {opacity: 1;scale: 1;}
+                            }
+                            .post-body p:empty {
+                              display: none;
+                            }
+                            .separator{
+                              display: flex;
+                              justify-content: center;
+                              margin: 0px;
+                              width: fit-content;
+                            }
+                            .separator > a{
+                              position: relative;
+                              margin: 0px !important;
+                              padding: 0px !important;
+                            }
+
+                            .post-footer{
+                              margin-top: 15px;
+                            }
+                            .post-footer, .post-footer-line{
+                              width: 100%;
+                            }
+                            .post-footer-line > *{
+                              margin: 0px;
+                            }
+                            .post-footer-line-1{
+                              display: flex;
+                            }
+                            .post-etiquetas-cont{
+                              display: flex;
+                              column-gap: 10px;
+                              flex-wrap: wrap;
+
+                            }
+                            .post-etiqueta{
+                              margin-bottom: 10px;
+                              font-size: .8em;
+                              border-radius: 4px;
+                              padding: 0px 10px;
+                              color: #b0bec5 !important;
+                              outline: 2px solid #e2e8f0;
+                              transition: all 0.2s ease;
+                            }
+                            .post-etiqueta:hover{
+                              background-color: #f1f5f9;
+                            }
+                            .post-footer-line-2{
+                              gap: 15px;
+                              justify-content: flex-end;
+                              display: flex;
+                            }
+                            .post-footer-line-2 svg{
+                              width: 26px;
+                              height: auto;
+                            }
+                            .compartirPost{
+                              display: flex;
+                              align-items: center;
+                            }
+                            .compartirPost svg{
+                              color: #39A900;
+                            }
+                            .commentario-link{
+                              gap: 4px;
+                              display: flex;
+                              align-items: center;
+                            }
+                            .post-fecha{
+                              margin-left: auto;
+                              text-decoration: none;
+                            }
+                            @media (max-width: 400px){
+                              .post-fecha{
+                                margin-left: 0px;
+                              }
+                              .post-fecha-txt{
+                                display: none;
+                              }
+                            }
+
+                            /* esta clase se agrega con un script  */
+                            .dos-columnas {
+                              width: fit-content;
+                              max-width: 100%;
+                              grid-column: span 2;
+                            }
+                            .dos-columnas .post-body{
+                              flex-direction: row;
+                              flex-wrap: wrap;
+                              gap: 10px
+                            }
+                            .dos-columnas .post-body .separator{
+                              width: auto;
+                              gap: 5px;
+                            }
+                            .dos-columnas img{
+                              height: auto;
+                              width: 220px;
+                            }
+                            .dos-columnas .imagen-mediana{
+                              width: 250px;
+                            }
+
+                            .dos-columnas .imagen-grande{
+                              width: 100%;
+                            }
+                          /*!css*/
+                          /*]]>*/
+                        </style>
+                      </b:includable>
+                      <b:includable id='script-posts-blog' var='top32'>
+                        <!--
+                        *======================
+                        🍏marker [JS]
+                        *======================
+                        -->
+                        <script>  
+                          //<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante!  
+                          //js 👈 Comando decorativo "Highlight String Code"
+                          function quitarEspacios(){
+                            let posts = document.getElementsByClassName('post-body');
+                              for (let i = 0; i < posts.length; i++) {
+                                  posts[i].innerHTML = posts[i].innerHTML.replace(/&nbsp;/g, " ");
+                              }
+                          }
+                          function scrollFecha(element) { 
+                            element.parentElement.parentElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          } // scrollea hasta el padre, del padre, del elemento 
+
+                          function ajustarColumnas() {
+                            if (window.innerWidth < 900) return;
+                            columnasAjustadas = true // para que no vuelva a ejecutarse
+                            const contenedor = document.getElementById('Blog1');
+                            const posts = contenedor.querySelectorAll('.post');
+                            // Crear observador para detectar cambios de tamaño
+                            const resizeObserver = new ResizeObserver(entries => {
+                              entries.forEach(entry => {
+                                // Si la altura supera 800px, aplicar la clase y dejar de observar ese elemento
+                                if (entry.contentRect.height > 800) {
+                                  if (window.innerWidth < 900) return;
+                                  entry.target.classList.add("dos-columnas");
+                                  resizeObserver.unobserve(entry.target);
+                                  const imagenes = entry.target.getElementsByTagName("img"); // Obtiene todas las imágenes dentro
+                                  if(imagenes.length <= 2) {
+                                    for (var i = 0; i < imagenes.length; i++) {
+                                      imagenes[i].classList.add("imagen-grande");
+                                    }
+                                  } else if ((imagenes.length % 4) <= 2 ){
+                                    for (var i = 0; i < imagenes.length; i++) {
+                                      imagenes[i].classList.add("imagen-mediana");
+                                    }
+                                  }
+                                }
+                              });
+                            });                     
+                            // Observar cada post
+                            posts.forEach(post => {
+                              resizeObserver.observe(post);
+                            });
+                          }
+
+                          let columnasAjustadas = false;
+                          const handleResize = () => {
+                            if (columnasAjustadas) {
+                              window.removeEventListener('resize', handleResize);
+                              return;
+                            }
+                            ajustarColumnas();
+                          };
+
+                          function agregarBotonesDescarga() {
+                            // Para cada post, selecciona todas las imágenes
+                            const images = document.querySelectorAll('.post-body img')
+                            images.forEach(img => {
+                              if (!img.nextElementSibling || !img.nextElementSibling.classList.contains('download-btn')) {
+                                img.insertAdjacentHTML('beforebegin', `
+                                  <button class="download-btn" onclick="
+                                    event.preventDefault(); 
+                                    event.stopPropagation();
+                                    descargarImagen('${img.src}')
+                                  ">
+                                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="#39a900"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-photo-down"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 8h.01" /><path d="M12.5 21h-6.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v6.5" /><path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l4 4" /><path d="M14 14l1 -1c.653 -.629 1.413 -.815 2.13 -.559" /><path d="M19 16v6" /><path d="M22 19l-3 3l-3 -3" /></svg>
+                                  </button>
+                                `);
+                              }
+                            });
+                          }
+                          function ModalesDeImagenesPosts () {
+                            document.querySelectorAll(".post").forEach((post, index) => {
+                                post.querySelectorAll("img").forEach(img => {
+                                    img.parentElement.setAttribute("data-fancybox", "post-group-" + index);
+                                });
+                            });
+                            Fancybox.bind("[data-fancybox]", {
+                              compact: false, //desactiva la vercion movil
+                              animated: false, // Desactiva animaciones
+                              showClass: "fancybox-fadeIn", // Animación más simple
+                              hideClass: "fancybox-fadeOut",
+                              panOnlyZoomed: false, // Permite hacer zoom incluso sin hacer clic
+                              on: {
+                                close: () => {
+                                  // prevenir errores con lectores de pantalla
+                                  if (document.activeElement) {
+                                    document.activeElement.blur();
+                                  }
+                                }
+                              }
+                            });
+                          }
+                          //!js  
+                          //]]> 
+                        </script>
+                      </b:includable> 
                       <b:widget-settings>
                         <b:widget-setting name='commentLabel'> CM</b:widget-setting>
                         <b:widget-setting name='showShareButtons'>false</b:widget-setting>
@@ -1449,6 +1464,8 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                         <b:widget-setting name='showReactions'>false</b:widget-setting>
                       </b:widget-settings>
                       <b:includable id='main' var='top'>
+                        <b:include data='top' name='script-posts-blog'/>
+                        <b:include data='top' name='style-posts-blog'/>
                         <b:if cond='!data:mobile'>
                             <b:include data='top' name='status-message'/>
                             <b:loop values='data:posts' var='post'>
@@ -1461,19 +1478,23 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                               </b:if>
 
                               <b:if cond='data:post.dateHeader'>
+                              
+                          <div class='date-header-cont'>
+                            <h2 class='date-header' onclick='scrollFecha(this)'>
+                              <span>
+                                <data:post.dateHeader/>
+                              </span>
+                            </h2>
+                          </div>
+                        
                               </b:if>
 
                               <b:if cond='data:post.isDateStart'>
                                 &lt;div class=&quot;date-posts&quot;&gt;
                               </b:if>
                               <b:include data='post' name='post'/>
-                              <b:include cond='data:blog.pageType in {&quot;static_page&quot;,&quot;item&quot;}' data='post' name='comment_picker'/>
-                              <!-- Ad -->
-                              <b:if cond='data:post.includeAd'>
-                                <div class='inline-ad'>
-                                  <data:adCode/>
-                                </div>
-                              </b:if>
+                              <b:include cond='data:blog.pageType in {"static_page","item"}' data='post' name='comment_picker'/>
+                              
                             </b:loop>
                             <b:if cond='data:numPosts != 0'>
                               &lt;/div&gt;&lt;/div&gt;
@@ -1487,14 +1508,11 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                           <b:include name='mobile-main'/>
                         </b:if>
                       </b:includable>
-
                       <!--
                       ^======================
                       💬marker Comentarios
                       ^======================
                       -->
-                      
-                      
                       <b:includable id='comments' var='post'>
                         <div class='comments' id='comments'>
                           <a name='comments'/>
@@ -1671,22 +1689,13 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                         <div class='clear'/>
                       </b:includable>
                       <b:includable id='post' var='post'>
-                        <b:if cond='data:post.dateHeader'>
-                          <div class='date-header-cont'>
-                            <h2 class='date-header' onclick='scrollFecha(this)'>
-                              <span>
-                                <data:post.dateHeader/>
-                              </span>
-                            </h2>
-                          </div>
-                        </b:if>
+                        
 
                         <!--
                         *======================
-                        🍏marker posts [HTML]
+                        🍏marker [HTML]
                         *======================
                         -->
-                        <!-- no usar '<' dentro de un button -->
                         
 
                         <div class='post hentry uncustomized-post-template' itemprop='blogPost' itemscope='itemscope' itemtype='http://schema.org/BlogPosting'>
@@ -2195,7 +2204,94 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
   </macro:includable>
   <!-- 
   *========================
-  🍇marker menu left [HTML]
+  🍇marker menu left ..................................
+  *========================
+  -->
+  <!-- 
+  *========================
+  🍇marker [CSS]
+  *========================
+  -->
+  <style>  
+    /*<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante! */  
+    /*css 👈 Comando decorativo "Highlight String Code" */
+    #sidebar-right-1{
+      flex-direction: column;
+      display: flex;
+      gap: 15px;
+      width: 270px;
+      height: 100%;
+      padding: 10px 20px;
+      padding-bottom: 100px;
+      background-color: #ffffff;
+      overflow-y: scroll;
+      
+    }
+    #sidebar-right-1 > .widget{min-height: fit-content;}
+    #sidebar-right-1 h2 { color: #00304D}
+    /*
+    <!-- ^  Barra de scroll 👇 ^ --> */
+    #sidebar-right-1::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    #sidebar-right-1::-webkit-scrollbar{
+      background:rgba(241, 241, 241, 0); /* Color de fondo de la pista */
+      border-radius: 0px;
+    }
+    #sidebar-right-1::-webkit-scrollbar-thumb  {
+      background: rgba(85, 85, 100, 0.18);
+      border-radius: 10px;
+    }
+    #sidebar-right-1::-webkit-scrollbar-thumb:hover {
+      background:rgba(85, 85, 100, 0.24);
+    }
+    @media (max-width: 800px) {
+      #sidebar-right-1{
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 11;
+      height: 100vh;
+      width: 100%;
+      max-width: 80%;
+      box-sizing: border-box;
+      box-shadow: -4px 0px 8px 0 rgba(0, 0, 0, 0.2);
+      border-left: 5px solid #39A900;
+      transition: transform 0.5s ease-in-out;
+      }
+      .ocultarMenu {
+        transform: translate(100%, 0px);
+      }
+    }
+    #sidebar-right-1 .widget-content{
+      overflow: hidden;
+      position: relative;
+    }
+    .iframe-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      cursor: -webkit-grab;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .iframe-overlay div{
+      padding: 10px;
+      width: 100%;
+      text-align: center;
+      color: white;
+      background-color: #000000c2;
+    }
+    /*!css*/  
+    /*]]>*/  
+  </style>  
+  <!-- 
+  *========================
+  🍇marker [JS]
   *========================
   -->
   <script>
@@ -2241,13 +2337,19 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
     //]]>
   </script>
 
+  <!-- 
+  *========================
+  🍇marker [HTML]
+  *========================
+  -->
+
   <b:section-contents id='sidebar-right-1'>
     <!--
     ?===================
     🔍marker buscador
     ?===================
     -->
-    <b:widget id='BlogSearch1' locked='false' title='Buscar publicacion' type='BlogSearch' version='1'>
+    <b:widget id='BlogSearch1' locked='false' title='Buscar publicacion' type='BlogSearch' version='1' visible='true'>
       <b:includable id='main'>
         <b:if cond='data:title != &quot;&quot;'>
           <span class='titlebuscador'>
@@ -2425,100 +2527,100 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
     </b:widget>
 
     <!--
-                  *======================
-                  ✏️marker Texto animado
-                  *======================
-                  -->
-                  <b:widget id='TextList1' locked='false' title='frases del texto animado' type='TextList'>
-                    <b:widget-settings>
-                      <b:widget-setting name='shownum'>5</b:widget-setting>
-                      <b:widget-setting name='sorting'>NONE</b:widget-setting>
-                      <b:widget-setting name='item-0'> Blog del centro agroturistico </b:widget-setting>
-                      <b:widget-setting name='item-1'> Nuestra pagina web ✨ </b:widget-setting>
-                      <b:widget-setting name='item-2'> ¡te mantenemos al dia! 📰 </b:widget-setting>
-                      <b:widget-setting name='item-3'> entra al mundo laboral 🚀 </b:widget-setting>
-                      <b:widget-setting name='item-4'> lo que nesecitas saber</b:widget-setting>
-                    </b:widget-settings>
-                    <b:includable id='main'>
-                     <div id="texto-animado-cont">
-                        <b:loop values='data:items' var='item'>
-                          <div class="texto-animado"> <data:item/>  </div>
-                        </b:loop>
-                     </div>
-                          <style>
-                            /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
-                            /*css 👈 comando decorativo "Highlight String Code */
-                            #TextList1{
-                                display: flex;
-                                justify-content: center;
-                              }
-                            #texto-animado-cont {
-                              display: flex;
-                              overflow: hidden;
-                              interpolate-size: allow-keywords;
-                              width: min-content;
-                              animation: blinkCursor 1s infinite steps(1);
-                              border-right: 1px solid #7d7d7d; /* Cursor */
-                            }
-                            .texto-animado {
-                              overflow: hidden;
-                              width: 0;
-                              max-width: 100%;
-                              white-space: nowrap;
-                            }
-                            .txt-visible {
-                              margin-right: 4px;
-                              overflow: visible;
-                              width: fit-content;
-                            }
-                            @keyframes escribiryborrar {
-                              0%,10% { width: 0px }
-                              30%, 70% { width: min-content;}
-                              90%, 100% { width: 0px }
-                            }
-                            @keyframes blinkCursor {
-                              50% {border-right-color: transparent;}
-                            }
-                            /* animacion v2 de borrado
-                            @keyframes escribiryborrar {
-                              0% { width: 0px }
-                              15%, 85% { width: min-content }
-                              100% { width: 0px }
-                            }*/
-                            /*!css*/
-                            /*]]>*/
-                          </style>
-                          <script>
-                            //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
-                            //js 👈 comando decorativo "Highlight String Code"
-                            
-                            
-                            function textoAnimado() {
-                              const contenedor = document.getElementById("texto-animado-cont");
-                              const textos = contenedor.getElementsByClassName("texto-animado");
-                              let textoCount = 0;
-                              contenedor.style.animation = "escribiryborrar 7s infinite, blinkCursor 1s infinite steps(1)";
-                              textos[textoCount].classList.add("txt-visible"); // Mostrar primer texto
-                              contenedor.addEventListener("animationiteration", (event) => {
-                                if (event.animationName !== "escribiryborrar") return;
-                                textos[textoCount].classList.remove("txt-visible"); // Ocultar texto actual
-                                textoCount++ // Avanzar contador
-                                if (textoCount == textos.length) textoCount = 0 // reset
-                                textos[textoCount].classList.add("txt-visible");// Mostrar nuevo texto
-                              });
-                            };
-                            //!js
-                            //]]>
-                          </script>
-                    </b:includable>                      
-                  </b:widget>
+    *======================
+    ✏️marker Texto animado
+    *======================
+    -->
+    <b:widget id='TextList1' locked='false' title='frases del texto animado' type='TextList' visible='true'>
+      <b:widget-settings>
+        <b:widget-setting name='shownum'>5</b:widget-setting>
+        <b:widget-setting name='sorting'>NONE</b:widget-setting>
+        <b:widget-setting name='item-0'> Blog del centro agroturistico </b:widget-setting>
+        <b:widget-setting name='item-1'> Nuestra pagina web ✨ </b:widget-setting>
+        <b:widget-setting name='item-2'> ¡te mantenemos al dia! 📰 </b:widget-setting>
+        <b:widget-setting name='item-3'> entra al mundo laboral 🚀 </b:widget-setting>
+        <b:widget-setting name='item-4'> lo que nesecitas saber</b:widget-setting>
+      </b:widget-settings>
+      <b:includable id='main'>
+       <div id="texto-animado-cont">
+          <b:loop values='data:items' var='item'>
+            <div class="texto-animado"> <data:item/>  </div>
+          </b:loop>
+       </div>
+            <style>
+              /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+              /*css 👈 comando decorativo "Highlight String Code */
+              #TextList1{
+                  display: flex;
+                  justify-content: center;
+                }
+              #texto-animado-cont {
+                display: flex;
+                overflow: hidden;
+                interpolate-size: allow-keywords;
+                width: min-content;
+                animation: blinkCursor 1s infinite steps(1);
+                border-right: 1px solid #7d7d7d; /* Cursor */
+              }
+              .texto-animado {
+                overflow: hidden;
+                width: 0;
+                max-width: 100%;
+                white-space: nowrap;
+              }
+              .txt-visible {
+                margin-right: 4px;
+                overflow: visible;
+                width: fit-content;
+              }
+              @keyframes escribiryborrar {
+                0%,10% { width: 0px }
+                30%, 70% { width: min-content;}
+                90%, 100% { width: 0px }
+              }
+              @keyframes blinkCursor {
+                50% {border-right-color: transparent;}
+              }
+              /* animacion v2 de borrado
+              @keyframes escribiryborrar {
+                0% { width: 0px }
+                15%, 85% { width: min-content }
+                100% { width: 0px }
+              }*/
+              /*!css*/
+              /*]]>*/
+            </style>
+            <script>
+              //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
+              //js 👈 comando decorativo "Highlight String Code"
+              
+              
+              function textoAnimado() {
+                const contenedor = document.getElementById("texto-animado-cont");
+                const textos = contenedor.getElementsByClassName("texto-animado");
+                let textoCount = 0;
+                contenedor.style.animation = "escribiryborrar 7s infinite, blinkCursor 1s infinite steps(1)";
+                textos[textoCount].classList.add("txt-visible"); // Mostrar primer texto
+                contenedor.addEventListener("animationiteration", (event) => {
+                  if (event.animationName !== "escribiryborrar") return;
+                  textos[textoCount].classList.remove("txt-visible"); // Ocultar texto actual
+                  textoCount++ // Avanzar contador
+                  if (textoCount == textos.length) textoCount = 0 // reset
+                  textos[textoCount].classList.add("txt-visible");// Mostrar nuevo texto
+                });
+              };
+              //!js
+              //]]>
+            </script>
+      </b:includable>                      
+    </b:widget>
 
     <!--
     *========================
     📈marker estadisticas
     *========================
     -->
-    <b:widget id='Stats1' locked='false' title='Visitas del blog' type='Stats'>
+    <b:widget id='Stats1' locked='false' title='Visitas del blog' type='Stats' visible='true'>
       <b:widget-settings>
         <b:widget-setting name='showGraphicalCounter'>false</b:widget-setting>
         <b:widget-setting name='showAnimatedCounter'>true</b:widget-setting>
@@ -2580,7 +2682,7 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
     ^=================
     -->
 
-    <b:widget id='PageList1' locked='false' title='' type='PageList'>
+    <b:widget id='PageList1' locked='false' title='' type='PageList' visible='true'>
       <b:widget-settings>
         <b:widget-setting name='pageListJson'>
           <![CDATA[{
@@ -2640,7 +2742,7 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
     📢marker Redes sociales
     ========================
     -->
-    <b:widget id='PageList2' locked='false' title='redes sociales (solo cambiar los url)' version='2'>
+    <b:widget id='PageList2' locked='false' title='redes sociales (solo cambiar los url)' version='2' visible='true'>
       <b:widget-settings>
         <b:widget-setting name='pageListJson'>
           <![CDATA[{
@@ -2753,7 +2855,6 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
         </h2>
         <div class="redes-sociales-cont">
           <b:loop values='data:links' var='link' >
-              <b:class cond='data:link.isCurrentPage' name='selected'/>
               <a expr:href='data:link.href' class="red-social-link" expr:title="data:link.href">
                 <div expr:class='(data:link.title + " red-social")'>
                   <b:if cond='data:link.title == "facebook"'>
@@ -2766,7 +2867,16 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0,0,256,256" width="30px" height="30px" fill-rule="nonzero"><g transform="translate(-19.2,-19.2) scale(1.15,1.15)"><g fill=" #FF0033 " fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(8.53333,8.53333)"><path d="M15,4c-4.186,0 -9.61914,1.04883 -9.61914,1.04883l-0.01367,0.01563c-1.90652,0.30491 -3.36719,1.94317 -3.36719,3.93555v6v0.00195v5.99805v0.00195c0.00384,1.96564 1.4353,3.63719 3.37695,3.94336l0.00391,0.00586c0,0 5.43314,1.05078 9.61914,1.05078c4.186,0 9.61914,-1.05078 9.61914,-1.05078l0.00195,-0.00195c1.94389,-0.30554 3.37683,-1.97951 3.37891,-3.94727v-0.00195v-5.99805v-0.00195v-6c-0.00288,-1.96638 -1.43457,-3.63903 -3.37695,-3.94531l-0.00391,-0.00586c0,0 -5.43314,-1.04883 -9.61914,-1.04883zM12,10.39844l8,4.60156l-8,4.60156z"></path></g></g></g></svg>
                   </b:if>
                   <b:if cond='data:link.title == "instagram"'>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="1000" height="1000" viewBox="0 0 264.5833 264.5833" inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)" sodipodi:docname="Instagram_(2022).svg"><defs><radialGradient id="f" cx="158.429" cy="578.088" r="52.3515" xlink:href="#a" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0 -4.03418 4.28018 0 -2332.2273 942.2356)" fx="158.429" fy="578.088"/><radialGradient inkscape:collect="always" xlink:href="#b" id="g" gradientUnits="userSpaceOnUse" gradientTransform="matrix(.67441 -1.16203 1.51283 .87801 -814.3657 -47.8354)" cx="172.6149" cy="600.6924" fx="172.6149" fy="600.6924" r="65"/><radialGradient inkscape:collect="always" xlink:href="#c" id="h" cx="144.012" cy="51.3367" fx="144.012" fy="51.3367" r="67.081" gradientTransform="matrix(-2.3989 .67549 -.23008 -.81732 464.9957 -26.4035)" gradientUnits="userSpaceOnUse"/><radialGradient inkscape:collect="always" xlink:href="#d" id="e" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-3.10797 .87652 -.6315 -2.23914 1345.6503 1374.1983)" cx="199.7884" cy="628.4379" fx="199.7884" fy="628.4379" r="52.3515"/><linearGradient inkscape:collect="always" id="d"><stop offset="0" stop-color="#ff005f"/><stop offset="1" stop-color="#fc01d8"/></linearGradient><linearGradient id="c"><stop offset="0" stop-color="#780cff"/><stop stop-color="#820bff" offset="1" stop-opacity="0"/></linearGradient><linearGradient inkscape:collect="always" id="b"><stop offset="0" stop-color="#fc0"/><stop offset="1" stop-color="#fc0" stop-opacity="0"/></linearGradient><linearGradient id="a"><stop offset="0" stop-color="#fc0"/><stop offset=".1242" stop-color="#fc0"/><stop offset=".5672" stop-color="#fe4a05"/><stop offset=".6942" stop-color="#ff0f3f"/><stop offset="1" stop-color="#fe0657" stop-opacity="0"/></linearGradient></defs><sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:zoom=".515" inkscape:cx="500" inkscape:cy="500" inkscape:document-units="mm" inkscape:current-layer="layer1" inkscape:document-rotation="0" showgrid="false" inkscape:window-width="1366" inkscape:window-height="705" inkscape:window-x="-8" inkscape:window-y="-8" inkscape:window-maximized="1"/><g inkscape:label="Layer 1" inkscape:groupmode="layer"><path d="M204.1503 18.1429c-55.2305 0-71.3834.057-74.5232.3175-11.3342.9424-18.387 2.7275-26.0708 6.554-5.9214 2.9413-10.5915 6.3506-15.2005 11.1298-8.3938 8.7157-13.481 19.4383-15.3226 32.1842-.8953 6.1877-1.1558 7.4496-1.2087 39.0558-.0203 10.5354 0 24.4007 0 42.9984 0 55.2008.061 71.3418.3256 74.4764.9157 11.032 2.6453 17.9728 6.3081 25.565 7 14.5329 20.369 25.4428 36.119 29.5137 5.4535 1.4044 11.4767 2.1779 19.2092 2.5442 3.2762.1425 36.6684.2443 70.081.2443 33.4127 0 66.8253-.0407 70.02-.2035 8.9535-.4214 14.1526-1.1195 19.9011-2.6054 15.8517-4.0912 28.9767-14.8383 36.119-29.5748 3.5916-7.409 5.4128-14.6144 6.237-25.0704.179-2.2796.2543-38.6263.2543-74.924 0-36.304-.0814-72.5835-.2605-74.8632-.8343-10.6249-2.6555-17.7692-6.363-25.3207-3.0421-6.1816-6.42-10.798-11.324-15.518-8.752-8.3616-19.4555-13.4502-32.2101-15.2902-6.18-.8936-7.411-1.1582-39.033-1.2131z" inkscape:connector-curvature="0" fill="url(#e)" transform="translate(-71.8155 -18.1429)"/><path d="M204.1503 18.1429c-55.2305 0-71.3834.057-74.5232.3175-11.3342.9424-18.387 2.7275-26.0708 6.554-5.9214 2.9413-10.5915 6.3506-15.2005 11.1298-8.3938 8.7157-13.481 19.4383-15.3226 32.1842-.8953 6.1877-1.1558 7.4496-1.2087 39.0558-.0203 10.5354 0 24.4007 0 42.9984 0 55.2008.061 71.3418.3256 74.4764.9157 11.032 2.6453 17.9728 6.3081 25.565 7 14.5329 20.369 25.4428 36.119 29.5137 5.4535 1.4044 11.4767 2.1779 19.2092 2.5442 3.2762.1425 36.6684.2443 70.081.2443 33.4127 0 66.8253-.0407 70.02-.2035 8.9535-.4214 14.1526-1.1195 19.9011-2.6054 15.8517-4.0912 28.9767-14.8383 36.119-29.5748 3.5916-7.409 5.4128-14.6144 6.237-25.0704.179-2.2796.2543-38.6263.2543-74.924 0-36.304-.0814-72.5835-.2605-74.8632-.8343-10.6249-2.6555-17.7692-6.363-25.3207-3.0421-6.1816-6.42-10.798-11.324-15.518-8.752-8.3616-19.4555-13.4502-32.2101-15.2902-6.18-.8936-7.411-1.1582-39.033-1.2131z" inkscape:connector-curvature="0" fill="url(#f)" transform="translate(-71.8155 -18.1429)"/><path d="M204.1503 18.1429c-55.2305 0-71.3834.057-74.5232.3175-11.3342.9424-18.387 2.7275-26.0708 6.554-5.9214 2.9413-10.5915 6.3506-15.2005 11.1298-8.3938 8.7157-13.481 19.4383-15.3226 32.1842-.8953 6.1877-1.1558 7.4496-1.2087 39.0558-.0203 10.5354 0 24.4007 0 42.9984 0 55.2008.061 71.3418.3256 74.4764.9157 11.032 2.6453 17.9728 6.3081 25.565 7 14.5329 20.369 25.4428 36.119 29.5137 5.4535 1.4044 11.4767 2.1779 19.2092 2.5442 3.2762.1425 36.6684.2443 70.081.2443 33.4127 0 66.8253-.0407 70.02-.2035 8.9535-.4214 14.1526-1.1195 19.9011-2.6054 15.8517-4.0912 28.9767-14.8383 36.119-29.5748 3.5916-7.409 5.4128-14.6144 6.237-25.0704.179-2.2796.2543-38.6263.2543-74.924 0-36.304-.0814-72.5835-.2605-74.8632-.8343-10.6249-2.6555-17.7692-6.363-25.3207-3.0421-6.1816-6.42-10.798-11.324-15.518-8.752-8.3616-19.4555-13.4502-32.2101-15.2902-6.18-.8936-7.411-1.1582-39.033-1.2131z" inkscape:connector-curvature="0" fill="url(#g)" transform="translate(-71.8155 -18.1429)"/><path d="M204.1503 18.1429c-55.2305 0-71.3834.057-74.5232.3175-11.3342.9424-18.387 2.7275-26.0708 6.554-5.9214 2.9413-10.5915 6.3506-15.2005 11.1298-8.3938 8.7157-13.481 19.4383-15.3226 32.1842-.8953 6.1877-1.1558 7.4496-1.2087 39.0558-.0203 10.5354 0 24.4007 0 42.9984 0 55.2008.061 71.3418.3256 74.4764.9157 11.032 2.6453 17.9728 6.3081 25.565 7 14.5329 20.369 25.4428 36.119 29.5137 5.4535 1.4044 11.4767 2.1779 19.2092 2.5442 3.2762.1425 36.6684.2443 70.081.2443 33.4127 0 66.8253-.0407 70.02-.2035 8.9535-.4214 14.1526-1.1195 19.9011-2.6054 15.8517-4.0912 28.9767-14.8383 36.119-29.5748 3.5916-7.409 5.4128-14.6144 6.237-25.0704.179-2.2796.2543-38.6263.2543-74.924 0-36.304-.0814-72.5835-.2605-74.8632-.8343-10.6249-2.6555-17.7692-6.363-25.3207-3.0421-6.1816-6.42-10.798-11.324-15.518-8.752-8.3616-19.4555-13.4502-32.2101-15.2902-6.18-.8936-7.411-1.1582-39.033-1.2131z" inkscape:connector-curvature="0" fill="url(#h)" transform="translate(-71.8155 -18.1429)"/><path d="M132.3452 33.973c-26.7167 0-30.0696.1167-40.5629.5939-10.4727.4792-17.6212 2.136-23.8762 4.567-6.4701 2.5107-11.9586 5.8693-17.4265 11.3352-5.472 5.464-8.8332 10.9483-11.354 17.4116-2.4389 6.2524-4.099 13.3976-4.5703 23.8585-.4693 10.4854-.5923 13.8379-.5923 40.5348 0 26.697.1189 30.0371.5943 40.5225.4817 10.465 2.1397 17.6082 4.5703 23.8585 2.5147 6.4654 5.8758 11.9497 11.3458 17.4136 5.466 5.468 10.9544 8.8349 17.4204 11.3456 6.259 2.4309 13.4097 4.0877 23.8803 4.567 10.4933.477 13.8441.5938 40.5588.5938 26.7188 0 30.0615-.1167 40.5547-.5939 10.4728-.4792 17.6295-2.136 23.8885-4.567 6.4681-2.5106 11.9484-5.8775 17.4143-11.3455 5.472-5.4639 8.8332-10.9482 11.354-17.4115 2.4183-6.2524 4.0784-13.3976 4.5703-23.8585.4713-10.4854.5943-13.8277.5943-40.5246 0-26.697-.123-30.0473-.5943-40.5328-.4919-10.465-2.152-17.6081-4.5703-23.8584-2.5208-6.4654-5.882-11.9498-11.354-17.4137-5.4721-5.468-10.9442-8.8266-17.4204-11.3353-6.2714-2.4309-13.424-4.0877-23.8967-4.5669-10.4933-.4772-13.8339-.5939-40.5588-.5939zm-8.825 17.7147c2.6193-.0041 5.5418 0 8.825 0 26.2659 0 29.379.0942 39.7513.5652 9.5915.4383 14.7971 2.0397 18.2648 3.3852 4.5908 1.7817 7.8638 3.9116 11.3048 7.3521 3.4431 3.4406 5.5745 6.7173 7.3617 11.3046 1.3465 3.461 2.9512 8.6628 3.3877 18.2472.4714 10.3625.5739 13.4754.5739 39.7095 0 26.234-.1025 29.347-.5739 39.7095-.4386 9.5843-2.0412 14.7861-3.3877 18.2471-1.783 4.5874-3.9186 7.8539-7.3617 11.2923-3.443 3.4406-6.712 5.5704-11.3048 7.3521-3.4636 1.3517-8.6733 2.949-18.2648 3.3873-10.3702.471-13.4854.5734-39.7513.5734-26.2679 0-29.381-.1024-39.7513-.5734-9.5914-.4423-14.797-2.0438-18.2668-3.3893-4.5908-1.7817-7.87-3.9116-11.313-7.3521-3.4431-3.4405-5.5745-6.709-7.3617-11.2985-1.3465-3.461-2.9512-8.6628-3.3877-18.2471-.4714-10.3626-.5657-13.4754-.5657-39.7259 0-26.2504.0943-29.347.5657-39.7095.4386-9.5844 2.0412-14.7861 3.3877-18.2512 1.783-4.5874 3.9186-7.8641 7.3617-11.3046 3.443-3.4406 6.7222-5.5704 11.313-7.3562 3.4677-1.3517 8.6754-2.949 18.2668-3.3894 9.075-.4096 12.5919-.5324 30.9264-.553zm61.3363 16.322c-6.5173 0-11.805 5.2776-11.805 11.792 0 6.5125 5.2877 11.7962 11.805 11.7962 6.5172 0 11.8049-5.2837 11.8049-11.7962 0-6.5124-5.2877-11.796-11.805-11.796zm-52.5113 13.7826c-27.8993 0-50.5191 22.6031-50.5191 50.4817 0 27.8786 22.6198 50.4714 50.5191 50.4714s50.511-22.5928 50.511-50.4714c0-27.8786-22.6137-50.4817-50.513-50.4817zm0 17.7147c18.109 0 32.7914 14.6694 32.7914 32.767 0 18.0956-14.6824 32.767-32.7914 32.767-18.111 0-32.7913-14.6714-32.7913-32.767 0-18.0976 14.6803-32.767 32.7913-32.767z" inkscape:connector-curvature="0" fill="#fff"/></g></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="1000" height="1000" viewBox="0 0 264.5833 264.5833" inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)" sodipodi:docname="Instagram_(2022).svg"><defs><radialGradient id="f" cx="158.429" cy="578.088" r="52.3515" xlink:href="#a" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0 -4.03418 4.28018 0 -2332.2273 942.2356)" fx="158.429" fy="578.088"/><radialGradient inkscape:collect="always" xlink:href="#b" id="g" gradientUnits="userSpaceOnUse" gradientTransform="matrix(.67441 -1.16203 1.51283 .87801 -814.3657 -47.8354)" cx="172.6149" cy="600.6924" fx="172.6149" fy="600.6924" r="65"/><radialGradient inkscape:collect="always" xlink:href="#c" id="h" cx="144.012" cy="51.3367" fx="144.012" fy="51.3367" r="67.081" gradientTransform="matrix(-2.3989 .67549 -.23008 -.81732 464.9957 -26.4035)" gradientUnits="userSpaceOnUse"/>
+                      <radialGradient inkscape:collect="always" xlink:href="#d" id="e" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-3.10797 .87652 -.6315 -2.23914 1345.6503 1374.1983)" cx="199.7884" cy="628.4379" fx="199.7884" fy="628.4379" r="52.3515"/><linearGradient inkscape:collect="always" id="d"><stop offset="0" stop-color="#ff005f"/><stop offset="1" stop-color="#fc01d8"/></linearGradient><linearGradient id="c"><stop offset="0" stop-color="#780cff"/><stop stop-color="#820bff" offset="1" stop-opacity="0"/></linearGradient><linearGradient inkscape:collect="always" id="b"><stop offset="0" stop-color="#fc0"/><stop offset="1" stop-color="#fc0" stop-opacity="0"/></linearGradient><linearGradient id="a"><stop offset="0" stop-color="#fc0"/><stop offset=".1242" stop-color="#fc0"/><stop offset=".5672" stop-color="#fe4a05"/><stop offset=".6942" stop-color="#ff0f3f"/>
+                      <stop offset="1" stop-color="#fe0657" stop-opacity="0"/></linearGradient></defs><sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:zoom=".515" inkscape:cx="500" inkscape:cy="500" inkscape:document-units="mm" inkscape:current-layer="layer1" inkscape:document-rotation="0" showgrid="false" inkscape:window-width="1366" inkscape:window-height="705" inkscape:window-x="-8" inkscape:window-y="-8" inkscape:window-maximized="1"/><g inkscape:label="Layer 1" inkscape:groupmode="layer"><path d="M204.1503 18.1429c-55.2305 0-71.3834.057-74.5232.3175-11.3342.9424-18.387 2.7275-26.0708 6.554-5.9214 2.9413-10.5915 6.3506-15.2005 11.1298-8.3938 8.7157-13.481 19.4383-15.3226 32.1842-.8953 6.1877-1.1558 7.4496-1.2087 39.0558-.0203 10.5354 0 24.4007 0 42.9984 0 55.2008.061 71.3418.3256 74.4764.9157 11.032 2.6453 17.9728 6.3081 25.565 7 14.5329 20.369 25.4428 36.119 29.5137 5.4535 1.4044 11.4767 2.1779 19.2092 2.5442 3.2762.1425 36.6684.2443 70.081.2443 33.4127 0 
+                      66.8253-.0407 70.02-.2035 8.9535-.4214 14.1526-1.1195 19.9011-2.6054 15.8517-4.0912 28.9767-14.8383 36.119-29.5748 3.5916-7.409 5.4128-14.6144 6.237-25.0704.179-2.2796.2543-38.6263.2543-74.924 0-36.304-.0814-72.5835-.2605-74.8632-.8343-10.6249-2.6555-17.7692-6.363-25.3207-3.0421-6.1816-6.42-10.798-11.324-15.518-8.752-8.3616-19.4555-13.4502-32.2101-15.2902-6.18-.8936-7.411-1.1582-39.033-1.2131z" inkscape:connector-curvature="0" fill="url(#e)" transform="translate(-71.8155 -18.1429)"/><path d="M204.1503 18.1429c-55.2305 0-71.3834.057-74.5232.3175-11.3342.9424-18.387 2.7275-26.0708 6.554-5.9214 2.9413-10.5915 6.3506-15.2005 11.1298-8.3938 8.7157-13.481 19.4383-15.3226 32.1842-.8953 6.1877-1.1558 7.4496-1.2087 39.0558-.0203 10.5354 0 24.4007 0 42.9984 0 55.2008.061 71.3418.3256 74.4764.9157 11.032 2.6453 17.9728 6.3081 25.565 7 14.5329 20.369 25.4428 36.119 29.5137 5.4535 1.4044 11.4767 2.1779 19.2092 2.5442 3.2762.1425 36.6684.2443 70.081.2443 33.4127 0 66.8253-.0407 70.02-.2035 8.9535-.4214 14.1526-1.1195 19.9011-2.6054 15.8517-4.0912 
+                      28.9767-14.8383 36.119-29.5748 3.5916-7.409 5.4128-14.6144 6.237-25.0704.179-2.2796.2543-38.6263.2543-74.924 0-36.304-.0814-72.5835-.2605-74.8632-.8343-10.6249-2.6555-17.7692-6.363-25.3207-3.0421-6.1816-6.42-10.798-11.324-15.518-8.752-8.3616-19.4555-13.4502-32.2101-15.2902-6.18-.8936-7.411-1.1582-39.033-1.2131z" inkscape:connector-curvature="0" fill="url(#f)" transform="translate(-71.8155 -18.1429)"/><path d="M204.1503 18.1429c-55.2305 0-71.3834.057-74.5232.3175-11.3342.9424-18.387 2.7275-26.0708 6.554-5.9214 2.9413-10.5915 6.3506-15.2005 11.1298-8.3938 8.7157-13.481 19.4383-15.3226 32.1842-.8953 6.1877-1.1558 7.4496-1.2087 39.0558-.0203 10.5354 0 24.4007 0 42.9984 0 55.2008.061 71.3418.3256 74.4764.9157 11.032 2.6453 17.9728 6.3081 25.565 7 14.5329 20.369 25.4428 36.119 29.5137 5.4535 1.4044 11.4767 2.1779 19.2092 2.5442 3.2762.1425 36.6684.2443 70.081.2443 33.4127 0 66.8253-.0407 70.02-.2035 8.9535-.4214 14.1526-1.1195 19.9011-2.6054 15.8517-4.0912 28.9767-14.8383 36.119-29.5748 3.5916-7.409 5.4128-14.6144 
+                      6.237-25.0704.179-2.2796.2543-38.6263.2543-74.924 0-36.304-.0814-72.5835-.2605-74.8632-.8343-10.6249-2.6555-17.7692-6.363-25.3207-3.0421-6.1816-6.42-10.798-11.324-15.518-8.752-8.3616-19.4555-13.4502-32.2101-15.2902-6.18-.8936-7.411-1.1582-39.033-1.2131z" inkscape:connector-curvature="0" fill="url(#g)" transform="translate(-71.8155 -18.1429)"/><path d="M204.1503 18.1429c-55.2305 0-71.3834.057-74.5232.3175-11.3342.9424-18.387 2.7275-26.0708 6.554-5.9214 2.9413-10.5915 6.3506-15.2005 11.1298-8.3938 8.7157-13.481 19.4383-15.3226 32.1842-.8953 6.1877-1.1558 7.4496-1.2087 39.0558-.0203 10.5354 0 24.4007 0 42.9984 0 55.2008.061 71.3418.3256 74.4764.9157 11.032 2.6453 17.9728 6.3081 25.565 7 14.5329 20.369 25.4428 36.119 29.5137 5.4535 1.4044 11.4767 2.1779 19.2092 2.5442 3.2762.1425 36.6684.2443 70.081.2443 33.4127 0 66.8253-.0407 70.02-.2035 8.9535-.4214 14.1526-1.1195 19.9011-2.6054 15.8517-4.0912 28.9767-14.8383 
+                      36.119-29.5748 3.5916-7.409 5.4128-14.6144 6.237-25.0704.179-2.2796.2543-38.6263.2543-74.924 0-36.304-.0814-72.5835-.2605-74.8632-.8343-10.6249-2.6555-17.7692-6.363-25.3207-3.0421-6.1816-6.42-10.798-11.324-15.518-8.752-8.3616-19.4555-13.4502-32.2101-15.2902-6.18-.8936-7.411-1.1582-39.033-1.2131z" inkscape:connector-curvature="0" fill="url(#h)" transform="translate(-71.8155 -18.1429)"/><path d="M132.3452 33.973c-26.7167 0-30.0696.1167-40.5629.5939-10.4727.4792-17.6212 2.136-23.8762 4.567-6.4701 2.5107-11.9586 5.8693-17.4265 11.3352-5.472 5.464-8.8332 10.9483-11.354 17.4116-2.4389 6.2524-4.099 13.3976-4.5703 23.8585-.4693 10.4854-.5923 13.8379-.5923 40.5348 0 26.697.1189 30.0371.5943 40.5225.4817 10.465 2.1397 17.6082 4.5703 23.8585 2.5147 6.4654 5.8758 11.9497 11.3458 17.4136 5.466 5.468 10.9544 8.8349 17.4204 11.3456 6.259 2.4309 13.4097 4.0877 23.8803 4.567 10.4933.477 13.8441.5938 40.5588.5938 26.7188 0 30.0615-.1167 40.5547-.5939 10.4728-.4792 17.6295-2.136 23.8885-4.567 6.4681-2.5106 11.9484-5.8775 17.4143-11.3455 5.472-5.4639 
+                      8.8332-10.9482 11.354-17.4115 2.4183-6.2524 4.0784-13.3976 4.5703-23.8585.4713-10.4854.5943-13.8277.5943-40.5246 0-26.697-.123-30.0473-.5943-40.5328-.4919-10.465-2.152-17.6081-4.5703-23.8584-2.5208-6.4654-5.882-11.9498-11.354-17.4137-5.4721-5.468-10.9442-8.8266-17.4204-11.3353-6.2714-2.4309-13.424-4.0877-23.8967-4.5669-10.4933-.4772-13.8339-.5939-40.5588-.5939zm-8.825 17.7147c2.6193-.0041 5.5418 0 8.825 0 26.2659 0 29.379.0942 39.7513.5652 9.5915.4383 14.7971 2.0397 18.2648 3.3852 4.5908 1.7817 7.8638 3.9116 11.3048 7.3521 3.4431 3.4406 5.5745 6.7173 7.3617 11.3046 1.3465 3.461 2.9512 8.6628 3.3877 18.2472.4714 10.3625.5739 13.4754.5739 39.7095 0 26.234-.1025 29.347-.5739 39.7095-.4386 9.5843-2.0412 14.7861-3.3877 18.2471-1.783 4.5874-3.9186 7.8539-7.3617 11.2923-3.443 3.4406-6.712 5.5704-11.3048 7.3521-3.4636 1.3517-8.6733 2.949-18.2648 3.3873-10.3702.471-13.4854.5734-39.7513.5734-26.2679 0-29.381-.1024-39.7513-.5734-9.5914-.4423-14.797-2.0438-18.2668-3.3893-4.5908-1.7817-7.87-3.9116-11.313-7.3521-3.4431-3.4405-5.5745-6.709-7.3617
+                      -11.2985-1.3465-3.461-2.9512-8.6628-3.3877-18.2471-.4714-10.3626-.5657-13.4754-.5657-39.7259 0-26.2504.0943-29.347.5657-39.7095.4386-9.5844 2.0412-14.7861 3.3877-18.2512 1.783-4.5874 3.9186-7.8641 7.3617-11.3046 3.443-3.4406 6.7222-5.5704 11.313-7.3562 3.4677-1.3517 8.6754-2.949 18.2668-3.3894 9.075-.4096 12.5919-.5324 30.9264-.553zm61.3363 16.322c-6.5173 0-11.805 5.2776-11.805 11.792 0 6.5125 5.2877 11.7962 11.805 11.7962 6.5172 0 11.8049-5.2837 11.8049-11.7962 0-6.5124-5.2877-11.796-11.805-11.796zm-52.5113 13.7826c-27.8993 0-50.5191 22.6031-50.5191 50.4817 0 27.8786 22.6198 50.4714 50.5191 50.4714s50.511-22.5928 50.511-50.4714c0-27.8786-22.6137-50.4817-50.513-50.4817zm0 17.7147c18.109 0 32.7914 14.6694 32.7914 32.767 0 18.0956-14.6824 32.767-32.7914 32.767-18.111 0-32.7913-14.6714-32.7913-32.767 0-18.0976 14.6803-32.767 32.7913-32.767z" inkscape:connector-curvature="0" fill="#fff"/></g>
+                    </svg>
                   </b:if>
                 </div>
               </a>
@@ -2781,7 +2891,7 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
     ?======================
     -->
 
-    <b:widget id='HTML2' locked='false' title='google maps' type='HTML'>
+    <b:widget id='HTML2' locked='false' title='google maps' type='HTML' visible='true'>
       <b:widget-settings>
         <b:widget-setting name='content'>
           <![CDATA[
@@ -2819,20 +2929,6 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
           <script>  
             //<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante!  
             //js 👈 Comando decorativo "Highlight String Code"
-
-            function iframeOverlay(element){
-              if (element.style.display != 'none') {
-                element.style.display = 'none'
-
-                document.addEventListener("pointerdown", function handleClick(event) {
-                  console.log('click', element.parentElement.classList);
-                  if (!element.parentElement.contains(event.target)) { // click fuera del contenedor
-                    element.style.display = "flex";
-                    document.removeEventListener("click", handleClick);
-                  }
-                });
-              }
-            }
 
             //!js  
             //]]>  
@@ -2907,7 +3003,7 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
     💾marker BlogArchive1
     ?======================
     -->
-    <b:widget id='BlogArchive1' locked='false' title='Historial del blog' type='BlogArchive' version='1'>
+    <b:widget id='BlogArchive1' locked='false' title='Historial del blog' type='BlogArchive' version='1' visible='true'>
       <b:widget-settings>
         <b:widget-setting name='showStyle'>HIERARCHY</b:widget-setting>
         <b:widget-setting name='yearPattern'>yyyy</b:widget-setting>
@@ -3107,18 +3203,18 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
     ✖️marker posts de X
     ?======================
     -->
-    <b:widget id='HTML1' locked='false' title='post en X' type='HTML'>
+    <b:widget id='HTML1' locked='false' title='post en X' type='HTML' visible='true'>
       <b:widget-settings>
         <b:widget-setting name='content'><![CDATA[
           <div class="postsx-cont">
             <div class="iframe-overlay" id="map-overlay" onclick='iframeOverlay(this)'>
               <div>click para interactuar</div>
             </div>
-                <a class="twitter-timeline" data-chrome="nofooter noborders"
-        data-dnt="true" data-theme="light"
-        href="https://twitter.com/SENAComunica">
-        Tweets SENAComunica
-    </a>
+              <a class="twitter-timeline" data-chrome="nofooter noborders"
+                data-dnt="true" data-theme="light" omit_script=true
+                href="https://twitter.com/SENAComunica">
+                Tweets SENAComunica
+              </a>
           </div>
           ]]>
         </b:widget-setting>
@@ -3131,15 +3227,30 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
           /*<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante! */  
           /*css 👈 Comando decorativo "Highlight String Code" */
           .postsx-cont {
-            height: 500px;
             overflow-y: auto;
+            overflow-x: hidden;
           }
-          .postsx{
+          .postsx-cont iframe{
+                width: 100%;
+          }
+          .postsx-cont .iframe-overlay{
+            display: none;
+          }
+          @media (max-width: 800px) {
+            .postsx-cont {
+              height: 500px;
+            }
+            .postsx-cont .iframe-overlay{
+              display: flex;
+            }
           }
           .twitter-timeline{
             width: 100%;
             align-items: flex-start;
             justify-content: center;
+          }
+          .twitter-timeline div {
+            border: none !important;
           }
           /*!css*/  
           /*]]>*/  
@@ -3172,93 +3283,62 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
     </b:widget>
   </b:section-contents>
 
-  <b:section-contents id='footer-1'/>
+  <b:section-contents id='sidebar-right-2'>
+  </b:section-contents>
+
+  <b:section-contents id='footer-1'>
+    <b:widget id='HTML3' locked='false' title='prueba' type='HTML'>
+      <b:widget-settings>
+        <b:widget-setting name='content'><![CDATA[<div>hola que </div>]]></b:widget-setting>
+      </b:widget-settings>
+      <b:includable id='main'>
+      <div class='widget-content'>
+        <data:content/>
+      </div>
+      </b:includable>
+    </b:widget>
+  </b:section-contents>
+
   <b:section-contents id='footer-2-1'/>
   <b:section-contents id='footer-2-2'/>
 
+  <!--
+  ?==================================================
+  ⚙️marker Scripts .................................
+  ?==================================================
+  -->
+
+
+
+
+  <!--
+  ?============================
+  ⚙️marker [ Generales ]
+  ?============================
+  -->
 
   <script>
     //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
-    //js 👈 comando decorativo "Highlight String Code"                    
-    function ajustarColumnas() {
-      if (window.innerWidth < 900) return;
-      columnasAjustadas = true // para que no vuelva a ejecutarse
-
-      const contenedor = document.getElementById('Blog1');
-      const posts = contenedor.querySelectorAll('.post');
-
-
-      // Crear observador para detectar cambios de tamaño
-      const resizeObserver = new ResizeObserver(entries => {
-        entries.forEach(entry => {
-          // Si la altura supera 800px, aplicar la clase y dejar de observar ese elemento
-          if (entry.contentRect.height > 800) {
-            if (window.innerWidth < 900) return;
-            entry.target.classList.add("dos-columnas");
-            resizeObserver.unobserve(entry.target);
-            const imagenes = entry.target.getElementsByTagName("img"); // Obtiene todas las imágenes dentro
-            if(imagenes.length <= 2) {
-              for (var i = 0; i < imagenes.length; i++) {
-                imagenes[i].classList.add("imagen-grande");
-              }
-            } else if ((imagenes.length % 4) <= 2 ){
-              for (var i = 0; i < imagenes.length; i++) {
-                imagenes[i].classList.add("imagen-mediana");
-              }
-            }
-          }
-        });
-      });
-
-      // Observar cada post
-      posts.forEach(post => {
-        resizeObserver.observe(post);
-      });
-    }
-    let columnasAjustadas = false;
-    const handleResize = () => {
-      if (columnasAjustadas) {
-        window.removeEventListener('resize', handleResize);
-        return;
-      }
-      ajustarColumnas();
-    };
-    window.addEventListener('resize', handleResize);
-    // al precionar la fecha scrole asi arriba
-    function scrollFecha(element) {
-      element.parentElement.parentElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-    //!js
-    //]]>
-  </script>
-
-    <!--
-    ?============================
-    🔽marker Scripts inyectados
-    ?============================
-    -->
-
-  <script>
-    //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
-    //js 👈 comando decorativo "Highlight String Code"
+    //js 👈 comando decorativo "Highlight String Code" 
 
     function transformarObjetos(data) {
       let parser = new DOMParser();
       let doc = parser.parseFromString(data, "text/html"); // Convierte el string en HTML
       console.log(doc.body); // Muestra el HTML organizado en la consola
-    }
+    }  
 
-    function quitarEspacios(){
-      let posts = document.getElementsByClassName('post-body');
-        for (let i = 0; i < posts.length; i++) {
-            posts[i].innerHTML = posts[i].innerHTML.replace(/&nbsp;/g, " ");
-        }
+    // funcion para quitar overlays
+    function iframeOverlay(element){ 
+      if (element.style.display != 'none') {
+        element.style.display = 'none'
+        document.addEventListener("pointerdown", function handleClick(event) {
+          if (!element.parentElement.contains(event.target)) { // click fuera del contenedor
+            element.style.display = "flex"; // mostrar
+            document.removeEventListener("click", handleClick); // eliminar evento
+          }
+        });
+      }
     }
-
-    <!--* Elimina la clase 'loading' después de 10ms -->
-    window.setTimeout(function () {
-      document.body.className = document.body.className.replace('loading', '');
-    }, 10);
 
     // Función para copiar texto al portapapeles
     async function copiarTexto(texto) {
@@ -3269,49 +3349,9 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
         console.error("Error al copiar el texto: ", error);
         mostrarNotificacion("Error al copiar el texto: ", error, "negativa")
       }
-    }
-  
-    // eleva la galeria de imagenes
-    // asi el menu no las atrabieza
-    // con su "z-index" superior 👇
+    } 
 
-    let elevacionfinalizada = false;
-    if (!elevacionfinalizada) {
-      const observer = new MutationObserver(() => {
-        const lastElement = document.body.lastElementChild;
-        if (lastElement ? lastElement.classList.contains("CSS_LIGHTBOX") : false) {
-          lastElement.classList.add("destacado");
-          elevacionfinalizada = true;
-        }
-      });
-
-      observer.observe(document.body, {
-        childList: true,
-        subtree: false
-      });
-    }
-
-
-  function agregarBotonesDescarga() {
-      // Para cada post, selecciona todas las imágenes
-      const images = document.querySelectorAll('.post-body img')
-      images.forEach(img => {
-        if (!img.nextElementSibling || !img.nextElementSibling.classList.contains('download-btn')) {
-          img.insertAdjacentHTML('beforebegin', `
-            <button class="download-btn" onclick="
-              event.preventDefault(); 
-              event.stopPropagation();
-              descargarImagen('${img.src}')
-            ">
-              <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="#39a900"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-photo-down"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 8h.01" /><path d="M12.5 21h-6.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v6.5" /><path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l4 4" /><path d="M14 14l1 -1c.653 -.629 1.413 -.815 2.13 -.559" /><path d="M19 16v6" /><path d="M22 19l-3 3l-3 -3" /></svg>
-            </button>
-          `);
-        }
-    });
-  }
-
-
-
+    // Función para descargar una imagen de un dominio diferente 
     async function descargarImagen(imageURL){
       mostrarNotificacion('descarga','preparando descarga','info')
       const proxyUrl = 'https://corsproxy.io/?';
@@ -3340,40 +3380,34 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
         console.error('Error:', error);
         mostrarNotificacion('descarga fallida',error.message,'negativa')
       }
-    }
+    }           
+
+    //!js
+    //]]>
+  </script>
 
 
+  <!--
+  ?============================
+  ⚙️marker [ Ejecutar ]
+  ?============================
+  -->
+  <script>
+    //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
+    //js 👈 comando decorativo "Highlight String Code"
+    <!--* Elimina la clase 'loading' después de 10ms -->
+    window.setTimeout(function () {
+      document.body.className = document.body.className.replace('loading', '');
+    }, 10);
 
     // apenas cargue la estructura de la pagina
     document.addEventListener("DOMContentLoaded", () => {
+      ModalesDeImagenesPosts()
       asignarPaginaActual()
       ajustarColumnas()
     });
 
-  document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll(".post").forEach((post, index) => {
-        post.querySelectorAll("img").forEach(img => {
-            img.parentElement.setAttribute("data-fancybox", "post-group-" + index);
-        });
-    });
-    Fancybox.bind("[data-fancybox]", {
-      compact: false, //desactiva la vercion movil
-      animated: false, // Desactiva animaciones
-      showClass: "fancybox-fadeIn", // Animación más simple
-      hideClass: "fancybox-fadeOut",
 
-      panOnlyZoomed: false, // Permite hacer zoom incluso sin hacer clic
-      on: {
-            close: () => {
-                // prevenir errores con lectores de pantalla
-                if (document.activeElement) {
-                  document.activeElement.blur();
-                }
-
-            }
-        }
-    });
-  });
 
     // al terminar de cargar los recursos
     window.addEventListener("load", () => {
