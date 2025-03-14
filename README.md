@@ -11,8 +11,10 @@
 
 > [!TIP]  
 > ## ¿Dónde trabajar?  
-> Recomiendo usar Visual Studio Code para modificar este código 
-> A continuación, algunas extensiones y configuraciones recomendadas:  
+> Recomiendo usar Visual Studio Code para modificar este código aun que claro
+> un GRAN truco es si tienes un error ir al editor del blogger `tema/personalizar/editar HTML`
+> pegar tu codigo defectuoso y te dira si hay un error en la sintaxys XML (algo muy util)
+> A continuación, algunas extensiones y configuraciones para Visual studio recomendadas:  
 >  
 > ### Extensiones:  
 > - **XML Format** (lo más importante XD)  
@@ -39,9 +41,9 @@
 > ## Tener en cuenta  
 > - Ten cuidado con los comentarios que agregas, más de una vez  
 >   han causado que los scripts dejen de funcionar ☠️  
-> - Sube cambios constantemente o podrías perder algo importante,  
->   lo que te hará usar mucho `Ctrl + Z` 
-> - Si borras algo por error, busca el tema original y descarga su código.  
+> - Sube cambios constantemente o cuando falle algo no vas ah
+>   saber que es, lo que te hará usar mucho `Ctrl + Z` 
+> - puedes ver el codigo del tema original para agregar / arreglar cosas.  
 >   Aunque a este punto, el código ya es muy diferente al original
 >  
 > ## ¿Qué es `<![CDATA[]]>`?  
