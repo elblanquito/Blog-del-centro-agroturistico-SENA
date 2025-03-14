@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:version='2' class='v2' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+  <head>
+    <title><data:blog.pageTitle/></title>
+
+    <b:skin><![CDATA[]]></b:skin>
+
+    <b:template-skin>
+      <b:variable default='960px' name='content.width' type='length'/>
+      <b:variable default='0' name='main.column.left.width' type='length'/>
+      <b:variable default='310px' name='main.column.right.width' type='length'/>
+      <![CDATA[]]>
+    </b:template-skin>
+  </head>
+  <body>
+  	<b:section id='customFooter' class='custom-footer' maxwidgets='3' showaddelement='yes'>
+      	hola mundo!
+  		<b:widget id='HTML1' type='HTML'/>
+	</b:section>
+    
+    <b:section id='footer-1' class='footer' maxwidgets='3' showaddelement='yes'>
+  		<b:widget id='HTML2' type='HTML'/>
+	</b:section>
+
+  </body>
+</html>

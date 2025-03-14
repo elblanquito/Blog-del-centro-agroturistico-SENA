@@ -403,7 +403,94 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
     </b:if>
     <b:include data='blog' name='google-analytics'/>
   </head>
+  <!-- marker body -->
   <body expr:class='&quot;loading&quot; + data:blog.mobileClass'>
+
+    <b:section class='custom-footer2' id='customFooter2' maxwidgets='3' name='cont-custom-footer2' showaddelement='yes'>
+      <b:widget id='HTML4' locked='false' title='prueba' type='HTML'>
+         <b:widget-settings>
+           <b:widget-setting name='content'><![CDATA[<div>hola mundo! </div>]]></b:widget-setting>
+         </b:widget-settings>
+         <b:includable id='main'>
+      		<div class='widget-content'>
+        		<data:content/>
+      		</div>
+    	  </b:includable>
+      </b:widget>
+    </b:section>
+
+    <b:section class='header header-outer' id='header2' maxwidgets='3' name='Header2' showaddelement='no'>
+      <b:widget id='Header1' locked='true' title='Centro agroturistico v3 (Encabezado)' type='Header'>
+        <b:widget-settings>
+          <b:widget-setting name='displayUrl'/>
+          <b:widget-setting name='displayHeight'>0</b:widget-setting>
+          <b:widget-setting name='sectionWidth'>752</b:widget-setting>
+          <b:widget-setting name='useImage'>false</b:widget-setting>
+          <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+          <b:widget-setting name='imagePlacement'>BEHIND</b:widget-setting>
+          <b:widget-setting name='displayWidth'>0</b:widget-setting>
+        </b:widget-settings>
+        <b:includable id='main'>
+          <b:if cond='data:useImage'>
+            <b:if cond='data:imagePlacement == &quot;BEHIND&quot;'>
+              <b:if cond='data:mobile'>
+                  <div class='titlewrapper' style='background: transparent'>
+                    <h1 class='title' style='background: transparent; border-width: 0px'>
+                      <b:include name='title'/>
+                    </h1>
+                  </div>
+                  <b:include name='description'/>
+                <b:else/>
+                <div expr:style='&quot;background-image: url(\&quot;&quot; + data:sourceUrl + &quot;\&quot;); &quot;                     + &quot;background-position: &quot;                      + data:backgroundPositionStyleStr + &quot;; &quot;                      + data:widthStyleStr                      + &quot;min-height: &quot; + data:height                      + &quot;_height: &quot; + data:height                      + &quot;background-repeat: no-repeat; &quot;' id='header-inner'>
+                  <div class='titlewrapper' style='background: transparent'>
+                    <h1 class='title' style='background: transparent; border-width: 0px'>
+                      <b:include name='title'/>
+                    </h1>
+                  </div>
+                  <b:include name='description'/>
+                </div>
+              </b:if>
+              <b:else/>
+              <!--Show the image only-->
+              <div id='header-inner'>
+                <a expr:href='data:blog.homepageUrl' style='display: block'>
+                  <img expr:alt='data:title' expr:height='data:height' expr:id='data:widget.instanceId + &quot;_headerimg&quot;' expr:src='data:sourceUrl' expr:width='data:width' style='display: block'/>
+                </a>
+                <!--Show the description-->
+                <b:if cond='data:imagePlacement == &quot;BEFORE_DESCRIPTION&quot;'>
+                  <b:include name='description'/>
+                </b:if>
+              </div>
+            </b:if>
+            <b:else/>
+            <!--No header image -->
+            <div id='header-inner'>
+              <div class='titlewrapper'>
+                <h1 class='title'>
+                  <b:include name='title'/>
+                </h1>
+              </div>
+              <b:include name='description'/>
+            </div>
+          </b:if>
+        </b:includable>
+        <b:includable id='description'>
+          <div class='descriptionwrapper'>
+            <p class='description'>
+              <span>
+                <data:description/>
+              </span>
+            </p>
+          </div>
+        </b:includable>
+        <b:includable id='title'>
+          <b:tag cond='data:blog.url != data:blog.homepageUrl' expr:href='data:blog.homepageUrl' name='a'>
+            <data:title/>
+          </b:tag>
+        </b:includable>
+      </b:widget>
+    </b:section>
+
     <b:if cond='data:blog.pageType == &quot;index&quot;'>
       <div itemscope='itemscope' itemtype='http://schema.org/Blog' style='display: none;'>
         <meta expr:content='data:blog.title' itemprop='name'/>
@@ -518,19 +605,6 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
             <style>
               /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
               /*css 👈 comando decorativo "Highlight String Code */
-              .Header .titlewrapper,
-              .Header .descriptionwrapper {
-                padding: 0px 30px
-              } 
-
-              .Header h1 {
-                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-              	margin: 0px 20px
-              }
-
-              .Header h1 a {
-                color: $(header.text.color);
-              }
               
               /*!css*/
               /*]]>*/
@@ -540,93 +614,82 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
             🎀marker Header 
             &=================
             -->
-            <b:section-contents id='pureba-1-1'/>
-            <b:section-contents id='pureba-1-2'/>
-            <b:section-contents id='prueba-2'>
-            </b:section-contents>
-
-            <b:section class='header header-outer' id='header' maxwidgets='20' name='Header' showaddelement='no'>
-              <b:widget id='Header1' locked='true' title=' Centro agroturistico v3 (Encabezado)' type='Header'>
+            <b:if cond='true'>
+            <b:section class='tabs' id='crosscol' maxwidgets='20' name='parte superior' showaddelement='yes'>
+              <b:widget id='Header2' locked='false' title=' Centro agroturistico (Encabezado)' type='Header'>
                 <b:widget-settings>
-                  <b:widget-setting name='displayUrl'/>
-                  <b:widget-setting name='displayHeight'>0</b:widget-setting>
-                  <b:widget-setting name='sectionWidth'>752</b:widget-setting>
-                  <b:widget-setting name='useImage'>false</b:widget-setting>
+                  <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEgwh2t7NV8UIGaTMrB2l1qTPnU83KYK0Kl5or5NPcMj1UJ3qdWkTcWi7zgDEc2LjjnH08x0_rlX7UJQm0hrbKXW57jjCAYKeVth63GXcrbG5z2nbmc3UhlnSI-2uW8_jKdZzj3ZUV8rHDZhYzkJ3ZswXYPUURv_TV9t-lMJrcIJuRU8gMSqCceMDcoutzU=s1280</b:widget-setting>
+                  <b:widget-setting name='sectionWidth'>1280</b:widget-setting>
+                  <b:widget-setting name='useImage'>true</b:widget-setting>
                   <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
-                  <b:widget-setting name='imagePlacement'>BEHIND</b:widget-setting>
-                  <b:widget-setting name='displayWidth'>0</b:widget-setting>
+                  <!-- lugar que ocupara la imagen -->
+                  <b:widget-setting name='imagePlacement'>BEHIND</b:widget-setting> 
                 </b:widget-settings>
                 <b:includable id='main'>
-                  <b:if cond='data:useImage'>
-                    <b:if cond='data:imagePlacement == &quot;BEHIND&quot;'>
-                      <b:if cond='data:mobile'>
-                          <div class='titlewrapper' style='background: transparent'>
-                            <h1 class='title' style='background: transparent; border-width: 0px'>
-                              <b:include name='title'/>
-                            </h1>
-                          </div>
-                          <b:include name='description'/>
-                        
-                        <b:else/>
-                        <div expr:style='&quot;background-image: url(\&quot;&quot; + data:sourceUrl + &quot;\&quot;); &quot;                     + &quot;background-position: &quot;                      + data:backgroundPositionStyleStr + &quot;; &quot;                      + data:widthStyleStr                      + &quot;min-height: &quot; + data:height                      + &quot;_height: &quot; + data:height                      + &quot;background-repeat: no-repeat; &quot;' id='header-inner'>
-                          <div class='titlewrapper' style='background: transparent'>
-                            <h1 class='title' style='background: transparent; border-width: 0px'>
-                              <b:include name='title'/>
-                            </h1>
-                          </div>
-                          <b:include name='description'/>
-                        </div>
-                      </b:if>
-                      <b:else/>
-                      <!--Show the image only-->
-                      <div id='header-inner'>
-                        <a expr:href='data:blog.homepageUrl' style='display: block'>
-                          <img expr:alt='data:title' expr:height='data:height' expr:id='data:widget.instanceId + &quot;_headerimg&quot;' expr:src='data:sourceUrl' expr:width='data:width' style='display: block'/>
-                        </a>
-                        <!--Show the description-->
-                        <b:if cond='data:imagePlacement == &quot;BEFORE_DESCRIPTION&quot;'>
-                          <b:include name='description'/>
+                <b:if cond='data:imagePlacement == "BEHIND"'></b:if>
+                
+
+                  <style>  
+                    /*<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante! */  
+                    /*css 👈 Comando decorativo "Highlight String Code" */
+                    div#Header2 {
+                      
+                      max-width: 1280px;
+                      width:calc(100% - 40px);
+                    }
+                    #header2-inner{
+                      display: flex;
+                      align-items: flex-end;
+                      height: 200px;
+                      background-position-x: center;
+                      background-repeat: no-repeat;
+                      background-size: cover;
+                      border-radius: 16px 16px 0px 0px;
+                      color: white;
+                    }
+                    #crosscol{
+                      top: 0px;
+                      position: sticky;
+                      display: flex;
+                      justify-content: center;
+                    }
+                    .header-txt-cont{
+                      background-color: #00000070;
+                      color: #fff;
+                      padding: 10px 30px;
+                      width: 100%;
+                    }
+                    /*!css*/  
+                    /*]]>*/  
+                  </style>  
+                  <div expr:style='"background-image: url(" + data:sourceUrl + ");"' 
+                    id='header2-inner'>
+                    <b:if cond='data:imagePlacement != "REPLACE"'>
+                      <div class='header-txt-cont'>
+                        <h1 class='title'>
+                          <b:tag cond='data:blog.url != data:blog.homepageUrl' expr:href='data:blog.homepageUrl' name='a'>
+                            <data:title/>
+                          </b:tag>
+                        </h1>
+                        <b:if cond='data:imagePlacement != "BEFORE_DESCRIPTION"'>
+                          <p class='description'><data:description/></p>
                         </b:if>
                       </div>
                     </b:if>
-                    <b:else/>
-                    <!--No header image -->
-                    <div id='header-inner'>
-                      <div class='titlewrapper'>
-                        <h1 class='title'>
-                          <b:include name='title'/>
-                        </h1>
-                      </div>
-                      <b:include name='description'/>
-                    </div>
-                  </b:if>
-                </b:includable>
-                <b:includable id='description'>
-                  <div class='descriptionwrapper'>
-                    <p class='description'>
-                      <span>
-                        <data:description/>
-                      </span>
-                    </p>
                   </div>
                 </b:includable>
                 <b:includable id='title'>
-                  <b:tag cond='data:blog.url != data:blog.homepageUrl' expr:href='data:blog.homepageUrl' name='a'>
-                    <data:title/>
-                  </b:tag>
+                  
                 </b:includable>
               </b:widget>
-            </b:section>
-            
-            <!--
-            ^================
-            🏷️marker rutas
-            ^================
-            -->
-            <b:if cond='true'>
-            <b:section class='tabs' id='crosscol' maxwidgets='20' name='Cross-Column' showaddelement='yes'>
+              <!--
+              ^================
+              🏷️marker rutas
+              ^================
+              -->
+
               <b:widget id='PageList3' locked='false'
-              title='Menu principal 🏷️ (no agregar el link completo, solo el final)' type='PageList'>
+                title='Menu principal 🏷️ (no agregar el link completo, solo el final)' type='PageList'>
                 <b:widget-settings>
 
                   <b:widget-setting name='pageListJson'>
@@ -665,28 +728,27 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                   <style>
                     /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
                     /*css 👈 comando decorativo "Highlight String Code */
+                    #PageList3{
+                      display: none;
+                      width: 100%;
+                      position: absolute;
+                      left: 0px;
+                      top: -20px;
+                      z-index: 2;
+
+                    }
 
                     #seccion_header_cont {
                       box-shadow: 0px 1px 4px #0000001f;
                       box-sizing: border-box;
                       display: flex;
                       align-items: center;
-
-                      position: absolute;
-                      left: 0px;
-                      top: -20px;
-                      z-index: 2;
                       width: 100%;
                       background-color: #ffffff;
                       user-select: none;
                       padding: 0px 20px;
                       overflow-x: auto;
                     }
-
-                    
-                    
-
-
                     .seccion_header {
                       min-width: fit-content;
                       text-align: center;
@@ -790,6 +852,7 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                   </div>
                 </b:includable>
               </b:widget>
+
             </b:section>
             </b:if>
 
@@ -2156,7 +2219,7 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                 <div class='footer-cap-bottom cap-bottom'>
                   <div class='cap-left'/>
                   <div class='cap-right'/>
-            </div>
+                </div>
               </div>
             </footer>
             <!-- content -->
@@ -2165,7 +2228,7 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
         <div class='content-cap-bottom cap-bottom'>
           <div class='cap-left'/>
           <div class='cap-right'/>
-    </div>
+        </div>
       </div>
     </div>
   </body>
@@ -2687,31 +2750,31 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
         <b:widget-setting name='pageListJson'>
           <![CDATA[{
           "link0":{
-                        "href":"/",
-                        "position":0,
-                        "title":"Página Principal"
-                      },
-                      "link1":{
-                        "href":"/p/contactos.html",
-                        "position":1,
-                        "title":"Contactos"
-                      },
-                      "link2":{
-                        "href":"/p/normatividad.html",
-                        "position":2,
-                        "title":"Normatividad"
-                      },
-                      "link3":{
-                        "href":"/p/blog-page.html",
-                        "position":3,
-                        "title":"Programas"
-                      },
-                      "link4":{
-                        "href":"/p/pagina-de-recursos-globales.html",
-                        "position":4,
-                        "title":"resourses"
-                      }
-                      }]]>
+            "href":"/",
+            "position":0,
+            "title":"Página Principal"
+          },
+          "link1":{
+            "href":"/p/contactos.html",
+            "position":1,
+            "title":"Contactos"
+          },
+          "link2":{
+            "href":"/p/normatividad.html",
+            "position":2,
+            "title":"Normatividad"
+          },
+          "link3":{
+            "href":"/p/blog-page.html",
+            "position":3,
+            "title":"Programas"
+          },
+          "link4":{
+            "href":"/p/pagina-de-recursos-globales.html",
+            "position":4,
+            "title":"resourses"
+          }
+          }]]>
         </b:widget-setting>
       </b:widget-settings>
       <b:includable id='main'>
