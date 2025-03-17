@@ -508,96 +508,96 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
       <h2 id="notificacion-titulo">Notificacion</h2>
       <p id="notificacion-texto">Descripción de la tarjeta</p>
     </div>
-  <style>
-    /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
-    /*css 👈 comando decorativo "Highlight String Code */
-    .notificacion{
-      z-index: 11;
-      position:fixed;
-      top: -100%;
-      left: 50%;
-      opacity: 0;
-      transform: translate(-50%, 0) scale(0.8);
-      box-sizing: border-box;
-      width: max-content;
-      max-width: 100%;
-      background-color: white;
-      border-radius: 5px;
-      box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2);
-      padding: 10px 30px;
-      transition: all 0.8s ease-in-out, opacity 0.3s ease-in-out;
-      border: 1px solid #ccc;
-      border-left-width: 8px;
-    }
-
-    .noti-visible{
-      top: 10px;
-      opacity: 1;
-      transform: translate(-50%, 0) scale(1);
-    }
-
-    .noti-positiva{
-      border-left: 8px solid #39a900;
-    }
-    .noti-positiva h2{
-      color: #39a900;
-    }
-
-    .noti-negativa{
-      border-left: 8px solid #c10015;
-    }
-
-    .noti-negativa h2{
-      color: #c10015;
-    }
-
-
-    /*!css*/
-    /*]]>*/
-  </style>
-    <script>
-    //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
-    //js 👈 comando decorativo "Highlight String Code"
-
-    let timeoutNotification;
-    let notificacionVisible = false;
-
-    function mostrarNotificacion(titleInput = 'Notificación', txtInput = 'error', type = 'info') {
-      console.log("empezo notificacion")
-      if (!['info', 'negativa', 'positiva'].includes(type)) {
-          type = 'info'; // valor por defecto
-      }
-      let notificacion = document.getElementById("notificacion");
-      let titulo = document.getElementById("notificacion-titulo");
-      let texto = document.getElementById("notificacion-texto");
-      let time = 0 // esperar para mostrar
-      
-      // Si hay una notificación visible
-      if (notificacionVisible) {
-        time = 200
-        notificacion.classList.remove('noti-visible', 'noti-info', 'noti-negativa', 'noti-positiva'); // Eliminar clases anteriores
-        clearTimeout(timeoutNotification); // Detener el temporizador anterior
+    <style>
+      /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+      /*css 👈 comando decorativo "Highlight String Code */
+      .notificacion{
+        z-index: 11;
+        position:fixed;
+        top: -100%;
+        left: 50%;
+        opacity: 0;
+        transform: translate(-50%, 0) scale(0.8);
+        box-sizing: border-box;
+        width: max-content;
+        max-width: 100%;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2);
+        padding: 10px 30px;
+        transition: all 0.8s ease-in-out, opacity 0.3s ease-in-out;
+        border: 1px solid #ccc;
+        border-left-width: 8px;
       }
 
-      // Pequeño retraso para reiniciar la animación
-      setTimeout(() => {
-        console.log("time: " + time)
-          notificacionVisible = true
-          titulo.innerText = titleInput; // Cambiar el titulo
-          texto.innerText = txtInput; // Cambiar el texto
+      .noti-visible{
+        top: 10px;
+        opacity: 1;
+        transform: translate(-50%, 0) scale(1);
+      }
+
+      .noti-positiva{
+        border-left: 8px solid #39a900;
+      }
+      .noti-positiva h2{
+        color: #39a900;
+      }
+
+      .noti-negativa{
+        border-left: 8px solid #c10015;
+      }
+
+      .noti-negativa h2{
+        color: #c10015;
+      }
+
+
+      /*!css*/
+      /*]]>*/
+    </style>
+      <script>
+      //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
+      //js 👈 comando decorativo "Highlight String Code"
+
+      let timeoutNotification;
+      let notificacionVisible = false;
+
+      function mostrarNotificacion(titleInput = 'Notificación', txtInput = 'error', type = 'info') {
+        console.log("empezo notificacion")
+        if (!['info', 'negativa', 'positiva'].includes(type)) {
+            type = 'info'; // valor por defecto
+        }
+        let notificacion = document.getElementById("notificacion");
+        let titulo = document.getElementById("notificacion-titulo");
+        let texto = document.getElementById("notificacion-texto");
+        let time = 0 // esperar para mostrar
+
+        // Si hay una notificación visible
+        if (notificacionVisible) {
+          time = 200
           notificacion.classList.remove('noti-visible', 'noti-info', 'noti-negativa', 'noti-positiva'); // Eliminar clases anteriores
-          notificacion.classList.add('noti-visible', ('noti-'+type));
+          clearTimeout(timeoutNotification); // Detener el temporizador anterior
+        }
 
-          // Configurar el temporizador para ocultar la notificación
-          timeoutNotification = setTimeout(() => {
-              notificacion.classList.remove('noti-visible');
-              notificacionVisible = false;
-          }, 4000);
-      }, time); // Pequeño retraso para que la animación se reinicie correctamente
-    }
-    //!js
-    //]]>
-  </script>
+        // Pequeño retraso para reiniciar la animación
+        setTimeout(() => {
+          console.log("time: " + time)
+            notificacionVisible = true
+            titulo.innerText = titleInput; // Cambiar el titulo
+            texto.innerText = txtInput; // Cambiar el texto
+            notificacion.classList.remove('noti-visible', 'noti-info', 'noti-negativa', 'noti-positiva'); // Eliminar clases anteriores
+            notificacion.classList.add('noti-visible', ('noti-'+type));
+
+            // Configurar el temporizador para ocultar la notificación
+            timeoutNotification = setTimeout(() => {
+                notificacion.classList.remove('noti-visible');
+                notificacionVisible = false;
+            }, 4000);
+        }, time); // Pequeño retraso para que la animación se reinicie correctamente
+      }
+      //!js
+      //]]>
+    </script>
 
     <div class='content'>
       <div class='content-outer'>
@@ -626,14 +626,10 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                   <b:widget-setting name='imagePlacement'>BEHIND</b:widget-setting> 
                 </b:widget-settings>
                 <b:includable id='main'>
-                <b:if cond='data:imagePlacement == "BEHIND"'></b:if>
-                
-
                   <style>  
                     /*<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante! */  
                     /*css 👈 Comando decorativo "Highlight String Code" */
                     div#Header2 {
-                      
                       max-width: 1280px;
                       width:calc(100% - 40px);
                     }
@@ -659,6 +655,24 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                       padding: 10px 30px;
                       width: 100%;
                     }
+                    .header-txt-cont h1{
+                      gap: 5px;
+                      display: flex;
+                    }
+                    .header-home-link{
+                      display: flex;
+                      width: fit-content;
+                    }
+                    .header-home-link svg{
+                      width: 40px;
+                      height: 100%;
+                      stroke: #ffffff;
+                    }
+                    .header-home-link svg:hover{
+                      width: 40px;
+                      height: 100%;
+                      stroke: #c4caca;
+                    }
                     /*!css*/  
                     /*]]>*/  
                   </style>  
@@ -667,9 +681,13 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                     <b:if cond='data:imagePlacement != "REPLACE"'>
                       <div class='header-txt-cont'>
                         <h1 class='title'>
-                          <b:tag cond='data:blog.url != data:blog.homepageUrl' expr:href='data:blog.homepageUrl' name='a'>
-                            <data:title/>
-                          </b:tag>
+                          <data:title/>
+                          <b:if cond='data:blog.url != data:blog.homepageUrl'> 
+                            <a class='header-home-link' expr:href='data:blog.homepageUrl'>
+                              <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  fill="none"  stroke="ffffff"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-home-share"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                              <path d="M9 21v-6a2 2 0 0 1 2 -2h2c.247 0 .484 .045 .702 .127" /><path d="M19 12h2l-9 -9l-9 9h2v7a2 2 0 0 0 2 2h5" /><path d="M16 22l5 -5" /><path d="M21 21.5v-4.5h-4.5" /></svg>
+                            </a>
+                          </b:if>
                         </h1>
                         <b:if cond='data:imagePlacement != "BEFORE_DESCRIPTION"'>
                           <p class='description'><data:description/></p>
@@ -871,7 +889,7 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                     display: grid;
                     grid-template-columns: minmax(0, 1fr) auto;
                     background: #ffffff;
-                    padding: 35px 10px;
+                    padding: 0px 10px;
                     border-radius: 16px;
                     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
                     0 1px 3px rgba(0, 0, 0, 0.08);
@@ -938,6 +956,7 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                         /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
                         /*css 👈 comando decorativo "Highlight String Code */
                           #LinkList1{
+                            display: none;
                             
                           }
                           .imagenes-deslisables{
@@ -1157,13 +1176,17 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                               width: 100%;
                               position: sticky;
                               top: 15px;
-                              margin-bottom: 25px;
+                              margin: 25px;
+                              margin-top: 0px;
                               z-index: 2;
                             }
                             @media (max-width: 735px) {
                               .date-header-cont{
                                 display: flex;
                                 justify-content: center;
+                                margin-left: 0px;
+                                margin-right: 0px;
+                                
                               }
                             }
                             .date-header {
@@ -1416,6 +1439,7 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                           } // scrollea hasta el padre, del padre, del elemento 
 
                           function ajustarColumnas() {
+                            console.log('ajustando columnas')
                             if (window.innerWidth < 900) return;
                             columnasAjustadas = true // para que no vuelva a ejecutarse
                             const contenedor = document.getElementById('Blog1');
@@ -1526,7 +1550,9 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                         <b:widget-setting name='showInlineAds'>false</b:widget-setting>
                         <b:widget-setting name='showReactions'>false</b:widget-setting>
                       </b:widget-settings>
+                      
                       <b:includable id='main' var='top'>
+                      <main>
                         <b:include data='top' name='script-posts-blog'/>
                         <b:include data='top' name='style-posts-blog'/>
                         <b:if cond='!data:mobile'>
@@ -1570,7 +1596,9 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                           <b:else/>
                           <b:include name='mobile-main'/>
                         </b:if>
+                        </main>
                       </b:includable>
+                      
                       <!--
                       ^======================
                       💬marker Comentarios
@@ -2178,12 +2206,14 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                 <macro:param default='2' name='num' value='1'/>
                 <macro:param default='sidebar-right' name='idPrefix'/>
                 <macro:param default='sidebar' name='class'/>
+                <macro:param default='ocultarMenu' name='class'/>
                 <macro:param default='true' name='includeBottom'/>
               </macro:include>
               <!-- columns -->
               <!-- main -->
               <!-- MACADOR fin del main 🟨🟨🟨🟨🟨 -->
             </div>
+            
             <footer>
               <div class='footer-outer'>
                 <div class='footer-cap-top cap-top'>
@@ -2231,40 +2261,11 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
         </div>
       </div>
     </div>
-  </body>
-  <macro:includable id='sections' var='col'>
-    <macro:if cond='data:col.num == 0'>
-      <macro:else/>
-      <b:section mexpr:class='data:col.class' mexpr:id='data:col.idPrefix + &quot;-1&quot;' preferred='yes' showaddelement='yes'/>
-      <macro:if cond='data:col.num &gt;= 2'>
-        <table border='0' cellpadding='0' cellspacing='0' mexpr:class='&quot;section-columns columns-&quot; + data:col.num'>
-          <tbody>
-            <tr>
-              <td class='first columns-cell'>
-                <b:section mexpr:class='data:col.class' mexpr:id='data:col.idPrefix + &quot;-2-1&quot;'/>
-              </td>
-              <td class='columns-cell'>
-                <b:section mexpr:class='data:col.class' mexpr:id='data:col.idPrefix + &quot;-2-2&quot;'/>
-              </td>
-              <macro:if cond='data:col.num &gt;= 3'>
-                <td class='columns-cell'>
-                  <b:section mexpr:class='data:col.class' mexpr:id='data:col.idPrefix + &quot;-2-3&quot;'/>
-                </td>
-              </macro:if>
-              <macro:if cond='data:col.num &gt;= 4'>
-                <td class='columns-cell'>
-                  <b:section mexpr:class='data:col.class' mexpr:id='data:col.idPrefix + &quot;-2-4&quot;'/>
-                </td>
-              </macro:if>
-            </tr>
-          </tbody>
-        </table>
-        <macro:if cond='data:col.includeBottom'>
-          <b:section mexpr:class='data:col.class' mexpr:id='data:col.idPrefix + &quot;-3&quot;' showaddelement='no'/>
-        </macro:if>
-      </macro:if>
-    </macro:if>
-  </macro:includable>
+
+
+    
+
+
   <!-- 
   *========================
   🍇marker menu left ..................................
@@ -2284,7 +2285,7 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
       gap: 15px;
       width: 270px;
       height: 100%;
-      padding: 10px 20px;
+      padding: 20px 20px;
       padding-bottom: 100px;
       background-color: #ffffff;
       overflow-y: scroll;
@@ -2362,7 +2363,7 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
     //js 👈 comando decorativo "Highlight String Code"
     const menu = document.getElementById("sidebar-right-1");
     let lugarInicialX, lugarInicialY, distanciaX, menuDesplegado;
-    menu.classList.add('ocultarMenu');
+
 
     document.addEventListener("pointerdown", (event) => {
         lugarInicialX = event.clientX;
@@ -2406,7 +2407,10 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
   *========================
   -->
 
-  <b:section-contents id='sidebar-right-1'>
+  
+
+  <b:section-contents id='sidebar-right-1' >
+    <b:class name='ocultarMenu'/>
     <!--
     ?===================
     🔍marker buscador
@@ -2547,9 +2551,9 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                       /*!css*/
                       /*]]>*/
                     </style>
+                        <!--                     
                     <script>
                       //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
-                      //js 👈 comando decorativo "Highlight String Code"
                       const contenedor = document.getElementById("BlogSearch1");
                       const button = contenedor.querySelector('.buttonbuscador');
                       const input = contenedor.querySelector('.contenedorbuscador');
@@ -2576,10 +2580,9 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                                   form.submit();
                               }, 2000); // Retraso de 2.1 segundos
                       });
-                    
-                      //!js
+                   
                       //]]>
-                    </script>
+                    </script> -->
 
                   </tr>
                 
@@ -2760,7 +2763,7 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
             "title":"Contactos"
           },
           "link2":{
-            "href":"/p/normatividad.html",
+            "href":"/p/normatividad_17.html",
             "position":2,
             "title":"Normatividad"
           },
@@ -2791,7 +2794,7 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
           <b:loop values='data:links' var='link'>
             <li class='menu2-ruta'>
               <b:class cond='data:link.isCurrentPage' name='selected'/>
-              <a expr:href='data:link.href'>
+              <a expr:href='data:link.href' onclick='document.getElementById("sidebar-right-1").classList.add("ocultarMenu");'>
                 <data:link.title/>
               </a>
             </li>
@@ -3346,8 +3349,98 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
     </b:widget>
   </b:section-contents>
 
-  <b:section-contents id='sidebar-right-2'>
-  </b:section-contents>
+
+
+
+
+      <!-- marker scripts body -->
+     <script>  
+      //<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante!  
+      //js 👈 Comando decorativo "Highlight String Code"
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Escucha clics en todo el cuerpo
+        document.body.addEventListener("click", function (e) {
+          const link = e.target.closest("a");
+          // Verifica si el enlace es interno y que no tenga atributo target (por ejemplo, _blank)
+          if (link && link.hostname === location.hostname && !link.hasAttribute("target")) {
+            e.preventDefault();
+            cargarPagina(link.href);
+          }
+        });     
+
+        function cargarPagina(url) {
+          fetch(url)
+            .then(response => response.text())
+            .then(html => {
+              // Parsea el HTML recibido
+              const parser = new DOMParser();
+              const doc = parser.parseFromString(html, "text/html");
+              // Selecciona el contenido del <main> de la página cargada
+              const nuevoMain = doc.querySelector("main");      
+
+              if (nuevoMain) {
+                // Reemplaza el contenido del <main> actual
+                document.querySelector("main").innerHTML = nuevoMain.innerHTML;
+                // Actualiza la URL sin recargar la página completa
+                history.pushState({}, "", url);
+              } else {
+                // Si no se encuentra <main>, recarga la página completa
+                location.href = url;
+              }
+            })
+            .catch(error => console.error("Error al cargar la página:", error));
+          }     
+
+          // Maneja la navegación con los botones de retroceso/avanzar del navegador
+          window.addEventListener("popstate", function () {
+            cargarPagina(location.href);
+          });
+      });
+
+      //!js  
+      //]]>  
+    </script>
+
+
+
+  </body>
+  <macro:includable id='sections' var='col'>
+    <macro:if cond='data:col.num == 0'>
+      <macro:else/>
+      <b:section mexpr:class='data:col.class' mexpr:id='data:col.idPrefix + &quot;-1&quot;' preferred='yes' showaddelement='yes'/>
+      <macro:if cond='data:col.num &gt;= 2'>
+        <table border='0' cellpadding='0' cellspacing='0' mexpr:class='&quot;section-columns columns-&quot; + data:col.num'>
+          <tbody>
+            <tr>
+              <td class='first columns-cell'>
+                <b:section mexpr:class='data:col.class' mexpr:id='data:col.idPrefix + &quot;-2-1&quot;'/>
+              </td>
+              <td class='columns-cell'>
+                <b:section mexpr:class='data:col.class' mexpr:id='data:col.idPrefix + &quot;-2-2&quot;'/>
+              </td>
+              <macro:if cond='data:col.num &gt;= 3'>
+                <td class='columns-cell'>
+                  <b:section mexpr:class='data:col.class' mexpr:id='data:col.idPrefix + &quot;-2-3&quot;'/>
+                </td>
+              </macro:if>
+              <macro:if cond='data:col.num &gt;= 4'>
+                <td class='columns-cell'>
+                  <b:section mexpr:class='data:col.class' mexpr:id='data:col.idPrefix + &quot;-2-4&quot;'/>
+                </td>
+              </macro:if>
+            </tr>
+          </tbody>
+        </table>
+        <macro:if cond='data:col.includeBottom'>
+          <b:section mexpr:class='data:col.class' mexpr:id='data:col.idPrefix + &quot;-3&quot;' showaddelement='no'/>
+        </macro:if>
+      </macro:if>
+    </macro:if>
+  </macro:includable>
+
+
+
 
   <b:section-contents id='footer-1'>
     <b:widget id='HTML3' locked='false' title='prueba' type='HTML'>
@@ -3474,8 +3567,8 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
 
     // al terminar de cargar los recursos
     window.addEventListener("load", () => {
-      textoAnimado()
-      quitarEspacios()
+      textoAnimado();
+      quitarEspacios();
       agregarBotonesDescarga();
     });
     
