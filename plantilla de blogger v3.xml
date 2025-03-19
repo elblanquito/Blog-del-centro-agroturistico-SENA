@@ -406,19 +406,6 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
   <!-- marker body -->
   <body expr:class='&quot;loading&quot; + data:blog.mobileClass'>
 
-    <b:section class='custom-footer2' id='customFooter2' maxwidgets='3' name='cont-custom-footer2' showaddelement='yes'>
-      <b:widget id='HTML4' locked='false' title='prueba' type='HTML'>
-         <b:widget-settings>
-           <b:widget-setting name='content'><![CDATA[<div>hola mundo! </div>]]></b:widget-setting>
-         </b:widget-settings>
-         <b:includable id='main'>
-      		<div class='widget-content'>
-        		<data:content/>
-      		</div>
-    	  </b:includable>
-      </b:widget>
-    </b:section>
-
     <b:section class='header header-outer' id='header2' maxwidgets='3' name='Header2' showaddelement='no'>
       <b:widget id='Header1' locked='true' title='Centro agroturistico v3 (Encabezado)' type='Header'>
         <b:widget-settings>
@@ -673,6 +660,26 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                       height: 100%;
                       stroke: #c4caca;
                     }
+                    @media (max-width: 800px) {
+                      div#Header2 {
+                        width: 100%;
+                      }
+                      #header2-inner{
+                        border-radius: 0px;
+                        height: 150px;
+                      }
+                      .header-txt-cont{
+                        padding: 10px;
+                      }
+                      .header-txt-cont h1{
+                        font-size: 1.2em;
+                        margin: 0px;
+                      }
+                      .header-txt-cont p{
+                        margin: 0 !important;
+                        font-size: 0.7em;
+                      }
+                    }
                     /*!css*/  
                     /*]]>*/  
                   </style>  
@@ -902,12 +909,17 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                   margin: 0;
                 }
                 @media (max-width: 735px) {
-                  .blog-posts {
-                    padding: 55px 12px;
+                  body{
+                    margin-top: -20px;
                   }
                   .main-outer {
+                    border-radius: 0px;
                     padding: 0;
-                }
+                  }
+                  .blog-posts {
+                    padding: 20px 8px;
+                  }
+                  
                 }
                 /*!css*/
                 /*]]>*/
@@ -934,7 +946,7 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                     <b:if cond='data:blog.pageType not in {"item","static_page"}'>
                       <div class='widget-content' expr:pagina='data:blog.pageType' onclick='console.log(this)'>
                         <div id="carusel-cont" class='carusel-cont'>
-                          <button class="carusel-btn carusel-btn-left" onclick="moverCarusel('atras',this.parentElement)">
+                          <button class="carusel-btn carusel-btn-left" onclick="moverCarusel('atras',this.parentElement)" >
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#ffffff"><path d="m432-480 156 156q11 11 11 28t-11 28q-11 11-28 11t-28-11L348-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 28-11t28 11q11 11 11 28t-11 28L432-480Z"/></svg>
                           </button>
                           <button class="carusel-btn carusel-btn-right" onclick="moverCarusel('adelante',this.parentElement)">
@@ -956,7 +968,7 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                         /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
                         /*css 👈 comando decorativo "Highlight String Code */
                           #LinkList1{
-                            display: none;
+                            display: unset;
                             
                           }
                           .imagenes-deslisables{
@@ -1103,7 +1115,6 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                         
 
 
-
                         document.addEventListener("DOMContentLoaded", function () {
                           // Detectar hover para pausar el movimiento
                           // Detectar hover para pausar el movimiento (PC)
@@ -1115,7 +1126,6 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                           document.addEventListener("visibilitychange", () => {
                             isPaused = document.hidden;
                           });
-
                         });
                         //!js
                         //]]>
@@ -1167,7 +1177,6 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                               margin-bottom: 80px;
 
                             }
-
                             .blog-posts > .widget {
                               margin: 0px;
                             }
@@ -1203,7 +1212,6 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                             }
                             .posts-cont{
                             }
-
                             .post{
                               flex-direction: column;
                               display: flex;
@@ -1257,7 +1265,11 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                               margin: 0;
                               display: inline-flex;
                             }
-                            .post-body >div{width: 100%;}
+                            .post-body >div{
+                              display: flex;
+                              justify-content: center;
+                              width: 100%;
+                            }
 
                             .post-body > p{
                               margin:0px;
@@ -1291,6 +1303,7 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                               overflow-y: auto;
                               border-radius: 10px;
                               width: 100%;
+                              height: auto;
                               max-height: 500px;
                               min-width: 0 ;
                               max-width: none ;
@@ -2201,7 +2214,11 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                     </b:widget>
                   </b:section>
                 
-              
+                <!-- 
+                *========================
+                🍇marker menu left ..................................
+                *========================
+                -->
               <macro:include id='main-column-right-sections' name='sections'>
                 <macro:param default='2' name='num' value='1'/>
                 <macro:param default='sidebar-right' name='idPrefix'/>
@@ -2209,6 +2226,8 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                 <macro:param default='ocultarMenu' name='class'/>
                 <macro:param default='true' name='includeBottom'/>
               </macro:include>
+              <div id='overlay-fondo-opaco'></div>
+
               <!-- columns -->
               <!-- main -->
               <!-- MACADOR fin del main 🟨🟨🟨🟨🟨 -->
@@ -2252,6 +2271,18 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                 </div>
               </div>
             </footer>
+                <b:section class='custom-footer2' id='customFooter2' maxwidgets='3' name='cont-custom-footer2' showaddelement='yes'>
+                  <b:widget id='HTML4' locked='false' title='prueba' type='HTML'>
+                     <b:widget-settings>
+                       <b:widget-setting name='content'><![CDATA[<div>hola mundo! </div>]]></b:widget-setting>
+                     </b:widget-settings>
+                     <b:includable id='main'>
+                  		<div class='widget-content'>
+                    		<data:content/>
+                  		</div>
+                	  </b:includable>
+                  </b:widget>
+                </b:section>
             <!-- content -->
           </div>
         
@@ -2262,15 +2293,6 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
       </div>
     </div>
 
-
-    
-
-
-  <!-- 
-  *========================
-  🍇marker menu left ..................................
-  *========================
-  -->
   <!-- 
   *========================
   🍇marker [CSS]
@@ -2312,17 +2334,16 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
     }
     @media (max-width: 800px) {
       #sidebar-right-1{
-      position: fixed;
-      top: 0;
-      right: 0;
-      z-index: 11;
-      height: 100vh;
-      width: 100%;
-      max-width: 80%;
-      box-sizing: border-box;
-      box-shadow: -4px 0px 8px 0 rgba(0, 0, 0, 0.2);
-      border-left: 5px solid #39A900;
-      transition: transform 0.5s ease-in-out;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 21;
+        height: 100vh;
+        width: 100%;
+        max-width: 80%;
+        box-sizing: border-box;
+        box-shadow: -4px 0px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: transform 0.5s ease-in-out;
       }
       .ocultarMenu {
         transform: translate(100%, 0px);
@@ -2338,17 +2359,41 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
       left: 0;
       width: 100%;
       height: 100%;
-      cursor: -webkit-grab;
+      cursor: pointer;
       display: flex;
       align-items: flex-end;
       justify-content: center;
     }
     .iframe-overlay div{
-      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 35px;
       width: 100%;
       text-align: center;
       color: white;
-      background-color: #000000c2;
+      background-color: #0000004d;
+    }
+    #overlay-fondo-opaco{
+      z-index: 20;
+      left: 0;
+      top: 0;
+      position: fixed;
+      height: 100vh;
+      width: 100vw;
+      backdrop-filter: blur(1px);
+      transition: opacity 1s ease,
+        display 1s ease allow-discrete;
+      display: none;
+      opacity: 0
+    }
+    #overlay-fondo-opaco.visible{
+      display: block;
+      opacity: 1;
+      @starting-style {
+        opacity: 0; /* Estado inicial solo para la transición */
+      }
+
     }
     /*!css*/  
     /*]]>*/  
@@ -2362,6 +2407,7 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
     //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
     //js 👈 comando decorativo "Highlight String Code"
     const menu = document.getElementById("sidebar-right-1");
+    const fondoOpaco = document.getElementById("overlay-fondo-opaco");
     let lugarInicialX, lugarInicialY, distanciaX, menuDesplegado;
 
 
@@ -2374,6 +2420,7 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
         //<!--^ cerrar al tocar fuera del menu 🔒 --> 
         if (menuDesplegado && distanciaX > menu.offsetWidth) {
           menu.classList.add('ocultarMenu');
+          fondoOpaco.classList.remove('visible');
         }
     });
 
@@ -2391,10 +2438,12 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
         //<!-- ^ logica al abrir 🔓--> 
         if (recoridoX < -20) {
             menu.classList.remove('ocultarMenu');
+            fondoOpaco.classList.add('visible');
         }
         //<!-- ^ logica al cerrar 🔒--> 
         if (recoridoX > 20) {
             menu.classList.add('ocultarMenu');
+            fondoOpaco.classList.remove('visible');
         }
     });
     //!js
@@ -2410,7 +2459,6 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
   
 
   <b:section-contents id='sidebar-right-1' >
-    <b:class name='ocultarMenu'/>
     <!--
     ?===================
     🔍marker buscador
@@ -2680,7 +2728,6 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
             </script>
       </b:includable>                      
     </b:widget>
-
     <!--
     *========================
     📈marker estadisticas
@@ -2961,12 +3008,10 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
       <b:widget-settings>
         <b:widget-setting name='content'>
           <![CDATA[
-            <div class="iframe-overlay" id="map-overlay" onclick='iframeOverlay(this)'>
-              <div>click para interactuar</div>
-            </div>
-            <iframe class="google-map-1" id="google-map-1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps/embed?pb=!4v1741711504016!6m8!1m7!1srLxAAhfqv4vYVQIb3vfXlw!2m2!1d6.559094798534264!2d-73.14024736068028!3f256.4635354724295!4f-0.3148343083782663!5f0.7820865974627469">
-            </iframe>
+            <iframe class="google-map-1" id="google-map-1" height="300"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1178.416622004535!2d-73.14162391906049!3d6.558842050851472!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e69c6d95410bc45%3A0xd9b8d2118a9b1568!2sSena%20Centro%20Agroturistico!5e0!3m2!1ses-419!2sco!4v1742401551176!5m2!1ses-419!2sco"
+              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            />
           ]]>
         </b:widget-setting>
       </b:widget-settings>
@@ -2984,9 +3029,8 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
               }
               
               .google-map-1{
-                border-radius: 8px;
-                width: 100%;
-                height: 400px;
+                width: 100%; 
+                height: 300px;
                 border: none;
               }
             /*!css*/
@@ -3003,64 +3047,6 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
 
     
         <b:include name='quickedit'/>
-      </b:includable>
-    </b:widget>
-
-    
-
-    <b:widget id='Profile1' locked='false' title='Acerca de mí' type='Profile' version='1'>
-      <b:widget-settings>
-        <b:widget-setting name='showaboutme'>true</b:widget-setting>
-        <b:widget-setting name='showlocation'>false</b:widget-setting>
-      </b:widget-settings>
-      <b:includable id='main'>
-        <b:if cond='data:title != &quot;&quot;'>
-          <h2>
-            <data:title/>
-          </h2>
-        </b:if>
-        <div class='widget-content'>
-          <b:if cond='data:team'>
-            <!-- team blog profile -->
-            <ul>
-              <b:loop values='data:authors' var='i'>
-                <li>
-                  <a class='profile-name-link g-profile' expr:href='data:i.userUrl' expr:style='&quot;background-image: url(&quot; + data:i.profileLogo + &quot;);&quot;'>
-                    <data:i.display-name/>
-                  </a>
-                </li>
-              </b:loop>
-            </ul>
-            <b:else/>
-            <!-- normal blog profile -->
-            <b:if cond='data:photo.url != &quot;&quot;'>
-              <a expr:href='data:userUrl'>
-                <img class='profile-img' expr:alt='data:messages.myPhoto' expr:height='data:photo.height' expr:src='data:photo.url' expr:width='data:photo.width'/>
-              </a>
-            </b:if>
-            <dl class='profile-datablock'>
-              <dt class='profile-data'>
-                <a class='profile-name-link g-profile' expr:href='data:userUrl' expr:style='&quot;background-image: url(&quot; + data:profileLogo + &quot;);&quot;' rel='author'>
-                  <data:displayname/>
-                </a>
-              </dt>
-              <b:if cond='data:showlocation'>
-                <dd class='profile-data'>
-                  <data:location/>
-                </dd>
-              </b:if>
-              <b:if cond='data:aboutme != &quot;&quot;'>
-                <dd class='profile-textblock'>
-                  <data:aboutme/>
-                </dd>
-              </b:if>
-            </dl>
-            <a class='profile-link' expr:href='data:userUrl' rel='author'>
-              <data:viewProfileMsg/>
-            </a>
-          </b:if>
-          <b:include name='quickedit'/>
-        </div>
       </b:includable>
     </b:widget>
 
@@ -3293,6 +3279,8 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
           /*<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante! */  
           /*css 👈 Comando decorativo "Highlight String Code" */
           .postsx-cont {
+            padding-bottom: 35px;
+            border-radius: 8px;
             overflow-y: auto;
             overflow-x: hidden;
           }
