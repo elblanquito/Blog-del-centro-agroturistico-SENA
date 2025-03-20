@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:version='2' class='v2' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+  <head>
+    <meta charset='utf-8'/>
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+    <title><data:blog.pageTitle/></title>
+    <b:skin><![CDATA[
+      /* Variables */
+      :root {
+        --main-color: #2196F3;
+        --secondary-color: #FF9800;
+        --text-color: #333333;
+        --background-color: #FFFFFF;
+        --header-bg: #2196F3;
+        --footer-bg: #263238;
+      }
+      
+      /* Estilos generales */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        color: var(--text-color);
+        background-color: var(--background-color);
+        line-height: 1.6;
+      }
+      
+      /* Cabecera */
+      header {
+        background-color: var(--header-bg);
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+      }
+      
+      /* Navegación */
+      .nav-menu {
+        background-color: #333;
+        padding: 10px 0;
+      }
+      
+      .nav-menu ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+      }
+      
+      .nav-menu li {
+        display: inline-block;
+        margin: 0 15px;
+      }
+      
+      .nav-menu a {
+        color: white;
+        text-decoration: none;
+      }
+      
+      /* Contenedor principal */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+      }
+      
+      /* Área principal */
+      .main-content {
+        flex: 70%;
+        padding: 20px;
+      }
+      
+      /* Barra lateral */
+      .sidebar {
+        flex: 30%;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+      
+      /* Estilos de entradas */
+      .post {
+        margin-bottom: 40px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 20px;
+      }
+      
+      .post-title {
+        color: var(--main-color);
+      }
+      
+      .post-meta {
+        color: #888;
+        font-size: 0.9em;
+        margin-bottom: 15px;
+      }
+      
+      .post-content {
+        margin-bottom: 20px;
+      }
+      
+      /* Pie de página */
+      footer {
+        background-color: var(--footer-bg);
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+        margin-top: 30px;
+      }
+      
+      /* Estilos responsivos */
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+        }
+        
+        .main-content, .sidebar {
+          flex: 100%;
+        }
+      }
+    ]]></b:skin>
+  </head>
+  <body>
+    <!-- Cabecera -->
+    <header>
+      <div class='header-content'>
+        <h1><data:blog.title/></h1>
+        <p><data:blog.description/></p>
+      </div>
+    </header>
+    
+    <!-- Navegación -->
+    <nav class='nav-menu'>
+      <ul>
+        <li><a href='/'>Inicio</a></li>
+        <b:section id='navigation' maxwidgets='5' showaddelement='false'>
+          <b:widget id='PageList1' locked='false' title='Páginas' type='PageList'>
+            <b:includable id='main'>
+              <b:loop values='data:links' var='link'>
+                <li><a expr:href='data:link.href'><data:link.title/></a></li>
+              </b:loop>
+            </b:includable>
+          </b:widget>
+        </b:section>
+        <li><a href='/search'>Buscar</a></li>
+      </ul>
+    </nav>
+    
+    <!-- Contenedor principal -->
+    <div class='container'>
+      <!-- Área principal -->
+      <main class='main-content'>
+        <b:section id='main' showaddelement='false'>
+          <b:widget id='Blog1' locked='true' title='Entradas del blog' type='Blog'>
+            <b:includable id='main' var='top'>
+              <!-- Entradas del blog -->
+              <b:loop values='data:posts' var='post'>
+                <article class='post'>
+                  <h2 class='post-title'>
+                    <a expr:href='data:post.url'><data:post.title/></a>
+                  </h2>
+                  <div class='post-meta'>
+                    <span class='post-author'>Por <data:post.author/></span>
+                    <span class='post-date'><data:post.date/></span>
+                    <span class='post-labels'>
+                      <b:if cond='data:post.labels'>
+                        Etiquetas:
+                        <b:loop values='data:post.labels' var='label'>
+                          <a expr:href='data:label.url'><data:label.name/></a>
+                        </b:loop>
+                      </b:if>
+                    </span>
+                  </div>
+                  <div class='post-content'>
+                    <data:post.body/>
+                  </div>
+                  <div class='post-footer'>
+                    <a class='post-comment-link' expr:href='data:post.commentUrl'>
+                      <b:if cond='data:post.numComments == 0'>
+                        Sin comentarios
+                      <b:else/>
+                        <data:post.numComments/> comentarios
+                      </b:if>
+                    </a>
+                  </div>
+                </article>
+              </b:loop>
+              
+              <!-- Paginación -->
+              <div class='pagination'>
+                <b:if cond='data:olderPageUrl'>
+                  <a expr:href='data:olderPageUrl'>Entradas antiguas</a>
+                </b:if>
+                <b:if cond='data:newerPageUrl'>
+                  <a expr:href='data:newerPageUrl'>Entradas recientes</a>
+                </b:if>
+              </div>
+            </b:includable>
+          </b:widget>
+        </b:section>
+      </main>
+      
+      <!-- Barra lateral -->
+      <aside class='sidebar'>
+        <b:section id='sidebar' showaddelement='true'>
+          <!-- Widget de perfil -->
+          <b:widget id='Profile1' locked='false' title='Acerca de mí' type='Profile'>
+            <b:includable id='main'>
+              <div class='profile'>
+                <b:if cond='data:photo.url'>
+                  <img expr:src='data:photo.url' alt='Foto de perfil'/>
+                </b:if>
+                <h3><data:displayname/></h3>
+                <p><data:aboutme/></p>
+              </div>
+            </b:includable>
+          </b:widget>
+          
+          <!-- Widget de entradas populares -->
+          <b:widget id='PopularPosts1' locked='false' title='Entradas populares' type='PopularPosts'>
+            <b:includable id='main'>
+              <div class='popular-posts'>
+                <h3>Entradas populares</h3>
+                <ul>
+                  <b:loop values='data:posts' var='post'>
+                    <li>
+                      <a expr:href='data:post.url'><data:post.title/></a>
+                    </li>
+                  </b:loop>
+                </ul>
+              </div>
+            </b:includable>
+          </b:widget>
+          
+          <!-- Widget de etiquetas -->
+          <b:widget id='Label1' locked='false' title='Etiquetas' type='Label'>
+            <b:includable id='main'>
+              <div class='labels'>
+                <h3>Etiquetas</h3>
+                <ul>
+                  <b:loop values='data:labels' var='label'>
+                    <li>
+                      <a expr:href='data:label.url'><data:label.name/> (<data:label.count/>)</a>
+                    </li>
+                  </b:loop>
+                </ul>
+              </div>
+            </b:includable>
+          </b:widget>
+        </b:section>
+      </aside>
+    </div>
+    
+    <!-- Pie de página -->
+    <footer>
+      <div class='footer-content'>
+        <p>&copy; <data:blog.title/> <script>document.write(new Date().getFullYear())</script></p>
+      </div>
+    </footer>
+  </body>
+</html>

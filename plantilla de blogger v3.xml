@@ -495,6 +495,11 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
       <h2 id="notificacion-titulo">Notificacion</h2>
       <p id="notificacion-texto">Descripción de la tarjeta</p>
     </div>
+    <!--
+    ^======================
+    🔔marker [CSS]
+    ^======================
+    -->
     <style>
       /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
       /*css 👈 comando decorativo "Highlight String Code */
@@ -542,7 +547,12 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
       /*!css*/
       /*]]>*/
     </style>
-      <script>
+    <!--
+    ^======================
+    🔔marker [JS]
+    ^======================
+    -->
+    <script>
       //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
       //js 👈 comando decorativo "Highlight String Code"
 
@@ -550,7 +560,6 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
       let notificacionVisible = false;
 
       function mostrarNotificacion(titleInput = 'Notificación', txtInput = 'error', type = 'info') {
-        console.log("empezo notificacion")
         if (!['info', 'negativa', 'positiva'].includes(type)) {
             type = 'info'; // valor por defecto
         }
@@ -605,7 +614,7 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
             <b:section class='tabs' id='crosscol' maxwidgets='20' name='parte superior' showaddelement='yes'>
               <b:widget id='Header2' locked='false' title=' Centro agroturistico (Encabezado)' type='Header'>
                 <b:widget-settings>
-                  <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEgwh2t7NV8UIGaTMrB2l1qTPnU83KYK0Kl5or5NPcMj1UJ3qdWkTcWi7zgDEc2LjjnH08x0_rlX7UJQm0hrbKXW57jjCAYKeVth63GXcrbG5z2nbmc3UhlnSI-2uW8_jKdZzj3ZUV8rHDZhYzkJ3ZswXYPUURv_TV9t-lMJrcIJuRU8gMSqCceMDcoutzU=s1280</b:widget-setting>
+                  <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEgLQI3_FnrViOLh3YjGQbpEhnM8aroPRPQAbWhZkHt9dsElxx1NxUPzIeDCbBziN8cUb636H3Ql_X_8dh34gssco_xsf7H0KLkra_4-sdwAP4cho8DFlxlxGYyuHqDz7irJf31o-eq6YJx05oSG-t3S2ZNZT5i8FaUrQY-3I8HwbNE-o-bLc427lmK_FYw=s1280</b:widget-setting>
                   <b:widget-setting name='sectionWidth'>1280</b:widget-setting>
                   <b:widget-setting name='useImage'>true</b:widget-setting>
                   <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
@@ -944,7 +953,7 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                     </b:widget-settings>
                     <b:includable id='main'>
                     <b:if cond='data:blog.pageType not in {"item","static_page"}'>
-                      <div class='widget-content' expr:pagina='data:blog.pageType' onclick='console.log(this)'>
+                      <div class='widget-content imagenes-deslisables' expr:pagina='data:blog.pageType'>
                         <div id="carusel-cont" class='carusel-cont'>
                           <button class="carusel-btn carusel-btn-left" onclick="moverCarusel('atras',this.parentElement)" >
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#ffffff"><path d="m432-480 156 156q11 11 11 28t-11 28q-11 11-28 11t-28-11L348-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 28-11t28 11q11 11 11 28t-11 28L432-480Z"/></svg>
@@ -958,9 +967,6 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                               <img expr:src='data:link.target' expr:alt="data:link.name" />
                             </div>
                           </b:loop>
-                          <div class="carusel-link" expr:href="data:links[0].target" target="_blank">
-                              <img expr:src='data:links[0].target' expr:alt="data:links[0].name" />
-                          </div>
                         </div>
                       </div>
                     </b:if>
@@ -968,10 +974,11 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                         /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
                         /*css 👈 comando decorativo "Highlight String Code */
                           #LinkList1{
-                            display: unset;
-                            
+                            display: flex;
+                            justify-content: center;
                           }
                           .imagenes-deslisables{
+                            max-width: 850px;
                             position: relative;
                             width: 100%;
                           }
@@ -1073,45 +1080,25 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                           index = closestIndex;
                         }
 
-                        function moverCarusel(dirreccion = 'adelante', contenedor = carusel){
-                          let items = contenedor.querySelectorAll(".carusel-link");
-                          actualizarIndexCarusel(contenedor); // actualizar posicion encaso de scrolling
-                          if(dirreccion === "atras"){ 
-                            index-- // retroceder
-                            if (index < 0) {
-                                index = items.length - 1; // resetear al final
-                                contenedor.scrollTo({ // vuelve al inicio
-                                  left: items[index].offsetLeft,
-                                });
-                                index--
-                            }
-                            contenedor.scrollTo({ //
-                                left: items[index].offsetLeft,
+                        function moverCarusel(direccion = 'adelante', contenedor) {
+                            const items = contenedor.querySelectorAll(".carusel-link");
+                            actualizarIndexCarusel(contenedor); // Actualiza la posición antes de cambiar
+                            // Nueva posicion
+                            index = (direccion === "atras") 
+                                ? (index - 1 + items.length) % items.length  // Si es menor a 0, reinicia al último
+                                : (index + 1) % items.length;  // Si es mayor al último, vuelve a 0
+                            contenedor.scrollTo({
+                                left: items[index].offsetLeft, 
                                 behavior: "smooth"
-                            });
-                          } else {
-                            index++ // avanzar
-                            if (index >= items.length) { 
-                                index = 0; // resetear
-                                contenedor.scrollTo({ // vuelve al inicio
-                                  left: items[index].offsetLeft,
-                                });
-                                index++ // sumar para moverse al index 2
-                            }  
-                            contenedor.scrollTo({ //
-                                left: items[index].offsetLeft,
-                                behavior: "smooth"
-                            });
-                          }
+                            }); // scroll a la imagen indicada
                         }
-
                         function autoScrollCarusel() {
                           if (isPaused) return; // Detener el movimiento si está en hover
-                          moverCarusel()
+                          moverCarusel('adelante', carusel)
                         }
-                          window.addEventListener("load", () => {
-                            setInterval(autoScrollCarusel, 5000); // Mueve cada 5 segundos
-                          });
+                        window.addEventListener("load", () => {
+                          setInterval(autoScrollCarusel, 5000); // Mueve cada 5 segundos
+                        });
                         
 
 
@@ -1441,12 +1428,23 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                         <script>  
                           //<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante!  
                           //js 👈 Comando decorativo "Highlight String Code"
+
+                          let contenedor
+                          let posts
+
+                          function asignarElementosPosts(){
+                            contenedor = document.getElementById('Blog1');
+                            posts = contenedor.querySelectorAll('.post');
+                          } // define las variables principales
+                          
+
                           function quitarEspacios(){
-                            let posts = document.getElementsByClassName('post-body');
-                              for (let i = 0; i < posts.length; i++) {
-                                  posts[i].innerHTML = posts[i].innerHTML.replace(/&nbsp;/g, " ");
-                              }
+                            posts = document.querySelectorAll('.post-body');
+                            for (let i = 0; i < posts.length; i++) {
+                              posts[i].innerHTML = posts[i].innerHTML.replace(/&nbsp;/g, " ");
+                            }
                           }
+
                           function scrollFecha(element) { 
                             element.parentElement.parentElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
                           } // scrollea hasta el padre, del padre, del elemento 
@@ -1455,14 +1453,12 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                             console.log('ajustando columnas')
                             if (window.innerWidth < 900) return;
                             columnasAjustadas = true // para que no vuelva a ejecutarse
-                            const contenedor = document.getElementById('Blog1');
-                            const posts = contenedor.querySelectorAll('.post');
                             // Crear observador para detectar cambios de tamaño
                             const resizeObserver = new ResizeObserver(entries => {
                               entries.forEach(entry => {
                                 // Si la altura supera 800px, aplicar la clase y dejar de observar ese elemento
+                                if (window.innerWidth < 900) return;
                                 if (entry.contentRect.height > 800) {
-                                  if (window.innerWidth < 900) return;
                                   entry.target.classList.add("dos-columnas");
                                   resizeObserver.unobserve(entry.target);
                                   const imagenes = entry.target.getElementsByTagName("img"); // Obtiene todas las imágenes dentro
@@ -1491,37 +1487,36 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                               return;
                             }
                             ajustarColumnas();
+                            console.log('tamaño nuevo')
                           };
 
-                          function agregarBotonesDescarga() {
-                            // Para cada post, selecciona todas las imágenes
-                            const images = document.querySelectorAll('.post-body img')
-                            images.forEach(img => {
-                              if (!img.nextElementSibling || !img.nextElementSibling.classList.contains('download-btn')) {
-                                img.insertAdjacentHTML('beforebegin', `
+                          function agregarBotonDescarga(imagen) {
+                              if (!imagen.nextElementSibling || !imagen.nextElementSibling.classList.contains('download-btn')) {
+                                imagen.insertAdjacentHTML('beforebegin', `
                                   <button class="download-btn" onclick="
                                     event.preventDefault(); 
                                     event.stopPropagation();
-                                    descargarImagen('${img.src}')
+                                    descargarImagen('${imagen.src}')
                                   ">
                                     <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="#39a900"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-photo-down"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 8h.01" /><path d="M12.5 21h-6.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v6.5" /><path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l4 4" /><path d="M14 14l1 -1c.653 -.629 1.413 -.815 2.13 -.559" /><path d="M19 16v6" /><path d="M22 19l-3 3l-3 -3" /></svg>
                                   </button>
                                 `);
                               }
-                            });
                           }
-                          function ModalesDeImagenesPosts () {
-                            document.querySelectorAll(".post").forEach((post, index) => {
+
+                          // aplica la libreria Fancybox a las imagenes del blog y pone los botones de descarga
+                          function customImagenesPosts() {
+                            posts.forEach((post, index) => {
                                 post.querySelectorAll("img").forEach(img => {
-                                    img.parentElement.setAttribute("data-fancybox", "post-group-" + index);
+                                  img.parentElement.setAttribute("data-fancybox", "post-group-" + index);
+                                  agregarBotonDescarga(img)
                                 });
                             });
+                            console.log(document.querySelectorAll("[data-fancybox]").length);
                             Fancybox.bind("[data-fancybox]", {
-                              compact: false, //desactiva la vercion movil
-                              animated: false, // Desactiva animaciones
-                              showClass: "fancybox-fadeIn", // Animación más simple
-                              hideClass: "fancybox-fadeOut",
-                              panOnlyZoomed: false, // Permite hacer zoom incluso sin hacer clic
+                              compact: true, //desactiva la vercion movil
+                              animated: true, //  animaciones
+                              panOnlyZoomed: true, // Permite hacer zoom incluso sin hacer clic
                               on: {
                                 close: () => {
                                   // prevenir errores con lectores de pantalla
@@ -1531,6 +1526,7 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                                 }
                               }
                             });
+                            document.documentElement.style.setProperty("--fancybox-zIndex", "18");
                           }
                           //!js  
                           //]]> 
@@ -2226,7 +2222,7 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
                 <macro:param default='ocultarMenu' name='class'/>
                 <macro:param default='true' name='includeBottom'/>
               </macro:include>
-              <div id='overlay-fondo-opaco'></div>
+              <div id='overlay-fondo-opaco' onclick='toggleMenu("ocultar")'></div>
 
               <!-- columns -->
               <!-- main -->
@@ -2332,23 +2328,6 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
     #sidebar-right-1::-webkit-scrollbar-thumb:hover {
       background:rgba(85, 85, 100, 0.24);
     }
-    @media (max-width: 800px) {
-      #sidebar-right-1{
-        position: fixed;
-        top: 0;
-        right: 0;
-        z-index: 21;
-        height: 100vh;
-        width: 100%;
-        max-width: 80%;
-        box-sizing: border-box;
-        box-shadow: -4px 0px 8px 0 rgba(0, 0, 0, 0.2);
-        transition: transform 0.5s ease-in-out;
-      }
-      .ocultarMenu {
-        transform: translate(100%, 0px);
-      }
-    }
     #sidebar-right-1 .widget-content{
       overflow: hidden;
       position: relative;
@@ -2382,16 +2361,33 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
       height: 100vh;
       width: 100vw;
       backdrop-filter: blur(1px);
-      transition: opacity 1s ease,
-        display 1s ease allow-discrete;
+      transition: opacity .8s ease,
+        display .8s ease allow-discrete;
       display: none;
       opacity: 0
     }
-    #overlay-fondo-opaco.visible{
-      display: block;
-      opacity: 1;
-      @starting-style {
-        opacity: 0; /* Estado inicial solo para la transición */
+    @media (max-width: 800px) {
+      #sidebar-right-1{
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 21;
+        height: 100vh;
+        width: 100%;
+        max-width: 80%;
+        box-sizing: border-box;
+        box-shadow: -4px 0px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: transform 0.5s ease-in-out;
+      }
+      .ocultarMenu {
+        transform: translate(100%, 0px);
+      }
+      #overlay-fondo-opaco.visible{
+        display: block;
+        opacity: 1;
+        @starting-style {
+          opacity: 0; /* Estado inicial solo para la transición */
+        }
       }
 
     }
@@ -2410,6 +2406,22 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
     const fondoOpaco = document.getElementById("overlay-fondo-opaco");
     let lugarInicialX, lugarInicialY, distanciaX, menuDesplegado;
 
+    function toggleMenu(parametro = 'toggle'){
+      switch (parametro) {
+        case 'mostrar':
+          menu.classList.remove('ocultarMenu');
+          fondoOpaco.classList.add('visible');
+          break;
+        case 'ocultar':
+          menu.classList.add('ocultarMenu');
+          fondoOpaco.classList.remove('visible');
+          break;
+        case 'toggle':
+          menu.classList.toggle('ocultarMenu');
+          fondoOpaco.classList.toggle('visible');
+          break;
+      }
+    }
 
     document.addEventListener("pointerdown", (event) => {
         lugarInicialX = event.clientX;
@@ -2419,8 +2431,7 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
 
         //<!--^ cerrar al tocar fuera del menu 🔒 --> 
         if (menuDesplegado && distanciaX > menu.offsetWidth) {
-          menu.classList.add('ocultarMenu');
-          fondoOpaco.classList.remove('visible');
+          toggleMenu('ocultar')
         }
     });
 
@@ -2437,13 +2448,11 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
 
         //<!-- ^ logica al abrir 🔓--> 
         if (recoridoX < -20) {
-            menu.classList.remove('ocultarMenu');
-            fondoOpaco.classList.add('visible');
+            toggleMenu('mostrar')
         }
         //<!-- ^ logica al cerrar 🔒--> 
         if (recoridoX > 20) {
-            menu.classList.add('ocultarMenu');
-            fondoOpaco.classList.remove('visible');
+            toggleMenu('ocultar')
         }
     });
     //!js
@@ -2841,7 +2850,7 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
           <b:loop values='data:links' var='link'>
             <li class='menu2-ruta'>
               <b:class cond='data:link.isCurrentPage' name='selected'/>
-              <a expr:href='data:link.href' onclick='document.getElementById("sidebar-right-1").classList.add("ocultarMenu");'>
+              <a expr:href='data:link.href' onclick='toggleMenu("ocultar")'>
                 <data:link.title/>
               </a>
             </li>
@@ -3285,15 +3294,18 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
             overflow-x: hidden;
           }
           .postsx-cont iframe{
-                width: 100%;
+            width: 100%;
           }
           .postsx-cont .iframe-overlay{
             display: none;
           }
           @media (max-width: 800px) {
             .postsx-cont {
-              height: 500px;
+              
             }
+            .postsx-cont iframe{
+            height: 500px;
+          }
             .postsx-cont .iframe-overlay{
               display: flex;
             }
@@ -3341,8 +3353,9 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
 
 
 
-      <!-- marker scripts body -->
-     <script>  
+    <!-- marker scripts body -->
+    <!--      
+    <script>  
       //<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante!  
       //js 👈 Comando decorativo "Highlight String Code"
 
@@ -3357,39 +3370,39 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
           }
         });     
 
-        function cargarPagina(url) {
-          fetch(url)
-            .then(response => response.text())
-            .then(html => {
-              // Parsea el HTML recibido
+        async function cargarPagina(url) {
+          try {
+              const response = await fetch(url);
+              const html = await response.text();
               const parser = new DOMParser();
               const doc = parser.parseFromString(html, "text/html");
-              // Selecciona el contenido del <main> de la página cargada
-              const nuevoMain = doc.querySelector("main");      
-
+              const nuevoMain = doc.querySelector("main");
               if (nuevoMain) {
-                // Reemplaza el contenido del <main> actual
-                document.querySelector("main").innerHTML = nuevoMain.innerHTML;
-                // Actualiza la URL sin recargar la página completa
-                history.pushState({}, "", url);
+                  document.querySelector("main").innerHTML = nuevoMain.innerHTML;
+                  history.pushState({}, "", url);
+                  //funciones de la pagina
+                  asignarElementosPosts()
+                  customImagenesPosts()
+                  asignarPaginaActual()
+                  ajustarColumnas()
               } else {
-                // Si no se encuentra <main>, recarga la página completa
-                location.href = url;
+                  location.href = url;
               }
-            })
-            .catch(error => console.error("Error al cargar la página:", error));
-          }     
+          } catch (error) {
+              console.error("Error al cargar la página:", error);
+          }
+        }
 
-          // Maneja la navegación con los botones de retroceso/avanzar del navegador
-          window.addEventListener("popstate", function () {
-            cargarPagina(location.href);
-          });
+        // Maneja la navegación con los botones de retroceso/avanzar del navegador
+        window.addEventListener("popstate", function () {
+          cargarPagina(location.href);
+        });
       });
 
       //!js  
       //]]>  
     </script>
-
+ -->
 
 
   </body>
@@ -3461,7 +3474,7 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
   ?============================
   -->
 
-  <script>
+  <script async>
     //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
     //js 👈 comando decorativo "Highlight String Code" 
 
@@ -3519,7 +3532,7 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
           window.URL.revokeObjectURL(url);
           document.body.removeChild(link);
         }, 100);
-        mostrarNotificacion('descarga lista!','espere un momento.. ','positiva')
+        mostrarNotificacion('descarga lista!','la imagen se descargara en breve','positiva')
       } catch (error) {
         console.error('Error:', error);
         mostrarNotificacion('descarga fallida',error.message,'negativa')
@@ -3546,7 +3559,8 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
 
     // apenas cargue la estructura de la pagina
     document.addEventListener("DOMContentLoaded", () => {
-      ModalesDeImagenesPosts()
+      asignarElementosPosts()
+      customImagenesPosts()
       asignarPaginaActual()
       ajustarColumnas()
     });
@@ -3556,8 +3570,8 @@ Documentacion y mas informacion: "https://github.com/elblanquito/Blog-del-centro
     // al terminar de cargar los recursos
     window.addEventListener("load", () => {
       textoAnimado();
-      quitarEspacios();
-      agregarBotonesDescarga();
+      //quitarEspacios();
+      
     });
     
     //!js

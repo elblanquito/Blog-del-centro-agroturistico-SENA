@@ -45,6 +45,13 @@
 >   saber que es, lo que te hará usar mucho `Ctrl + Z` 
 > - puedes ver el codigo del tema original para agregar / arreglar cosas.  
 >   Aunque a este punto, el código ya es muy diferente al original
+> - hay algunas configuraciones que debes realizar 
+desde blogger `configuracion > entradas` ahi desbes
+desactivar la segunda opcion "imagenes en lightbox" 
+y activar la 3 opcion "publicacion de imagenes webp"
+>   
+>
+> 
 >  
 > ## ¿Qué es `<![CDATA[]]>`?  
 > se utiliza para insertar contenido en XML sin que sea interpretado como
