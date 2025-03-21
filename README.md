@@ -7,7 +7,7 @@
 > de los elementos para hacerlos más fáciles de entender y simplificar
 > el código en general.
 > - [conceptos basicos](https://blog.templatetoaster.com/create-blogger-template-tutorial-guide/)
-> - [documentacion oficial de blogger](https://bloggercode-blogconnexion.blogspot.com/2018/02/attributes-intro.html)
+> - [documentacion oficial de blogger](https://bloggercode-blogconnexion.blogspot.com/search/label/knowledgeBase+k:references+r:tags?max-results=50)
 
 > [!TIP]  
 > ## ¿Dónde trabajar?  
@@ -45,10 +45,12 @@
 >   saber que es, lo que te hará usar mucho `Ctrl + Z` 
 > - puedes ver el codigo del tema original para agregar / arreglar cosas.  
 >   Aunque a este punto, el código ya es muy diferente al original
-> - hay algunas configuraciones que debes realizar 
-desde blogger `configuracion > entradas` ahi desbes
-desactivar la segunda opcion "imagenes en lightbox" 
-y activar la 3 opcion "publicacion de imagenes webp"
+> - hay algunas configuraciones que debes realizar desde blogger:
+>   - `tema > personalizar > configuracion para dispositivos mobiles` luego
+selecionas la opcion "para computadora"
+>   - `configuracion > entradas` ahi debes desactivar la segunda opcion "imagenes en lightbox"
+>   - `configuracion > entradas` ahi debes activar la tercera opcion "publicacion de imagenes webp"
+(recomendable, aumenta el redimiento pero el formato no es compatible con navegadores viejos)
 >   
 >
 > 
