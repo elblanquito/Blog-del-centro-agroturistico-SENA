@@ -299,6 +299,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
         ========================
         */
         #sidebar-right-1{
+          grid-area: derecha;
           flex-direction: column;
           display: flex;
           gap: 15px;
@@ -1066,6 +1067,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                 .main-outer {
                     display: grid;
                     grid-template-columns: minmax(0, 1fr) auto;
+                    grid-template-areas: "izquierda derecha";
                     background: #ffffff;
                     padding: 0px 10px;
                     border-radius: 16px;
@@ -1425,6 +1427,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                             }
 
                             .download-btn {
+                              cursor: pointer;
                               z-index: 1;
                               left: 0%;
                               bottom: 0;
@@ -1439,6 +1442,9 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                               border: none;
                               transition: transform 0.2s ease;
                             }
+                            .download-btn:hover{
+                              background-color:rgb(233, 255, 221)
+                            }
 
                             .download-btn:active {
                               transform: scale(0.8)
@@ -1448,6 +1454,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                               height: 100%;
                             }
                             .post img, .post iframe, .tiktok-embed {
+                              transition: transform 0.3s ease-out;
                               display: block;
                               overflow-y: auto;
                               border-radius: 10px;
@@ -1468,6 +1475,10 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                               animation-fill-mode: both;
                               animation-range: entry 0% cover 40%;
                               }
+
+                            .post img:active, .post iframe:active, .tiktok-embed:active{
+                              transform: scale(.90) rotate(0deg);
+                            }
                             @keyframes aparecer {
                               0% {scale: 0.6;}
                               100% {opacity: 1;scale: 1;}
@@ -2772,7 +2783,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
       <b:widget-settings>
         <b:widget-setting name='showGraphicalCounter'>false</b:widget-setting>
         <b:widget-setting name='showAnimatedCounter'>true</b:widget-setting>
-        <b:widget-setting name='showSparkline'>false</b:widget-setting>
+        <b:widget-setting name='showSparkline'>true</b:widget-setting>
         <b:widget-setting name='sparklineStyle'>WHITE_TRANSPARENT</b:widget-setting>
         <b:widget-setting name='timeRange'>ALL_TIME</b:widget-setting>
       </b:widget-settings>
@@ -2780,11 +2791,40 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
         <style>
           /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
           /*css 👈 comando decorativo "Highlight String Code */
-          #Stats1{
-            
+          #widget-content-Stats1{
+            height: 36px;
           }
+          #Stats1_content{
+            display: flex;
+            align-items: center;
+            height: 100%;
+            transition: opacity 0.5s ease;
+            opacity: 1;
+            @starting-style{
+              opacity: 0;
+            }
+          }
+          
           #Stats1_sparklinespan{
-            background-color:#00304D
+            overflow: hidden;
+            box-shadow: 0px 0px 0px 2px #00304D;
+            border-radius: 8px;
+            background-color: #00304D;
+            margin: 0 12px;
+            width: 75px;
+            height: 25px;
+          }
+          #Stats1_sparklinespan.Stats1_sparklinespan-white{
+            background-color: white;
+            box-shadow: none;
+
+          }
+          #Stats1_sparklinespan > div{
+            transition: opacity 0.5s ease;
+            opacity: 1;
+            @starting-style{
+              opacity: 0;
+            }
           }
 
           .Stats .counter-wrapper{
@@ -2796,7 +2836,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
             margin-right: 0px;
           }
 
-          .Stats svg {
+          .Stats .icono-estadistica {
             animation: statsMovimiento 2s ease-in-out infinite;
             height: 30px;
             width: 30px;
@@ -2806,22 +2846,28 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
           /*!css*/
           /*]]>*/
         </style>
-
-        <b:if cond='data:title != &quot;&quot;'><h2><data:title/></h2></b:if>
-        <div class='widget-content'>
+        <b:if cond='data:title != ""'><h2><data:title/></h2></b:if>
+        <div class='widget-content' expr:id='"widget-content-" + data:widget.instanceId'>
           <!-- Content is going to be visible when data will be fetched from server. -->
-          <div expr:id='data:widget.instanceId + &quot;_content&quot;' style='display: none;'>
+          <div expr:id='data:widget.instanceId + "_content"' style='display:none'>
+            <span expr:class='"counter-wrapper " + (data:showGraphicalCounter ? "graph-counter-wrapper" : "text-counter-wrapper")' expr:id='data:widget.instanceId + "_totalCount"'>
+            </span>
+            <b:if cond='!data:showSparkline'>
+            <svg class='icono-estadistica' xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" ><path d="M192-192v-288h144v288H192Zm216 0v-576h144v576H408Zm216 0v-384h144v384H624Z"/></svg>
+            </b:if>
             <!-- Counter and image will be injected later via AJAX call. -->
             <b:if cond='data:showSparkline'>
               <script src='https://www.gstatic.com/charts/loader.js' type='text/javascript'/>
-              <span expr:id='data:widget.instanceId + &quot;_sparklinespan&quot;' style='display:inline-block; width:75px; height:30px'/>
+              <span expr:id='data:widget.instanceId + "_sparklinespan"'>
+                <b:class cond='data:sparklineStyle == "BLACK_TRANSPARENT"' name='Stats1_sparklinespan-white'/>
+                
+              </span>
+
             </b:if>
-            <span expr:class='"counter-wrapper " + (data:showGraphicalCounter ? "graph-counter-wrapper" : "text-counter-wrapper")' expr:id='data:widget.instanceId + "_totalCount"'>
-            </span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" ><path d="M192-192v-288h144v288H192Zm216 0v-576h144v576H408Zm216 0v-384h144v384H624Z"/></svg>
             <b:include name='quickedit'/>
           </div>
         </div>
+
       </b:includable>
     </b:widget>
 
@@ -3306,9 +3352,11 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
         </b:widget-setting>
       </b:widget-settings>
       <b:includable id='main'>
-        <div class='widget-content'>
-          <data:content/>
-        </div>
+        <b:if cond='data:blog.pageType not in {"item","static_page"}'>
+          <div class='widget-content'>
+            <data:content/>
+          </div>
+        </b:if>
         <style>  
           /*<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante! */  
           /*css 👈 Comando decorativo "Highlight String Code" */
