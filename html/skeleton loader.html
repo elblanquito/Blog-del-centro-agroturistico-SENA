@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="card-sleleton skeleton-background">
+        <div class="header-skeleton">
+            <span class="title-skeleton"></span>
+            <div class="content-skeleton">
+                <span class="line-skeleton line-skeleton-1"></span>
+                <span class="line-skeleton line-skeleton-2"></span>
+                <span class="line-skeleton line-skeleton-3"></span>
+            </div>
+        </div>
+        <div class="img-skeleton-cont">
+            <div class="img-skeleton"></div>
+        </div>
+        <div class="footer-skeleton">
+            <div class="btn-skeleton"></div>
+            <div class="btn-skeleton"></div>
+            <div class="date-skeleton"></div>
+        </div>
+    </div>
+
+    <style>
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .skeleton-background {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skeleton-background::after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            transform: translateX(-00%);
+            background-image: linear-gradient(90deg,
+                    #0000 0,
+                    rgba(255, 255, 255, 0.575) 80%,
+                    #0000 100%,
+                    #0000);
+            animation: sk-back-animation 1.5s infinite ease;
+            content: '';
+        }
+
+        @keyframes sk-back-animation {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        .card-sleleton {
+            background-color: #ffffff;
+            box-sizing: border-box;
+            width: 100%;
+            max-width: 420px;
+            min-width: 270px;
+            padding: 30px 20px;
+            border-radius: 12px;
+            outline: 1px solid #eee;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .1),
+                0 2px 4px -2px rgba(0, 0, 0, .1);
+        }
+
+        .card-sleleton-dos-columnas {
+            max-width: 100%;
+        }
+
+        .header-skeleton {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header-skeleton span {
+            display: block;
+            border-radius: 12px;
+            background-color: #eee;
+        }
+
+        .header-skeleton .title-skeleton {
+            width: 200px;
+            height: 25px;
+        }
+
+        .card-sleleton .content-skeleton {
+            margin: 10px 0;
+            width: 100%;
+        }
+
+        .line-skeleton {
+            background-color: #eee;
+            height: 15px;
+            border-radius: 12px;
+            margin: 10px 0;
+        }
+
+        .line-skeleton-1 {
+            width: calc(100% - 15%)
+        }
+
+        .line-skeleton-2 {
+            width: calc(100% - 5%)
+        }
+
+        .line-skeleton-3 {
+            width: calc(100% - 60%)
+        }
+
+        .img-skeleton-cont {
+            display: flex;
+            justify-content: center;
+        }
+
+        .img-skeleton {
+            border-radius: 16px;
+            width: 353px;
+            height: 500px;
+            background-color: #eee;
+        }
+
+        .card-sleleton-dos-columnas .img-skeleton {
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+        }
+
+        .footer-skeleton {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .btn-skeleton {
+            border-radius: 12px;
+            background-color: #eee;
+            margin: 0px 10px;
+            height: 25px;
+            width: 40px;
+        }
+
+        .date-skeleton {
+            border-radius: 12px;
+            background-color: #eee;
+            margin-left: auto;
+            height: 25px;
+            width: 200px;
+            max-width: 40%;
+        }
+    </style>
+
+</body>
+
+</html>

@@ -12,11 +12,11 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
 
   <head>
-  <meta expr:content='&quot;
-  width=device-width,
-  initial-scale=1.0,
-  user-scalable=yes&quot;'
-  name='viewport'/>
+    <meta expr:content='&quot;
+    width=device-width,
+    initial-scale=1.0,
+    user-scalable=yes&quot;'
+    name='viewport'/>
 
     <b:include data='blog' name='all-head-content'/>
     <title>
@@ -298,17 +298,19 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
         🍇marker [CSS]
         ========================
         */
-        #sidebar-right-1{
+        .menu-lateral-cont{
           grid-area: derecha;
-          flex-direction: column;
-          display: flex;
-          gap: 15px;
           width: $(menulateral.width); /*este valor se define en la seccion de tamaños*/
           height: 100%;
           padding: 20px 20px;
           padding-bottom: 100px;
           background-color: $(menulateral.color);
           overflow-y: scroll;
+        }
+        .menu-lateral-cont{
+          flex-direction: column;
+          display: flex;
+          gap: 15px;
         }
         #sidebar-right-1 > .widget{min-height: fit-content;}
         #sidebar-right-1 h2 { color: #00304D}
@@ -516,6 +518,17 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
         .fancybox__nav .f-button svg{
           filter: none;
         }
+
+
+        .card-sleleton{
+          display: none !important;
+        }
+        .loading .date-posts .post{
+          display: none !important;
+        }
+        .loading .date-posts .card-sleleton{
+          display: block !important;
+        }
       /*!css*/
       ]]>
       </b:skin>
@@ -561,12 +574,131 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
       <b:include cond='not data:view.isPreview' data='{image: data:skin.vars.body_background.image,selector: &quot;body&quot;}' name='responsiveImageStyle'/>
     </b:if>
     <b:include data='blog' name='google-analytics'/>
+
+    <!-- marker Añadir este código en Diseño > Editar HTML, justo antes de la etiqueta </head> -->
+    <style>
+        body{
+            background-color: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .skeleton-background {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skeleton-background::after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            transform: translateX(-00%);
+            background-image: linear-gradient(
+                90deg,
+                #0000 0,
+                rgba(255, 255, 255, 0.575) 80%,
+                #0000 100%,
+                #0000
+            );
+            animation: sk-back-animation 1.5s infinite ease;
+            content: '';
+        }
+
+        @keyframes sk-back-animation {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+        .card-sleleton{
+            background-color: #ffffff;
+            box-sizing: border-box;
+            width: 100%;
+            max-width: 420px;
+            min-width: 270px;
+            padding: 30px 20px;
+            border-radius: 12px;
+            outline: 1px solid #eee;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .1),
+            0 2px 4px -2px rgba(0, 0, 0, .1);
+        }
+        .card-sleleton-dos-columnas{
+          max-width: 100%;
+        }
+        .header-skeleton{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header-skeleton span{
+            display: block;
+            border-radius: 12px;
+            background-color: #eee;
+        }
+
+        .header-skeleton .title-skeleton{
+            width: 200px;
+            height: 25px;
+        }
+        .card-sleleton .content-skeleton{
+            margin: 10px 0;
+            width: 100%;
+        }
+        .line-skeleton{
+            background-color: #eee;
+            height: 15px;
+            border-radius: 12px;
+            margin: 10px 0;
+        }
+        .line-skeleton-1{width: calc(100% - 15%)}
+        .line-skeleton-2{width: calc(100% - 5%)}
+        .line-skeleton-3{width: calc(100% - 60%)}
+
+        .img-skeleton-cont{
+            display: flex;
+            justify-content: center;
+        }
+        .img-skeleton{
+            border-radius: 16px;
+            width: 353px;
+            height: 500px;
+            background-color: #eee;
+        }
+        .card-sleleton-dos-columnas .img-skeleton{
+          width: 100%;
+          max-width: 500px;
+          height: 300px;
+        }
+        .footer-skeleton{display: flex;margin-top: 20px;}
+        .btn-skeleton{
+            border-radius: 12px;
+            background-color: #eee;
+            margin: 0px 10px;
+            height: 25px;
+            width: 40px;
+        }
+        .date-skeleton{
+            border-radius: 12px;
+            background-color: #eee;
+            margin-left: auto;
+            height: 25px;
+            width: 200px;
+            max-width: 40%;
+        }
+    </style>
+  
   </head>
   <!-- 
   🌐marker body 
   -->
   <body expr:class='&quot;loading&quot; + data:blog.mobileClass'>
-
     <b:section class='header header-outer' id='header2' maxwidgets='3' name='Header2' showaddelement='no'>
       <b:widget id='Header1' locked='true' title='Centro agroturistico v3 (Encabezado)' type='Header'>
         <b:widget-settings>
@@ -1290,9 +1422,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
 
                     </div>
                     
-
-
-
                     <!--
                     *======================
                     🍏marker Blog / Posts
@@ -1746,22 +1875,39 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                                 &lt;div class=&quot;date-outer&quot;&gt;
                               </b:if>
                               <b:if cond='data:post.dateHeader'>
-                          <div class='date-header-cont'>
-                            <h2 class='date-header' onclick='scrollFecha(this)'>
-                              <span>
-                                <data:post.dateHeader/>
-                              </span>
-                            </h2>
-                          </div>
-                        
+                                <div class='date-header-cont'>
+                                  <h2 class='date-header' onclick='scrollFecha(this)'>
+                                    <span>
+                                      <data:post.dateHeader/>
+                                    </span>
+                                  </h2>
+                                </div>
                               </b:if>
-
                               <b:if cond='data:post.isDateStart'>
                                 &lt;div class=&quot;date-posts&quot;&gt;
                               </b:if>
                               <b:include data='post' name='post'/>
-                              <b:include cond='data:blog.pageType in {"static_page","item"}' data='post' name='comment_picker'/>
                               
+                              <div class="card-sleleton card-sleleton-dos-columnas skeleton-background">
+                                <div class="header-skeleton">
+                                    <span class="title-skeleton"></span>
+                                    <div class="content-skeleton">
+                                        <span class="line-skeleton line-skeleton-1"></span>
+                                        <span class="line-skeleton line-skeleton-2"></span>
+                                        <span class="line-skeleton line-skeleton-3"></span>
+                                    </div>
+                                </div>
+                                <div class="img-skeleton-cont">
+                                    <div class="img-skeleton"></div>
+                                </div>
+                                <div class="footer-skeleton">
+                                    <div class="btn-skeleton"></div>
+                                    <div class="btn-skeleton"></div>
+                                    <div class="date-skeleton"></div>
+                                </div>
+                              </div>
+
+                              <b:include cond='data:blog.pageType in {"static_page","item"}' data='post' name='comment_picker'/>
                             </b:loop>
                             <b:if cond='data:numPosts != 0'>
                               &lt;/div&gt;&lt;/div&gt;
@@ -1774,7 +1920,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                           <b:else/>
                           <b:include name='mobile-main'/>
                         </b:if>
-                        </main>
+                      </main>
                       </b:includable>
                       
                       <!--
@@ -1929,14 +2075,13 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                       </b:includable>
                       <b:includable id='mobile-post' var='post'>
                         <div class='date-outer'>
-                        holaaaaaaaa
                           <b:if cond='data:post.dateHeader'>
-                            <h2 class='date-header'> que tal brooo
+                            <h2 class='date-header'>
                             <span><data:post.dateHeader/></span></h2>
                           </b:if>
+                          <!-- marker  marker -->
                           <div class='date-posts'>
                             <div class='post-outer'>
-
                               <div class='post hentry uncustomized-post-template' itemscope='itemscope' itemtype='http://schema.org/BlogPosting'>
                                 <b:if cond='data:post.thumbnailUrl'>
                                   <meta expr:content='data:post.thumbnailUrl' itemprop='image_url'/>
@@ -1963,7 +2108,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
 
                                 <div class='post-body entry-content' expr:id='&quot;post-body-&quot; + data:post.id' itemprop='articleBody'>
                                   <data:post.body/>
-                                  <div style='clear: both;'/> <!-- clear for photos floats -->
+                                  
                                 </div>
 
                                 <div class='post-footer'>
@@ -2013,6 +2158,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
 
                               <b:include cond='data:blog.pageType in {&quot;static_page&quot;,&quot;item&quot;}' data='post' name='comment_picker'/>
                             </div>
+                            
                           </div>
                         </div>
                       </b:includable>
@@ -2081,7 +2227,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                               
                             </div>
                           </div>
-
                           <div class='post-footer'>
                               <!--* etiquetas 👇 -->
                             <div class='post-footer-line post-footer-line-1'>
@@ -2475,153 +2620,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                 🍇marker menu left
                 *========================
                 -->
-              <macro:include id='main-column-right-sections' name='sections'>
-                <macro:param default='2' name='num' value='1'/>
-                <macro:param default='sidebar-right' name='idPrefix'/>
-                <macro:param default='sidebar' name='class'/>
-                <macro:param default='ocultarMenu' name='class'/>
-                <macro:param default='true' name='includeBottom'/>
-              </macro:include>
-              <div id='overlay-fondo-opaco' onclick='toggleMenu("ocultar")'></div>
-
-              <!-- columns -->
-              <!-- main -->
-              <!-- MACADOR fin del main 🟨🟨🟨🟨🟨 -->
-            </div>
-            
-            <footer>
-              <div class='footer-outer'>
-                <div class='footer-cap-top cap-top'>
-                  <div class='cap-left'/>
-                  <div class='cap-right'/>
-              </div>
-                <div class='fauxborder-left footer-fauxborder-left'>
-                  <div class='fauxborder-right footer-fauxborder-right'/>
-                  <div class='region-inner footer-inner'>
-                    <macro:include id='footer-sections' name='sections'>
-                      <macro:param default='2' name='num'/>
-                      <macro:param default='footer' name='idPrefix'/>
-                      <macro:param default='foot' name='class'/>
-                      <macro:param default='false' name='includeBottom'/>
-                    </macro:include>
-                    <!-- outside of the include in order to lock Attribution widget -->
-                    <b:section class='foot' id='footer-3' name='Footer' showaddelement='no'>
-                      <b:widget id='Attribution1' locked='true' title='' type='Attribution'>
-                        <b:widget-settings>
-                          <b:widget-setting name='copyright'/>
-                        </b:widget-settings>
-                        <b:includable id='main'>
-                          <div class='widget-content' style='text-align: center;'>
-                            <b:if cond='data:attribution != &quot;&quot;'>
-                              <data:attribution/>
-                            </b:if>
-                          </div>
-                        </b:includable>
-                      </b:widget>
-                    </b:section>
-                  </div>
-                </div>
-                <div class='footer-cap-bottom cap-bottom'>
-                  <div class='cap-left'/>
-                  <div class='cap-right'/>
-                </div>
-              </div>
-            </footer>
-                <b:section class='custom-footer2' id='customFooter2' maxwidgets='3' name='cont-custom-footer2' showaddelement='yes'>
-                  <b:widget id='HTML4' locked='false' title='prueba' type='HTML'>
-                     <b:widget-settings>
-                       <b:widget-setting name='content'><![CDATA[<div>hola mundo! </div>]]></b:widget-setting>
-                     </b:widget-settings>
-                     <b:includable id='main'>
-                  		<div class='widget-content'>
-                    		<data:content/>
-                  		</div>
-                	  </b:includable>
-                  </b:widget>
-                </b:section>
-            <!-- content -->
-          </div>
-        
-        <div class='content-cap-bottom cap-bottom'>
-          <div class='cap-left'/>
-          <div class='cap-right'/>
-        </div>
-      </div>
-    </div>
-
-
-  <!-- 
-  *========================
-  🍇marker [JS]
-  *========================
-  -->
-  <script>
-    //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
-    //js 👈 comando decorativo "Highlight String Code"
-    const menu = document.getElementById("sidebar-right-1");
-    const fondoOpaco = document.getElementById("overlay-fondo-opaco");
-    let lugarInicialX, lugarInicialY, distanciaX, menuDesplegado;
-
-    function toggleMenu(parametro = 'toggle'){
-      switch (parametro) {
-        case 'mostrar':
-          menu.classList.remove('ocultarMenu');
-          fondoOpaco.classList.add('visible');
-          break;
-        case 'ocultar':
-          menu.classList.add('ocultarMenu');
-          fondoOpaco.classList.remove('visible');
-          break;
-        case 'toggle':
-          menu.classList.toggle('ocultarMenu');
-          fondoOpaco.classList.toggle('visible');
-          break;
-      }
-    }
-
-    document.addEventListener("pointerdown", (event) => {
-        lugarInicialX = event.clientX;
-        lugarInicialY = event.clientY;
-        distanciaX = window.innerWidth - lugarInicialX;
-        menuDesplegado = !menu.classList.contains('ocultarMenu');
-
-        //<!--^ cerrar al tocar fuera del menu 🔒 --> 
-        if (menuDesplegado && distanciaX > menu.offsetWidth) {
-          toggleMenu('ocultar')
-        }
-    });
-
-    document.addEventListener("touchmove", (event) => {
-        // ignorar cuando esta lejos del borde ❌
-        if (distanciaX > 90 && !menuDesplegado) return
-        console.log(distanciaX)
-
-        let recoridoY = event.touches[0].clientY - lugarInicialY
-        let recoridoX = event.touches[0].clientX - lugarInicialX;
-
-        // ignorar si hay mucho Recorrido en "Y" ❌
-        if (recoridoY > 25 || recoridoY < -25) return;
-
-        //<!-- ^ logica al abrir 🔓--> 
-        if (recoridoX < -20) {
-            toggleMenu('mostrar')
-        }
-        //<!-- ^ logica al cerrar 🔒--> 
-        if (recoridoX > 20) {
-            toggleMenu('ocultar')
-        }
-    });
-    //!js
-    //]]>
-  </script>
-
-  <!-- 
-  *========================
-  🍇marker [HTML]
-  *========================
-  -->
-
-  <b:section-contents id='sidebar-right-1' >
+  <b:section id='sidebar-right-1' class='sidebar ocultarMenu menu-lateral-cont' >
     <!--
     ?===================
     🔍marker buscador
@@ -3376,9 +3375,10 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
             .postsx-cont {
               
             }
-            .postsx-cont iframe{
-            height: 500px;
-          }
+            .postsx-cont .twitter-timeline{
+              overflow-y: auto;
+              height: 500px !important;
+            }
             .postsx-cont .iframe-overlay{
               display: flex;
             }
@@ -3420,7 +3420,150 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
         </script>
       </b:includable>
     </b:widget>
-  </b:section-contents>
+
+  
+  </b:section>
+              <div id='overlay-fondo-opaco' onclick='toggleMenu("ocultar")'></div>
+
+              <!-- columns -->
+              <!-- main -->
+              <!-- MACADOR fin del main 🟨🟨🟨🟨🟨 -->
+            </div>
+            
+            <footer>
+              <div class='footer-outer'>
+                <div class='footer-cap-top cap-top'>
+                  <div class='cap-left'/>
+                  <div class='cap-right'/>
+              </div>
+                <div class='fauxborder-left footer-fauxborder-left'>
+                  <div class='fauxborder-right footer-fauxborder-right'/>
+                  <div class='region-inner footer-inner'>
+                    <macro:include id='footer-sections' name='sections'>
+                      <macro:param default='2' name='num'/>
+                      <macro:param default='footer' name='idPrefix'/>
+                      <macro:param default='foot' name='class'/>
+                      <macro:param default='false' name='includeBottom'/>
+                    </macro:include>
+                    <!-- outside of the include in order to lock Attribution widget -->
+                    <b:section class='foot' id='footer-3' name='Footer' showaddelement='no'>
+                      <b:widget id='Attribution1' locked='true' title='' type='Attribution'>
+                        <b:widget-settings>
+                          <b:widget-setting name='copyright'/>
+                        </b:widget-settings>
+                        <b:includable id='main'>
+                          <div class='widget-content' style='text-align: center;'>
+                            <b:if cond='data:attribution != &quot;&quot;'>
+                              <data:attribution/>
+                            </b:if>
+                          </div>
+                        </b:includable>
+                      </b:widget>
+                    </b:section>
+                  </div>
+                </div>
+                <div class='footer-cap-bottom cap-bottom'>
+                  <div class='cap-left'/>
+                  <div class='cap-right'/>
+                </div>
+              </div>
+            </footer>
+                <b:section class='custom-footer2' id='customFooter2' maxwidgets='3' name='cont-custom-footer2' showaddelement='yes'>
+                  <b:widget id='HTML4' locked='false' title='prueba' type='HTML'>
+                     <b:widget-settings>
+                       <b:widget-setting name='content'><![CDATA[<div>hola mundo! </div>]]></b:widget-setting>
+                     </b:widget-settings>
+                     <b:includable id='main'>
+                  		<div class='widget-content'>
+                    		<data:content/>
+                  		</div>
+                	  </b:includable>
+                  </b:widget>
+                </b:section>
+            <!-- content -->
+          </div>
+        
+        <div class='content-cap-bottom cap-bottom'>
+          <div class='cap-left'/>
+          <div class='cap-right'/>
+        </div>
+      </div>
+    </div>
+
+
+
+  <!-- 
+  *========================
+  🍇marker [JS]
+  *========================
+  -->
+  <script>
+    //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
+    //js 👈 comando decorativo "Highlight String Code"
+    const menu = document.getElementById("sidebar-right-1");
+    const fondoOpaco = document.getElementById("overlay-fondo-opaco");
+    let lugarInicialX, lugarInicialY, distanciaX, menuDesplegado;
+
+    function toggleMenu(parametro = 'toggle'){
+      switch (parametro) {
+        case 'mostrar':
+          menu.classList.remove('ocultarMenu');
+          fondoOpaco.classList.add('visible');
+          break;
+        case 'ocultar':
+          menu.classList.add('ocultarMenu');
+          fondoOpaco.classList.remove('visible');
+          break;
+        case 'toggle':
+          menu.classList.toggle('ocultarMenu');
+          fondoOpaco.classList.toggle('visible');
+          break;
+      }
+    }
+
+    document.addEventListener("pointerdown", (event) => {
+        lugarInicialX = event.clientX;
+        lugarInicialY = event.clientY;
+        distanciaX = window.innerWidth - lugarInicialX;
+        menuDesplegado = !menu.classList.contains('ocultarMenu');
+
+        //<!--^ cerrar al tocar fuera del menu 🔒 --> 
+        if (menuDesplegado && distanciaX > menu.offsetWidth) {
+          toggleMenu('ocultar')
+        }
+    });
+
+    document.addEventListener("touchmove", (event) => {
+        // ignorar cuando esta lejos del borde ❌
+        if (distanciaX > 90 && !menuDesplegado) return
+        console.log(distanciaX)
+
+        let recoridoY = event.touches[0].clientY - lugarInicialY
+        let recoridoX = event.touches[0].clientX - lugarInicialX;
+
+        // ignorar si hay mucho Recorrido en "Y" ❌
+        if (recoridoY > 25 || recoridoY < -25) return;
+
+        //<!-- ^ logica al abrir 🔓--> 
+        if (recoridoX < -20) {
+            toggleMenu('mostrar')
+        }
+        //<!-- ^ logica al cerrar 🔒--> 
+        if (recoridoX > 20) {
+            toggleMenu('ocultar')
+        }
+    });
+    //!js
+    //]]>
+  </script>
+
+  <!-- 
+  *========================
+  🍇marker [HTML]
+  *========================
+  -->
+
+  
 
 
 
@@ -3627,8 +3770,8 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
     //js 👈 comando decorativo "Highlight String Code"
     <!--* Elimina la clase 'loading' después de 10ms -->
     window.setTimeout(function () {
-      document.body.className = document.body.className.replace('loading', '');
-    }, 10);
+      
+    }, 500);
 
     // apenas cargue la estructura de la pagina
     document.addEventListener("DOMContentLoaded", () => {
@@ -3644,6 +3787,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
     window.addEventListener("load", () => {
       textoAnimado();
       //quitarEspacios();
+      document.body.className = document.body.className.replace('loading', 'listo');
       
     });
     
