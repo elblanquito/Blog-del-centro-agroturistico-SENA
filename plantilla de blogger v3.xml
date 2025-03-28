@@ -38,10 +38,18 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
       <Variableb name="keycolor" description="Main Color" type="color" default="#1a222a" value="#ffffff"/>
       <Variable name="body.background" description="Body Background" type="background" color="$(body.background.color)" default="#111111 url(//themes.googleusercontent.com/image?id=1OACCYOE0-eoTRTfsBuX1NMN9nz599ufI1Jh0CggPFA_sK80AGkIr8pLtYRpNUKPmwtEa) repeat-x fixed top center" value="#ffffff url(none) no-repeat fixed top center /* Credit: dino4 (http://www.istockphoto.com/portfolio/dino4?platform=blogger) */"/> 
 
-        <Group description="tamaños del blog" selector="#sidebar-right-1">
+        <Group  description="diseño del blog" selector=".content-outer">
+          <Variable name="content.margin" description="margen superior" type="length" default="20px" min="0" max="100px" value="20px"/>
+          <Variable name="content.border.radius" description="borde redondeado" type="length" default="20px" min="0" max="300px" value="20px"/>
+          <Variable name="content.background.color" description="color del blog" type="color" default="#ffffff" value="#ffffff"/> 
+        </Group>
+
+
+        <Group description="menu lateral" selector="#sidebar-right-1">
           <Variable name="menulateral.width" description="tamaño del menu lateral" type="length" default="270px" min="0" max="600px" value="270px"/>
           <Variable name="menulateral.color" description="color del menu lateral" type="color" default="#ffffff" value="#ffffff"/>
         </Group>
+
 
        <Group description="Page Text" selector="body">
          <Variable name="body.font" description="Font" type="font" default="normal normal 17px calibri, Tahoma, Helvetica, FreeSans, sans-serif" value="normal normal 16px PT Sans Caption"/>
@@ -105,12 +113,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
          <Variable name="footer.link.visited.color" description="Visited Color" type="color" default="#77aaee" value="#f29c96"/>
          <Variable name="footer.link.hover.color" description="Hover Color" type="color" default="#33aaff" value="#ff606d"/>
        </Group>
-
-       <Variable name="content.margin" description="Content Margin Top" type="length" default="20px" min="0" max="100px" value="20px"/>
-       <Variable name="content.padding" description="Content Padding" type="length" default="0" min="0" max="100px" value="0"/>
-       <Variable name="content.background" description="Content Background" type="background" default="transparent none repeat scroll top left" value="transparent none repeat scroll top left"/>
-       <Variable name="content.border.radius" description="Content Border Radius" type="length" default="0" min="0" max="100px" value="0"/>
-       <Variable name="content.shadow.spread" description="Content Shadow Spread" type="length" default="0" min="0" max="100px" value="0"/>
 
        <Variable name="header.padding" description="Header Padding" type="length" default="0" min="0" max="100px" value="0"/>
        <Variable name="header.background.gradient" description="Header Gradient" type="url" default="none" value="none"/>
@@ -210,7 +212,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
         .header-outer {
           display: none;
           background: $(header.background.color) $(header.background.gradient) repeat-x scroll top left;
-          _background-image: none;
           color: $(header.text.color);
         }
 
@@ -221,24 +222,17 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
         .post-content img{ width: 100%;}
 
         .content-outer {
-          background: $(content.background);
-
-          -moz-border-radius: $(content.border.radius);
-          -webkit-border-radius: $(content.border.radius);
-          -goog-ms-border-radius: $(content.border.radius);
+          overflow: hidden;
+          background-color: content.background.color;
           border-radius: $(content.border.radius);
-
-          -moz-box-shadow: 0 0 $(content.shadow.spread) rgba(0, 0, 0, .15);
-          -webkit-box-shadow: 0 0 $(content.shadow.spread) rgba(0, 0, 0, .15);
-          -goog-ms-box-shadow: 0 0 $(content.shadow.spread) rgba(0, 0, 0, .15);
-          box-shadow: 0 0 $(content.shadow.spread) rgba(0, 0, 0, .15);
-
           margin: $(content.margin) auto;
+
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+          padding: 0;
         }
 
-        .content-inner {
-          padding: $(content.padding);
-        }
+
+
 
 
         /* Widgets
@@ -727,10 +721,9 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
 
     <div class='content'>
       <div class='content-outer'>
-          <div class='content-inner'>
             <!--
             &=================
-            🎀marker Header ====
+            🎀marker Header
             &=================
             -->
             <b:section class='tabs' id='seccion-superior' maxwidgets='20' name='seccion superior' showaddelement='yes'>
@@ -750,17 +743,19 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                     /*<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante! */  
                     /*css 👈 Comando decorativo "Highlight String Code" */
                     div#Header1 {
+                      /*
                       max-width: 1280px;
-                      width:calc(100% - 40px);
+                      width:calc(100% - 40px);*/
+                      width: 100%
                     }
                     #Header1-inner{
                       display: flex;
                       align-items: flex-end;
-                      height: 200px;
+                      height: 250px;
                       background-position-x: center;
                       background-repeat: no-repeat;
                       background-size: cover;
-                      border-radius: 16px 16px 0px 0px;
+                      border-radius: 0px;
                       color: white;
                     }
                     #seccion-superior{
@@ -1033,7 +1028,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                       "izquierda derecha";
                     background: #ffffff;
                     padding: 0px 10px;
-                    border-radius: 16px;
+                    border-radius: 0px 0px 16px 16px;
                     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
                     0 1px 3px rgba(0, 0, 0, 0.08);
                 }
@@ -1049,9 +1044,9 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   width:100%;
                   margin: 0;
                 }
-                @media (max-width: 735px) {
-                  body{
-                    margin-top: -20px;
+                @media (max-width: 800px) {
+                  .content-outer{
+                    margin-top: 0px;
                   }
                   .main-outer {
                     border-radius: 0px;
@@ -1084,171 +1079,164 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                       <b:widget-setting name='link-2'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgUWSroBGrCs5QqFbluNzpR417FRySDT-Z-dC1ZxwLfOJsmGdFIX-g-oJYcGGqQpAi1Diu2SDxFVa6SkCjlHbbVWCCUtGDTD8RTEphl8S7CzHTyfslhiQRUSUPU89C9PRapX78l5WfwCJEOO9BX4touJ5NBD6SEgBHbUNBFqA_p8W4PYRmtMdLHLVXK3r0/s1072/bannerOferta%20(4).jpg</b:widget-setting>
                     </b:widget-settings>
                     <b:includable id='main'>
-                    <b:if cond='data:blog.pageType not in {"item","static_page"}'>
-                      <div class='widget-content imagenes-deslisables' expr:pagina='data:blog.pageType'>
-                        <div id="carusel-cont" class='carusel-cont'>
-                          <button class="carusel-btn carusel-btn-left" onclick="moverCarusel('atras',this.parentElement)" >
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#ffffff"><path d="m432-480 156 156q11 11 11 28t-11 28q-11 11-28 11t-28-11L348-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 28-11t28 11q11 11 11 28t-11 28L432-480Z"/></svg>
-                          </button>
-                          <button class="carusel-btn carusel-btn-right" onclick="moverCarusel('adelante',this.parentElement)">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#ffffff"><path d="M504-480 348-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L404-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Z"/></svg>
-                          </button>
-
-                          <b:loop values='data:links' var='link'>
-                            <div class="carusel-link" expr:href="data:link.target" target="_blank">
-                              <img expr:src='data:link.target' expr:alt="data:link.name" />
-                            </div>
-                          </b:loop>
+                      <b:if cond='data:blog.pageType not in {"item","static_page"}'>
+                        <div class='widget-content imagenes-deslisables' expr:pagina='data:blog.pageType'>
+                          <div id="carusel-cont" class='carusel-cont'>
+                            <button class="carusel-btn carusel-btn-left" onclick="moverCarusel('atras',this.parentElement)" >
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#ffffff"><path d="m432-480 156 156q11 11 11 28t-11 28q-11 11-28 11t-28-11L348-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 28-11t28 11q11 11 11 28t-11 28L432-480Z"/></svg>
+                            </button>
+                            <button class="carusel-btn carusel-btn-right" onclick="moverCarusel('adelante',this.parentElement)">
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#ffffff"><path d="M504-480 348-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L404-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Z"/></svg>
+                            </button>   
+                            <b:loop values='data:links' var='link'>
+                              <div class="carusel-link" expr:href="data:link.target" target="_blank">
+                                <img expr:src='data:link.target' expr:alt="data:link.name" />
+                              </div>
+                            </b:loop>
+                          </div>
                         </div>
-                      </div>
-                    </b:if>
-                      <style>
-                        /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
-                        /*css 👈 comando decorativo "Highlight String Code */
-                          #LinkList1{
-                            display: flex;
-                            justify-content: center;
-                          }
-                          .imagenes-deslisables{
-                            max-width: 850px;
-                            position: relative;
-                            width: 100%;
-                          }
-                          .carusel-cont {
-                            margin-bottom:20px;
-                            height: auto;
-                            border-radius: 8px;
-                            width: 100%;
-                            overflow-x: auto;
-                            scroll-snap-type: x mandatory;
-                            display: grid;
-                            grid-auto-flow: column;
-                            grid-auto-columns: 100%;
-                          }
-                          .carusel-link{
-                            position: relative;
-                            border-radius: 8px;
-                            width: auto;
-                            height: auto;
-                            scroll-snap-align:center;
-                          }
-                          .carusel-link img{
-                            border-radius: 8px;
-                            width: 100%;
-                            min-height: 150px;
-                            height: auto;
-                          }
-                          .carusel-cont::-webkit-scrollbar {
-                            width: 5px;
-                            height: 5px;
-                          }
-                        
-                          .carusel-cont::-webkit-scrollbar-thumb  {
-                            background: rgba(85, 85, 100, 0.18);
-                            border-radius: 10px;
-                          }
-                          .carusel-cont::-webkit-scrollbar-thumb:hover {
-                            background:rgba(85, 85, 100, 0.24);
-                          }
-                        
-                          .carusel-btn{
-                            z-index: 1;
-                            border-radius: 8px;
-                            background: #00000060;
-                            position: absolute;
-                            top: 50%;
-                            transform: translate(0,-50%);
-                            border: none;
-                            display: flex;
-                            align-items: center;
-                            padding: 8px 0px;
-                            transition: transform 0.2s ease;
-                          }
-                        
-                          .carusel-btn:hover{
-                            background: #00000080;
-                          }
-                          .carusel-btn:active{
-                            transform: translate(0,-50%) scale(0.8);
-                          }
-                        
-                          .carusel-btn svg{
-                            width: 38px;
-                            height: auto;
-                            fill: #ffffff;
-                          }
-                        
-                          .carusel-btn-left{
-                            left: 10px;
-                          }
-                          .carusel-btn-right{
-                            right: 10px;
-                          }
-                        /*!css*/
-                        /*]]>*/
-                      </style>
-                      <script>
-                        //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
-                        //js 👈 comando decorativo "Highlight String Code"
-                        
-                        let index = 0;
-                        let isPaused = false;
-                        carusel = document.getElementById("carusel-cont")
-
-
-                        function actualizarIndexCarusel(contenedor = carusel) {
-                          let items = contenedor.querySelectorAll(".carusel-link");
-                          let scrollLeft = contenedor.scrollLeft;
-                          let closestIndex = 0;
-                          let minDiff = Math.abs(scrollLeft - items[0].offsetLeft);
-
-                          items.forEach((item, i) => {
-                            let diff = Math.abs(scrollLeft - item.offsetLeft);
-                            if (diff < minDiff) {
-                              minDiff = diff;
-                              closestIndex = i;
+                      
+                        <style>
+                          /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+                          /*css 👈 comando decorativo "Highlight String Code */
+                            #LinkList1{
+                              display: flex;
+                              justify-content: center;
                             }
+                            .imagenes-deslisables{
+                              max-width: 990px;
+                              position: relative;
+                              width: 100%;
+                            }
+                            .carusel-cont {
+                              margin-bottom:20px;
+                              height: auto;
+                              border-radius: 8px;
+                              width: 100%;
+                              overflow-x: auto;
+                              scroll-snap-type: x mandatory;
+                              display: grid;
+                              grid-auto-flow: column;
+                              grid-auto-columns: 100%;
+                            }
+                            .carusel-link{
+                              position: relative;
+                              border-radius: 8px;
+                              width: auto;
+                              height: auto;
+                              scroll-snap-align:center;
+                            }
+                            .carusel-link img{
+                              border-radius: 8px;
+                              width: 100%;
+                              min-height: 150px;
+                              height: auto;
+                            }
+                            .carusel-cont::-webkit-scrollbar {
+                              width: 5px;
+                              height: 5px;
+                            }
+                          
+                            .carusel-cont::-webkit-scrollbar-thumb  {
+                              background: rgba(85, 85, 100, 0.18);
+                              border-radius: 10px;
+                            }
+                            .carusel-cont::-webkit-scrollbar-thumb:hover {
+                              background:rgba(85, 85, 100, 0.24);
+                            }
+                          
+                            .carusel-btn{
+                              z-index: 1;
+                              border-radius: 8px;
+                              background: #00000060;
+                              position: absolute;
+                              top: 50%;
+                              transform: translate(0,-50%);
+                              border: none;
+                              display: flex;
+                              align-items: center;
+                              padding: 8px 0px;
+                              transition: transform 0.2s ease;
+                            }
+                          
+                            .carusel-btn:hover{
+                              background: #00000080;
+                            }
+                            .carusel-btn:active{
+                              transform: translate(0,-50%) scale(0.8);
+                            }
+                          
+                            .carusel-btn svg{
+                              width: 38px;
+                              height: auto;
+                              fill: #ffffff;
+                            }
+                          
+                            .carusel-btn-left{
+                              left: 10px;
+                            }
+                            .carusel-btn-right{
+                              right: 10px;
+                            }
+                          /*!css*/
+                          /*]]>*/
+                        </style>
+                        <script>
+                          //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
+                          //js 👈 comando decorativo "Highlight String Code"
+                          
+                          let index = 0;
+                          let isPaused = false;
+                          carusel = document.getElementById("carusel-cont")   
+                          function actualizarIndexCarusel(contenedor = carusel) {
+                            let items = contenedor.querySelectorAll(".carusel-link");
+                            let scrollLeft = contenedor.scrollLeft;
+                            let closestIndex = 0;
+                            let minDiff = Math.abs(scrollLeft - items[0].offsetLeft);   
+                            items.forEach((item, i) => {
+                              let diff = Math.abs(scrollLeft - item.offsetLeft);
+                              if (diff < minDiff) {
+                                minDiff = diff;
+                                closestIndex = i;
+                              }
+                            });
+                            index = closestIndex;
+                          }   
+                          function moverCarusel(direccion = 'adelante', contenedor) {
+                              const items = contenedor.querySelectorAll(".carusel-link");
+                              actualizarIndexCarusel(contenedor); // Actualiza la posición antes de cambiar
+                              // Nueva posicion
+                              index = (direccion === "atras") 
+                                  ? (index - 1 + items.length) % items.length  // Si es menor a 0, reinicia al último
+                                  : (index + 1) % items.length;  // Si es mayor al último, vuelve a 0
+                              contenedor.scrollTo({
+                                  left: items[index].offsetLeft, 
+                                  behavior: "smooth"
+                              }); // scroll a la imagen indicada
+                          }
+                          function autoScrollCarusel() {
+                            if (isPaused) return; // Detener el movimiento si está en hover
+                            moverCarusel('adelante', carusel)
+                          }
+                          window.addEventListener("load", () => {
+                            setInterval(autoScrollCarusel, 5000); // Mueve cada 5 segundos
                           });
-                          index = closestIndex;
-                        }
-
-                        function moverCarusel(direccion = 'adelante', contenedor) {
-                            const items = contenedor.querySelectorAll(".carusel-link");
-                            actualizarIndexCarusel(contenedor); // Actualiza la posición antes de cambiar
-                            // Nueva posicion
-                            index = (direccion === "atras") 
-                                ? (index - 1 + items.length) % items.length  // Si es menor a 0, reinicia al último
-                                : (index + 1) % items.length;  // Si es mayor al último, vuelve a 0
-                            contenedor.scrollTo({
-                                left: items[index].offsetLeft, 
-                                behavior: "smooth"
-                            }); // scroll a la imagen indicada
-                        }
-                        function autoScrollCarusel() {
-                          if (isPaused) return; // Detener el movimiento si está en hover
-                          moverCarusel('adelante', carusel)
-                        }
-                        window.addEventListener("load", () => {
-                          setInterval(autoScrollCarusel, 5000); // Mueve cada 5 segundos
-                        });
-                        
-
-
-                        document.addEventListener("DOMContentLoaded", function () {
-                          // Detectar hover para pausar el movimiento
-                          // Detectar hover para pausar el movimiento (PC)
-                          carusel.addEventListener("mouseenter", () => isPaused = true);
-                          carusel.addEventListener("mouseleave", () => isPaused = false);
-
-                          // Detectar toque en móviles para pausar el movimiento
-                          carusel.addEventListener("touchstart", () => isPaused = true);
-                          document.addEventListener("visibilitychange", () => {
-                            isPaused = document.hidden;
+                              
+                          document.addEventListener("DOMContentLoaded", function () {
+                            // Detectar hover para pausar el movimiento
+                            // Detectar hover para pausar el movimiento (PC)
+                            carusel.addEventListener("mouseenter", () => isPaused = true);
+                            carusel.addEventListener("mouseleave", () => isPaused = false);   
+                            // Detectar toque en móviles para pausar el movimiento
+                            carusel.addEventListener("touchstart", () => isPaused = true);
+                            document.addEventListener("visibilitychange", () => {
+                              isPaused = document.hidden;
+                            });
                           });
-                        });
-                        //!js
-                        //]]>
-                      </script>
+                          //!js
+                          //]]>
+                        </script>
+                      </b:if>
                     
                     
                     </b:includable>
@@ -1378,6 +1366,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
 
                             .post-body{
                               display: flex;
+                              gap: 10px;
                               flex-direction: column;
                               align-items: center;
                               justify-content: center;
@@ -1548,12 +1537,11 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                             .dos-columnas {
                               width: fit-content;
                               max-width: 100%;
-                              grid-column: span 2;
                             }
                             .dos-columnas .post-body{
                               flex-direction: row;
                               flex-wrap: wrap;
-                              gap: 10px
+                              gap: 10px;
                             }
                             .dos-columnas .post-body .separator{
                               width: auto;
@@ -1561,7 +1549,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                             }
                             .dos-columnas img{
                               height: auto;
-                              width: 220px;
                             }
                             .dos-columnas .imagen-mediana{
                               width: 250px;
@@ -1578,6 +1565,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                         🍏marker [JS]
                         *======================
                         -->
+                      
                         <script>  
                           //<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante!  
                           //js 👈 Comando decorativo "Highlight String Code"
@@ -1601,47 +1589,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                           function scrollFecha(element) { 
                             element.parentElement.parentElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
                           } // scrollea hasta el padre, del padre, del elemento 
-
-                          function ajustarColumnas() {
-                            console.log('ajustando columnas')
-                            if (window.innerWidth < 900) return;
-                            columnasAjustadas = true // para que no vuelva a ejecutarse
-                            // Crear observador para detectar cambios de tamaño
-                            const resizeObserver = new ResizeObserver(entries => {
-                              entries.forEach(entry => {
-                                // Si la altura supera 800px, aplicar la clase y dejar de observar ese elemento
-                                if (window.innerWidth < 900) return;
-                                if (entry.contentRect.height > 800) {
-                                  entry.target.classList.add("dos-columnas");
-                                  resizeObserver.unobserve(entry.target);
-                                  const imagenes = entry.target.getElementsByTagName("img"); // Obtiene todas las imágenes dentro
-                                  if(imagenes.length <= 2) {
-                                    for (var i = 0; i < imagenes.length; i++) {
-                                      imagenes[i].classList.add("imagen-grande");
-                                    }
-                                  } else if ((imagenes.length % 4) <= 2 ){
-                                    for (var i = 0; i < imagenes.length; i++) {
-                                      imagenes[i].classList.add("imagen-mediana");
-                                    }
-                                  }
-                                }
-                              });
-                            });                     
-                            // Observar cada post
-                            posts.forEach(post => {
-                              resizeObserver.observe(post);
-                            });
-                          }
-
-                          let columnasAjustadas = false;
-                          const handleResize = () => {
-                            if (columnasAjustadas) {
-                              window.removeEventListener('resize', handleResize);
-                              return;
-                            }
-                            ajustarColumnas();
-                            console.log('tamaño nuevo')
-                          };
 
                           function agregarBotonDescarga(imagen) {
                               if (!imagen.nextElementSibling || !imagen.nextElementSibling.classList.contains('download-btn')) {
@@ -1683,6 +1630,56 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                           //!js  
                           //]]> 
                         </script>
+
+                        <b:if cond='data:blog.pageType not in {"item","static_page"}'>
+                          <script>  
+                            //<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante!  
+                            //js 👈 Comando decorativo "Highlight String Code"
+                            function ajustarColumnas() {
+                              if (window.innerWidth < 900) return;
+                              columnasAjustadas = true // para que no vuelva a ejecutarse
+                              // Crear observador para detectar cambios de tamaño
+                              const resizeObserver = new ResizeObserver(entries => {
+                                entries.forEach(entry => {
+                                  if (window.innerWidth < 900) return;
+                                  if (entry.contentRect.height > 800) {
+                                    entry.target.classList.add("dos-columnas");
+                                    resizeObserver.unobserve(entry.target);
+                                    const imagenes = entry.target.getElementsByTagName("img");
+                                    console.log('cantidad' + imagenes.length);
+                                    if (imagenes.length <= 2) {
+                                      return; // ⚠️ AQUÍ FALTA CERRAR UNA LLAVE
+                                    } else if ((imagenes.length % 4) <= 2) {
+                                      for (var i = 0; i < imagenes.length; i++) {
+                                        imagenes[i].classList.add("imagen-mediana");
+                                      }
+                                    } else {
+                                      for (var i = 0; i < imagenes.length; i++) {
+                                        imagenes[i].classList.add("imagen-pequeña");
+                                      }
+                                    }
+                                  } // ❌ ESTA LLAVE CIERRA EL if PERO NO EL forEach
+                                }); // ❌ CIERRA forEach PERO FALTA UNA LLAVE PARA EL RESIZEOBSERVER
+                              });                     
+                              // Observar cada post
+                              posts.forEach(post => {
+                                resizeObserver.observe(post);
+                              });
+                            }
+
+                            let columnasAjustadas = false;
+                            const handleResize = () => {
+                              if (columnasAjustadas) {
+                                window.removeEventListener('resize', handleResize);
+                                return;
+                              }
+                              ajustarColumnas();
+                            };
+
+                            //!js  
+                            //]]>  
+                          </script>
+                        </b:if>
                       </b:includable> 
                       <b:widget-settings>
                         <b:widget-setting name='commentLabel'> CM</b:widget-setting>
@@ -2056,6 +2053,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                         
 
                         <div class='post hentry uncustomized-post-template' itemprop='blogPost' itemscope='itemscope' itemtype='http://schema.org/BlogPosting'>
+                          <b:class cond='data:blog.pageType in {"item","static_page"}' name='dos-columnas'/>
                           <b:if cond='data:post.firstImageUrl'>
                             <meta expr:content='data:post.firstImageUrl' itemprop='image_url'/>
                           </b:if>
@@ -2846,6 +2844,11 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                       "href":"/p/pagina-de-recursos-globales.html",
                       "position":4,
                       "title":"resourses"
+                    },
+                    "link5":{
+                      "href":"/p/nosotros.html",
+                      "position":5,
+                      "title":"Nosotros"
                     }
                     }]]>
                   </b:widget-setting>
@@ -3401,7 +3404,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   </b:widget>
                 </b:section>
             <!-- content -->
-          </div>
+          
         
         <div class='content-cap-bottom cap-bottom'>
           <div class='cap-left'/>
@@ -3707,7 +3710,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
     window.addEventListener("load", () => {
       textoAnimado();
       //quitarEspacios();
-      document.body.className = document.body.className.replace('loading', 'listo');
+      document.body.classList.replace('loading', 'listo');
       
     });
     
