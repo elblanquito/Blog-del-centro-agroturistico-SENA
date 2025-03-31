@@ -1,0 +1,9 @@
+Nuestro Centro atiende las provincias Guanentina con 18 municipios y Comunera con 16 municipios todos ellos relacionados a continuación.
+Provincia Guanentina
+
+Aratoca, Barichara, Cabrera, Cepita, Charala, Coromoro, Curiti, Encino, Jordán, Mogotes, Ocamonte, Onzaga, Páramo, Pinchote, San Gil, San Joaquín, Valle de San José, Villanueva.
+
+
+Provincia Comunera
+
+Chima, Confines, Contratación, El Guacamayo, Galán, Gambita, Guadalupe, Guapota, Hato, Oiba, Palmar, Palmas del Socorro, San Benito, Simacota, Socorro, Suaita.

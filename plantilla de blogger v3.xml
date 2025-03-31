@@ -766,27 +766,16 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                     }
                     .header-txt-cont{
                       background-color: #00000070;
-                      color: #fff;
+                      color: #ffffff;
                       padding: 10px 30px;
                       width: 100%;
+                    }
+                    .header-txt-cont a{
+                      color: #ffffff;
                     }
                     .header-txt-cont h1{
                       gap: 5px;
                       display: flex;
-                    }
-                    .header-home-link{
-                      display: flex;
-                      width: fit-content;
-                    }
-                    .header-home-link svg{
-                      width: 40px;
-                      height: 100%;
-                      stroke: #ffffff;
-                    }
-                    .header-home-link svg:hover{
-                      width: 40px;
-                      height: 100%;
-                      stroke: #c4caca;
                     }
                     @media (max-width: 800px) {
                       div#Header1 {
@@ -816,13 +805,9 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                     <b:if cond='data:imagePlacement != "REPLACE"'>
                       <div class='header-txt-cont'>
                         <h1 class='title'>
+                        <a expr:href='data:blog.homepageUrl'>
                           <data:title/>
-                          <b:if cond='data:blog.url != data:blog.homepageUrl'> 
-                            <a class='header-home-link' expr:href='data:blog.homepageUrl'>
-                              <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  fill="none"  stroke="ffffff"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-home-share"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                              <path d="M9 21v-6a2 2 0 0 1 2 -2h2c.247 0 .484 .045 .702 .127" /><path d="M19 12h2l-9 -9l-9 9h2v7a2 2 0 0 0 2 2h5" /><path d="M16 22l5 -5" /><path d="M21 21.5v-4.5h-4.5" /></svg>
-                            </a>
-                          </b:if>
+                          </a>
                         </h1>
                         <b:if cond='data:imagePlacement != "BEFORE_DESCRIPTION"'>
                           <p class='description'><data:description/></p>
@@ -1046,6 +1031,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                 }
                 @media (max-width: 800px) {
                   .content-outer{
+                    border-radius: 0px;
                     margin-top: 0px;
                   }
                   .main-outer {
@@ -1120,6 +1106,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                               grid-auto-columns: 100%;
                             }
                             .carusel-link{
+                              aspect-ratio: 319 / 111;
                               position: relative;
                               border-radius: 8px;
                               width: auto;
@@ -1373,9 +1360,19 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                               height: min-content;
                               width: 100%;
                             }
+                            
+
+                            /* disminuir tamaño del br */
+                            /*
                             .post-body br{
-                              display:none;
+                              content: "";
                             }
+                            .post-body br::after{
+                              content: "";
+                              display: block;
+                              height: 0px; 
+                            }
+                            */
 
                             .post-body span , .post-body h4{
                               margin: 5px 0px;
@@ -1387,9 +1384,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                               margin: 0;
                               display: inline-flex;
                             }
-                            .post-body >div{
-                              display: flex;
-                              justify-content: center;
+                            .post-body div{
                               width: 100%;
                             }
 
@@ -1457,9 +1452,11 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                             .post-body p:empty {
                               display: none;
                             }
-                            .separator{
+                            .post-body div.separator{
                               display: flex;
-                              justify-content: center;
+                              flex-wrap: wrap;
+                              width: auto;
+                              gap: 10px;
                               margin: 0px;
                               width: fit-content;
                             }
@@ -1554,12 +1551,34 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                               width: 250px;
                             }
 
-                            .dos-columnas .imagen-grande{
-                              width: 100%;
+                            .dos-columnas .imagen-mini{
+                              width: 220px;
                             }
+                            .post img{
+                            box-shadow: 0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);
+                          }
                         /*!css*/  
                         /*]]>*/ 
                       </style>
+                      <b:if cond='data:blog.pageType != "index"'>
+                      <!-- cuando no este en la pagina principal -->
+                        <style>  
+                          /*<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante! */  
+                          /*css 👈 Comando decorativo "Highlight String Code" */
+
+                          .dos-columnas .post-body{
+                            flex-direction: column;
+                          }
+
+                          .dos-columnas img{
+                            max-height: none;
+                          }
+                          
+
+                          /*!css*/  
+                          /*]]>*/  
+                        </style>  
+                      </b:if>
                         <!--
                         *======================
                         🍏marker [JS]
@@ -1631,7 +1650,8 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                           //]]> 
                         </script>
 
-                        <b:if cond='data:blog.pageType not in {"item","static_page"}'>
+                        <b:if cond='data:blog.pageType == "index"'>
+                          <!-- cuando es la pagina principal -->
                           <script>  
                             //<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante!  
                             //js 👈 Comando decorativo "Highlight String Code"
@@ -1640,32 +1660,35 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                               columnasAjustadas = true // para que no vuelva a ejecutarse
                               // Crear observador para detectar cambios de tamaño
                               const resizeObserver = new ResizeObserver(entries => {
+
                                 entries.forEach(entry => {
+                                  // Si la altura supera 800px, aplicar la clase y dejar de observar ese elemento
                                   if (window.innerWidth < 900) return;
                                   if (entry.contentRect.height > 800) {
                                     entry.target.classList.add("dos-columnas");
                                     resizeObserver.unobserve(entry.target);
-                                    const imagenes = entry.target.getElementsByTagName("img");
-                                    console.log('cantidad' + imagenes.length);
-                                    if (imagenes.length <= 2) {
-                                      return; // ⚠️ AQUÍ FALTA CERRAR UNA LLAVE
-                                    } else if ((imagenes.length % 4) <= 2) {
+                                    const imagenes = entry.target.getElementsByTagName("img"); // Obtiene todas las imágenes dentro
+                                    console.log('cantidad' + imagenes.length)
+                                    if(imagenes.length <= 2) {
+                                      return;
+                                    } else if ((imagenes.length % 4) <= 2 ){
                                       for (var i = 0; i < imagenes.length; i++) {
                                         imagenes[i].classList.add("imagen-mediana");
                                       }
                                     } else {
                                       for (var i = 0; i < imagenes.length; i++) {
-                                        imagenes[i].classList.add("imagen-pequeña");
+                                        imagenes[i].classList.add("imagen-mini");
                                       }
                                     }
-                                  } // ❌ ESTA LLAVE CIERRA EL if PERO NO EL forEach
-                                }); // ❌ CIERRA forEach PERO FALTA UNA LLAVE PARA EL RESIZEOBSERVER
-                              });                     
+                                  }
+                                });
+                              });
+                                          
                               // Observar cada post
                               posts.forEach(post => {
                                 resizeObserver.observe(post);
-                              });
-                            }
+                              });                  
+                            } 
 
                             let columnasAjustadas = false;
                             const handleResize = () => {
@@ -1675,10 +1698,23 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                               }
                               ajustarColumnas();
                             };
+                            //!js  
+                            //]]> 
+                          </script> 
 
+                          <b:else/>
+
+                          <script>  
+                            <!-- cuando no esta en la pagina principal -->
+                            //<![CDATA[  
+                            //js
+                            function ajustarColumnas() {
+                              console.log("nada")
+                            }
                             //!js  
                             //]]>  
                           </script>
+                          
                         </b:if>
                       </b:includable> 
                       <b:widget-settings>
