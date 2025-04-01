@@ -159,12 +159,14 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
           float: left;
         }
         .menu-lateral-cont{
+          display: flow-root;
           width: $(menulateral.width); /*este valor se define en la seccion de tamaños*/
           background-color: $(menulateral.color);
         }
         .BlogSearch {
           background-color:$(menulateral.color);
         }
+
 
         /*
         <!--*cosas medio relevantes 👇-->
@@ -306,12 +308,9 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
         ========================
         */
         .menu-lateral-cont{
-          gap: 15px;
-          grid-auto-rows: min-content;
-          display: grid;
           grid-area: derecha;
           height: 100%;
-          padding: 20px 20px;
+          padding: 0px 20px;
           padding-bottom: 100px;
           overflow-y: scroll;
           /*
@@ -355,13 +354,14 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
           justify-content: center;
         }
         .iframe-overlay div{
+          border-radius: 0 0 10px 10px;
           display: flex;
           align-items: center;
           justify-content: center;
           height: 35px;
           width: 100%;
           text-align: center;
-          color: white;
+          color: white !important;
           background-color: #0000004d;
         }
         #overlay-fondo-opaco{
@@ -450,7 +450,9 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
           max-width: $(content.width);
         }
         h2{font-size: 1.2em;}
-        h3{font-size: 1em;}   
+        h3{font-size: 1em;}
+        .widget{margin: 20px 0px}   
+
 
         #layout {
           min-width: 0;
@@ -820,177 +822,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   
                 </b:includable>
               </b:widget>
-              <!--
-              ^================
-              🏷️marker rutas
-              ^================
-              -->
-
-              <b:widget id='PageList3' locked='false'
-                title='Menu principal 🏷️ (no agregar el link completo, solo el final)' type='PageList'>
-                <b:widget-settings>
-
-                  <b:widget-setting name='pageListJson'>
-                    <![CDATA[{
-                      "link0":{
-                        "href":"/",
-                        "position":0,
-                        "title":"Página Principal"
-                      },
-                      "link1":{
-                        "href":"/p/contactos.html",
-                        "position":1,
-                        "title":"Contactos"
-                      },
-                      "link2":{
-                        "href":"/p/normatividad.html",
-                        "position":2,
-                        "title":"Normatividad"
-                      },
-                      "link3":{
-                        "href":"/p/blog-page.html",
-                        "position":3,
-                        "title":"Programas"
-                      },
-                      "link4":{
-                        "href":"/p/pagina-de-recursos-globales.html",
-                        "position":4,
-                        "title":"resourses"
-                      }
-                    }]]>
-                  </b:widget-setting>
-                  <b:widget-setting name='homeTitle'>Página Principal</b:widget-setting>
-                </b:widget-settings>
-                <b:includable id='main'>
-
-                  <style>
-                    /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
-                    /*css 👈 comando decorativo "Highlight String Code */
-                    #PageList3{
-                      display: none;
-                      width: 100%;
-                      position: absolute;
-                      left: 0px;
-                      top: -20px;
-                      z-index: 2;
-
-                    }
-
-                    #seccion_header_cont {
-                      box-shadow: 0px 1px 4px #0000001f;
-                      box-sizing: border-box;
-                      display: flex;
-                      align-items: center;
-                      width: 100%;
-                      background-color: #ffffff;
-                      user-select: none;
-                      padding: 0px 20px;
-                      overflow-x: auto;
-                    }
-                    .seccion_header {
-                      min-width: fit-content;
-                      text-align: center;
-                      text-decoration: none !important;
-                      color: #39A900 !important;
-                      cursor: default;
-                      font-weight: bold;
-                      background-color: #ffffff;
-                      padding: 10px 20px;
-                      font-size: 1.1em;
-                      transition: all 0.2s;
-                    }
-                    .seccion_header:hover {
-                      background: linear-gradient(
-                      0deg, #f4ffee,#f4ffee
-                      );
-                      box-shadow: inset 0 -3px 0 0 #39A900;
-                    }
-                    .seccion_header:active {
-                        transform: scale(0.95);
-                    }
-                    .seccion_header.pagina_actual {
-                      box-shadow: inset 0 -3px 0px #39A900;
-                    }
-                    .seccion_header_cont:hover .pagina_actual {
-                      box-shadow: none;
-                    }
-                    .seccion_header.pagina_actual:hover {
-                      box-shadow: inset 0 -3px 0px #39A900;
-                    }
-
-
-                    /* Pantallas de 620px */
-                    @media (max-width: 620px) {
-                      .seccion_header_cont {
-                        max-width: none;
-                        <!-- display: grid; -->
-                        grid-template-columns: 1fr 1fr;
-                      }
-                      .seccion_header:hover {
-                          box-shadow: inset 5px 0 0 0px #39A900,
-                          inset -5px 0 0 0px #39A900;
-                      }
-                      .seccion_header.pagina_actual {
-                          box-shadow:
-                              inset 5px 0 0 0px #39A900,
-                              inset -5px 0 0 0px #39A900;
-                          background-color: #f4ffee;
-                      }
-                    .seccion_header_cont:hover .pagina_actual {
-                          box-shadow: none;
-                          background-color: white;
-                      }
-                      .seccion_header.pagina_actual:hover {
-                          box-shadow: inset 5px 0 0 0px #39A900,
-                          inset -5px 0 0 0px #39A900;
-                          background-color: #f4ffee;
-                      }
-                    }
-
-                    /* Pantallas de 401px */
-                    @media (max-width: 401px) {
-                        .seccion_header_cont {
-                            width: 100%;
-                            grid-template-columns: 1fr;
-                            justify-items: center;
-                        }
-                    }
-                    /*!css*/
-                    /*]]>*/
-                  </style>
-                  <script>
-                    //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
-                    //js 👈 comando decorativo "Highlight String Code"
-                    function asignarPaginaActual() {
-                      const urlActual = window.location.pathname;
-
-                      const contenedor = document.getElementById('seccion_header_cont');
-                      const seccion_headers = contenedor.querySelectorAll('.seccion_header');
-
-                      seccion_headers.forEach(seccion_header => {
-                        const href = new URL(seccion_header.href).pathname;
-                        if (urlActual === href) {
-                          seccion_header .classList.add('pagina_actual');
-                        }
-                      })
-                    }
-                    //!js
-                    //]]>
-                  </script> 
-
-                  <div class='widget-content'>
-                      <div id="seccion_header_cont">
-                        <b:loop values='data:links' var='link'>
-                          <a class="seccion_header" expr:href='data:link.href'>
-                            <data:link.title/>
-                          </a>
-                        </b:loop>
-                      </div>
-                    <b:include name='quickedit'/>
-                  </div>
-                </b:includable>
-              </b:widget>
-
             </b:section>
 
             <!--
@@ -1018,14 +849,13 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                     0 1px 3px rgba(0, 0, 0, 0.08);
                 }
                 #seccion-intermedia{
-                  margin-top: 15px;
                   grid-area: intermedio;
                 }
                 .blog-posts{
                   grid-area: izquierda;
                   max-width: 100vw;
                   box-sizing: border-box;
-                  padding: 20px 40px;
+                  padding: 0px 40px;
                   width:100%;
                   margin: 0;
                 }
@@ -1039,7 +869,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                     padding: 0;
                   }
                   .blog-posts {
-                    padding: 20px 8px;
+                    padding: 0px 8px;
                   }
                   
                 }
@@ -1048,6 +878,165 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
               </style>
 
             <b:section  id='seccion-intermedia' maxwidgets='20' name='seccion intermedia' showaddelement='yes'>
+              <!--
+              ^================
+              🏷️marker rutas
+              ^================
+              -->
+              <b:widget id='PageList3' locked='false'
+                title='Menu principal 🏷️ (no agregar el link completo, solo el final)' type='PageList'>
+                <b:widget-settings> 
+                  <b:widget-setting name='pageListJson'>
+                    <![CDATA[{
+                      "link0":{
+                        "href":"/",
+                        "position":0,
+                        "title":"Página Principal"
+                      },
+                      "link1":{
+                        "href":"/p/nosotros.html",
+                        "position":1,
+                        "title":"Nosotros"
+                      },
+                      "link2":{
+                        "href":"/p/normatividad_17.html",
+                        "position":2,
+                        "title":"Normatividad"
+                      },
+                      "link3":{
+                        "href":"/p/blog-page.html",
+                        "position":3,
+                        "title":"Programas"
+                      },
+                      "link4":{
+                        "href":"/p/etapa-productiva.html",
+                        "position":4,
+                        "title":"Etapa productiva"
+                      }
+                    }]]>
+                  </b:widget-setting>
+                  <b:widget-setting name='homeTitle'>Página Principal</b:widget-setting>
+                </b:widget-settings>
+                <b:includable id='main'>  
+                  <style>
+                    /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+                    /*css 👈 comando decorativo "Highlight String Code */
+                    #PageList3{
+                      margin: 0px;
+                      position: sticky;
+                      top: 0px;
+                      width: 100%;
+                      z-index: 2;
+                    } 
+                    #seccion_header_cont {
+                      box-sizing: border-box;
+                      display: flex;
+                      align-items: center;
+                      width: 100%;
+                      background-color: #ffffff;
+                      user-select: none;
+                      padding: 0px 20px;
+                      overflow-x: auto;
+                    }
+                    .seccion_header {
+                      min-width: fit-content;
+                      text-align: center;
+                      text-decoration: none !important;
+                      color: #39A900 !important;
+                      cursor: default;
+                      font-weight: bold;
+                      background-color: #ffffff;
+                      padding: 10px 12px;
+                      font-size: 1em;
+                      transition: all 0.2s;
+                    }
+                    .seccion_header:hover {
+                      background: linear-gradient(
+                      0deg, #f4ffee,#f4ffee
+                      );
+                      box-shadow: inset 0 -3px 0 0 #39A900;
+                    }
+                    .seccion_header:active {
+                        transform: scale(0.95);
+                    }
+                    .seccion_header.pagina_actual {
+                      box-shadow: inset 0 -3px 0px #39A900;
+                    }
+                    #seccion_header_cont:hover .pagina_actual {
+                      box-shadow: none;
+                    }
+                    .seccion_header.pagina_actual:hover {
+                      box-shadow: inset 0 -3px 0px #39A900;
+                    } 
+                    /* Pantallas de 620px */
+                    @media (max-width: 620px) {
+                      #seccion_header_cont {
+                        max-width: none;
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                      }
+                    }
+                      
+                    /* Pantallas de 401px */
+                    @media (max-width: 401px) {
+                        #seccion_header_cont {
+                            width: 100%;
+                            grid-template-columns: 1fr;
+                            justify-items: center;
+                        }
+                    }
+                    /*!css*/
+                    /*]]>*/
+                  </style>
+                  <script>
+                    //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
+                    //js 👈 comando decorativo "Highlight String Code"
+                    function asignarPaginaActual() {
+                      const urlActual = window.location.pathname; 
+                      const contenedor = document.getElementById('seccion_header_cont');
+                      const seccion_headers = contenedor.querySelectorAll('.seccion_header'); 
+                      seccion_headers.forEach(seccion_header => {
+                        const href = new URL(seccion_header.href).pathname;
+                        if (urlActual === href) {
+                          seccion_header .classList.add('pagina_actual');
+                        }
+                      })
+                    }
+                    //!js
+                    //]]>
+                  </script>   
+                  <div class='widget-content'>
+                      <div id="seccion_header_cont">
+                        <b:loop values='data:links' var='link'>
+                          <a class="seccion_header" expr:href='data:link.href'>
+                            <data:link.title/>
+                          </a>
+                        </b:loop>
+                      </div>
+                    <b:include name='quickedit'/>
+                  </div>
+                </b:includable>
+              </b:widget>
+                  
+            </b:section>
+
+
+                    <!--
+                    *======================
+                    🍏marker Blog / Posts
+                    *======================
+                    -->
+                <b:section class='blog-posts hfeed' id='main' name='Main' maxwidgets='20' showaddelement='yes'>
+                  <style>  
+                    /*<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante! */  
+                    /*css 👈 Comando decorativo "Highlight String Code" */
+
+                    
+
+                    /*!css*/  
+                    /*]]>*/  
+                  </style>  
+
                   <!--
                   *======================
                   🖼️marker Main Imagenes
@@ -1088,6 +1077,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                             #LinkList1{
                               display: flex;
                               justify-content: center;
+                              margin: 20px 0px;
                             }
                             .imagenes-deslisables{
                               max-width: 990px;
@@ -1095,7 +1085,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                               width: 100%;
                             }
                             .carusel-cont {
-                              margin-bottom:20px;
+                              margin: 0;
                               height: auto;
                               border-radius: 8px;
                               width: 100%;
@@ -1229,28 +1219,9 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                     </b:includable>
                     
                   </b:widget>
-            </b:section>
-
-
-                    <!--
-                    *======================
-                    🍏marker Blog / Posts
-                    *======================
-                    -->
-                <b:section class='blog-posts hfeed' id='main' name='Main' maxwidgets='20' showaddelement='yes'>
-                  <style>  
-                    /*<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante! */  
-                    /*css 👈 Comando decorativo "Highlight String Code" */
-
-                    
-
-                    /*!css*/  
-                    /*]]>*/  
-                  </style>  
                     
                   
-                    <div id="main-header">
-                    </div>
+                  
                     
                     
                     <b:widget id='Blog1' locked='true' title='Entradas del blog' type='Blog' version='1'>
@@ -1265,6 +1236,9 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                         🍏marker [CSS]
                         *======================
                         --> */
+                            #Blog1{
+                              margin: 20px 0px;
+                            }
                             #main-header{
                               padding-bottom: 30px;
                               display: flex;
@@ -1336,6 +1310,9 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                             }
                             .post >a{display:none;}
                             .post div{color: #00304D;}
+                            .post h1, .post h2, .post h3, .post h4, .post h5{
+                              width: 100%;
+                            }
 
                             .post-body-cont{
                               display: flex;
@@ -1420,6 +1397,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                               height: 100%;
                             }
                             .post img, .post iframe, .tiktok-embed {
+                              box-shadow: 0 1px 6px 0px rgba(0, 0, 0, .1), 0 2px 4px -2px rgba(0, 0, 0, .1);;
                               transition: transform 0.3s ease-out;
                               display: block;
                               overflow-y: auto;
@@ -1433,22 +1411,12 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                               object-fit: cover;
                               object-position: center;
                               content-visibility: auto;
-                              /* animaciones */
-                              view-timeline-name: --postscroll;
-                              view-timeline-axis: block;
-                              animation-timeline: --postscroll;
-                              animation-name: aparecer;
-                              animation-fill-mode: both;
-                              animation-range: entry 0% cover 40%;
                               }
 
                             .post img:active, .post iframe:active, .tiktok-embed:active{
-                              transform: scale(.90) rotate(0deg);
+                              transform: scale(.90);
                             }
-                            @keyframes aparecer {
-                              0% {scale: 0.6;}
-                              100% {opacity: 1;scale: 1;}
-                            }
+
                             .post-body p:empty {
                               display: none;
                             }
@@ -1460,9 +1428,12 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                               margin: 0px;
                               width: fit-content;
                             }
+                            .post-body div.separator .separator{
+                              margin: 0px auto;
+                            }
                             .separator > a{
                               position: relative;
-                              margin: 0px !important;
+                              margin: 0px auto !important;
                               padding: 0px !important;
                             }
 
@@ -1536,27 +1507,24 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                               max-width: 100%;
                             }
                             .dos-columnas .post-body{
+                              align-items: stretch;
                               flex-direction: row;
                               flex-wrap: wrap;
                               gap: 10px;
                             }
                             .dos-columnas .post-body .separator{
                               width: auto;
-                              gap: 5px;
                             }
                             .dos-columnas img{
                               height: auto;
                             }
                             .dos-columnas .imagen-mediana{
-                              width: 250px;
+                              width: 220px;
                             }
 
                             .dos-columnas .imagen-mini{
                               width: 220px;
                             }
-                            .post img{
-                            box-shadow: 0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);
-                          }
                         /*!css*/  
                         /*]]>*/ 
                       </style>
@@ -1565,6 +1533,13 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                         <style>  
                           /*<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante! */  
                           /*css 👈 Comando decorativo "Highlight String Code" */
+                          /*
+                          .post h1{font-size: 2.0em;}
+                          .post h2{font-size: 1.8em;}
+                          .post h3{font-size: 1.6em;}
+                          .post h4{font-size: 1.4em;}
+                          */
+
 
                           .dos-columnas .post-body{
                             flex-direction: column;
@@ -2535,7 +2510,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                       color: #39A900;
                     }
                     .BlogSearch {
-                      margin: 0px 0px;
                       width: 100%;
                       /*
                       background-color se define en "sections [CSS]"
@@ -2862,9 +2836,9 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                       "title":"Página Principal"
                     },
                     "link1":{
-                      "href":"/p/contactos.html",
+                      "href":"https://www.sena.edu.co/es-co/formacion/Paginas/Estudie-en-el-SENA.aspx",
                       "position":1,
-                      "title":"Contactos"
+                      "title":"Inscripciones"
                     },
                     "link2":{
                       "href":"/p/normatividad_17.html",
@@ -2893,9 +2867,12 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   <style>
                     /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
                     /*css 👈 comando decorativo "Highlight String Code */
-                     #PageList1{
-                      margin: 5px 0;
-                     }
+                    #PageList1 a{
+                       font-weight: bold;
+                    }
+                    .widget ul li{
+                      border:none;
+                    }
                     /*!css*/
                     /*]]>*/
                   </style>
@@ -3388,7 +3365,10 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
             <!-- main -->
             <!-- MACADOR fin del main 🟨🟨🟨🟨🟨 -->
             </div>
-            
+
+            <!-- 
+            🗂️ marker orden secciones
+             -->
             <footer>
               <div class='footer-outer'>
                 <div class='footer-cap-top cap-top'>
