@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button>hola que tal</button>
+  <hr>
+  <button>hola que tal</button>
+  <hr>
+  <button>hola que tal</button>
+  <hr>
+  <button>hola que tal</button>
+  <hr>
+  
+</body>
+
+<style>
+
+  hr{
+    width: 0;
+    border: 0;
+    height: 4px;
+    border-radius: 100px;
+    background-color: #c695f3;
+    transition: all 0.3s ease-in-out;
+
+  }
+  button:hover + hr{
+    opacity: 1;
+    width: 100%;
+  }
+
+
+  body {
+    background-attachment: fixed !important;
+    --s: 170px;
+    --c1: #2e8700;
+    --c2: #39a900;
+    --c3: #339800;
+
+    --_g: var(--c3) 0 120deg, #0000 0;
+    background: conic-gradient(from -60deg at 50% calc(100% / 3), var(--_g)),
+      conic-gradient(from 120deg at 50% calc(200% / 3), var(--_g)),
+      conic-gradient(from 60deg at calc(200% / 3),
+        var(--c3) 60deg,
+        var(--c2) 0 120deg,
+        #0000 0),
+      conic-gradient(from 180deg at calc(100% / 3), var(--c1) 60deg, var(--_g)),
+      linear-gradient(90deg,
+        var(--c1) calc(100% / 6),
+        var(--c2) 0 50%,
+        var(--c1) 0 calc(500% / 6),
+        var(--c2) 0);
+    background-size: calc(1.732 * var(--s)) var(--s);
+  }
+
+  body {
+    background-attachment: fixed !important;
+    background-image: repeating-linear-gradient(0deg,
+        black,
+        1px,
+        white 1px,
+        white);
+    background-size: 100% 30px;
+    background-color: white;
+  }
+
+  body {
+    background-attachment: fixed !important;
+    background-color: #f7f7f7;
+    background-image: radial-gradient(rgba(12, 12, 12, 0.171) 2px, transparent 0);
+    background-size: 30px 30px;
+    background-position: -5px -5px;
+  }
+
+  body {
+    background-attachment: fixed !important;
+    background: linear-gradient(#3f87a6 10%, #ebf8e1a2 10%), linear-gradient(to right, #ebf8e100 3vw, #c73030 3vw calc(3vw + 10px), #ebf8e100 calc(3vw + 10px));
+    background-size: 100% 51px, 10% 100%;
+    background-repeat: repeat, repeat-y;
+  }
+
+</style>
+</html>
+
