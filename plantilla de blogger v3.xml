@@ -486,125 +486,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
       <b:include cond='not data:view.isPreview' data='{image: data:skin.vars.body_background.image,selector: &quot;body&quot;}' name='responsiveImageStyle'/>
     </b:if>
     <b:include data='blog' name='google-analytics'/>
-
-    <!-- marker Añadir este código en Diseño > Editar HTML, justo antes de la etiqueta </head> -->
-    <style>
-        body{
-            background-color: #f4f4f4;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
-
-        .skeleton-background {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skeleton-background::after {
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            transform: translateX(-00%);
-            background-image: linear-gradient(
-                90deg,
-                #0000 0,
-                rgba(255, 255, 255, 0.575) 80%,
-                #0000 100%,
-                #0000
-            );
-            animation: sk-back-animation 1.5s infinite ease;
-            content: '';
-        }
-
-        @keyframes sk-back-animation {
-            0% {
-                transform: translateX(-100%);
-            }
-            100% {
-                transform: translateX(100%);
-            }
-        }
-        .card-sleleton{
-            background-color: #ffffff;
-            box-sizing: border-box;
-            width: 100%;
-            max-width: 420px;
-            min-width: 270px;
-            padding: 30px 20px;
-            border-radius: 12px;
-            outline: 1px solid #eee;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .1),
-            0 2px 4px -2px rgba(0, 0, 0, .1);
-        }
-        .card-sleleton-dos-columnas{
-          max-width: 100%;
-        }
-        .header-skeleton{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .header-skeleton span{
-            display: block;
-            border-radius: 12px;
-            background-color: #eee;
-        }
-
-        .header-skeleton .title-skeleton{
-            width: 200px;
-            height: 25px;
-        }
-        .card-sleleton .content-skeleton{
-            margin: 10px 0;
-            width: 100%;
-        }
-        .line-skeleton{
-            background-color: #eee;
-            height: 15px;
-            border-radius: 12px;
-            margin: 10px 0;
-        }
-        .line-skeleton-1{width: calc(100% - 15%)}
-        .line-skeleton-2{width: calc(100% - 5%)}
-        .line-skeleton-3{width: calc(100% - 60%)}
-
-        .img-skeleton-cont{
-            display: flex;
-            justify-content: center;
-        }
-        .img-skeleton{
-            border-radius: 16px;
-            width: 353px;
-            height: 500px;
-            background-color: #eee;
-        }
-        .card-sleleton-dos-columnas .img-skeleton{
-          width: 100%;
-          max-width: 500px;
-          height: 300px;
-        }
-        .footer-skeleton{display: flex;margin-top: 20px;}
-        .btn-skeleton{
-            border-radius: 12px;
-            background-color: #eee;
-            margin: 0px 10px;
-            height: 25px;
-            width: 40px;
-        }
-        .date-skeleton{
-            border-radius: 12px;
-            background-color: #eee;
-            margin-left: auto;
-            height: 25px;
-            width: 200px;
-            max-width: 40%;
-        }
-    </style>
   
   </head>
   <!-- 
@@ -989,6 +870,11 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                         "href":"/p/etapa-productiva.html",
                         "position":4,
                         "title":"Etapa productiva"
+                      },
+                      "link5":{
+                        "href":"https://centro-agroturistico-sena.blogspot.com/p/directorio.html",
+                        "position":5,
+                        "title":"directorio"
                       }
                     }]]>
                   </b:widget-setting>
@@ -1185,7 +1071,8 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                               border-radius: 16px;
                               width: 100%;
                               min-height: 170px;
-                              height: auto;
+                              display: block;
+                              height: 100%;
                             }
                             @media (max-width: 800px) {
                               .carusel-link img{
@@ -1412,6 +1299,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                             justify-content: space-around;
                           }   
                           h2.post-title {
+                            font-size: 1.5em;
                             color: #00304D;
                             margin-bottom: 10px;
                           	text-align: center;
@@ -1443,14 +1331,36 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                           .post-body p,
                           .post-body a {
                             position: relative;
-                            margin: 0;
+                            margin: 0 !important;
                             display: inline-flex;
+                            justify-content: center;
+                            flex-wrap: wrap;
+                            gap: 10px;
                           }
                           .post-body div{
                             width: 100%;
                           }   
                           .post-body > p{
                             margin:0px;
+                          }   
+                          .post-body p:empty {
+                            display: none;
+                          }
+                          .post-body div.separator{
+                            display: inline-flex;
+                            flex-wrap: wrap;
+                            gap: 10px;
+                            margin: 0px;
+                            justify-content: center;
+                          }
+                          .post-body div.separator .separator{
+                          }
+                          .post-body .separator > a,
+                          .post-body p > a{
+                            aspect-ratio: auto; 
+                            position: relative;
+                            margin: 0px !important;
+                            padding: 0px !important;
                           }   
                           .download-btn {
                             cursor: pointer;
@@ -1472,6 +1382,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                           }
                           .download-btn:hover{
                             background-color:  #00000040;
+                            transform: scale(1.1)
                           }  
                           .download-btn:active {
                             transform: scale(0.8);
@@ -1488,11 +1399,14 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                             display: block;
                             overflow-y: auto;
                             border-radius: 10px;
-                            width: 100%;
                             height: auto;
+                            /*
+                            width: 100%;
                             max-height: 500px;
-                            min-width: 220px;
-                            max-width: none ;
+                           */ 
+
+
+                            max-width: 100% ;
                             object-fit: cover;
                             object-position: center;
                             content-visibility: auto;
@@ -1523,26 +1437,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                           } 
                           .post img:active, .post iframe:active, .tiktok-embed:active{
                             transform: scale(.90);
-                          }   
-                          .post-body p:empty {
-                            display: none;
-                          }
-                          .post-body div.separator{
-                            display: flex;
-                            flex-wrap: wrap;
-                            width: auto;
-                            gap: 10px;
-                            margin: 0px;
-                            width: fit-content;
-                          }
-                          .post-body div.separator .separator{
-                            margin: 0px auto;
-                          }
-                          .separator > a{
-                            aspect-ratio: auto; 
-                            position: relative;
-                            margin: 0px auto !important;
-                            padding: 0px !important;
                           }   
                           .post-footer{
                             margin-top: 15px;
@@ -1618,19 +1512,19 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                             gap: 10px;
                           }
                           .dos-columnas .post-body .separator{
-                            width: auto;
+                            
                           }
                           .dos-columnas img{
-                            height: auto;
+                            
                           }
+                          /*
                           .dos-columnas .imagen-mediana{
                             width: 220px;
-
-                            
                           }   
                           .dos-columnas .imagen-mini{
                             width: 220px;
                           }
+                          */
                           @media (max-width: 800px) {
                             .post{
                               margin: 0 20px;
@@ -1639,7 +1533,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                           /*!css*/  
                           /*]]>*/ 
                         </style>
-                        <b:if cond='data:blog.pageType != "index"'>
+                        <b:if cond='data:blog.pageType in {"static_page"}'>
                         <!-- cuando no este en la pagina principal -->
                           <style>  
                             /*<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante! */  
@@ -1655,6 +1549,9 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                             }   
                             .dos-columnas img{
                               max-height: none;
+                            }
+                            h2.post-title {
+                              font-size: 1.5em
                             }
                                 
                             /*!css*/  
@@ -1692,7 +1589,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                                     <button class="download-btn" onclick="
                                       event.preventDefault(); 
                                       event.stopPropagation();
-                                      descargarImagen('${imagen.src}')
+                                      descargarImagen('${imagen.parentElement.href}')
                                     ">
                                       <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="#39a900"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-photo-down"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 8h.01" /><path d="M12.5 21h-6.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v6.5" /><path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l4 4" /><path d="M14 14l1 -1c.653 -.629 1.413 -.815 2.13 -.559" /><path d="M19 16v6" /><path d="M22 19l-3 3l-3 -3" /></svg>
                                     </button>
@@ -1725,7 +1622,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                             //!js  
                             //]]> 
                           </script>   
-                          <b:if cond='data:blog.pageType == "index"'>
+                          <b:if cond='data:blog.pageType not in {"item","static_page"}'>
                             <!-- cuando es la pagina principal -->
                             <script>  
                               //<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante!  
@@ -1741,19 +1638,14 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                                     if (entry.contentRect.height > 800) {
                                       entry.target.classList.add("dos-columnas");
                                       resizeObserver.unobserve(entry.target);
-                                      const imagenes = entry.target.getElementsByTagName("img"); // Obtiene todas las imágenes dentro
-                                      console.log('cantidad' + imagenes.length)
-                                      if(imagenes.length <= 2) {
-                                        return;
-                                      } else if ((imagenes.length % 4) <= 2 ){
-                                        for (var i = 0; i < imagenes.length; i++) {
-                                          imagenes[i].classList.add("imagen-mediana");
-                                        }
-                                      } else {
-                                        for (var i = 0; i < imagenes.length; i++) {
-                                          imagenes[i].classList.add("imagen-mini");
-                                        }
-                                      }
+                                      //const imagenes = entry.target.getElementsByTagName("img"); // Obtiene todas las imágenes dentro
+                                      //if(imagenes.length <= 2) {
+                                      //  return;
+                                      //} else {
+                                      //  for (var i = 0; i < imagenes.length; i++) {
+                                      //    imagenes[i].classList.add("imagen-mini");
+                                      //  }
+                                      //}
                                     }
                                   });
                                 });
