@@ -1,0 +1,18 @@
+buscar etiquetas / mejor buscador
+
+- hacer mas pequeño el carucel
+
+- adaptar el header a móviles
+
+- mejorar posicionamiento de las secciones en la pagina de blogger
+
+- probar meter el texto animado dentro del buscador
+
+
+
+- buscar forma de conservar la relacon de aspecto en img
+
+
+hoy:
+
+bug en las animaciones del scroll

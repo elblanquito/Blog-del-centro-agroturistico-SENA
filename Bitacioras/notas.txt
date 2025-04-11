@@ -1,0 +1,17 @@
+- función para cada que se carguen imágenes se aplique la clase 2 columnas (talvez observando la altura)
+
+- crear una función para alertas de la pagina
+
+- mejorar menú superior
+
+- mejorar el scroll del menú
+
+- optimizar la pagina con los consejos de deepseek
+
+- intentar la visualización con carusel
+
+- agregar animación de scroll a carusel del main / reacerlo sin scroll 
+
+-areglar bug de deslizar en elemento insertado
+
+- eliminar visualización de la fecha en paginas

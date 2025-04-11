@@ -1355,6 +1355,8 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                           }   
                           .post-body p,
                           .post-body a {
+                            height: fit-content;
+                            max-width: 100%;
                             position: relative;
                             margin: 0 !important;
                             display: inline-flex;
@@ -1571,25 +1573,22 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                             .post h2{font-size: 1.8em;}
                             .post h3{font-size: 1.6em;}
                             .post h4{font-size: 1.4em;}
-                            */    
-                            .dos-columnas .post-body{
-                              flex-direction: column;
-                            }   
-                            .dos-columnas img{
-                              max-height: none;
-                            }
+                            */
+                            .post{
+                              width: 100%;
+                            }    
                             h2.post-title {
                               font-size: 1.5em
                             }
-                          .post iframe{
-                          	margin: 0 auto;
-  	                      	max-height: 800px !important;
-                          	min-height: 300px !important;
-                          	height: calc(100vh - 300px) !important;
-                          	width: 100% !important;
-                          	max-width: none !important;
-                          	border: none;
-  	                      }
+                            .post iframe{
+                            	margin: 0 auto;
+  	                        	max-height: 800px !important;
+                            	min-height: 300px !important;
+                            	height: calc(100vh - 300px) !important;
+                            	width: 100% !important;
+                            	max-width: none !important;
+                            	border: none;
+  	                        }
                                 
                             /*!css*/  
                             /*]]>*/  

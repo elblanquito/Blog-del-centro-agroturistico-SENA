@@ -6,46 +6,189 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="radio-inputs">
+        <label class="radio" onclick="cambiarContenedor('contenedor-introduccion', 'contenedor-siga')">
+            <input type="radio" name="radio" checked="">
+            <span class="name">HTML</span>
+        </label>
+        <label class="radio" onclick="cambiarContenedor('contenedor-medioambiente', 'contenedor-siga')">
+            <input type="radio" name="radio">
+            <span class="name">React</span>
+        </label>
 
-    <style>
-        body{
-            font-family: calibri;
-            background-color: #eee;
-            display: flex;
-            min-height: 100vh;
-            margin: 0;
-            justify-content: center;
-            align-items: center;
+        <label class="radio">
+            <input type="radio" name="radio">
+            <span class="name">Vue</span>
+        </label>
+    </div>
+    <script>
+        function cambiarContenedor(mostrar = "", ocultar = "") {
+            document.querySelectorAll("." + ocultar).forEach((elemento) => {
+                elemento.style.display = "none";
+            });
+            document.querySelector("." + mostrar).style.display = "flex"
         }
-        .centro-agro-cont{
-            background-color: #ffffff;
-            display: flex;
-            padding: 10px 40px;
-            column-gap: 20px;
-        }
-        .centro-agro-cont .logo{
-            width: 80px;
-            fill: #007832;
-        }
-        .centro-agro-cont .text-cont{
-            display: flex;
-            justify-content: center;
-            flex-direction: column ;
-            
-        }
+    </script>
+    <div class="contenedor-siga contenedor-introduccion">
+        <div>
+            <div class="separator" style="clear: both; text-align: center;"><a
+                    href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhPyv3pS6e_VBDc8QIH_goBch3NJuLG1twqMKZolbNh1dlU58h5tRC6rg_VAIGFWs1U2aeKXR-XFZEDbk2yt9pacWj0_7r56hqOD_LhVsNbr0kXhscz2EQxpbxvIg8ud3CB5FEvfVkfhAAObeN2ZJXgwMV5UPJr5W8gi-gOxVE7rKid1wfudCMDGn178iE/s1477/introduccion%20a%20siga.png"
+                    style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="801"
+                        data-original-width="1477" height="631"
+                        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhPyv3pS6e_VBDc8QIH_goBch3NJuLG1twqMKZolbNh1dlU58h5tRC6rg_VAIGFWs1U2aeKXR-XFZEDbk2yt9pacWj0_7r56hqOD_LhVsNbr0kXhscz2EQxpbxvIg8ud3CB5FEvfVkfhAAObeN2ZJXgwMV5UPJr5W8gi-gOxVE7rKid1wfudCMDGn178iE/w1163-h631/introduccion%20a%20siga.png"
+                        width="1163" /></a></div>
+        </div>
+        <div class="separator" style="clear: both; text-align: center;"><a
+                href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgcfNkPgWJALjj-sZHLL_kR7MSje3wd1SE6HJGbukYuv31bMRMJmbeteXxNV3ipQyVWhMUH10eq7jr1ni3_SFz9q4cn1-lob-pT_0-Lnbt6g2TFVnxuaxqvU0pqOM8nUmOb2ISGkgSccu-zhXyREzqPY_keiZJriSI8Ky3l1uO727a0O4bgI8UIYn82zyM/s1600/Pol%C3%ADtica_Gesti%C3%B3n_de_Calidad.jpg"
+                imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="1600"
+                    data-original-width="1600" height="1174"
+                    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgcfNkPgWJALjj-sZHLL_kR7MSje3wd1SE6HJGbukYuv31bMRMJmbeteXxNV3ipQyVWhMUH10eq7jr1ni3_SFz9q4cn1-lob-pT_0-Lnbt6g2TFVnxuaxqvU0pqOM8nUmOb2ISGkgSccu-zhXyREzqPY_keiZJriSI8Ky3l1uO727a0O4bgI8UIYn82zyM/w1174-h1174/Pol%C3%ADtica_Gesti%C3%B3n_de_Calidad.jpg"
+                    width="1174" /></a></div><br />
+        <div class="separator" style="clear: both; text-align: center;"><a
+                href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMABH6KkuXTIaf0aClr-WaiX-BmnDflC6w2uSTr9v4m8CVgnG1UVJSCmEn4kfi2tgwsJTa0WP4bS_xqJkFsmy9visKxl8Z03gkMG1ueILDgUKQvBTUF6ojYNOC6c27SEdcUZkHEhVbKfQPiFV89tVUBrvR3eoG58HhIhq-SxVom9TV9vJkY9ujxdilO14/s1600/Pol%C3%ADtica_Gesti%C3%B3n_de_Calidad.jpg"
+                imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="1600"
+                    data-original-width="1600" height="1183"
+                    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMABH6KkuXTIaf0aClr-WaiX-BmnDflC6w2uSTr9v4m8CVgnG1UVJSCmEn4kfi2tgwsJTa0WP4bS_xqJkFsmy9visKxl8Z03gkMG1ueILDgUKQvBTUF6ojYNOC6c27SEdcUZkHEhVbKfQPiFV89tVUBrvR3eoG58HhIhq-SxVom9TV9vJkY9ujxdilO14/w1183-h1183/Pol%C3%ADtica_Gesti%C3%B3n_de_Calidad.jpg"
+                    width="1183" /></a></div><br />
+        <p style="text-align: left;"><br /></p>
+        <div><br
+                style="background-color: white; color: #5d5d5d; font-family: calibri, sans-serif; font-size: 13px;" /><iframe
+                allow="autoplay" height="480"
+                src="https://drive.google.com/file/d/11nd8af5z_zd2n-flmiRFIh-E6dCI32E8/preview" width="640"></iframe>
+        </div>
+    </div>
+    <div class="contenedor-siga contenedor-medioambiente">
+        <div class="separator" style="clear: both;"><a
+                href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjQB9B3uMgUAhlwxcpimvnJMSG_XvyCg8A496T96iFcceCC75wLzSjibIDEjkJBu-DSPs61JdCGhL4qjtYPHUxKogmH5tod5QA1FwHXahvgPD581dYJNg00jFNbybKCwu3j9tZSTL76JUJVmTweOCCi7xqrcWsmRsF9a4Lk6GFbSIpWFWTg8o3AkgNDVXo/s2251/Ambiental_y_energ%C3%A9tica.jpg"
+                style="display: block; padding: 1em 0px; text-align: center;"><img alt="" border="0"
+                    data-original-height="2251" data-original-width="2251"
+                    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjQB9B3uMgUAhlwxcpimvnJMSG_XvyCg8A496T96iFcceCC75wLzSjibIDEjkJBu-DSPs61JdCGhL4qjtYPHUxKogmH5tod5QA1FwHXahvgPD581dYJNg00jFNbybKCwu3j9tZSTL76JUJVmTweOCCi7xqrcWsmRsF9a4Lk6GFbSIpWFWTg8o3AkgNDVXo/s16000/Ambiental_y_energ%C3%A9tica.jpg" /></a>
+        </div>
+        <div class="separator" style="clear: both;"><a
+                href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg24-por4tV7GzPddfMUeDHht_LF2j8s8EJ6HB5p55MKOhuYX4F2opkYfJUFc3rVOnQ1kSMFH_CExn4eutfx48EVC1acrwY-J7IA6pB_zxnd9cma1itfifQDB8pqCs6zWBqdY5vt-IJtL3wVAdSK6vNM9zelLG0g3J1HKC1UNZSBQF51CvScbNFE1rJFoM/s972/image%20%286%29.png"
+                style="display: block; padding: 1em 0px; text-align: center;"><img alt="" border="0"
+                    data-original-height="690" data-original-width="972"
+                    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg24-por4tV7GzPddfMUeDHht_LF2j8s8EJ6HB5p55MKOhuYX4F2opkYfJUFc3rVOnQ1kSMFH_CExn4eutfx48EVC1acrwY-J7IA6pB_zxnd9cma1itfifQDB8pqCs6zWBqdY5vt-IJtL3wVAdSK6vNM9zelLG0g3J1HKC1UNZSBQF51CvScbNFE1rJFoM/s16000/image%20(6).png" /></a>
+        </div>
+        <div class="separator" style="clear: both;"><a
+                href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiYq59bnHOYsy5laYMy4AxvTIaeGPodXoxPrR6iANEsNgy9KjsoICL6X6wZ63y2D1S8hdxzTkLNcjG2LSR77qzMD3HkYqPUgTW9PL-ZP-4Db8u1SFEBiBrdN3LH70CshTwmT_VP_RhIe0Us5bb8FIqG8HbGJ0HKppcoLEhH7ooI3V9lRexeErbmKbhbiiI/s979/image%20%285%29.png"
+                style="display: block; padding: 1em 0px; text-align: center;"><img alt="" border="0"
+                    data-original-height="685" data-original-width="979"
+                    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiYq59bnHOYsy5laYMy4AxvTIaeGPodXoxPrR6iANEsNgy9KjsoICL6X6wZ63y2D1S8hdxzTkLNcjG2LSR77qzMD3HkYqPUgTW9PL-ZP-4Db8u1SFEBiBrdN3LH70CshTwmT_VP_RhIe0Us5bb8FIqG8HbGJ0HKppcoLEhH7ooI3V9lRexeErbmKbhbiiI/s16000/image%20(5).png" /></a>
+        </div>
+        <div class="separator" style="clear: both;"><a
+                href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgf4Ew3GzUdyDTBlUAqUm6dfKXY20UFJomA-DCQdhyphenhyphenmc7A-3noMle4Wq3oZGzewXpRrx55jYcQphDByY8bFxaC3mia74PqWtL5Rhp6wUF7OFXi7WYx9GurYPKXmkWExVlaIylIgmajpPsWCFum5Y3zUhccPTdeValMIRIE2aVZgwydpwqfJHG_jh-zCZlc/s963/image%20%284%29.png"
+                style="display: block; padding: 1em 0px; text-align: center;"><img alt="" border="0"
+                    data-original-height="680" data-original-width="963"
+                    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgf4Ew3GzUdyDTBlUAqUm6dfKXY20UFJomA-DCQdhyphenhyphenmc7A-3noMle4Wq3oZGzewXpRrx55jYcQphDByY8bFxaC3mia74PqWtL5Rhp6wUF7OFXi7WYx9GurYPKXmkWExVlaIylIgmajpPsWCFum5Y3zUhccPTdeValMIRIE2aVZgwydpwqfJHG_jh-zCZlc/s16000/image%20(4).png" /></a>
+        </div>
+        <div class="separator" style="clear: both;"><a
+                href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjopkBSTK-ZcpRCifZpFf2vcNdX8ciQcB2H9mGwTq2r-WNUtIoI6krG1-TCn1eUJJmRgH9H3wto4ok50cJpvKdgnOL026JnOtBDbJJMaB_rKnOsN6i3mKYSjVEmWAlZfS7x6jAWizRHkOfyv9Xsxa8L2tLCji3W9JDSlDDJ1XzI6dVnsfbcLizXMprIjds/s969/image%20%283%29.png"
+                style="display: block; padding: 1em 0px; text-align: center;"><img alt="" border="0"
+                    data-original-height="707" data-original-width="969"
+                    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjopkBSTK-ZcpRCifZpFf2vcNdX8ciQcB2H9mGwTq2r-WNUtIoI6krG1-TCn1eUJJmRgH9H3wto4ok50cJpvKdgnOL026JnOtBDbJJMaB_rKnOsN6i3mKYSjVEmWAlZfS7x6jAWizRHkOfyv9Xsxa8L2tLCji3W9JDSlDDJ1XzI6dVnsfbcLizXMprIjds/s16000/image%20(3).png" /></a>
+        </div>
+        <div class="separator" style="clear: both;"><a
+                href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhKlkYiNeGtAvd_4wU25i1KJpQTXoh6hihyphenhyphen9LntJ5O07neBkBVKgoTVLm9kWPhNkYb5LcvxZytXWmrsxrEnorwj4sCOFycAWlk22qzygO18C6yKlHiLqm_AJ1hxW59_6FVZuO5xmjqR9omKLPNqvR334jFR36DHhDGVaj0r8jh2KWGzPzBFYEU9j7uDGhY/s987/image%20%282%29.png"
+                style="display: block; padding: 1em 0px; text-align: center;"><img alt="" border="0"
+                    data-original-height="690" data-original-width="987"
+                    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhKlkYiNeGtAvd_4wU25i1KJpQTXoh6hihyphenhyphen9LntJ5O07neBkBVKgoTVLm9kWPhNkYb5LcvxZytXWmrsxrEnorwj4sCOFycAWlk22qzygO18C6yKlHiLqm_AJ1hxW59_6FVZuO5xmjqR9omKLPNqvR334jFR36DHhDGVaj0r8jh2KWGzPzBFYEU9j7uDGhY/s16000/image%20(2).png" /></a>
+        </div>
+        <div class="separator" style="clear: both;"><a
+                href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrRKt91bcKdk52a53bKICL0TyNGOzJB4MIgZ8vSrOm7JPQ5E4vsJat3tv9-xSh61WZ04dx7eiC1IS9RoYjxoagBukq90XvVSDkJhAgEOd2qe9NR1JsStjsSeLtnpEt-xE2pkherQeNzywpIGtpTgPkcG765p_zhf-7X5lS4hSpXTMWxRtJjTQdRPw2sm4/s920/image.png"
+                style="display: block; padding: 1em 0px; text-align: center;"><img alt="" border="0"
+                    data-original-height="669" data-original-width="920"
+                    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrRKt91bcKdk52a53bKICL0TyNGOzJB4MIgZ8vSrOm7JPQ5E4vsJat3tv9-xSh61WZ04dx7eiC1IS9RoYjxoagBukq90XvVSDkJhAgEOd2qe9NR1JsStjsSeLtnpEt-xE2pkherQeNzywpIGtpTgPkcG765p_zhf-7X5lS4hSpXTMWxRtJjTQdRPw2sm4/s16000/image.png" /></a>
+        </div>
+        <div class="separator" style="clear: both;"><a
+                href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjTjuS2g6dvNhyCXaofmnWfqDWVEQFszF6fR4skRpXvfuX9zxQVyR-OFRbb21WjMy1XwS-8hanVRf0ILu_VMkmwtWnlDdjuqCcRgd6adKmm6WKCkCeahaNUniIbD_R3u6BLay8DxO3GQ2BQFQas0-7S_2l-UVnxF7ySGbFh8dOl7R-jeMtnman1gScPKNw/s920/thumbnail_image.png"
+                style="display: block; padding: 1em 0px; text-align: center;"><img alt="" border="0"
+                    data-original-height="669" data-original-width="920"
+                    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjTjuS2g6dvNhyCXaofmnWfqDWVEQFszF6fR4skRpXvfuX9zxQVyR-OFRbb21WjMy1XwS-8hanVRf0ILu_VMkmwtWnlDdjuqCcRgd6adKmm6WKCkCeahaNUniIbD_R3u6BLay8DxO3GQ2BQFQas0-7S_2l-UVnxF7ySGbFh8dOl7R-jeMtnman1gScPKNw/s16000/thumbnail_image.png" /></a>
+        </div>
+        <div class="separator" style="clear: both;"><a
+                href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjlc1GDKhdARjyjXJa2TTTDYHu6_ORcAxhEa5vE8g06yOv84NEc1qZ5I_JpekQ1Fid937Fp6HXEDE6GPexeGMRzazyC46Je2zzydb-kO-ThDNUePcTsLpJV4Bo-UIEExVH6Vae9MbWvTm35_r_9hoaDCVTyTNghI6xw2pGAVo-W9SROi3e-df_edYwE2vg/s920/thumbnail_image%20%281%29.png"
+                style="display: block; padding: 1em 0px; text-align: center;"><img alt="" border="0"
+                    data-original-height="669" data-original-width="920"
+                    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjlc1GDKhdARjyjXJa2TTTDYHu6_ORcAxhEa5vE8g06yOv84NEc1qZ5I_JpekQ1Fid937Fp6HXEDE6GPexeGMRzazyC46Je2zzydb-kO-ThDNUePcTsLpJV4Bo-UIEExVH6Vae9MbWvTm35_r_9hoaDCVTyTNghI6xw2pGAVo-W9SROi3e-df_edYwE2vg/s16000/thumbnail_image%20(1).png" /></a>
+        </div>
+        <div class="separator" style="clear: both;"><a
+                href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhM3X8dMCcVadFpw3twRUiZtDWvBPIXchjpbJcWOtlzN4zaOqZa7zz_DXc7G52zbeLDgRe3kCo5U4b0-LUTfUFsJcMaN9Fbuj_loelG_0dxn8YQtuCndvPNXkeLIVRbonmYovE04VRmc61N8bOzichuvrtJvUtcQHm2vcVxZkC_JDF7HW2S2KfmmkDnGoo/s920/thumbnail_Outlook-dzzigaun.png"
+                style="display: block; padding: 1em 0px; text-align: center;"><img alt="" border="0"
+                    data-original-height="669" data-original-width="920"
+                    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhM3X8dMCcVadFpw3twRUiZtDWvBPIXchjpbJcWOtlzN4zaOqZa7zz_DXc7G52zbeLDgRe3kCo5U4b0-LUTfUFsJcMaN9Fbuj_loelG_0dxn8YQtuCndvPNXkeLIVRbonmYovE04VRmc61N8bOzichuvrtJvUtcQHm2vcVxZkC_JDF7HW2S2KfmmkDnGoo/s16000/thumbnail_Outlook-dzzigaun.png" /></a>
+        </div>
+    </div>
 
-        .centro-agro-cont .texto{
-            line-height: 1;
-            margin: 0;
-        }
-        .centro-agro-cont .texto-1{
-            color: #007832;
-            font-size: 1.6em;
-        }
-        .centro-agro-cont .texto-2{
-            color:  #39A900;
-            font-size: 3em;
-        }
-    </style>
+
 </body>
+<style>
+    img{
+        margin: 0;
+        width: 80%;
+        max-width: 600px;
+        height: auto;
+    }
+    body {
+        font-family: calibri;
+        background-color: #eee;
+        min-height: 100vh;
+        margin: 0;
+    }
+
+    .contenedor-siga {
+        display: none;
+        gap: 10px;
+        flex-direction: row;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        flex-wrap: wrap;
+        align-items: stretch;
+    }
+
+    .contenedor-introduccion {
+        display: flex;
+    }
+
+    .radio-inputs {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        border-radius: 0.5rem;
+        background-color: #EEE;
+        box-sizing: border-box;
+        box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
+        padding: 0.25rem;
+        width: 300px;
+        font-size: 14px;
+    }
+
+    .radio-inputs .radio {
+        flex: 1 1 auto;
+        text-align: center;
+    }
+
+    .radio-inputs .radio input {
+        display: none;
+    }
+
+    .radio-inputs .radio .name {
+        display: flex;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.5rem;
+        border: none;
+        padding: .5rem 0;
+        color: rgba(51, 65, 85, 1);
+        transition: all .15s ease-in-out;
+    }
+
+    .radio-inputs .radio input:checked+.name {
+        background-color: #fff;
+        font-weight: 600;
+    }
+</style>
+
 </html>
