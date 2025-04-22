@@ -891,14 +891,29 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                         "title":"Etapa productiva"
                       },
                       "link5":{
-                        "href":"https://centro-agroturistico-sena.blogspot.com/p/directorio.html",
+                        "href":"/p/directorio.html",
                         "position":5,
                         "title":"directorio"
                       },
                       "link6":{
-                        "href":"https://centro-agroturistico-sena.blogspot.com/p/siga.html",
+                        "href":"/p/siga.html",
                         "position":6,
-                        "title":"SIGA"
+                        "title":"SIGA > introduccion"
+                      },
+                      "link7":{
+                        "href":"/p/siga-medio-ambiente.html",
+                        "position":7,
+                        "title":"SIGA > Medio Ambiente"
+                      },
+                      "link8":{
+                        "href":"/p/siga-politica-de-seguridad-y-salud-en.html",
+                        "position":8,
+                        "title":"SIGA > Política de Seguridad y Salud en el Trabajo"
+                      },
+                      "link9":{
+                        "href":"/p/siga-politica-seguridad-de-la.html",
+                        "position":9,
+                        "title":"SIGA > Politica Seguridad de la Informacion"
                       }
                     }]]>
                   </b:widget-setting>
@@ -1007,11 +1022,28 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   </script>   
                   <div class='widget-content'>
                       <div id="seccion_header_cont">
-                        <b:loop values='data:links' var='link'>
-                          <a class="seccion_header" expr:href='data:link.href'>
-                            <data:link.title/>
-                            <hr/>
-                          </a>
+                        <b:loop values='data:links' var='link' index='i'>
+                          <b:if cond='data:link.title not contains ">"'>
+                            <!-- pagina normal 🏷️-->
+                            <a class="seccion_header" expr:href='data:link.href'>
+                              <data:link.title/>
+                              <hr/>
+                            </a>
+                            <b:else/>
+                            <!-- si es una carpeta 📁-->
+                            <!--                             
+                            <a class="seccion_header" expr:href='data:link.href'>
+                              <b:eval var='carpetaIndex'>
+                                <b:expr>data:i</b:expr>
+                              </b:eval>
+                              Num: <data:carpetaIndex/>📁
+                              <hr/>
+                            </a>
+                             -->
+                          </b:if>
+                        </b:loop>
+                        <b:loop values='data:links where (p => p.title contains ">")' var='link'>
+                          <data:link.title/>
                         </b:loop>
                       </div>
                     <b:include name='quickedit'/>
