@@ -23,6 +23,18 @@
       <input type="radio" name="SIGA" value="seguridadsalud">
       <span class="linea"></span>
       Seguridad y Salud
+      <script type="text/javascript">
+        function insertarHtml(etiqueta,texto,contenedor) {
+          const nodo = document.createElement("etiqueta");
+          nodo.innerHTML = texto;
+          contenedor.parentElement.appendChild(nodo);
+        }
+        insertarHtml("h2",`
+          hola mundo 
+          <br>
+          💕
+        `,document.currentScript);
+      </script>
     </label>
     <hr />
     <label class="opcion">
@@ -32,7 +44,16 @@
     </label>
     <hr />
   </div>
+
 </body>
+
+<script>
+  
+  function insertarTexto(texto,contenedor) {
+    const nodo = document.createTextNode(texto);
+    contenedor.parentElement.appendChild(nodo);
+  }
+</script>
 
 <style>
   body {

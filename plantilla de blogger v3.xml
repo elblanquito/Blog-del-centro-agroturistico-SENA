@@ -3,7 +3,8 @@
 Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SENA/tree/main"
 -->
 <!DOCTYPE html>
-<html b:css='' b:js='' b:version='2' class='v2' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale'
+<html b:css='' b:js='' b:version='2' class='v2' expr:dir='data:blog.languageDirection' 
+expr:lang='data:blog.locale'
   xmlns='http://www.w3.org/1999/xhtml'
   xmlns:b='http://www.google.com/2005/gml/b'
   xmlns:data='http://www.google.com/2005/gml/data'
@@ -1029,8 +1030,27 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                               <data:link.title/>
                               <hr/>
                             </a>
-                            <b:else/>
+                            <b:elseif cond='true'/>
                             <!-- si es una carpeta 📁-->
+                                <script type="text/javascript">
+                                  //js
+                                  var text = '<data:link.title/>';
+                                  var letters = text.split('>');
+                                  var htmlTemp = ''
+
+                                  letters.forEach(function(letter) {
+                                    htmlTemp += letter.trim() + "🏷️"
+                                  });
+
+                                  var nodo = document.createElement("a");
+                                  nodo.innerHTML = htmlTemp;
+                                  nodo.classList.add("seccion_header")
+                                  document.currentScript.parentElement.appendChild(nodo);
+
+                                  //!js
+                                  
+                                </script>
+
                             <!--                             
                             <a class="seccion_header" expr:href='data:link.href'>
                               <b:eval var='carpetaIndex'>
@@ -1040,10 +1060,8 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                               <hr/>
                             </a>
                              -->
+                            
                           </b:if>
-                        </b:loop>
-                        <b:loop values='data:links where (p => p.title contains ">")' var='link'>
-                          <data:link.title/>
                         </b:loop>
                       </div>
                     <b:include name='quickedit'/>
@@ -3578,8 +3596,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
     document.addEventListener("touchmove", (event) => {
         // ignorar cuando esta lejos del borde ❌
         if (distanciaX > 90 && !menuDesplegado) return
-        console.log(distanciaX)
-
         let recoridoY = event.touches[0].clientY - lugarInicialY
         let recoridoX = event.touches[0].clientX - lugarInicialX;
 
