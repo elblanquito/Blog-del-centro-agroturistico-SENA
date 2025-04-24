@@ -915,6 +915,16 @@ expr:lang='data:blog.locale'
                         "href":"/p/siga-politica-seguridad-de-la.html",
                         "position":9,
                         "title":"SIGA > Politica Seguridad de la Informacion"
+                      },
+                      "link10":{
+                        "href":"/p/siga-politica-seguridad-de-la.html",
+                        "position":10,
+                        "title":"Test > subcarpeta"
+                      },
+                      "link11":{
+                        "href":"/p/siga-politica-seguridad-de-la.html",
+                        "position":11,
+                        "title":"Test > subcarpeta2"
                       }
                     }]]>
                   </b:widget-setting>
@@ -932,7 +942,7 @@ expr:lang='data:blog.locale'
                       max-width: 100%;
                       z-index: 2;
                     } 
-                    #seccion_header_cont {
+                    #seccion-header-cont {
                       box-sizing: border-box;
                       padding: 10px 40px 0px 40px;
                       display: flex;
@@ -943,9 +953,9 @@ expr:lang='data:blog.locale'
                       overflow-x: auto;
                     }
                     @media (max-width: 800px) {
-                      #seccion_header_cont{padding: 10px 0px 0px 0px;}
+                      #seccion-header-cont{padding: 10px 0px 0px 0px;}
                     }
-                    a.seccion_header {
+                    a.seccion-header {
                       padding: 0 10px;
                       min-width: fit-content;
                       text-align: center;
@@ -956,7 +966,11 @@ expr:lang='data:blog.locale'
                       font-size: 1.1em;
                       transition: all 0.2s;
                     }
-                    .seccion_header > hr{
+                    a.seccion-carpeta-header{
+                      display:flex;
+                      flex-direction: column;
+                    }
+                    .seccion-header > hr{
                       border: 0;
                       margin: 0 auto;
                       margin-top: 5px;
@@ -968,101 +982,107 @@ expr:lang='data:blog.locale'
                       transition: width .3s, opacity .3s, color .3s;
                       interpolate-size: allow-keywords;
                     }
-                    .seccion_header:hover > hr {
+                    .seccion-header:hover > hr {
                       width: auto;
                       opacity: 1;
                     }
-                    .seccion_header:hover{
+                    .seccion-header:hover{
                       color: #39a90082;
                     }
-                    .seccion_header:active {
+                    .seccion-header:active {
                       transform: scale(0.95);
                     }
-                    .seccion_header.pagina_actual > hr {
+                    .seccion-header.pagina_actual > hr {
                       background-color: #39A900;
                       width: auto;
                       opacity: 1;
                     }
-                    .seccion_header.pagina_actual{
+                    .seccion-header.pagina_actual{
                       position:relative;
                       color: #39A900;
                     }
-                    #seccion_header_cont:hover .pagina_actual > hr{
+                    #seccion-header-cont:hover .pagina_actual > hr{
                       width: 0px;
                     }
-                    #seccion_header_cont:hover .pagina_actual{
+                    #seccion-header-cont:hover .pagina_actual{
                       color: #39A900;
                     }
-                    #seccion_header_cont .pagina_actual:hover > hr{
+                    #seccion-header-cont .pagina_actual:hover > hr{
                       background-color: #39A900;
                       width: auto;
                       opacity: 1;
                     } 
-                    #seccion_header_cont .pagina_actual:hover{
+                    #seccion-header-cont .pagina_actual:hover{
                       color: #39A900;
                     }
                     /*!css*/
                     /*]]>*/
                   </style>
-                  <script>
-                    //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
-                    //js 👈 comando decorativo "Highlight String Code"
-                    function asignarPaginaActual() {
-                      const urlActual = window.location.pathname; 
-                      const contenedor = document.getElementById('seccion_header_cont');
-                      const seccion_headers = contenedor.querySelectorAll('.seccion_header'); 
-                      seccion_headers.forEach(seccion_header => {
-                        const href = new URL(seccion_header.href).pathname;
-                        if (urlActual === href) {
-                          seccion_header .classList.add('pagina_actual');
-                        }
-                      })
-                    }
-                    //!js
-                    //]]>
-                  </script>   
                   <div class='widget-content'>
-                      <div id="seccion_header_cont">
+                      <div id="seccion-header-cont">
+                          <script> //js
+                            let carpetas = {}
+                            const contenedorRutas = document.getElementById('seccion-header-cont');
+                            function asignarPaginaActual() {
+                              const urlActual = window.location.pathname; 
+                              const seccion_headers = contenedorRutas.querySelectorAll('.seccion-header'); 
+                              seccion_headers.forEach(seccion_header => {
+                                const href = new URL(seccion_header.href).pathname;
+                                if (urlActual === href) {
+                                  seccion_header.classList.add('pagina_actual');
+                                }
+                              })
+                            }
+                          // !js
+                          </script>
                         <b:loop values='data:links' var='link' index='i'>
-                          <b:if cond='data:link.title not contains ">"'>
+                          <b:if cond='data:link.title contains ">"'> <!-- si es una carpeta 📁 -->
+                            <script> //js
+                              var titulo = '<data:link.title/>';
+                              var carpetaTitulo = titulo.split('>')[0].trim()
+                              var carpetaItem = titulo.split('>')[1].trim()
+                              if (!carpetas[carpetaTitulo]){
+                                carpetas[carpetaTitulo] = []
+                                contenedorRutas.insertAdjacentHTML("beforeend", `
+                                  <a class='seccion-header seccion-carpeta-header' id='seccion-carpeta-header-${carpetaTitulo}'>
+                                  ${carpetaTitulo}
+                                  <hr/>
+                                  <div id='seccion-carpeta-header-${carpetaTitulo}'></div>
+                                  </a>
+                                `);
+                              }; // expr:href='data:link.href'
+
+                              carpetas[carpetaTitulo].push(carpetaItem)
+                              console.log("datos de salida", carpetas)
+
+                            //!js
+                            </script>
+                            <b:else/>
                             <!-- pagina normal 🏷️-->
-                            <a class="seccion_header" expr:href='data:link.href'>
+                            <a class="seccion-header" expr:href='data:link.href'>
                               <data:link.title/>
                               <hr/>
                             </a>
-                            <b:elseif cond='true'/>
-                            <!-- si es una carpeta 📁-->
-                                <script type="text/javascript">
-                                  //js
-                                  var text = '<data:link.title/>';
-                                  var letters = text.split('>');
-                                  var htmlTemp = ''
-
-                                  letters.forEach(function(letter) {
-                                    htmlTemp += letter.trim() + "🏷️"
-                                  });
-
-                                  var nodo = document.createElement("a");
-                                  nodo.innerHTML = htmlTemp;
-                                  nodo.classList.add("seccion_header")
-                                  document.currentScript.parentElement.appendChild(nodo);
-
-                                  //!js
-                                  
-                                </script>
-
-                            <!--                             
-                            <a class="seccion_header" expr:href='data:link.href'>
-                              <b:eval var='carpetaIndex'>
-                                <b:expr>data:i</b:expr>
-                              </b:eval>
-                              Num: <data:carpetaIndex/>📁
-                              <hr/>
-                            </a>
-                             -->
-                            
                           </b:if>
                         </b:loop>
+
+                        <script> // js
+                          for (const property in carpetas) {
+                            var temp = ''
+                            carpetas[property].forEach((item, i) => {
+                              document.getElementById(`seccion-carpeta-header-${property}`).insertAdjacentHTML("beforeend", `
+                                <a class='seccion-header seccion-subcarpeta-header'>
+                                  ${item}
+                                  <hr/>
+                                </a>
+                              `);
+                            });
+                            document.getElementById(`seccion-carpeta-header-${property}`).insertAdjacentHTML("beforeend", `
+                              <hr/>
+                              `);
+                          }
+                          //!js
+                        </script>
                       </div>
                     <b:include name='quickedit'/>
                   </div>
@@ -3677,8 +3697,6 @@ expr:lang='data:blog.locale'
       //]]>  
     </script>
  -->
-
-
   </body>
   <macro:includable id='sections' var='col'>
     <macro:if cond='data:col.num == 0'>
@@ -3767,12 +3785,6 @@ expr:lang='data:blog.locale'
     //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
     //js 👈 comando decorativo "Highlight String Code" 
 
-    function transformarObjetos(data) {
-      let parser = new DOMParser();
-      let doc = parser.parseFromString(data, "text/html"); // Convierte el string en HTML
-      console.log(doc.body); // Muestra el HTML organizado en la consola
-    }  
-
     // funcion para quitar overlays
     function iframeOverlay(element){ 
       if (element.style.display != 'none') {
@@ -3853,6 +3865,7 @@ expr:lang='data:blog.locale'
       asignarPaginaActual()
       ajustarColumnas()
     });
+
 
 
 
