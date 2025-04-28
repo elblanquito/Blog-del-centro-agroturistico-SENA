@@ -30,13 +30,14 @@
               <span class="linea"></span>
               ${datos[i]}
             </label>
-            <hr />
           `)
         }
         </script>
       </div>
     </div>
   </div>
+
+  <div class="box"></div>
   
     
 
@@ -44,8 +45,43 @@
 
 
 <style>
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: royalblue;
+  animation: volverColor 0.5s forwards;
+}
+
+/* Cuando haces hover */
+.box:hover {
+  animation: cambiarColor 0.5s forwards;
+}
+
+  /* Animación al hacer hover */
+  @keyframes cambiarColor {
+    from {
+      background-color: royalblue;
+      transform: scale(1);
+    }
+    to {
+      background-color: lightcoral;
+    }
+  }
+
+  /* Animación al quitar hover */
+  @keyframes volverColor {
+    from {
+      background-color: lightcoral;
+    }
+    to {
+      background-color: royalblue;
+      transform: scale(1);
+    }
+  }
+
   body {
-    display: flex;
+    display: grid;
+    grid-template-rows: max-content;
     font-family: Calibri, sans-serif;
     background-color: #eee;
     min-height: 100vh;
@@ -56,6 +92,9 @@
   }
 
   .seccion-carpeta-header {
+    position: relative;
+    display: grid;
+    grid-template-rows: min-content 0px;
     padding: 0px 20px;
     border-radius: 10px;
     background-color: #fff;
@@ -72,47 +111,51 @@
   .seccion-carpeta-header:hover .seccion-carpeta-header-titulo svg{
     transform: rotate(0deg);
   }
-  .subcarpeta-header-cont{
+  .subcarpeta-header-cont {
+
+    background-color: #fff;
+    border-radius: 0 0 10px 10px;
+    z-index: 1;
+    height: fit-content;
     display: grid;
     grid-template-rows: 0fr;
-    grid-template-columns: 0fr;
-    transition: grid-template-columns .5s ease-in-out,
-    grid-template-rows .5s ease-in-out .2s;
-  }
-  @keyframes identifier {
-    
-  }
-  .subcarpeta-header-cont > div{
-    min-width: fit-content;
-    overflow: hidden;
-  }
-  .seccion-carpeta-header:hover .subcarpeta-header-cont{
+    grid-template-columns: 1fr;
+    transition: all .5s;
+}
+
+  .seccion-carpeta-header:hover .subcarpeta-header-cont {
     grid-template-rows: 1fr;
     grid-template-columns: 1fr;
   }
 
-
+  .subcarpeta-header-cont > div{
+    min-width: fit-content;
+    overflow: hidden;
+    
+  }
+  .opcion-cont{
+    
+  }
   .opcion {
-    display: flex;
-    align-items: center;
     position: relative;
-    padding: 8px 20px;
+    display: flex;
+    margin: 5px;
+    padding: 5px 15px;
     color: #00304D;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
-    user-select: none;
-    max-width: 250px;
+    transition: background-color .2s;
   }
 
-  .opcion:hover {
+  .seccion-carpeta-header:hover .opcion{
+    background-color: transparent;
+  }
+
+  .seccion-carpeta-header:hover .opcion:hover {
     background-color: #002f4d18;
   }
 
-  .opcion input {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-  }
+  .opcion input {display: none;}
 
   .linea {
     position: absolute;
@@ -126,26 +169,10 @@
     transition: opacity 0.3s;
   }
 
+
   .opcion input:checked ~ .linea {
     opacity: 1;
   }
-
-  .seccion-carpeta-header hr {
-    border: 0;
-    margin: 5px 0;
-    height: 3px;
-    width: 0px;
-    border-radius: 100px;
-    background-color: #00304D;
-    opacity: 0;
-    transition: width .3s, opacity .3s;
-  }
-
-  .opcion:hover + hr {
-    width: 100%;
-    opacity: 1;
-  }
-
   .opcion:has(input:checked) {
     background-color: #002f4d18;
   }
