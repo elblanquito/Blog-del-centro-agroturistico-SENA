@@ -950,7 +950,6 @@ expr:lang='data:blog.locale'
                       row-gap: 5px;
                       justify-content: center;
                       user-select: none;
-                      overflow-x: auto;
                     }
                     @media (max-width: 800px) {
                       #seccion-header-cont{padding: 10px 0px 0px 0px;}
@@ -968,18 +967,7 @@ expr:lang='data:blog.locale'
                     }
                     a.seccion-carpeta-header{
                     }
-                    .subcarpeta-header-cont{
-                      display: flex;
-                      flex-direction: column;
-                      overflow: hidden;
-                      height: 0;
-                      transition: height 1s ease-out,
-                      width 1s ease-out;
-                    }
-                    a.seccion-carpeta-header:hover 
-                    .subcarpeta-header-cont{
-                      height: auto;
-                    }
+
                     .seccion-header > hr{
                       border: 0;
                       margin: 0 auto;
@@ -993,7 +981,7 @@ expr:lang='data:blog.locale'
                       interpolate-size: allow-keywords;
                     }
                     .seccion-header:hover > hr {
-                      width: auto;
+                      width: 100%;
                       opacity: 1;
                     }
                     .seccion-header:hover{
@@ -1004,7 +992,7 @@ expr:lang='data:blog.locale'
                     }
                     .seccion-header.pagina_actual > hr {
                       background-color: #39A900;
-                      width: auto;
+                      width: 100%;
                       opacity: 1;
                     }
                     .seccion-header.pagina_actual{
@@ -1019,12 +1007,103 @@ expr:lang='data:blog.locale'
                     }
                     #seccion-header-cont .pagina_actual:hover > hr{
                       background-color: #39A900;
-                      width: auto;
+                      width: 100%;
                       opacity: 1;
                     } 
                     #seccion-header-cont .pagina_actual:hover{
                       color: #39A900;
                     }
+                    
+                    .seccion-carpeta-header {
+                      -webkit-tap-highlight-color: transparent;
+                      position: relative;
+                      display: grid;
+                      grid-template-rows: min-content min-content 0px;
+                      padding: 10px 40px 0px 40px;
+                      border-radius: 10px;
+                      background-color: #fff;
+                    }
+                    .seccion-carpeta-header-titulo{
+                      display: flex;
+                      align-items: center;
+                    }
+                    .seccion-carpeta-header-titulo input{display: none;}
+                    .seccion-carpeta-header .seccion-carpeta-header-titulo 
+                    svg{
+                      transition: transform .5s ease;
+                      transform: rotate(-0deg);
+                    }
+                    .seccion-carpeta-header-titulo:has(input:checked)
+                    svg{transform: rotate(-90deg);} /*girar flecha*/
+                  
+                    .subcarpeta-header-cont {
+                          box-shadow: 0px 1px 3px #0000001c;
+                      font-weight: normal;
+                      font-size: 0.9em;
+                      background-color: #fff;
+                      border-radius: 0 0 10px 10px;
+                      z-index: 1;
+                      height: fit-content;
+                      display: grid;
+                      grid-template-rows: 0fr;
+                      grid-template-columns: 0fr;
+                      transition: grid-template-rows .5s ease,
+                      grid-template-columns 1s ease .3s;
+                    }
+                    /*.seccion-carpeta-header:hover */ /* 👈 abrir solo pasando el mause */
+                    .seccion-carpeta-header-titulo:has(input:checked) ~ .subcarpeta-header-cont {
+                      grid-template-rows: 1fr;
+                      grid-template-columns: 1fr;
+                      transition: grid-template-rows .5s ease .4s,
+                      grid-template-columns .5s ease;
+                    }
+
+                    .subcarpeta-header-cont > div{
+                      min-width: fit-content;
+                      overflow: hidden;
+                    }
+                    .subcarpeta-header-cont > div .subcarpeta-header:last-child{
+                      margin-bottom: 10px;
+                    }
+                    .subcarpeta-header {
+                      gap: 7px;
+                      position: relative;
+                      display: flex;
+                      margin: 5px;
+                      padding: 5px 15px;
+                      padding-left: 10px;
+                      color: #00304D;
+                      border-radius: 10px;
+                      cursor: pointer;
+                      transition: background-color .2s;
+                    }
+
+                    /* solo se puede oscurecer uno a la vez 👇*/
+                    .seccion-carpeta-header:hover .subcarpeta-header{
+                      background-color: transparent;
+                    }
+                    .seccion-carpeta-header:hover .subcarpeta-header:hover {
+                      background-color: #002f4d0c;
+                    }
+
+                    .subcarpeta-header input {display: none;}
+
+                    .linea-checked {
+                      width: 3px;
+                      background-color: #002f4d;
+                      border-radius: 2px;
+                      opacity: 0;
+                      transform: translate(-8px,0);
+                      transition: all 0.3s;
+                    }
+                    .subcarpeta-header:has(input:checked) .linea-checked {
+                      transform: translate(0, 0);
+                      opacity: 1;
+                    } /*aparecer la linea del checked ☝️*/
+
+                    .subcarpeta-header:has(input:checked) {
+                      background-color: #002f4d0c;
+                    }/* oscurecer al seleccionar ☝️ */
                     /*!css*/
                     /*]]>*/
                   </style>
@@ -1045,26 +1124,35 @@ expr:lang='data:blog.locale'
                             }
                           // !js
                           </script>
+                          
                         <b:loop values='data:links' var='link' index='i'>
                           <b:if cond='data:link.title contains ">"'> <!-- si es una carpeta 📁 -->
                             <script> //js
                               var titulo = '<data:link.title/>';
+                              var link = '<data:link.href/>' // se nesecita meterlo como objeto dentro de "carpetas"
                               var carpetaTitulo = titulo.split('>')[0].trim()
                               var carpetaItem = titulo.split('>')[1].trim()
                               if (!carpetas[carpetaTitulo]){
                                 carpetas[carpetaTitulo] = []
                                 contenedorRutas.insertAdjacentHTML("beforeend", `
-                                  <a class='seccion-header seccion-carpeta-header' id='seccion-carpeta-header-${carpetaTitulo}'>
-                                    ${carpetaTitulo}
+                                  <a class="seccion-carpeta-header seccion-header">
+                                    <label class="seccion-carpeta-header-titulo">
+                                      <input type="checkbox" name="seccion-carpeta-header" value="introduccion"/>
+                                      <b>${carpetaTitulo}</b>
+                                      <svg xmlns="http://www.w3.org/2000/svg" height="24px" fill="currentColor" viewBox="0 -960 960 960" width="24px">
+                                      <path d="M480-348q-10.26 0-20.09-3.91-9.82-3.92-17.52-11.61L258.96-546.96Q244-561.91 244-584t14.96-37.04Q273.91-636 296-636t37.04 14.96L480-474.09l146.96-146.95Q641.91-636 664-636t37.04 14.96Q716-606.09 716-584t-14.96 37.04L517.61-363.52q-7.7 7.69-17.52 11.61Q490.26-348 480-348Z"/>
+                                      </svg>
+                                    </label>
                                     <hr/>
-                                    <div class='subcarpeta-header-cont' id='subcarpeta-header-cont-${carpetaTitulo}'></div>
+                                    <div class="subcarpeta-header-cont" id='subcarpeta-header-cont-${carpetaTitulo}'>
+                                      <div>
+                                      </div>
+                                    </div>
                                   </a>
                                 `);
                               }; // expr:href='data:link.href'
-
                               carpetas[carpetaTitulo].push(carpetaItem)
                               console.log("datos de salida", carpetas)
-
                             //!js
                             </script>
                             <b:else/> <!-- pagina normal 🏷️-->
@@ -1076,19 +1164,20 @@ expr:lang='data:blog.locale'
                         </b:loop>
 
                         <script> // js
+                        
                           for (const property in carpetas) {
                             var temp = ''
                             carpetas[property].forEach((item, i) => {
-                              document.getElementById(`subcarpeta-header-cont-${property}`).insertAdjacentHTML("beforeend", `
-                                <a class='seccion-header subcarpeta-header'>
-                                  ${item}
-                                  <hr/>
+                              document.querySelector(`#subcarpeta-header-cont-${property} div`).insertAdjacentHTML("beforeend", `
+                                <a >
+                                  <label class="subcarpeta-header">
+                                    <input type="radio" name="SIGA" value="introduccion"/>
+                                    <span class="linea-checked"></span>
+                                    ${item}
+                                  </label>
                                 </a>
                               `);
                             });
-                            document.getElementById(`seccion-carpeta-header-${property}`).insertAdjacentHTML("beforeend", `
-                              <hr/>
-                              `);
                           }
                           //!js
                         </script>

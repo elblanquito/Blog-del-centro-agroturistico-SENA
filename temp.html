@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Opciones con Línea al Seleccionar</title>
+  <title>subcarpeta-headeres con Línea al Seleccionar</title>
 </head>
 <body>
   <div class="seccion-carpeta-header">
-    <div class="seccion-carpeta-header-titulo">
-      <b>
-      Carpeta 1</b>
+    <label class="seccion-carpeta-header-titulo">
+      <input type="checkbox" name="seccion-carpeta-header" value="introduccion"/>
+      <b>Carpeta 1</b>
       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z"/></svg>
-    </div>
+    </label>
     <div class="subcarpeta-header-cont">
       <div>
         <script type="text/javascript">
@@ -25,9 +25,9 @@
       
         for (let i = 0; i < datos.length ; i++){
           contenedor.insertAdjacentHTML("beforeend",`
-            <label class="opcion">
-              <input type="radio" name="SIGA" value="introduccion">
-              <span class="linea"></span>
+            <label class="subcarpeta-header">
+              <input type="radio" name="SIGA" value="introduccion"/>
+              <span class="linea-checked"></span>
               ${datos[i]}
             </label>
           `)
@@ -37,7 +37,9 @@
     </div>
   </div>
 
-  <div class="box"></div>
+  <p class="parrafo-css">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium sed dolor, molestias suscipit eligendi voluptatum inventore numquam voluptate blanditiis. Eveniet modi eum repudiandae sapiente hic facilis itaque harum commodi amet.
+  </p>
   
     
 
@@ -45,46 +47,21 @@
 
 
 <style>
-.box {
-  width: 100px;
-  height: 100px;
-  background-color: royalblue;
-  animation: volverColor 0.5s forwards;
-}
-
-/* Cuando haces hover */
-.box:hover {
-  animation: cambiarColor 0.5s forwards;
-}
-
-  /* Animación al hacer hover */
-  @keyframes cambiarColor {
-    from {
-      background-color: royalblue;
-      transform: scale(1);
+    .parrafo-css {
+      background-color: #fff;
+      padding: 15px 20px;
+      box-sizing: border-box;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 800px;
+      margin: 20px auto;
     }
-    to {
-      background-color: lightcoral;
-    }
-  }
-
-  /* Animación al quitar hover */
-  @keyframes volverColor {
-    from {
-      background-color: lightcoral;
-    }
-    to {
-      background-color: royalblue;
-      transform: scale(1);
-    }
-  }
 
   body {
-    display: grid;
-    grid-template-rows: max-content;
+    display: flex;
+    flex-direction: column;
     font-family: Calibri, sans-serif;
     background-color: #eee;
-    min-height: 100vh;
     margin: 0;
     align-items: flex-start;
     justify-content: center;
@@ -92,6 +69,8 @@
   }
 
   .seccion-carpeta-header {
+    -webkit-tap-highlight-color: transparent;
+    margin: 0px auto;
     position: relative;
     display: grid;
     grid-template-rows: min-content 0px;
@@ -104,78 +83,91 @@
     align-items: center;
     margin: 10px 10px;
   }
-  .seccion-carpeta-header .seccion-carpeta-header-titulo svg{
+  .seccion-carpeta-header-titulo input{display: none;}
+  .seccion-carpeta-header .seccion-carpeta-header-titulo 
+  svg{
     transition: transform .5s ease;
-    transform: rotate(-90deg);
+    transform: rotate(-0deg);
   }
-  .seccion-carpeta-header:hover .seccion-carpeta-header-titulo svg{
-    transform: rotate(0deg);
-  }
+  .seccion-carpeta-header-titulo:has(input:checked)
+  svg{transform: rotate(-90deg);} /*girar flecha*/
   .subcarpeta-header-cont {
-
     background-color: #fff;
     border-radius: 0 0 10px 10px;
     z-index: 1;
     height: fit-content;
     display: grid;
     grid-template-rows: 0fr;
-    grid-template-columns: 1fr;
-    transition: all .5s;
+    grid-template-columns: 0fr;
+    transition: grid-template-rows .5s ease,
+    grid-template-columns 1s ease .3s;
 }
-
-  .seccion-carpeta-header:hover .subcarpeta-header-cont {
+  /*.seccion-carpeta-header:hover */ /* 👈 abrir solo pasando el mause */
+  .seccion-carpeta-header-titulo:has(input:checked) ~ .subcarpeta-header-cont {
     grid-template-rows: 1fr;
     grid-template-columns: 1fr;
+    transition: grid-template-rows .5s ease .2s,
+    grid-template-columns .5s ease;
   }
 
   .subcarpeta-header-cont > div{
     min-width: fit-content;
     overflow: hidden;
-    
   }
-  .opcion-cont{
-    
+  .subcarpeta-header-cont > div .subcarpeta-header:last-child{
+    margin-bottom: 10px;
   }
-  .opcion {
+  .subcarpeta-header {
+    gap: 7px;
     position: relative;
     display: flex;
     margin: 5px;
     padding: 5px 15px;
+    padding-left: 10px;
     color: #00304D;
     border-radius: 10px;
     cursor: pointer;
     transition: background-color .2s;
   }
 
-  .seccion-carpeta-header:hover .opcion{
+  /* solo se puede oscurecer uno a la vez 👇*/
+  .seccion-carpeta-header:hover .subcarpeta-header{
     background-color: transparent;
   }
-
-  .seccion-carpeta-header:hover .opcion:hover {
-    background-color: #002f4d18;
+  .seccion-carpeta-header:hover .subcarpeta-header:hover {
+    background-color: #002f4d0c;
   }
 
-  .opcion input {display: none;}
+  .subcarpeta-header input {display: none;}
 
-  .linea {
-    position: absolute;
-    left: 5px;
-    top: 5px;
-    bottom: 5px;
-    width: 4px;
-    background-color: #00304D;
+  .linea-checked {
+    width: 3px;
+    background-color: #002f4d;
     border-radius: 2px;
     opacity: 0;
-    transition: opacity 0.3s;
+    transform: translate(-8px,0);
+    transition: all 0.3s;
   }
-
-
-  .opcion input:checked ~ .linea {
+  .subcarpeta-header:has(input:checked) .linea-checked {
+    transform: translate(0, 0);
     opacity: 1;
-  }
-  .opcion:has(input:checked) {
-    background-color: #002f4d18;
-  }
+  } /*aparecer la linea del checked ☝️*/
+
+  .subcarpeta-header:has(input:checked) {
+    background-color: #002f4d0c;
+  }/* oscurecer al seleccionar ☝️ */
 </style>
 
+
+<script>
+  // codigo simple para cambiar radios de valor
+  const radioButton = document.getElementById('radio1');
+  radioButton.addEventListener('click', function() {
+    if (this.checked) {
+      this.checked = false;
+    } else {
+      this.checked = true;
+    }
+  });
+</script>
 </html>
