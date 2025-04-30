@@ -10,7 +10,9 @@
     <label class="seccion-carpeta-header-titulo">
       <input type="checkbox" name="seccion-carpeta-header" value="introduccion"/>
       <b>Carpeta 1</b>
-      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" fill="currentColor" viewBox="0 -960 960 960" width="24px">
+        <path d="M480-348q-10.26 0-20.09-3.91-9.82-3.92-17.52-11.61L258.96-546.96Q244-561.91 244-584t14.96-37.04Q273.91-636 296-636t37.04 14.96L480-474.09l146.96-146.95Q641.91-636 664-636t37.04 14.96Q716-606.09 716-584t-14.96 37.04L517.61-363.52q-7.7 7.69-17.52 11.61Q490.26-348 480-348Z"/>
+        </svg>
     </label>
     <div class="subcarpeta-header-cont">
       <div>
@@ -91,7 +93,11 @@
   }
   .seccion-carpeta-header-titulo:has(input:checked)
   svg{transform: rotate(-90deg);} /*girar flecha*/
+
   .subcarpeta-header-cont {
+    box-shadow: 0px 1px 3px #0000001c;
+    font-weight: normal;
+    font-size: 0.9em;
     background-color: #fff;
     border-radius: 0 0 10px 10px;
     z-index: 1;
@@ -101,15 +107,14 @@
     grid-template-columns: 0fr;
     transition: grid-template-rows .5s ease,
     grid-template-columns 1s ease .3s;
-}
+  }
   /*.seccion-carpeta-header:hover */ /* 👈 abrir solo pasando el mause */
   .seccion-carpeta-header-titulo:has(input:checked) ~ .subcarpeta-header-cont {
     grid-template-rows: 1fr;
     grid-template-columns: 1fr;
-    transition: grid-template-rows .5s ease .2s,
+    transition: grid-template-rows .5s ease .4s,
     grid-template-columns .5s ease;
   }
-
   .subcarpeta-header-cont > div{
     min-width: fit-content;
     overflow: hidden;
@@ -129,7 +134,6 @@
     cursor: pointer;
     transition: background-color .2s;
   }
-
   /* solo se puede oscurecer uno a la vez 👇*/
   .seccion-carpeta-header:hover .subcarpeta-header{
     background-color: transparent;
@@ -137,9 +141,7 @@
   .seccion-carpeta-header:hover .subcarpeta-header:hover {
     background-color: #002f4d0c;
   }
-
   .subcarpeta-header input {display: none;}
-
   .linea-checked {
     width: 3px;
     background-color: #002f4d;
@@ -152,7 +154,6 @@
     transform: translate(0, 0);
     opacity: 1;
   } /*aparecer la linea del checked ☝️*/
-
   .subcarpeta-header:has(input:checked) {
     background-color: #002f4d0c;
   }/* oscurecer al seleccionar ☝️ */

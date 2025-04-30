@@ -919,12 +919,12 @@ expr:lang='data:blog.locale'
                       "link10":{
                         "href":"/p/siga-politica-seguridad-de-la.html",
                         "position":10,
-                        "title":"Test > subcarpeta"
+                        "title":"Test > item-carpeta"
                       },
                       "link11":{
                         "href":"/p/siga-politica-seguridad-de-la.html",
                         "position":11,
-                        "title":"Test > subcarpeta2"
+                        "title":"Test > item-carpeta2"
                       }
                     }]]>
                   </b:widget-setting>
@@ -995,8 +995,7 @@ expr:lang='data:blog.locale'
                       width: 100%;
                       opacity: 1;
                     }
-                    .seccion-header.pagina_actual{
-                      position:relative;
+                    a.pagina_actual{
                       color: #39A900;
                     }
                     #seccion-header-cont:hover .pagina_actual > hr{
@@ -1036,8 +1035,8 @@ expr:lang='data:blog.locale'
                     .seccion-carpeta-header-titulo:has(input:checked)
                     svg{transform: rotate(-90deg);} /*girar flecha*/
                   
-                    .subcarpeta-header-cont {
-                          box-shadow: 0px 1px 3px #0000001c;
+                    .item-carpeta-header-cont {
+                      box-shadow: 0px 1px 3px #0000001c;
                       font-weight: normal;
                       font-size: 0.9em;
                       background-color: #fff;
@@ -1050,60 +1049,69 @@ expr:lang='data:blog.locale'
                       transition: grid-template-rows .5s ease,
                       grid-template-columns 1s ease .3s;
                     }
-                    /*.seccion-carpeta-header:hover */ /* 👈 abrir solo pasando el mause */
-                    .seccion-carpeta-header-titulo:has(input:checked) ~ .subcarpeta-header-cont {
+                    /*.seccion-carpeta-header:hover 👈 abrir solo pasando el mause */
+                    .seccion-carpeta-header-titulo:has(input:checked) ~ .item-carpeta-header-cont {
                       grid-template-rows: 1fr;
                       grid-template-columns: 1fr;
                       transition: grid-template-rows .5s ease .4s,
                       grid-template-columns .5s ease;
                     }
 
-                    .subcarpeta-header-cont > div{
+                    .item-carpeta-header-cont > div{
                       min-width: fit-content;
                       overflow: hidden;
                     }
-                    .subcarpeta-header-cont > div .subcarpeta-header:last-child{
+                    .item-carpeta-header-cont > div .item-carpeta-header:last-child{
                       margin-bottom: 10px;
                     }
-                    .subcarpeta-header {
+                    a.item-carpeta-header {
                       gap: 7px;
                       position: relative;
                       display: flex;
                       margin: 5px;
                       padding: 5px 15px;
                       padding-left: 10px;
-                      color: #00304D;
+                      color: #00304d75;
                       border-radius: 10px;
                       cursor: pointer;
                       transition: background-color .2s;
                     }
+                    a.item-carpeta-header.pagina_actual{
+                      color: #39a900; /*pagina actual*/
+                    }
 
                     /* solo se puede oscurecer uno a la vez 👇*/
-                    .seccion-carpeta-header:hover .subcarpeta-header{
+                    .seccion-carpeta-header:hover .item-carpeta-header{
                       background-color: transparent;
+                      color: #00304d75;
                     }
-                    .seccion-carpeta-header:hover .subcarpeta-header:hover {
+                    .seccion-carpeta-header:hover .item-carpeta-header:hover {
                       background-color: #002f4d0c;
+                      color: #002f4dcc;
                     }
-
-                    .subcarpeta-header input {display: none;}
+                    .seccion-carpeta-header:hover .item-carpeta-header:hover.pagina_actual {
+                      background-color: #39a9001a;
+                      color: ;
+                    }
+                    .item-carpeta-header input {display: none;}
 
                     .linea-checked {
                       width: 3px;
-                      background-color: #002f4d;
+                      background-color: #00304d59;
                       border-radius: 2px;
                       opacity: 0;
                       transform: translate(-8px,0);
                       transition: all 0.3s;
                     }
-                    .subcarpeta-header:has(input:checked) .linea-checked {
+                    .item-carpeta-header:hover .linea-checked {
                       transform: translate(0, 0);
                       opacity: 1;
-                    } /*aparecer la linea del checked ☝️*/
-
-                    .subcarpeta-header:has(input:checked) {
-                      background-color: #002f4d0c;
-                    }/* oscurecer al seleccionar ☝️ */
+                    } /*aparecer la linea al pasar cursor ☝️*/
+                    .item-carpeta-header.pagina_actual .linea-checked{
+                      transform: translate(0, 0);
+                      opacity: 1;
+                      background-color: #39a900cc;
+                    } /*linea de pagina actual ☝️*/
                     /*!css*/
                     /*]]>*/
                   </style>
@@ -1116,15 +1124,26 @@ expr:lang='data:blog.locale'
                               const urlActual = window.location.pathname; 
                               const seccion_headers = contenedorRutas.querySelectorAll('.seccion-header'); 
                               seccion_headers.forEach(seccion_header => {
-                                const href = new URL(seccion_header.href).pathname;
-                                if (urlActual === href) {
-                                  seccion_header.classList.add('pagina_actual');
+                                if (seccion_header.href) { // si es una pagina
+                                  const href = new URL(seccion_header.href).pathname;
+                                  if (urlActual === href) {
+                                    seccion_header.classList.add('pagina_actual');
+                                  }
+                                } else { //si es un carpeta
+                                  const carpetaItems = seccion_header.querySelectorAll('.item-carpeta-header');
+                                  carpetaItems.forEach(carpetaItem => {
+                                    console.log("carpeta:",carpetaItem)
+                                    const href = new URL(carpetaItem.href).pathname;
+                                    if (urlActual === href) {
+                                      carpetaItem.classList.add('pagina_actual');
+                                      seccion_header.classList.add('pagina_actual');
+                                    }
+                                  })
                                 }
                               })
                             }
                           // !js
                           </script>
-                          
                         <b:loop values='data:links' var='link' index='i'>
                           <b:if cond='data:link.title contains ">"'> <!-- si es una carpeta 📁 -->
                             <script> //js
@@ -1144,14 +1163,16 @@ expr:lang='data:blog.locale'
                                       </svg>
                                     </label>
                                     <hr/>
-                                    <div class="subcarpeta-header-cont" id='subcarpeta-header-cont-${carpetaTitulo}'>
+                                    <div class="item-carpeta-header-cont" id='item-carpeta-header-cont-${carpetaTitulo}'>
                                       <div>
                                       </div>
                                     </div>
                                   </a>
                                 `);
                               }; // expr:href='data:link.href'
-                              carpetas[carpetaTitulo].push(carpetaItem)
+                              carpetas[carpetaTitulo].push({
+                                "nombre": carpetaItem,
+                                "link": link})
                               console.log("datos de salida", carpetas)
                             //!js
                             </script>
@@ -1162,20 +1183,16 @@ expr:lang='data:blog.locale'
                             </a>
                           </b:if>
                         </b:loop>
-
                         <script> // js
-                        
                           for (const property in carpetas) {
                             var temp = ''
                             carpetas[property].forEach((item, i) => {
-                              document.querySelector(`#subcarpeta-header-cont-${property} div`).insertAdjacentHTML("beforeend", `
-                                <a >
-                                  <label class="subcarpeta-header">
+                              document.querySelector(`#item-carpeta-header-cont-${property} div`).insertAdjacentHTML("beforeend", `
+                                  <a class="item-carpeta-header" href="${item.link}">
                                     <input type="radio" name="SIGA" value="introduccion"/>
                                     <span class="linea-checked"></span>
-                                    ${item}
-                                  </label>
-                                </a>
+                                    ${item.nombre}
+                                  </a>
                               `);
                             });
                           }
