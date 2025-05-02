@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="notificacion" class="notificacion noti-visible">
+      <div id="notificacion-titulo">Notificacion</div>
+      <div id="notificacion-texto">Descripción de la tarjeta</div>
+    </div>
+
+    <button onclick='mostrarNotificacion("Texto copiado", "texto guardado en tu portapapeles", "positiva")'>copiar texto</button>
+    <button onclick='mostrarNotificacion("descarga","preparando descarga","info")'>preparar descarga</button>
+    <button onclick='mostrarNotificacion("descarga fallida","tiempo de espera agotado","negativa")'>error</button>
+    
+</body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+    body{
+        margin: 0px;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        font-family: 'PT Sans Caption';
+    }
+    button{
+        padding: 10px 30px;
+        background-color: white;
+        border: 1px solid #aaa;
+        border-radius: 10px;
+        transition: all 0.1s;
+    }
+    button:hover{
+        border-color: #ddd;
+        color: #aaa;
+    }
+    button:active{
+        transform: translate(0px, 4px);
+    }
+
+    .notificacion{
+        z-index: 11;
+        position: fixed;
+        top: -100%;
+        left: 50%;
+        opacity: 0;
+        transform: translate(-50%, 0) scale(0.8);
+        box-sizing: border-box;
+        width: max-content;
+        max-width: 85%;
+        background-color: #007832;
+        background-color: #c10015;
+        background-color: #232531;
+        border-radius: 10px;
+        box-shadow: 0px 0px 5px 1px #232531;
+        
+        padding: 8px 20px;
+        transition: all 0.8s ease-in-out, 
+        opacity 0.3s ease-in-out,
+        box-shadow 0s, background-color 0s;
+        border: 1px solid #ccc;
+      }
+
+      #notificacion-titulo{
+        font-weight: bold;
+        font-size: 1em;
+        color: #ffffff;
+        margin: 0 0 0px 0;
+      }
+      #notificacion-texto{
+        color: #ffffffad;
+        font-size: 0.9em;
+      }
+
+      .noti-visible{
+        top: 15px;
+        opacity: 1;
+        transform: translate(-50%, 0) scale(1);
+      }
+
+      .noti-positiva{
+        box-shadow: 0px 0px 5px 1px #39a900;
+      }
+      .noti-positiva h2{
+        color: #39a900;
+      }
+
+      .noti-negativa{
+        box-shadow: 0px 0px 5px 1px #c10015;
+      }
+
+      .noti-negativa h2{
+        color: #c10015;
+      }
+
+</style>
+<script>
+    //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
+    //js 👈 comando decorativo "Highlight String Code"
+
+    let timeoutNotification;
+    let notificacionVisible = false;
+
+    function mostrarNotificacion(titleInput = 'Notificación', txtInput = 'error', type = 'info') {
+      if (!['info', 'negativa', 'positiva'].includes(type)) {
+          type = 'info'; // valor por defecto
+      }
+      let notificacion = document.getElementById("notificacion");
+      let titulo = document.getElementById("notificacion-titulo");
+      let texto = document.getElementById("notificacion-texto");
+      let time = 0 // esperar para mostrar
+      let tiempoEnPantalla = 4000
+
+      if (type == 'error') tiempoEnPantalla = 6000
+
+
+      // Si hay una notificación visible
+      if (notificacionVisible) {
+        time = 200
+        notificacion.classList.remove('noti-visible', 'noti-info', 'noti-negativa', 'noti-positiva'); // Eliminar clases anteriores
+        clearTimeout(timeoutNotification); // Detener el temporizador anterior
+      }
+
+      // Pequeño retraso para reiniciar la animación
+      setTimeout(() => {
+          notificacionVisible = true
+          titulo.innerText = titleInput; // Cambiar el titulo
+          texto.innerText = txtInput; // Cambiar el texto
+          notificacion.classList.remove('noti-visible', 'noti-info', 'noti-negativa', 'noti-positiva'); // Eliminar clases anteriores
+          notificacion.classList.add('noti-visible', ('noti-'+type));
+
+          // Configurar el temporizador para ocultar la notificación
+          timeoutNotification = setTimeout(() => {
+              notificacion.classList.remove('noti-visible');
+              notificacionVisible = false;
+          }, tiempoEnPantalla);
+      }, time); // Pequeño retraso para que la animación se reinicie correctamente
+    }
+    //!js
+    //]]>
+  </script>
+</html>

@@ -507,8 +507,8 @@ expr:lang='data:blog.locale'
     ^======================
     -->
     <div id="notificacion" class="notificacion">
-      <h2 id="notificacion-titulo">Notificacion</h2>
-      <p id="notificacion-texto">Descripción de la tarjeta</p>
+      <h3 id="notificacion-titulo">Notificacion</h3>
+      <div id="notificacion-texto">Descripción de la tarjeta</div>
     </div>
     <!--
     ^======================
@@ -520,21 +520,28 @@ expr:lang='data:blog.locale'
       /*css 👈 comando decorativo "Highlight String Code */
       .notificacion{
         z-index: 11;
-        position:fixed;
+        position: fixed;
         top: -100%;
         left: 50%;
         opacity: 0;
         transform: translate(-50%, 0) scale(0.8);
         box-sizing: border-box;
         width: max-content;
-        max-width: 100%;
+        max-width: 90%;
         background-color: white;
-        border-radius: 5px;
+        border-radius: 10px;
         box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2);
-        padding: 10px 30px;
+        padding: 8px 20px;
         transition: all 0.8s ease-in-out, opacity 0.3s ease-in-out;
         border: 1px solid #ccc;
-        border-left-width: 8px;
+      }
+
+      #notificacion-titulo{
+        color: #39a900;
+        margin-bottom: 2px;
+      }
+      #notificacion-texto{
+        font-size: .9em;
       }
 
       .noti-visible{
@@ -1022,6 +1029,10 @@ expr:lang='data:blog.locale'
                       border-radius: 10px;
                       background-color: #fff;
                     }
+                    .seccion-carpeta-header:active {
+                      /*sin rebote al precionar*/
+                      transform: none;
+                    }
                     .seccion-carpeta-header-titulo{
                       display: flex;
                       align-items: center;
@@ -1064,7 +1075,8 @@ expr:lang='data:blog.locale'
                     .item-carpeta-header-cont > div .item-carpeta-header:last-child{
                       margin-bottom: 10px;
                     }
-                    a.item-carpeta-header {
+                    a.item-carpeta-header { 
+                      /*estilos de los links dentro de la carpeta*/
                       gap: 7px;
                       position: relative;
                       display: flex;
@@ -1074,27 +1086,26 @@ expr:lang='data:blog.locale'
                       color: #00304d75;
                       border-radius: 10px;
                       cursor: pointer;
-                      transition: background-color .2s;
+                      transition: background-color .2s, transform .2s;
+                    }
+                    .item-carpeta-header:active {
+                      transform: scale(0.95);
                     }
                     a.item-carpeta-header.pagina_actual{
-                      color: #39a900; /*pagina actual*/
+                      /*estilos si es la pagina actual*/
+                      color: #39a900; 
                     }
-
-                    /* solo se puede oscurecer uno a la vez 👇*/
-                    .seccion-carpeta-header:hover .item-carpeta-header{
-                      background-color: transparent;
-                      color: #00304d75;
-                    }
-                    .seccion-carpeta-header:hover .item-carpeta-header:hover {
+                    .item-carpeta-header:hover {
+                      /*al seleccionar 🖱️*/
                       background-color: #002f4d0c;
                       color: #002f4dcc;
                     }
-                    .seccion-carpeta-header:hover .item-carpeta-header:hover.pagina_actual {
-                      background-color: #39a9001a;
-                      color: ;
+                    .item-carpeta-header:hover.pagina_actual {
+                      /*al seleccionar pagina actual 🖱️*/
+                      background-color: transparent;
+                      cursor: default;
                     }
                     .item-carpeta-header input {display: none;}
-
                     .linea-checked {
                       width: 3px;
                       background-color: #00304d59;
