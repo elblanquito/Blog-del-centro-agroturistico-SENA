@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <button onclick='compartir("https://centro-agroturistico-sena.blogspot.com/2025/04/publicacion-normal.html")'>
+    Compartir este sitio
+  </button>
+  
+  <script>
+  function compartir(url,tex) {
+    if (navigator.share) {
+      navigator.share({
+        url:url
+      })
+      .then(() => console.log('Compartido con éxito'))
+      .catch((error) => console.log('Error al compartir:', error));
+    } else {
+      alert('Tu navegador no soporta el botón de compartir');
+    }
+  }
+  </script>
+
+</body>
+</html>
