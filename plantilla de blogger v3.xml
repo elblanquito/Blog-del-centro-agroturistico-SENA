@@ -47,7 +47,7 @@ expr:lang='data:blog.locale'
 
 
         <Group description="menu lateral" selector="#sidebar-right-1">
-          <Variable name="menulateral.width" description="tamaño del menu lateral" type="length" default="270px" min="0" max="600px" value="270px"/>
+          <Variable name="menulateral.width" description="tamaño del menu lateral" type="length" default="230px" min="0" max="600px" value="230px"/>
           <Variable name="menulateral.color" description="color del menu lateral" type="color" default="#ffffff" value="#ffffff"/>
         </Group>
 
@@ -391,7 +391,7 @@ expr:lang='data:blog.locale'
             height: 100vh;
             width: 100%;
             max-width: 80%;
-            padding: 0px 30px;
+            padding: 0px 20px;
             box-sizing: border-box;
             box-shadow: -4px 0px 8px 0 rgba(0, 0, 0, 0.2);
             transition: transform 0.5s ease-in-out;
@@ -428,18 +428,6 @@ expr:lang='data:blog.locale'
           filter: none;
         }
 
-
-        .card-sleleton{
-          display: none !important;
-        }
-        /*
-        .loading .date-posts .post{
-          display: none !important;
-        }
-        .loading .date-posts .card-sleleton{
-          display: block !important;
-        }
-        */
       /*!css*/
       ]]>
       </b:skin>
@@ -781,7 +769,7 @@ expr:lang='data:blog.locale'
                     }
                     .centro-agro-cont .texto-2{
                       color:  #39A900;
-                      font-size: 1.8em;
+                      font-size: 1.5em;
                     }
                     @media (max-width: 800px) {
                       .centro-agro-cont .texto-2{font-size: 1.5em;}
@@ -1469,7 +1457,7 @@ expr:lang='data:blog.locale'
                             justify-content: center;
                           }
                           .date-outer {
-                              scroll-margin-top: 60px;
+                            scroll-margin-top: 60px;
                           }
                           .date-posts {
                             animation: all ease 1s;
@@ -1479,7 +1467,7 @@ expr:lang='data:blog.locale'
                             row-gap: 50px;
                             column-gap: 20px;
                             justify-items: center;
-                            justify-content: center;
+                            justify-content: space-evenly;
                             margin-bottom: 80px;    
                           }
                           .date-header-cont{
@@ -1546,17 +1534,24 @@ expr:lang='data:blog.locale'
                           }   
                           .post-body{
                             display: flex;
-                            gap: 10px;
-                            flex-direction: row;
+                            flex-direction: column;
                             justify-content: center;
+                            align-items: center;
+                            gap: 10px;
                             height: 100%;
                             width: 100%;
+                          }
+                          /* posicionamiento antiguo 
+                          (intenta poner en fila y no en columna)
+                          .post-body{
+                            display: flex;
+                            flex-direction: row;
                             flex-wrap: wrap;
                             align-items: stretch;
-                          }
-                              
-                          /* disminuir tamaño del br */
-                          /*
+                          } 
+                          */
+
+                          /* disminuir tamaño del br 
                           .post-body br{
                             content: "";
                           }
@@ -1571,7 +1566,6 @@ expr:lang='data:blog.locale'
                           }   
                           .post-body p,
                           .post-body a {
-                            height: fit-content;
                             max-width: 100%;
                             position: relative;
                             margin: 0 !important;
@@ -1996,26 +1990,9 @@ expr:lang='data:blog.locale'
                               <b:if cond='data:post.isDateStart'>
                                 &lt;div class=&quot;date-posts&quot;&gt;
                               </b:if>
+                              <!-- marker ensamblaje -->
                               <b:include data='post' name='post'/>
                               
-                              <div class="card-sleleton card-sleleton-dos-columnas skeleton-background">
-                                <div class="header-skeleton">
-                                    <span class="title-skeleton"></span>
-                                    <div class="content-skeleton">
-                                        <span class="line-skeleton line-skeleton-1"></span>
-                                        <span class="line-skeleton line-skeleton-2"></span>
-                                        <span class="line-skeleton line-skeleton-3"></span>
-                                    </div>
-                                </div>
-                                <div class="img-skeleton-cont">
-                                    <div class="img-skeleton"></div>
-                                </div>
-                                <div class="footer-skeleton">
-                                    <div class="btn-skeleton"></div>
-                                    <div class="btn-skeleton"></div>
-                                    <div class="date-skeleton"></div>
-                                </div>
-                              </div>
 
                               <b:include cond='data:blog.pageType in {"static_page","item"}' data='post' name='comment_picker'/>
                             </b:loop>
@@ -2157,7 +2134,7 @@ expr:lang='data:blog.locale'
 
 
                       <!-- 
-                        📑 mark Post page
+                        📑 marker Post page
                       -->
                       <b:includable id='feedLinks'>
                         <b:if cond='data:blog.pageType != &quot;item&quot;'>
@@ -2189,7 +2166,6 @@ expr:lang='data:blog.locale'
                             <h2 class='date-header'>
                             <span><data:post.dateHeader/></span></h2>
                           </b:if>
-                          <!-- marker  marker -->
                           <div class='date-posts'>
                             <div class='post-outer'>
                               <div class='post hentry uncustomized-post-template' itemscope='itemscope' itemtype='http://schema.org/BlogPosting'>
