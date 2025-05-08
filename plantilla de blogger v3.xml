@@ -1462,7 +1462,7 @@ expr:lang='data:blog.locale'
                           .date-posts {
                             animation: all ease 1s;
                             display: flex;
-                            align-items: stretch;
+                            align-items: flex-start;
                             flex-wrap: wrap;
                             row-gap: 50px;
                             column-gap: 20px;
@@ -1505,11 +1505,10 @@ expr:lang='data:blog.locale'
                             flex-direction: column;
                             display: flex;
                             height: auto;
-                            width: 100%;
-                            max-width: 420px; 
+                            width: auto;
                             min-width: 270px;
                             border-radius: 16px;
-                            padding: 20px 20px 15px 20px;
+                            padding: 20px 30px;
                             box-sizing: border-box;
                             box-shadow: 0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);
                             outline: 1px solid #e2e8f0;
@@ -1536,7 +1535,7 @@ expr:lang='data:blog.locale'
                             display: flex;
                             flex-direction: column;
                             justify-content: center;
-                            align-items: center;
+                            align-items: stretch;
                             gap: 10px;
                             height: 100%;
                             width: 100%;
@@ -1568,9 +1567,8 @@ expr:lang='data:blog.locale'
                           .post-body a {
                             max-width: 100%;
                             position: relative;
-                            margin: 0 !important;
+                            margin: 0;
                             display: inline-flex;
-                            justify-content: center;
                             flex-wrap: wrap;
                             gap: 10px;
                           }
@@ -1677,7 +1675,7 @@ expr:lang='data:blog.locale'
                             transform: scale(.90);
                           }   
                           .post-footer{
-                            margin-top: 15px;
+                            margin-top: 25px;
                           }
                           .post-footer, .post-footer-line{
                             width: 100%;
@@ -1691,10 +1689,10 @@ expr:lang='data:blog.locale'
                           .post-etiquetas-cont{
                             display: flex;
                             column-gap: 10px;
-                            flex-wrap: wrap;    
+                            flex-wrap: wrap;   
+                            margin-bottom: 20px; 
                           }
                           .post-etiqueta{
-                            margin-bottom: 10px;
                             font-size: .8em;
                             border-radius: 4px;
                             padding: 0px 10px;
@@ -1738,35 +1736,15 @@ expr:lang='data:blog.locale'
                               display: none;
                             }
                           }   
-                          /* esta clase se agrega con un script  */
+                          /* esta clase se agrega con un script  
                           .dos-columnas {
-                            width: fit-content;
+                            width: auto;
                             max-width: 100%;
                           }
-                          /*
-                          .dos-columnas .post-body{
-                            align-items: stretch;
-                            flex-direction: row;
-                            flex-wrap: wrap;
-                            gap: 10px;
-                          }
                           */
-                          .dos-columnas .post-body .separator{
-                            
-                          }
-                          .dos-columnas img{
-                            
-                          }
-                          /*
-                          .dos-columnas .imagen-mediana{
-                            width: 220px;
-                          }   
-                          .dos-columnas .imagen-mini{
-                            width: 220px;
-                          }
-                          */
+
                           @media (max-width: 800px) {
-                            .post{
+                            .post{ /*reducir margen en movil*/
                               margin: 0 20px;
                             }
                           }
@@ -1815,33 +1793,15 @@ expr:lang='data:blog.locale'
                             //js 👈 Comando decorativo "Highlight String Code"    
                             let contenedor
                             let posts   
-                            function asignarElementosPosts(){
+                            function asignarElementosPosts(){ // define las variables principales
                               contenedor = document.getElementById('Blog1');
                               posts = contenedor.querySelectorAll('.post');
-                            } // define las variables principales
+                            } 
                                 
-                            function quitarEspacios(){
-                              posts = document.querySelectorAll('.post-body');
-                              for (let i = 0; i < posts.length; i++) {
-                                posts[i].innerHTML = posts[i].innerHTML.replace(/&nbsp;/g, " ");
-                              }
-                            }   
-                            function scrollFecha(element) { 
+
+                            function scrollFecha(element) { // scrollea hasta el padre, del padre, del elemento seleccionado
                               element.parentElement.parentElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            } // scrollea hasta el padre, del padre, del elemento     
-                            function agregarBotonDescarga(imagen) {
-                                if (!imagen.nextElementSibling || !imagen.nextElementSibling.classList.contains('download-btn')) {
-                                  imagen.insertAdjacentHTML('beforebegin', `
-                                    <button class="download-btn" onclick="
-                                      event.preventDefault(); 
-                                      event.stopPropagation();
-                                      descargarImagen('${imagen.parentElement.href}')
-                                    ">
-                                      <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="#39a900"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-photo-down"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 8h.01" /><path d="M12.5 21h-6.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v6.5" /><path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l4 4" /><path d="M14 14l1 -1c.653 -.629 1.413 -.815 2.13 -.559" /><path d="M19 16v6" /><path d="M22 19l-3 3l-3 -3" /></svg>
-                                    </button>
-                                  `);
-                                }
-                            }   
+                            } 
                             // aplica la libreria Fancybox a las imagenes del blog y pone los botones de descarga
                             function customImagenesPosts() {
                               posts.forEach((post, index) => {
@@ -1865,6 +1825,17 @@ expr:lang='data:blog.locale'
                               });
                               document.documentElement.style.setProperty("--fancybox-zIndex", "18");
                             }
+                            function agregarBotonDescarga(imagen) {
+                              imagen.insertAdjacentHTML('beforebegin', `
+                                <button class="download-btn" onclick="
+                                  event.preventDefault(); 
+                                  event.stopPropagation();
+                                  descargarImagen('${imagen.parentElement.href}')
+                                ">
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="icon icon-tabler icons-tabler-outline icon-tabler-photo-down" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z"/><path d="M15 8h0M12.5 21H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v6.5"/><path d="m3 16 5-5c1-.9 2-.9 3 0l4 4"/><path d="m14 14 1-1c.7-.6 1.4-.8 2.1-.6M19 16v6M22 19l-3 3-3-3"/></svg>
+                                </button>
+                              `);
+                            }   
                             //!js  
                             //]]> 
                           </script>   
@@ -1887,22 +1858,16 @@ expr:lang='data:blog.locale'
                               function ajustarColumnas() {
                                 if (window.innerWidth < 900) return;
                                 columnasAjustadas = true // para que no vuelva a ejecutarse
-                                // Crear observador para detectar cambios de tamaño
-                                const resizeObserver = new ResizeObserver(entries => {    
+                                const resizeObserver = new ResizeObserver(entries => {// detectar cambios de tamaño    
                                   entries.forEach(entry => {
-                                    // Si la altura supera 800px, aplicar la clase y dejar de observar ese elemento
                                     if (window.innerWidth < 900) return;
-                                    if (entry.contentRect.height > 800) {
+                                    console.log('entry.target')
+                                    console.log(entry.target)
+                                    console.log('entry.contentRect.height:')
+                                    console.log(entry.contentRect.height)
+                                    if (entry.contentRect.height > 500) { // Si la altura supera 500px, aplicar la clase y dejar de observar ese elemento
                                       entry.target.classList.add("dos-columnas");
                                       resizeObserver.unobserve(entry.target);
-                                      //const imagenes = entry.target.getElementsByTagName("img"); // Obtiene todas las imágenes dentro
-                                      //if(imagenes.length <= 2) {
-                                      //  return;
-                                      //} else {
-                                      //  for (var i = 0; i < imagenes.length; i++) {
-                                      //    imagenes[i].classList.add("imagen-mini");
-                                      //  }
-                                      //}
                                     }
                                   });
                                 });
@@ -2315,15 +2280,17 @@ expr:lang='data:blog.locale'
                             </div>
                           </div>
                           <div class='post-footer'>
-                              <!--* etiquetas 👇 -->
                             <div class='post-footer-line post-footer-line-1'>
-                              <div class='post-etiquetas-cont'>
-                                <b:loop values='data:post.labels' var='label'>
-                                  <a class='post-etiqueta' expr:href='data:label.url' expr:title='"ver todos los post que tengan la etiqueta " + data:label.name'>
-                                    <data:label.name/>
-                                  </a>
-                                </b:loop>
-                              </div>
+                              <!--* etiquetas 👇 -->
+                              <b:if cond='data:post.labels'>
+                                <div class='post-etiquetas-cont'>
+                                  <b:loop values='data:post.labels' var='label'>
+                                    <a class='post-etiqueta' expr:href='data:label.url' expr:title='"ver todos los post que tengan la etiqueta " + data:label.name'>
+                                      <data:label.name/>
+                                    </a>
+                                  </b:loop>
+                                </div>
+                              </b:if>
                             </div>
 
                             <div class='post-footer-line post-footer-line-2'>
@@ -4008,7 +3975,6 @@ expr:lang='data:blog.locale'
     // al terminar de cargar los recursos
     window.addEventListener("load", () => {
       textoAnimado();
-      //quitarEspacios();
       document.body.classList.replace('loading', 'listo');
       
     });
