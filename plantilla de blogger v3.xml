@@ -1096,43 +1096,51 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   /*]]>*/
                 </style>
                 <div class='widget-content'>
-                    <div id="seccion-header-cont">
-                        <script> //js
-                          let carpetas = {}
-                          const contenedorRutas = document.getElementById('seccion-header-cont');
-                          function asignarPaginaActual() {
-                            const urlActual = window.location.pathname; 
-                            const seccion_headers = contenedorRutas.querySelectorAll('.seccion-header'); 
-                            seccion_headers.forEach(seccion_header => {
-                              if (seccion_header.href) { // si es una pagina
-                                const href = new URL(seccion_header.href).pathname;
-                                if (urlActual === href) {
-                                  seccion_header.classList.add('pagina_actual');
-                                }
-                              } else { //si es un carpeta
-                                const carpetaItems = seccion_header.querySelectorAll('.item-carpeta-header');
-                                carpetaItems.forEach(carpetaItem => {
-                                  console.log("carpeta:",carpetaItem)
-                                  const href = new URL(carpetaItem.href).pathname;
-                                  if (urlActual === href) {
-                                    carpetaItem.classList.add('pagina_actual');
-                                    seccion_header.classList.add('pagina_actual');
-                                  }
-                                })
+                  <div id="seccion-header-cont">
+                    <script> //js
+                      let carpetas = {}
+                      const contenedorRutas = document.getElementById('seccion-header-cont');
+                      function asignarPaginaActual() {
+                        const urlActual = window.location.pathname; 
+                        const seccion_headers = contenedorRutas.querySelectorAll('.seccion-header'); 
+                        seccion_headers.forEach(seccion_header => {
+                          if (seccion_header.href) { // si es una pagina
+                            const href = new URL(seccion_header.href).pathname;
+                            if (urlActual === href) {
+                              seccion_header.classList.add('pagina_actual');
+                            }
+                          } else { //si es un carpeta
+                            const carpetaItems = seccion_header.querySelectorAll('.item-carpeta-header');
+                            carpetaItems.forEach(carpetaItem => {
+                              const href = new URL(carpetaItem.href).pathname;
+                              if (urlActual === href) {
+                                carpetaItem.classList.add('pagina_actual');
+                                seccion_header.classList.add('pagina_actual');
                               }
                             })
                           }
-                        // !js
-                        </script>
-                      <b:loop values='data:links' var='link' index='i'>
-                        <b:if cond='data:link.title contains ">"'> <!-- si es una carpeta 📁 -->
+                        })
+                      }
+                    // !js
+                    </script>
+                    <b:loop values='data:links' var='link' index='i'> <!-- recorrer links -->
+                        <b:if cond='data:link.title not contains ">"'> 
+                          <!-- pagina normal 🏷️-->
+                          <a class="seccion-header" expr:href='data:link.href'>
+                            <data:link.title/>
+                            <hr/>
+                          </a>
+                          <b:else/> 
+                          <!-- si es una carpeta 📁 -->
                           <script> //js
-                            var titulo = '<data:link.title/>';
-                            var link = '<data:link.href/>' // se nesecita meterlo como objeto dentro de "carpetas"
-                            var carpetaTitulo = titulo.split('>')[0].trim()
+                            var titulo = '<data:link.title/>'; // traer variables de blogger
+                            var link = '<data:link.href/>'; 
+                            // separar el titulo en dos variables ✂️👇
+                            var carpetaTitulo = titulo.split('>')[0].trim() 
                             var carpetaItem = titulo.split('>')[1].trim()
-                            if (!carpetas[carpetaTitulo]){
-                              carpetas[carpetaTitulo] = []
+                            if (!carpetas[carpetaTitulo]){ // ¿ya existe esta carpeta?
+                              carpetas[carpetaTitulo] = [] // crear carpeta
+                              // insertar carpeta vacia en el html 📁👇
                               contenedorRutas.insertAdjacentHTML("beforeend", `
                                 <a class="seccion-carpeta-header seccion-header">
                                   <label class="seccion-carpeta-header-titulo">
@@ -1149,36 +1157,31 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                                   </div>
                                 </a>
                               `);
-                            }; // expr:href='data:link.href'
-                            carpetas[carpetaTitulo].push({
+                            };
+                            carpetas[carpetaTitulo].push({ // crear nuevo item
                               "nombre": carpetaItem,
-                              "link": link})
-                            console.log("datos de salida", carpetas)
+                              "link": link
+                              })
                           //!js
                           </script>
-                          <b:else/> <!-- pagina normal 🏷️-->
-                          <a class="seccion-header" expr:href='data:link.href'>
-                            <data:link.title/>
-                            <hr/>
-                          </a>
                         </b:if>
-                      </b:loop>
-                      <script> // js
-                        for (const property in carpetas) {
-                          var temp = ''
-                          carpetas[property].forEach((item, i) => {
-                            document.querySelector(`#item-carpeta-header-cont-${property} div`).insertAdjacentHTML("beforeend", `
-                                <a class="item-carpeta-header" href="${item.link}">
-                                  <input type="radio" name="SIGA" value="introduccion"/>
-                                  <span class="linea-checked"></span>
-                                  ${item.nombre}
-                                </a>
-                            `);
-                          });
-                        }
-                        //!js
-                      </script>
-                    </div>
+                    </b:loop>
+                    <script> // js
+                      for (const property in carpetas) {  // recorrer contenido de 'carpetas'
+                        carpetas[property].forEach((item, i) => {  // recorrer items de cada carpeta
+                          // insertar item en el html 📌👇
+                          document.querySelector(`#item-carpeta-header-cont-${property} div`).insertAdjacentHTML("beforeend", `
+                              <a class="item-carpeta-header" href="${item.link}">
+                                <input type="radio" name="SIGA" value="introduccion"/>
+                                <span class="linea-checked"></span>
+                                ${item.nombre}
+                              </a>
+                          `);
+                        });
+                      }
+                      //!js
+                    </script>
+                  </div>
                   <b:include name='quickedit'/>
                 </div>
               </b:includable>
@@ -1488,7 +1491,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                       h2.post-title {
                         font-size: 1.5em;
                         color: #00304D;
-                        margin-bottom: 10px;
+                        margin-bottom: 15px;
                       	text-align: center;
                       }   
                       .post-body{
@@ -1665,25 +1668,32 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                         background-color: #f1f5f9;
                       }
                       .post-footer-line-2{
-                        gap: 15px;
+                        gap: 5px;
                         justify-content: flex-end;
-                        display: flex;
-                      }
-                      .post-footer-line-2 svg{
-                        width: 26px;
-                        height: auto;
-                      }
-                      .compartirPost{
-                        display: flex;
                         align-items: center;
+                        display: flex;
                       }
-                      .compartirPost svg{
+                      .post-footer-btn{
                         color: #39A900;
-                      }
-                      .commentario-link{
+                        padding: 3px 5px;
+                        border-radius: 8px;
                         gap: 4px;
                         display: flex;
                         align-items: center;
+                        justify-content: center;
+                        transition: transform 0.2s;
+                      }
+                      .post-footer-btn svg{
+                        width: 26px;
+                        height: auto;
+                        color: #39A900;
+                      }
+                      .post-footer-btn:hover{
+                        color: #39A900;
+                        background-color: #39a9001c;
+                      }
+                      .post-footer-btn:active{
+                        transform: scale(0.9);
                       }
                       .post-fecha{
                         margin-left: auto;
@@ -1807,58 +1817,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                         <script>
                           console.log("static_page 📌")
                         </script>
-                        
-                      </b:if>
-                      <b:if cond='data:blog.pageType not in {"item","static_page"}'>
-                        <!-- cuando es la pagina principal -->
-                        <script>  
-                          //<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante!  
-                          //js 👈 Comando decorativo "Highlight String Code"
-                          function ajustarColumnas() {
-                            if (window.innerWidth < 900) return;
-                            columnasAjustadas = true // para que no vuelva a ejecutarse
-                            const resizeObserver = new ResizeObserver(entries => {// detectar cambios de tamaño    
-                              entries.forEach(entry => {
-                                if (window.innerWidth < 900) return;
-                                console.log('entry.target')
-                                console.log(entry.target)
-                                console.log('entry.contentRect.height:')
-                                console.log(entry.contentRect.height)
-                                if (entry.contentRect.height > 500) { // Si la altura supera 500px, aplicar la clase y dejar de observar ese elemento
-                                  entry.target.classList.add("dos-columnas");
-                                  resizeObserver.unobserve(entry.target);
-                                }
-                              });
-                            });
-                                        
-                            // Observar cada post
-                            posts.forEach(post => {
-                              resizeObserver.observe(post);
-                            });                  
-                          }     
-                          let columnasAjustadas = false;
-                          const handleResize = () => {
-                            if (columnasAjustadas) {
-                              window.removeEventListener('resize', handleResize);
-                              return;
-                            }
-                            ajustarColumnas();
-                          };
-                          //!js  
-                          //]]> 
-                        </script>     
-                        <b:else/>   
-                        <script>  
-                          <!-- cuando no esta en la pagina principal -->
-                          //<![CDATA[  
-                          //js
-                          function ajustarColumnas() {
-                            return //funcion basia
-                          }
-                          //!js  
-                          //]]>  
-                        </script>
-                        
                       </b:if>
                     </b:includable> 
                   <b:widget-settings>
@@ -2234,7 +2192,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                         <div class='post-footer-line post-footer-line-2'>
                             <!--* boton para cometar 👇 -->
                           <b:if cond='data:blog.pageType not in {"item","static_page"} and data:post.allowComments'>
-                            <a class='commentario-link' expr:href='data:post.addCommentUrl' expr:onclick='data:post.addCommentOnclick'>
+                            <a class='commentario-link post-footer-btn' expr:href='data:post.addCommentUrl' expr:onclick='data:post.addCommentOnclick'>
                               <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">
                               <path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 9h8" /><path d="M8 13h6" /><path d="M9 18h-3a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-3l-3 3l-3 -3z" />
                               </svg>
@@ -2247,7 +2205,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                             .getAttribute("linkPublicacion") = me da lo que guarde en "expr:linkPublicacion"
                             -->
                             <!--* boton de compartir 👇 -->
-                          <div class="compartirPost" expr:linkPublicacion="data:post.url" onclick='compartir(this.getAttribute("linkPublicacion"))'
+                          <div class="compartir-post post-footer-btn" expr:linkPublicacion="data:post.url" onclick='compartir(this.getAttribute("linkPublicacion"))'
                             title="Copiar el link de la publicacion">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 25 25"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15.9 17.5 6.8-5.4c.2-.2.3-.5.3-.7a1 1 0 0 0-.3-.8l-6.8-5.4-.6-.2-.7.1c-.2 0-.4.2-.5.4a1 1 0 0 0-.2.6v2C4.3 6.8 2 14.6 2 19c2.3-3.4 7.8-9.5 12-4.5v2.1l.1.6.5.4a1.3 1.3 0 0 0 1.3-.1Z"/></svg>
                           </div>
@@ -3669,7 +3627,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   asignarElementosPosts()
                   customImagenesPosts()
                   asignarPaginaActual()
-                  ajustarColumnas()
               } else {
                   location.href = url;
               }
@@ -3863,7 +3820,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
       asignarElementosPosts()
       customImagenesPosts()
       asignarPaginaActual()
-      ajustarColumnas()
     });
 
 
