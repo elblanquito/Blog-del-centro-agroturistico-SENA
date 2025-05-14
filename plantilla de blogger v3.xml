@@ -397,6 +397,48 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
         .fancybox__nav .f-button svg{
           filter: none;
         }
+
+
+
+
+  .comments h4 {
+    margin: 1em 0 0;
+    font: $(post.title.font);
+  }
+        
+#comments .comment-author {
+  padding-top: 1.5em;
+
+  border-top: dashed 1px #ccc;
+  border-top: dashed 1px rgba(128, 128, 128, .5);
+  background-position: 0 1.5em;
+}
+
+#comments .comment-author:first-child {
+  padding-top: 0;
+
+  border-top: none;
+}
+
+.avatar-image-container {
+  margin: .2em 0 0;
+}
+
+/* Comments
+----------------------------------------------- */
+.comments .comments-content .icon.blog-author {
+  background-repeat: no-repeat;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEgAACxIB0t1+/AAAAAd0SU1FB9sLFwMeCjjhcOMAAAD+SURBVDjLtZSvTgNBEIe/WRRnm3U8RC1neQdsm1zSBIU9VVF1FkUguQQsD9ITmD7ECZIJSE4OZo9stoVjC/zc7ky+zH9hXwVwDpTAWWLrgS3QAe8AZgaAJI5zYAmc8r0G4AHYHQKVwII8PZrZFsBFkeRCABYiMh9BRUhnSkPTNCtVXYXURi1FpBDgArj8QU1eVXUzfnjv7yP7kwu1mYrkWlU33vs1QNu2qU8pwN0UpKoqokjWwCztrMuBhEhmh8bD5UDqur75asbcX0BGUB9/HAMB+r32hznJgXy2v0sGLBcyAJ1EK3LFcbo1s91JeLwAbwGYu7TP/3ZGfnXYPgAVNngtqatUNgAAAABJRU5ErkJggg==);
+}
+
+.comments .comments-content .loadmore a {
+  border-top: 1px solid $(link.hover.color);
+  border-bottom: 1px solid $(link.hover.color);
+}
+
+.comments .continue {
+  border-top: 2px solid $(link.hover.color);
+}
         /*!css*/
       ]]>
     </b:skin>
@@ -463,6 +505,15 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
     -->
     <div id="notificacion" class="notificacion">
       <div id="notificacion-icono">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentcolor">
+          <path 
+            d="M480-280q17 0 28.5-11.5T520-320v-160q0-17-11.5-28.5T480-520q-17 0-28.5 11.5T440-480v160q0 17 11.5 
+            28.5T480-280Zm0-320q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm0 
+            520q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 
+            54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 
+            93t-93 227q0 134 93 227t227 93Zm0-320Z"
+          />
+        </svg>
       </div>
       <div class="notificacion-body">
         <span id="notificacion-titulo">Notificacion</span>
@@ -918,7 +969,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                     top: 0px;
                     width: fit-content;
                     max-width: 100%;
-                    z-index: 2;
+                    z-index:3;
                   } 
                   #seccion-header-cont {
                     box-sizing: border-box;
@@ -1598,24 +1649,22 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                         width: 100%;
                         height: 100%;
                       }
-                      .post img, .post iframe, .tiktok-embed {
+                      .post-body img, .post-body iframe, .post-body .tiktok-embed {
                         box-shadow: 0 1px 6px 0px rgba(0, 0, 0, .1), 0 2px 4px -2px rgba(0, 0, 0, .1);;
                         transition: transform 0.3s ease-out;
                         display: block;
                         overflow-y: auto;
                         border-radius: 10px;
-                        height: 100%;
                         max-width: 100% ;
                         object-fit: cover;
                         object-position: center;
                         content-visibility: auto;
-                        
                       }
-                      .post iframe{
-                        width: 100% !important;
-                        height: 100% !important;
-  	                  	max-height: 800px !important;
-                      	min-height: 350px !important;
+                      .post-body img{
+                        height: 100%; /*estirar imagenes si hay varias en la misma linea*/
+                      }
+                      .post-body iframe{
+                      	min-height: 350px;
                       	border: none;
   	                  }
                       .loading img, .loading iframe,
@@ -1698,6 +1747,19 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                       .post-fecha{
                         margin-left: auto;
                         text-decoration: none;
+                      }
+
+                      .blogger-comment-from-post{
+                        max-width: 100%;
+                        width: 500px;
+                        height: 208px;
+                      }
+
+                      .blog-page-back{
+                        display: flex
+                      }
+                      .blog-page-forward{
+                        display: flex
                       }
                       @media (max-width: 400px){
                         .post-fecha{
@@ -1872,17 +1934,96 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                           <b:if cond='data:post.isDateStart'>
                             &lt;div class=&quot;date-posts&quot;&gt;
                           </b:if>
-                          <!-- marker ensamblaje -->
                           <b:include data='post' name='post'/>
-                          
+                          <!-- 
+                          💬marker if 
+                          -->
                           <b:include cond='data:blog.pageType in {"static_page","item"}' data='post' name='comment_picker'/>
+                          <!--       
+                          <div expr:id='data:widget.instanceId + &quot;_comments-block-wrapper&quot;'>
+                            <dl expr:class='data:post.avatarIndentClass' id='comments-block'>
+                              <b:loop values='data:post.comments' var='comment'>
+                                <dt expr:class='&quot;comment-author &quot; + data:comment.authorClass' expr:id='data:comment.anchorName'>
+                                  <b:if cond='data:comment.favicon'>
+                                    <img expr:src='data:comment.favicon' height='16px' style='margin-bottom:-2px;' width='16px'/>
+                                  </b:if>
+                                  <a expr:name='data:comment.anchorName'/>
+                                  <b:if cond='data:blog.enabledCommentProfileImages'>
+                                    <data:comment.authorAvatarImage/>
+                                  </b:if>
+                                  <b:if cond='data:comment.authorUrl'>
+                                    <a expr:href='data:comment.authorUrl' rel='nofollow'><data:comment.author/></a>
+                                  <b:else/>
+                                    <data:comment.author/>
+                                  </b:if>
+                                  <data:commentPostedByMsg/>
+                                </dt>
+                                <dd class='comment-body' expr:id='data:widget.instanceId + data:comment.cmtBodyIdPostfix'>
+                                  <b:if cond='data:comment.isDeleted'>
+                                    <span class='deleted-comment'><data:comment.body/></span>
+                                  <b:else/>
+                                    <p>
+                                      <data:comment.body/>
+                                    </p>
+                                  </b:if>
+                                </dd>
+                                <dd class='comment-footer'>
+                                  <span class='comment-timestamp'>
+                                    <a expr:href='data:comment.url' title='comment permalink'>
+                                      <data:comment.timestamp/>
+                                    </a>
+                                    <b:include data='comment' name='commentDeleteIcon'/>
+                                  </span>
+                                </dd>
+                              </b:loop>
+                            </dl>
+                          </div>
+                          -->
+                          <!--                     
+                          <div class='comment-form'>
+                            <data:blogTeamBlogMessage/>
+                            <a expr:href='data:post.commentFormIframeSrc' id='comment-editor-src'/>
+                            <iframe class='post-crear-comentario blogger-iframe-colorize blogger-comment-from-post'
+                            frameborder='0' id='comment-editor' name='comment-editor' src='' allowtransparency='true'/>
+                            <data:post.cmtfpIframe/>
+                            <script type='text/javascript'>
+                              BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath/>&#39;);
+                            </script>
+                          </div> 
+                          -->
+
+
                         </b:loop>
                         <b:if cond='data:numPosts != 0'>
                           &lt;/div&gt;&lt;/div&gt;
                         </b:if>
-                      
-                      <!-- navigation -->
-                      <b:include name='nextprev'/>
+
+                      <!-- 
+                      🍏marker [navegacion] 
+                      -->
+                      <div class='blog-pager' id='blog-pager'
+                      >
+                        <b:if cond='data:newerPageUrl'>
+                          <span id='blog-pager-newer-link'>
+                            <a class='blog-page-back' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;' expr:title='data:newerPageTitle'>
+                              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z"/></svg>
+                            </a>
+                          </span>
+                        </b:if>
+
+                        <b:if cond='data:olderPageUrl'>
+                          <span id='blog-pager-older-link'>
+                            <a class='blog-page-forward' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;' expr:title='data:olderPageTitle'>
+                              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/></svg>
+                            </a>
+                          </span>
+
+                        </b:if>
+                        <a class='home-link blog-page-home' expr:href='data:blog.homepageUrl'>
+                          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M240-200h120v-200q0-17 11.5-28.5T400-440h160q17 0 28.5 11.5T600-400v200h120v-360L480-740 240-560v360Zm-80 0v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H560q-17 0-28.5-11.5T520-160v-200h-80v200q0 17-11.5 28.5T400-120H240q-33 0-56.5-23.5T160-200Zm320-270Z"/></svg>
+                        </a>
+
+                      </div>
                       <!-- feed links -->
                       <b:include name='feedLinks'/>
                       <b:else/>
@@ -1896,32 +2037,80 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   🍏marker Comentarios
                   ^======================
                   -->
+                  <b:includable id='backlinkDeleteIcon' var='backlink'/>
+                  <b:includable id='backlinks' var='post'/>
+                  <b:includable id='comment-form' var='post'>
+                    <div class='comment-form'>
+                      <a name='comment-form'/>
+                      <b:if cond='data:mobile'>
+                        <h4 id='comment-post-message'>
+                          <a expr:id='data:widget.instanceId + &quot;_comment-editor-toggle-link&quot;' href='javascript:void(0)'><data:postCommentMsg/></a></h4>
+                        <p><data:blogCommentMessage/></p>
+                        <data:blogTeamBlogMessage/>
+                        <a expr:href='data:post.commentFormIframeSrc' id='comment-editor-src'/>
+                        <iframe allowtransparency='true' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight' frameborder='0' id='comment-editor' name='comment-editor' src='' style='display: none' width='100%'/>
+                      <b:else/>
+                        <h4 id='comment-post-message'><data:postCommentMsg/></h4>
+                        <p><data:blogCommentMessage/></p>
+                        <data:blogTeamBlogMessage/>
+                        <a expr:href='data:post.commentFormIframeSrc' id='comment-editor-src'/>
+                        <iframe allowtransparency='true' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
+                      </b:if>
+                      <data:post.cmtfpIframe/>
+                      <script type='text/javascript'>
+                        BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath/>&#39;);
+                      </script>
+                    </div>
+                  </b:includable>
+                  <b:includable id='commentDeleteIcon' var='comment'>
+                    <span expr:class='&quot;item-control &quot; + data:comment.adminClass'>
+                      <b:if cond='data:showCmtPopup'>
+                        <div class='goog-toggle-button'>
+                          <div class='goog-inline-block comment-action-icon'/>
+                        </div>
+                      <b:else/>
+                        <a class='comment-delete' expr:href='data:comment.deleteUrl' expr:title='data:top.deleteCommentMsg'>
+                          <img src='https://resources.blogblog.com/img/icon_delete13.gif'/>
+                        </a>
+                      </b:if>
+                    </span>
+                  </b:includable>
+                  <b:includable id='comment_count_picker' var='post'>
+                    <a class='comment-link' expr:href='data:post.addCommentUrl' expr:onclick='data:post.addCommentOnclick'>
+                      <data:post.commentLabelFull/>:
+                    </a>
+                  </b:includable>
+                  <b:includable id='comment_picker' var='post'>
+                    <b:if cond='data:post.showThreadedComments'>
+                      <b:include data='post' name='threaded_comments'/>
+                    <b:else/>
+                      <b:include data='post' name='comments'/>
+                    </b:if>
+                  </b:includable>
                   <b:includable id='comments' var='post'>
                     <div class='comments' id='comments'>
                       <a name='comments'/>
                       <b:if cond='data:post.allowComments'>
-                        <h4>
-                          <data:post.commentLabelFull/>:
-                        </h4>
+                        <h4><data:post.commentLabelFull/>:</h4>
                         <b:if cond='data:post.commentPagingRequired'>
                           <span class='paging-control-container'>
                             <b:if cond='data:post.hasOlderLinks'>
                               <a expr:class='data:post.oldLinkClass' expr:href='data:post.oldestLinkUrl'>
-                                <data:post.oldestLinkText/>
+                                <data:post.oldestLinkText/>📋
                               </a>
-                                        &#160;
+                              &#160;
                               <a expr:class='data:post.oldLinkClass' expr:href='data:post.olderLinkUrl'>
                                 <data:post.olderLinkText/>
                               </a>
-                                        &#160;
+                              &#160;
                             </b:if>
                             <data:post.commentRangeText/>
                             <b:if cond='data:post.hasNewerLinks'>
-                                      &#160;
+                              &#160;
                               <a expr:class='data:post.newLinkClass' expr:href='data:post.newerLinkUrl'>
-                                <data:post.newerLinkText/>
+                                <data:post.newerLinkText/>✒️
                               </a>
-                                      &#160;
+                              &#160;
                               <a expr:class='data:post.newLinkClass' expr:href='data:post.newestLinkUrl'>
                                 <data:post.newestLinkText/>
                               </a>
@@ -1931,6 +2120,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                         <div expr:id='data:widget.instanceId + &quot;_comments-block-wrapper&quot;'>
                           <dl expr:class='data:post.avatarIndentClass' id='comments-block'>
                             <b:loop values='data:post.comments' var='comment'>
+                              ✂️
                               <dt expr:class='&quot;comment-author &quot; + data:comment.authorClass' expr:id='data:comment.anchorName'>
                                 <b:if cond='data:comment.favicon'>
                                   <img expr:src='data:comment.favicon' height='16px' style='margin-bottom:-2px;' width='16px'/>
@@ -1960,6 +2150,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                                 </b:if>
                               </dd>
                               <dd class='comment-footer'>
+                                🎟️🎟️🎟️
                                 <span class='comment-timestamp'>
                                   <a expr:href='data:comment.url' title='comment permalink'>
                                     <data:comment.timestamp/>
@@ -2006,13 +2197,13 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                       <b:if cond='data:showCmtPopup'>
                         <div id='comment-popup'>
                           <iframe allowtransparency='true' frameborder='0' id='comment-actions' name='comment-actions' scrolling='no'>
-                                  </iframe>
+                          </iframe>
                         </div>
                       </b:if>
                     </div>
                   </b:includable>
                   <!-- 
-                    📑 marker Post page
+                  📑 marker Post page
                   -->
                   <b:includable id='feedLinks'>
                     <b:if cond='data:blog.pageType != &quot;item&quot;'>
@@ -2034,9 +2225,99 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                       </div>
                     </b:if>
                   </b:includable>
-                  
+                  <b:includable id='feedLinksBody' var='links'>
+                    <div class='feed-links'>
+                    <data:feedLinksMsg/>
+                    <b:loop values='data:links' var='f'>
+                       <a class='feed-link' expr:href='data:f.url' expr:type='data:f.mimeType' target='_blank'><data:f.name/> (<data:f.feedType/>)</a>
+                    </b:loop>
+                    </div>
+                  </b:includable>
                   <b:includable id='iframe_comments' var='post'>
                     <!-- G+ comments, no longer available. The includable is retained for backwards-compatibility. -->
+                  </b:includable>
+                  <b:includable id='mobile-index-post' var='post'>
+                    <div class='mobile-date-outer date-outer'>
+                      <b:if cond='data:post.dateHeader'>
+                        <div class='date-header'>
+                          <span><data:post.dateHeader/></span>
+                        </div>
+                      </b:if>
+
+                      <div class='mobile-post-outer'>
+                        <a expr:href='data:post.url'>
+                          <h3 class='mobile-index-title entry-title' itemprop='name'>
+                            <data:post.title/>
+                          </h3>
+
+                          <div class='mobile-index-arrow'>&amp;rsaquo;</div>
+
+                          <div class='mobile-index-contents'>
+                            <b:if cond='data:post.thumbnailUrl'>
+                              <div class='mobile-index-thumbnail'>
+                                <div class='Image'>
+                                  <img expr:src='data:post.thumbnailUrl'/>
+                                </div>
+                              </div>
+                            </b:if>
+
+                            <div class='post-body'>
+                              <b:if cond='data:post.snippet'><data:post.snippet/></b:if>
+                            </div>
+                          </div>
+
+                          <div style='clear: both;'/>
+                        </a>
+
+                        <div class='mobile-index-comment'>
+                          <b:include cond='data:blog.pageType != &quot;static_page&quot;                          and data:post.allowComments                          and data:post.numComments != 0' data='post' name='comment_count_picker'/>
+                        </div>
+                      </div>
+                    </div>
+                  </b:includable>
+                  <b:includable id='mobile-main' var='top'>
+                      <!-- posts -->
+                      <div class='blog-posts hfeed'>
+
+                        <b:include data='top' name='status-message'/>
+
+                        <b:if cond='data:blog.pageType == &quot;index&quot;'>
+                          <b:loop values='data:posts' var='post'>
+                            <b:include data='post' name='mobile-index-post'/>
+                          </b:loop>
+                        <b:else/>
+                          <b:loop values='data:posts' var='post'>
+                            <b:include data='post' name='mobile-post'/>
+                          </b:loop>
+                        </b:if>
+                      </div>
+
+                     <b:include name='mobile-nextprev'/>
+                  </b:includable>
+                  <b:includable id='mobile-nextprev'>
+                    <div class='blog-pager' id='blog-pager'>
+                      <b:if cond='data:newerPageUrl'>
+                        <div class='mobile-link-button' id='blog-pager-newer-link'>
+                        <a class='blog-pager-newer-link' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;' expr:title='data:newerPageTitle'>&amp;lsaquo;</a>
+                        </div>
+                      </b:if>
+
+                      <b:if cond='data:olderPageUrl'>
+                        <div class='mobile-link-button' id='blog-pager-older-link'>
+                        <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;' expr:title='data:olderPageTitle'>&amp;rsaquo;</a>
+                        </div>
+                      </b:if>
+
+                      <div class='mobile-link-button' id='blog-pager-home-link'>
+                      <a class='home-link' expr:href='data:blog.homepageUrl'><data:homeMsg/></a>
+                      </div>
+
+                      <div class='mobile-desktop-link'>
+                        <a class='home-link' expr:href='data:desktopLinkUrl'><data:desktopLinkMsg/></a>
+                      </div>
+
+                    </div>
+                    <div class='clear'/>
                   </b:includable>
                   <b:includable id='mobile-post' var='post'>
                     <div class='date-outer'>
@@ -2117,35 +2398,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                       </div>
                     </div>
                   </b:includable>
-                  <b:includable id='nextprev'>
-                    <div class='blog-pager' id='blog-pager'>
-                      <b:if cond='data:newerPageUrl'>
-                        <span id='blog-pager-newer-link'>
-                          <a class='blog-pager-newer-link' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;' expr:title='data:newerPageTitle'>
-                            <data:newerPageTitle/>
-                          </a>
-                        </span>
-                      </b:if>
-                      <b:if cond='data:olderPageUrl'>
-                        <span id='blog-pager-older-link'>
-                          <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;' expr:title='data:olderPageTitle'>
-                            <data:olderPageTitle/>
-                          </a>
-                        </span>
-                      </b:if>
-                      <a class='home-link' expr:href='data:blog.homepageUrl'>
-                        <data:homeMsg/>
-                      </a>
-                      <b:if cond='data:mobileLinkUrl'>
-                        <div class='blog-mobile-link'>
-                          <a expr:href='data:mobileLinkUrl'>
-                            <data:mobileLinkMsg/>
-                          </a>
-                        </div>
-                      </b:if>
-                    </div>
-                    <div class='clear'/>
-                  </b:includable>
                   <b:includable id='post' var='post'>
                     <!--
                     *======================
@@ -2199,9 +2451,8 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                               <data:post.numComments/>
                             </a>
                           </b:if>
-                            <!-- primera vez que uso "expr" 🚀
-                            aqui la uso para optener la variable "data:post.link"
-                            this = me da todo el elemento entero <button></button> 
+                            <!--
+                            aqui uso "expr" para optener la variable "data:post.link"
                             .getAttribute("linkPublicacion") = me da lo que guarde en "expr:linkPublicacion"
                             -->
                             <!--* boton de compartir 👇 -->
@@ -2225,6 +2476,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                             </b:if>
                           </span>
                         </div>
+                        
                       </div>
                     </div>
                   </b:includable>
@@ -2305,34 +2557,22 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                       </div>
                     </b:if>
                   </b:includable>
-                  <b:includable id='threaded-comment-form' var='post'>
-                    <div class='comment-form'>
-                      <a name='comment-form'/>
-                      <b:if cond='data:mobile'>
-                        <p>
-                          <data:blogCommentMessage/>
-                        </p>
-                        <data:blogTeamBlogMessage/>
-                        <a expr:href='data:post.commentFormIframeSrc' id='comment-editor-src'/>
-                        <iframe allowtransparency='true' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight' frameborder='0' id='comment-editor' name='comment-editor' src='' style='display: none' width='100%'/>
-                        <b:else/>
-                        <p>
-                          <data:blogCommentMessage/>
-                        </p>
-                        <data:blogTeamBlogMessage/>
-                        <a expr:href='data:post.commentFormIframeSrc' id='comment-editor-src'/>
-                        <iframe allowtransparency='true' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
-                      </b:if>
-                      <data:post.cmtfpIframe/>
-                      <script type='text/javascript'>
-                        BLOG_CMT_createIframe(&#39;
-                        <data:post.appRpcRelayPath/>
-                        &#39;);
-                      </script>
-                    </div>
-                  </b:includable>
+                  <!-- 💬marker marker -->
+                    <b:includable id='threaded-comment-form' var='post'>
+                      <div class='comment-form'>
+                        <a name='comment-form'/>
+                          <p><data:blogCommentMessage/></p>
+                          <data:blogTeamBlogMessage/>
+                          <a expr:href='data:post.commentFormIframeSrc' id='comment-editor-src'/>
+                          <iframe allowtransparency='true' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
+                        <data:post.cmtfpIframe/>
+                        <script type='text/javascript'>
+                          BLOG_CMT_createIframe("<data:post.appRpcRelayPath/>");
+                        </script>
+                      </div>
+                    </b:includable>
                   <!-- 
-                  ✒️marker Comentarios [JS] 
+                  💬marker [JS] 
                   -->
                   <b:includable id='threaded_comment_js' var='post'>
                     <script async='async' expr:src='data:post.commentSrc' type='text/javascript'/>
@@ -2341,199 +2581,212 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                         var items =<data:post.commentJso/>;
                         var msgs =<data:post.commentMsgs/>;
                         var config = <data:post.commentConfig/>;
-                       //<![CDATA[
-                       //js
-                      
-                            var cursor = null;
-                            if (items && items.length > 0) {
-                              cursor = parseInt(items[items.length - 1].timestamp) + 1;
+                        
+                        //<![CDATA[
+                        //js
+                        var cursor = null;
+                        if (items && items.length > 0) {
+                          cursor = parseInt(items[items.length - 1].timestamp) + 1;
+                        }
+                  
+                        var bodyFromEntry = function(entry) {
+                          var text = (entry && ((entry.content && entry.content.$t) || (entry.summary && entry.summary.$t))) || '';
+                          if (entry && entry.gd$extendedProperty) {
+                            for (var k in entry.gd$extendedProperty) {
+                              if (entry.gd$extendedProperty[k].name == 'blogger.contentRemoved') {
+                                return '<span class="deleted-comment">' + text + '</span>';
+                              }
                             }
-                      
-                            var bodyFromEntry = function(entry) {
-                              var text = (entry &&
-                                          ((entry.content && entry.content.$t) ||
-                                           (entry.summary && entry.summary.$t))) ||
-                                  '';
-                              if (entry && entry.gd$extendedProperty) {
+                          }
+                          return text;
+                        }
+                  
+                        var parse = function(data) {
+                          cursor = null;
+                          var comments = [];
+                          if (data && data.feed && data.feed.entry) {
+                            for (var i = 0, entry; entry = data.feed.entry[i]; i++) {
+                              var comment = {};
+                              // comment ID, parsed out of the original id format
+                              var id = /blog-(\d+).post-(\d+)/.exec(entry.id.$t);
+                              comment.id = id ? id[2] : null;
+                              comment.body = bodyFromEntry(entry);
+                              comment.timestamp = Date.parse(entry.published.$t) + '';
+                              if (entry.author && entry.author.constructor === Array) {
+                                var auth = entry.author[0];
+                                if (auth) {
+                                  comment.author = {
+                                    name: (auth.name ? auth.name.$t : undefined),
+                                    profileUrl: (auth.uri ? auth.uri.$t : undefined),
+                                    avatarUrl: (auth.gd$image ? auth.gd$image.src : undefined)
+                                  };
+                                }
+                              }
+                              if (entry.link) {
+                                if (entry.link[2]) {
+                                  comment.link = comment.permalink = entry.link[2].href;
+                                }
+                                if (entry.link[3]) {
+                                  var pid = /.*comments\/default\/(\d+)\?.*/.exec(entry.link[3].href);
+                                  if (pid && pid[1]) {
+                                    comment.parentId = pid[1];
+                                  }
+                                }
+                              }
+                              comment.deleteclass = 'item-control blog-admin';
+                              if (entry.gd$extendedProperty) {
                                 for (var k in entry.gd$extendedProperty) {
-                                  if (entry.gd$extendedProperty[k].name == 'blogger.contentRemoved') {
-                                    return '<span class="deleted-comment">' + text + '</span>';
+                                  if (entry.gd$extendedProperty[k].name == 'blogger.itemClass') {
+                                    comment.deleteclass += ' ' + entry.gd$extendedProperty[k].value;
+                                  } else if (entry.gd$extendedProperty[k].name == 'blogger.displayTime') {
+                                    comment.displayTime = entry.gd$extendedProperty[k].value;
                                   }
                                 }
                               }
-                              return text;
+                              comments.push(comment);
                             }
-                      
-                            var parse = function(data) {
-                              cursor = null;
-                              var comments = [];
-                              if (data && data.feed && data.feed.entry) {
-                                for (var i = 0, entry; entry = data.feed.entry[i]; i++) {
-                                  var comment = {};
-                                  // comment ID, parsed out of the original id format
-                                  var id = /blog-(\d+).post-(\d+)/.exec(entry.id.$t);
-                                  comment.id = id ? id[2] : null;
-                                  comment.body = bodyFromEntry(entry);
-                                  comment.timestamp = Date.parse(entry.published.$t) + '';
-                                  if (entry.author && entry.author.constructor === Array) {
-                                    var auth = entry.author[0];
-                                    if (auth) {
-                                      comment.author = {
-                                        name: (auth.name ? auth.name.$t : undefined),
-                                        profileUrl: (auth.uri ? auth.uri.$t : undefined),
-                                        avatarUrl: (auth.gd$image ? auth.gd$image.src : undefined)
-                                      };
-                                    }
-                                  }
-                                  if (entry.link) {
-                                    if (entry.link[2]) {
-                                      comment.link = comment.permalink = entry.link[2].href;
-                                    }
-                                    if (entry.link[3]) {
-                                      var pid = /.*comments\/default\/(\d+)\?.*/.exec(entry.link[3].href);
-                                      if (pid && pid[1]) {
-                                        comment.parentId = pid[1];
-                                      }
-                                    }
-                                  }
-                                  comment.deleteclass = 'item-control blog-admin';
-                                  if (entry.gd$extendedProperty) {
-                                    for (var k in entry.gd$extendedProperty) {
-                                      if (entry.gd$extendedProperty[k].name == 'blogger.itemClass') {
-                                        comment.deleteclass += ' ' + entry.gd$extendedProperty[k].value;
-                                      } else if (entry.gd$extendedProperty[k].name == 'blogger.displayTime') {
-                                        comment.displayTime = entry.gd$extendedProperty[k].value;
-                                      }
-                                    }
-                                  }
-                                  comments.push(comment);
-                                }
-                              }
-                              return comments;
-                            };
-                      
-                            var paginator = function(callback) {
-                              if (hasMore()) {
-                                var url = config.feed + '?alt=json&v=2&orderby=published&reverse=false&max-results=50';
-                                if (cursor) {
-                                  url += '&published-min=' + new Date(cursor).toISOString();
-                                }
-                                window.bloggercomments = function(data) {
-                                  var parsed = parse(data);
-                                  cursor = parsed.length < 50 ? null
-                                      : parseInt(parsed[parsed.length - 1].timestamp) + 1
-                                  callback(parsed);
-                                  window.bloggercomments = null;
-                                }
-                                url += '&callback=bloggercomments';
-                                var script = document.createElement('script');
-                                script.type = 'text/javascript';
-                                script.src = url;
-                                document.getElementsByTagName('head')[0].appendChild(script);
-                              }
-                            };
-                            var hasMore = function() {
-                              return !!cursor;
-                            };
-                            var getMeta = function(key, comment) {
-                              if ('iswriter' == key) {
-                                var matches = !!comment.author
-                                    && comment.author.name == config.authorName
-                                    && comment.author.profileUrl == config.authorUrl;
-                                return matches ? 'true' : '';
-                              } else if ('deletelink' == key) {
-                                return config.baseUri + '/delete-comment.g?blogID='
-                                     + config.blogId + '&postID=' + comment.id;
-                              } else if ('deleteclass' == key) {
-                                return comment.deleteclass;
-                              }
-                              return '';
-                            };
-                      
-                            var replybox = null;
-                            var replyUrlParts = null;
-                            var replyParent = undefined;
-                      
-                            var onReply = function(commentId, domId) {
-                              if (replybox == null) {
-                                // lazily cache replybox, and adjust to suit this style:
-                                replybox = document.getElementById('comment-editor');
-                                if (replybox != null) {
-                                  replybox.height = '250px';
-                                  replybox.style.display = 'block';
-                                  replyUrlParts = replybox.src.split('#');
-                                }
-                              }
-                              if (replybox && (commentId !== replyParent)) {
-                                replybox.src = '';
-                                document.getElementById(domId).insertBefore(replybox, null);
-                                replybox.src = replyUrlParts[0]
-                                    + (commentId ? '&parentID=' + commentId : '')
-                                    + '#' + replyUrlParts[1];
-                                replyParent = commentId;
-                              }
-                            };
-                      
-                            var hash = (window.location.hash || '#').substring(1);
-                            var startThread, targetComment;
-                            if (/^comment-form_/.test(hash)) {
-                              startThread = hash.substring('comment-form_'.length);
-                            } else if (/^c[0-9]+$/.test(hash)) {
-                              targetComment = hash.substring(1);
+                          }
+                          return comments;
+                        };
+                  
+                        var paginator = function(callback) {
+                          if (hasMore()) {
+                            var url = config.feed + '?alt=json&v=2&orderby=published&reverse=false&max-results=50';
+                            if (cursor) {
+                              url += '&published-min=' + new Date(cursor).toISOString();
                             }
-                      
-                            // Configure commenting API:
-                            var configJso = {
-                              'maxDepth': config.maxThreadDepth
-                            };
-                            var provider = {
-                              'id': config.postId,
-                              'data': items,
-                              'loadNext': paginator,
-                              'hasMore': hasMore,
-                              'getMeta': getMeta,
-                              'onReply': onReply,
-                              'rendered': true,
-                              'initComment': targetComment,
-                              'initReplyThread': startThread,
-                              'config': configJso,
-                              'messages': msgs
-                            };
-                      
-                            var render = function() {
-                              if (window.goog && window.goog.comments) {
-                                var holder = document.getElementById('comment-holder');
-                                window.goog.comments.render(holder, provider);
-                              }
-                            };
-                      
-                            // render now, or queue to render when library loads:
-                            if (window.goog && window.goog.comments) {
-                              render();
-                            } else {
-                              window.goog = window.goog || {};
-                              window.goog.comments = window.goog.comments || {};
-                              window.goog.comments.loadQueue = window.goog.comments.loadQueue || [];
-                              window.goog.comments.loadQueue.push(render);
+                            window.bloggercomments = function(data) {
+                              var parsed = parse(data);
+                              cursor = parsed.length < 50 ? null
+                                  : parseInt(parsed[parsed.length - 1].timestamp) + 1
+                              callback(parsed);
+                              window.bloggercomments = null;
                             }
-                          })();
+                            url += '&callback=bloggercomments';
+                            var script = document.createElement('script');
+                            script.type = 'text/javascript';
+                            script.src = url;
+                            document.getElementsByTagName('head')[0].appendChild(script);
+                          }
+                        };
+                        var hasMore = function() {
+                          return !!cursor;
+                        };
+                        var getMeta = function(key, comment) {
+                          if ('iswriter' == key) {
+                            var matches = !!comment.author
+                                && comment.author.name == config.authorName
+                                && comment.author.profileUrl == config.authorUrl;
+                            return matches ? 'true' : '';
+                          } else if ('deletelink' == key) {
+                            return config.baseUri + '/delete-comment.g?blogID='
+                                 + config.blogId + '&postID=' + comment.id;
+                          } else if ('deleteclass' == key) {
+                            return comment.deleteclass;
+                          }
+                          return '';
+                        };
+                  
+                        var replybox = null;
+                        var replyUrlParts = null;
+                        var replyParent = undefined;
+                  
+                        var onReply = function(commentId, domId) {
+                          if (replybox == null) {
+                            // lazily cache replybox, and adjust to suit this style:
+                            replybox = document.getElementById('comment-editor');
+                            if (replybox != null) {
+                              replybox.height = '250px';
+                              replybox.style.display = 'block';
+                              replyUrlParts = replybox.src.split('#');
+                            }
+                          }
+                          if (replybox && (commentId !== replyParent)) {
+                            replybox.src = '';
+                            document.getElementById(domId).insertBefore(replybox, null);
+                            replybox.src = replyUrlParts[0]
+                                + (commentId ? '&parentID=' + commentId : '')
+                                + '#' + replyUrlParts[1];
+                            replyParent = commentId;
+                          }
+                        };
+                  
+                        var hash = (window.location.hash || '#').substring(1);
+                        var startThread, targetComment;
+                        if (/^comment-form_/.test(hash)) {
+                          startThread = hash.substring('comment-form_'.length);
+                        } else if (/^c[0-9]+$/.test(hash)) {
+                          targetComment = hash.substring(1);
+                        }
+                  
+                        // Configure commenting API:
+                        var configJso = {
+                          'maxDepth': config.maxThreadDepth
+                        };
+                        var provider = {
+                          'id': config.postId,
+                          'data': items,
+                          'loadNext': paginator,
+                          'hasMore': hasMore,
+                          'getMeta': getMeta,
+                          'onReply': onReply,
+                          'rendered': true,
+                          'initComment': targetComment,
+                          'initReplyThread': startThread,
+                          'config': configJso,
+                          'messages': msgs
+                        };
+                  
+                        var render = function() {
+                          if (window.goog && window.goog.comments) {
+                            var holder = document.getElementById('comment-holder');
+                            window.goog.comments.render(holder, provider);
+                          }
+                        };
+                  
+                        // render now, or queue to render when library loads:
+                        if (window.goog && window.goog.comments) {
+                          render();
+                        } else {
+                          window.goog = window.goog || {};
+                          window.goog.comments = window.goog.comments || {};
+                          window.goog.comments.loadQueue = window.goog.comments.loadQueue || [];
+                          window.goog.comments.loadQueue.push(render);
+                        }
+                      })();
                       //!js
                       // ]]>
                     </script>
                   </b:includable>
+                  <!-- 
+                  💬marker [HTML] 
+                  -->
                   <b:includable id='threaded_comments' var='post'>
                     <div class='comments' id='comments'>
                       <a name='comments'/>
                       <h4>
-                        <data:post.commentLabelFull/>
-                          :
+                        <data:post.commentLabelFull/>: 
                       </h4>
-                      <div class='comments-content'>
+                      <div class='comments-content'> <!-- contenedor -->
                         <b:include cond='data:post.embedCommentForm' data='post' name='threaded_comment_js'/>
                         <div id='comment-holder'>
-                          <data:post.commentHtml/>
+
+                          <data:post.commentHtml/> BLOG_CMT_createIframe
+
+                          <script>
+                            //js
+                            console.log('<data:post.commentHtml/>')
+                            const rawHtml = `<data:post.commentHtml/>`;
+
+                            const tempDiv = document.createElement("div"); 
+                            tempDiv.innerHTML = rawHtml; // medir tiempo de ejecucion de esto
+                            const avatars = tempDiv.querySelectorAll(".avatar-image-container");
+                            //!js
+                          </script>
+
                         </div>
                       </div>
+
                       <p class='comment-footer'>
                         <b:if cond='data:post.allowNewComments'>
                           <b:include data='post' name='threaded-comment-form'/>
@@ -2541,6 +2794,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                           <data:post.noNewCommentsText/>
                         </b:if>
                       </p>
+                      
                       <b:if cond='data:showCmtPopup'>
                         <div id='comment-popup'>
                           <iframe allowtransparency='true' frameborder='0' id='comment-actions' name='comment-actions' scrolling='no'>
@@ -3762,7 +4016,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
         await navigator.clipboard.writeText(texto);
         mostrarNotificacion("Texto copiado", "guardado en tu portapapeles", "positiva")
       } catch (error) {
-        console.error("Error al copiar el texto: ", error);
         mostrarNotificacion("Error al copiar el texto: ", error, "negativa")
       }
     } 
@@ -3796,7 +4049,40 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
         console.error('Error:', error);
         mostrarNotificacion('descarga fallida',error.message,'negativa')
       }
-    }           
+    }     
+
+    function calcularTiempoTranscurrido(fechaTexto) {
+      // Diccionario de meses en español
+      const meses = {
+        enero: 0, febrero: 1, marzo: 2, abril: 3,
+        mayo: 4, junio: 5, julio: 6, agosto: 7,
+        septiembre: 8, octubre: 9, noviembre: 10, diciembre: 11
+      };
+
+      // Extraer día, mes y año del texto
+      const partes = fechaTexto.toLowerCase().split(" de ");
+      const dia = parseInt(partes[0]);
+      const mes = meses[partes[1]];
+      const año = parseInt(partes[2]);
+
+      // Crear objeto Date de la fecha dada y la fecha actual
+      const fechaDada = new Date(año, mes, dia);
+      const hoy = new Date();
+
+      // Calcular diferencia en milisegundos y convertir a días
+      const diferenciaMs = hoy - fechaDada;
+      const dias = Math.floor(diferenciaMs / (1000 * 60 * 60 * 24));
+
+      if (dias < 0) return "en el futuro";
+      if (dias === 0) return "hoy";
+      if (dias === 1) return "ayer";
+      if (dias < 30) return `hace ${dias} días`;
+      if (dias < 60) return "hace 1 mes";
+      if (dias < 365) return `hace ${Math.floor(dias / 30)} meses`;
+      if (dias < 730) return "hace 1 año";
+
+      return `hace ${Math.floor(dias / 365)} años`;
+    }      
 
     //!js
     //]]>
