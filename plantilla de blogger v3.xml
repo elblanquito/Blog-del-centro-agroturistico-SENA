@@ -44,8 +44,8 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
           <Variable name="content.background.color" description="color del blog" type="color" default="#ffffff" value="#ffffff"/> 
         </Group>
 
-        <Group description="menu lateral" selector="#sidebar-right-1">
-          <Variable name="menulateral.width" description="tamaño del menu lateral" type="length" default="230px" min="0" max="600px" value="230px"/>
+        <Group description="menu lateral" selector="#sidebar-right">
+          <Variable name="menulateral.width" description="tamaño del menu lateral" type="length" default="300px" min="0" max="600px" value="300px"/>
           <Variable name="menulateral.color" description="color del menu lateral" type="color" default="#ffffff" value="#ffffff"/>
         </Group>
 
@@ -153,12 +153,16 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
         /* <!-- 
          ^🗂️marker sections [CSS]
          -->*/
-        .blog-posts{
+        body#layout div.blog-posts {
           float: left;
+          width: 350px;
         }
-        .menu-lateral-cont{
+        body#layout #sidebar-right{
           display: flow-root;
-          width: $(menulateral.width); /*este valor se define en la seccion de tamaños*/
+          padding: unset;
+        }
+        #sidebar-right{
+          width: $(menulateral.width);
           background-color: $(menulateral.color);
         }
         .BlogSearch {
@@ -284,37 +288,45 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
         🍇marker [CSS]
         ========================
         */
-        .menu-lateral-cont{
+        #sidebar-right{
           grid-area: derecha;
           height: 100%;
-          padding: 0px 20px;
+          padding: 5px 30px;
+          padding-left: 2px;
           padding-bottom: 100px;
-          overflow-y: scroll;
+          overflow-y: auto;
           /*
           width se define en "sections [CSS]"
           background-color se define en "sections [CSS]"
           */
         }
-        #sidebar-right-1 > .widget{min-height: fit-content;}
-        #sidebar-right-1 h2 { color: #00304D}
+        .sidebar-right-seccion{
+          margin-bottom:30px;
+          padding: 15px 20px;
+          border-radius: 10px;
+          outline: 1px solid #e2e8f0;
+          box-shadow: #e2e8f0 0px 1px 4px;
+        }
+        #sidebar-right > .widget{min-height: fit-content;}
+        #sidebar-right h2 { color: #00304D}
         /*
         <!-- ^  Barra de scroll 👇 ^ --> */
-        #sidebar-right-1::-webkit-scrollbar {
+        #sidebar-right::-webkit-scrollbar {
           width: 5px;
           height: 5px;
         }
-        #sidebar-right-1::-webkit-scrollbar{
+        #sidebar-right::-webkit-scrollbar{
           background:rgba(241, 241, 241, 0); /* Color de fondo de la pista */
           border-radius: 0px;
         }
-        #sidebar-right-1::-webkit-scrollbar-thumb  {
+        #sidebar-right::-webkit-scrollbar-thumb  {
           background: rgba(85, 85, 100, 0.18);
           border-radius: 10px;
         }
-        #sidebar-right-1::-webkit-scrollbar-thumb:hover {
+        #sidebar-right::-webkit-scrollbar-thumb:hover {
           background:rgba(85, 85, 100, 0.24);
         }
-        #sidebar-right-1 .widget-content{
+        #sidebar-right .widget-content{
           overflow: hidden;
           position: relative;
         }
@@ -354,7 +366,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
           opacity: 0
         }
         @media (max-width: 800px) {
-          #sidebar-right-1{
+          #sidebar-right{
             position: fixed;
             top: 0;
             right: 0;
@@ -362,11 +374,18 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
             height: 100vh;
             width: 100%;
             max-width: 80%;
-            padding: 0px 20px;
+            padding: 20px 20px;
             box-sizing: border-box;
             box-shadow: -4px 0px 8px 0 rgba(0, 0, 0, 0.2);
             transition: transform 0.5s ease-in-out;
           }
+          .sidebar-right-seccion{
+            padding: 0;
+            border-radius: 0;
+            outline: 0;
+            box-shadow: none;
+          }
+
           .ocultarMenu {
             transform: translate(100%, 0px);
           }
@@ -397,9 +416,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
         .fancybox__nav .f-button svg{
           filter: none;
         }
-
-
-
 
   .comments h4 {
     margin: 1em 0 0;
@@ -847,6 +863,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
               </b:includable>
             </b:widget>
           </b:section>
+
           <!--
           *=========================
           🪵marker Main
@@ -1453,7 +1470,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                         grid-area: izquierda;
                         max-width: 100vw;
                         box-sizing: border-box;
-                        padding: 0px 40px;
+                        padding: 0px 30px;
                         width:100%;
                         margin: 0;
                       }
@@ -1524,7 +1541,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                         border-radius: 16px;
                         padding: 20px 30px;
                         box-sizing: border-box;
-                        box-shadow: 0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);
+                        box-shadow: #e2e8f0 0px 1px 4px;
                         outline: 1px solid #e2e8f0;
                         background-color: white;
                       }
@@ -1991,8 +2008,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                             </script>
                           </div> 
                           -->
-
-
                         </b:loop>
                         <b:if cond='data:numPosts != 0'>
                           &lt;/div&gt;&lt;/div&gt;
@@ -2771,7 +2786,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                         <b:include cond='data:post.embedCommentForm' data='post' name='threaded_comment_js'/>
                         <div id='comment-holder'>
 
-                          <data:post.commentHtml/> BLOG_CMT_createIframe
+                          <data:post.commentHtml/>
 
                           <script>
                             //js
@@ -2809,908 +2824,823 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   </b:includable>
                 </b:widget>
               </b:section>
-            <macro:include id='main-column-right-sections' name='sections'>
-              <macro:param default='2' name='num' value='1'/>
-              <macro:param default='sidebar-right' name='idPrefix'/>
-              <macro:param default='sidebar ocultarMenu menu-lateral-cont' name='class'/>
-              <macro:param default='true' name='includeBottom'/>
-            </macro:include>
           <!-- 
           *========================
           🍇marker menu left
           *========================
           -->
-          <b:section-contents id='sidebar-right-1'>
-            <b:widget id='HTML5' locked='false' title='titulo del blog' type='HTML'>
-              <b:widget-settings>
-                <b:widget-setting name='content'><![CDATA[
-                  <div class="centro-agro-cont">
-                    <div class="logo">
-                        <svg xmlns="http://www.w3.org/2000/svg" id="a" viewBox="0 0 63.67 62.2"><defs/><path d="M32 0c3.77 0 6.85 3.1 6.85 6.9s-3.07 6.9-6.85 6.9-6.85-3.1-6.85-6.9S28.23 
-                            0 32 0M7.06 22.26v.03c-.02.12-.03.2-.03.25 0 .36.2.62.6.8.41.17 1.03.26 1.88.26.65 0 1.15-.07 1.52-.21.37-.14.55-.34.55-.59 0-.38-.73-.68-2.17-.92-.17-.03-.3
-                            -.05-.38-.06-.09-.02-.23-.04-.41-.07-2.3-.38-3.78-.79-4.44-1.23-.32-.22-.56-.47-.73-.76-.16-.29-.24-.62-.24-.99 0-.9.53-1.59 1.59-2.06S7.41 16 9.44 16s3.5.22 
-                            4.47.66c.97.44 1.45 1.12 1.45 2.04v.11h-3.81v-.04c0-.32-.19-.55-.58-.72-.39-.16-.95-.25-1.7-.25-.58 0-1.03.06-1.33.17-.32.12-.47.28-.47.49 0 .38.83.71 2.49.97
-                            .32.05.57.09.75.12 1.18.2 2.03.37 2.53.51s.93.31 1.3.5c.4.22.72.5.94.84.22.34.33.71.33 1.12 0 .93-.58 1.64-1.73 2.15-1.15.5-2.81.75-4.97.75s-3.69-.24-4.64-.72c
-                            -.96-.48-1.43-1.25-1.43-2.32v-.14h4.02Zm10.44 3.02v-9.14h10.87v1.97h-6.79v1.46h6.27v1.95h-6.27v1.77h7.04v2H17.5Zm12.83 0v-9.14h5.16l5.53 6.14v-6.14h3.92v9.14h
-                            -5.36l-5.35-6.16v6.16h-3.91Zm25.15-3.65-1.95-3.32-2.06 3.32h4.02Zm-6.22 3.65h-4.09l6.32-9.14h4.53l6.03 9.14h-4.54l-.92-1.65h-6.33l-.98 1.65ZM12.08 57.52l-3.65
-                            -3.43 11.1-19.29c.6-1.05-.15-2.37-1.36-2.37H0V27.6h29.24L12.08 57.52ZM51.6 57.52l3.65-3.43-11.1-19.29c-.6-1.05.15-2.37 1.36-2.37h18.17V27.6H34.44L51.6 57.52ZM31.8
-                            32.7l.04-.07 16.48 27.28-4.38 2.28-10.62-17.81c-.63-1.05-2.14-1.05-2.76 0-3.54 5.98-10.55 17.81-10.55 17.81l-4.28-2.12L31.8 32.7" class="b"/></svg>
+          <div id='sidebar-right' class="sidebar ocultarMenu menu-lateral-cont">
+            <!-- | 📦 MENU #1 📦 | -->
+            <b:section id='sidebar-right-1' class="sidebar-right-seccion" name='menu 1'>
+              <b:widget id='HTML5' locked='false' title='titulo del blog' type='HTML'>
+                <b:widget-settings>
+                  <b:widget-setting name='content'><![CDATA[
+                    <div class="centro-agro-cont">
+                      <div class="logo">
+                          <svg xmlns="http://www.w3.org/2000/svg" id="a" viewBox="0 0 63.67 62.2"><defs/><path d="M32 0c3.77 0 6.85 3.1 6.85 6.9s-3.07 6.9-6.85 6.9-6.85-3.1-6.85-6.9S28.23 
+                              0 32 0M7.06 22.26v.03c-.02.12-.03.2-.03.25 0 .36.2.62.6.8.41.17 1.03.26 1.88.26.65 0 1.15-.07 1.52-.21.37-.14.55-.34.55-.59 0-.38-.73-.68-2.17-.92-.17-.03-.3
+                              -.05-.38-.06-.09-.02-.23-.04-.41-.07-2.3-.38-3.78-.79-4.44-1.23-.32-.22-.56-.47-.73-.76-.16-.29-.24-.62-.24-.99 0-.9.53-1.59 1.59-2.06S7.41 16 9.44 16s3.5.22 
+                              4.47.66c.97.44 1.45 1.12 1.45 2.04v.11h-3.81v-.04c0-.32-.19-.55-.58-.72-.39-.16-.95-.25-1.7-.25-.58 0-1.03.06-1.33.17-.32.12-.47.28-.47.49 0 .38.83.71 2.49.97
+                              .32.05.57.09.75.12 1.18.2 2.03.37 2.53.51s.93.31 1.3.5c.4.22.72.5.94.84.22.34.33.71.33 1.12 0 .93-.58 1.64-1.73 2.15-1.15.5-2.81.75-4.97.75s-3.69-.24-4.64-.72c
+                              -.96-.48-1.43-1.25-1.43-2.32v-.14h4.02Zm10.44 3.02v-9.14h10.87v1.97h-6.79v1.46h6.27v1.95h-6.27v1.77h7.04v2H17.5Zm12.83 0v-9.14h5.16l5.53 6.14v-6.14h3.92v9.14h
+                              -5.36l-5.35-6.16v6.16h-3.91Zm25.15-3.65-1.95-3.32-2.06 3.32h4.02Zm-6.22 3.65h-4.09l6.32-9.14h4.53l6.03 9.14h-4.54l-.92-1.65h-6.33l-.98 1.65ZM12.08 57.52l-3.65
+                              -3.43 11.1-19.29c.6-1.05-.15-2.37-1.36-2.37H0V27.6h29.24L12.08 57.52ZM51.6 57.52l3.65-3.43-11.1-19.29c-.6-1.05.15-2.37 1.36-2.37h18.17V27.6H34.44L51.6 57.52ZM31.8
+                              32.7l.04-.07 16.48 27.28-4.38 2.28-10.62-17.81c-.63-1.05-2.14-1.05-2.76 0-3.54 5.98-10.55 17.81-10.55 17.81l-4.28-2.12L31.8 32.7" class="b"/></svg>
+                      </div>
+                      <div class="text-cont"> 
+                          <h1 class="texto texto-1">blog del centro</h1>
+                          <h1 class="texto texto-2">Agroturistico</h1>
+                      </div>
                     </div>
-                    <div class="text-cont"> 
-                        <h1 class="texto texto-1">blog del centro</h1>
-                        <h1 class="texto texto-2">Agroturistico</h1>
-                    </div>
-                  </div>
-                ]]></b:widget-setting>
-              </b:widget-settings>
-              <b:includable id='main'>
-              <div class='widget-content'>
-                <data:content/>
-              </div>
+                  ]]></b:widget-setting>
+                </b:widget-settings>
+                <b:includable id='main'>
+                <div class='widget-content'>
+                  <data:content/>
+                </div>
+                  <style>  
+                    /*<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante! */  
+                    /*css 👈 Comando decorativo "Highlight String Code" */
+                    /*!css*/  
+                    /*]]>*/  
+                  </style>  
+                </b:includable>
+              </b:widget>
+              <!--
+              ?===================
+              🔍marker buscador
+              ?===================
+              -->
+              <b:widget id='BlogSearch1' locked='false' title='Buscar publicacion' type='BlogSearch' version='1' visible='true'>
+                <b:includable id='main'>
                 <style>  
                   /*<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante! */  
                   /*css 👈 Comando decorativo "Highlight String Code" */
-                  /*!css*/  
-                  /*]]>*/  
-                </style>  
-              </b:includable>
-            </b:widget>
-            <!--
-            ?===================
-            🔍marker buscador
-            ?===================
-            -->
-            <b:widget id='BlogSearch1' locked='false' title='Buscar publicacion' type='BlogSearch' version='1' visible='true'>
-              <b:includable id='main'>
-              <style>  
-                /*<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante! */  
-                /*css 👈 Comando decorativo "Highlight String Code" */
-                  .titlebuscador {
-                    padding-bottom: 10px;
-                    display: block;
-                    width: 100%;
-                    font-weight: bold;
-                    text-align: center;
-                    color: #39A900;
-                    display: none;
-                  }
-                  .BlogSearch {
-                    width: 100%;
-                    /*
-                    background-color se define en "sections [CSS]"
-                    */
-                    }
-                  .contenedorbuscador {
-                    background-color: $(menulateral.color);
-                    height: 30px;
-                    width: 100%;
-                    display: grid;
-                    grid-template-columns: 1fr 36px;
-                    grid-template-rows: 1fr;
-                    box-shadow: 0 0 0px 1px #c4c4D0;
-                    border-radius: 4px;
-                  }
-                  .contenedorbuscador:focus-within{
-                      box-shadow: 0 0 0px 1px #39A900;
-                  }
-                  .contenedorbuscador >.inputbuscadorcont{
-                    height: 100%;
-                  }
-                  .inputbuscadorcont >.inputbuscador {
-                      box-sizing: border-box;
-                      background-color: transparent;
+                    .titlebuscador {
+                      padding-bottom: 10px;
+                      display: block;
                       width: 100%;
-                      height: 100%;
-                      margin: 0px;
-                      outline: none;
-                      border: none;
-                      border-radius: 4px 0px 0px 4px;
-                      padding: 0px 10px;
-                  }
-                  .inputbuscador:focus+.contenedorbuscador {
-                      background-color: #39A900;
-                  }
-                  .contenedorbuscador >.buttonbuscadorcont {
-                      width: 100%;
-                      height: 100%;
-                      border-radius: 0px 4px 4px 0px;
-                  }
-                  .buttonbuscadorcont >.buttonbuscador {
-                      width: 100%;
-                      height: 100%;
-                      margin: 0px;
-                      background-color: transparent;
-                      background: 
-                      url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhk8CTT8voh4dHF8-R0yfpfXpgGNSFi88mdXqPpOFoSKS6Q8GmllCgBmSRpfkEXswQZuseMGQQn5Fp98Qjype6fh7L9phokTzHVlVbiK-3WiCYtst_YkawISqPGHkWFQKvGvnH2xy4z8p7ruH7PMdUFpjiJVR1wZ-KzYnS06PYQ_RADrAzls-cfJNjw8mQ/s80/search%202.png)
-                      no-repeat center center;
-                      background-size: 80%;
-                      outline: none;
-                      border: none;
-                      transition: all 0.5s;
-                  }
-                  .contenedorbuscador .buttonbuscador.lupagirando {
-                      animation: lupagirando 2.5s ease;
-                  }
-                  .contenedorbuscador.inputgolpe {
-                      animation: inputgolpe 2.5s ease-out;
-                  }
-                  @keyframes lupagirando {
-                    0% {transform: rotate(0deg);}
-                    25% {transform: rotate(45deg)translate(0px, -70px);}
-                    40% {transform: rotate(-90deg) translate(10px, 40px);}
-                    45% {transform: rotate(-90deg) translate(10px, 40px);}
-                    80% {transform: rotate(360deg);}
-                    100% {transform: rotate(360deg);}
-                  }
-                  @keyframes inputgolpe {
-                    0% {transform: rotate(0deg); transform-origin: left top;}
-                    30% {transform: rotate(0deg);}
-                    35% {transform: rotate(5deg);}
-                    45% {transform: rotate(-4deg);}
-                    60% {transform: rotate(3deg);}
-                    70% {transform: rotate(-2deg);}
-                    80% {transform: rotate(0deg);}
-                  }
-                  /*!css*/  
-                  /*]]>*/  
-              </style>
-                <b:if cond='data:title != &quot;&quot;'>
-                  <span class='titlebuscador'>
-                    <data:title/>
-                  </span>
-                </b:if>
-                    <form class='gsc-search-box' expr:action='data:blog.searchUrl'>
-                      <table cellpadding='0' cellspacing='0' class='gsc-search-box'>
-                          <tr>
-                            <tr class='contenedorbuscador'>
-                              <td class='gsc-input inputbuscadorcont'>
-                                <input autocomplete='off' class='gsc-input inputbuscador' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q' size='10' title='search' type='text'/>
-                              </td>
-                              <td class='gsc-search-button buttonbuscadorcont'>
-                                <input class='gsc-search-button buttonbuscador' title='search' type='submit' value=''/>
-                              </td>
-                            </tr>
-                                <!--                     
-                            <script>
-                              //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
-                              const contenedor = document.getElementById("BlogSearch1");
-                              const button = contenedor.querySelector('.buttonbuscador');
-                              const input = contenedor.querySelector('.contenedorbuscador');            
-                              button.addEventListener('click', () => {
-                                  if (button.classList.contains('lupagirando')) {
-                                      return;
-                                  }
-                                  // Añade la clase para iniciar la animación
-                                  button.classList.add('lupagirando');
-                                  input.classList.add('inputgolpe');            
-                                  // Elimina la clase después de que termine la animación (3s)
-                                  setTimeout(() => {
-                                      button.classList.remove('lupagirando');
-                                      input.classList.remove('inputgolpe');
-                                  }, 2500);
-                              });           
-                              const form = contenedor.querySelector('.gsc-search-box');
-                              form.addEventListener('submit', (e) => {
-                                  e.preventDefault();
-                                      setTimeout(() => {
-                                          form.submit();
-                                      }, 2000); // Retraso de 2.1 segundos
-                              });
-                              //]]>
-                            </script> -->           
-                          </tr>
-                      </table>
-                    </form>
-                <b:include name='quickedit'/>
-              </b:includable>
-            </b:widget>           
-            <!--
-            *======================
-            ✏️marker Texto animado
-            *======================
-            -->
-            <b:widget id='TextList1' locked='false' title='frases del texto animado' type='TextList' visible='true'>
-              <b:widget-settings>
-                <b:widget-setting name='shownum'>5</b:widget-setting>
-                <b:widget-setting name='sorting'>NONE</b:widget-setting>
-                <b:widget-setting name='item-0'> Blog del centro agroturistico </b:widget-setting>
-                <b:widget-setting name='item-1'> Nuestra pagina web ✨ </b:widget-setting>
-                <b:widget-setting name='item-2'> ¡te mantenemos al dia! 📰 </b:widget-setting>
-                <b:widget-setting name='item-3'> entra al mundo laboral 🚀 </b:widget-setting>
-                <b:widget-setting name='item-4'> lo que nesecitas saber</b:widget-setting>
-              </b:widget-settings>
-              <b:includable id='main'>
-               <div id="texto-animado-cont">
-                  <b:loop values='data:items' var='item'>
-                    <div class="texto-animado"> <data:item/>  </div>
-                  </b:loop>
-               </div>
-                    <style>
-                      /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
-                      /*css 👈 comando decorativo "Highlight String Code */
-                      #TextList1{
-                          display: flex;
-                          justify-content: center;
-                        }
-                      #texto-animado-cont {
-                        display: flex;
-                        overflow: hidden;
-                        interpolate-size: allow-keywords;
-                        width: min-content;
-                        animation: blinkCursor 1s infinite steps(1);
-                        border-right: 1px solid #7d7d7d; /* Cursor */
-                      }
-                      .texto-animado {
-                        overflow: hidden;
-                        width: 0;
-                        max-width: 100%;
-                        white-space: nowrap;
-                      }
-                      .txt-visible {
-                        margin-right: 4px;
-                        overflow: visible;
-                        width: fit-content;
-                      }
-                      @keyframes escribiryborrar {
-                        0%,10% { width: 0px }
-                        30%, 70% { width: min-content;}
-                        90%, 100% { width: 0px }
-                      }
-                      @keyframes blinkCursor {
-                        50% {border-right-color: transparent;}
-                      }
-                      /* animacion v2 de borrado
-                      @keyframes escribiryborrar {
-                        0% { width: 0px }
-                        15%, 85% { width: min-content }
-                        100% { width: 0px }
-                      }*/
-                      /*!css*/
-                      /*]]>*/
-                    </style>
-                    <script>
-                      //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
-                      //js 👈 comando decorativo "Highlight String Code"
-                      function textoAnimado() {
-                        const contenedor = document.getElementById("texto-animado-cont");
-                        const textos = contenedor.getElementsByClassName("texto-animado");
-                        let textoCount = 0;
-                        contenedor.style.animation = "escribiryborrar 7s infinite, blinkCursor 1s infinite steps(1)";
-                        textos[textoCount].classList.add("txt-visible"); // Mostrar primer texto
-                        contenedor.addEventListener("animationiteration", (event) => {
-                          if (event.animationName !== "escribiryborrar") return;
-                          textos[textoCount].classList.remove("txt-visible"); // Ocultar texto actual
-                          textoCount++ // Avanzar contador
-                          if (textoCount == textos.length) textoCount = 0 // reset
-                          textos[textoCount].classList.add("txt-visible");// Mostrar nuevo texto
-                        });
-                      };
-                      //!js
-                      //]]>
-                    </script>
-              </b:includable>                      
-            </b:widget>
-            <!--
-            *========================
-            📈marker estadisticas
-            *========================
-            -->
-            <b:widget id='Stats1' locked='false' title='Visitas del blog' type='Stats' visible='true'>
-              <b:widget-settings>
-                <b:widget-setting name='showGraphicalCounter'>false</b:widget-setting>
-                <b:widget-setting name='showAnimatedCounter'>true</b:widget-setting>
-                <b:widget-setting name='showSparkline'>true</b:widget-setting>
-                <b:widget-setting name='sparklineStyle'>WHITE_TRANSPARENT</b:widget-setting>
-                <b:widget-setting name='timeRange'>ALL_TIME</b:widget-setting>
-              </b:widget-settings>
-              <b:includable id='main'>
-                <style>
-                  /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
-                  /*css 👈 comando decorativo "Highlight String Code */
-                  #widget-content-Stats1{
-                    height: 36px;
-                  }
-                  #Stats1_content{
-                    display: flex;
-                    align-items: center;
-                    height: 100%;
-                    transition: opacity 0.5s ease;
-                    opacity: 1;
-                    @starting-style{
-                      opacity: 0;
+                      font-weight: bold;
+                      text-align: center;
+                      color: #39A900;
+                      display: none;
                     }
-                  }
-                  #Stats1_sparklinespan{
-                    overflow: hidden;
-                    box-shadow: 0px 0px 0px 2px #00304D;
-                    border-radius: 8px;
-                    background-color: #00304D;
-                    margin: 0 12px;
-                    width: 75px;
-                    height: 25px;
-                  }
-                  #Stats1_sparklinespan.Stats1_sparklinespan-white{
-                    background-color: white;
-                    box-shadow: none;           
-                  }
-                  #Stats1_sparklinespan > div{
-                    transition: opacity 0.5s ease;
-                    opacity: 1;
-                    @starting-style{
-                      opacity: 0;
+                    .BlogSearch {
+                      width: 100%;
+                      /*
+                      background-color se define en "sections [CSS]"
+                      */
+                      }
+                    .contenedorbuscador {
+                      background-color: $(menulateral.color);
+                      height: 30px;
+                      width: 100%;
+                      display: grid;
+                      grid-template-columns: 1fr 36px;
+                      grid-template-rows: 1fr;
+                      box-shadow: 0 0 0px 1px #c4c4D0;
+                      border-radius: 4px;
                     }
-                  }           
-                  .Stats .counter-wrapper{
-                    color: #00304D;
-                    display: inline-block;
-                    font-size: 24px;
-                    font-weight: bold;
-                    height: 30px;
-                    margin-right: 0px;
-                  }           
-                  .Stats .icono-estadistica {
-                    animation: statsMovimiento 2s ease-in-out infinite;
-                    height: 30px;
-                    width: 30px;
-                    fill: #00304D;
-                  }           
-                  /*!css*/
-                  /*]]>*/
+                    .contenedorbuscador:focus-within{
+                        box-shadow: 0 0 0px 1px #39A900;
+                    }
+                    .contenedorbuscador >.inputbuscadorcont{
+                      height: 100%;
+                    }
+                    .inputbuscadorcont >.inputbuscador {
+                        box-sizing: border-box;
+                        background-color: transparent;
+                        width: 100%;
+                        height: 100%;
+                        margin: 0px;
+                        outline: none;
+                        border: none;
+                        border-radius: 4px 0px 0px 4px;
+                        padding: 0px 10px;
+                    }
+                    .inputbuscador:focus+.contenedorbuscador {
+                        background-color: #39A900;
+                    }
+                    .contenedorbuscador >.buttonbuscadorcont {
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 0px 4px 4px 0px;
+                    }
+                    .buttonbuscadorcont >.buttonbuscador {
+                        width: 100%;
+                        height: 100%;
+                        margin: 0px;
+                        background-color: transparent;
+                        background: 
+                        url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhk8CTT8voh4dHF8-R0yfpfXpgGNSFi88mdXqPpOFoSKS6Q8GmllCgBmSRpfkEXswQZuseMGQQn5Fp98Qjype6fh7L9phokTzHVlVbiK-3WiCYtst_YkawISqPGHkWFQKvGvnH2xy4z8p7ruH7PMdUFpjiJVR1wZ-KzYnS06PYQ_RADrAzls-cfJNjw8mQ/s80/search%202.png)
+                        no-repeat center center;
+                        background-size: 80%;
+                        outline: none;
+                        border: none;
+                        transition: all 0.5s;
+                    }
+                    .contenedorbuscador .buttonbuscador.lupagirando {
+                        animation: lupagirando 2.5s ease;
+                    }
+                    .contenedorbuscador.inputgolpe {
+                        animation: inputgolpe 2.5s ease-out;
+                    }
+                    @keyframes lupagirando {
+                      0% {transform: rotate(0deg);}
+                      25% {transform: rotate(45deg)translate(0px, -70px);}
+                      40% {transform: rotate(-90deg) translate(10px, 40px);}
+                      45% {transform: rotate(-90deg) translate(10px, 40px);}
+                      80% {transform: rotate(360deg);}
+                      100% {transform: rotate(360deg);}
+                    }
+                    @keyframes inputgolpe {
+                      0% {transform: rotate(0deg); transform-origin: left top;}
+                      30% {transform: rotate(0deg);}
+                      35% {transform: rotate(5deg);}
+                      45% {transform: rotate(-4deg);}
+                      60% {transform: rotate(3deg);}
+                      70% {transform: rotate(-2deg);}
+                      80% {transform: rotate(0deg);}
+                    }
+                    /*!css*/  
+                    /*]]>*/  
                 </style>
-                <b:if cond='data:title != ""'><h2><data:title/></h2></b:if>
-                <div class='widget-content' expr:id='"widget-content-" + data:widget.instanceId'>
-                  <!-- Content is going to be visible when data will be fetched from server. -->
-                  <div expr:id='data:widget.instanceId + "_content"' style='display:none'>
-                    <span expr:class='"counter-wrapper " + (data:showGraphicalCounter ? "graph-counter-wrapper" : "text-counter-wrapper")' expr:id='data:widget.instanceId + "_totalCount"'>
+                  <b:if cond='data:title != &quot;&quot;'>
+                    <span class='titlebuscador'>
+                      <data:title/>
                     </span>
-                    <b:if cond='!data:showSparkline'>
-                    <svg class='icono-estadistica' xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" ><path d="M192-192v-288h144v288H192Zm216 0v-576h144v576H408Zm216 0v-384h144v384H624Z"/></svg>
-                    </b:if>
-                    <!-- Counter and image will be injected later via AJAX call. -->
-                    <b:if cond='data:showSparkline'>
-                      <script src='https://www.gstatic.com/charts/loader.js' type='text/javascript'/>
-                      <span expr:id='data:widget.instanceId + "_sparklinespan"'>
-                        <b:class cond='data:sparklineStyle == "BLACK_TRANSPARENT"' name='Stats1_sparklinespan-white'/>
-                      </span>           
-                    </b:if>
-                    <b:include name='quickedit'/>
-                  </div>
-                </div>            
-              </b:includable>
-            </b:widget>           
-            <!--
-            ^=================
-            🏷️marker rutas 2
-            ^=================
-            -->           
-            <b:widget id='PageList1' locked='false' title='' type='PageList' visible='true'>
-              <b:widget-settings>
-                <b:widget-setting name='pageListJson'>
-                  <![CDATA[{
-                  "link0":{
-                    "href":"/",
-                    "position":0,
-                    "title":"Página Principal"
-                  },
-                  "link1":{
-                    "href":"https://www.sena.edu.co/es-co/formacion/Paginas/Estudie-en-el-SENA.aspx",
-                    "position":1,
-                    "title":"Inscripciones"
-                  },
-                  "link2":{
-                    "href":"/p/normatividad_17.html",
-                    "position":2,
-                    "title":"Normatividad"
-                  },
-                  "link3":{
-                    "href":"/p/blog-page.html",
-                    "position":3,
-                    "title":"Programas"
-                  },
-                  "link4":{
-                    "href":"/p/pagina-de-recursos-globales.html",
-                    "position":4,
-                    "title":"resourses"
-                  },
-                  "link5":{
-                    "href":"/p/nosotros.html",
-                    "position":5,
-                    "title":"Nosotros"
-                  }
-                  }]]>
-                </b:widget-setting>
-              </b:widget-settings>
-              <b:includable id='main'>
-                <style>
-                  /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
-                  /*css 👈 comando decorativo "Highlight String Code */
-                  #PageList1 a{
-                     font-weight: bold;
-                  }
-                  .widget ul li{
-                    border:none;
-                  }
-                  /*!css*/
-                  /*]]>*/
-                </style>
-                <ul class='menu2-cont'>
-                  <b:loop values='data:links' var='link'>
-                    <li class='menu2-ruta'>
-                      <b:class cond='data:link.isCurrentPage' name='selected'/>
-                      <a expr:href='data:link.href' onclick='toggleMenu("ocultar")'>
-                        <data:link.title/>
-                      </a>
-                    </li>
-                  </b:loop>
-                </ul>
-              </b:includable>
-            </b:widget>           
-            <!--
-            ========================
-            📢marker Redes sociales
-            ========================
-            -->
-            <b:widget id='PageList2' locked='false' title='redes sociales (solo cambiar los url)' version='2' type='PageList' visible='true'>
-              <b:widget-settings>
-                <b:widget-setting name='pageListJson'>
-                  <![CDATA[{
-                  "link0":{
-                    "href":"https://www.facebook.com/SENA",
-                    "position":0,
-                    "title":"facebook"
-                  },
-                  "link1":{
-                    "href":"https://x.com/senacomunica",
-                    "position":1,
-                    "title":"x"
-                  },
-                  "link2":{
-                    "href":"https://www.youtube.com/user/SENATV",
-                    "position":2,
-                    "title":"youtube"
-                  },
-                  "link3":{
-                    "href":"https://www.instagram.com/senacomunica/",
-                    "position":3,
-                    "title":"instagram"
-                  }
-                  }]]>
-                </b:widget-setting>
-              </b:widget-settings>
-              <b:includable id='main'>
-                <style>
-                  /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
-                  /*css 👈 comando decorativo "Highlight String Code */
-                   #PageList2{
-                    margin: 5px 0;
-                    flex-direction: column;
-                    display: flex;
-                    align-items: center;
-                   }
-                   .redes-titulo{
-                    width: 100%;
-                    margin-bottom: 20px;
-                   }
-                   .redes-sociales-cont{
-                    width: 100%;
-                    max-width: 250px;
-                    min-width: fit-content;
-                    display: flex;
-                    justify-content: space-around;
-                   }
-                   .red-social-link{
-                    cursor: default;
-                    display: block;
-                    height: 30px;
-                    width: 30px;
-                    transition: all 0.1s ease;
-                    /*
-                    filter: grayscale(100%);
-                    opacity: 0.4
-                    */
-                   }
-                   .red-social{
-                    display: flex;
-                    transition: all 0.3s ease-out;
-                   }
-                   .red-social-link:hover .red-social{
-                    transform: translate(0, -5px);
-                   }
-                   .red-social-link:active{
-                    transform: scale(.9)
-                   }
-                   .red-social-link svg{
-                    transition: all 0.1s ease;
-                    width: 100%;
-                    height: 100%;
-                   }            
-                     @keyframes rebote {
-                      0% { transform: translateY(0); }
-                      7% { transform: translateY(-10px); }
-                      15% { transform: translateY(0); }
-                      100% { transform: translateY(0); }
-                    }
-                   #sidebar-right-1 .red-social-link svg {
-                      animation: rebote 5s ease-in-out infinite;
-                    }           
-                    #sidebar-right-1:hover .red-social-link svg{
-                    }           
-                    #sidebar-right-1 .red-social-link .facebook > svg {
-                      animation-delay: 1s;
-                    }           
-                    #sidebar-right-1 .red-social-link .x > svg {
-                      animation-delay: 2s;
-                    }           
-                    #sidebar-right-1 .red-social-link .youtube > svg {
-                      animation-delay: 2.5s;
-                    }           
-                    #sidebar-right-1 .red-social-link .instagram > svg {
-                      animation-delay: 1.5s;
-                    }
-                  /*!css*/
-                  /*]]>*/
-                </style>
-                <h2 class="redes-titulo">
-                  Redes oficiales
-                </h2>
-                <div class="redes-sociales-cont">
-                  <b:loop values='data:links' var='link' >
-                      <a expr:href='data:link.href' class="red-social-link" expr:title="data:link.href">
-                        <div expr:class='(data:link.title + " red-social")'>
-                          <b:if cond='data:link.title == "facebook"'>
-                              <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 16 16"> <path fill="#1976D2" d="M14 0H2C.897 0 0 .897 0 2v12c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2V2c0-1.103-.897-2-2-2z"></path><path fill="#FAFAFA" fill-rule="evenodd" d="M13.5 8H11V6c0-.552.448-.5 1-.5h1V3h-2a3 3 0 0 0-3 3v2H6v2.5h2V16h3v-5.5h1.5l1-2.5z" clip-rule="evenodd"></path></svg>
-                          </b:if>
-                          <b:if cond='data:link.title == "x"'>
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0,0,256,256" width="50px" height="50px" fill-rule="nonzero"><g transform="translate(-23.04,-23.04) scale(1.18,1.18)"><g fill="#000000" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M11,4c-3.866,0 -7,3.134 -7,7v28c0,3.866 3.134,7 7,7h28c3.866,0 7,-3.134 7,-7v-28c0,-3.866 -3.134,-7 -7,-7zM13.08594,13h7.9375l5.63672,8.00977l6.83984,-8.00977h2.5l-8.21094,9.61328l10.125,14.38672h-7.93555l-6.54102,-9.29297l-7.9375,9.29297h-2.5l9.30859,-10.89648zM16.91406,15l14.10742,20h3.06445l-14.10742,-20z"></path></g></g></g></svg>
-                          </b:if>
-                          <b:if cond='data:link.title == "youtube"'>
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0,0,256,256" width="30px" height="30px" fill-rule="nonzero"><g transform="translate(-19.2,-19.2) scale(1.15,1.15)"><g fill=" #FF0033 " fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(8.53333,8.53333)"><path d="M15,4c-4.186,0 -9.61914,1.04883 -9.61914,1.04883l-0.01367,0.01563c-1.90652,0.30491 -3.36719,1.94317 -3.36719,3.93555v6v0.00195v5.99805v0.00195c0.00384,1.96564 1.4353,3.63719 3.37695,3.94336l0.00391,0.00586c0,0 5.43314,1.05078 9.61914,1.05078c4.186,0 9.61914,-1.05078 9.61914,-1.05078l0.00195,-0.00195c1.94389,-0.30554 3.37683,-1.97951 3.37891,-3.94727v-0.00195v-5.99805v-0.00195v-6c-0.00288,-1.96638 -1.43457,-3.63903 -3.37695,-3.94531l-0.00391,-0.00586c0,0 -5.43314,-1.04883 -9.61914,-1.04883zM12,10.39844l8,4.60156l-8,4.60156z"></path></g></g></g></svg>
-                          </b:if>
-                          <b:if cond='data:link.title == "instagram"'>
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="1000" height="1000" viewBox="0 0 264.5833 264.5833" inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)" sodipodi:docname="Instagram_(2022).svg"><defs><radialGradient id="f" cx="158.429" cy="578.088" r="52.3515" xlink:href="#a" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0 -4.03418 4.28018 0 -2332.2273 942.2356)" fx="158.429" fy="578.088"/><radialGradient inkscape:collect="always" xlink:href="#b" id="g" gradientUnits="userSpaceOnUse" gradientTransform="matrix(.67441 -1.16203 1.51283 .87801 -814.3657 -47.8354)" cx="172.6149" cy="600.6924" fx="172.6149" fy="600.6924" r="65"/><radialGradient inkscape:collect="always" xlink:href="#c" id="h" cx="144.012" cy="51.3367" fx="144.012" fy="51.3367" r="67.081" gradientTransform="matrix(-2.3989 .67549 -.23008 -.81732 464.9957 -26.4035)" gradientUnits="userSpaceOnUse"/>
-                              <radialGradient inkscape:collect="always" xlink:href="#d" id="e" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-3.10797 .87652 -.6315 -2.23914 1345.6503 1374.1983)" cx="199.7884" cy="628.4379" fx="199.7884" fy="628.4379" r="52.3515"/><linearGradient inkscape:collect="always" id="d"><stop offset="0" stop-color="#ff005f"/><stop offset="1" stop-color="#fc01d8"/></linearGradient><linearGradient id="c"><stop offset="0" stop-color="#780cff"/><stop stop-color="#820bff" offset="1" stop-opacity="0"/></linearGradient><linearGradient inkscape:collect="always" id="b"><stop offset="0" stop-color="#fc0"/><stop offset="1" stop-color="#fc0" stop-opacity="0"/></linearGradient><linearGradient id="a"><stop offset="0" stop-color="#fc0"/><stop offset=".1242" stop-color="#fc0"/><stop offset=".5672" stop-color="#fe4a05"/><stop offset=".6942" stop-color="#ff0f3f"/>
-                              <stop offset="1" stop-color="#fe0657" stop-opacity="0"/></linearGradient></defs><sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:zoom=".515" inkscape:cx="500" inkscape:cy="500" inkscape:document-units="mm" inkscape:current-layer="layer1" inkscape:document-rotation="0" showgrid="false" inkscape:window-width="1366" inkscape:window-height="705" inkscape:window-x="-8" inkscape:window-y="-8" inkscape:window-maximized="1"/><g inkscape:label="Layer 1" inkscape:groupmode="layer"><path d="M204.1503 18.1429c-55.2305 0-71.3834.057-74.5232.3175-11.3342.9424-18.387 2.7275-26.0708 6.554-5.9214 2.9413-10.5915 6.3506-15.2005 11.1298-8.3938 8.7157-13.481 19.4383-15.3226 32.1842-.8953 6.1877-1.1558 7.4496-1.2087 39.0558-.0203 10.5354 0 24.4007 0 42.9984 0 55.2008.061 71.3418.3256 74.4764.9157 11.032 2.6453 17.9728 6.3081 25.565 7 14.5329 20.369 25.4428 36.119 29.5137 5.4535 1.4044 11.4767 2.1779 19.2092 2.5442 3.2762.1425 36.6684.2443 70.081.2443 33.4127 0 
-                              66.8253-.0407 70.02-.2035 8.9535-.4214 14.1526-1.1195 19.9011-2.6054 15.8517-4.0912 28.9767-14.8383 36.119-29.5748 3.5916-7.409 5.4128-14.6144 6.237-25.0704.179-2.2796.2543-38.6263.2543-74.924 0-36.304-.0814-72.5835-.2605-74.8632-.8343-10.6249-2.6555-17.7692-6.363-25.3207-3.0421-6.1816-6.42-10.798-11.324-15.518-8.752-8.3616-19.4555-13.4502-32.2101-15.2902-6.18-.8936-7.411-1.1582-39.033-1.2131z" inkscape:connector-curvature="0" fill="url(#e)" transform="translate(-71.8155 -18.1429)"/><path d="M204.1503 18.1429c-55.2305 0-71.3834.057-74.5232.3175-11.3342.9424-18.387 2.7275-26.0708 6.554-5.9214 2.9413-10.5915 6.3506-15.2005 11.1298-8.3938 8.7157-13.481 19.4383-15.3226 32.1842-.8953 6.1877-1.1558 7.4496-1.2087 39.0558-.0203 10.5354 0 24.4007 0 42.9984 0 55.2008.061 71.3418.3256 74.4764.9157 11.032 2.6453 17.9728 6.3081 25.565 7 14.5329 20.369 25.4428 36.119 29.5137 5.4535 1.4044 11.4767 2.1779 19.2092 2.5442 3.2762.1425 36.6684.2443 70.081.2443 33.4127 0 66.8253-.0407 70.02-.2035 8.9535-.4214 14.1526-1.1195 19.9011-2.6054 15.8517-4.0912 
-                              28.9767-14.8383 36.119-29.5748 3.5916-7.409 5.4128-14.6144 6.237-25.0704.179-2.2796.2543-38.6263.2543-74.924 0-36.304-.0814-72.5835-.2605-74.8632-.8343-10.6249-2.6555-17.7692-6.363-25.3207-3.0421-6.1816-6.42-10.798-11.324-15.518-8.752-8.3616-19.4555-13.4502-32.2101-15.2902-6.18-.8936-7.411-1.1582-39.033-1.2131z" inkscape:connector-curvature="0" fill="url(#f)" transform="translate(-71.8155 -18.1429)"/><path d="M204.1503 18.1429c-55.2305 0-71.3834.057-74.5232.3175-11.3342.9424-18.387 2.7275-26.0708 6.554-5.9214 2.9413-10.5915 6.3506-15.2005 11.1298-8.3938 8.7157-13.481 19.4383-15.3226 32.1842-.8953 6.1877-1.1558 7.4496-1.2087 39.0558-.0203 10.5354 0 24.4007 0 42.9984 0 55.2008.061 71.3418.3256 74.4764.9157 11.032 2.6453 17.9728 6.3081 25.565 7 14.5329 20.369 25.4428 36.119 29.5137 5.4535 1.4044 11.4767 2.1779 19.2092 2.5442 3.2762.1425 36.6684.2443 70.081.2443 33.4127 0 66.8253-.0407 70.02-.2035 8.9535-.4214 14.1526-1.1195 19.9011-2.6054 15.8517-4.0912 28.9767-14.8383 36.119-29.5748 3.5916-7.409 5.4128-14.6144 
-                              6.237-25.0704.179-2.2796.2543-38.6263.2543-74.924 0-36.304-.0814-72.5835-.2605-74.8632-.8343-10.6249-2.6555-17.7692-6.363-25.3207-3.0421-6.1816-6.42-10.798-11.324-15.518-8.752-8.3616-19.4555-13.4502-32.2101-15.2902-6.18-.8936-7.411-1.1582-39.033-1.2131z" inkscape:connector-curvature="0" fill="url(#g)" transform="translate(-71.8155 -18.1429)"/><path d="M204.1503 18.1429c-55.2305 0-71.3834.057-74.5232.3175-11.3342.9424-18.387 2.7275-26.0708 6.554-5.9214 2.9413-10.5915 6.3506-15.2005 11.1298-8.3938 8.7157-13.481 19.4383-15.3226 32.1842-.8953 6.1877-1.1558 7.4496-1.2087 39.0558-.0203 10.5354 0 24.4007 0 42.9984 0 55.2008.061 71.3418.3256 74.4764.9157 11.032 2.6453 17.9728 6.3081 25.565 7 14.5329 20.369 25.4428 36.119 29.5137 5.4535 1.4044 11.4767 2.1779 19.2092 2.5442 3.2762.1425 36.6684.2443 70.081.2443 33.4127 0 66.8253-.0407 70.02-.2035 8.9535-.4214 14.1526-1.1195 19.9011-2.6054 15.8517-4.0912 28.9767-14.8383 
-                              36.119-29.5748 3.5916-7.409 5.4128-14.6144 6.237-25.0704.179-2.2796.2543-38.6263.2543-74.924 0-36.304-.0814-72.5835-.2605-74.8632-.8343-10.6249-2.6555-17.7692-6.363-25.3207-3.0421-6.1816-6.42-10.798-11.324-15.518-8.752-8.3616-19.4555-13.4502-32.2101-15.2902-6.18-.8936-7.411-1.1582-39.033-1.2131z" inkscape:connector-curvature="0" fill="url(#h)" transform="translate(-71.8155 -18.1429)"/><path d="M132.3452 33.973c-26.7167 0-30.0696.1167-40.5629.5939-10.4727.4792-17.6212 2.136-23.8762 4.567-6.4701 2.5107-11.9586 5.8693-17.4265 11.3352-5.472 5.464-8.8332 10.9483-11.354 17.4116-2.4389 6.2524-4.099 13.3976-4.5703 23.8585-.4693 10.4854-.5923 13.8379-.5923 40.5348 0 26.697.1189 30.0371.5943 40.5225.4817 10.465 2.1397 17.6082 4.5703 23.8585 2.5147 6.4654 5.8758 11.9497 11.3458 17.4136 5.466 5.468 10.9544 8.8349 17.4204 11.3456 6.259 2.4309 13.4097 4.0877 23.8803 4.567 10.4933.477 13.8441.5938 40.5588.5938 26.7188 0 30.0615-.1167 40.5547-.5939 10.4728-.4792 17.6295-2.136 23.8885-4.567 6.4681-2.5106 11.9484-5.8775 17.4143-11.3455 5.472-5.4639 
-                              8.8332-10.9482 11.354-17.4115 2.4183-6.2524 4.0784-13.3976 4.5703-23.8585.4713-10.4854.5943-13.8277.5943-40.5246 0-26.697-.123-30.0473-.5943-40.5328-.4919-10.465-2.152-17.6081-4.5703-23.8584-2.5208-6.4654-5.882-11.9498-11.354-17.4137-5.4721-5.468-10.9442-8.8266-17.4204-11.3353-6.2714-2.4309-13.424-4.0877-23.8967-4.5669-10.4933-.4772-13.8339-.5939-40.5588-.5939zm-8.825 17.7147c2.6193-.0041 5.5418 0 8.825 0 26.2659 0 29.379.0942 39.7513.5652 9.5915.4383 14.7971 2.0397 18.2648 3.3852 4.5908 1.7817 7.8638 3.9116 11.3048 7.3521 3.4431 3.4406 5.5745 6.7173 7.3617 11.3046 1.3465 3.461 2.9512 8.6628 3.3877 18.2472.4714 10.3625.5739 13.4754.5739 39.7095 0 26.234-.1025 29.347-.5739 39.7095-.4386 9.5843-2.0412 14.7861-3.3877 18.2471-1.783 4.5874-3.9186 7.8539-7.3617 11.2923-3.443 3.4406-6.712 5.5704-11.3048 7.3521-3.4636 1.3517-8.6733 2.949-18.2648 3.3873-10.3702.471-13.4854.5734-39.7513.5734-26.2679 0-29.381-.1024-39.7513-.5734-9.5914-.4423-14.797-2.0438-18.2668-3.3893-4.5908-1.7817-7.87-3.9116-11.313-7.3521-3.4431-3.4405-5.5745-6.709-7.3617
-                              -11.2985-1.3465-3.461-2.9512-8.6628-3.3877-18.2471-.4714-10.3626-.5657-13.4754-.5657-39.7259 0-26.2504.0943-29.347.5657-39.7095.4386-9.5844 2.0412-14.7861 3.3877-18.2512 1.783-4.5874 3.9186-7.8641 7.3617-11.3046 3.443-3.4406 6.7222-5.5704 11.313-7.3562 3.4677-1.3517 8.6754-2.949 18.2668-3.3894 9.075-.4096 12.5919-.5324 30.9264-.553zm61.3363 16.322c-6.5173 0-11.805 5.2776-11.805 11.792 0 6.5125 5.2877 11.7962 11.805 11.7962 6.5172 0 11.8049-5.2837 11.8049-11.7962 0-6.5124-5.2877-11.796-11.805-11.796zm-52.5113 13.7826c-27.8993 0-50.5191 22.6031-50.5191 50.4817 0 27.8786 22.6198 50.4714 50.5191 50.4714s50.511-22.5928 50.511-50.4714c0-27.8786-22.6137-50.4817-50.513-50.4817zm0 17.7147c18.109 0 32.7914 14.6694 32.7914 32.767 0 18.0956-14.6824 32.767-32.7914 32.767-18.111 0-32.7913-14.6714-32.7913-32.767 0-18.0976 14.6803-32.767 32.7913-32.767z" inkscape:connector-curvature="0" fill="#fff"/></g>
-                            </svg>
-                          </b:if>
-                        </div>
-                      </a>
-                  </b:loop>
+                  </b:if>
+                      <form class='gsc-search-box' expr:action='data:blog.searchUrl'>
+                        <table cellpadding='0' cellspacing='0' class='gsc-search-box'>
+                            <tr>
+                              <tr class='contenedorbuscador'>
+                                <td class='gsc-input inputbuscadorcont'>
+                                  <input autocomplete='off' class='gsc-input inputbuscador' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q' size='10' title='search' type='text'/>
+                                </td>
+                                <td class='gsc-search-button buttonbuscadorcont'>
+                                  <input class='gsc-search-button buttonbuscador' title='search' type='submit' value=''/>
+                                </td>
+                              </tr>
+                                  <!--                     
+                              <script>
+                                //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
+                                const contenedor = document.getElementById("BlogSearch1");
+                                const button = contenedor.querySelector('.buttonbuscador');
+                                const input = contenedor.querySelector('.contenedorbuscador');            
+                                button.addEventListener('click', () => {
+                                    if (button.classList.contains('lupagirando')) {
+                                        return;
+                                    }
+                                    // Añade la clase para iniciar la animación
+                                    button.classList.add('lupagirando');
+                                    input.classList.add('inputgolpe');            
+                                    // Elimina la clase después de que termine la animación (3s)
+                                    setTimeout(() => {
+                                        button.classList.remove('lupagirando');
+                                        input.classList.remove('inputgolpe');
+                                    }, 2500);
+                                });           
+                                const form = contenedor.querySelector('.gsc-search-box');
+                                form.addEventListener('submit', (e) => {
+                                    e.preventDefault();
+                                        setTimeout(() => {
+                                            form.submit();
+                                        }, 2000); // Retraso de 2.1 segundos
+                                });
+                                //]]>
+                              </script> -->           
+                            </tr>
+                        </table>
+                      </form>
+                  <b:include name='quickedit'/>
+                </b:includable>
+              </b:widget>           
+              <!--
+              *======================
+              ✏️marker Texto animado
+              *======================
+              -->
+              <b:widget id='TextList1' locked='false' title='frases del texto animado' type='TextList' visible='true'>
+                <b:widget-settings>
+                  <b:widget-setting name='shownum'>5</b:widget-setting>
+                  <b:widget-setting name='sorting'>NONE</b:widget-setting>
+                  <b:widget-setting name='item-0'> Blog del centro agroturistico </b:widget-setting>
+                  <b:widget-setting name='item-1'> Nuestra pagina web ✨ </b:widget-setting>
+                  <b:widget-setting name='item-2'> ¡te mantenemos al dia! 📰 </b:widget-setting>
+                  <b:widget-setting name='item-3'> entra al mundo laboral 🚀 </b:widget-setting>
+                  <b:widget-setting name='item-4'> lo que nesecitas saber</b:widget-setting>
+                </b:widget-settings>
+                <b:includable id='main'>
+                <div id="texto-animado-cont">
+                    <b:loop values='data:items' var='item'>
+                      <div class="texto-animado"> <data:item/>  </div>
+                    </b:loop>
                 </div>
-              </b:includable>
-            </b:widget>           
-            <!--
-            ?======================
-            🌎marker google maps
-            ?======================
-            -->           
-            <b:widget id='HTML2' locked='false' title='google maps' type='HTML' visible='true'>
-              <b:widget-settings>
-                <b:widget-setting name='content'>
-                  <![CDATA[
-                    <iframe class="google-map-1" id="google-map-1" height="300"
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1178.416622004535!2d-73.14162391906049!3d6.558842050851472!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e69c6d95410bc45%3A0xd9b8d2118a9b1568!2sSena%20Centro%20Agroturistico!5e0!3m2!1ses-419!2sco!4v1742401551176!5m2!1ses-419!2sco"
-                      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                    />
-                  ]]>
-                </b:widget-setting>
-              </b:widget-settings>
-              <b:includable id='main'>
-                <div class='widget-content' id='widget-content-HTML2'>
-                  <data:content/>
-                </div>
+                      <style>
+                        /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+                        /*css 👈 comando decorativo "Highlight String Code */
+                        #TextList1{
+                            display: flex;
+                            justify-content: center;
+                          }
+                        #texto-animado-cont {
+                          display: flex;
+                          overflow: hidden;
+                          interpolate-size: allow-keywords;
+                          width: min-content;
+                          animation: blinkCursor 1s infinite steps(1);
+                          border-right: 1px solid #7d7d7d; /* Cursor */
+                        }
+                        .texto-animado {
+                          overflow: hidden;
+                          width: 0;
+                          max-width: 100%;
+                          white-space: nowrap;
+                        }
+                        .txt-visible {
+                          margin-right: 4px;
+                          overflow: visible;
+                          width: fit-content;
+                        }
+                        @keyframes escribiryborrar {
+                          0%,10% { width: 0px }
+                          30%, 70% { width: min-content;}
+                          90%, 100% { width: 0px }
+                        }
+                        @keyframes blinkCursor {
+                          50% {border-right-color: transparent;}
+                        }
+                        /* animacion v2 de borrado
+                        @keyframes escribiryborrar {
+                          0% { width: 0px }
+                          15%, 85% { width: min-content }
+                          100% { width: 0px }
+                        }*/
+                        /*!css*/
+                        /*]]>*/
+                      </style>
+                      <script>
+                        //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
+                        //js 👈 comando decorativo "Highlight String Code"
+                        function textoAnimado() {
+                          const contenedor = document.getElementById("texto-animado-cont");
+                          const textos = contenedor.getElementsByClassName("texto-animado");
+                          let textoCount = 0;
+                          contenedor.style.animation = "escribiryborrar 7s infinite, blinkCursor 1s infinite steps(1)";
+                          textos[textoCount].classList.add("txt-visible"); // Mostrar primer texto
+                          contenedor.addEventListener("animationiteration", (event) => {
+                            if (event.animationName !== "escribiryborrar") return;
+                            textos[textoCount].classList.remove("txt-visible"); // Ocultar texto actual
+                            textoCount++ // Avanzar contador
+                            if (textoCount == textos.length) textoCount = 0 // reset
+                            textos[textoCount].classList.add("txt-visible");// Mostrar nuevo texto
+                          });
+                        };
+                        //!js
+                        //]]>
+                      </script>
+                </b:includable>                      
+              </b:widget>
+              <!--
+              *========================
+              📈marker estadisticas
+              *========================
+              -->
+              <b:widget id='Stats1' locked='false' title='Visitas del blog' type='Stats' visible='true'>
+                <b:widget-settings>
+                  <b:widget-setting name='showGraphicalCounter'>false</b:widget-setting>
+                  <b:widget-setting name='showAnimatedCounter'>true</b:widget-setting>
+                  <b:widget-setting name='showSparkline'>true</b:widget-setting>
+                  <b:widget-setting name='sparklineStyle'>WHITE_TRANSPARENT</b:widget-setting>
+                  <b:widget-setting name='timeRange'>ALL_TIME</b:widget-setting>
+                </b:widget-settings>
+                <b:includable id='main'>
                   <style>
                     /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
                     /*css 👈 comando decorativo "Highlight String Code */
-                      #widget-content-HTML2{
-                        border-radius: 8px;
-                        display:flex;
+                    #widget-content-Stats1{
+                      height: 36px;
+                    }
+                    #Stats1_content{
+                      display: flex;
+                      align-items: center;
+                      height: 100%;
+                      transition: opacity 0.5s ease;
+                      opacity: 1;
+                      @starting-style{
+                        opacity: 0;
                       }
-                      .google-map-1{
-                        width: 100%; 
-                        height: 300px;
-                        border: none;
+                    }
+                    #Stats1_sparklinespan{
+                      overflow: hidden;
+                      box-shadow: 0px 0px 0px 2px #00304D;
+                      border-radius: 8px;
+                      background-color: #00304D;
+                      margin: 0 12px;
+                      width: 75px;
+                      height: 25px;
+                    }
+                    #Stats1_sparklinespan.Stats1_sparklinespan-white{
+                      background-color: white;
+                      box-shadow: none;           
+                    }
+                    #Stats1_sparklinespan > div{
+                      transition: opacity 0.5s ease;
+                      opacity: 1;
+                      @starting-style{
+                        opacity: 0;
+                      }
+                    }           
+                    .Stats .counter-wrapper{
+                      color: #00304D;
+                      display: inline-block;
+                      font-size: 24px;
+                      font-weight: bold;
+                      height: 30px;
+                      margin-right: 0px;
+                    }           
+                    .Stats .icono-estadistica {
+                      animation: statsMovimiento 2s ease-in-out infinite;
+                      height: 30px;
+                      width: 30px;
+                      fill: #00304D;
+                    }           
+                    /*!css*/
+                    /*]]>*/
+                  </style>
+                  <b:if cond='data:title != ""'><h2><data:title/></h2></b:if>
+                  <div class='widget-content' expr:id='"widget-content-" + data:widget.instanceId'>
+                    <!-- Content is going to be visible when data will be fetched from server. -->
+                    <div expr:id='data:widget.instanceId + "_content"' style='display:none'>
+                      <span expr:class='"counter-wrapper " + (data:showGraphicalCounter ? "graph-counter-wrapper" : "text-counter-wrapper")' expr:id='data:widget.instanceId + "_totalCount"'>
+                      </span>
+                      <b:if cond='!data:showSparkline'>
+                      <svg class='icono-estadistica' xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" ><path d="M192-192v-288h144v288H192Zm216 0v-576h144v576H408Zm216 0v-384h144v384H624Z"/></svg>
+                      </b:if>
+                      <!-- Counter and image will be injected later via AJAX call. -->
+                      <b:if cond='data:showSparkline'>
+                        <script src='https://www.gstatic.com/charts/loader.js' type='text/javascript'/>
+                        <span expr:id='data:widget.instanceId + "_sparklinespan"'>
+                          <b:class cond='data:sparklineStyle == "BLACK_TRANSPARENT"' name='Stats1_sparklinespan-white'/>
+                        </span>           
+                      </b:if>
+                      <b:include name='quickedit'/>
+                    </div>
+                  </div>            
+                </b:includable>
+              </b:widget>           
+              <!--
+              ^=================
+              🏷️marker rutas 2
+              ^=================
+              -->           
+              <b:widget id='PageList1' locked='false' title='' type='PageList' visible='true'>
+                <b:widget-settings>
+                  <b:widget-setting name='pageListJson'>
+                    <![CDATA[{
+                    "link0":{
+                      "href":"/",
+                      "position":0,
+                      "title":"Página Principal"
+                    },
+                    "link1":{
+                      "href":"https://www.sena.edu.co/es-co/formacion/Paginas/Estudie-en-el-SENA.aspx",
+                      "position":1,
+                      "title":"Inscripciones"
+                    },
+                    "link2":{
+                      "href":"/p/normatividad_17.html",
+                      "position":2,
+                      "title":"Normatividad"
+                    },
+                    "link3":{
+                      "href":"/p/blog-page.html",
+                      "position":3,
+                      "title":"Programas"
+                    },
+                    "link4":{
+                      "href":"/p/pagina-de-recursos-globales.html",
+                      "position":4,
+                      "title":"resourses"
+                    },
+                    "link5":{
+                      "href":"/p/nosotros.html",
+                      "position":5,
+                      "title":"Nosotros"
+                    }
+                    }]]>
+                  </b:widget-setting>
+                </b:widget-settings>
+                <b:includable id='main'>
+                  <style>
+                    /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+                    /*css 👈 comando decorativo "Highlight String Code */
+                    #PageList1 a{
+                      font-weight: bold;
+                    }
+                    .widget ul li{
+                      border:none;
+                    }
+                    /*!css*/
+                    /*]]>*/
+                  </style>
+                  <ul class='menu2-cont'>
+                    <b:loop values='data:links' var='link'>
+                      <li class='menu2-ruta'>
+                        <b:class cond='data:link.isCurrentPage' name='selected'/>
+                        <a expr:href='data:link.href' onclick='toggleMenu("ocultar")'>
+                          <data:link.title/>
+                        </a>
+                      </li>
+                    </b:loop>
+                  </ul>
+                </b:includable>
+              </b:widget>           
+            </b:section>
+            <!-- | 📦 MENU #2 📦 | -->
+            <b:section id='sidebar-right-2' class="sidebar-right-seccion" name='menu 2'>
+                            <!--
+              ========================
+              📢marker Redes sociales
+              ========================
+              -->
+              <b:widget id='PageList2' locked='false' title='redes sociales (solo cambiar los url)' version='2' type='PageList' visible='true'>
+                <b:widget-settings>
+                  <b:widget-setting name='pageListJson'>
+                    <![CDATA[{
+                    "link0":{
+                      "href":"https://www.facebook.com/SENA",
+                      "position":0,
+                      "title":"facebook"
+                    },
+                    "link1":{
+                      "href":"https://x.com/senacomunica",
+                      "position":1,
+                      "title":"x"
+                    },
+                    "link2":{
+                      "href":"https://www.youtube.com/user/SENATV",
+                      "position":2,
+                      "title":"youtube"
+                    },
+                    "link3":{
+                      "href":"https://www.instagram.com/senacomunica/",
+                      "position":3,
+                      "title":"instagram"
+                    }
+                    }]]>
+                  </b:widget-setting>
+                </b:widget-settings>
+                <b:includable id='main'>
+                  <style>
+                    /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+                    /*css 👈 comando decorativo "Highlight String Code */
+                    #PageList2{
+                      margin: 5px 0;
+                      flex-direction: column;
+                      display: flex;
+                      align-items: center;
+                    }
+                    .redes-titulo{
+                      width: 100%;
+                      margin-bottom: 20px;
+                    }
+                    .redes-sociales-cont{
+                      width: 100%;
+                      max-width: 250px;
+                      min-width: fit-content;
+                      display: flex;
+                      justify-content: space-around;
+                    }
+                    .red-social-link{
+                      cursor: default;
+                      display: block;
+                      height: 30px;
+                      width: 30px;
+                      transition: all 0.1s ease;
+                      /*
+                      filter: grayscale(100%);
+                      opacity: 0.4
+                      */
+                    }
+                    .red-social{
+                      display: flex;
+                      transition: all 0.3s ease-out;
+                    }
+                    .red-social-link:hover .red-social{
+                      transform: translate(0, -5px);
+                    }
+                    .red-social-link:active{
+                      transform: scale(.9)
+                    }
+                    .red-social-link svg{
+                      transition: all 0.1s ease;
+                      width: 100%;
+                      height: 100%;
+                    }            
+                      @keyframes rebote {
+                        0% { transform: translateY(0); }
+                        7% { transform: translateY(-10px); }
+                        15% { transform: translateY(0); }
+                        100% { transform: translateY(0); }
+                      }
+                    .red-social-link svg {
+                        animation: rebote 5s ease-in-out infinite;
+                      }                 
+                      .red-social-link .facebook > svg {
+                        animation-delay: 1s;
+                      }           
+                      .red-social-link .x > svg {
+                        animation-delay: 2s;
+                      }           
+                      .red-social-link .youtube > svg {
+                        animation-delay: 2.5s;
+                      }           
+                      .red-social-link .instagram > svg {
+                        animation-delay: 1.5s;
                       }
                     /*!css*/
                     /*]]>*/
                   </style>
-                  <script>  
-                    //<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante!  
-                    //js 👈 Comando decorativo "Highlight String Code"            
-                    //!js  
-                    //]]>  
-                  </script>           
-                <b:include name='quickedit'/>
-              </b:includable>
-            </b:widget>           
-            <!--
-            ?======================
-            💾marker BlogArchive1
-            ?======================
-            -->
-            <b:widget id='BlogArchive1' locked='false' title='Historial del blog' type='BlogArchive' version='1' visible='true'>
-              <b:widget-settings>
-                <b:widget-setting name='showStyle'>HIERARCHY</b:widget-setting>
-                <b:widget-setting name='yearPattern'>yyyy</b:widget-setting>
-                <b:widget-setting name='showWeekEnd'>true</b:widget-setting>
-                <b:widget-setting name='monthPattern'>MMMM</b:widget-setting>
-                <b:widget-setting name='dayPattern'>MMM dd</b:widget-setting>
-                <b:widget-setting name='weekPattern'>MM/dd</b:widget-setting>
-                <b:widget-setting name='chronological'>false</b:widget-setting>
-                <b:widget-setting name='showPosts'>false</b:widget-setting>
-                <b:widget-setting name='frequency'>MONTHLY</b:widget-setting>
-              </b:widget-settings>
-              <b:includable id='main'> 
-                <style>
-                  /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
-                  /*css 👈 comando decorativo "Highlight String Code */
-                  #BlogArchive1 {
-                  }
-                  #BlogArchive1 *{
-                    text-indent: 0;
-                    border:none;
-                    transition: opacity 0.6s ease-in-out, height 1s ease;
-                    color: #00304D; 
-                    interpolate-size: allow-keywords;
-                  }
-                  #BlogArchive1_ArchiveList {
-                    padding-bottom: 0px;
-                  }           
-                  /* cuando se cierra o abre un elemento 👇 */
-                  #ArchiveList .collapsed ul{
-                    display: block;
-                    height: 0px;
-                    overflow: hidden;
-                    opacity: 0;
-                    @starting-style {
-                      height: fit-content;
-                      opacity: 1;
-                    };
-                  }
-                  #ArchiveList .expanded >ul{
-                    display: block;
-                    overflow: hidden;
-                    height: fit-content;
-                    @starting-style {
-                      height: 0px;
-                      opacity: 0;
-                    }
-                  }
-                  .hierarchy{
-                    grid-column: span 2;
-                  }
-                  .archivedate {
-                    text-indent: 0;
-                    display: grid;
-                    column-gap: 4px;
-                    align-items: center;
-                    grid-template-columns: auto auto 1fr;
-                  }
-                  .archivedate > .informacion {
-                    grid-column: span 2;
-                    display: flex;
-                  }
-                  .archivedate a{
-                    width: fit-content ;
-                  }
-                  #BlogArchive1_ArchiveList .archivedate ul li{
-                    padding-left: 30px;
-                    text-indent: 0;
-                  } <!-- capeta 1 -->
-                  .BlogArchive #ArchiveList ul ul li{
-                    padding-left: 30px;
-                  } <!-- capeta 2 -->
-                  .BlogArchive #ArchiveList ul.posts li{
-                    padding-left: 0;
-                  } <!-- capeta 3 -->
-                  .toggle{
-                    display: block;
-                    width: fit-content;
-                    background-color:rgba(0, 47, 77, 0);
-                    color: #ffffff;
-                    height: 100%;
-                  }
-                  .archivedate .post-count{
-                    position: relative;
-                    top: -5px;
-                    color: #00304d;
-                    font-size: 0.8em;
-                    height: min-content;
-                  }
-                  .zippy{
-                    display: block;
-                    background: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwzm0taNcMkyRXjYWxqZ2mHAaFGb_aP4oLjpiZsRSAvl0_lWQ20WHsIuwMXUVjglVlawPcw5N9cyChgc64_5asJYoO9A9DRPzIovNx4FpbBJ0mh5S8PoUr9My0r7yKWGQQxkIDbtLCfo9TDewBc9bATiMVWPO9MFAfPT8qaQiogeLPmJZ8xp-fVOe6ilU/s96/arrow_right.png)
-                    no-repeat center center;
-                    background-size: 160%; 
-                    width: 20px;
-                    height: min-content;
-                  }
-                  .zippy.toggle-open{
-                    display: block;
-                    background: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhptrDu5oYzBhfVlAMVpG0udZKu1oN4YDt9Xrrnf-ikPfxhGNKwgClvH5ORSCj270_cR-vZW7PNT4iaDsaF6iDR_k-PIQgdAdtSfZCOugShsK2w29iBFDhmXr3-bgWGUlFvjFvL9rNaXU9OWNuL7V9ETSmBR7PV-fuAh7SQSMMC_Dll8Ix7Q-MxBtbcyk8/s96/arrow_drop_down.png)
-                    no-repeat center center;
-                    background-size: 160%; 
-                  }
-                  #ArchiveList .zippy {
-                    color: rgba(0,0,0,0);
-                    line-height: unset;
-                  }
-                  .BlogArchive li:has(>a:empty) {
-                    display: none;
-                    }
-                  #ArchiveList a.toggle,
-                  #ArchiveList a.toggle:link{
-                    color:rgba(0, 0, 0, 0);
-                    color: #00304D;
-                    font-size: 0.8em;
-                  }
-                  /*!css*/
-                  /*]]>*/
-                </style>
-                <b:if cond='data:title != &quot;&quot;'>
-                  <h3><data:title/></h3>
-                </b:if>
-                <div class='widget-content'>
-                  <div id='ArchiveList'>
-                    <div expr:id='data:widget.instanceId + &quot;_ArchiveList&quot;'>
-                      <b:include cond='data:style == &quot;HIERARCHY&quot;' data='data' name='interval'/>
-                      <b:include cond='data:style == &quot;FLAT&quot;' data='data' name='flat'/>
-                      <b:include cond='data:style == &quot;MENU&quot;' data='data' name='menu'/>
-                    </div>
-                  </div>
-                  <b:include name='quickedit'/>
-                </div>
-              </b:includable>
-              <b:includable id='flat' var='data'>
-                <ul class='flat'>
-                  <b:loop values='data:data' var='i'>
-                    <li class='archivedate'>
-                      <a expr:href='data:i.url'><data:i.name/></a> (<data:i.post-count/>)
-                    </li>
-                  </b:loop>
-                </ul>
-              </b:includable>           
-              <b:includable id='interval' var='intervalData'>
-                <ul class='hierarchy'>
-                  <b:loop values='data:intervalData' var='interval'>
-                    <li expr:class='&quot;archivedate &quot; + data:interval.expclass'>
-                      <b:include cond='data:interval.toggleId' data='interval' name='toggle'/>
-                      <div class="informacion">
-                        <a class='post-count-link' expr:href='data:interval.url'>
-                          <data:interval.name/>
+                  <h2 class="redes-titulo">
+                    Redes oficiales
+                  </h2>
+                  <div class="redes-sociales-cont">
+                    <b:loop values='data:links' var='link' >
+                        <a expr:href='data:link.href' class="red-social-link" target="_blank" expr:title="data:link.href">
+                          <div expr:class='(data:link.title + " red-social")'>
+                            <b:if cond='data:link.title == "facebook"'>
+                                <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 16 16"> <path fill="#1976D2" d="M14 0H2C.897 0 0 .897 0 2v12c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2V2c0-1.103-.897-2-2-2z"></path><path fill="#FAFAFA" fill-rule="evenodd" d="M13.5 8H11V6c0-.552.448-.5 1-.5h1V3h-2a3 3 0 0 0-3 3v2H6v2.5h2V16h3v-5.5h1.5l1-2.5z" clip-rule="evenodd"></path></svg>
+                            </b:if>
+                            <b:if cond='data:link.title == "x"'>
+                              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0,0,256,256" width="50px" height="50px" fill-rule="nonzero"><g transform="translate(-23.04,-23.04) scale(1.18,1.18)"><g fill="#000000" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M11,4c-3.866,0 -7,3.134 -7,7v28c0,3.866 3.134,7 7,7h28c3.866,0 7,-3.134 7,-7v-28c0,-3.866 -3.134,-7 -7,-7zM13.08594,13h7.9375l5.63672,8.00977l6.83984,-8.00977h2.5l-8.21094,9.61328l10.125,14.38672h-7.93555l-6.54102,-9.29297l-7.9375,9.29297h-2.5l9.30859,-10.89648zM16.91406,15l14.10742,20h3.06445l-14.10742,-20z"></path></g></g></g></svg>
+                            </b:if>
+                            <b:if cond='data:link.title == "youtube"'>
+                              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0,0,256,256" width="30px" height="30px" fill-rule="nonzero"><g transform="translate(-19.2,-19.2) scale(1.15,1.15)"><g fill=" #FF0033 " fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(8.53333,8.53333)"><path d="M15,4c-4.186,0 -9.61914,1.04883 -9.61914,1.04883l-0.01367,0.01563c-1.90652,0.30491 -3.36719,1.94317 -3.36719,3.93555v6v0.00195v5.99805v0.00195c0.00384,1.96564 1.4353,3.63719 3.37695,3.94336l0.00391,0.00586c0,0 5.43314,1.05078 9.61914,1.05078c4.186,0 9.61914,-1.05078 9.61914,-1.05078l0.00195,-0.00195c1.94389,-0.30554 3.37683,-1.97951 3.37891,-3.94727v-0.00195v-5.99805v-0.00195v-6c-0.00288,-1.96638 -1.43457,-3.63903 -3.37695,-3.94531l-0.00391,-0.00586c0,0 -5.43314,-1.04883 -9.61914,-1.04883zM12,10.39844l8,4.60156l-8,4.60156z"></path></g></g></g></svg>
+                            </b:if>
+                            <b:if cond='data:link.title == "instagram"'>
+                              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="1000" height="1000" viewBox="0 0 264.5833 264.5833" inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)" sodipodi:docname="Instagram_(2022).svg"><defs><radialGradient id="f" cx="158.429" cy="578.088" r="52.3515" xlink:href="#a" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0 -4.03418 4.28018 0 -2332.2273 942.2356)" fx="158.429" fy="578.088"/><radialGradient inkscape:collect="always" xlink:href="#b" id="g" gradientUnits="userSpaceOnUse" gradientTransform="matrix(.67441 -1.16203 1.51283 .87801 -814.3657 -47.8354)" cx="172.6149" cy="600.6924" fx="172.6149" fy="600.6924" r="65"/><radialGradient inkscape:collect="always" xlink:href="#c" id="h" cx="144.012" cy="51.3367" fx="144.012" fy="51.3367" r="67.081" gradientTransform="matrix(-2.3989 .67549 -.23008 -.81732 464.9957 -26.4035)" gradientUnits="userSpaceOnUse"/>
+                                <radialGradient inkscape:collect="always" xlink:href="#d" id="e" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-3.10797 .87652 -.6315 -2.23914 1345.6503 1374.1983)" cx="199.7884" cy="628.4379" fx="199.7884" fy="628.4379" r="52.3515"/><linearGradient inkscape:collect="always" id="d"><stop offset="0" stop-color="#ff005f"/><stop offset="1" stop-color="#fc01d8"/></linearGradient><linearGradient id="c"><stop offset="0" stop-color="#780cff"/><stop stop-color="#820bff" offset="1" stop-opacity="0"/></linearGradient><linearGradient inkscape:collect="always" id="b"><stop offset="0" stop-color="#fc0"/><stop offset="1" stop-color="#fc0" stop-opacity="0"/></linearGradient><linearGradient id="a"><stop offset="0" stop-color="#fc0"/><stop offset=".1242" stop-color="#fc0"/><stop offset=".5672" stop-color="#fe4a05"/><stop offset=".6942" stop-color="#ff0f3f"/>
+                                <stop offset="1" stop-color="#fe0657" stop-opacity="0"/></linearGradient></defs><sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:zoom=".515" inkscape:cx="500" inkscape:cy="500" inkscape:document-units="mm" inkscape:current-layer="layer1" inkscape:document-rotation="0" showgrid="false" inkscape:window-width="1366" inkscape:window-height="705" inkscape:window-x="-8" inkscape:window-y="-8" inkscape:window-maximized="1"/><g inkscape:label="Layer 1" inkscape:groupmode="layer"><path d="M204.1503 18.1429c-55.2305 0-71.3834.057-74.5232.3175-11.3342.9424-18.387 2.7275-26.0708 6.554-5.9214 2.9413-10.5915 6.3506-15.2005 11.1298-8.3938 8.7157-13.481 19.4383-15.3226 32.1842-.8953 6.1877-1.1558 7.4496-1.2087 39.0558-.0203 10.5354 0 24.4007 0 42.9984 0 55.2008.061 71.3418.3256 74.4764.9157 11.032 2.6453 17.9728 6.3081 25.565 7 14.5329 20.369 25.4428 36.119 29.5137 5.4535 1.4044 11.4767 2.1779 19.2092 2.5442 3.2762.1425 36.6684.2443 70.081.2443 33.4127 0 
+                                66.8253-.0407 70.02-.2035 8.9535-.4214 14.1526-1.1195 19.9011-2.6054 15.8517-4.0912 28.9767-14.8383 36.119-29.5748 3.5916-7.409 5.4128-14.6144 6.237-25.0704.179-2.2796.2543-38.6263.2543-74.924 0-36.304-.0814-72.5835-.2605-74.8632-.8343-10.6249-2.6555-17.7692-6.363-25.3207-3.0421-6.1816-6.42-10.798-11.324-15.518-8.752-8.3616-19.4555-13.4502-32.2101-15.2902-6.18-.8936-7.411-1.1582-39.033-1.2131z" inkscape:connector-curvature="0" fill="url(#e)" transform="translate(-71.8155 -18.1429)"/><path d="M204.1503 18.1429c-55.2305 0-71.3834.057-74.5232.3175-11.3342.9424-18.387 2.7275-26.0708 6.554-5.9214 2.9413-10.5915 6.3506-15.2005 11.1298-8.3938 8.7157-13.481 19.4383-15.3226 32.1842-.8953 6.1877-1.1558 7.4496-1.2087 39.0558-.0203 10.5354 0 24.4007 0 42.9984 0 55.2008.061 71.3418.3256 74.4764.9157 11.032 2.6453 17.9728 6.3081 25.565 7 14.5329 20.369 25.4428 36.119 29.5137 5.4535 1.4044 11.4767 2.1779 19.2092 2.5442 3.2762.1425 36.6684.2443 70.081.2443 33.4127 0 66.8253-.0407 70.02-.2035 8.9535-.4214 14.1526-1.1195 19.9011-2.6054 15.8517-4.0912 
+                                28.9767-14.8383 36.119-29.5748 3.5916-7.409 5.4128-14.6144 6.237-25.0704.179-2.2796.2543-38.6263.2543-74.924 0-36.304-.0814-72.5835-.2605-74.8632-.8343-10.6249-2.6555-17.7692-6.363-25.3207-3.0421-6.1816-6.42-10.798-11.324-15.518-8.752-8.3616-19.4555-13.4502-32.2101-15.2902-6.18-.8936-7.411-1.1582-39.033-1.2131z" inkscape:connector-curvature="0" fill="url(#f)" transform="translate(-71.8155 -18.1429)"/><path d="M204.1503 18.1429c-55.2305 0-71.3834.057-74.5232.3175-11.3342.9424-18.387 2.7275-26.0708 6.554-5.9214 2.9413-10.5915 6.3506-15.2005 11.1298-8.3938 8.7157-13.481 19.4383-15.3226 32.1842-.8953 6.1877-1.1558 7.4496-1.2087 39.0558-.0203 10.5354 0 24.4007 0 42.9984 0 55.2008.061 71.3418.3256 74.4764.9157 11.032 2.6453 17.9728 6.3081 25.565 7 14.5329 20.369 25.4428 36.119 29.5137 5.4535 1.4044 11.4767 2.1779 19.2092 2.5442 3.2762.1425 36.6684.2443 70.081.2443 33.4127 0 66.8253-.0407 70.02-.2035 8.9535-.4214 14.1526-1.1195 19.9011-2.6054 15.8517-4.0912 28.9767-14.8383 36.119-29.5748 3.5916-7.409 5.4128-14.6144 
+                                6.237-25.0704.179-2.2796.2543-38.6263.2543-74.924 0-36.304-.0814-72.5835-.2605-74.8632-.8343-10.6249-2.6555-17.7692-6.363-25.3207-3.0421-6.1816-6.42-10.798-11.324-15.518-8.752-8.3616-19.4555-13.4502-32.2101-15.2902-6.18-.8936-7.411-1.1582-39.033-1.2131z" inkscape:connector-curvature="0" fill="url(#g)" transform="translate(-71.8155 -18.1429)"/><path d="M204.1503 18.1429c-55.2305 0-71.3834.057-74.5232.3175-11.3342.9424-18.387 2.7275-26.0708 6.554-5.9214 2.9413-10.5915 6.3506-15.2005 11.1298-8.3938 8.7157-13.481 19.4383-15.3226 32.1842-.8953 6.1877-1.1558 7.4496-1.2087 39.0558-.0203 10.5354 0 24.4007 0 42.9984 0 55.2008.061 71.3418.3256 74.4764.9157 11.032 2.6453 17.9728 6.3081 25.565 7 14.5329 20.369 25.4428 36.119 29.5137 5.4535 1.4044 11.4767 2.1779 19.2092 2.5442 3.2762.1425 36.6684.2443 70.081.2443 33.4127 0 66.8253-.0407 70.02-.2035 8.9535-.4214 14.1526-1.1195 19.9011-2.6054 15.8517-4.0912 28.9767-14.8383 
+                                36.119-29.5748 3.5916-7.409 5.4128-14.6144 6.237-25.0704.179-2.2796.2543-38.6263.2543-74.924 0-36.304-.0814-72.5835-.2605-74.8632-.8343-10.6249-2.6555-17.7692-6.363-25.3207-3.0421-6.1816-6.42-10.798-11.324-15.518-8.752-8.3616-19.4555-13.4502-32.2101-15.2902-6.18-.8936-7.411-1.1582-39.033-1.2131z" inkscape:connector-curvature="0" fill="url(#h)" transform="translate(-71.8155 -18.1429)"/><path d="M132.3452 33.973c-26.7167 0-30.0696.1167-40.5629.5939-10.4727.4792-17.6212 2.136-23.8762 4.567-6.4701 2.5107-11.9586 5.8693-17.4265 11.3352-5.472 5.464-8.8332 10.9483-11.354 17.4116-2.4389 6.2524-4.099 13.3976-4.5703 23.8585-.4693 10.4854-.5923 13.8379-.5923 40.5348 0 26.697.1189 30.0371.5943 40.5225.4817 10.465 2.1397 17.6082 4.5703 23.8585 2.5147 6.4654 5.8758 11.9497 11.3458 17.4136 5.466 5.468 10.9544 8.8349 17.4204 11.3456 6.259 2.4309 13.4097 4.0877 23.8803 4.567 10.4933.477 13.8441.5938 40.5588.5938 26.7188 0 30.0615-.1167 40.5547-.5939 10.4728-.4792 17.6295-2.136 23.8885-4.567 6.4681-2.5106 11.9484-5.8775 17.4143-11.3455 5.472-5.4639 
+                                8.8332-10.9482 11.354-17.4115 2.4183-6.2524 4.0784-13.3976 4.5703-23.8585.4713-10.4854.5943-13.8277.5943-40.5246 0-26.697-.123-30.0473-.5943-40.5328-.4919-10.465-2.152-17.6081-4.5703-23.8584-2.5208-6.4654-5.882-11.9498-11.354-17.4137-5.4721-5.468-10.9442-8.8266-17.4204-11.3353-6.2714-2.4309-13.424-4.0877-23.8967-4.5669-10.4933-.4772-13.8339-.5939-40.5588-.5939zm-8.825 17.7147c2.6193-.0041 5.5418 0 8.825 0 26.2659 0 29.379.0942 39.7513.5652 9.5915.4383 14.7971 2.0397 18.2648 3.3852 4.5908 1.7817 7.8638 3.9116 11.3048 7.3521 3.4431 3.4406 5.5745 6.7173 7.3617 11.3046 1.3465 3.461 2.9512 8.6628 3.3877 18.2472.4714 10.3625.5739 13.4754.5739 39.7095 0 26.234-.1025 29.347-.5739 39.7095-.4386 9.5843-2.0412 14.7861-3.3877 18.2471-1.783 4.5874-3.9186 7.8539-7.3617 11.2923-3.443 3.4406-6.712 5.5704-11.3048 7.3521-3.4636 1.3517-8.6733 2.949-18.2648 3.3873-10.3702.471-13.4854.5734-39.7513.5734-26.2679 0-29.381-.1024-39.7513-.5734-9.5914-.4423-14.797-2.0438-18.2668-3.3893-4.5908-1.7817-7.87-3.9116-11.313-7.3521-3.4431-3.4405-5.5745-6.709-7.3617
+                                -11.2985-1.3465-3.461-2.9512-8.6628-3.3877-18.2471-.4714-10.3626-.5657-13.4754-.5657-39.7259 0-26.2504.0943-29.347.5657-39.7095.4386-9.5844 2.0412-14.7861 3.3877-18.2512 1.783-4.5874 3.9186-7.8641 7.3617-11.3046 3.443-3.4406 6.7222-5.5704 11.313-7.3562 3.4677-1.3517 8.6754-2.949 18.2668-3.3894 9.075-.4096 12.5919-.5324 30.9264-.553zm61.3363 16.322c-6.5173 0-11.805 5.2776-11.805 11.792 0 6.5125 5.2877 11.7962 11.805 11.7962 6.5172 0 11.8049-5.2837 11.8049-11.7962 0-6.5124-5.2877-11.796-11.805-11.796zm-52.5113 13.7826c-27.8993 0-50.5191 22.6031-50.5191 50.4817 0 27.8786 22.6198 50.4714 50.5191 50.4714s50.511-22.5928 50.511-50.4714c0-27.8786-22.6137-50.4817-50.513-50.4817zm0 17.7147c18.109 0 32.7914 14.6694 32.7914 32.767 0 18.0956-14.6824 32.767-32.7914 32.767-18.111 0-32.7913-14.6714-32.7913-32.767 0-18.0976 14.6803-32.767 32.7913-32.767z" inkscape:connector-curvature="0" fill="#fff"/></g>
+                              </svg>
+                            </b:if>
+                          </div>
                         </a>
-                        <span class='post-count' dir='ltr'>(<data:interval.post-count/>)</span>
-                      </div>
-                      <b:include cond='data:interval.data' data='interval.data' name='interval'/>
-                      <b:include cond='data:interval.posts' data='interval.posts' name='posts'/>
-                    </li>
-                  </b:loop>
-                </ul>
-              </b:includable>
-              <b:includable id='menu' var='data'>
-                <select expr:id='data:widget.instanceId + &quot;_ArchiveMenu&quot;'>
-                  <option value=''><data:title/></option>
-                  <b:loop values='data:data' var='i'>
-                    <option expr:value='data:i.url'><data:i.name/>(<data:i.post-count/>)</option>
-                  </b:loop>
-                </select>
-              </b:includable>
-              <b:includable id='posts' var='posts'>
-                <ul class='posts'>
-                  <b:loop values='data:posts' var='post'>
-                    <li><a expr:href='data:post.url'>
-                      <data:post.title/>
-                    </a></li>
-                  </b:loop>
-                </ul>
-              </b:includable>
-              <b:includable id='toggle' var='interval'>
-                <a class='toggle' href='javascript:void(0)'>
-                  <span expr:class='&quot;zippy&quot; + (data:interval.expclass == &quot;expanded&quot; ? &quot; toggle-open&quot; : &quot;&quot;)'>
-                    <b:if cond='data:interval.expclass == &quot;expanded&quot;'>
-                      &#9660;&#160;
-                    <b:elseif cond='data:blog.languageDirection == &quot;rtl&quot;'/>
-                      &#9668;&#160;
-                    <b:else/>
-                      &#9658;&#160;
-                    </b:if>
-                  </span>
-                </a>
-              </b:includable>
-            </b:widget>
-            <!--
-            ?======================
-            ✖️marker posts de X
-            ?======================
-            -->
-            <b:widget id='HTML1' locked='false' title='post en X' type='HTML' visible='true'>
-              <b:widget-settings>
-                <b:widget-setting name='content'><![CDATA[
-                  <div class="postsx-cont">
-                    <div class="iframe-overlay" id="map-overlay" onclick='iframeOverlay(this)'>
-                      <div>click para interactuar</div>
-                    </div>
-                      <a class="twitter-timeline" data-chrome="nofooter noborders"
-                        data-dnt="true" data-theme="light" omit_script=true
-                        href="https://twitter.com/SENAComunica">
-                        Tweets SENAComunica
-                      </a>
+                    </b:loop>
                   </div>
-                  ]]>
-                </b:widget-setting>
-              </b:widget-settings>
-              <b:includable id='main'>
-                <b:if cond='data:blog.pageType not in {"item","static_page"}'>
-                  <div class='widget-content'>
+                </b:includable>
+              </b:widget>           
+              <!--
+              ?======================
+              🌎marker google maps
+              ?======================
+              -->           
+              <b:widget id='HTML2' locked='false' title='google maps' type='HTML' visible='true'>
+                <b:widget-settings>
+                  <b:widget-setting name='content'>
+                    <![CDATA[
+                      <iframe class="google-map-1" id="google-map-1" height="300"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1178.416622004535!2d-73.14162391906049!3d6.558842050851472!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e69c6d95410bc45%3A0xd9b8d2118a9b1568!2sSena%20Centro%20Agroturistico!5e0!3m2!1ses-419!2sco!4v1742401551176!5m2!1ses-419!2sco"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                      />
+                    ]]>
+                  </b:widget-setting>
+                </b:widget-settings>
+                <b:includable id='main'>
+                  <div class='widget-content' id='widget-content-HTML2'>
                     <data:content/>
                   </div>
-                </b:if>
-                <style>  
-                  /*<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante! */  
-                  /*css 👈 Comando decorativo "Highlight String Code" */
-                  .postsx-cont {
-                    padding-bottom: 35px;
-                    border-radius: 8px;
-                    overflow-y: auto;
-                    overflow-x: hidden;
-                  }
-                  .postsx-cont iframe{
-                    width: 100%;
-                  }
-                  .postsx-cont .iframe-overlay{
-                    display: none;
-                  }
-                  @media (max-width: 800px) {
-                    .postsx-cont {
+                    <style>
+                      /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+                      /*css 👈 comando decorativo "Highlight String Code */
+                        #widget-content-HTML2{
+                          border-radius: 8px;
+                          display:flex;
+                        }
+                        .google-map-1{
+                          width: 100%; 
+                          height: 300px;
+                          border: none;
+                        }
+                      /*!css*/
+                      /*]]>*/
+                    </style>
+                    <script>  
+                      //<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante!  
+                      //js 👈 Comando decorativo "Highlight String Code"            
+                      //!js  
+                      //]]>  
+                    </script>           
+                  <b:include name='quickedit'/>
+                </b:includable>
+              </b:widget>       
+            </b:section>
+            <!-- | 📦 MENU #1 📦 | -->
+            <b:section id='sidebar-right-3' class="sidebar-right-seccion" name='menu 3'>
+              <!--
+              ?======================
+              💾marker BlogArchive1
+              ?======================
+              -->
+              <b:widget id='BlogArchive1' locked='false' title='Historial del blog' type='BlogArchive' version='1' visible='true'>
+                <b:widget-settings>
+                  <b:widget-setting name='showStyle'>HIERARCHY</b:widget-setting>
+                  <b:widget-setting name='yearPattern'>yyyy</b:widget-setting>
+                  <b:widget-setting name='showWeekEnd'>true</b:widget-setting>
+                  <b:widget-setting name='monthPattern'>MMMM</b:widget-setting>
+                  <b:widget-setting name='dayPattern'>MMM dd</b:widget-setting>
+                  <b:widget-setting name='weekPattern'>MM/dd</b:widget-setting>
+                  <b:widget-setting name='chronological'>false</b:widget-setting>
+                  <b:widget-setting name='showPosts'>false</b:widget-setting>
+                  <b:widget-setting name='frequency'>MONTHLY</b:widget-setting>
+                </b:widget-settings>
+                <b:includable id='main'> 
+                  <style>
+                    /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+                    /*css 👈 comando decorativo "Highlight String Code */
+                    #BlogArchive1 {
+                      margin: 0px;
                     }
-                    .postsx-cont .twitter-timeline{
-                      overflow-y: auto;
-                      height: 500px !important;
+                    #BlogArchive1 *{
+                      text-indent: 0;
+                      border:none;
+                      transition: opacity 0.6s ease-in-out, height 1s ease;
+                      color: #00304D; 
+                      interpolate-size: allow-keywords;
                     }
-                    .postsx-cont .iframe-overlay{
+                    #BlogArchive1_ArchiveList {
+                      padding-bottom: 0px;
+                    }           
+                    /* cuando se cierra o abre un elemento 👇 */
+                    #ArchiveList .collapsed ul{
+                      display: block;
+                      height: 0px;
+                      overflow: hidden;
+                      opacity: 0;
+                      @starting-style {
+                        height: fit-content;
+                        opacity: 1;
+                      };
+                    }
+                    #ArchiveList .expanded >ul{
+                      display: block;
+                      overflow: hidden;
+                      height: fit-content;
+                      @starting-style {
+                        height: 0px;
+                        opacity: 0;
+                      }
+                    }
+                    .hierarchy{
+                      grid-column: span 2;
+                    }
+                    .archivedate {
+                      text-indent: 0;
+                      display: grid;
+                      column-gap: 4px;
+                      align-items: center;
+                      grid-template-columns: auto auto 1fr;
+                    }
+                    .archivedate > .informacion {
+                      grid-column: span 2;
                       display: flex;
                     }
-                  }
-                  .twitter-timeline{
-                    width: 100%;
-                    align-items: flex-start;
-                    justify-content: center;
-                  }
-                  .twitter-timeline div {
-                    border: none !important;
-                  }
-                  /*!css*/  
-                  /*]]>*/  
-                </style>  
-                <script>  
-                  //<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante!  
-                  //js 👈 Comando decorativo "Highlight String Code"            
-                  window.twttr = (function(d, s, id) {
-                    var js, fjs = d.getElementsByTagName(s)[0],
-                      t = window.twttr || {};
-                    if (d.getElementById(id)) return t;
-                    js = d.createElement(s);
-                    js.id = id;
-                    js.src = "https://platform.twitter.com/widgets.js";
-                    fjs.parentNode.insertBefore(js, fjs);           
-                    t._e = [];
-                    t.ready = function(f) {
-                      t._e.push(f);
-                    };            
-                    return t;
-                  }(document, "script", "twitter-wjs"));            
-                  //!js  
-                  //]]>  
-                </script>
-              </b:includable>
-            </b:widget>           
-          </b:section-contents>
-          <div id='overlay-fondo-opaco' onclick='toggleMenu("ocultar")'></div>            
+                    .archivedate a{
+                      width: fit-content ;
+                    }
+                    #BlogArchive1_ArchiveList .archivedate ul li{
+                      padding-left: 30px;
+                      text-indent: 0;
+                    } <!-- capeta 1 -->
+                    .BlogArchive #ArchiveList ul ul li{
+                      padding-left: 30px;
+                    } <!-- capeta 2 -->
+                    .BlogArchive #ArchiveList ul.posts li{
+                      padding-left: 0;
+                    } <!-- capeta 3 -->
+                    .toggle{
+                      display: block;
+                      width: fit-content;
+                      background-color:rgba(0, 47, 77, 0);
+                      color: #ffffff;
+                      height: 100%;
+                    }
+                    .archivedate .post-count{
+                      position: relative;
+                      top: -5px;
+                      color: #00304d;
+                      font-size: 0.8em;
+                      height: min-content;
+                    }
+                    .zippy{
+                      display: block;
+                      background: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwzm0taNcMkyRXjYWxqZ2mHAaFGb_aP4oLjpiZsRSAvl0_lWQ20WHsIuwMXUVjglVlawPcw5N9cyChgc64_5asJYoO9A9DRPzIovNx4FpbBJ0mh5S8PoUr9My0r7yKWGQQxkIDbtLCfo9TDewBc9bATiMVWPO9MFAfPT8qaQiogeLPmJZ8xp-fVOe6ilU/s96/arrow_right.png)
+                      no-repeat center center;
+                      background-size: 160%; 
+                      width: 20px;
+                      height: min-content;
+                    }
+                    .zippy.toggle-open{
+                      display: block;
+                      background: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhptrDu5oYzBhfVlAMVpG0udZKu1oN4YDt9Xrrnf-ikPfxhGNKwgClvH5ORSCj270_cR-vZW7PNT4iaDsaF6iDR_k-PIQgdAdtSfZCOugShsK2w29iBFDhmXr3-bgWGUlFvjFvL9rNaXU9OWNuL7V9ETSmBR7PV-fuAh7SQSMMC_Dll8Ix7Q-MxBtbcyk8/s96/arrow_drop_down.png)
+                      no-repeat center center;
+                      background-size: 160%; 
+                    }
+                    #ArchiveList .zippy {
+                      color: rgba(0,0,0,0);
+                      line-height: unset;
+                    }
+                    .BlogArchive li:has(>a:empty) {
+                      display: none;
+                      }
+                    #ArchiveList a.toggle,
+                    #ArchiveList a.toggle:link{
+                      color:rgba(0, 0, 0, 0);
+                      color: #00304D;
+                      font-size: 0.8em;
+                    }
+                    /*!css*/
+                    /*]]>*/
+                  </style>
+                  <b:if cond='data:title != &quot;&quot;'>
+                    <h3><data:title/></h3>
+                  </b:if>
+                  <div class='widget-content'>
+                    <div id='ArchiveList'>
+                      <div expr:id='data:widget.instanceId + &quot;_ArchiveList&quot;'>
+                        <b:include cond='data:style == &quot;HIERARCHY&quot;' data='data' name='interval'/>
+                        <b:include cond='data:style == &quot;FLAT&quot;' data='data' name='flat'/>
+                        <b:include cond='data:style == &quot;MENU&quot;' data='data' name='menu'/>
+                      </div>
+                    </div>
+                    <b:include name='quickedit'/>
+                  </div>
+                </b:includable>
+                <b:includable id='flat' var='data'>
+                  <ul class='flat'>
+                    <b:loop values='data:data' var='i'>
+                      <li class='archivedate'>
+                        <a expr:href='data:i.url'><data:i.name/></a> (<data:i.post-count/>)
+                      </li>
+                    </b:loop>
+                  </ul>
+                </b:includable>           
+                <b:includable id='interval' var='intervalData'>
+                  <ul class='hierarchy'>
+                    <b:loop values='data:intervalData' var='interval'>
+                      <li expr:class='&quot;archivedate &quot; + data:interval.expclass'>
+                        <b:include cond='data:interval.toggleId' data='interval' name='toggle'/>
+                        <div class="informacion">
+                          <a class='post-count-link' expr:href='data:interval.url'>
+                            <data:interval.name/>
+                          </a>
+                          <span class='post-count' dir='ltr'>(<data:interval.post-count/>)</span>
+                        </div>
+                        <b:include cond='data:interval.data' data='interval.data' name='interval'/>
+                        <b:include cond='data:interval.posts' data='interval.posts' name='posts'/>
+                      </li>
+                    </b:loop>
+                  </ul>
+                </b:includable>
+                <b:includable id='menu' var='data'>
+                  <select expr:id='data:widget.instanceId + &quot;_ArchiveMenu&quot;'>
+                    <option value=''><data:title/></option>
+                    <b:loop values='data:data' var='i'>
+                      <option expr:value='data:i.url'><data:i.name/>(<data:i.post-count/>)</option>
+                    </b:loop>
+                  </select>
+                </b:includable>
+                <b:includable id='posts' var='posts'>
+                  <ul class='posts'>
+                    <b:loop values='data:posts' var='post'>
+                      <li><a expr:href='data:post.url'>
+                        <data:post.title/>
+                      </a></li>
+                    </b:loop>
+                  </ul>
+                </b:includable>
+                <b:includable id='toggle' var='interval'>
+                  <a class='toggle' href='javascript:void(0)'>
+                    <span expr:class='&quot;zippy&quot; + (data:interval.expclass == &quot;expanded&quot; ? &quot; toggle-open&quot; : &quot;&quot;)'>
+                      <b:if cond='data:interval.expclass == &quot;expanded&quot;'>
+                        &#9660;&#160;
+                      <b:elseif cond='data:blog.languageDirection == &quot;rtl&quot;'/>
+                        &#9668;&#160;
+                      <b:else/>
+                        &#9658;&#160;
+                      </b:if>
+                    </span>
+                  </a>
+                </b:includable>
+              </b:widget>      
+            </b:section>
+          </div>
           <!-- columns -->
           <!-- main -->
           <!-- MACADOR fin del main 🟨🟨🟨🟨🟨 -->
@@ -3783,7 +3713,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
     <script>
       //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
       //js 👈 comando decorativo "Highlight String Code"
-      const menu = document.getElementById("sidebar-right-1");
+      const menu = document.getElementById("sidebar-right");
       const fondoOpaco = document.getElementById("overlay-fondo-opaco");
       let lugarInicialX, lugarInicialY, distanciaX, menuDesplegado;
 
@@ -3837,18 +3767,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
       //!js
       //]]>
     </script>
-
-    <!-- 
-    *========================
-    🍇marker [HTML]
-    *========================
-    -->
-
-  
-
-
-
-
 
     <!-- marker scripts body -->
     <!--      
