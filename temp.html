@@ -1,33 +1,71 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
-  <title>Iniciar sesión con Google</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layout con Grid</title>
+
+</head>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: Arial, sans-serif;
-      text-align: center;
-      padding-top: 100px;
+      height: fit-content;
     }
-    .google-btn {
-      background-color: #4285F4;
+
+    .contenedor {
+      height: 100%;
+    }
+
+    .sidebar {
+      background: #2c3e50;
       color: white;
-      border: none;
-      padding: 15px 30px;
-      font-size: 16px;
-      border-radius: 5px;
-      cursor: pointer;
+      padding: 20px;
     }
-    .google-btn:hover {
-      background-color: #3367D6;
+
+    .main-content {
+      background: #ecf0f1;
+      padding: 20px;
+      overflow: auto;
     }
   </style>
-</head>
 <body>
-  <h1>Bienvenido</h1>
-  <p>Haz clic para iniciar sesión con una cuenta de Google</p>
-  <button class="google-btn" onclick="window.location.href='https://accounts.google.com/AccountChooser?continue=https://www.google.com'">
-    Cambiar de cuenta / Iniciar sesión con Google
-  </button>
+  <div class="contenedor">
+    <aside class="sidebar">
+      <h2>Barra Lateral</h2>
+      <p>Contenido de la barra</p>
+      <p>Este es un elemento más corto</p>
+    </aside>
+
+    <span class="main-content">
+      <h1>Contenido Principal</h1>
+      Este contenido ocupará todo el espacio restante del ancho de la página, incluso cuando la barra lateral
+        termine.
+
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl
+        nisl aliquam nisl, eget ultricies nisl nisl eget nisl.
+
+      Phasellus auctor non In enim. odio. Nullam metus. molestie facilisis. hendrerit fermentum, nulla facilisis.
+      feugiat, purus in metus Curae; vestibulum. amet, posuere eu In ultricies arcu adipiscing ac imperdiet laoreet. non
+      consectetur tellus id, posuere. mauris. rhoncus Praesent purus nisl pulvinar hendrerit vulputate, magna imperdiet
+      Ut fermentum, dui tellus nulla scelerisque accumsan mollis imperdiet ultrices mus. ante metus. bibendum ut lectus.
+
+
+      consectetur tellus id, posuere. mauris. rhoncus Praesent purus nisl pulvinar hendrerit vulputate, magna imperdiet
+      Ut fermentum, dui tellus nulla scelerisque accumsan mollis imperdiet ultrices mus. ante metus. bibendum ut lectus.
+
+      metus aliquam Cras nonummy justo arcu. arcu nec, et nonummy scelerisque ipsum fringilla. nunc. Cras hendrerit
+      accumsan bibendum Vestibulum tortor, nonummy eu quis ut, vulputate, bibendum Integer parturient Phasellus ut,
+      Lorem pulvinar Phasellus orci, Cras et amet, libero. pharetra Vestibulum dui. nonummy ipsum volutpat in accumsan
+
+    </span>
+  </div>
 </body>
+
 </html>
