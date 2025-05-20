@@ -5,66 +5,160 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Layout con Grid</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 </head>
   <style>
     * {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+    }
+    body{
+      font: normal normal 16px PT Sans Caption;
+      color: #a6b7c1;
+    }
+    a{
+      color: #39A900;
+    }
+    a:visited{
+      color: #39A900;
+    }
+    .content-outer {
+      max-width: 1400px;
+      border-radius: 20px;
+      
+      margin: 50px auto;
+      padding: 0;
+      padding-top: 2000px;
+      box-shadow: #e2e8f0 0px 1px 4px 0px;
+      border: 1px solid #e2e8f0;
+    }
+    #footer{
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
     }
 
-    body {
-      font-family: Arial, sans-serif;
-      height: fit-content;
-    }
-
-    .contenedor {
-      height: 100%;
-    }
-
-    .sidebar {
-      background: #2c3e50;
-      color: white;
-      padding: 20px;
-    }
-
-    .main-content {
-      background: #ecf0f1;
-      padding: 20px;
-      overflow: auto;
-    }
   </style>
 <body>
-  <div class="contenedor">
-    <aside class="sidebar">
-      <h2>Barra Lateral</h2>
-      <p>Contenido de la barra</p>
-      <p>Este es un elemento más corto</p>
-    </aside>
+  <div class="content-outer">
+    <div class="section" id="footer" name="Pie de pagina"><div class="widget HTML" data-version="1" id="HTML3">
+    <!-- html -->
+      <style>
+        #footer{
+          background: #00000004;
+          overflow: hidden;
+          border-top: none;
+        }
+        #footer .widget{
+          margin: 0;
+          padding: 30px 40px;
+        }
+        .footer-informacion-cont{
+          color: #00304D;
+          color: #a6b7c1;
+        }
+        .footer-informacion{
+          display: grid;
+          gap:20px;
+          grid-template-columns: 1fr 1fr;
+          list-style: none;
+          padding-left: 0;
+          margin: 20px 0;
+        }
+        .footer-informacion > li{
+          display: grid;
+          width: fit-content;
+          column-gap: 10px;
+          grid-template-rows: 1fr 1fr;
+          grid-template-columns: auto 1fr;
+          grid-template-areas:
+          "div b"
+          "div p";
+        }
+        .footer-informacion > li > b{
+          grid-area: b;
+        }
+        .footer-informacion > li > p{
+          grid-area: p;
+        }
+        .footer-informacion > li > div{
+          box-sizing: border-box;
+          padding: 5px;
+          border-radius: 10px;
+          height: 45px;
+          width: 45px;
+          background-color: #a6b7c12a;
+          grid-area: div;
+        }
+        .footer-informacion > li > div > svg{
+          height: 100%;
+          width: auto;
+          fill: #a6b7c1;
+        }
 
-    <span class="main-content">
-      <h1>Contenido Principal</h1>
-      Este contenido ocupará todo el espacio restante del ancho de la página, incluso cuando la barra lateral
-        termine.
+        .footer-tittle{
+          opacity: .5;
+          color: #39A900;
+          text-align: center;
+        }
+        .footer-subtitle{
+          text-align: center;
+        }
 
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl
-        nisl aliquam nisl, eget ultricies nisl nisl eget nisl.
-
-      Phasellus auctor non In enim. odio. Nullam metus. molestie facilisis. hendrerit fermentum, nulla facilisis.
-      feugiat, purus in metus Curae; vestibulum. amet, posuere eu In ultricies arcu adipiscing ac imperdiet laoreet. non
-      consectetur tellus id, posuere. mauris. rhoncus Praesent purus nisl pulvinar hendrerit vulputate, magna imperdiet
-      Ut fermentum, dui tellus nulla scelerisque accumsan mollis imperdiet ultrices mus. ante metus. bibendum ut lectus.
-
-
-      consectetur tellus id, posuere. mauris. rhoncus Praesent purus nisl pulvinar hendrerit vulputate, magna imperdiet
-      Ut fermentum, dui tellus nulla scelerisque accumsan mollis imperdiet ultrices mus. ante metus. bibendum ut lectus.
-
-      metus aliquam Cras nonummy justo arcu. arcu nec, et nonummy scelerisque ipsum fringilla. nunc. Cras hendrerit
-      accumsan bibendum Vestibulum tortor, nonummy eu quis ut, vulputate, bibendum Integer parturient Phasellus ut,
-      Lorem pulvinar Phasellus orci, Cras et amet, libero. pharetra Vestibulum dui. nonummy ipsum volutpat in accumsan
-
-    </span>
+      </style>
+      <div class="footer-informacion-cont">
+        <p>
+          El SENA brinda a la ciudadanía, atención presencial en las 33 Regionales y 117 Centros de Formación, conozca 
+          <a href="http://www.sena.edu.co/es-co/transparencia/Paginas/mecanismosContacto.aspx">aqui</a> 
+          los puntos de atención
+        </p>
+        <ul class="footer-informacion">
+          <li>
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 20H2v-2h5.8A8 8 0 0 0 
+              2 12.3c.6-.2 1.3-.3 2-.3a8 8 0 0 1 8 8zm10-7.7c-.6-.2-1.3-.3-2-.3a8 8 0 0 0-6.9 4 9.8 9.8 0 0 1 .9 4h8v-2h-5.8a8 8 0 0 1 5.8-5.7zM15.6 11a10 10 0 0 1 
+              4.1-5 8 8 0 0 0-7.7 8 10 10 0 0 1 3.6-3zm-4.2-2.2C10.6 6.8 9 4.8 6.7 4A11 11 0 0 1 9 10.7v.6l1.2.8a10 10 0 0 1 1.2-3.3z"/></svg>
+            </div>
+            <b>Dirección Centro Agroturístico:</b>
+            <p>Calle 22 No. 9 - 82 San Gil (Santander), Colombia </p>
+          </li>
+          <li>
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M120-200v-400q0-33 
+              23.5-56.5T200-680h160v-47q0-16 6-30.5t17-25.5l40-40q23-23 57-23t57 23l40 40q11 11 17 25.5t6 30.5v207h160q33 0 56.5 23.5T840-440v240q0 33-23.5 
+              56.5T760-120H200q-33 0-56.5-23.5T120-200Zm80 0h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm240 
+              320h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm240 480h80v-80h-80v80Zm0-160h80v-80h-80v80Z"/></svg>
+            </div>
+            <b>Dirección General: </b>
+            <p>Calle 57 No. 8 - 69 Bogotá D.C. (Cundinamarca), Colombia</p>
+          </li>
+          <li>
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#1f1f1f"><g>
+              <rect fill="none" height="24" width="24"/></g><g><g><path d="M21,12.22C21,6.73,16.74,3,12,3c-4.69,0-9,3.65-9,9.28C2.4,12.62,2,13.26,2,14v2c0,
+              1.1,0.9,2,2,2h1v-6.1 c0-3.87,3.13-7,7-7s7,3.13,7,7V19h-8v2h8c1.1,0,2-0.9,2-2v-1.22c0.59-0.31,1-0.92,1-1.64v-2.3C22,13.14,21.59,12.53,21,12.22z"/>
+              <circle cx="9" cy="13" r="1"/><circle cx="15" cy="13" r="1"/><path d="M18,11.03C17.52,8.18,15.04,6,12.05,6c-3.03,0-6.29,2.51-6.03,6.45c2.47-1.01,
+              4.33-3.21,4.86-5.89 C12.19,9.19,14.88,11,18,11.03z"/></g></g></svg>
+            </div>
+            <b>Atención telefónica: </b>
+            <p>lunes a viernes 7:00 a.m. a 7:00 p.m. - sábados 8:00 a.m. a 1:00 p.m.</p>
+          </li>
+          <li>
+            <div><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/>
+            <path d="M15.5 1h-8C6.12 1 5 2.12 5 3.5v17C5 21.88 6.12 23 7.5 23h8c1.38 0 2.5-1.12 2.5-2.5v-17C18 2.12 16.88 1 15.5 
+            1zm-4 21c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4.5-4H7V4h9v14z"/></svg>
+          </div>
+            <b>Líneas de atención al ciudadanos, empresarios y línea PQRS:: </b>
+            <p>Bogotá +(57) 601 736 60 60 - Línea gratuita y resto del país 018000 910270</p>
+          </li>
+        </ul>
+        <h2 class="footer-tittle">Servicio Nacional de Aprendizaje SENA</h2>
+        <p class="footer-subtitle">Centro Agroturistico - Regional Santander</p>
+      </div>
+      <!-- !html -->
+    </div>
   </div>
 </body>
 

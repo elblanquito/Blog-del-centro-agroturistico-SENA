@@ -9,7 +9,7 @@
 > - [conceptos basicos](https://blog.templatetoaster.com/create-blogger-template-tutorial-guide/)
 > - [documentacion oficial de blogger](https://bloggercode-blogconnexion.blogspot.com/search/label/knowledgeBase+k:references+r:tags?max-results=50)
 
-> [!TIP]  
+> [!IMPORTANT]  
 > ## ¿Dónde trabajar?  
 > Recomiendo usar Visual Studio Code para modificar este código aun que claro
 > un GRAN truco es si tienes un error ir al editor del blogger `tema/personalizar/editar HTML`
@@ -36,6 +36,11 @@
 > 3. Haz clic en "Restablecer"  
 > 4. Carga el archivo que estás editando
 > 5. Al actualizar tu blog, los cambios estarán aplicados 
+
+> [!TIP]
+> por ultimo si estas usando visual studio presiona
+> `Ctrl + Shift + f` y busca "|||" para ver las
+> partes principales del documento 😊
 
 > [!IMPORTANT]  
 > ## Tener en cuenta  
@@ -85,8 +90,3 @@ selecionas la opcion "para computadora"
 >   /*]]>*/  
 > </style>  
 > ```
-
-> [!TIP]
-> por ultimo si estas usando visual studio presiona
-> `Ctrl + Shift + f` y busca "marker" para ver las
-> partes principales del documento 😊
