@@ -207,10 +207,9 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
           color: $(link.hover.color);
         }
         .section, .widget {margin: 0; line-height: 1.4}
-        .widget ul li, .widget #ArchiveList ul.flat li {
+        .widget #ArchiveList ul.flat li {
           padding: .25em 0;
         }
-        .widget ul{line-height: unset;}
         .header-outer {
           display: none;
           background: $(header.background.color) $(header.background.gradient) repeat-x scroll top left;
@@ -223,24 +222,9 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
 
         /* Widgets
         ----------------------------------------------- */
-        .widget ul, .widget #ArchiveList ul.flat {
-          padding: 0;
+        .widget ul{
           list-style: none;
         }
-        .widget ul li, .widget #ArchiveList ul.flat li {
-          border-top: dashed 1px #ccc;
-          border-top: dashed 1px rgba(128, 128, 128, .5);
-        }
-        .widget ul li:first-child, .widget #ArchiveList ul.flat li:first-child {
-          border-top: none;
-        }
-        .widget .post-body ul {
-          list-style: disc;
-        }
-        .widget .post-body ul li {
-          border: none;
-        }
-
         /*
         ========================
         |||🍇 [CSS]
@@ -336,6 +320,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
             box-sizing: border-box;
             box-shadow: -4px 0px 8px 0 rgba(0, 0, 0, 0.2);
             transition: transform 0.5s ease-in-out;
+            background-color: #ffffff;
           }
           .sidebar-right-seccion{
             padding: 0;
@@ -469,6 +454,12 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
       .content-outer {
         padding: 0;
         border: 1px solid #e2e8f0;
+      }
+      @media (max-width: 800px) {
+        .content-outer{
+          border-radius: 0px;
+          margin: 0px;
+        }
       }
       /*!css*/
     </style>
@@ -833,10 +824,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
             grid-area: intermedio;
           }
           @media (max-width: 800px) {
-            .content-outer{
-              border-radius: 0px;
-              margin-top: 0px;
-            }
             .main-outer {
               border-radius: 0px;
               padding: 0;
@@ -3239,6 +3226,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                     }           
                     .red-social-link .youtube > svg {
                       animation-delay: 2.5s;
+                      fill: #ff0033;
                     }           
                     .red-social-link .instagram > svg {
                       animation-delay: 1.5s;
@@ -3257,22 +3245,18 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                               <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 16 16"> <path fill="#1976D2" d="M14 0H2C.897 0 0 .897 0 2v12c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2V2c0-1.103-.897-2-2-2z"></path><path fill="#FAFAFA" fill-rule="evenodd" d="M13.5 8H11V6c0-.552.448-.5 1-.5h1V3h-2a3 3 0 0 0-3 3v2H6v2.5h2V16h3v-5.5h1.5l1-2.5z" clip-rule="evenodd"></path></svg>
                           </b:if>
                           <b:if cond='data:link.title == "x"'>
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0,0,256,256" width="50px" height="50px" fill-rule="nonzero"><g transform="translate(-23.04,-23.04) scale(1.18,1.18)"><g fill="#000000" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M11,4c-3.866,0 -7,3.134 -7,7v28c0,3.866 3.134,7 7,7h28c3.866,0 7,-3.134 7,-7v-28c0,-3.866 -3.134,-7 -7,-7zM13.08594,13h7.9375l5.63672,8.00977l6.83984,-8.00977h2.5l-8.21094,9.61328l10.125,14.38672h-7.93555l-6.54102,-9.29297l-7.9375,9.29297h-2.5l9.30859,-10.89648zM16.91406,15l14.10742,20h3.06445l-14.10742,-20z"></path></g></g></g></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path stroke-miterlimit="10" d="M11 4a7 7 0 0 0-7 7v28a7 7 0 0 0 7 7h28a7 7 0 0 0 7-7V11a7 7 0 0 0-7-7zm2 9h8l5.7 8 6.8-8H36l-8.2 9.6L37.9 37h-8l-6.5-9.3-7.9 9.3H13l9.3-10.9zm4 2 14 20h3L20 15z" font-family="none" font-size="none" font-weight="none" style="mix-blend-mode:normal" text-anchor="none" transform="translate(-23 -23) scale(6.0416)"/></svg>
                           </b:if>
                           <b:if cond='data:link.title == "youtube"'>
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0,0,256,256" width="30px" height="30px" fill-rule="nonzero"><g transform="translate(-19.2,-19.2) scale(1.15,1.15)"><g fill=" #FF0033 " fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(8.53333,8.53333)"><path d="M15,4c-4.186,0 -9.61914,1.04883 -9.61914,1.04883l-0.01367,0.01563c-1.90652,0.30491 -3.36719,1.94317 -3.36719,3.93555v6v0.00195v5.99805v0.00195c0.00384,1.96564 1.4353,3.63719 3.37695,3.94336l0.00391,0.00586c0,0 5.43314,1.05078 9.61914,1.05078c4.186,0 9.61914,-1.05078 9.61914,-1.05078l0.00195,-0.00195c1.94389,-0.30554 3.37683,-1.97951 3.37891,-3.94727v-0.00195v-5.99805v-0.00195v-6c-0.00288,-1.96638 -1.43457,-3.63903 -3.37695,-3.94531l-0.00391,-0.00586c0,0 -5.43314,-1.04883 -9.61914,-1.04883zM12,10.39844l8,4.60156l-8,4.60156z"></path></g></g></g></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 256 256"><path stroke-miterlimit="10" d="M15 4c-4.2 0-9.6 1-9.6 1A4 4 0 0 0 2 9v12a4 4 0 0 0 3.4 4s5.4 1 9.6 1c4.2 0 9.6-1 9.6-1a4 4 0 0 0 3.4-4V9a4 4 0 0 0-3.4-4S19.2 4 15 4zm-3 6.4 8 4.6-8 4.6z" font-family="none" font-size="none" font-weight="none" style="mix-blend-mode:normal" text-anchor="none" transform="translate(-19.2 -19.2) scale(9.8133295)"/></svg>
                           </b:if>
                           <b:if cond='data:link.title == "instagram"'>
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="1000" height="1000" viewBox="0 0 264.5833 264.5833" inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)" sodipodi:docname="Instagram_(2022).svg"><defs><radialGradient id="f" cx="158.429" cy="578.088" r="52.3515" xlink:href="#a" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0 -4.03418 4.28018 0 -2332.2273 942.2356)" fx="158.429" fy="578.088"/><radialGradient inkscape:collect="always" xlink:href="#b" id="g" gradientUnits="userSpaceOnUse" gradientTransform="matrix(.67441 -1.16203 1.51283 .87801 -814.3657 -47.8354)" cx="172.6149" cy="600.6924" fx="172.6149" fy="600.6924" r="65"/><radialGradient inkscape:collect="always" xlink:href="#c" id="h" cx="144.012" cy="51.3367" fx="144.012" fy="51.3367" r="67.081" gradientTransform="matrix(-2.3989 .67549 -.23008 -.81732 464.9957 -26.4035)" gradientUnits="userSpaceOnUse"/>
-                              <radialGradient inkscape:collect="always" xlink:href="#d" id="e" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-3.10797 .87652 -.6315 -2.23914 1345.6503 1374.1983)" cx="199.7884" cy="628.4379" fx="199.7884" fy="628.4379" r="52.3515"/><linearGradient inkscape:collect="always" id="d"><stop offset="0" stop-color="#ff005f"/><stop offset="1" stop-color="#fc01d8"/></linearGradient><linearGradient id="c"><stop offset="0" stop-color="#780cff"/><stop stop-color="#820bff" offset="1" stop-opacity="0"/></linearGradient><linearGradient inkscape:collect="always" id="b"><stop offset="0" stop-color="#fc0"/><stop offset="1" stop-color="#fc0" stop-opacity="0"/></linearGradient><linearGradient id="a"><stop offset="0" stop-color="#fc0"/><stop offset=".1242" stop-color="#fc0"/><stop offset=".5672" stop-color="#fe4a05"/><stop offset=".6942" stop-color="#ff0f3f"/>
-                              <stop offset="1" stop-color="#fe0657" stop-opacity="0"/></linearGradient></defs><sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:zoom=".515" inkscape:cx="500" inkscape:cy="500" inkscape:document-units="mm" inkscape:current-layer="layer1" inkscape:document-rotation="0" showgrid="false" inkscape:window-width="1366" inkscape:window-height="705" inkscape:window-x="-8" inkscape:window-y="-8" inkscape:window-maximized="1"/><g inkscape:label="Layer 1" inkscape:groupmode="layer"><path d="M204.1503 18.1429c-55.2305 0-71.3834.057-74.5232.3175-11.3342.9424-18.387 2.7275-26.0708 6.554-5.9214 2.9413-10.5915 6.3506-15.2005 11.1298-8.3938 8.7157-13.481 19.4383-15.3226 32.1842-.8953 6.1877-1.1558 7.4496-1.2087 39.0558-.0203 10.5354 0 24.4007 0 42.9984 0 55.2008.061 71.3418.3256 74.4764.9157 11.032 2.6453 17.9728 6.3081 25.565 7 14.5329 20.369 25.4428 36.119 29.5137 5.4535 1.4044 11.4767 2.1779 19.2092 2.5442 3.2762.1425 36.6684.2443 70.081.2443 33.4127 0 
-                              66.8253-.0407 70.02-.2035 8.9535-.4214 14.1526-1.1195 19.9011-2.6054 15.8517-4.0912 28.9767-14.8383 36.119-29.5748 3.5916-7.409 5.4128-14.6144 6.237-25.0704.179-2.2796.2543-38.6263.2543-74.924 0-36.304-.0814-72.5835-.2605-74.8632-.8343-10.6249-2.6555-17.7692-6.363-25.3207-3.0421-6.1816-6.42-10.798-11.324-15.518-8.752-8.3616-19.4555-13.4502-32.2101-15.2902-6.18-.8936-7.411-1.1582-39.033-1.2131z" inkscape:connector-curvature="0" fill="url(#e)" transform="translate(-71.8155 -18.1429)"/><path d="M204.1503 18.1429c-55.2305 0-71.3834.057-74.5232.3175-11.3342.9424-18.387 2.7275-26.0708 6.554-5.9214 2.9413-10.5915 6.3506-15.2005 11.1298-8.3938 8.7157-13.481 19.4383-15.3226 32.1842-.8953 6.1877-1.1558 7.4496-1.2087 39.0558-.0203 10.5354 0 24.4007 0 42.9984 0 55.2008.061 71.3418.3256 74.4764.9157 11.032 2.6453 17.9728 6.3081 25.565 7 14.5329 20.369 25.4428 36.119 29.5137 5.4535 1.4044 11.4767 2.1779 19.2092 2.5442 3.2762.1425 36.6684.2443 70.081.2443 33.4127 0 66.8253-.0407 70.02-.2035 8.9535-.4214 14.1526-1.1195 19.9011-2.6054 15.8517-4.0912 
-                              28.9767-14.8383 36.119-29.5748 3.5916-7.409 5.4128-14.6144 6.237-25.0704.179-2.2796.2543-38.6263.2543-74.924 0-36.304-.0814-72.5835-.2605-74.8632-.8343-10.6249-2.6555-17.7692-6.363-25.3207-3.0421-6.1816-6.42-10.798-11.324-15.518-8.752-8.3616-19.4555-13.4502-32.2101-15.2902-6.18-.8936-7.411-1.1582-39.033-1.2131z" inkscape:connector-curvature="0" fill="url(#f)" transform="translate(-71.8155 -18.1429)"/><path d="M204.1503 18.1429c-55.2305 0-71.3834.057-74.5232.3175-11.3342.9424-18.387 2.7275-26.0708 6.554-5.9214 2.9413-10.5915 6.3506-15.2005 11.1298-8.3938 8.7157-13.481 19.4383-15.3226 32.1842-.8953 6.1877-1.1558 7.4496-1.2087 39.0558-.0203 10.5354 0 24.4007 0 42.9984 0 55.2008.061 71.3418.3256 74.4764.9157 11.032 2.6453 17.9728 6.3081 25.565 7 14.5329 20.369 25.4428 36.119 29.5137 5.4535 1.4044 11.4767 2.1779 19.2092 2.5442 3.2762.1425 36.6684.2443 70.081.2443 33.4127 0 66.8253-.0407 70.02-.2035 8.9535-.4214 14.1526-1.1195 19.9011-2.6054 15.8517-4.0912 28.9767-14.8383 36.119-29.5748 3.5916-7.409 5.4128-14.6144 
-                              6.237-25.0704.179-2.2796.2543-38.6263.2543-74.924 0-36.304-.0814-72.5835-.2605-74.8632-.8343-10.6249-2.6555-17.7692-6.363-25.3207-3.0421-6.1816-6.42-10.798-11.324-15.518-8.752-8.3616-19.4555-13.4502-32.2101-15.2902-6.18-.8936-7.411-1.1582-39.033-1.2131z" inkscape:connector-curvature="0" fill="url(#g)" transform="translate(-71.8155 -18.1429)"/><path d="M204.1503 18.1429c-55.2305 0-71.3834.057-74.5232.3175-11.3342.9424-18.387 2.7275-26.0708 6.554-5.9214 2.9413-10.5915 6.3506-15.2005 11.1298-8.3938 8.7157-13.481 19.4383-15.3226 32.1842-.8953 6.1877-1.1558 7.4496-1.2087 39.0558-.0203 10.5354 0 24.4007 0 42.9984 0 55.2008.061 71.3418.3256 74.4764.9157 11.032 2.6453 17.9728 6.3081 25.565 7 14.5329 20.369 25.4428 36.119 29.5137 5.4535 1.4044 11.4767 2.1779 19.2092 2.5442 3.2762.1425 36.6684.2443 70.081.2443 33.4127 0 66.8253-.0407 70.02-.2035 8.9535-.4214 14.1526-1.1195 19.9011-2.6054 15.8517-4.0912 28.9767-14.8383 
-                              36.119-29.5748 3.5916-7.409 5.4128-14.6144 6.237-25.0704.179-2.2796.2543-38.6263.2543-74.924 0-36.304-.0814-72.5835-.2605-74.8632-.8343-10.6249-2.6555-17.7692-6.363-25.3207-3.0421-6.1816-6.42-10.798-11.324-15.518-8.752-8.3616-19.4555-13.4502-32.2101-15.2902-6.18-.8936-7.411-1.1582-39.033-1.2131z" inkscape:connector-curvature="0" fill="url(#h)" transform="translate(-71.8155 -18.1429)"/><path d="M132.3452 33.973c-26.7167 0-30.0696.1167-40.5629.5939-10.4727.4792-17.6212 2.136-23.8762 4.567-6.4701 2.5107-11.9586 5.8693-17.4265 11.3352-5.472 5.464-8.8332 10.9483-11.354 17.4116-2.4389 6.2524-4.099 13.3976-4.5703 23.8585-.4693 10.4854-.5923 13.8379-.5923 40.5348 0 26.697.1189 30.0371.5943 40.5225.4817 10.465 2.1397 17.6082 4.5703 23.8585 2.5147 6.4654 5.8758 11.9497 11.3458 17.4136 5.466 5.468 10.9544 8.8349 17.4204 11.3456 6.259 2.4309 13.4097 4.0877 23.8803 4.567 10.4933.477 13.8441.5938 40.5588.5938 26.7188 0 30.0615-.1167 40.5547-.5939 10.4728-.4792 17.6295-2.136 23.8885-4.567 6.4681-2.5106 11.9484-5.8775 17.4143-11.3455 5.472-5.4639 
-                              8.8332-10.9482 11.354-17.4115 2.4183-6.2524 4.0784-13.3976 4.5703-23.8585.4713-10.4854.5943-13.8277.5943-40.5246 0-26.697-.123-30.0473-.5943-40.5328-.4919-10.465-2.152-17.6081-4.5703-23.8584-2.5208-6.4654-5.882-11.9498-11.354-17.4137-5.4721-5.468-10.9442-8.8266-17.4204-11.3353-6.2714-2.4309-13.424-4.0877-23.8967-4.5669-10.4933-.4772-13.8339-.5939-40.5588-.5939zm-8.825 17.7147c2.6193-.0041 5.5418 0 8.825 0 26.2659 0 29.379.0942 39.7513.5652 9.5915.4383 14.7971 2.0397 18.2648 3.3852 4.5908 1.7817 7.8638 3.9116 11.3048 7.3521 3.4431 3.4406 5.5745 6.7173 7.3617 11.3046 1.3465 3.461 2.9512 8.6628 3.3877 18.2472.4714 10.3625.5739 13.4754.5739 39.7095 0 26.234-.1025 29.347-.5739 39.7095-.4386 9.5843-2.0412 14.7861-3.3877 18.2471-1.783 4.5874-3.9186 7.8539-7.3617 11.2923-3.443 3.4406-6.712 5.5704-11.3048 7.3521-3.4636 1.3517-8.6733 2.949-18.2648 3.3873-10.3702.471-13.4854.5734-39.7513.5734-26.2679 0-29.381-.1024-39.7513-.5734-9.5914-.4423-14.797-2.0438-18.2668-3.3893-4.5908-1.7817-7.87-3.9116-11.313-7.3521-3.4431-3.4405-5.5745-6.709-7.3617
-                              -11.2985-1.3465-3.461-2.9512-8.6628-3.3877-18.2471-.4714-10.3626-.5657-13.4754-.5657-39.7259 0-26.2504.0943-29.347.5657-39.7095.4386-9.5844 2.0412-14.7861 3.3877-18.2512 1.783-4.5874 3.9186-7.8641 7.3617-11.3046 3.443-3.4406 6.7222-5.5704 11.313-7.3562 3.4677-1.3517 8.6754-2.949 18.2668-3.3894 9.075-.4096 12.5919-.5324 30.9264-.553zm61.3363 16.322c-6.5173 0-11.805 5.2776-11.805 11.792 0 6.5125 5.2877 11.7962 11.805 11.7962 6.5172 0 11.8049-5.2837 11.8049-11.7962 0-6.5124-5.2877-11.796-11.805-11.796zm-52.5113 13.7826c-27.8993 0-50.5191 22.6031-50.5191 50.4817 0 27.8786 22.6198 50.4714 50.5191 50.4714s50.511-22.5928 50.511-50.4714c0-27.8786-22.6137-50.4817-50.513-50.4817zm0 17.7147c18.109 0 32.7914 14.6694 32.7914 32.767 0 18.0956-14.6824 32.767-32.7914 32.767-18.111 0-32.7913-14.6714-32.7913-32.767 0-18.0976 14.6803-32.767 32.7913-32.767z" inkscape:connector-curvature="0" fill="#fff"/></g>
-                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 264.6 264.6"><defs><radialGradient xlink:href="#a" id="f" cx="158.4" cy="578.1" r="52.4" fx="158.4" fy="578.1" gradientTransform="matrix(0 -4.03418 4.28018 0 -2332.2 942.2)" gradientUnits="userSpaceOnUse"/><radialGradient xlink:href="#b" id="g" cx="172.6" cy="600.7" r="65" fx="172.6" fy="600.7" gradientTransform="matrix(.67441 -1.16203 1.51283 .87801 -814.4 -47.8)" gradientUnits="userSpaceOnUse"/><radialGradient xlink:href="#c" id="h" cx="144" cy="51.3" r="67.1" fx="144" fy="51.3" gradientTransform="matrix(-2.3989 .67549 -.23008 -.81732 465 -26.4)" gradientUnits="userSpaceOnUse"/><radialGradient xlink:href="#d" id="e" cx="199.8" cy="628.4" r="52.4" fx="199.8" fy="628.4" gradientTransform="matrix(-3.10797 .87652 -.6315 -2.23914 1345.7 1374.2)" 
+                            gradientUnits="userSpaceOnUse"/><linearGradient id="d"><stop offset="0" stop-color="#ff005f"/><stop offset="1" stop-color="#fc01d8"/></linearGradient><linearGradient id="c"><stop offset="0" stop-color="#780cff"/><stop offset="1" stop-color="#820bff" stop-opacity="0"/></linearGradient><linearGradient id="b"><stop offset="0" stop-color="#fc0"/><stop offset="1" stop-color="#fc0" stop-opacity="0"/></linearGradient><linearGradient id="a"><stop offset="0" stop-color="#fc0"/><stop offset=".1" stop-color="#fc0"/><stop offset=".6" stop-color="#fe4a05"/><stop offset=".7" stop-color="#ff0f3f"/><stop offset="1" stop-color="#fe0657" stop-opacity="0"/></linearGradient></defs><path fill="url(#e)" d="M204.2 18.1c-55.3 0-71.4.1-74.6.4a65.6 65.6 0 0 0-26 6.5A56.8 56.8 0 0 0 73 68.3c-1 6.2-1.2 7.5-1.3 39v43c0 55.3 0 71.4.4 74.6.9 11 2.6 18 6.3 25.5a55.7 
+                            55.7 0 0 0 36 29.5 93.8 93.8 0 0 0 19.3 2.6l70 .2c33.5 0 66.9 0 70-.2 9-.4 14.2-1.1 20-2.6 15.8-4 29-14.8 36.1-29.6a65.4 65.4 0 0 0 6.2-25c.2-2.3.3-38.7.3-75s0-72.5-.3-74.8a64.7 64.7 0 0 0-6.3-25.3c-3-6.2-6.4-10.8-11.3-15.6a57.1 57.1 0 0 0-32.3-15.2c-6.1-1-7.4-1.2-39-1.3z" transform="translate(-71.8 -18.1)"/><path fill="url(#f)" d="M204.2 18.1c-55.3 0-71.4.1-74.6.4a65.6 65.6 0 0 0-26 6.5A56.8 56.8 0 0 0 73 68.3c-1 6.2-1.2 7.5-1.3 39v43c0 55.3 0 71.4.4 74.6.9 11 2.6 18 6.3 25.5a55.7 55.7 0 0 0 36 29.5 93.8 93.8 0 0 0 19.3 2.6l70 .2c33.5 0 66.9 0 70-.2 9-.4 14.2-1.1 20-2.6 15.8-4 29-14.8 36.1-29.6a65.4 65.4 0 0 0 6.2-25c.2-2.3.3-38.7.3-75s0-72.5-.3-74.8a64.7 64.7 0 0 0-6.3-25.3c-3-6.2-6.4-10.8-11.3-15.6a57.1 57.1 0 0 0-32.3-15.2c-6.1-1-7.4-1.2-39-1.3z" transform="translate(-71.8 -18.1)"/><path fill="url(#g)" d="M204.2 18.1c-55.3 0-71.4.1-74.6.4a65.6 
+                            65.6 0 0 0-26 6.5A56.8 56.8 0 0 0 73 68.3c-1 6.2-1.2 7.5-1.3 39v43c0 55.3 0 71.4.4 74.6.9 11 2.6 18 6.3 25.5a55.7 55.7 0 0 0 36 29.5 93.8 93.8 0 0 0 19.3 2.6l70 .2c33.5 0 66.9 0 70-.2 9-.4 14.2-1.1 20-2.6 15.8-4 29-14.8 36.1-29.6a65.4 65.4 0 0 0 6.2-25c.2-2.3.3-38.7.3-75s0-72.5-.3-74.8a64.7 64.7 0 0 0-6.3-25.3c-3-6.2-6.4-10.8-11.3-15.6a57.1 57.1 0 0 0-32.3-15.2c-6.1-1-7.4-1.2-39-1.3z" transform="translate(-71.8 -18.1)"/><path fill="url(#h)" d="M204.2 18.1c-55.3 0-71.4.1-74.6.4a65.6 65.6 0 0 0-26 6.5A56.8 56.8 0 0 0 73 68.3c-1 6.2-1.2 7.5-1.3 39v43c0 55.3 0 71.4.4 74.6.9 11 2.6 18 6.3 25.5a55.7 55.7 0 0 0 36 29.5 93.8 93.8 0 0 0 19.3 2.6l70 .2c33.5 0 66.9 0 70-.2 9-.4 14.2-1.1 20-2.6 15.8-4 29-14.8 36.1-29.6a65.4 65.4 0 0 0 6.2-25c.2-2.3.3-38.7.3-75s0-72.5-.3-74.8a64.7 64.7 0 0 0-6.3-25.3c-3-6.2-6.4-10.8-11.3-15.6a57.1 57.1 0 0 0-32.3-15.2c-6.1-1-7.4-1.2-39-1.3z" 
+                            transform="translate(-71.8 -18.1)"/><path fill="#fff" d="M132.3 34c-26.7 0-30 0-40.5.6A72.2 72.2 0 0 0 67.9 39c-6.5 2.5-12 5.9-17.4 11.4-5.5 5.4-8.9 11-11.4 17.4a71.8 71.8 0 0 0-4.5 23.8c-.5 10.5-.6 13.9-.6 40.6 0 26.7 0 30 .6 40.5a72.2 72.2 0 0 0 4.5 23.9c2.5 6.4 5.9 11.9 11.4 17.4 5.4 5.4 11 8.8 17.4 11.3 6.3 2.4 13.4 4.1 23.9 4.6 10.5.5 13.8.6 40.5.6 26.8 0 30-.1 40.6-.6a72.3 72.3 0 0 0 23.9-4.6c6.4-2.5 12-5.9 17.4-11.3 5.5-5.5 8.8-11 11.3-17.4 2.5-6.3 4.1-13.4 4.6-23.9.5-10.5.6-13.8.6-40.5s-.1-30-.6-40.6a72.8 72.8 0 0 0-4.6-23.8c-2.5-6.5-5.8-12-11.3-17.4A48 48 0 0 0 196.8 39c-6.3-2.4-13.5-4-24-4.5-10.4-.5-13.8-.6-40.5-.6zm-8.8 17.7h8.8c26.3 0 29.4 0 39.8.6 9.6.4 14.8 2 18.3 3.3 4.6 1.8 7.8 4 11.3 7.4 3.4 3.4 5.5 6.7 7.3 11.3 1.4 3.5 3 8.7 3.4 18.2.5 10.4.6 13.5.6 39.8 0 26.2-.1 29.3-.6 39.7-.4 9.5-2 14.7-3.4 18.2-1.8 4.6-3.9 7.9-7.3 11.3a30.4 30.4 0 0 
+                            1-11.3 7.4c-3.5 1.3-8.7 2.9-18.3 3.3a685 685 0 0 1-39.8.6 685 685 0 0 1-39.7-.6c-9.6-.4-14.8-2-18.3-3.3-4.6-1.8-7.8-4-11.3-7.4a30.5 30.5 0 0 1-7.3-11.3c-1.4-3.5-3-8.7-3.4-18.2-.5-10.4-.6-13.5-.6-39.8 0-26.2 0-29.3.6-39.7.4-9.6 2-14.8 3.4-18.2 1.7-4.6 3.9-7.9 7.3-11.3 3.5-3.5 6.7-5.6 11.3-7.4 3.5-1.3 8.7-3 18.3-3.4 9-.4 12.6-.5 31-.5zM185 68a11.8 11.8 0 1 0 0 23.6 11.8 11.8 0 0 0 0-23.6zm-52.6 13.8a50.5 50.5 0 1 0 0 101 50.5 50.5 0 0 0 0-101zm0 17.7a32.8 32.8 0 1 1 0 65.6 32.8 32.8 0 0 1 0-65.6z"/></svg>
                           </b:if>
                         </div>
                       </a>
@@ -3605,22 +3589,20 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
         <b:widget id='HTML3' locked='false' title='prueba' type='HTML'>
           <b:widget-settings>
             <b:widget-setting name='content'><![CDATA[
-            <!-- html -->
+              <!-- html -->
               <style>
                 #footer{
-                  background: #00000004;
+                  background: #00304D;
                   overflow: hidden;
                   border-top: none;
-                }
-                #footer .widget{
-                  margin: 0;
-                  padding: 30px 40px;
+                  padding: 20px 40px;
+                  display: flex;
                 }
                 .footer-informacion-cont{
                   color: #00304D;
                   color: #a6b7c1;
                 }
-                .footer-informacion{
+                ul.footer-informacion{
                   display: grid;
                   gap:20px;
                   grid-template-columns: 1fr 1fr;
@@ -3629,94 +3611,110 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   margin: 20px 0;
                 }
                 .footer-informacion > li{
-                  display: grid;
+                  display: flex;
                   width: fit-content;
-                  column-gap: 10px;
-                  grid-template-rows: 1fr 1fr;
-                  grid-template-columns: auto 1fr;
-                  grid-template-areas:
-                  "div b"
-                  "div p";
+                  column-gap: 15px;
+                  align-items: center;
                 }
-                .footer-informacion > li > b{
-                  grid-area: b;
-                }
-                .footer-informacion > li > p{
-                  grid-area: p;
-                }
-                .footer-informacion > li > div{
-                  box-sizing: border-box;
-                  padding: 5px;
+                .footer-icono{
                   border-radius: 10px;
-                  height: 45px;
-                  width: 45px;
-                  background-color: #a6b7c12a;
-                  grid-area: div;
+                  height: 35px;
                 }
-                .footer-informacion > li > div > svg{
+                .footer-icono > svg{
                   height: 100%;
                   width: auto;
-                  fill: #a6b7c1;
+                  opacity: 1;
                 }
-
+                .footer-informacion-txt{
+                  display: flex;
+                  flex-direction: column;
+                }
+                .footer-informacion-txt > b{
+                  opacity: 1;
+                  color: #39A900;
+                }
                 .footer-tittle{
-                  opacity: .5;
+                  opacity: 1;
                   color: #39A900;
                   text-align: center;
                 }
                 .footer-subtitle{
                   text-align: center;
                 }
-
+                
+                /* diseño claro 👇*/
+                /*
+                #footer{
+                  background: #00000004;
+                }
+                .footer-informacion .footer-icono{
+                  background-color: #ffffff52;
+                }
+                .footer-icono > svg{
+                  opacity: .5;
+                  fill: #39A900;
+                }
+                .footer-informacion-txt > b{opacity: .5;}
+                .footer-tittle{opacity: .5;}
+                */
+                @media screen and (max-width: 800px){
+                  ul.footer-informacion{
+                    grid-template-columns: 1fr;
+                    padding-left: 0;
+                    margin: 20px 0;
+                  }
+                  #footer{
+                  padding: 30px 20px;
+                  border-radius: 0;
+                  }
+                }
               </style>
               <div class="footer-informacion-cont">
-                <p>
+                <span>
                   El SENA brinda a la ciudadanía, atención presencial en las 33 Regionales y 117 Centros de Formación, conozca 
                   <a href="http://www.sena.edu.co/es-co/transparencia/Paginas/mecanismosContacto.aspx">aqui</a> 
                   los puntos de atención
-                </p>
+                </span>
                 <ul class="footer-informacion">
                   <li>
-                    <div>
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 20H2v-2h5.8A8 8 0 0 0 
-                      2 12.3c.6-.2 1.3-.3 2-.3a8 8 0 0 1 8 8zm10-7.7c-.6-.2-1.3-.3-2-.3a8 8 0 0 0-6.9 4 9.8 9.8 0 0 1 .9 4h8v-2h-5.8a8 8 0 0 1 5.8-5.7zM15.6 11a10 10 0 0 1 
-                      4.1-5 8 8 0 0 0-7.7 8 10 10 0 0 1 3.6-3zm-4.2-2.2C10.6 6.8 9 4.8 6.7 4A11 11 0 0 1 9 10.7v.6l1.2.8a10 10 0 0 1 1.2-3.3z"/></svg>
+                    <div class="footer-icono">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 20H2v-2h5.8A8 8 0 0 0 2 12.3c.6-.2 1.3-.3 2-.3a8 8 0 0 1 8 8zm10-7.7c-.6-.2-1.3-.3-2-.3a8 8 0 0 0-6.9 4 9.8 9.8 0 0 1 .9 4h8v-2h-5.8a8 8 0 0 1 5.8-5.7zM15.6 11a10 10 0 0 1 4.1-5 8 8 0 0 0-7.7 8 10 10 0 0 1 3.6-3zm-4.2-2.2C10.6 6.8 9 4.8 6.7 4A11 11 0 0 1 9 10.7v.6l1.2.8a10 10 0 0 1 1.2-3.3z"/></svg>
                     </div>
-                    <b>Dirección Centro Agroturístico:</b>
-                    <p>Calle 22 No. 9 - 82 San Gil (Santander), Colombia </p>
+                    <div class="footer-informacion-txt">
+                      <b>Dirección Centro Agroturístico:</b>
+                      <div>Calle 22 No. 9 - 82 San Gil (Santander), Colombia </span>
+                    </div>
                   </li>
                   <li>
-                    <div>
-                      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M120-200v-400q0-33 
-                      23.5-56.5T200-680h160v-47q0-16 6-30.5t17-25.5l40-40q23-23 57-23t57 23l40 40q11 11 17 25.5t6 30.5v207h160q33 0 56.5 23.5T840-440v240q0 33-23.5 
-                      56.5T760-120H200q-33 0-56.5-23.5T120-200Zm80 0h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm240 
-                      320h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm240 480h80v-80h-80v80Zm0-160h80v-80h-80v80Z"/></svg>
+                    <div class="footer-icono">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M120-200v-400q0-33 23.5-56.5T200-680h160v-47q0-16 6-30.5t17-25.5l40-40q23-23 57-23t57 23l40 40q11 11 17 25.5t6 30.5v207h160q33 0 56.5 23.5T840-440v240q0 33-23.5 56.5T760-120H200q-33 0-56.5-23.5T120-200Zm80 0h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm240 320h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm240 480h80v-80h-80v80Zm0-160h80v-80h-80v80Z"/></svg>
                     </div>
-                    <b>Dirección General: </b>
-                    <p>Calle 57 No. 8 - 69 Bogotá D.C. (Cundinamarca), Colombia</p>
+                    <div class="footer-informacion-txt">
+                      <b>Dirección General: </b>
+                      <div>Calle 57 No. 8 - 69 Bogotá D.C. (Cundinamarca), Colombia</span>
+                    </div>
                   </li>
                   <li>
-                    <div>
-                      <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#1f1f1f"><g>
-                      <rect fill="none" height="24" width="24"/></g><g><g><path d="M21,12.22C21,6.73,16.74,3,12,3c-4.69,0-9,3.65-9,9.28C2.4,12.62,2,13.26,2,14v2c0,
-                      1.1,0.9,2,2,2h1v-6.1 c0-3.87,3.13-7,7-7s7,3.13,7,7V19h-8v2h8c1.1,0,2-0.9,2-2v-1.22c0.59-0.31,1-0.92,1-1.64v-2.3C22,13.14,21.59,12.53,21,12.22z"/>
-                      <circle cx="9" cy="13" r="1"/><circle cx="15" cy="13" r="1"/><path d="M18,11.03C17.52,8.18,15.04,6,12.05,6c-3.03,0-6.29,2.51-6.03,6.45c2.47-1.01,
-                      4.33-3.21,4.86-5.89 C12.19,9.19,14.88,11,18,11.03z"/></g></g></svg>
+                    <div class="footer-icono">
+                      <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24" fill="currentColor"><g><rect fill="none" height="24" width="24"/></g><g><g><path d="M21,12.22C21,6.73,16.74,3,12,3c-4.69,0-9,3.65-9,9.28C2.4,12.62,2,13.26,2,14v2c0,1.1,0.9,2,2,2h1v-6.1 c0-3.87,3.13-7,7-7s7,3.13,7,7V19h-8v2h8c1.1,0,2-0.9,2-2v-1.22c0.59-0.31,1-0.92,1-1.64v-2.3C22,13.14,21.59,12.53,21,12.22z"/><circle cx="9" cy="13" r="1"/><circle cx="15" cy="13" r="1"/><path d="M18,11.03C17.52,8.18,15.04,6,12.05,6c-3.03,0-6.29,2.51-6.03,6.45c2.47-1.01,4.33-3.21,4.86-5.89 C12.19,9.19,14.88,11,18,11.03z"/></g></g></svg>
                     </div>
-                    <b>Atención telefónica: </b>
-                    <p>lunes a viernes 7:00 a.m. a 7:00 p.m. - sábados 8:00 a.m. a 1:00 p.m.</p>
+                    <div class="footer-informacion-txt">
+                      <b>Atención telefónica: </b>
+                      <div>lunes a viernes 7:00 a.m. a 7:00 p.m. - sábados 8:00 a.m. a 1:00 p.m.</span>
+                    </div>
                   </li>
                   <li>
-                    <div><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/>
-                    <path d="M15.5 1h-8C6.12 1 5 2.12 5 3.5v17C5 21.88 6.12 23 7.5 23h8c1.38 0 2.5-1.12 2.5-2.5v-17C18 2.12 16.88 1 15.5 
-                    1zm-4 21c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4.5-4H7V4h9v14z"/></svg>
-                  </div>
-                    <b>Líneas de atención al ciudadanos, empresarios y línea PQRS:: </b>
-                    <p>Bogotá +(57) 601 736 60 60 - Línea gratuita y resto del país 018000 910270</p>
+                    <div class="footer-icono">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.5 1h-8C6.12 1 5 2.12 5 3.5v17C5 21.88 6.12 23 7.5 23h8c1.38 0 2.5-1.12 2.5-2.5v-17C18 2.12 16.88 1 15.5 1zm-4 21c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4.5-4H7V4h9v14z"/></svg>
+                    </div>
+                    <div class="footer-informacion-txt">
+                      <b>Líneas de atención al ciudadanos, empresarios y línea PQRS: </b>
+                      <div>Bogotá +(57) 601 736 60 60 - Resto del país 018000 910270</span>
+                    </div>
                   </li>
                 </ul>
                 <h2 class="footer-tittle">Servicio Nacional de Aprendizaje SENA</h2>
-                <p class="footer-subtitle">Centro Agroturistico - Regional Santander</p>
+                <div class="footer-subtitle">Centro Agroturistico - Regional Santander</div>
               </div>
               <!-- !html -->
             ]]></b:widget-setting>

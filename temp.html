@@ -28,7 +28,6 @@
     .content-outer {
       max-width: 1400px;
       border-radius: 20px;
-      
       margin: 50px auto;
       padding: 0;
       padding-top: 2000px;
@@ -47,13 +46,16 @@
     <!-- html -->
       <style>
         #footer{
-          background: #00000004;
+          background: #00304D;
           overflow: hidden;
           border-top: none;
-        }
-        #footer .widget{
-          margin: 0;
           padding: 30px 40px;
+          display: flex;
+          gap: 20px;
+          flex-direction: column;
+        }
+        #footer .widget {
+          margin: 0;
         }
         .footer-informacion-cont{
           color: #00304D;
@@ -67,95 +69,132 @@
           padding-left: 0;
           margin: 20px 0;
         }
-        .footer-informacion > li{
-          display: grid;
+        ul.footer-informacion > li{
+          display: flex;
           width: fit-content;
-          column-gap: 10px;
-          grid-template-rows: 1fr 1fr;
-          grid-template-columns: auto 1fr;
-          grid-template-areas:
-          "div b"
-          "div p";
+          column-gap: 15px;
+          align-items: center;
         }
-        .footer-informacion > li > b{
-          grid-area: b;
-        }
-        .footer-informacion > li > p{
-          grid-area: p;
-        }
-        .footer-informacion > li > div{
-          box-sizing: border-box;
-          padding: 5px;
+        .footer-icono{
           border-radius: 10px;
-          height: 45px;
-          width: 45px;
-          background-color: #a6b7c12a;
-          grid-area: div;
+          height: 35px;
         }
-        .footer-informacion > li > div > svg{
+        .footer-icono > svg{
           height: 100%;
           width: auto;
-          fill: #a6b7c1;
+          opacity: 1;
         }
-
+        .footer-informacion-txt{
+          display: flex;
+          flex-direction: column;
+        }
+        .footer-informacion-txt > b{
+          opacity: 1;
+          color: #39A900;
+        }
         .footer-tittle{
-          opacity: .5;
+          opacity: 1;
           color: #39A900;
           text-align: center;
         }
         .footer-subtitle{
           text-align: center;
         }
-
+        
+        /* diseño claro 👇*/
+        /*
+        #footer{
+          background: #00000004;
+        }
+        .footer-informacion .footer-icono{
+          background-color: #ffffff52;
+        }
+        .footer-icono > svg{
+          opacity: .5;
+          fill: #39A900;
+        }
+        .footer-informacion-txt > b{opacity: .5;}
+        .footer-tittle{opacity: .5;}
+        */
+        @media (width < 800px) {
+          ul.footer-informacion{
+            grid-template-columns: 1fr;
+            padding-left: 0;
+            margin: 20px 0;
+          }
+          #footer{
+          padding: 30px 20px;
+          }
+        }
       </style>
       <div class="footer-informacion-cont">
-        <p>
+
+        <span>
           El SENA brinda a la ciudadanía, atención presencial en las 33 Regionales y 117 Centros de Formación, conozca 
           <a href="http://www.sena.edu.co/es-co/transparencia/Paginas/mecanismosContacto.aspx">aqui</a> 
           los puntos de atención
-        </p>
+        </span>
         <ul class="footer-informacion">
           <li>
-            <div>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 20H2v-2h5.8A8 8 0 0 0 
-              2 12.3c.6-.2 1.3-.3 2-.3a8 8 0 0 1 8 8zm10-7.7c-.6-.2-1.3-.3-2-.3a8 8 0 0 0-6.9 4 9.8 9.8 0 0 1 .9 4h8v-2h-5.8a8 8 0 0 1 5.8-5.7zM15.6 11a10 10 0 0 1 
-              4.1-5 8 8 0 0 0-7.7 8 10 10 0 0 1 3.6-3zm-4.2-2.2C10.6 6.8 9 4.8 6.7 4A11 11 0 0 1 9 10.7v.6l1.2.8a10 10 0 0 1 1.2-3.3z"/></svg>
+            <div class="footer-icono">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 20H2v-2h5.8A8 8 0 0 0 2 12.3c.6-.2 1.3-.3 2-.3a8 8 0 0 1 8 8zm10-7.7c-.6-.2-1.3-.3-2-.3a8 8 0 0 0-6.9 4 9.8 9.8 0 0 1 .9 4h8v-2h-5.8a8 8 0 0 1 5.8-5.7zM15.6 11a10 10 0 0 1 4.1-5 8 8 0 0 0-7.7 8 10 10 0 0 1 3.6-3zm-4.2-2.2C10.6 6.8 9 4.8 6.7 4A11 11 0 0 1 9 10.7v.6l1.2.8a10 10 0 0 1 1.2-3.3z"/></svg>
             </div>
-            <b>Dirección Centro Agroturístico:</b>
-            <p>Calle 22 No. 9 - 82 San Gil (Santander), Colombia </p>
+            <div class="footer-informacion-txt">
+              <b>Dirección Centro Agroturístico:</b>
+              <div>Calle 22 No. 9 - 82 San Gil (Santander), Colombia </span>
+            </div>
           </li>
           <li>
-            <div>
-              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M120-200v-400q0-33 
-              23.5-56.5T200-680h160v-47q0-16 6-30.5t17-25.5l40-40q23-23 57-23t57 23l40 40q11 11 17 25.5t6 30.5v207h160q33 0 56.5 23.5T840-440v240q0 33-23.5 
-              56.5T760-120H200q-33 0-56.5-23.5T120-200Zm80 0h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm240 
-              320h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm240 480h80v-80h-80v80Zm0-160h80v-80h-80v80Z"/></svg>
+            <div class="footer-icono">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M120-200v-400q0-33 23.5-56.5T200-680h160v-47q0-16 6-30.5t17-25.5l40-40q23-23 57-23t57 23l40 40q11 11 17 25.5t6 30.5v207h160q33 0 56.5 23.5T840-440v240q0 33-23.5 56.5T760-120H200q-33 0-56.5-23.5T120-200Zm80 0h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm240 320h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm240 480h80v-80h-80v80Zm0-160h80v-80h-80v80Z"/></svg>
             </div>
-            <b>Dirección General: </b>
-            <p>Calle 57 No. 8 - 69 Bogotá D.C. (Cundinamarca), Colombia</p>
+            <div class="footer-informacion-txt">
+              <b>Dirección General: </b>
+              <div>Calle 57 No. 8 - 69 Bogotá D.C. (Cundinamarca), Colombia</span>
+            </div>
           </li>
           <li>
-            <div>
-              <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#1f1f1f"><g>
-              <rect fill="none" height="24" width="24"/></g><g><g><path d="M21,12.22C21,6.73,16.74,3,12,3c-4.69,0-9,3.65-9,9.28C2.4,12.62,2,13.26,2,14v2c0,
-              1.1,0.9,2,2,2h1v-6.1 c0-3.87,3.13-7,7-7s7,3.13,7,7V19h-8v2h8c1.1,0,2-0.9,2-2v-1.22c0.59-0.31,1-0.92,1-1.64v-2.3C22,13.14,21.59,12.53,21,12.22z"/>
-              <circle cx="9" cy="13" r="1"/><circle cx="15" cy="13" r="1"/><path d="M18,11.03C17.52,8.18,15.04,6,12.05,6c-3.03,0-6.29,2.51-6.03,6.45c2.47-1.01,
-              4.33-3.21,4.86-5.89 C12.19,9.19,14.88,11,18,11.03z"/></g></g></svg>
+            <div class="footer-icono">
+              <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24" fill="currentColor"><g><rect fill="none" height="24" width="24"/></g><g><g><path d="M21,12.22C21,6.73,16.74,3,12,3c-4.69,0-9,3.65-9,9.28C2.4,12.62,2,13.26,2,14v2c0,1.1,0.9,2,2,2h1v-6.1 c0-3.87,3.13-7,7-7s7,3.13,7,7V19h-8v2h8c1.1,0,2-0.9,2-2v-1.22c0.59-0.31,1-0.92,1-1.64v-2.3C22,13.14,21.59,12.53,21,12.22z"/><circle cx="9" cy="13" r="1"/><circle cx="15" cy="13" r="1"/><path d="M18,11.03C17.52,8.18,15.04,6,12.05,6c-3.03,0-6.29,2.51-6.03,6.45c2.47-1.01,4.33-3.21,4.86-5.89 C12.19,9.19,14.88,11,18,11.03z"/></g></g></svg>
             </div>
-            <b>Atención telefónica: </b>
-            <p>lunes a viernes 7:00 a.m. a 7:00 p.m. - sábados 8:00 a.m. a 1:00 p.m.</p>
+            <div class="footer-informacion-txt">
+              <b>Atención telefónica: </b>
+              <div>lunes a viernes 7:00 a.m. a 7:00 p.m. - sábados 8:00 a.m. a 1:00 p.m.</span>
+            </div>
           </li>
           <li>
-            <div><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/>
-            <path d="M15.5 1h-8C6.12 1 5 2.12 5 3.5v17C5 21.88 6.12 23 7.5 23h8c1.38 0 2.5-1.12 2.5-2.5v-17C18 2.12 16.88 1 15.5 
-            1zm-4 21c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4.5-4H7V4h9v14z"/></svg>
-          </div>
-            <b>Líneas de atención al ciudadanos, empresarios y línea PQRS:: </b>
-            <p>Bogotá +(57) 601 736 60 60 - Línea gratuita y resto del país 018000 910270</p>
+            <div class="footer-icono">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.5 1h-8C6.12 1 5 2.12 5 3.5v17C5 21.88 6.12 23 7.5 23h8c1.38 0 2.5-1.12 2.5-2.5v-17C18 2.12 16.88 1 15.5 1zm-4 21c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4.5-4H7V4h9v14z"/></svg>
+            </div>
+            <div class="footer-informacion-txt">
+              <b>Líneas de atención al ciudadanos, empresarios y línea PQRS: </b>
+              <div>Bogotá +(57) 601 736 60 60 - Resto del país 018000 910270</span>
+            </div>
           </li>
         </ul>
-        <h2 class="footer-tittle">Servicio Nacional de Aprendizaje SENA</h2>
-        <p class="footer-subtitle">Centro Agroturistico - Regional Santander</p>
+        <div class="footer-red-social-cont">
+          <a href="https://www.facebook.com/SENA/" class="footer-red-social">
+            <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 16 16" id="facebook"><path fill="currentColor" d="M14 0H2C.897 0 0 .897 0 2v12c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2V2c0-1.103-.897-2-2-2z"></path><path fill="none" fill-rule="evenodd" d="M13.5 8H11V6c0-.552.448-.5 1-.5h1V3h-2a3 3 0 0 0-3 3v2H6v2.5h2V16h3v-5.5h1.5l1-2.5z" clip-rule="evenodd"></path></svg>
+          </a>
+          <a href="https://x.com/SENAComunica" class="footer-red-social">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256"><path stroke-miterlimit="10" d="M11 4a7 7 0 0 0-7 7v28a7 7 0 0 0 7 7h28a7 7 0 0 0 7-7V11a7 7 0 0 0-7-7zm2 9h8l5.7 8 6.8-8H36l-8.2 9.6L37.9 37h-8l-6.5-9.3-7.9 9.3H13l9.3-10.9zm4 2 14 20h3L20 15z" font-family="none" font-size="none" font-weight="none" style="mix-blend-mode:normal" text-anchor="none" transform="translate(-23 -23) scale(6.0416)"/></svg>
+          </a>
+          <a href="https://www.instagram.com/senacomunica/" class="footer-red-social">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="jam jam-instagram" preserveAspectRatio="xMinYMin" viewBox="-2 -2 24 24"><path d="M14 0H6a6 6 0 0 0-6 6v8a6 6 0 0 0 6 6h8a6 6 0 0 0 6-6V6a6 6 0 0 0-6-6zm4 14a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V6a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8z"/><path d="M10 5a5 5 0 0 0-5 5 5 5 0 0 0 5 5 5 5 0 0 0 5-5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/><circle cx="15.2" cy="4.9" r="1.2"/></svg>
+          </a>
+          <a href="https://www.youtube.com/user/SENATV" class="footer-red-social">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256"><path stroke-miterlimit="10" d="M15 4c-4.2 0-9.6 1-9.6 1A4 4 0 0 0 2 9v12a4 4 0 0 0 3.4 4s5.4 1 9.6 1c4.2 0 9.6-1 9.6-1a4 4 0 0 0 3.4-4V9a4 4 0 0 0-3.4-4S19.2 4 15 4zm-3 6.4 8 4.6-8 4.6z" font-family="none" font-size="none" font-weight="none" style="mix-blend-mode:normal" text-anchor="none" transform="translate(-19.2 -19.2) scale(9.8133295)"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/school/servicio-nacional-de-aprendizaje-sena-/posts/?feedView=all" class="footer-red-social">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="mercado-match" data-supported-dps="24x24"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 1 1 8.3 6.5a1.78 1.78 0 0 1-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19a.66.66 0 0 0 0 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+          </a>
+          <a href="" class="footer-red-social">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 63.7 62.2"><path d="M32 0a6.9 6.9 0 0 1 0 13.8c-3.8 0-6.8-3.1-6.8-6.9S28.1 0 32 0M7 22.3v.2c0 .4.2.7.6.8.4.2 1 .3 2 .3.6 0 1 0 1.4-.2.4-.1.6-.3.6-.6 0-.4-.8-.7-2.2-1h-.8c-2.3-.4-3.8-.8-4.4-1.3l-.8-.7a2 2 0 0 1-.2-1c0-1 .5-1.6 1.6-2s2.6-.8 4.6-.8 3.5.2 4.5.7c1 .4 1.5 1 1.5 2v.1h-3.9c0-.4-.1-.6-.5-.8l-1.7-.2c-.6 0-1 0-1.4.2-.3 0-.4.3-.4.5 0 .3.8.7 2.5 1a79.6 79.6 0 0 1 3.2.6l1.3.5c.4.2.8.5 1 .8.2.3.3.7.3
+            1.1 0 1-.6 1.7-1.7 2.2-1.2.5-2.8.7-5 .7s-3.7-.2-4.6-.7c-1-.5-1.5-1.2-1.5-2.3v-.2h4Zm10.5 3V16h10.9v2h-6.8v1.5h6.2v2h-6.2v1.7h7v2H17.5Zm12.8 0V16h5.2l5.5 6.2V16h4v9.2h-5.4L34.2 19v6.2h-3.9Zm25.2-3.7-2-3.3-2 3.3h4Zm-6.2 3.7h-4.1l6.3-9.2H56l6 9.2h-4.5l-1-1.7h-6.2l-1 1.7ZM12 57.5l-3.7-3.4 11.1-19.3c.6-1-.1-2.4-1.3-2.4H0v-4.8h29.2l-17.1 30Zm39.5 0 3.6-3.4-11-19.3c-.7-1 .1-2.4 1.3-2.4h18.2v-4.8H34.4l17.2 30ZM31.8 32.7l16.5 27.2-4.4 2.3-10.6-17.8c-.6-1-2.1-1-2.7
+            0L20 62.2 15.7 60l16.1-27.4" class="b"/></svg>
+          </a>
+        </div>
+        <div class="footer-subtitle">Centro Agroturistico - Regional Santander</div>
       </div>
       <!-- !html -->
     </div>
