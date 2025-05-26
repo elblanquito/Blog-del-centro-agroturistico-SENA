@@ -232,16 +232,13 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
           list-style: none;
         }
         /*
-        ========================
         |||🍇 [CSS]
-        ========================
         */
         #sidebar-right{
           grid-area: derecha;
-          height: fit-content;
+          height: 100%;
           padding: 5px 30px;
           padding-left: 2px;
-          overflow-y: auto;
           width: $(menulateral.width);
         }
         .sidebar-right-seccion{
@@ -252,8 +249,20 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
           box-shadow: #e2e8f0 0px 1px 4px;
           background-color: $(menulateral.color);
         }
-        #sidebar-right > .widget{min-height: fit-content;}
-        #sidebar-right h2 { color: #00304D}
+        .sidebar-right-seccion:nth-last-of-type(1) {
+          scrollbar-width: none;
+          overflow-y: auto;
+          max-height: calc(100vh - 80px);
+          top: 20px;
+          position: sticky;
+        }
+        .sidebar-right-seccion .widget:first-child{
+          margin-top: 0px
+        }
+        .sidebar-right-seccion .widget:last-child {
+          margin-bottom: 0px;
+        }
+        .sidebar-right-seccion h2 { color: #00304D ; margin-bottom: 10px;}
         /*
         <!-- ^  Barra de scroll 👇 ^ --> */
         #sidebar-right::-webkit-scrollbar {
@@ -270,10 +279,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
         }
         #sidebar-right::-webkit-scrollbar-thumb:hover {
           background:rgba(85, 85, 100, 0.24);
-        }
-        #sidebar-right .widget-content{
-          overflow: hidden;
-          position: relative;
         }
         div.Attribution{
           margin: 10px 0;
@@ -315,6 +320,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
         }
         @media (max-width: 800px) {
           #sidebar-right{
+            overflow-y: auto;
             position: fixed;
             top: 0;
             right: 0;
@@ -328,7 +334,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
             transition: transform 0.5s ease-in-out;
             background-color: #ffffff;
           }
-          .sidebar-right-seccion{
+          #sidebar-right .sidebar-right-seccion{
             padding: 0;
             border-radius: 0;
             outline: 0;
@@ -455,10 +461,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
         padding: 0;
         -webkit-tap-highlight-color: transparent; /*quita la seleccion azul en movil*/
         background-color: #F5F5F5;
-        background-image: radial-gradient(rgba(12, 12, 12, 0.171) 2px, transparent 0);
-        background-size: 30px 30px;
-        background-position: 0px 0px;
-        background-attachment: fixed;
       }
       .content-outer {
         box-sizing: border-box;
@@ -2755,12 +2757,10 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                 </style>  
               </b:includable>
             </b:widget>
-            <!--
-            ?===================
-            -   |||🔍 buscador
-            ?===================
-            -->
             <b:widget id='BlogSearch1' locked='false' title='Buscar publicacion' type='BlogSearch' version='1' visible='true'>
+              <!--
+              -   |||🔍 buscador
+              -->
               <b:includable id='main'>
               <style>  
                 /*<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante! */  
@@ -2906,10 +2906,10 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                 <b:include name='quickedit'/>
               </b:includable>
             </b:widget>           
-            <!--
-            -   |||✏️ Texto animado
-            -->
             <b:widget id='TextList1' locked='false' title='frases del texto animado' type='TextList' visible='true'>
+              <!--
+              -   |||✏️ Texto animado
+              -->
               <b:widget-settings>
                 <b:widget-setting name='shownum'>5</b:widget-setting>
                 <b:widget-setting name='sorting'>NONE</b:widget-setting>
@@ -2991,10 +2991,10 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                     </script>
               </b:includable>                      
             </b:widget>
-            <!--
-            -   |||📈 estadisticas
-            -->
             <b:widget id='Stats1' locked='false' title='Visitas del blog' type='Stats' visible='true'>
+              <!--
+              -   |||📈 estadisticas
+              -->
               <b:widget-settings>
                 <b:widget-setting name='showGraphicalCounter'>false</b:widget-setting>
                 <b:widget-setting name='showAnimatedCounter'>true</b:widget-setting>
@@ -3008,6 +3008,9 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   /*css 👈 comando decorativo "Highlight String Code */
                   #widget-content-Stats1{
                     height: 36px;
+                  }
+                  h2.stats-title{
+                    margin:0px;
                   }
                   #Stats1_content{
                     display: flex;
@@ -3056,7 +3059,9 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   /*!css*/
                   /*]]>*/
                 </style>
-                <b:if cond='data:title != ""'><h2><data:title/></h2></b:if>
+                <b:if cond='data:title != ""'>
+                <h2 class="stats-title"><data:title/></h2>
+                </b:if>
                 <div class='widget-content' expr:id='"widget-content-" + data:widget.instanceId'>
                   <!-- Content is going to be visible when data will be fetched from server. -->
                   <div expr:id='data:widget.instanceId + "_content"' style='display:none'>
@@ -3076,97 +3081,11 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   </div>
                 </div>            
               </b:includable>
-            </b:widget>           
-            <!--
-            ^=================
-            -   |||🏷️ rutas 2
-            ^=================
-            -->           
-            <b:widget id='PageList1' locked='false' title='' type='PageList' visible='true'>
-              <b:widget-settings>
-                <b:widget-setting name='pageListJson'>
-                  <![CDATA[{
-                  "link0":{
-                    "href":"http://www.sena.edu.co/es-co/Paginas/default.aspx",
-                    "position":0,
-                    "title":"Portal web"
-                  },
-                  "link1":{
-                    "href":"https://www.sena.edu.co/es-co/formacion/Paginas/Estudie-en-el-SENA.aspx",
-                    "position":1,
-                    "title":"Sobre la entidad"
-                  },
-                  "link2":{
-                    "href":"https://www.sena.edu.co/es-co/formacion/Paginas/Estudie-en-el-SENA.aspx",
-                    "position":2,
-                    "title":"Inscripciones"
-                  },
-                  "link3":{
-                    "href":"https://www.sena.edu.co/es-co/formacion/Paginas/bilinguismo.aspx",
-                    "position":3,
-                    "title":"Cursos de inglés"
-                  },
-                  "link4":{
-                    "href":"http://www.sena.edu.co/es-co/formacion/Paginas/tecnologia-innovacion.aspx",
-                    "position":4,
-                    "title":"SENOVA"
-                  },
-                  "link5":{
-                    "href":"https://www.sena.edu.co/es-co/Noticias/Paginas/noticiasHistorico.aspx",
-                    "position":5,
-                    "title":"Noticias"
-                  },
-                  "link6":{
-                    "href":"http://biblioteca.sena.edu.co/",
-                    "position":6,
-                    "title":"Biblioteca"
-                  },
-                  "link7":{
-                    "href":"http://compromiso.sena.edu.co/",
-                    "position":7,
-                    "title":"SIGA"
-                  },
-                  "link8":{
-                    "href":"http://www.sena.edu.co/es-co/sena/Paginas/estructura-organizacional.aspx",
-                    "position":8,
-                    "title":"Organigrama"
-                  }
-                  }]]>
-                </b:widget-setting>
-              </b:widget-settings>
-              <b:includable id='main'>
-                <style>
-                  /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
-                  /*css 👈 comando decorativo "Highlight String Code */
-                  #PageList1 a{
-                    font-weight: bold;
-                  }
-                  ul.menu2-cont{
-                    padding: 0;
-                  }
-                  /*!css*/
-                  /*]]>*/
-                </style>
-                <ul class='menu2-cont'>
-                  <b:loop values='data:links' var='link'>
-                    <li class='menu2-ruta'>
-                      <a expr:href='data:link.href' onclick='toggleMenu("ocultar")' target="_blank">
-                        <data:link.title/>
-                      </a>
-                    </li>
-                  </b:loop>
-                </ul>
-              </b:includable>
-            </b:widget>           
-          </b:section>
-          <!-- | 📦 MENU #2 📦 | -->
-          <b:section id='sidebar-right-2' class="sidebar-right-seccion" name='menu 2'>
-            <!--
-            ========================
-            -   |||📢 Redes sociales
-            ========================
-            -->
-            <b:widget id='PageList2' locked='false' title='Redes sociales (solo cambiar las url)' version='2' type='PageList' visible='true'>
+            </b:widget>  
+            <b:widget id='PageList2' locked='false' title='' version='2' type='PageList' visible='true'>
+              <!--
+              -   |||📢 Redes sociales
+              -->
               <b:widget-settings>
                 <b:widget-setting name='pageListJson'>
                   <![CDATA[{
@@ -3203,8 +3122,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                     display: flex;
                     align-items: center;
                   }
-                  .redes-titulo{
-                    text-align: center;
+                  #PageList2 h2.redes-titulo{
                     width: 100%;
                     margin-bottom: 15px;
                   }
@@ -3216,6 +3134,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                     justify-content: space-around;
                   }
                   .red-social-link{
+                    padding: 0;
                     cursor: default;
                     display: block;
                     height: 30px;
@@ -3266,9 +3185,9 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   /*!css*/
                   /*]]>*/
                 </style>
-                <h2 class="redes-titulo">
-                  Redes sociales
-                </h2>
+                <b:if cond='data:title != ""'>
+                <h2 class="redes-titulo"><data:title/></h2>
+                </b:if>
                 <div class="redes-sociales-cont">
                   <b:loop values='data:links' var='link' >
                       <a expr:href='data:link.href' class="red-social-link" target="_blank" expr:title="data:link.href">
@@ -3294,11 +3213,59 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   </b:loop>
                 </div>
               </b:includable>
-            </b:widget>           
-            <!--
-            -   |||🌎 google maps
-            -->           
+            </b:widget>                   
+            <b:widget id='PageList4' locked='false' title='' type='PageList'>
+              <!--
+              -   |||🏷️ rutas 3
+              -->   
+              <b:widget-settings>
+                <b:widget-setting name='pageListJson'>
+                <![CDATA[{
+                  "link0":{
+                    "href":"https://www.sena.edu.co/es-co/formacion/Paginas/Estudie-en-el-SENA.aspx",
+                    "position":0,
+                    "title":"Inscripciones"
+                  },
+                  "link1":{
+                    "href":"https://www.sena.edu.co/es-co/formacion/Paginas/bilinguismo.aspx",
+                    "position":1,
+                    "title":"Cursos de inglés"
+                  },
+                  "link2":{
+                    "href":"https://caprendizaje.sena.edu.co/sgva/SGVA_Diseno/pag/login.aspx",
+                    "position":2,
+                    "title":"SGVA"
+                  },
+                  "link3":{
+                    "href":"https://certificados.sena.edu.co/CertificadoDigital/com.sena.consultacer",
+                    "position":3,
+                    "title":"Descarge su certificado"
+                  }
+                }]]></b:widget-setting>
+                <b:widget-setting name='homeTitle'>Página Principal</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                
+                <div class='widget-content'>
+                  <b:if cond='data:title != ""'><h2><data:title/></h2></b:if>
+                  <ul>
+                    <b:loop values='data:links' var='link'>
+                      <li>
+                        <b:class cond='data:link.isCurrentPage' name='selected'/>
+                        <a target="_blank" expr:href='data:link.href'><data:link.title/></a>
+                      </li>
+                    </b:loop>
+                  </ul>
+                </div>
+              </b:includable>
+            </b:widget>         
+          </b:section>
+          <!-- | 📦 MENU #2 📦 | -->
+          <b:section id='sidebar-right-2' class="sidebar-right-seccion" name='menu 2'>              
             <b:widget id='HTML2' locked='false' title='google maps' type='HTML' visible='true'>
+              <!--
+              -   |||🌎 google maps
+              -->  
               <b:widget-settings>
                 <b:widget-setting name='content'>
                   <![CDATA[
@@ -3336,14 +3303,115 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                 </script>           
                 <b:include name='quickedit'/>
               </b:includable>
-            </b:widget>       
+            </b:widget>  
+            <b:widget id='PageList1' locked='false' title='Servicios SENA' type='PageList' visible='true'>
+              <!--
+              -   |||🏷️ rutas 2
+              -->   
+              <b:widget-settings>
+                <b:widget-setting name='pageListJson'>
+                  <![CDATA[{
+                  "link0":{
+                    "href":"http://www.sena.edu.co/es-co/Paginas/default.aspx",
+                    "position":0,
+                    "title":"Portal web oficial"
+                  },
+                  "link1":{
+                    "href":"https://sciudadanos.sena.edu.co/SolicitudIndex.aspx",
+                    "position":1,
+                    "title":"Peticiones y reclamos"
+                  },
+                  "link2":{
+                    "href":"https://www.sena.edu.co/es-co/trabajo/Paginas/fondo-emprender.aspx",
+                    "position":2,
+                    "title":"Fondo emprender"
+                  },
+                  "link3":{
+                    "href":"https://ape.sena.edu.co/Paginas/Inicio.aspx",
+                    "position":3,
+                    "title":"Agencia pública de empleo"
+                  },
+                  "link4":{
+                    "href":"http://www.sena.edu.co/es-co/formacion/Paginas/tecnologia-innovacion.aspx",
+                    "position":4,
+                    "title":"SENOVA"
+                  },
+                  "link5":{
+                    "href":"https://www.sena.edu.co/es-co/Noticias/Paginas/noticiasHistorico.aspx",
+                    "position":5,
+                    "title":"Noticias"
+                  },
+                  "link6":{
+                    "href":"http://biblioteca.sena.edu.co/",
+                    "position":6,
+                    "title":"Biblioteca"
+                  },
+                  "link7":{
+                    "href":"http://compromiso.sena.edu.co/",
+                    "position":7,
+                    "title":"SIGA"
+                  },
+                  "link8":{
+                    "href":"http://www.sena.edu.co/es-co/sena/Paginas/estructura-organizacional.aspx",
+                    "position":8,
+                    "title":"Organigrama"
+                  }
+                  }]]>
+                </b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <style>
+                  /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
+                  /*css 👈 comando decorativo "Highlight String Code */
+                  .PageList .widget-content{
+                    overflow: visible;
+                  }
+                  .PageList h2 {
+                    margin-bottom: 10px;
+                  }
+                  .PageList ul{
+                    padding: 0;
+                  }
+                  .PageList  ul > li{
+                    padding: 0;
+                  }
+                  .PageList ul > li > a{
+                    color: #ffffff;
+                    background-color: #00304d;
+                    display: block;
+                    padding: 7px 10px;
+                    font-weight: normal;
+                    margin-bottom: 3px;
+                    border-radius: 6px;
+                    transition: opacity 0.2s;
+                  }
+                  .PageList ul > li > a:hover{
+                    opacity: 0.7;
+                  }
+                  /*!css*/
+                  /*]]>*/
+                </style>
+                <b:if cond='data:title != ""'><h2><data:title/></h2></b:if>
+                <div class='widget-content'>
+                  <ul class='menu2-cont'>
+                    <b:loop values='data:links' var='link'>
+                      <li class='menu2-ruta'>
+                        <a expr:href='data:link.href' onclick='toggleMenu("ocultar")' target="_blank">
+                          <data:link.title/>
+                        </a>
+                      </li>
+                    </b:loop>
+                  </ul>
+                </div>
+              </b:includable>
+            </b:widget>      
           </b:section>
           <!-- | 📦 MENU #3 📦 | -->
           <b:section id='sidebar-right-3' class="sidebar-right-seccion" name='menu 3'>
+            <b:widget id='BlogArchive1' locked='false' title='Historial del blog' type='BlogArchive' version='1' visible='true'>
             <!--
             -   |||💾 BlogArchive1
             -->
-            <b:widget id='BlogArchive1' locked='false' title='Historial del blog' type='BlogArchive' version='1' visible='true'>
               <b:widget-settings>
                 <b:widget-setting name='showStyle'>HIERARCHY</b:widget-setting>
                 <b:widget-setting name='yearPattern'>yyyy</b:widget-setting>
@@ -3534,10 +3602,10 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                 </a>
               </b:includable>
             </b:widget>    
-            <!--
-            -   |||🧾 creditos
-            -->  
             <b:widget id='Text1' locked='false' title='Creditos' type='Text'>
+              <!--
+              -   |||🧾 creditos
+              -->  
               <b:widget-settings>
                 <b:widget-setting name='content'>
                 <![CDATA[<center>La Información Publicada en este blog es responsabilidad del  Centro Agroturistico</center>]]>
