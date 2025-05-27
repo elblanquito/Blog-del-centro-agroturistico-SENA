@@ -13,131 +13,46 @@
 
 </head>
 <style>
-  body {
-    font: normal normal 16px PT Sans Caption;
-    color: #a6b7c1;
+  body{
+    min-height: 100vh;
+    margin: 0;
+    padding: 30px;
+    box-sizing: border-box;
   }
 
-  a {
-    color: #39A900;
+  .menu-desplegable-btn{
+    position: fixed;
+    right: 20px;
+    display: flex;
+    cursor: pointer;
+    z-index: 1;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: #0000002b;
+    border: none;
+    transition: 
+      background-color 0.2s ease, 
+      transform 0.3s ease-in-out,
+      scale 0.2s ease;
+    backdrop-filter: blur(2px);
   }
-
-  a:visited {
-    color: #39A900;
+  .menu-desplegable-btn:active{
+    transform: translate(-100px,0);
+    background-color: #00000040;
+    scale:1.2;
+  }
+  .menu-desplegable-btn svg{
+    height: 30px;
+    color: white;
   }
 </style>
-
 <body>
-  <style type="text/css">
-    .listM {
-      margin: 3px;
-      border-bottom-width: 1px;
-      border-bottom-style: solid;
-      border-bottom-color: #eeeeee;
-    }
-
-    .listM a {
-      vertical-align: middle;
-      height: 25px;
-      display: block;
-      width: 100%;
-      padding-top: 12px;
-      padding-left: 10px;
-      text-decoration: none;
-      text-align: left;
-      font-size: 11px;
-      color: white;
-
-      vertical-align: middle;
-
-    }
-
-    .listRe {
-      float: left;
-    }
-
-    .listM a:hover {
-      transition: 0.3s;
-      padding-left: 20px;
-
-    }
-
-    #navLateral3 li {
-      cursor: pointer;
-      width: 30px;
-      display: block;
-      height: 23px;
-      list-style: none;
-      background-size: 30px;
-      margin-left: 14px;
-
-    }
-
-
-    #navLateral2 {
-      background-color: #575756;
-    }
-
-    .sidebar h2 {
-      display: none;
-    }
-  </style>
-
-  <div style="text-align: center;    margin-bottom: -10px;
-        margin-top: 0px;    font-weight: bold;">
-      <p style="border-top: solid; padding: 10px;
-    background-color: white;">SERVICIOS SENA
-    </p>
-  </div>
-  <ul id="navLateral2">
-    <li class="listM">
-      <a target="_blank" href="http://www.sena.edu.co/es-co/Paginas/default.aspx">
-        PORTAL WEB
-      </a>
-    </li>
-    <li class="listM">
-      <a target="_blank" href="http://www.sena.edu.co/es-co/sena/Paginas/quienesSomos.aspx" id="entidad">
-          SOBRE LA ENTIDAD
-      </a>
-    </li>
-    <li class="listM">
-      <a target="_blank" href="https://www.sena.edu.co/es-co/formacion/Paginas/bilinguismo.aspx">
-        INSCRIPCIONES
-      </a>
-    </li>
-    <li class="listM">
-      <a target="_blank" href="https://www.sena.edu.co/es-co/formacion/Paginas/bilinguismo.aspx">
-        CURSOS DE INGLÉS
-      </a>
-    </li>
-    <li class="listM">
-      <a target="_blank" href="http://www.sena.edu.co/es-co/formacion/Paginas/tecnologia-innovacion.aspx">
-        SENNOVA
-      </a>
-    </li>
-    <li class="listM">
-      <a target="_blank" href="https://www.sena.edu.co/es-co/Noticias/Paginas/noticiasHistorico.aspx">
-        NOTICIAS
-      </a>
-    </li>
-    <li class="listM">
-      <a target="_blank" href="http://biblioteca.sena.edu.co/">
-        SISTEMA DE BIBLIOTECAS
-      </a>
-    </li>
-    <li class="listM">
-      <a target="_blank" href="http://compromiso.sena.edu.co/">
-        SIGA
-      </a>
-    </li>
-    <li class="listM">
-      <a target="_blank" href="http://www.sena.edu.co/es-co/sena/Paginas/estructura-organizacional.aspx">
-        ORGANIGRAMA
-      </a>
-    </li>
-  </ul>
-  <!--- fin menu -->
-  </div>
+  <button class="menu-desplegable-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M160-240q-17 0-28.5-11.5T120-280q0-17 11.5-28.5T160-320h440q17 0 28.5 11.5T640-280q0 17-11.5 28.5T600-240H160Zm596-68L612-452q-12-12-12-28t12-28l144-144q11-11 28-11t28 11q11 11 11 28t-11 28L696-480l116 116q11 11 11 28t-11 28q-11 11-28 11t-28-11ZM160-440q-17 0-28.5-11.5T120-480q0-17 11.5-28.5T160-520h320q17 0 28.5 11.5T520-480q0 17-11.5 28.5T480-440H160Zm0-200q-17 0-28.5-11.5T120-680q0-17 11.5-28.5T160-720h440q17 0 28.5 11.5T640-680q0 17-11.5 28.5T600-640H160Z"/></svg>
+  </button>
 </body>
+<style>
+
+</style>
 
 </html>

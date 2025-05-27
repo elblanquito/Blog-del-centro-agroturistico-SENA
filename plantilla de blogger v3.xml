@@ -256,30 +256,12 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
           top: 20px;
           position: sticky;
         }
-        .sidebar-right-seccion .widget:first-child{
-          margin-top: 0px
-        }
-        .sidebar-right-seccion .widget:last-child {
-          margin-bottom: 0px;
-        }
+        /*sin margen en el primer y ultimo elemento*/
+        .sidebar-right-seccion .widget:first-child{margin-top: 0px}
+        .sidebar-right-seccion .widget:last-child {margin-bottom: 0px;}
+
         .sidebar-right-seccion h2 { color: #00304D ; margin-bottom: 10px;}
-        /*
-        <!-- ^  Barra de scroll 👇 ^ --> */
-        #sidebar-right::-webkit-scrollbar {
-          width: 5px;
-          height: 5px;
-        }
-        #sidebar-right::-webkit-scrollbar{
-          background:rgba(241, 241, 241, 0); /* Color de fondo de la pista */
-          border-radius: 0px;
-        }
-        #sidebar-right::-webkit-scrollbar-thumb  {
-          background: rgba(85, 85, 100, 0.18);
-          border-radius: 10px;
-        }
-        #sidebar-right::-webkit-scrollbar-thumb:hover {
-          background:rgba(85, 85, 100, 0.24);
-        }
+
         div.Attribution{
           margin: 10px 0;
         }
@@ -318,7 +300,47 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
           display: none;
           opacity: 0
         }
-        @media (max-width: 800px) {
+        .menu-inferior-navegacion{
+          z-index: 10;
+          display: flex;
+          justify-content: center;
+          gap: 10px;
+          position: sticky;
+          left: 50%;
+          bottom: 40px;
+          width:fit-content;
+          margin: 20px auto;
+          transform: translate(-50%);
+
+          box-shadow: #e2e8f0 0px 1px 4px;
+          outline: 1px solid #e2e8f0;
+          background-color: white;
+          border-radius: 10px;
+          padding: 5px 15px;
+        }
+        .menu-inferior-btn{
+          cursor: pointer;
+          background-color: transparent;
+          display: flex;
+          height: 40px;
+          padding: 5px;
+          border-radius: 10px;
+          color: #00304d;
+          border: none;
+          transition: transform 0.2s,
+          background-color .2s;
+        }
+        .menu-inferior-btn:active{
+          transform: scale(0.8);
+          background-color:rgba(0, 0, 0, 0.05);
+        }
+        .menu-inferior-btn svg{
+          height: 100%;
+        }
+        .desplegar-menu-btn{
+          display: none;
+        }
+        @media (max-width: 800px) { /*ocultar menu en movil*/
           #sidebar-right{
             overflow-y: auto;
             position: fixed;
@@ -329,6 +351,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
             width: 100%;
             max-width: 80%;
             padding: 20px 20px;
+            padding-bottom: 60px;
             box-sizing: border-box;
             box-shadow: -4px 0px 8px 0 rgba(0, 0, 0, 0.2);
             transition: transform 0.5s ease-in-out;
@@ -339,8 +362,8 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
             border-radius: 0;
             outline: 0;
             box-shadow: none;
+            max-height: none;
           }
-
           .ocultarMenu {
             transform: translate(100%, 0px);
           }
@@ -351,6 +374,39 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
               opacity: 0; /* Estado inicial solo para la transición */
             }
           }
+          .desplegar-menu-btn{
+            display: block;
+          }
+        }
+
+        /* estilos de wigets */
+
+        /*
+        -   ||| 🖼️
+        */
+        .widget.Image{
+          border-radius: 10px;
+          outline: 1px solid #e2e8f0;
+        }
+        .widget.Image .widget-content{
+          display: flex;
+        }
+        .widget.Image img{
+          max-width: 100%;
+          height: auto;
+        }
+        /*
+        -   |||🌎
+        */
+        #widget-content-HTML2{
+          border-radius: 8px;
+          display:flex;
+        }
+        .google-map-1{
+          width: 100%; 
+          height: 300px;
+          border: none;
+          border-radius: 10px;
         }
         /* personalizacion de la biblioteca fancybox
         ----------------------------------------------- */
@@ -1205,9 +1261,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
         |||🍏 Blog / Posts
         -->
         <b:section class='blog-posts hfeed' id='main' name='Main' maxwidgets='20' showaddelement='yes'>
-          <!--
-          -   |||🖼️ Main Imagenes
-          -->
           <b:widget id='LinkList1' locked='false' title='Carrucel de imagenes' visible='true' type='LinkList'>
             <b:widget-settings>
               <b:widget-setting name='shownum'>3</b:widget-setting>
@@ -1395,6 +1448,9 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
             <b:includable id='style-posts-blog' var='top32'>
             </b:includable>
             <b:includable id='script-posts-blog' var='top32'>
+              <!--
+              -   |||🖼️ Main Imagenes
+              -->
               <style>
                 /*<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante! */  
                 /*css 👈 Comando decorativo "Highlight String Code" */
@@ -1716,8 +1772,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   outline-color: #e2e8f0;
                   box-shadow: inset #e2e8f0 0px 0px 11px 0px;
                 }
-                .blog-page-back{}
-                .blog-page-forward{}
+
                 @media (max-width: 400px){
                   .post-fecha{
                     margin-left: 0px;
@@ -1726,12 +1781,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                     display: none;
                   }
                 }   
-                /* esta clase se agrega con un script  
-                .dos-columnas {
-                  width: auto;
-                  max-width: 100%;
-                }
-                */
                 @media (max-width: 800px) {
                   .post{ /*reducir margen en movil*/
                     margin: 0 20px;
@@ -1955,6 +2004,15 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                     <b:class cond='data:blog.pageType not in {"static_page", "item"} and !data:newerPageUrl' name='blog-page-disable'/>
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M240-200h120v-200q0-17 11.5-28.5T400-440h160q17 0 28.5 11.5T600-400v200h120v-360L480-740 240-560v360Zm-80 0v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H560q-17 0-28.5-11.5T520-160v-200h-80v200q0 17-11.5 28.5T400-120H240q-33 0-56.5-23.5T160-200Zm320-270Z"/></svg>
                   </a>
+                </div>
+                
+                <div class='menu-inferior-navegacion'>
+                  <button class='menu-inferior-btn desplegar-menu-btn' onclick='toggleMenu()'>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M160-240q-17 0-28.5-11.5T120-280q0-17 11.5-28.5T160-320h440q17 0 28.5 11.5T640-280q0 17-11.5 28.5T600-240H160Zm596-68L612-452q-12-12-12-28t12-28l144-144q11-11 28-11t28 11q11 11 11 28t-11 28L696-480l116 116q11 11 11 28t-11 28q-11 11-28 11t-28-11ZM160-440q-17 0-28.5-11.5T120-480q0-17 11.5-28.5T160-520h320q17 0 28.5 11.5T520-480q0 17-11.5 28.5T480-440H160Zm0-200q-17 0-28.5-11.5T120-680q0-17 11.5-28.5T160-720h440q17 0 28.5 11.5T640-680q0 17-11.5 28.5T600-640H160Z"/></svg>
+                  </button>
+                  <button class='menu-inferior-btn' onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M480-348q-10.26 0-20.09-3.91-9.82-3.92-17.52-11.61L258.96-546.96Q244-561.91 244-584t14.96-37.04Q273.91-636 296-636t37.04 14.96L480-474.09l146.96-146.95Q641.91-636 664-636t37.04 14.96Q716-606.09 716-584t-14.96 37.04L517.61-363.52q-7.7 7.69-17.52 11.61Q490.26-348 480-348Z"/></svg>
+                  </button>
                 </div>
               </b:if>
             </b:includable>
@@ -2710,8 +2768,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   </div>
                 </b:if>
                 <div id='backlinks-container'>
-                  <div expr:id='data:widget.instanceId + &quot;_backlinks-container&quot;'>
-                      </div>
+                  <div expr:id='data:widget.instanceId + &quot;_backlinks-container&quot;'></div>
                 </div>
               </div>
             </b:includable>
@@ -2758,10 +2815,10 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
               </b:includable>
             </b:widget>
             <b:widget id='BlogSearch1' locked='false' title='Buscar publicacion' type='BlogSearch' version='1' visible='true'>
+              <b:includable id='main'>
               <!--
               -   |||🔍 buscador
               -->
-              <b:includable id='main'>
               <style>  
                 /*<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante! */  
                 /*css 👈 Comando decorativo "Highlight String Code" */
@@ -2864,48 +2921,77 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                     <data:title/>
                   </span>
                 </b:if>
-                    <form expr:action='data:blog.searchUrl'>
-                        <div class='contenedorbuscador'>
-                          <input autocomplete='off' class='inputbuscador' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q' size='10' title='search' type='text'/>
-                          <button class='buttonbuscador' title='search' type='submit' value=''>
-                          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
-                            <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 
-                            44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
-                          </svg>
-                          </button>
-                        </div>
-                        <!--                     
-                        <script>
-                          //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
-                          const contenedor = document.getElementById("BlogSearch1");
-                          const button = contenedor.querySelector('.buttonbuscador');
-                          const input = contenedor.querySelector('.contenedorbuscador');            
-                          button.addEventListener('click', () => {
-                              if (button.classList.contains('lupagirando')) {
-                                  return;
-                              }
-                              // Añade la clase para iniciar la animación
-                              button.classList.add('lupagirando');
-                              input.classList.add('inputgolpe');            
-                              // Elimina la clase después de que termine la animación (3s)
+                <form expr:action='data:blog.searchUrl'>
+                    <div class='contenedorbuscador'>
+                      <input autocomplete='off' class='inputbuscador' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q' size='10' title='search' type='text'/>
+                      <button class='buttonbuscador' title='search' type='submit' value=''>
+                      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
+                        <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 
+                        44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
+                      </svg>
+                      </button>
+                    </div>
+                    <!--                     
+                    <script>
+                      //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
+                      const contenedor = document.getElementById("BlogSearch1");
+                      const button = contenedor.querySelector('.buttonbuscador');
+                      const input = contenedor.querySelector('.contenedorbuscador');            
+                      button.addEventListener('click', () => {
+                          if (button.classList.contains('lupagirando')) {
+                              return;
+                          }
+                          // Añade la clase para iniciar la animación
+                          button.classList.add('lupagirando');
+                          input.classList.add('inputgolpe');            
+                          // Elimina la clase después de que termine la animación (3s)
+                          setTimeout(() => {
+                              button.classList.remove('lupagirando');
+                              input.classList.remove('inputgolpe');
+                          }, 2500);
+                      });           
+                      const form = contenedor.querySelector('.gsc-search-box');
+                      form.addEventListener('submit', (e) => {
+                          e.preventDefault();
                               setTimeout(() => {
-                                  button.classList.remove('lupagirando');
-                                  input.classList.remove('inputgolpe');
-                              }, 2500);
-                          });           
-                          const form = contenedor.querySelector('.gsc-search-box');
-                          form.addEventListener('submit', (e) => {
-                              e.preventDefault();
-                                  setTimeout(() => {
-                                      form.submit();
-                                  }, 2000); // Retraso de 2.1 segundos
-                          });
-                          //]]>
-                        </script> -->           
-                    </form>
+                                  form.submit();
+                              }, 2000); // Retraso de 2.1 segundos
+                      });
+                      //]]>
+                    </script> -->           
+                </form>
                 <b:include name='quickedit'/>
               </b:includable>
-            </b:widget>           
+            </b:widget>    
+            <b:widget id='Image1' locked='false' title='' type='Image'>
+              <b:widget-settings>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEj0v9Y4nqePm124hlQrvYvmauw9E1_v9pQjN1M0OrX9nf5mKQvSBBRDmpcSVRGRLvI3HzKogaUjLkpHENPZbyZ6v8ztLLQHtGlXSibxOfFihPsA2-m9tJ3iGNGofs3m_fSQmyb_ad431i_IGSX0MpPyWBMPVHYKSvZWfSvGqqvPJ2BqEceUbHL4v7_4Ccw=s822</b:widget-setting>
+                <b:widget-setting name='displayHeight'>616</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>384</b:widget-setting>
+                <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                <b:widget-setting name='displayWidth'>822</b:widget-setting>
+                <b:widget-setting name='link'/>
+                <b:widget-setting name='caption'/>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <!-- 
+                -   ||| 🖼️ Imagen
+                 -->
+                <b:if cond='data:title != &quot;&quot;'>
+                  <h2><data:title/></h2>
+                </b:if>
+                <div class='widget-content'>
+                  <b:tag cond='data:link' expr:href='data:link' name='a'>
+                    <img expr:alt='data:title' expr:height='data:height' expr:id='data:widget.instanceId + &quot;_img&quot;' expr:src='data:sourceUrl' expr:width='data:width'/>
+                  </b:tag>
+                  <br/>
+                  <b:if cond='data:caption'>
+                    <span class='caption'><data:caption/></span>
+                  </b:if>
+                </div>
+                <b:include name='quickedit'/>
+              </b:includable>
+            </b:widget>       
             <b:widget id='TextList1' locked='false' title='frases del texto animado' type='TextList' visible='true'>
               <!--
               -   |||✏️ Texto animado
@@ -2992,9 +3078,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
               </b:includable>                      
             </b:widget>
             <b:widget id='Stats1' locked='false' title='Visitas del blog' type='Stats' visible='true'>
-              <!--
-              -   |||📈 estadisticas
-              -->
               <b:widget-settings>
                 <b:widget-setting name='showGraphicalCounter'>false</b:widget-setting>
                 <b:widget-setting name='showAnimatedCounter'>true</b:widget-setting>
@@ -3003,6 +3086,9 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                 <b:widget-setting name='timeRange'>ALL_TIME</b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
+                <!--
+                -   |||📈 estadisticas
+                -->
                 <style>
                   /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
                   /*css 👈 comando decorativo "Highlight String Code */
@@ -3083,9 +3169,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
               </b:includable>
             </b:widget>  
             <b:widget id='PageList2' locked='false' title='' version='2' type='PageList' visible='true'>
-              <!--
-              -   |||📢 Redes sociales
-              -->
               <b:widget-settings>
                 <b:widget-setting name='pageListJson'>
                   <![CDATA[{
@@ -3113,6 +3196,9 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                 </b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
+                <!--
+                -   |||📢 Redes sociales
+                -->
                 <style>
                   /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
                   /*css 👈 comando decorativo "Highlight String Code */
@@ -3215,9 +3301,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
               </b:includable>
             </b:widget>                   
             <b:widget id='PageList4' locked='false' title='' type='PageList'>
-              <!--
-              -   |||🏷️ rutas 3
-              -->   
               <b:widget-settings>
                 <b:widget-setting name='pageListJson'>
                 <![CDATA[{
@@ -3245,7 +3328,9 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                 <b:widget-setting name='homeTitle'>Página Principal</b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
-                
+                <!--
+                -   |||🏷️ rutas 3
+                -->   
                 <div class='widget-content'>
                   <b:if cond='data:title != ""'><h2><data:title/></h2></b:if>
                   <ul>
@@ -3263,9 +3348,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
           <!-- | 📦 MENU #2 📦 | -->
           <b:section id='sidebar-right-2' class="sidebar-right-seccion" name='menu 2'>              
             <b:widget id='HTML2' locked='false' title='google maps' type='HTML' visible='true'>
-              <!--
-              -   |||🌎 google maps
-              -->  
               <b:widget-settings>
                 <b:widget-setting name='content'>
                   <![CDATA[
@@ -3277,37 +3359,16 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                 </b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
+                <!--
+                -   |||🌎 google maps
+                -->  
                 <div class='widget-content' id='widget-content-HTML2'>
                   <data:content/>
-                </div>
-                <style>
-                    /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
-                    /*css 👈 comando decorativo "Highlight String Code */
-                      #widget-content-HTML2{
-                        border-radius: 8px;
-                        display:flex;
-                      }
-                      .google-map-1{
-                        width: 100%; 
-                        height: 300px;
-                        border: none;
-                      }
-                    /*!css*/
-                    /*]]>*/
-                </style>
-                <script>  
-                  //<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante!  
-                  //js 👈 Comando decorativo "Highlight String Code"            
-                  //!js  
-                  //]]>  
-                </script>           
+                </div>      
                 <b:include name='quickedit'/>
               </b:includable>
             </b:widget>  
             <b:widget id='PageList1' locked='false' title='Servicios SENA' type='PageList' visible='true'>
-              <!--
-              -   |||🏷️ rutas 2
-              -->   
               <b:widget-settings>
                 <b:widget-setting name='pageListJson'>
                   <![CDATA[{
@@ -3360,6 +3421,9 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                 </b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
+                <!--
+                -   |||🏷️ rutas 2
+                -->   
                 <style>
                   /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
                   /*css 👈 comando decorativo "Highlight String Code */
@@ -3409,9 +3473,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
           <!-- | 📦 MENU #3 📦 | -->
           <b:section id='sidebar-right-3' class="sidebar-right-seccion" name='menu 3'>
             <b:widget id='BlogArchive1' locked='false' title='Historial del blog' type='BlogArchive' version='1' visible='true'>
-            <!--
-            -   |||💾 BlogArchive1
-            -->
               <b:widget-settings>
                 <b:widget-setting name='showStyle'>HIERARCHY</b:widget-setting>
                 <b:widget-setting name='yearPattern'>yyyy</b:widget-setting>
@@ -3424,6 +3485,9 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                 <b:widget-setting name='frequency'>MONTHLY</b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'> 
+                <!--
+                -   |||💾 BlogArchive1
+                -->
                 <style>
                   /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
                   /*css 👈 comando decorativo "Highlight String Code */
@@ -3603,27 +3667,29 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
               </b:includable>
             </b:widget>    
             <b:widget id='Text1' locked='false' title='Creditos' type='Text'>
-              <!--
-              -   |||🧾 creditos
-              -->  
               <b:widget-settings>
                 <b:widget-setting name='content'>
                 <![CDATA[<center>La Información Publicada en este blog es responsabilidad del  Centro Agroturistico</center>]]>
                 </b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
-              <div class='widget-content'>
-                <data:content/>
-              </div>
-
+                <!--
+                -   |||🧾 creditos
+                -->  
+                <div class='widget-content'>
+                  <data:content/>
+                </div>
               <b:include name='quickedit'/>
-            </b:includable>
+              </b:includable>
             </b:widget>
             <b:widget id='Attribution1' locked='false' title='' type='Attribution' version='1'>      
               <b:widget-settings>
                 <b:widget-setting name='copyright'/>
               </b:widget-settings>
               <b:includable id='main'>
+                <!--
+                -   |||🧾 txt bloger
+                -->  
                 <div class='widget-content' style='text-align: center;'>
                   <b:if cond='data:attribution != ""'>
                    <data:attribution/>
@@ -3633,6 +3699,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
               </b:includable>
             </b:widget>  
           </b:section>
+
           <!-- 
           -   |||🍇 [JS]
           -->
@@ -3694,6 +3761,8 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
             //]]>
           </script>
         </div>
+        <!-- opaca el fondo al abrir el menu, al aprecionarlo desaparece -->
+        <!-- <div id='overlay-fondo-opaco' onclick='toggleMenu("ocultar")'></div> (no terminado) -->
       </main>
       <!-- 
       |||🧰 footer
