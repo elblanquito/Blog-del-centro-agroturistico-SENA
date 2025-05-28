@@ -327,7 +327,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
           border-radius: 10px;
           color: #00304d;
           border: none;
-          transition: transform 0.2s,
+          transition: transform 0.2s cubic-bezier(0.18, 0.89, 0.38, 1.78),
           background-color .2s;
         }
         .menu-inferior-btn:active{
@@ -336,6 +336,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
         }
         .menu-inferior-btn svg{
           height: 100%;
+          width: auto;
         }
         .desplegar-menu-btn{
           display: none;
@@ -1012,7 +1013,8 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   cursor: default;
                   font-weight: bold;
                   font-size: 1.1em;
-                  transition: all 0.2s;
+                  transition: all 0.2s,
+                  transform 0.2s cubic-bezier(0.18, 0.89, 0.38, 1.78);
                 }
                 a.seccion-carpeta-header{
                 }
@@ -1639,7 +1641,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                 }
                 .post-body img, .post-body iframe, .post-body .tiktok-embed {
                   box-shadow: 0 1px 6px 0px rgba(0, 0, 0, .1), 0 2px 4px -2px rgba(0, 0, 0, .1);;
-                  transition: transform 0.3s ease-out;
+                  transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.38, 1.78);
                   display: block;
                   overflow-y: auto;
                   border-radius: 10px;
@@ -1718,7 +1720,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   display: flex;
                   align-items: center;
                   justify-content: center;
-                  transition: transform 0.2s;
+                  transition: transform 0.2s cubic-bezier(0.18, 0.89, 0.38, 1.78);
                 }
                 .post-footer-btn svg{
                   width: 26px;
@@ -1730,7 +1732,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   background-color: #39a9001c;
                 }
                 .post-footer-btn:active{
-                  transform: scale(0.9);
+                  transform: scale(0.8);
                 }
                 .post-fecha{
                   margin-left: auto;
@@ -1757,7 +1759,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   box-shadow: #e2e8f0 0px 1px 4px;
                   padding: 10px;
                   border-radius: 10px;
-                  transition: scale .2s ease;
+                  transition: scale .2s cubic-bezier(0.18, 0.89, 0.38, 1.78);
                 }
                 .blog-page:active{
                   scale: 0.8;
@@ -3220,6 +3222,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                     justify-content: space-around;
                   }
                   .red-social-link{
+                    cursor: pointer; 
                     padding: 0;
                     cursor: default;
                     display: block;
@@ -3233,16 +3236,15 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   }
                   .red-social{
                     display: flex;
-                    transition: all 0.3s ease-out;
+                    transition: all 0.2s cubic-bezier(0.18, 0.89, 0.38, 1.78);
                   }
                   .red-social-link:hover .red-social{
                     transform: translate(0, -5px);
                   }
                   .red-social-link:active{
-                    transform: scale(.9)
+                    transform: scale(.8)
                   }
                   .red-social-link svg{
-                    transition: all 0.1s ease;
                     width: 100%;
                     height: 100%;
                   }            
@@ -3253,8 +3255,12 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                       100% { transform: translateY(0); }
                     }
                   .red-social-link svg {
-                      animation: rebote 5s ease-in-out infinite;
-                    }                 
+                      animation: rebote 5s cubic-bezier(0.74, -1.35, 1, 1) infinite; /*rebote al principio*/
+                      animation: rebote 5s cubic-bezier(0.18, 0.89, 0.38, 1.78) infinite; /*rebote al final*/
+                    }  
+                    .red-social-link:hover svg{
+                      animation: none;
+                    }              
                     .red-social-link .facebook > svg {
                       animation-delay: 1s;
                     }           
@@ -3447,10 +3453,11 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                     font-weight: normal;
                     margin-bottom: 3px;
                     border-radius: 6px;
-                    transition: opacity 0.2s;
+                    transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.38, 1.78);
                   }
                   .PageList ul > li > a:hover{
-                    opacity: 0.7;
+                    background-color: #39a900;
+                    transform: translateX(10px);
                   }
                   /*!css*/
                   /*]]>*/
