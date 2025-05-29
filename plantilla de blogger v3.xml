@@ -150,7 +150,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
         */
         /*css 👈 comando decorativo "Highlight String Code */
         /*  
-        |||🎨 variables [CSS]
+        ||| 🎨 variables [CSS]
         */
         :root {
           --color-primario: #39a900;
@@ -226,11 +226,177 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
         .post-content{width: 100%;}
         .post-content img{ width: 100%;}
 
-        /* Widgets
-        ----------------------------------------------- */
+        /*
+        ||| 🍏 [CSS]
+        */
         .widget ul{
           list-style: none;
         }
+
+        /*
+        -   ||| 🎪
+        */
+        #LinkList1{
+          display: flex;
+          justify-content: center;
+          margin: 20px 0px;
+        }
+        .imagenes-deslisables{
+          max-width: 990px;
+          position: relative;
+          width: 100%;
+        }
+        .carusel-cont {
+          border-radius: 16px;
+          margin: 0;
+          height: auto;
+          width: 100%;
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 100%;
+        }
+        .carusel-link{
+          aspect-ratio: 319 / 111;
+          position: relative;
+          border-radius: 16px;
+          width: auto;
+          height: auto;
+          scroll-snap-align:center;
+        }
+        .carusel-link img{
+          border-radius: 16px;
+          width: 100%;
+          min-height: 170px;
+          display: block;
+          height: 100%;
+        }
+        @media (max-width: 800px) {
+          .carusel-link img{
+            border-radius: 0;
+          }
+        }
+        .carusel-cont::-webkit-scrollbar {
+          width: 5px;
+          height: 5px;
+        }
+      
+        .carusel-cont::-webkit-scrollbar-thumb  {
+          background: rgba(85, 85, 100, 0.18);
+          border-radius: 10px;
+        }
+        .carusel-cont::-webkit-scrollbar-thumb:hover {
+          background:rgba(85, 85, 100, 0.24);
+        }
+      
+        .carusel-btn{
+          z-index: 1;
+          border-radius: 8px;
+          background: #00000060;
+          position: absolute;
+          top: 50%;
+          transform: translate(0,-50%);
+          border: none;
+          display: flex;
+          align-items: center;
+          padding: 8px 0px;
+          transition: transform 0.2s ease;
+        }
+      
+        .carusel-btn:hover{
+          background: #00000080;
+        }
+        .carusel-btn:active{
+          transform: translate(0,-50%) scale(0.8);
+        }
+      
+        .carusel-btn svg{
+          width: 38px;
+          height: auto;
+          fill: #ffffff;
+        }
+      
+        .carusel-btn-left{
+          left: 10px;
+        }
+        .carusel-btn-right{
+          right: 10px;
+        }
+        /*
+        -   ||| 🧮
+        */
+        .blog-page-cont{
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          column-gap: 60px;
+        }
+        .blog-page{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 30px;
+          width: 30px;
+          outline: 1px solid #e2e8f0;
+          box-shadow: #e2e8f0 0px 1px 4px;
+          padding: 10px;
+          border-radius: 10px;
+          transition: scale .2s cubic-bezier(0.18, 0.89, 0.38, 1.78);
+        }
+        .blog-page:active{
+          scale: 0.8;
+        }
+        .blog-page svg{
+          height: 100%;
+          width: auto;
+        }
+        a.blog-page-disable{
+          pointer-events: none;
+          color: #a6b7c1;
+          outline-color: #e2e8f0;
+          box-shadow: inset #e2e8f0 0px 0px 11px 0px;
+        }
+        .menu-inferior-navegacion{
+          z-index: 10;
+          display: flex;
+          justify-content: center;
+          gap: 10px;
+          position: sticky;
+          bottom: 30px;
+          width:fit-content;
+          margin: 20px auto;
+          box-shadow: #e2e8f0 0px 1px 4px;
+          outline: 1px solid #e2e8f0;
+          background-color: white;
+          border-radius: 10px;
+          padding: 5px 15px;
+        }
+        .menu-inferior-btn{
+          box-sizing: border-box;
+          cursor: pointer;
+          background-color: transparent;
+          display: flex;
+          height: 40px;
+          padding: 5px;
+          border-radius: 10px;
+          color: #00304d;
+          border: none;
+          transition: transform 0.2s cubic-bezier(0.18, 0.89, 0.38, 1.78),
+          background-color .2s;
+        }
+        .menu-inferior-btn:active{
+          transform: scale(0.8);
+          background-color:rgba(0, 0, 0, 0.05);
+        }
+        .menu-inferior-btn svg{
+          height: 100%;
+          width: auto;
+        }
+        .desplegar-menu-btn{
+          display: none;
+        }
+
         /*
         |||🍇 [CSS]
         */
@@ -300,47 +466,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
           display: none;
           opacity: 0
         }
-        .menu-inferior-navegacion{
-          z-index: 10;
-          display: flex;
-          justify-content: center;
-          gap: 10px;
-          position: sticky;
-          left: 50%;
-          bottom: 40px;
-          width:fit-content;
-          margin: 20px auto;
-          transform: translate(-50%);
-
-          box-shadow: #e2e8f0 0px 1px 4px;
-          outline: 1px solid #e2e8f0;
-          background-color: white;
-          border-radius: 10px;
-          padding: 5px 15px;
-        }
-        .menu-inferior-btn{
-          cursor: pointer;
-          background-color: transparent;
-          display: flex;
-          height: 40px;
-          padding: 5px;
-          border-radius: 10px;
-          color: #00304d;
-          border: none;
-          transition: transform 0.2s cubic-bezier(0.18, 0.89, 0.38, 1.78),
-          background-color .2s;
-        }
-        .menu-inferior-btn:active{
-          transform: scale(0.8);
-          background-color:rgba(0, 0, 0, 0.05);
-        }
-        .menu-inferior-btn svg{
-          height: 100%;
-          width: auto;
-        }
-        .desplegar-menu-btn{
-          display: none;
-        }
         @media (max-width: 800px) { /*ocultar menu en movil*/
           #sidebar-right{
             overflow-y: auto;
@@ -349,8 +474,8 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
             right: 0;
             z-index: 21;
             height: 100vh;
-            width: 100%;
-            max-width: 80%;
+            width: 80%;
+            max-width: 320px;
             padding: 20px 20px;
             padding-bottom: 60px;
             box-sizing: border-box;
@@ -1291,100 +1416,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                     </b:loop>
                   </div>
                 </div>
-              
-                <style>
-                  /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
-                  /*css 👈 comando decorativo "Highlight String Code */
-                    #LinkList1{
-                      display: flex;
-                      justify-content: center;
-                      margin: 20px 0px;
-                    }
-                    .imagenes-deslisables{
-                      max-width: 990px;
-                      position: relative;
-                      width: 100%;
-                    }
-                    .carusel-cont {
-                      border-radius: 16px;
-                      margin: 0;
-                      height: auto;
-                      width: 100%;
-                      overflow-x: auto;
-                      scroll-snap-type: x mandatory;
-                      display: grid;
-                      grid-auto-flow: column;
-                      grid-auto-columns: 100%;
-                    }
-                    .carusel-link{
-                      aspect-ratio: 319 / 111;
-                      position: relative;
-                      border-radius: 16px;
-                      width: auto;
-                      height: auto;
-                      scroll-snap-align:center;
-                    }
-                    .carusel-link img{
-                      border-radius: 16px;
-                      width: 100%;
-                      min-height: 170px;
-                      display: block;
-                      height: 100%;
-                    }
-                    @media (max-width: 800px) {
-                      .carusel-link img{
-                        border-radius: 0;
-                      }
-                    }
-                    .carusel-cont::-webkit-scrollbar {
-                      width: 5px;
-                      height: 5px;
-                    }
-                  
-                    .carusel-cont::-webkit-scrollbar-thumb  {
-                      background: rgba(85, 85, 100, 0.18);
-                      border-radius: 10px;
-                    }
-                    .carusel-cont::-webkit-scrollbar-thumb:hover {
-                      background:rgba(85, 85, 100, 0.24);
-                    }
-                  
-                    .carusel-btn{
-                      z-index: 1;
-                      border-radius: 8px;
-                      background: #00000060;
-                      position: absolute;
-                      top: 50%;
-                      transform: translate(0,-50%);
-                      border: none;
-                      display: flex;
-                      align-items: center;
-                      padding: 8px 0px;
-                      transition: transform 0.2s ease;
-                    }
-                  
-                    .carusel-btn:hover{
-                      background: #00000080;
-                    }
-                    .carusel-btn:active{
-                      transform: translate(0,-50%) scale(0.8);
-                    }
-                  
-                    .carusel-btn svg{
-                      width: 38px;
-                      height: auto;
-                      fill: #ffffff;
-                    }
-                  
-                    .carusel-btn-left{
-                      left: 10px;
-                    }
-                    .carusel-btn-right{
-                      right: 10px;
-                    }
-                  /*!css*/
-                  /*]]>*/
-                </style>
                 <script>
                   //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
                   //js 👈 comando decorativo "Highlight String Code"
@@ -1451,7 +1482,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
             </b:includable>
             <b:includable id='script-posts-blog' var='top32'>
               <!--
-              -   |||🖼️ Main Imagenes
+              -   |||🎪 Galeria
               -->
               <style>
                 /*<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante! */  
@@ -1511,6 +1542,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   }
                 }
                 .date-header {
+                  cursor: pointer;
                   font-weight: normal;
                   width: fit-content;
                   padding: 4px 15px;
@@ -1521,6 +1553,10 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, .1);
                   outline: 1px solid #e2e8f0;
                   font-weight: bold;
+                  transition: scale .2s cubic-bezier(0.18, 0.89, 0.38, 1.78);
+                }
+                .date-header:active{
+                  scale: .9;
                 }
                 .posts-cont{
                 }
@@ -1743,38 +1779,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   width: 500px;
                   height: 208px;
                 }
-                .blog-page-cont{
-                  display: flex;
-                  justify-content: center;
-                  flex-wrap: wrap;
-                  column-gap: 60px;
-                }
-                .blog-page{
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                  height: 30px;
-                  width: 30px;
-                  outline: 1px solid #e2e8f0;
-                  box-shadow: #e2e8f0 0px 1px 4px;
-                  padding: 10px;
-                  border-radius: 10px;
-                  transition: scale .2s cubic-bezier(0.18, 0.89, 0.38, 1.78);
-                }
-                .blog-page:active{
-                  scale: 0.8;
-                }
-                .blog-page svg{
-                  height: 100%;
-                  width: auto;
-                }
-                a.blog-page-disable{
-                  pointer-events: none;
-                  color: #a6b7c1;
-                  outline-color: #e2e8f0;
-                  box-shadow: inset #e2e8f0 0px 0px 11px 0px;
-                }
-
                 @media (max-width: 400px){
                   .post-fecha{
                     margin-left: 0px;
@@ -1827,9 +1831,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                     posts = contenedor.querySelectorAll('.post');
                   } 
                       
-                  function scrollFecha(element) { // scrollea hasta el padre, del padre, del elemento seleccionado
-                    element.parentElement.parentElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  } 
                   // aplica la libreria Fancybox a las imagenes del blog y pone los botones de descarga
                   function customImagenesPosts() {
                     posts.forEach((post, index) => {
@@ -1919,7 +1920,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   </b:if>
                   <b:if cond='data:post.dateHeader'>
                     <div class='date-header-cont'>
-                      <h2 class='date-header' onclick='scrollFecha(this)'>
+                      <h2 class='date-header' onclick='scrollParent(this, 2)'>
                         <span>
                           <data:post.dateHeader/>
                         </span>
@@ -1991,29 +1992,46 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   &lt;/div&gt;&lt;/div&gt;
                 </b:if>
                 <!-- 
-                -   |||🍏 [navegacion] 
+                -   |||🧮 Navegacion
                 -->
                 <div class='blog-page-cont' id='blog-pager-cont'>
                   <a class='blog-page blog-page-back' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;' expr:title='data:newerPageTitle'>
                     <b:class cond='!data:newerPageUrl' name='blog-page-disable'/>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="m382-480 294 294q15 15 14.5 35T675-116q-15 15-35 15t-35-15L297-423q-12-12-18-27t-6-30q0-15 6-30t18-27l308-308q15-15 35.5-14.5T676-844q15 15 15 35t-15 35L382-480Z"/></svg>
                   </a>
                   <a class='blog-page blog-page-forward' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;' expr:title='data:olderPageTitle'>
                     <b:class cond='!data:olderPageUrl' name='blog-page-disable'/>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M579-480 285-774q-15-15-14.5-35.5T286-845q15-15 35.5-15t35.5 15l307 308q12 12 18 27t6 30q0 15-6 30t-18 27L356-115q-15 15-35 14.5T286-116q-15-15-15-35.5t15-35.5l293-293Z"/></svg>
                   </a>
                   <a class='blog-page blog-page-home' expr:href='data:blog.homepageUrl'>
                     <b:class cond='data:blog.pageType not in {"static_page", "item"} and !data:newerPageUrl' name='blog-page-disable'/>
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M240-200h120v-200q0-17 11.5-28.5T400-440h160q17 0 28.5 11.5T600-400v200h120v-360L480-740 240-560v360Zm-80 0v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H560q-17 0-28.5-11.5T520-160v-200h-80v200q0 17-11.5 28.5T400-120H240q-33 0-56.5-23.5T160-200Zm320-270Z"/></svg>
                   </a>
                 </div>
-                
+                <!-- 
+                👇 indicador para el boton scrolear asi abajo -->
+                <div id="div-scroll-navegacion"></div>
                 <div class='menu-inferior-navegacion'>
+                  <a class='menu-inferior-btn' expr:href='data:blog.homepageUrl'>
+                    <b:class cond='data:blog.pageType not in {"static_page", "item"} and !data:newerPageUrl' name='blog-page-disable'/>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M240-200h120v-200q0-17 11.5-28.5T400-440h160q17 0 28.5 11.5T600-400v200h120v-360L480-740 240-560v360Zm-80 0v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H560q-17 0-28.5-11.5T520-160v-200h-80v200q0 17-11.5 28.5T400-120H240q-33 0-56.5-23.5T160-200Zm320-270Z"/></svg>
+                  </a>
+                  <a class='menu-inferior-btn' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;' expr:title='data:newerPageTitle'>
+                    <b:class cond='!data:newerPageUrl' name='blog-page-disable'/>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="m432-480 156 156q11 11 11 28t-11 28q-11 11-28 11t-28-11L348-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 28-11t28 11q11 11 11 28t-11 28L432-480Z"/></svg>
+                  </a>
+                  <a class='menu-inferior-btn' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;' expr:title='data:olderPageTitle'>
+                    <b:class cond='!data:olderPageUrl' name='blog-page-disable'/>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M504-480 348-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L404-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Z"/></svg>
+                  </a>
+                  <button class='menu-inferior-btn' onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><g fill="none"><path d="M0 0h24v24H0z"/><path d="M0 0h24v24H0z"/></g><path d="M6.7 18.3c.4.4 1 .4 1.4 0l3.9-3.9 3.9 3.9c.4.4 1 .4 1.4 0 .4-.4.4-1 0-1.4l-4.6-4.6a1 1 0 0 0-1.4 0l-4.6 4.6a1 1 0 0 0 0 1.4z"/><path d="M6.7 11.7c.4.4 1 .4 1.4 0L12 7.8l3.9 4c.4.3 1 .3 1.4 0 .4-.5.4-1.1 0-1.5l-4.6-4.6a1 1 0 0 0-1.4 0l-4.6 4.6a1 1 0 0 0 0 1.4z"/></svg>
+                  </button>
+                  <button class='menu-inferior-btn' onclick='scrollParent(document.getElementById("div-scroll-navegacion"), 0, "center")'>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><g fill="none"><path d="M0 0h24v24H0z"/><path d="M0 0h24v24H0z"/></g><path d="M17.29 5.71a1 1 0 0 0-1.41 0L12 9.58 8.11 5.7A1 1 0 1 0 6.7 7.11l4.59 4.59a1 1 0 0 0 1.41 0l4.59-4.59a.98.98 0 0 0 0-1.4z"/><path d="M17.29 12.3a1 1 0 0 0-1.41 0L12 16.17l-3.88-3.88a1 1 0 1 0-1.41 1.41l4.59 4.59a1 1 0 0 0 1.41 0l4.59-4.59a1 1 0 0 0-.01-1.4z"/></svg>
+                  </button>
                   <button class='menu-inferior-btn desplegar-menu-btn' onclick='toggleMenu()'>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M160-240q-17 0-28.5-11.5T120-280q0-17 11.5-28.5T160-320h440q17 0 28.5 11.5T640-280q0 17-11.5 28.5T600-240H160Zm596-68L612-452q-12-12-12-28t12-28l144-144q11-11 28-11t28 11q11 11 11 28t-11 28L696-480l116 116q11 11 11 28t-11 28q-11 11-28 11t-28-11ZM160-440q-17 0-28.5-11.5T120-480q0-17 11.5-28.5T160-520h320q17 0 28.5 11.5T520-480q0 17-11.5 28.5T480-440H160Zm0-200q-17 0-28.5-11.5T120-680q0-17 11.5-28.5T160-720h440q17 0 28.5 11.5T640-680q0 17-11.5 28.5T600-640H160Z"/></svg>
-                  </button>
-                  <button class='menu-inferior-btn' onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M480-348q-10.26 0-20.09-3.91-9.82-3.92-17.52-11.61L258.96-546.96Q244-561.91 244-584t14.96-37.04Q273.91-636 296-636t37.04 14.96L480-474.09l146.96-146.95Q641.91-636 664-636t37.04 14.96Q716-606.09 716-584t-14.96 37.04L517.61-363.52q-7.7 7.69-17.52 11.61Q490.26-348 480-348Z"/></svg>
                   </button>
                 </div>
               </b:if>
@@ -3224,7 +3242,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   .red-social-link{
                     cursor: pointer; 
                     padding: 0;
-                    cursor: default;
                     display: block;
                     height: 30px;
                     width: 30px;
@@ -4009,7 +4026,16 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
         copiarTexto(link)
       }
     }
-
+    // scrollea el elemento seleccionado o a sus padres
+    function scrollParent(element, level = 0, position = 'start') {
+      let target = element;
+      for (let i = 0; i < level; i++) { // seleccionar elemento deseado
+        if (!target.parentElement) break 
+        target = target.parentElement;
+      }
+      // scrolear al elemento
+      target.scrollIntoView({ behavior: 'smooth', block: position });
+    }
     // Función para copiar texto al portapapeles
     async function copiarTexto(texto) {
       try {
