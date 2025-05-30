@@ -354,10 +354,9 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
         a.blog-page-disable{
           pointer-events: none;
           color: #a6b7c1;
-          outline-color: #e2e8f0;
           box-shadow: inset #e2e8f0 0px 0px 11px 0px;
         }
-        .menu-inferior-navegacion{
+        .blog-navegacion-cont{
           z-index: 10;
           display: flex;
           justify-content: center;
@@ -372,7 +371,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
           border-radius: 10px;
           padding: 5px 15px;
         }
-        .menu-inferior-btn{
+        .blog-navegacion, a.blog-navegacion{
           box-sizing: border-box;
           cursor: pointer;
           background-color: transparent;
@@ -380,22 +379,38 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
           height: 40px;
           padding: 5px;
           border-radius: 10px;
-          color: #00304d;
+          color: var(--color-primario);
           border: none;
           transition: transform 0.2s cubic-bezier(0.18, 0.89, 0.38, 1.78),
           background-color .2s;
         }
-        .menu-inferior-btn:active{
+        .blog-navegacion:active{
           transform: scale(0.8);
           background-color:rgba(0, 0, 0, 0.05);
         }
-        .menu-inferior-btn svg{
+        .blog-navegacion svg{
           height: 100%;
           width: auto;
+        }
+        .blog-navegacion-disable, a.blog-navegacion-disable{
+          pointer-events: none;
+          color: #a6b7c1;
         }
         .desplegar-menu-btn{
           display: none;
         }
+        /*
+        @media (max-width: 400px) {
+          .blog-navegacion-cont{
+            gap: 10px;
+            bottom: 0;
+            width: auto;
+            margin: -20px auto;
+            box-shadow: #e2e8f0 0px -1px 4px;
+            border-radius: 0;
+            padding: 5px 0;
+          }
+        }*/
 
         /*
         |||🍇 [CSS]
@@ -1994,44 +2009,53 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                 <!-- 
                 -   |||🧮 Navegacion
                 -->
-                <div class='blog-page-cont' id='blog-pager-cont'>
-                  <a class='blog-page blog-page-back' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;' expr:title='data:newerPageTitle'>
-                    <b:class cond='!data:newerPageUrl' name='blog-page-disable'/>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="m382-480 294 294q15 15 14.5 35T675-116q-15 15-35 15t-35-15L297-423q-12-12-18-27t-6-30q0-15 6-30t18-27l308-308q15-15 35.5-14.5T676-844q15 15 15 35t-15 35L382-480Z"/></svg>
-                  </a>
-                  <a class='blog-page blog-page-forward' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;' expr:title='data:olderPageTitle'>
-                    <b:class cond='!data:olderPageUrl' name='blog-page-disable'/>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M579-480 285-774q-15-15-14.5-35.5T286-845q15-15 35.5-15t35.5 15l307 308q12 12 18 27t6 30q0 15-6 30t-18 27L356-115q-15 15-35 14.5T286-116q-15-15-15-35.5t15-35.5l293-293Z"/></svg>
-                  </a>
-                  <a class='blog-page blog-page-home' expr:href='data:blog.homepageUrl'>
-                    <b:class cond='data:blog.pageType not in {"static_page", "item"} and !data:newerPageUrl' name='blog-page-disable'/>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M240-200h120v-200q0-17 11.5-28.5T400-440h160q17 0 28.5 11.5T600-400v200h120v-360L480-740 240-560v360Zm-80 0v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H560q-17 0-28.5-11.5T520-160v-200h-80v200q0 17-11.5 28.5T400-120H240q-33 0-56.5-23.5T160-200Zm320-270Z"/></svg>
-                  </a>
-                </div>
                 <!-- 
-                👇 indicador para el boton scrolear asi abajo -->
+                👇 indicador para el boton scrolear asi abajo "down-scroll-btn"-->
                 <div id="div-scroll-navegacion"></div>
-                <div class='menu-inferior-navegacion'>
-                  <a class='menu-inferior-btn' expr:href='data:blog.homepageUrl'>
-                    <b:class cond='data:blog.pageType not in {"static_page", "item"} and !data:newerPageUrl' name='blog-page-disable'/>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M240-200h120v-200q0-17 11.5-28.5T400-440h160q17 0 28.5 11.5T600-400v200h120v-360L480-740 240-560v360Zm-80 0v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H560q-17 0-28.5-11.5T520-160v-200h-80v200q0 17-11.5 28.5T400-120H240q-33 0-56.5-23.5T160-200Zm320-270Z"/></svg>
+
+                <div class='blog-navegacion-cont'>
+                  <a class='blog-navegacion' expr:href='data:blog.homepageUrl'>
+                    <b:class cond='data:blog.pageType not in {"static_page", "item"} and !data:newerPageUrl' name='blog-navegacion-disable'/>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
+                      <path d="M240-200h120v-200q0-17 11.5-28.5T400-440h160q17 0 28.5 11.5T600-400v200h120v-360L480-740 240-560v360Zm-80 
+                      0v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H560q-17
+                      0-28.5-11.5T520-160v-200h-80v200q0 17-11.5 28.5T400-120H240q-33 0-56.5-23.5T160-200Zm320-270Z"/>
+                    </svg>
                   </a>
-                  <a class='menu-inferior-btn' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;' expr:title='data:newerPageTitle'>
-                    <b:class cond='!data:newerPageUrl' name='blog-page-disable'/>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="m432-480 156 156q11 11 11 28t-11 28q-11 11-28 11t-28-11L348-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 28-11t28 11q11 11 11 28t-11 28L432-480Z"/></svg>
+
+                  <a class='blog-navegacion' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + "_blog-pager-newer-link"' expr:title='data:newerPageTitle'>
+                    <b:class cond='!data:newerPageUrl' name='blog-navegacion-disable'/>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+                      <path d="m432-480 156 156q11 11 11 28t-11 28q-11 11-28 11t-28-11L348-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 28-11t28 11q11 11 11 28t-11 28L432-480Z"/>
+                    </svg>
                   </a>
-                  <a class='menu-inferior-btn' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;' expr:title='data:olderPageTitle'>
-                    <b:class cond='!data:olderPageUrl' name='blog-page-disable'/>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M504-480 348-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L404-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Z"/></svg>
+
+                  <a class='blog-navegacion' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + "_blog-pager-older-link"' expr:title='data:olderPageTitle'>
+                    <b:class cond='!data:olderPageUrl' name='blog-navegacion-disable'/>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+                      <path d="M504-480 348-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L404-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Z"/>
+                    </svg>
                   </a>
-                  <button class='menu-inferior-btn' onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><g fill="none"><path d="M0 0h24v24H0z"/><path d="M0 0h24v24H0z"/></g><path d="M6.7 18.3c.4.4 1 .4 1.4 0l3.9-3.9 3.9 3.9c.4.4 1 .4 1.4 0 .4-.4.4-1 0-1.4l-4.6-4.6a1 1 0 0 0-1.4 0l-4.6 4.6a1 1 0 0 0 0 1.4z"/><path d="M6.7 11.7c.4.4 1 .4 1.4 0L12 7.8l3.9 4c.4.3 1 .3 1.4 0 .4-.5.4-1.1 0-1.5l-4.6-4.6a1 1 0 0 0-1.4 0l-4.6 4.6a1 1 0 0 0 0 1.4z"/></svg>
+
+                  <button class='blog-navegacion up-scroll-btn' title="Subir al inicio de la página" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><g fill="none"><path d="M0 0h24v24H0z"/><path d="M0 0h24v24H0z"/></g>
+                      <path d="M6.7 18.3c.4.4 1 .4 1.4 0l3.9-3.9 3.9 3.9c.4.4 1 .4 1.4 0 .4-.4.4-1 0-1.4l-4.6-4.6a1 1 0 0 0-1.4 0l-4.6 4.6a1 1 0 0 0 0 1.4z"/>
+                      <path d="M6.7 11.7c.4.4 1 .4 1.4 0L12 7.8l3.9 4c.4.3 1 .3 1.4 0 .4-.5.4-1.1 0-1.5l-4.6-4.6a1 1 0 0 0-1.4 0l-4.6 4.6a1 1 0 0 0 0 1.4z"/>
+                    </svg>
                   </button>
-                  <button class='menu-inferior-btn' onclick='scrollParent(document.getElementById("div-scroll-navegacion"), 0, "center")'>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><g fill="none"><path d="M0 0h24v24H0z"/><path d="M0 0h24v24H0z"/></g><path d="M17.29 5.71a1 1 0 0 0-1.41 0L12 9.58 8.11 5.7A1 1 0 1 0 6.7 7.11l4.59 4.59a1 1 0 0 0 1.41 0l4.59-4.59a.98.98 0 0 0 0-1.4z"/><path d="M17.29 12.3a1 1 0 0 0-1.41 0L12 16.17l-3.88-3.88a1 1 0 1 0-1.41 1.41l4.59 4.59a1 1 0 0 0 1.41 0l4.59-4.59a1 1 0 0 0-.01-1.4z"/></svg>
+
+                  <button class='blog-navegacion down-scroll-btn' title="Bajar al final de la página" onclick='scrollParent(document.getElementById("div-scroll-navegacion"), 0, "center")'>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><g fill="none"><path d="M0 0h24v24H0z"/><path d="M0 0h24v24H0z"/></g>
+                      <path d="M17.29 5.71a1 1 0 0 0-1.41 0L12 9.58 8.11 5.7A1 1 0 1 0 6.7 7.11l4.59 4.59a1 1 0 0 0 1.41 0l4.59-4.59a.98.98 0 0 0 0-1.4z"/>
+                      <path d="M17.29 12.3a1 1 0 0 0-1.41 0L12 16.17l-3.88-3.88a1 1 0 1 0-1.41 1.41l4.59 4.59a1 1 0 0 0 1.41 0l4.59-4.59a1 1 0 0 0-.01-1.4z"/>
+                    </svg>
                   </button>
-                  <button class='menu-inferior-btn desplegar-menu-btn' onclick='toggleMenu()'>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M160-240q-17 0-28.5-11.5T120-280q0-17 11.5-28.5T160-320h440q17 0 28.5 11.5T640-280q0 17-11.5 28.5T600-240H160Zm596-68L612-452q-12-12-12-28t12-28l144-144q11-11 28-11t28 11q11 11 11 28t-11 28L696-480l116 116q11 11 11 28t-11 28q-11 11-28 11t-28-11ZM160-440q-17 0-28.5-11.5T120-480q0-17 11.5-28.5T160-520h320q17 0 28.5 11.5T520-480q0 17-11.5 28.5T480-440H160Zm0-200q-17 0-28.5-11.5T120-680q0-17 11.5-28.5T160-720h440q17 0 28.5 11.5T640-680q0 17-11.5 28.5T600-640H160Z"/></svg>
+                  <button class='blog-navegacion desplegar-menu-btn' title="Desplegar menú izquierdo" onclick='toggleMenu()'>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+                      <path d="M160-240q-17 0-28.5-11.5T120-280q0-17 11.5-28.5T160-320h440q17 0 28.5 11.5T640-280q0 17-11.5 28.5T600-240H160Zm596-68L612-452q-12-12-12-28t12-28l144-144q11-11 
+                      28-11t28 11q11 11 11 28t-11 28L696-480l116 116q11 11 11 28t-11 28q-11 11-28 11t-28-11ZM160-440q-17 0-28.5-11.5T120-480q0-17 11.5-28.5T160-520h320q17 0 28.5 11.5T520-480q0 
+                      17-11.5 28.5T480-440H160Zm0-200q-17 0-28.5-11.5T120-680q0-17 11.5-28.5T160-720h440q17 0 28.5 11.5T640-680q0 17-11.5 28.5T600-640H160Z"/>
+                    </svg>
                   </button>
                 </div>
               </b:if>
