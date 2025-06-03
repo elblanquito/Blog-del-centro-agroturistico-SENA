@@ -51,11 +51,11 @@
 > - puedes ver el codigo del tema original para agregar / arreglar cosas.  
 >   Aunque a este punto, el código ya es muy diferente al original
 > - hay algunas configuraciones que debes realizar desde blogger:
->   - `tema > personalizar > configuracion para dispositivos mobiles` luego
-selecionas la opcion "para computadora"
->   - `configuracion > entradas` ahi debes desactivar la segunda opcion "imagenes en lightbox"
->   - `configuracion > entradas` ahi debes activar la tercera opcion "publicacion de imagenes webp"
-(recomendable, aumenta el redimiento pero el formato no es compatible con navegadores viejos)
+>   - Ir a `tema > personalizar (desplegar) > configuración para dispositivos móviles` 
+seleccione la opción "para computadora"
+>   - Debes tener desactivada la siguiente opción `configuración > entradas > imágenes en lightbox`
+>   - Debes tener activadas las siguientes opciones `configuración > entradas > imágenes de carga diferida` 
+y también `configuración > entradas > publicación de imágenes webp` (recomendable, aumenta el rendimiento)
 >   
 >
 > 

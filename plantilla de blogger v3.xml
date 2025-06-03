@@ -156,10 +156,12 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
           --color-primario: #39a900;
         }
 
-        
         body#layout div.blog-posts {
           float: left;
           width: 350px;
+        }
+        body#layout div.widget{
+          display: block;
         }
         body#layout #sidebar-right{
           display: flow-root;
@@ -441,7 +443,11 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
         .sidebar-right-seccion .widget:first-child{margin-top: 0px}
         .sidebar-right-seccion .widget:last-child {margin-bottom: 0px;}
 
-        .sidebar-right-seccion h2 { color: #00304D ; margin-bottom: 10px;}
+        .sidebar-right-seccion h2 {
+          color: #00304D ;
+          margin-bottom: 10px;
+          width: 100%;
+          }
 
         div.Attribution{
           margin: 10px 0;
@@ -2824,7 +2830,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
         <div id='sidebar-right' class="sidebar ocultarMenu menu-lateral-cont">
           <!-- | 📦 MENU #1 📦 | -->
           <b:section id='sidebar-right-1' class="sidebar-right-seccion" name='menu 1'>
-            <b:widget id='HTML5' locked='false' title='titulo del blog' type='HTML'>
+            <b:widget id='HTML5' locked='false' title='# titulo del blog' type='HTML'>
               <b:widget-settings>
                 <b:widget-setting name='content'><![CDATA[
                   <div class="centro-agro-cont">
@@ -2847,6 +2853,11 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                 ]]></b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
+                <b:if cond='data:title != "" and data:title not contains  "#"'>
+                  <h2 class='titlebuscador'>
+                    <data:title/>
+                  </h2>
+                </b:if>
               <div class='widget-content'>
                 <data:content/>
               </div>
@@ -2858,7 +2869,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                 </style>  
               </b:includable>
             </b:widget>
-            <b:widget id='BlogSearch1' locked='false' title='Buscar publicacion' type='BlogSearch' version='1' visible='true'>
+            <b:widget id='BlogSearch1' locked='false' title='# Buscar Publicacion' type='BlogSearch' version='1' visible='true'>
               <b:includable id='main'>
               <!--
               -   |||🔍 buscador
@@ -2866,15 +2877,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
               <style>  
                 /*<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante! */  
                 /*css 👈 Comando decorativo "Highlight String Code" */
-                  .titlebuscador {
-                    padding-bottom: 10px;
-                    display: block;
-                    width: 100%;
-                    font-weight: bold;
-                    text-align: center;
-                    color: var(--color-primario);
-                    display: none;
-                  }
                   .BlogSearch {
                     width: 100%;
                     /*
@@ -2960,10 +2962,10 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   /*!css*/  
                   /*]]>*/  
               </style>
-                <b:if cond='data:title != &quot;&quot;'>
-                  <span class='titlebuscador'>
+                <b:if cond='data:title != "" and data:title not contains  "#"'>
+                  <h2 class='titlebuscador'>
                     <data:title/>
-                  </span>
+                  </h2>
                 </b:if>
                 <form expr:action='data:blog.searchUrl'>
                     <div class='contenedorbuscador'>
@@ -3007,7 +3009,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                 <b:include name='quickedit'/>
               </b:includable>
             </b:widget>    
-            <b:widget id='Image1' locked='false' title='' type='Image'>
+            <b:widget id='Image1' locked='false' title='# (programas y servicios)' type='Image'>
               <b:widget-settings>
                 <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/a/AVvXsEj0v9Y4nqePm124hlQrvYvmauw9E1_v9pQjN1M0OrX9nf5mKQvSBBRDmpcSVRGRLvI3HzKogaUjLkpHENPZbyZ6v8ztLLQHtGlXSibxOfFihPsA2-m9tJ3iGNGofs3m_fSQmyb_ad431i_IGSX0MpPyWBMPVHYKSvZWfSvGqqvPJ2BqEceUbHL4v7_4Ccw=s822</b:widget-setting>
                 <b:widget-setting name='displayHeight'>616</b:widget-setting>
@@ -3021,7 +3023,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                 <!-- 
                 -   ||| 🖼️ Imagen
                  -->
-                <b:if cond='data:title != &quot;&quot;'>
+                <b:if cond='data:title != "" and data:title not contains  "#"'>
                   <h2><data:title/></h2>
                 </b:if>
                 <div class='widget-content'>
@@ -3036,7 +3038,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                 <b:include name='quickedit'/>
               </b:includable>
             </b:widget>       
-            <b:widget id='TextList1' locked='false' title='frases del texto animado' type='TextList' visible='true'>
+            <b:widget id='TextList1' locked='false' title='# frases del texto animado' type='TextList' visible='true'>
               <!--
               -   |||✏️ Texto animado
               -->
@@ -3050,6 +3052,11 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                 <b:widget-setting name='item-4'> lo que nesecitas saber</b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
+                <b:if cond='data:title != "" and data:title not contains  "#"'>
+                  <h2 class='titlebuscador'>
+                    <data:title/>
+                  </h2>
+                </b:if>
               <div id="texto-animado-cont">
                   <b:loop values='data:items' var='item'>
                     <div class="texto-animado"> <data:item/>  </div>
@@ -3059,9 +3066,10 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                       /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
                       /*css 👈 comando decorativo "Highlight String Code */
                       #TextList1{
-                          display: flex;
-                          justify-content: center;
-                        }
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                      }
                       #texto-animado-cont {
                         color: #a6b7c1;
                         display: flex;
@@ -3189,7 +3197,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   /*!css*/
                   /*]]>*/
                 </style>
-                <b:if cond='data:title != ""'>
+                <b:if cond='data:title != "" and data:title not contains  "#"'>
                 <h2 class="stats-title"><data:title/></h2>
                 </b:if>
                 <div class='widget-content' expr:id='"widget-content-" + data:widget.instanceId'>
@@ -3212,7 +3220,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                 </div>            
               </b:includable>
             </b:widget>  
-            <b:widget id='PageList2' locked='false' title='' version='2' type='PageList' visible='true'>
+            <b:widget id='PageList2' locked='false' title='# Redes Sociales' version='2' type='PageList' visible='true'>
               <b:widget-settings>
                 <b:widget-setting name='pageListJson'>
                   <![CDATA[{
@@ -3318,8 +3326,8 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   /*!css*/
                   /*]]>*/
                 </style>
-                <b:if cond='data:title != ""'>
-                <h2 class="redes-titulo"><data:title/></h2>
+                <b:if cond='data:title != "" and data:title not contains  "#"'>
+                  <h2 class="redes-titulo"><data:title/></h2>
                 </b:if>
                 <div class="redes-sociales-cont">
                   <b:loop values='data:links' var='link' >
@@ -3347,7 +3355,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                 </div>
               </b:includable>
             </b:widget>                   
-            <b:widget id='PageList4' locked='false' title='' type='PageList'>
+            <b:widget id='PageList4' locked='false' title='# lista de links' type='PageList'>
               <b:widget-settings>
                 <b:widget-setting name='pageListJson'>
                 <![CDATA[{
@@ -3372,14 +3380,16 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                     "title":"Descarge su certificado"
                   }
                 }]]></b:widget-setting>
-                <b:widget-setting name='homeTitle'>Página Principal</b:widget-setting>
+                <b:widget-setting name='homeTitle'># Página Principal</b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
                 <!--
                 -   |||🏷️ rutas 3
                 -->   
                 <div class='widget-content'>
-                  <b:if cond='data:title != ""'><h2><data:title/></h2></b:if>
+                  <b:if cond='data:title != "" and data:title not contains  "#"'>
+                    <h2><data:title/></h2>
+                  </b:if>
                   <ul>
                     <b:loop values='data:links' var='link'>
                       <li>
@@ -3394,7 +3404,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
           </b:section>
           <!-- | 📦 MENU #2 📦 | -->
           <b:section id='sidebar-right-2' class="sidebar-right-seccion" name='menu 2'>              
-            <b:widget id='HTML2' locked='false' title='google maps' type='HTML' visible='true'>
+            <b:widget id='HTML2' locked='false' title='# Google maps' type='HTML' visible='true'>
               <b:widget-settings>
                 <b:widget-setting name='content'>
                   <![CDATA[
@@ -3409,6 +3419,9 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                 <!--
                 -   |||🌎 google maps
                 -->  
+                <b:if cond='data:title != "" and data:title not contains  "#"'>
+                  <h2><data:title/></h2>
+                </b:if>
                 <div class='widget-content' id='widget-content-HTML2'>
                   <data:content/>
                 </div>      
@@ -3503,7 +3516,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   /*!css*/
                   /*]]>*/
                 </style>
-                <b:if cond='data:title != ""'><h2><data:title/></h2></b:if>
+                <b:if cond='data:title != "" and data:title not contains  "#"'><h2><data:title/></h2></b:if>
                 <div class='widget-content'>
                   <ul class='menu2-cont'>
                     <b:loop values='data:links' var='link'>
@@ -3643,7 +3656,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   /*!css*/
                   /*]]>*/
                 </style>
-                <b:if cond='data:title != &quot;&quot;'>
+                <b:if cond='data:title != "" and data:title not contains  "#"'>
                   <h2><data:title/></h2>
                 </b:if>
                 <div class='widget-content'>
@@ -3714,7 +3727,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                 </a>
               </b:includable>
             </b:widget>    
-            <b:widget id='Text1' locked='false' title='Creditos' type='Text'>
+            <b:widget id='Text1' locked='false' title='# Creditos' type='Text'>
               <b:widget-settings>
                 <b:widget-setting name='content'>
                 <![CDATA[<center>La Información Publicada en este blog es responsabilidad del  Centro Agroturistico</center>]]>
@@ -3724,6 +3737,9 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                 <!--
                 -   |||🧾 creditos
                 -->  
+                <b:if cond='data:title != "" and data:title not contains  "#"'>
+                  <h2><data:title/></h2>
+                </b:if>
                 <div class='widget-content'>
                   <data:content/>
                 </div>
