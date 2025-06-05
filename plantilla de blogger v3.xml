@@ -260,7 +260,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
           grid-auto-columns: 100%;
         }
         .carusel-link{
-          aspect-ratio: 319 / 111;
+          aspect-ratio: 319 / 113;
           position: relative;
           border-radius: 16px;
           width: auto;
@@ -1068,68 +1068,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
             title='Menu principal' type='PageList'>
             <b:widget-settings> 
               <b:widget-setting name='pageListJson'>
-                <![CDATA[{
-                  "link0":{
-                    "href":"/",
-                    "position":0,
-                    "title":"Página Principal"
-                  },
-                  "link1":{
-                    "href":"/p/nosotros.html",
-                    "position":1,
-                    "title":"Nosotros"
-                  },
-                  "link2":{
-                    "href":"/p/normatividad_17.html",
-                    "position":2,
-                    "title":"Normatividad"
-                  },
-                  "link3":{
-                    "href":"/p/blog-page.html",
-                    "position":3,
-                    "title":"Programas"
-                  },
-                  "link4":{
-                    "href":"/p/etapa-productiva.html",
-                    "position":4,
-                    "title":"Etapa productiva"
-                  },
-                  "link5":{
-                    "href":"/p/directorio.html",
-                    "position":5,
-                    "title":"directorio"
-                  },
-                  "link6":{
-                    "href":"/p/siga.html",
-                    "position":6,
-                    "title":"SIGA > introduccion"
-                  },
-                  "link7":{
-                    "href":"/p/siga-medio-ambiente.html",
-                    "position":7,
-                    "title":"SIGA > Medio Ambiente"
-                  },
-                  "link8":{
-                    "href":"/p/siga-politica-de-seguridad-y-salud-en.html",
-                    "position":8,
-                    "title":"SIGA > Seguridad en el Trabajo"
-                  },
-                  "link9":{
-                    "href":"/p/siga-politica-seguridad-de-la.html",
-                    "position":9,
-                    "title":"SIGA > Politicas de privacidad"
-                  },
-                  "link10":{
-                    "href":"/p/siga-politica-seguridad-de-la.html",
-                    "position":10,
-                    "title":"Test > item-carpeta"
-                  },
-                  "link11":{
-                    "href":"/p/siga-politica-seguridad-de-la.html",
-                    "position":11,
-                    "title":"Test > item-carpeta2"
-                  }
-                }]]>
+                <![CDATA[{"2386874126626085014":{"href":"https://centroagroturistico.blogspot.com/p/modalidades-etapa-productiva.html","position":3,"title":"Aprendiz > Modalidades Etapa Productiva"},"link1":{"href":"/p/siga-politica-de-seguridad-y-salud-en.html","position":7,"title":"SIGA > Seguridad en el Trabajo"},"link0":{"href":"/","position":0,"title":"Página Principal"},"6379106760030155655":{"href":"https://centroagroturistico.blogspot.com/p/programas.html","position":4,"title":"Programas "},"6577109633134602306":{"href":"https://centroagroturistico.blogspot.com/p/siga-medio-ambiente.html","position":6,"title":"SIGA > Medio Ambiente"},"1913536764051443180":{"href":"https://centroagroturistico.blogspot.com/p/servicios.html","position":2,"title":"Aprendiz > Bienestar al Aprendiz"},"8481288358851739963":{"href":"https://centroagroturistico.blogspot.com/p/sig_27.html","position":5,"title":"SIGA > Calidad"},"link3":{"href":"/p/normatividad_17.html","position":11,"title":"Normatividad"},"4038023874459647097":{"href":"https://centroagroturistico.blogspot.com/p/perfil-del-centro.html","position":1,"title":"Nosotros"},"link2":{"href":"/p/directorio.html","position":10,"title":"directorio"},"3135842219388007871":{"href":"https://centroagroturistico.blogspot.com/p/siga-seguridad-info.html","position":8,"title":"SIGA > Politicas de privacidad"},"7307159722563828450":{"href":"https://centroagroturistico.blogspot.com/p/pce.html","position":9,"title":"Egresados"}}]]>
               </b:widget-setting>
               <b:widget-setting name='homeTitle'>Página Principal</b:widget-setting>
             </b:widget-settings>
@@ -1419,16 +1358,17 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
         <b:section class='blog-posts hfeed' id='main' name='Main' maxwidgets='20' showaddelement='yes'>
           <b:widget id='LinkList1' locked='false' title='Carrucel de imagenes' visible='true' type='LinkList'>
             <b:widget-settings>
-              <b:widget-setting name='shownum'>3</b:widget-setting>
+              <b:widget-setting name='shownum'>2</b:widget-setting>
               <b:widget-setting name='sorting'>NONE</b:widget-setting>
               <b:widget-setting name='text-0'>imagen 1</b:widget-setting>
-              <b:widget-setting name='link-0'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjR8jj6J2UQR_hExUpaE7A6FZUFnHtzToZUzUWfPVAoPCROQM_Z6tx4NYGNecwBoL3WmEBQ342wr1zIUrA4LiRXLV7aTTF9ht1D5Xf3PxbX2OViU1XTpz6FBhABwshfXhn8q0hvjHyC5ThgPNgjgWWJ0ApiBP4Pvqpaa_z8QEzw3mKQoOBh90L52Hcsdng/s2233/I%20CONVOCATORIA%20MEDIOS%20TECNOLOGICOS%202025_Banener_blog.jpg</b:widget-setting>
+              <b:widget-setting name='link-0'>https://blogger.googleusercontent.com/img/a/AVvXsEifaYfQpFY7ohIY3Pha-LLZ0pPxpb8sz3YeqMguW37PUVqRHJv-ibtupbZrflIgfgHI9el8pzXh7WHOBuDNFBK4WrPAnlB37Ow4DVk-_1_1yNY1Q9luYLyOKR3UtUvW4bmmd_VOK74RqdvuwudFXYUBdzOnPN5bhLil62iA1tiUFusCy4EsXsSvlo6xPa8=s16000-rw</b:widget-setting>
               <b:widget-setting name='text-1'>imagen 2</b:widget-setting>
-              <b:widget-setting name='link-1'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgwCVqCbPNW8o6lnnfXdNz3bxMLHLeOxVfRRtB99_Qa-k1Clgsn3qhqgqvyp34B9j4TT2VWpwX9-FsuBJfHYNNQTyO4n-YpXNXoYs7jgB0Hhuy1UqUJDv8rnsTKY5VU05yqq72zybl4R8XVIJ2TTODRoKNQjPgaStBMHyJqNJdxXCRLxt6wIOeq_HUxYk8/s2233/Monitorias_Banner.jpg</b:widget-setting>
-              <b:widget-setting name='text-2'> imagen 3</b:widget-setting>
-              <b:widget-setting name='link-2'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgUWSroBGrCs5QqFbluNzpR417FRySDT-Z-dC1ZxwLfOJsmGdFIX-g-oJYcGGqQpAi1Diu2SDxFVa6SkCjlHbbVWCCUtGDTD8RTEphl8S7CzHTyfslhiQRUSUPU89C9PRapX78l5WfwCJEOO9BX4touJ5NBD6SEgBHbUNBFqA_p8W4PYRmtMdLHLVXK3r0/s1072/bannerOferta%20(4).jpg</b:widget-setting>
+              <b:widget-setting name='link-1'>https://blogger.googleusercontent.com/img/a/AVvXsEhQyDsIQIWVeZZGg3TNFQunujpivPOF7YzFgK1l_jQnzRbjgzTu74mwg7QBhU9F82qqSFDLUZw9JpHm4sp5zzTR1ndObrI_Cl4uwS5vhpaeAGt-fG_RhQp-wZ9nXhNUhj7a9-4OXyUZSueGOaMC1tjZtDUW8pccaZiYNCSrNn7Bb2gPoIDYyHhsMeb4wbY=s16000-rw</b:widget-setting>
             </b:widget-settings>
             <b:includable id='main'>
+            <!--
+              -   |||🎪 Galeria
+              -->
               <b:if cond='data:blog.pageType not in {"item","static_page"}'>
                 <div class='widget-content imagenes-deslisables' expr:pagina='data:blog.pageType'>
                   <div id="carusel-cont" class='carusel-cont'>
@@ -1454,6 +1394,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   carusel = document.getElementById("carusel-cont")   
                   function actualizarIndexCarusel(contenedor = carusel) {
                     let items = contenedor.querySelectorAll(".carusel-link");
+                    if (items.length = 0) return
                     let scrollLeft = contenedor.scrollLeft;
                     let closestIndex = 0;
                     let minDiff = Math.abs(scrollLeft - items[0].offsetLeft);   
@@ -1468,6 +1409,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   }   
                   function moverCarusel(direccion = 'adelante', contenedor) {
                       const items = contenedor.querySelectorAll(".carusel-link");
+                      if (items.length = 0) return
                       actualizarIndexCarusel(contenedor); // Actualiza la posición antes de cambiar
                       // Nueva posicion
                       index = (direccion === "atras") 
@@ -1487,7 +1429,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   });
                       
                   document.addEventListener("DOMContentLoaded", function () {
-                    // Detectar hover para pausar el movimiento
                     // Detectar hover para pausar el movimiento (PC)
                     carusel.addEventListener("mouseenter", () => isPaused = true);
                     carusel.addEventListener("mouseleave", () => isPaused = false);   
@@ -1510,9 +1451,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
             <b:includable id='style-posts-blog' var='top32'>
             </b:includable>
             <b:includable id='script-posts-blog' var='top32'>
-              <!--
-              -   |||🎪 Galeria
-              -->
+
               <style>
                 /*<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante! */  
                 /*css 👈 Comando decorativo "Highlight String Code" */
@@ -2174,7 +2113,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   <div expr:id='data:widget.instanceId + &quot;_comments-block-wrapper&quot;'>
                     <dl expr:class='data:post.avatarIndentClass' id='comments-block'>
                       <b:loop values='data:post.comments' var='comment'>
-                        ✂️
                         <dt expr:class='&quot;comment-author &quot; + data:comment.authorClass' expr:id='data:comment.anchorName'>
                           <b:if cond='data:comment.favicon'>
                             <img expr:src='data:comment.favicon' height='16px' style='margin-bottom:-2px;' width='16px'/>
@@ -2204,7 +2142,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                           </b:if>
                         </dd>
                         <dd class='comment-footer'>
-                          🎟️🎟️🎟️
                           <span class='comment-timestamp'>
                             <a expr:href='data:comment.url' title='comment permalink'>
                               <data:comment.timestamp/>
