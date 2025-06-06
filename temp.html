@@ -19,37 +19,40 @@
     padding: 30px;
     box-sizing: border-box;
   }
-
-  .menu-desplegable-btn{
-    position: fixed;
-    right: 20px;
-    display: flex;
-    cursor: pointer;
-    z-index: 1;
-    padding: 5px;
-    border-radius: 10px;
-    background-color: #0000002b;
-    border: none;
-    transition: 
-      background-color 0.2s ease, 
-      transform 0.3s ease-in-out,
-      scale 0.2s ease;
-    backdrop-filter: blur(2px);
-  }
-  .menu-desplegable-btn:active{
-    transform: translate(-100px,0);
-    background-color: #00000040;
-    scale:1.2;
-  }
-  .menu-desplegable-btn svg{
-    height: 30px;
-    color: white;
-  }
 </style>
 <body>
-  <button class="menu-desplegable-btn">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M160-240q-17 0-28.5-11.5T120-280q0-17 11.5-28.5T160-320h440q17 0 28.5 11.5T640-280q0 17-11.5 28.5T600-240H160Zm596-68L612-452q-12-12-12-28t12-28l144-144q11-11 28-11t28 11q11 11 11 28t-11 28L696-480l116 116q11 11 11 28t-11 28q-11 11-28 11t-28-11ZM160-440q-17 0-28.5-11.5T120-480q0-17 11.5-28.5T160-520h320q17 0 28.5 11.5T520-480q0 17-11.5 28.5T480-440H160Zm0-200q-17 0-28.5-11.5T120-680q0-17 11.5-28.5T160-720h440q17 0 28.5 11.5T640-680q0 17-11.5 28.5T600-640H160Z"/></svg>
-  </button>
+<div style="text-align: center">
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSeSskcAhY-ZZUlTdb2rlAPsfV7VrLvC75AMph590Yf4N8FytQ/viewform" target="_blank"><button class="single-button"><span>Click aqui para registrarse</span>
+   </button>
+  </a>
+</div>
+
+<div><br /></div>
+
+<style>
+.single-button {
+  color: #b1b1b1;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 1px 3px 0;
+  font-size: 1em;
+  padding: 10px 25px;
+  transition:
+    transform 0.2s cubic-bezier(0.18, 0.89, 0.38, 1.78),
+    color 0.3s,
+    border-color 0.3s;
+  user-select: none;
+  cursor: pointer;
+}
+.single-button:hover {
+  color: #39a900;
+  border-color: #39a900;
+}
+.single-button:active {
+  transform: scale(0.95);
+}
+</style>
 </body>
 <style>
 

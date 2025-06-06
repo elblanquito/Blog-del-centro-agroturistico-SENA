@@ -1068,7 +1068,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
             title='Menu principal' type='PageList'>
             <b:widget-settings> 
               <b:widget-setting name='pageListJson'>
-                <![CDATA[{"2386874126626085014":{"href":"https://centroagroturistico.blogspot.com/p/modalidades-etapa-productiva.html","position":3,"title":"Aprendiz > Modalidades Etapa Productiva"},"link1":{"href":"/p/siga-politica-de-seguridad-y-salud-en.html","position":7,"title":"SIGA > Seguridad en el Trabajo"},"link0":{"href":"/","position":0,"title":"Página Principal"},"6379106760030155655":{"href":"https://centroagroturistico.blogspot.com/p/programas.html","position":4,"title":"Programas "},"6577109633134602306":{"href":"https://centroagroturistico.blogspot.com/p/siga-medio-ambiente.html","position":6,"title":"SIGA > Medio Ambiente"},"1913536764051443180":{"href":"https://centroagroturistico.blogspot.com/p/servicios.html","position":2,"title":"Aprendiz > Bienestar al Aprendiz"},"8481288358851739963":{"href":"https://centroagroturistico.blogspot.com/p/sig_27.html","position":5,"title":"SIGA > Calidad"},"link3":{"href":"/p/normatividad_17.html","position":11,"title":"Normatividad"},"4038023874459647097":{"href":"https://centroagroturistico.blogspot.com/p/perfil-del-centro.html","position":1,"title":"Nosotros"},"link2":{"href":"/p/directorio.html","position":10,"title":"directorio"},"3135842219388007871":{"href":"https://centroagroturistico.blogspot.com/p/siga-seguridad-info.html","position":8,"title":"SIGA > Politicas de privacidad"},"7307159722563828450":{"href":"https://centroagroturistico.blogspot.com/p/pce.html","position":9,"title":"Egresados"}}]]>
+                <![CDATA[{"link1":{"href":"/p/perfil-del-centro.html","position":1,"title":"Nosotros"},"link0":{"href":"/","position":0,"title":"Página Principal"},"link5":{"href":"/p/sig_27.html","position":5,"title":"SIGA > Calidad"},"link4":{"href":"/p/programas.html","position":4,"title":"Programas"},"link3":{"href":"/p/modalidades-etapa-productiva.html","position":3,"title":"Aprendiz > Modalidades Etapa Productiva"},"link2":{"href":"/p/servicios.html","position":2,"title":"Aprendiz > Bienestar al Aprendiz"},"link9":{"href":"/p/pce.html","position":9,"title":"Egresados"},"link11":{"href":"/p/normatividad_17.html","position":11,"title":"Normatividad"},"link8":{"href":"/p/siga-seguridad-info.html","position":8,"title":"SIGA > Politicas de privacidad"},"link7":{"href":"/p/siga-ssalud-y-seguridad-en-el-trabajo.html","position":7,"title":"SIGA > Seguridad en el Trabajo"},"link6":{"href":"/p/siga-medio-ambiente.html","position":6,"title":"SIGA > Medio Ambiente"},"link10":{"href":"/p/directorio.html","position":10,"title":"directorio"}}]]>
               </b:widget-setting>
               <b:widget-setting name='homeTitle'>Página Principal</b:widget-setting>
             </b:widget-settings>
@@ -1303,7 +1303,10 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                           // separar el titulo en dos variables ✂️👇
                           var carpetaTitulo = titulo.split('>')[0].trim() 
                           var carpetaItem = titulo.split('>')[1].trim()
+                          console.log("Titulo: ", carpetaTitulo)
+                          console.log("Item: ", carpetaItem)
                           if (!carpetas[carpetaTitulo]){ // ¿ya existe esta carpeta?
+                            console.log("[crear carpeta] 🗂️")
                             carpetas[carpetaTitulo] = [] // crear carpeta
                             // insertar carpeta vacia en el html 📁👇
                             contenedorRutas.insertAdjacentHTML("beforeend", `
@@ -1316,7 +1319,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                                   </svg>
                                 </label>
                                 <hr/>
-                                <div class="item-carpeta-header-cont" id='item-carpeta-header-cont-${carpetaTitulo}'>
+                                <div class="item-carpeta-header-cont" id='item-carpeta-header-cont-${carpetaTitulo.replace(/\s+/g, "")}'>
                                   <div>
                                   </div>
                                 </div>
@@ -1332,10 +1335,12 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                       </b:if>
                   </b:loop>
                   <script> // js
+                  console.log("carpetas: ", carpetas)
                     for (const property in carpetas) {  // recorrer contenido de 'carpetas'
                       carpetas[property].forEach((item, i) => {  // recorrer items de cada carpeta
+                      console.log("insertar: ", item.nombre, "en la carpeta: ", property)
                         // insertar item en el html 📌👇
-                        document.querySelector(`#item-carpeta-header-cont-${property} div`).insertAdjacentHTML("beforeend", `
+                        document.querySelector(`#item-carpeta-header-cont-${property.replace(/\s+/g, "")} div`).insertAdjacentHTML("beforeend", `
                             <a class="item-carpeta-header" href="${item.link}">
                               <input type="radio" name="SIGA" value="introduccion"/>
                               <span class="linea-checked"></span>
@@ -1802,10 +1807,16 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   // aplica la libreria Fancybox a las imagenes del blog y pone los botones de descarga
                   function customImagenesPosts() {
                     posts.forEach((post, index) => {
-                        post.querySelectorAll("img").forEach(img => {
-                          img.parentElement.setAttribute("data-fancybox", "post-group-" + index);
+                      post.querySelectorAll("img").forEach(img => {
+                        const parentImg = img.parentElement;
+                        if (parentImg.tagName !== "A") return // si el padre no es un <a></a>
+                        if (parentImg.href.startsWith("https://blogger.googleusercontent.com/img/")) { // si es una imagen de blogger
+                          parentImg.setAttribute("data-fancybox", "post-group-" + index);
                           agregarBotonDescarga(img)
-                        });
+                        } else if (parentImg.getAttribute("href").trim() == ""){
+                          parentImg.style.pointerEvents = "none"
+                        }
+                      });
                     });
                     Fancybox.bind("[data-fancybox]", {
                       compact: true, //desactiva la vercion movil
