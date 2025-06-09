@@ -540,16 +540,24 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
         /*
         -   ||| 🖼️
         */
-        .widget.Image{
-          border-radius: 10px;
-          outline: 1px solid #e2e8f0;
+        .widget.Image a{
+          display: flex
         }
         .widget.Image .widget-content{
+          gap: 5px;
           display: flex;
+          flex-direction: column;
+          text-align: center;
         }
         .widget.Image img{
           max-width: 100%;
           height: auto;
+          margin: 0 auto;
+          border-radius: 10px;
+          outline: 1px solid #e2e8f0;
+        }
+        .widget.Image br{
+          display: none;
         }
         /*
         -   |||🌎
@@ -1068,7 +1076,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
             title='Menu principal' type='PageList'>
             <b:widget-settings> 
               <b:widget-setting name='pageListJson'>
-                <![CDATA[{"link1":{"href":"/p/perfil-del-centro.html","position":1,"title":"Nosotros"},"link0":{"href":"/","position":0,"title":"Página Principal"},"link5":{"href":"/p/sig_27.html","position":5,"title":"SIGA > Calidad"},"link4":{"href":"/p/programas.html","position":4,"title":"Programas"},"link3":{"href":"/p/modalidades-etapa-productiva.html","position":3,"title":"Aprendiz > Modalidades Etapa Productiva"},"link2":{"href":"/p/servicios.html","position":2,"title":"Aprendiz > Bienestar al Aprendiz"},"link9":{"href":"/p/pce.html","position":9,"title":"Egresados"},"link11":{"href":"/p/normatividad_17.html","position":11,"title":"Normatividad"},"link8":{"href":"/p/siga-seguridad-info.html","position":8,"title":"SIGA > Politicas de privacidad"},"link7":{"href":"/p/siga-ssalud-y-seguridad-en-el-trabajo.html","position":7,"title":"SIGA > Seguridad en el Trabajo"},"link6":{"href":"/p/siga-medio-ambiente.html","position":6,"title":"SIGA > Medio Ambiente"},"link10":{"href":"/p/directorio.html","position":10,"title":"directorio"}}]]>
+                <![CDATA[{"link1":{"href":"/p/perfil-del-centro.html","position":1,"title":"Nosotros"},"link0":{"href":"/","position":0,"title":"Página Principal"},"link5":{"href":"/p/sig_27.html","position":5,"title":"SIGA > Calidad"},"link4":{"href":"/p/programas.html","position":4,"title":"Programas"},"link3":{"href":"/p/modalidades-etapa-productiva.html","position":3,"title":"Aprendiz > Modalidades Etapa Productiva"},"link2":{"href":"/p/servicios.html","position":2,"title":"Aprendiz > Bienestar al Aprendiz"},"link9":{"href":"/p/pce.html","position":9,"title":"Egresados"},"link11":{"href":"/p/normatividad_17.html","position":11,"title":"Normatividad"},"link8":{"href":"/p/siga-seguridad-info.html","position":8,"title":"SIGA > Politicas de privacidad"},"link7":{"href":"/p/siga-ssalud-y-seguridad-en-el-trabajo.html","position":7,"title":"SIGA > Seguridad en el Trabajo"},"link6":{"href":"/p/siga-medio-ambiente.html","position":6,"title":"SIGA > Medio Ambiente"},"link10":{"href":"/p/directorio.html","position":10,"title":"Directorio"}}]]>
               </b:widget-setting>
               <b:widget-setting name='homeTitle'>Página Principal</b:widget-setting>
             </b:widget-settings>
@@ -1535,7 +1543,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                 }
                 .post{
                   flex-direction: column;
-                  display: flex;
+                  display: flex;-
                   height: auto;
                   width: auto;
                   min-width: 270px;
@@ -1546,7 +1554,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   outline: 1px solid #e2e8f0;
                   background-color: white;
                 }
-                .post >a{display:none;}
+                /*.post >a{display:none;} */
                 .post div{color: #00304D;}
                 .post h1, .post h2, .post h3, .post h4, .post h5{
                   width: 100%;
@@ -1604,7 +1612,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   display: inline-flex;
                   flex-wrap: wrap;
                   gap: 10px;
-                  margin: 0px;
+                  margin: 0px !important;
                   justify-content: center;
                 }
                 .post-body div.separator .separator{
@@ -1803,6 +1811,8 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                     contenedor = document.getElementById('Blog1');
                     posts = contenedor.querySelectorAll('.post');
                   } 
+                  //parentImg.tagName !== "A" si el padre no es un <a></a>
+                  //parentImg.href.startsWith("https://blogger.googleusercontent.com/img/") si es una imagen de blogger
                       
                   // aplica la libreria Fancybox a las imagenes del blog y pone los botones de descarga
                   function customImagenesPosts() {
@@ -2839,7 +2849,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
             <b:widget id='BlogSearch1' locked='false' title='# Buscar Publicacion' type='BlogSearch' version='1' visible='true'>
               <b:includable id='main'>
               <!--
-              -   |||🔍 buscador
+              -   ||| 🔍 buscador
               -->
               <style>  
                 /*<![CDATA[ 👈 Ignorar símbolos como "&" "<>" ¡Importante! */  
@@ -3007,7 +3017,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
             </b:widget>       
             <b:widget id='TextList1' locked='false' title='# frases del texto animado' type='TextList' visible='true'>
               <!--
-              -   |||✏️ Texto animado
+              -   ||| ✏️ Texto animado
               -->
               <b:widget-settings>
                 <b:widget-setting name='shownum'>5</b:widget-setting>
@@ -3106,7 +3116,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
               </b:widget-settings>
               <b:includable id='main'>
                 <!--
-                -   |||📈 estadisticas
+                -   ||| 📈 estadisticas
                 -->
                 <style>
                   /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
@@ -3216,7 +3226,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
               </b:widget-settings>
               <b:includable id='main'>
                 <!--
-                -   |||📢 Redes sociales
+                -   ||| 📢 Redes sociales
                 -->
                 <style>
                   /*<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante */
@@ -3351,7 +3361,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
               </b:widget-settings>
               <b:includable id='main'>
                 <!--
-                -   |||🏷️ rutas 3
+                -   ||| 🏷️ rutas 3
                 -->   
                 <div class='widget-content'>
                   <b:if cond='data:title != "" and data:title not contains  "#"'>
@@ -3371,6 +3381,35 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
           </b:section>
           <!-- | 📦 MENU #2 📦 | -->
           <b:section id='sidebar-right-2' class="sidebar-right-seccion" name='menu 2'>              
+            <b:widget id='Image9' locked='false' title='Galeria de imagenes' type='Image'>
+              <b:widget-settings>
+                <b:widget-setting name='displayUrl'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2v5URLN9p3XFsb-zQ1fNc37Zs6z1iwWUlqCcb-V0WU9MqQ27iaKYhC3pIGehmpmCdWHIrGXdK-iYDcv1OsGeAoilTiWDvtVsUs6WJiYbreG5xmmMHGtE08UJaKaMpQVifUekPtpUFx9w/s230/medios+audiovisuales.jpg</b:widget-setting>
+                <b:widget-setting name='displayHeight'>151</b:widget-setting>
+                <b:widget-setting name='sectionWidth'>230</b:widget-setting>
+                <b:widget-setting name='shrinkToFit'>true</b:widget-setting>
+                <b:widget-setting name='displayWidth'>230</b:widget-setting>
+                <b:widget-setting name='link'>https://drive.google.com/open?id=1E0gLW19hTB8LqZo_Mt85tRJP8yxJgxBt</b:widget-setting>
+                <b:widget-setting name='caption'>Producción de Medios Audiovisuales</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <!-- 
+                -   ||| 🖼️ Imagen 2
+                 -->
+                <b:if cond='data:title != &quot;&quot;'>
+                  <h2><data:title/></h2>
+                </b:if>
+                <div class='widget-content'>
+                  <b:tag cond='data:link' expr:href='data:link' name='a'>
+                    <img expr:alt='data:title' expr:height='data:height' expr:id='data:widget.instanceId + &quot;_img&quot;' expr:src='data:sourceUrl' expr:width='data:width'/>
+                  </b:tag>
+                  <br/>
+                  <b:if cond='data:caption'>
+                    <span class='caption'><data:caption/></span>
+                  </b:if>
+                </div>
+                <b:include name='quickedit'/>
+              </b:includable>
+            </b:widget>
             <b:widget id='HTML2' locked='false' title='# Google maps' type='HTML' visible='true'>
               <b:widget-settings>
                 <b:widget-setting name='content'>
@@ -3788,6 +3827,20 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                     toggleMenu('ocultar')
                 }
             });
+
+            function agregar_Blank() {
+              // Selecciona todos los enlaces dentro de widgets con clase "Image"
+              const imageLinks = document.querySelectorAll(".widget.Image a");
+
+              imageLinks.forEach(function (link) {
+                // Verifica que el enlace tenga un href válido
+                if (link.href && link.getAttribute("target") !== "_blank") {
+                  link.setAttribute("target", "_blank");
+                  link.setAttribute("rel", "noopener noreferrer"); // Seguridad adicional
+                }
+              });
+            }
+            
             //!js
             //]]>
           </script>
@@ -3995,164 +4048,166 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
         </b:widget>
       </b:section>
     </div>
+    <!--
+    |||⚙️ Scripts
+    -->
+    <!--
+    -   |||⚙️ [ Generales ]
+    -->
+
+    <script>
+      //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
+      //js 👈 comando decorativo "Highlight String Code" 
+
+      // funcion para quitar overlays
+      function iframeOverlay(element){ 
+        if (element.style.display != 'none') {
+          element.style.display = 'none'
+          document.addEventListener("pointerdown", function handleClick(event) {
+            if (!element.parentElement.contains(event.target)) { // click fuera del contenedor
+              element.style.display = "flex"; // mostrar
+              document.removeEventListener("click", handleClick); // eliminar evento
+            }
+          });
+        }
+      }
+      // funcion para compartir
+      function compartir(link,texto = "") {
+        if (navigator.share) {
+          mostrarNotificacion("Porfavor", "Seleccione una aplicación para compartir ", "info")
+          navigator.share({
+            url:link,
+            text: texto
+          })
+          .then(() => mostrarNotificacion("gracias por compartir 😁", "valoramos mucho la difucion del blog", "positiva"))
+          .catch((error) => mostrarNotificacion("gracias por compartir 😁", "valoramos mucho la difucion del blog", "positiva"));
+        } else {
+          copiarTexto(link)
+        }
+      }
+      // scrollea el elemento seleccionado o a sus padres
+      function scrollParent(element, level = 0, position = 'start', smooth = true) {
+        let target = element;
+        for (let i = 0; i < level; i++) { // seleccionar elemento deseado
+          if (!target.parentElement) break 
+          target = target.parentElement;
+        }
+        // scrolear al elemento
+        target.scrollIntoView({ 
+          behavior: smooth ? 'smooth' : 'auto', 
+          block: position 
+          });
+      }
+      // Función para copiar texto al portapapeles
+      async function copiarTexto(texto) {
+        try {
+          await navigator.clipboard.writeText(texto);
+          mostrarNotificacion("Texto copiado", "guardado en tu portapapeles", "positiva")
+        } catch (error) {
+          mostrarNotificacion("Error al copiar el texto: ", error, "negativa")
+        }
+      } 
+
+      // Función para descargar una imagen de un dominio diferente 
+      async function descargarImagen(imageURL){
+        mostrarNotificacion('descarga','preparando descarga','info')
+        const proxyUrl = 'https://corsproxy.io/?';
+
+        try {
+        const imageNewUrl = new URL(imageURL);
+        let fileName = decodeURIComponent(   // extraer nombre de la url
+            imageNewUrl.pathname.split('/').pop()  
+        ) || 'imagen';  // si no hay nombre
+          
+          // Usar proxy CORS para evitar problemas de política de same-origin
+          const response = await fetch(proxyUrl + encodeURIComponent(imageURL));
+          if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
+          const blob = await response.blob();
+          const url = window.URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = fileName;
+          document.body.appendChild(link);
+          link.click();
+          // Limpieza después de 100ms para asegurar la descarga
+          setTimeout(() => {
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(link);
+          }, 100);
+          mostrarNotificacion('descarga lista!','la imagen se descargara en breve','positiva')
+        } catch (error) {
+          console.error('Error:', error);
+          mostrarNotificacion('descarga fallida',error.message,'negativa')
+        }
+      }     
+
+      function calcularTiempoTranscurrido(fechaTexto) {
+        // Diccionario de meses en español
+        const meses = {
+          enero: 0, febrero: 1, marzo: 2, abril: 3,
+          mayo: 4, junio: 5, julio: 6, agosto: 7,
+          septiembre: 8, octubre: 9, noviembre: 10, diciembre: 11
+        };
+
+        // Extraer día, mes y año del texto
+        const partes = fechaTexto.toLowerCase().split(" de ");
+        const dia = parseInt(partes[0]);
+        const mes = meses[partes[1]];
+        const año = parseInt(partes[2]);
+
+        // Crear objeto Date de la fecha dada y la fecha actual
+        const fechaDada = new Date(año, mes, dia);
+        const hoy = new Date();
+
+        // Calcular diferencia en milisegundos y convertir a días
+        const diferenciaMs = hoy - fechaDada;
+        const dias = Math.floor(diferenciaMs / (1000 * 60 * 60 * 24));
+
+        if (dias < 0) return "en el futuro";
+        if (dias === 0) return "hoy";
+        if (dias === 1) return "ayer";
+        if (dias < 30) return `hace ${dias} días`;
+        if (dias < 60) return "hace 1 mes";
+        if (dias < 365) return `hace ${Math.floor(dias / 30)} meses`;
+        if (dias < 730) return "hace 1 año";
+
+        return `hace ${Math.floor(dias / 365)} años`;
+      }      
+
+      //!js
+      //]]>
+    </script>
+
+    <!--
+    -   |||⚙️ [ Ejecutar ]
+    -->
+    <script>
+      //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
+      //js 👈 comando decorativo "Highlight String Code"
+      <!--* Elimina la clase 'loading' después de 10ms -->
+      window.setTimeout(function () {
+        
+      }, 500);
+
+      // apenas cargue la estructura de la pagina
+      document.addEventListener("DOMContentLoaded", () => {
+        asignarElementosPosts()
+        customImagenesPosts()
+        asignarPaginaActual()
+        agregar_Blank()
+      });
+
+
+
+
+      // al terminar de cargar los recursos
+      window.addEventListener("load", () => {
+        textoAnimado();
+        document.body.classList.replace('loading', 'listo');
+      });
+      
+      //!js
+      //]]>
+    </script>
   </body>
-  <!--
-  |||⚙️ Scripts
-  -->
-  <!--
-  -   |||⚙️ [ Generales ]
-  -->
-
-  <script>
-    //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
-    //js 👈 comando decorativo "Highlight String Code" 
-
-    // funcion para quitar overlays
-    function iframeOverlay(element){ 
-      if (element.style.display != 'none') {
-        element.style.display = 'none'
-        document.addEventListener("pointerdown", function handleClick(event) {
-          if (!element.parentElement.contains(event.target)) { // click fuera del contenedor
-            element.style.display = "flex"; // mostrar
-            document.removeEventListener("click", handleClick); // eliminar evento
-          }
-        });
-      }
-    }
-    // funcion para compartir
-    function compartir(link,texto = "") {
-      if (navigator.share) {
-        mostrarNotificacion("Porfavor", "Seleccione una aplicación para compartir ", "info")
-        navigator.share({
-          url:link,
-          text: texto
-        })
-        .then(() => mostrarNotificacion("gracias por compartir 😁", "valoramos mucho la difucion del blog", "positiva"))
-        .catch((error) => mostrarNotificacion("gracias por compartir 😁", "valoramos mucho la difucion del blog", "positiva"));
-      } else {
-        copiarTexto(link)
-      }
-    }
-    // scrollea el elemento seleccionado o a sus padres
-    function scrollParent(element, level = 0, position = 'start', smooth = true) {
-      let target = element;
-      for (let i = 0; i < level; i++) { // seleccionar elemento deseado
-        if (!target.parentElement) break 
-        target = target.parentElement;
-      }
-      // scrolear al elemento
-      target.scrollIntoView({ 
-        behavior: smooth ? 'smooth' : 'auto', 
-        block: position 
-        });
-    }
-    // Función para copiar texto al portapapeles
-    async function copiarTexto(texto) {
-      try {
-        await navigator.clipboard.writeText(texto);
-        mostrarNotificacion("Texto copiado", "guardado en tu portapapeles", "positiva")
-      } catch (error) {
-        mostrarNotificacion("Error al copiar el texto: ", error, "negativa")
-      }
-    } 
-
-    // Función para descargar una imagen de un dominio diferente 
-    async function descargarImagen(imageURL){
-      mostrarNotificacion('descarga','preparando descarga','info')
-      const proxyUrl = 'https://corsproxy.io/?';
-      const url = new URL(imageURL);
-      let fileName = decodeURIComponent(   // extraer nombre de la url
-          url.pathname.split('/').pop()  
-      ) || 'imagen';  // si no hay nombre
-      try {
-        // Usar proxy CORS para evitar problemas de política de same-origin
-        const response = await fetch(proxyUrl + encodeURIComponent(imageURL));
-        if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
-        const blob = await response.blob();
-        const url = window.URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = fileName;
-        document.body.appendChild(link);
-        link.click();
-        // Limpieza después de 100ms para asegurar la descarga
-        setTimeout(() => {
-          window.URL.revokeObjectURL(url);
-          document.body.removeChild(link);
-        }, 100);
-        mostrarNotificacion('descarga lista!','la imagen se descargara en breve','positiva')
-      } catch (error) {
-        console.error('Error:', error);
-        mostrarNotificacion('descarga fallida',error.message,'negativa')
-      }
-    }     
-
-    function calcularTiempoTranscurrido(fechaTexto) {
-      // Diccionario de meses en español
-      const meses = {
-        enero: 0, febrero: 1, marzo: 2, abril: 3,
-        mayo: 4, junio: 5, julio: 6, agosto: 7,
-        septiembre: 8, octubre: 9, noviembre: 10, diciembre: 11
-      };
-
-      // Extraer día, mes y año del texto
-      const partes = fechaTexto.toLowerCase().split(" de ");
-      const dia = parseInt(partes[0]);
-      const mes = meses[partes[1]];
-      const año = parseInt(partes[2]);
-
-      // Crear objeto Date de la fecha dada y la fecha actual
-      const fechaDada = new Date(año, mes, dia);
-      const hoy = new Date();
-
-      // Calcular diferencia en milisegundos y convertir a días
-      const diferenciaMs = hoy - fechaDada;
-      const dias = Math.floor(diferenciaMs / (1000 * 60 * 60 * 24));
-
-      if (dias < 0) return "en el futuro";
-      if (dias === 0) return "hoy";
-      if (dias === 1) return "ayer";
-      if (dias < 30) return `hace ${dias} días`;
-      if (dias < 60) return "hace 1 mes";
-      if (dias < 365) return `hace ${Math.floor(dias / 30)} meses`;
-      if (dias < 730) return "hace 1 año";
-
-      return `hace ${Math.floor(dias / 365)} años`;
-    }      
-
-    //!js
-    //]]>
-  </script>
-
-  <!--
-  -   |||⚙️ [ Ejecutar ]
-  -->
-  <script>
-    //<![CDATA[ 👈 ignorar simbolos como "&" "<>" !importante
-    //js 👈 comando decorativo "Highlight String Code"
-    <!--* Elimina la clase 'loading' después de 10ms -->
-    window.setTimeout(function () {
-      
-    }, 500);
-
-    // apenas cargue la estructura de la pagina
-    document.addEventListener("DOMContentLoaded", () => {
-      asignarElementosPosts()
-      customImagenesPosts()
-      asignarPaginaActual()
-    });
-
-
-
-
-    // al terminar de cargar los recursos
-    window.addEventListener("load", () => {
-      textoAnimado();
-      document.body.classList.replace('loading', 'listo');
-      
-    });
-    
-    //!js
-    //]]>
-  </script>
 </html>
