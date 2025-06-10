@@ -1076,7 +1076,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
             title='Menu principal' type='PageList'>
             <b:widget-settings> 
               <b:widget-setting name='pageListJson'>
-                <![CDATA[{"link1":{"href":"/p/perfil-del-centro.html","position":1,"title":"Nosotros"},"link0":{"href":"/","position":0,"title":"Página Principal"},"link5":{"href":"/p/sig_27.html","position":5,"title":"SIGA > Calidad"},"link4":{"href":"/p/programas.html","position":4,"title":"Programas"},"link3":{"href":"/p/modalidades-etapa-productiva.html","position":3,"title":"Aprendiz > Modalidades Etapa Productiva"},"link2":{"href":"/p/servicios.html","position":2,"title":"Aprendiz > Bienestar al Aprendiz"},"link9":{"href":"/p/pce.html","position":9,"title":"Egresados"},"link11":{"href":"/p/normatividad_17.html","position":11,"title":"Normatividad"},"link8":{"href":"/p/siga-seguridad-info.html","position":8,"title":"SIGA > Politicas de privacidad"},"link7":{"href":"/p/siga-ssalud-y-seguridad-en-el-trabajo.html","position":7,"title":"SIGA > Seguridad en el Trabajo"},"link6":{"href":"/p/siga-medio-ambiente.html","position":6,"title":"SIGA > Medio Ambiente"},"link10":{"href":"/p/directorio.html","position":10,"title":"Directorio"}}]]>
+                <![CDATA[{"link1":{"href":"/p/perfil-del-centro.html","position":1,"title":"Nosotros"},"link0":{"href":"/","position":0,"title":"Página Principal"},"link5":{"href":"/p/sig_27.html","position":5,"title":"SIGA > Calidad"},"link15":{"href":"/p/normatividad_17.html","position":15,"title":"Normatividad"},"link4":{"href":"/p/programas.html","position":4,"title":"Programas"},"link3":{"href":"/p/modalidades-etapa-productiva.html","position":3,"title":"Aprendiz > Modalidades Etapa Productiva"},"link13":{"href":"/p/pce.html","position":13,"title":"Egresados"},"link2":{"href":"/p/servicios.html","position":2,"title":"Aprendiz > Bienestar al Aprendiz"},"link14":{"href":"/p/directorio.html","position":14,"title":"Directorio"},"link9":{"href":"/p/emprendedores-sena.html","position":9,"title":"Servicios > Emprendedores Sena"},"link11":{"href":"/p/tecnoparque.html","position":11,"title":"Servicios > Tecnoparque"},"link8":{"href":"/p/siga-seguridad-info.html","position":8,"title":"SIGA > Politicas de privacidad"},"link12":{"href":"/p/sennova.html","position":12,"title":"Servicios > SENNOVA"},"link7":{"href":"/p/siga-ssalud-y-seguridad-en-el-trabajo.html","position":7,"title":"SIGA > Seguridad en el Trabajo"},"link6":{"href":"/p/siga-medio-ambiente.html","position":6,"title":"SIGA > Medio Ambiente"},"link10":{"href":"/p/mesa-sectorial-del-tabaco.html","position":10,"title":"Servicios > Mesa Sectorial del Tabaco"}}]]>
               </b:widget-setting>
               <b:widget-setting name='homeTitle'>Página Principal</b:widget-setting>
             </b:widget-settings>
@@ -1556,21 +1556,22 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                 }
                 /*.post >a{display:none;} */
                 .post div{color: #00304D;}
-                .post h1, .post h2, .post h3, .post h4, .post h5{
-                  width: 100%;
-                }   
+
                 .post-body-cont{
                   display: flex;
                   flex-direction: column;
                   height: 100%;
                   justify-content: space-around;
                 }   
-                h2.post-title {
+                .post-title {
                   font-size: 1.5em;
-                  color: #00304D;
                   margin-bottom: 15px;
                   text-align: center;
                 }   
+                .post-title *{
+                  color: var(--color-primario) !important;
+                }
+
                 .post-body{
                   display: flex;
                   flex-direction: column;
@@ -1590,35 +1591,60 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   height: 0px; 
                 }
                 */    
-                .post-body span , .post-body h4{
-                  margin: 5px 0px;
-                }   
+                .post-body .separator:empty,
+                .post-body p:empty{
+                  display:none;
+                }
+
+                .post-body ul {
+                  list-style: revert;
+                }
+                .post-body h1, .post-body h2 { /*colorear titulos*/
+                  color: var(--color-primario);
+                }
+                .post-body h3, .post-body h4 { /*colorear subtitulos*/
+                  color: #a6b7c1;
+                }
+
                 .post-body p,
                 .post-body a {
+                  display: inline-block;
                   max-width: 100%;
                   position: relative;
                   margin: 0;
                 }
                 .post-body div{
                   width: 100%;
-                }   
-                .post-body > p{
-                  margin:0px;
-                }   
-                .post-body p:empty {
-                  display: none;
                 }
-                .post-body div.separator{
+                /*
+                acontinuacion se selecciona muchos elementos
+                sin embargo si se estorba mucho a qui una lista
+                de los mas importantes al menos importante:
+
+                1. ".post-body div.separator"
+                la mayoria de contenedores
+
+                2. ".post-body h2"
+                las imagene alguna veces estan dentro de uno
+
+                3. ".post-body div"
+                si seleccionar un grupo de imagenes y le pones
+                en tipo de texto "Normal" el contenedor queda
+                como un div sin clases
+                */
+                .post-body * {
+                  margin: 0px !important;
+                }
+                .post-body *:has(img),
+                .post-body *:has(iframe){
+                  justify-content: center;
+                  gap: 10px;
+                  display: inline-block;
                   display: inline-flex;
                   flex-wrap: wrap;
-                  gap: 10px;
-                  margin: 0px !important;
-                  justify-content: center;
                 }
-                .post-body div.separator .separator{
-                }
-                .post-body .separator > a,
-                .post-body p > a{
+
+                .post-body a { /*para los envoltorios de las imagenes*/
                   display: inline-block;
                   aspect-ratio: auto; 
                   position: relative;
@@ -1691,7 +1717,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                     background-position: 0% 0%;
                   }
                 } 
-                .post img:active, .post iframe:active, .tiktok-embed:active{
+                .post img:active, .tiktok-embed:active{
                   transform: scale(.90);
                 }   
                 .post-footer{
@@ -3828,7 +3854,7 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                 }
             });
 
-            function agregar_Blank() {
+            function agregarTargetBlank() {
               // Selecciona todos los enlaces dentro de widgets con clase "Image"
               const imageLinks = document.querySelectorAll(".widget.Image a");
 
@@ -4194,7 +4220,11 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
         asignarElementosPosts()
         customImagenesPosts()
         asignarPaginaActual()
-        agregar_Blank()
+
+
+        agregarTargetBlank() 
+        //agrega el atributo _blank a los siguientes:
+
       });
 
 
