@@ -1057,6 +1057,9 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
               "izquierda derecha";
           }
           #seccion-intermedia{
+            z-index: 10;
+            top: 0px;
+            position: sticky;
             grid-area: intermedio;
           }
           @media (max-width: 800px) {
@@ -1088,23 +1091,27 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   margin: 0;
                   position: sticky;
                   top: 0px;
-                  width: fit-content;
+                  width: 100%;
                   max-width: 100%;
                   z-index:3;
                 } 
                 #seccion-header-cont {
-                  border-radius: 10px;
-                  margin: 0 10px;
+                  position: relative;
+                  background-color: #ffffff;
+                  width: fit-content;
+                  border-radius: 0 0 10px 10px;
+                  margin: 0px;
                   box-sizing: border-box;
-                  padding: 0px 10px;
                   display: flex;
                   flex-wrap: wrap;
                   row-gap: 5px;
-                  justify-content: center;
                   user-select: none;
                 }
+
                 @media (max-width: 800px) {
-                  #seccion-header-cont{padding: 10px 0px 0px 0px;}
+                  #seccion-header-cont{
+                    margin-top: 0px;
+                  }
                 }
                 a.seccion-header {
                   padding: 6px 10px 0px 10px;
@@ -1117,8 +1124,6 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   font-size: 1.1em;
                   transition: all 0.2s,
                   transform 0.2s cubic-bezier(0.18, 0.89, 0.38, 1.78);
-                }
-                a.seccion-carpeta-header{
                 }
                 .seccion-header > hr{
                   border: 0;
@@ -1265,6 +1270,20 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                   opacity: 1;
                   background-color: #39a900cc;
                 } /*linea de pagina actual ☝️*/
+
+
+
+
+                a.seccion-header{
+                  margin-bottom: -2px;
+                }
+                #seccion-header-cont{
+                  padding: 0 10px;
+                  box-shadow: #e2e8f082 1px 1px 2px 1px;
+                  border-bottom: 1px solid #e2e8f0;
+                  border-right: 1px solid #e2e8f0;
+                  border-left: 1px solid #e2e8f0;
+                }
                 /*!css*/
                 /*]]>*/
               </style>
@@ -1294,6 +1313,37 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                         }
                       })
                     }
+                    // crea o agrega carpetas del menu principal
+                    function construirCarpetas(titulo = '', link = ''){ 
+                      // separar el titulo en dos variables ✂️👇
+                      var carpetaTitulo = titulo.split('>')[0].trim() 
+                      var carpetaItem = titulo.split('>')[1].trim()
+                      if (!carpetas[carpetaTitulo]){ // ¿ya existe esta carpeta?
+                        carpetas[carpetaTitulo] = [] // crear carpeta
+                        // insertar carpeta vacia en el html 📁👇
+                        contenedorRutas.insertAdjacentHTML("beforeend", `
+                          <a class="seccion-carpeta-header seccion-header">
+                            <label class="seccion-carpeta-header-titulo">
+                              <input type="checkbox" name="seccion-carpeta-header" value="introduccion"/>
+                              <b>${carpetaTitulo}</b>
+                              <svg xmlns="http://www.w3.org/2000/svg" height="24px" fill="currentColor" viewBox="0 -960 960 960" width="24px">
+                              <path d="M480-348q-10.26 0-20.09-3.91-9.82-3.92-17.52-11.61L258.96-546.96Q244-561.91 244-584t14.96-37.04Q273.91-636 296-636t37.04 14.96L480-474.09l146.96-146.95Q641.91-636 664-636t37.04 14.96Q716-606.09 716-584t-14.96 37.04L517.61-363.52q-7.7 7.69-17.52 11.61Q490.26-348 480-348Z"/>
+                              </svg>
+                            </label>
+                            <hr/>
+                            <div class="item-carpeta-header-cont" id='item-carpeta-header-cont-${carpetaTitulo.replace(/\s+/g, "")}'>
+                              <div>
+                              </div>
+                            </div>
+                          </a>
+                        `);
+                      };
+                      carpetas[carpetaTitulo].push({ // crear nuevo item
+                        "nombre": carpetaItem,
+                        "link": link
+                      })
+                    }
+
                   // !js
                   </script>
                   <b:loop values='data:links' var='link' index='i'> <!-- recorrer links -->
@@ -1308,42 +1358,12 @@ Documentacion: "https://github.com/elblanquito/Blog-del-centro-agroturistico-SEN
                         <script> //js
                           var titulo = '<data:link.title/>'; // traer variables de blogger
                           var link = '<data:link.href/>'; 
-                          // separar el titulo en dos variables ✂️👇
-                          var carpetaTitulo = titulo.split('>')[0].trim() 
-                          var carpetaItem = titulo.split('>')[1].trim()
-                          console.log("Titulo: ", carpetaTitulo)
-                          console.log("Item: ", carpetaItem)
-                          if (!carpetas[carpetaTitulo]){ // ¿ya existe esta carpeta?
-                            console.log("[crear carpeta] 🗂️")
-                            carpetas[carpetaTitulo] = [] // crear carpeta
-                            // insertar carpeta vacia en el html 📁👇
-                            contenedorRutas.insertAdjacentHTML("beforeend", `
-                              <a class="seccion-carpeta-header seccion-header">
-                                <label class="seccion-carpeta-header-titulo">
-                                  <input type="checkbox" name="seccion-carpeta-header" value="introduccion"/>
-                                  <b>${carpetaTitulo}</b>
-                                  <svg xmlns="http://www.w3.org/2000/svg" height="24px" fill="currentColor" viewBox="0 -960 960 960" width="24px">
-                                  <path d="M480-348q-10.26 0-20.09-3.91-9.82-3.92-17.52-11.61L258.96-546.96Q244-561.91 244-584t14.96-37.04Q273.91-636 296-636t37.04 14.96L480-474.09l146.96-146.95Q641.91-636 664-636t37.04 14.96Q716-606.09 716-584t-14.96 37.04L517.61-363.52q-7.7 7.69-17.52 11.61Q490.26-348 480-348Z"/>
-                                  </svg>
-                                </label>
-                                <hr/>
-                                <div class="item-carpeta-header-cont" id='item-carpeta-header-cont-${carpetaTitulo.replace(/\s+/g, "")}'>
-                                  <div>
-                                  </div>
-                                </div>
-                              </a>
-                            `);
-                          };
-                          carpetas[carpetaTitulo].push({ // crear nuevo item
-                            "nombre": carpetaItem,
-                            "link": link
-                            })
+                          construirCarpetas(titulo, link) // construir carpeta
                         //!js
                         </script>
                       </b:if>
                   </b:loop>
                   <script> // js
-                  console.log("carpetas: ", carpetas)
                     for (const property in carpetas) {  // recorrer contenido de 'carpetas'
                       carpetas[property].forEach((item, i) => {  // recorrer items de cada carpeta
                       console.log("insertar: ", item.nombre, "en la carpeta: ", property)
